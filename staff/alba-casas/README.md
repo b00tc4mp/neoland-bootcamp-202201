@@ -1,1 +1,1 @@
-my [Gibhub](https://github.com/AlbaCasas).
+My [GitHub](https://github.com/AlbaCasas).
