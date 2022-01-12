@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;600&family=Space+Mono&display=swap');
+
+/*Resets*/
+* {
+    font-family: 'Oswald' ;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+}
+
+html, body {
+    background-color: rgb(199, 199, 199);
+    width: 100%;
+    height: auto;
+}
+
+/*Layout*/
+
+.main {
+    display: flex;
+    background-color: rgb(250, 246, 240);
+    padding: 0 15px;
+    border: 1px solid rgb(160, 147, 127);
+    border-radius: 5px;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 800px;
+    margin: auto;
+}
+
+.header{
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+    height: 140px;
+    /*overflow: scroll;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.info{
+    margin: 10px 0 0 0;
+}
+
+.info a {
+    color: rgb(148, 133, 168);
+}
+
+.contenido{
+    display:flex;
+    justify-content: space-between;
+    border-top: 1px solid rgb(190, 188, 185);
+    border-bottom: 1px solid rgb(190, 188, 185);;
+}
+
+.contenido a{
+    color: rgb(125, 168, 166);
+}
+
+.footer {
+    text-align: right;
+    height: 50px;
+    border-top: 1px solid black;
+}
+
+.header h1 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.contenido {
+    margin:0;
+    font-size: 10px;
+}
+
+.contenido h2 {
+    margin: 20px 0 0 0;
+    color:rgb(54, 70, 102);
+    font-size: 12px;
+}
+.main h2{
+    font-size: 16px;
+    margin: 20px 0 5px 0;
+    text-decoration: underline rgb(125, 168, 166) wavy;
+}
+
+.perfil{
+    text-align: justify;
+}
+
+.perfil p{
+    margin: 0 5px;
+}
+
+.exp-lista {
+    display: flex;
+    flex-direction: column;
+}
+
+.exp-lista ul li{
+    list-style: circle;
+    margin: 0 0 0 40px;
+}
+
+.exp-lista li{
+    margin: 10px 0;
+}
+
+.exp-lista em{
+    letter-spacing: 1px;
+    color:rgb(180, 131, 98)
+}
+
+.formacion{
+    display: flex;
+    flex-direction: column;
+}
+
+.formacion li{
+    list-style: square;
+    margin: 0 0 0 40px;
+}
+
+.formacion em{
+    color:rgb(180, 131, 98)
+}
+
+strong{
+    font-weight: 400;
+}
+
+.otros {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+}
+
+
+
