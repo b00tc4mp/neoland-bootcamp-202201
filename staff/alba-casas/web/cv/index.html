@@ -1,58 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby steps</title>
-</head>
-<body>
-    <header> <!-- first division or special block --> </header>
-    <h1>Alba Casas</h1> <!-- title -->
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        <span> <!-- fragment text -->
-            Dignissimos reprehenderit aliquam harum laborum excepturi libero itaque optio numquam cupiditate saepe, non sed? Animi tenetur corporis eum! Natus perspiciatis facilis officia?
-        </span>
-    </p>
-
-    <div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Excepturi quasi illum in hic cupiditate possimus voluptatum 
-            asperiores labore natus sint, dolor sequi ipsa eos eum 
-            ipsum nihil deleniti sapiente commodi?
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Excepturi quasi illum in hic cupiditate possimus voluptatum 
-            asperiores labore natus sint, dolor sequi ipsa eos eum 
-            ipsum nihil deleniti sapiente commodi?
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Excepturi quasi illum in hic cupiditate possimus voluptatum 
-            asperiores labore natus sint, dolor sequi ipsa eos eum 
-            ipsum nihil deleniti sapiente commodi?
-        </p>
-    </div>
-
-    <footer> <!--Last division or special block -->
-
-        <ul> <!--unordered list -->
-            <li> <!-- elemt of list -->
-                Lucatiel
-            </li>
-            <li> <!-- elemt of list -->
-                Vengar
-            </li>
-            <li> <!-- elemt of list -->
-                Arotias
-            </li>
-        </ul>
-    </footer>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>CV Alba Casas</title>
+  </head>
+  <body>
+    <main class="curriculum">
+      <header class="header">
+        <figure class="header__left">
+          <img
+            class="header__image"
+            src="https://lh3.googleusercontent.com/ogw/ADea4I4CPWLD796GuztHQmzKpRc1jjuPu_2MiwsoY0uVbw=s192-c-mo"
+            alt="Alba Casas"
+          />
+        </figure>
+        <div class="header__right">
+          <h3 class="subtitle">Full Stack Developer</h3>
+          <h1 class="heading header__title">Alba Casas</h1>
+          <a href="https://www.linkedin.com/in/alba-casas" target="_blank"
+            ><button class="button">Contactar</button></a
+          >
+        </div>
+      </header>
+      <article class="content">
+        <aside class="content__left">
+          <div class="content__skill">
+            <h3 class="subtitle">Tech</h3>
+            <ul class="list">
+              <li>React</li>
+              <li>HTML</li>
+              <li>SASS</li>
+              <li>Git</li>
+              <li>JS / ES6</li>
+            </ul>
+          </div>
+          <div class="content__skill">
+            <h3 class="subtitle">Proyectos recientes</h3>
+            <ul class="list">
+              <li>React Bites</li>
+              <li>Huddle HTML/CSS</li>
+              <li>Coming Soon HTML/CSS</li>
+            </ul>
+          </div>
+          <div class="content__skill">
+            <h3 class="subtitle">Idiomas</h3>
+            <ul class="list">
+              <li>Inglés</li>
+              <li>Español</li>
+            </ul>
+          </div>
+        </aside>
+        <section class="content__right">
+          <div class="content__section">
+            <h2 class="title">Perfil</h2>
+            <p>
+              Desarrolladora web con background en diseño gráfico. Actualmente
+              en búsqueda de iniciar su carrera profesional. Con conocimientos
+              demostrados en HTML5, CSS3, SASS, JavaScript, WordPress como CMS
+              (WYSIWYG development) y ReactJs
+            </p>
+          </div>
+          <div class="content__section">
+            <h2 class="title">Educación</h2>
+            <div class="content__box">
+              <div class="content__date">
+                <h3 class="subtitle">Diseño Gráfico - BAU</h3>
+                <span>2020 - Actual</span>
+              </div>
+              <p>
+                User research cualitativo (entrevistas, estudios de usuario) y
+                cuantitativo (análisis de fuentes externas). Análisis de
+                research mediante user personas y mind maps. Uso de herramientas
+                como suite Adobe (con enfásis en Illustrator) y Figma.
+                Aprendizaje sobre diseño de marca (branding) y creatividades.
+              </p>
+            </div>
+            <div class="content__box">
+              <div class="content__date">
+                <h3 class="subtitle">
+                  Bootcamp Full Stack Developer - NEOLAND
+                </h3>
+                <span>2022 - 2022</span>
+              </div>
+              <p>
+                Desarrollo de aplicaciones frontend y backend usando react y
+                nodejs.
+              </p>
+            </div>
+          </div>
+          <div class="content__section">
+            <h2 class="title">Experiencia</h2>
+            <div class="content__box">
+              <div class="content__date">
+                <h3 class="subtitle">McDonald's</h3>
+                <span>Feb 2020 - Oct 2021</span>
+              </div>
+              <p>
+                Capacidad demostrada para actuar de forma rápida y precisa en
+                escenarios de alta presión. Responsable de un equipo de hasta 5
+                personas. Responsable en la formación de nuevos empleados. Capaz
+                de comunicar ideas concisa y efectivamente
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
 </html>
-
-<!-- Comments [control + k] -->

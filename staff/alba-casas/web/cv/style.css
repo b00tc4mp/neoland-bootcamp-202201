@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&family=Playfair+Display:wght@900&display=swap");
+body {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 14px;
+  color: #000;
+  background-color: #1e1e1e;
+}
+
+.curriculum {
+  width: 800px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+/* Components */
+
+.list li {
+  margin-bottom: 4px;
+}
+
+.button {
+  width: 120px;
+  height: 40px;
+  background-color: #0699a6;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.heading {
+  font-size: 64px;
+  font-family: "Playfair Display";
+  line-height: 1;
+  letter-spacing: -0.8px;
+}
+
+.title {
+  font-size: 22px;
+  font-family: "Playfair Display";
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #9e8c6c;
+  line-height: 2;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f3f0;
+  padding: 64px 0px 80px 0;
+  clip-path: polygon(0 0, 100% 0%, 100% 76%, 0 96%);
+}
+
+.header__left {
+  display: flex;
+  width: 33%;
+  justify-content: center;
+}
+
+.header__image {
+  border-radius: 100%;
+  width: 160px;
+  height: 160px;
+}
+
+.header__right {
+  width: 67%;
+}
+
+.header__title {
+  margin-bottom: 12px;
+}
+
+/* Content */
+
+.content {
+  display: flex;
+  padding: 24px 64px 80px 64px;
+}
+
+.content__left {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.content__skill {
+  margin-bottom: 48px;
+}
+
+.content__right {
+  display: flex;
+  flex-direction: column;
+  width: 67%;
+}
+
+.content__box {
+  margin-bottom: 16px;
+}
+
+.content__date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content__section {
+  margin-bottom: 24px;
+}
