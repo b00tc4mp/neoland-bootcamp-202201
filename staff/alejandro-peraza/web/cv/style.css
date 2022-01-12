@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-*{
-font-family: lobster;
+* {
+font-family: "Poppins";
 text-decoration: none;
 font-size: 12px;
 color:black;
@@ -14,6 +14,8 @@ font-style: normal;
 list-style: none;
 tab-size: 0;
 border: 0;
+box-sizing: border-box;
+
 }
 
 html,body {
@@ -22,4 +24,22 @@ html,body {
     height: auto;
 
 }
+
+.header {
+    height: 100px;
+    display: flex;
+    background-color: burlywood;
+}
+
+.main {
+    display: flex;
+    background-color: aqua;
+    min-height: 100vh;
+
+
+
+}
+
+
+
 
