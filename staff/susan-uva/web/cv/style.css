@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:ital@1&display=swap');
+
+* {
+    font-family: 'lato';
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+img {
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    float: right;
+    margin-bottom: 10px;
+    
+}
+
+/* layout all  es el diseño */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color:whitesmoke;
+    min-height: 100vh;   
+}
+
+.head {
+    background-color:cyan;
+    text-align: center;
+}
+
+.cargo {
+    text-align: center;
+
+}
+
+
+.body {
+    display: flex;
+    background-color:magenta;
+}
+
+/* layout body */
+
+.left {
+    background-color: grey; 
+    width: 200px;  
+}
+
+.right {
+    background-color: blue;
+    width: 100%;
+    text-align:justify;
+    padding: 10px;
+
+}
