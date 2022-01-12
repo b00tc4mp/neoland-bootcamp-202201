@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+*{
+font-family: lobster;
+text-decoration: none;
+font-size: 12px;
+color:black;
+font-weight: 400;
+margin: 0;
+padding: 0;
+border: none;
+outline: 0;
+font-style: normal;
+list-style: none;
+tab-size: 0;
+border: 0;
+}
+
+html,body {
+
+    width: 100%;
+    height: auto;
+
+}
+
