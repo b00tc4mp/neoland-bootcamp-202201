@@ -22,11 +22,12 @@ html, body {
 }
 
 img {
+    clip-path: circle(50% at 50% 50%);
     border-radius: 10px;
     border-width: 1px;
     border-style: solid;
     border-color: black;
-    float: right;
+    float: center;
     margin-bottom: 10px;
     
 }
