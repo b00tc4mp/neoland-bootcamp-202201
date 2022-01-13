@@ -1,0 +1,81 @@
+
+* {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.block1 {
+    display: grid;
+    grid-template-areas:
+    "a b b"
+    "a c c"
+    "d d e"
+    "f f e"
+    "g h h"
+    "g i i"
+}
+
+.block1__item1 {
+    grid-area: a;   
+}
+
+.block1__item2 {
+    grid-area: b;
+}
+
+.block1__item3 {
+    grid-area: c;
+}
+
+.block1__item4 {
+    grid-area: d;
+}
+
+.block1__item5 {
+    grid-area: e;
+}
+
+.block1__item6 {
+    grid-area: f;
+}
+
+.block1__item7 {
+    grid-area: g;
+}
+
+.block1__item8 {
+    grid-area: h;
+}
+
+.block1__item9 {
+    grid-area: i;
+}
+
+.block1__panel {
+background-color:coral;
+margin: 1px;
+padding: 3px; 
+}
+
+.block1__vertical {
+    size: 20px;
+}
+
+
+/* #garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+  } */
