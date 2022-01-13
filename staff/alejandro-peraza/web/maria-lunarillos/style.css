@@ -24,7 +24,7 @@ height: auto;
 .grid-1 {
 display: grid;
 width: calc(360px * 3); /* 1080 */
-height: calc(360px * 6); /* 1800*/  
+height: calc(300px * 6); /* 1800*/  
 grid-template-rows: repeat(6, 1fr);
 grid-template-columns: repeat (3, 1fr);
 background-color: cyan;
@@ -60,7 +60,7 @@ background-color: blue;
 }
 
 .grid-1__item-5 {
-    grid-column: 3/5;
+    grid-column: 3/4;
     grid-row: 3/5;
     background-color: purple;
 
