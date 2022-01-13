@@ -1,0 +1,62 @@
+
+
+    .board {
+
+        background-color: rgb(226, 222, 220);
+        border-style:ridge;
+        border-color: darkblue;
+        border-width: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-areas: 
+            "one two two"
+            "one three three"
+            "four four six"
+            "five five six"
+            "seven eight eight"
+            "seven nine nine";
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .grid__one {
+        grid-area: one;
+    }
+
+    .grid__two {
+        grid-area: two; 
+    }
+
+    .grid__three {
+        grid-area: three;
+    }
+
+    .grid__four {
+        grid-area: four;
+    }
+
+    .grid__five {
+        grid-area: five;
+    }
+
+    .grid__six {
+        grid-area: six;
+    }
+
+    .grid__seven {
+        grid-area: seven;
+    }
+
+    .grid__eight {
+        grid-area: eight;
+    }
+
+    .grid__nine {
+        grid-area: nine;
+    }
+
+ 
