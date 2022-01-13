@@ -16,8 +16,15 @@
     box-sizing: border-box;
 }
 
+.main {
+    display: flex;
+    justify-content: center;
+
+}
+
 .block1 {
     display: grid;
+    max-width: 900px;
     grid-template-areas:
     "a b b"
     "a c c"
@@ -25,6 +32,11 @@
     "f f e"
     "g h h"
     "g i i"
+}
+
+.block1 img { /* para que no se salgan del contenerdo*/
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .block1__item1 {
@@ -65,13 +77,10 @@
 
 .block1__panel {
 background-color:coral;
-margin: 1px;
-padding: 3px; 
+margin: 10px;
 }
 
-.block1__vertical {
-    size: 20px;
-}
+
 
 
 /* #garden {
