@@ -18,7 +18,7 @@
 
 
 .grid-1 > div {
-    border: 1px solid black;
+    border: 3px solid black;
     padding: 5 px;
     margin: 5px;
 }
