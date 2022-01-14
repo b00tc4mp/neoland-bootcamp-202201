@@ -61,3 +61,17 @@
     grid-area: i;
 }
 
+.grid-2 {
+    display: grid;
+    grid-template-areas: 
+    "one two two"
+    "one three three"
+    "four four five"
+    "six six five";
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat (3, 1fr);
+    width: 600px;
+    height: 1200px;
+}
+
