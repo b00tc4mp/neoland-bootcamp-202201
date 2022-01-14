@@ -1,0 +1,63 @@
+
+
+.grid-1 {
+    display: grid;
+    grid-template-areas:
+    "a b b"
+    "a c c"
+    "d d e"
+    "f f e"
+    "g h h"
+    "g i i";
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat (6, 1fr); /*other form*/
+    width: 600px;
+    height: 1200px;
+}
+
+
+.grid-1 > div {
+    border: 1px solid black;
+    padding: 5 px;
+    margin: 5px;
+}
+
+.grid-1__item-1 {
+    grid-area: a;
+
+}
+
+.grid-1__item-2 {
+    grid-area: b;
+    
+}
+
+.grid-1__item-3 {
+    grid-area: c;
+}
+
+.grid-1__item-4 {
+    grid-area: d;
+}
+
+.grid-1__item-5 {
+    grid-area: e;
+}
+
+.grid-1__item-6 {
+    grid-area: f;
+}
+
+.grid-1__item-7 {
+    grid-area: g;
+}
+
+.grid-1__item-8 {
+    grid-area: h;
+}
+
+.grid-1__item-9 {
+    grid-area: i;
+}
+
