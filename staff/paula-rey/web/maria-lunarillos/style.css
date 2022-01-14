@@ -19,7 +19,7 @@
             "five five six"
             "seven eight eight"
             "seven nine nine";
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
     }
 
