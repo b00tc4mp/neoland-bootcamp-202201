@@ -1,0 +1,217 @@
+/* Resets */
+/* 0.0.0.0 */
+* {
+    /* font-family: 'Poppins'; */
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing : border-box;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    background-color: aqua;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+/*  */
+#check:checked ~ * {
+    display: block;
+}
+/*  */
+
+.header__menu {
+    width: 42px;
+    min-width: 42px;
+    max-width: 42px;
+    height: 42px;
+    min-height: 42px;
+    max-height: 42px;
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__menu__icon {
+    width: 38px;
+    height: 38px;
+}
+
+.header__navbar {
+    background-color: pink;
+    position: relative;
+    display: none;
+    top: 92px;
+    left: -52px;
+    min-width: 100vw; /* viewport width */
+}
+
+.header__navbar__item {
+    background-color: chartreuse;
+    height: 40px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.header__navbar__item:nth-child(odd) {
+    background-color: yellow;
+}
+
+.block-1 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 1800px;
+    flex-flow: row wrap;
+    gap: 7px;
+}
+
+.block-1 * {
+    border: 1px solid black;
+}
+
+.block-1>* {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.block-1__item-4 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/capsulas-cupcakes.jpg);
+    background-size: cover;
+}
+
+.block-1__item-preview {
+    background-color: red;
+    width: 200px;
+    height: 60%;
+}
+
+@media only screen and (min-width: 768px) {
+    .block-1 {
+        display: grid;
+        grid-template-areas:
+            "a b b"
+            "a c c"
+            "d d e"
+            "f f e"
+            "g h h"
+            "g i i";
+        gap: 10px;
+        /* grid-template-columns: 1fr 1fr 1fr; */
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+        grid-template-rows: repeat(6, 1fr);
+        width: 620px;
+        height: 1200px;
+    }
+
+    .block-1 * {
+        outline: 1px solid black;
+    }
+
+    .block-1>* {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .block-1__item-1 {
+        grid-area: a;
+    }
+
+    .block-1__item-2 {
+        grid-area: b;
+    }
+
+    .block-1__item-3 {
+        grid-area: c;
+        align-items: flex-end;
+    }
+
+    .block-1__item-4 {
+        grid-area: d;
+        align-items: flex-end;
+    }
+
+    .block-1__item-5 {
+        grid-area: e;
+    }
+
+    .block-1__item-6 {
+        grid-area: f;
+    }
+
+    .block-1__item-7 {
+        grid-area: g;
+    }
+
+    .block-1__item-8 {
+        grid-area: h;
+    }
+
+    .block-1__item-9 {
+        grid-area: i;
+        align-items: flex-end;
+    }
+
+    .block-1__item-preview {
+        background-color: red;
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+    .header__menu {
+        display: none !important;
+    }
+
+    .header__navbar {
+        display: flex !important;
+        position: unset;
+        min-width: auto;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .header__navbar__item { 
+        padding: 0;
+        width: 80px;
+        justify-content: center;
+    }
+
+    .block-1__item-preview {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+        height: 100px;
+    }
+}
