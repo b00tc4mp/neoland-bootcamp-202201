@@ -37,7 +37,39 @@ body {
   margin-bottom: 64px;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  height: fit-content;
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__logo {
+  width: 100%;
+}
+
 @media only screen and (min-width: 666px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 680px;
+  }
+
+  .header__logo {
+    width: 230px;
+  }
+
+  .header__nav {
+    display: grid;
+    gap: 4px;
+    width: calc(84px * 5);
+    grid-template-columns: repeat(5, 1fr);
+    margin-left: auto;
+  }
   .card {
     height: 100%;
     width: 100%;
@@ -133,5 +165,17 @@ body {
 
   .block__grid--3 {
     height: 530px;
+  }
+
+  .header {
+    width: 950px;
+  }
+
+  .header__nav {
+    width: calc(104px * 5 + 56px);
+  }
+
+  .button-icon:last-child {
+    margin-left: 56px;
   }
 }
