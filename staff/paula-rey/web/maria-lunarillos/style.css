@@ -1,4 +1,4 @@
-* {
+*{
     font-family: 'Poppins';
     font-size: 12px;
     text-decoration: none;
@@ -17,7 +17,7 @@
 
 .grid-1 {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
     "a b b"
     "a c c"
     "d d e"
@@ -25,11 +25,12 @@
     "g h h"
     "g i i";
     gap: 5px;
-    grid-template-columns: repeat (3, 1fr);
-    grid-template-rows: repeat (6, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat (6, 1fr); 
     width: 600px;
     height: 1200px;
 }
+
 
 .grid-1 * {
     outline: 1px solid black;
@@ -43,10 +44,12 @@
 
 .grid-1__item-1 {
     grid-area: a;
+
 }
 
 .grid-1__item-2 {
     grid-area: b;
+    
 }
 
 .grid-1__item-3 {
@@ -82,7 +85,62 @@
 
 .grid-1__item-preview {
     clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
-    background-color: red;
+    background-color: brown;
+    width: 200px;
+    height: 50px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-areas: 
+    "one two two"
+    "one three three"
+    "four four five"
+    "six six five";
+    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat (3, 1fr);
+    width: 600px;
+    height: 800px;
+}
+
+.grid-2 * {
+    outline: 1px solid black;
+}
+
+.grid-2 > * {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.grid-2__item-1 {
+    grid-area: one;
+}
+
+.grid-2__item-2 {
+    grid-area: two;
+}
+
+.grid-2__item-3 {
+    grid-area: three;
+}
+
+.grid-2__item-4 {
+    grid-area: four;
+}
+
+.grid-2__item-5 {
+    grid-area: five;
+}
+
+.grid-2__item-6 {
+    grid-area: six;
+}
+
+.grid-2__item-preview {
+    clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+    background-color: rgb(29, 131, 80);
     width: 200px;
     height: 50px;
 }
