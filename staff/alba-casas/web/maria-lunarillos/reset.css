@@ -9,12 +9,12 @@
   tab-size: 0;
   border-radius: 0;
   box-sizing: border-box;
+  font-weight: 400;
+  color: black;
 }
 
 html,
 body {
   width: 100%;
   height: auto;
-  color: black;
-  font-weight: 400px;
 }

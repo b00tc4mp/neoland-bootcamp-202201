@@ -2,7 +2,6 @@
 
 body {
   font-family: "Open Sans";
-  color: #67635f;
 }
 
 .container {
@@ -11,6 +10,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.card {
+  height: 140px;
+  width: 100%;
 }
 
 .block-1 {
@@ -31,11 +35,6 @@ body {
   justify-content: center;
   gap: 8px;
   margin-bottom: 64px;
-}
-
-.block-1__grid .card {
-  height: 140px;
-  width: 100%;
 }
 
 .block-1__item-1 {
@@ -74,6 +73,50 @@ body {
   background-image: url("https://static3.marialunarillos.com/media/wysiwyg/toppers3.jpg");
 }
 
+.block-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.block-2__heading {
+  margin-bottom: 64px;
+}
+
+.block-2__grid {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 64px;
+}
+
+.block-2__item-1 {
+  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/fondant2.jpg");
+}
+
+.block-2__item-2 {
+  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/ingredientesreposteria.jpg");
+}
+
+.block-2__item-3 {
+  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/impresionpersonalizada.jpg");
+}
+
+.block-2__item-4 {
+  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/Colorantes-alimentarios.jpg");
+}
+
+.block-2__item-5 {
+  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/sprinkles3.jpg");
+}
+
+.block-2__item-6 {
+  background-image: url(" https://static3.marialunarillos.com/media/wysiwyg/papelcomestible.jpg");
+}
+/* */
 @media only screen and (min-width: 666px) {
   .block-1__grid {
     display: grid;
@@ -89,14 +132,14 @@ body {
     grid-template-columns: repeat(3, 1fr);
     /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
     grid-template-rows: repeat(6, 1fr);
-    width: 620px;
+    width: 680px;
     height: 1075px;
     gap: 8px;
   }
 
-  .block-1__grid .card {
-    height: auto;
-    width: auto;
+  .card {
+    height: 100%;
+    width: 100%;
   }
 
   .block-1__item-1 {
@@ -109,12 +152,10 @@ body {
 
   .block-1__item-3 {
     grid-area: c;
-    align-items: flex-end;
   }
 
   .block-1__item-4 {
     grid-area: d;
-    align-items: flex-end;
   }
 
   .block-1__item-5 {
@@ -137,12 +178,56 @@ body {
     grid-area: i;
     align-items: flex-end;
   }
+
+  .block-2__grid {
+    display: grid;
+    grid-template-areas:
+      "a b b"
+      "a c c"
+      "d d e"
+      "f f e";
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 680px;
+    height: 800px;
+    gap: 8px;
+  }
+
+  .block-2__item-1 {
+    grid-area: a;
+  }
+
+  .block-2__item-2 {
+    grid-area: b;
+  }
+
+  .block-2__item-3 {
+    grid-area: c;
+  }
+
+  .block-2__item-4 {
+    grid-area: d;
+  }
+
+  .block-2__item-5 {
+    grid-area: e;
+  }
+
+  .block-2__item-6 {
+    grid-area: f;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .block-1__grid {
     width: 950px;
     height: 1650px;
+    gap: 16px;
+  }
+  .block-2__grid {
+    width: 950px;
+    height: 1090px;
     gap: 16px;
   }
 }
