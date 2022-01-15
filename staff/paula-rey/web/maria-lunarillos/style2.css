@@ -1,3 +1,6 @@
+* {
+    box-sizing : border-box;
+}
 
 .grid-1 {
     display: grid;

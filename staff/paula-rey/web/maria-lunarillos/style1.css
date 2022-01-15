@@ -1,4 +1,6 @@
-
+* {
+    box-sizing : border-box;
+}
 
 .grid-1 {
     display: grid;
@@ -18,7 +20,7 @@
 
 
 .grid-1 > div {
-    border: 3px solid black;
+    outline: 3px solid black;
     padding: 5 px;
     margin: 5px;
 }
@@ -72,6 +74,35 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat (3, 1fr);
     width: 600px;
-    height: 1200px;
+    height: 800px;
 }
 
+.grid-2 > div {
+    outline: 3px solid black;
+    padding: 5 px;
+    margin: 5px;
+}
+
+.grid-2__item-1 {
+    grid-area: one;
+}
+
+.grid-2__item-2 {
+    grid-area: two;
+}
+
+.grid-2__item-3 {
+    grid-area: three;
+}
+
+.grid-2__item-4 {
+    grid-area: four;
+}
+
+.grid-2__item-5 {
+    grid-area: five;
+}
+
+.grid-2__item-6 {
+    grid-area: six;
+}
