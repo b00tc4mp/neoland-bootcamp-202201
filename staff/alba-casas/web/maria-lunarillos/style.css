@@ -17,18 +17,18 @@ body {
   width: 100%;
 }
 
-.block-1 {
+.block {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 104px 0px;
 }
 
-.block-1__heading {
+.block__heading {
   margin-bottom: 64px;
 }
 
-.block-1__grid {
+.block__grid {
   display: flex;
   flex-direction: column;
   width: 340px;
@@ -37,89 +37,19 @@ body {
   margin-bottom: 64px;
 }
 
-.block-1__item-1 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/moldesdereposteria.jpg");
-}
-
-.block-1__item-2 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/utensiliosbasicos.jpg");
-}
-
-.block-1__item-3 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/pequenoelectrodomestico2.jpg");
-}
-
-.block-1__item-4 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/capsulas-cupcakes.jpg");
-}
-
-.block-1__item-5 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/cortadoresgalletas2.jpg");
-}
-
-.block-1__item-6 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/cajas3.jpg");
-}
-
-.block-1__item-7 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/stands.jpg");
-}
-
-.block-1__item-8 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/banetones.jpg");
-}
-
-.block-1__item-9 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/toppers3.jpg");
-}
-
-.block-2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.block-2__heading {
-  margin-bottom: 64px;
-}
-
-.block-2__grid {
-  display: flex;
-  flex-direction: column;
-  width: 340px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 64px;
-}
-
-.block-2__item-1 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/fondant2.jpg");
-}
-
-.block-2__item-2 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/ingredientesreposteria.jpg");
-}
-
-.block-2__item-3 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/impresionpersonalizada.jpg");
-}
-
-.block-2__item-4 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/Colorantes-alimentarios.jpg");
-}
-
-.block-2__item-5 {
-  background-image: url("https://static3.marialunarillos.com/media/wysiwyg/sprinkles3.jpg");
-}
-
-.block-2__item-6 {
-  background-image: url(" https://static3.marialunarillos.com/media/wysiwyg/papelcomestible.jpg");
-}
-/* */
 @media only screen and (min-width: 666px) {
-  .block-1__grid {
+  .card {
+    height: 100%;
+    width: 100%;
+  }
+
+  .block__grid {
     display: grid;
+    width: 680px;
+    gap: 8px;
+  }
+
+  .block__grid--1 {
     grid-template-areas:
       "a b b"
       "a c c"
@@ -127,107 +57,81 @@ body {
       "f f e"
       "g h h"
       "g i i";
-
-    /* grid-template-columns: 1fr 1fr 1fr; */
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
     grid-template-rows: repeat(6, 1fr);
-    width: 680px;
     height: 1075px;
-    gap: 8px;
   }
 
-  .card {
-    height: 100%;
-    width: 100%;
-  }
-
-  .block-1__item-1 {
-    grid-area: a;
-  }
-
-  .block-1__item-2 {
-    grid-area: b;
-  }
-
-  .block-1__item-3 {
-    grid-area: c;
-  }
-
-  .block-1__item-4 {
-    grid-area: d;
-  }
-
-  .block-1__item-5 {
-    grid-area: e;
-  }
-
-  .block-1__item-6 {
-    grid-area: f;
-  }
-
-  .block-1__item-7 {
-    grid-area: g;
-  }
-
-  .block-1__item-8 {
-    grid-area: h;
-  }
-
-  .block-1__item-9 {
-    grid-area: i;
-    align-items: flex-end;
-  }
-
-  .block-2__grid {
-    display: grid;
+  .block__grid--2 {
     grid-template-areas:
       "a b b"
       "a c c"
       "d d e"
       "f f e";
-
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    width: 680px;
     height: 800px;
-    gap: 8px;
   }
 
-  .block-2__item-1 {
+  .block__grid--3 {
+    grid-template-areas:
+      "a a c"
+      "b b c";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 400px;
+  }
+
+  .card--a {
     grid-area: a;
   }
 
-  .block-2__item-2 {
+  .card--b {
     grid-area: b;
   }
 
-  .block-2__item-3 {
+  .card--c {
     grid-area: c;
   }
 
-  .block-2__item-4 {
+  .card--d {
     grid-area: d;
   }
 
-  .block-2__item-5 {
+  .card--e {
     grid-area: e;
   }
 
-  .block-2__item-6 {
+  .card--f {
     grid-area: f;
+  }
+
+  .card--g {
+    grid-area: g;
+  }
+
+  .card--h {
+    grid-area: h;
+  }
+
+  .card--i {
+    grid-area: i;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .block-1__grid {
+  .block__grid {
     width: 950px;
-    height: 1650px;
     gap: 16px;
   }
-  .block-2__grid {
-    width: 950px;
+  .block__grid--1 {
+    height: 1650px;
+  }
+  .block__grid--2 {
     height: 1090px;
-    gap: 16px;
+  }
+
+  .block__grid--3 {
+    height: 530px;
   }
 }
