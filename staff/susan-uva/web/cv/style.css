@@ -21,14 +21,8 @@ html, body {
 }
 
 img {
-    clip-path: circle(50% at 50% 50%);
-    border-radius: 10px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    float: center;
-    margin-bottom: 10px;
-    
+    clip-path: circle(47% at 50% 50%);
+    align-content: center;
 }
 
 /* layout all  es el diseño */
@@ -36,37 +30,93 @@ img {
 .main {
     display: flex;
     flex-direction: column;
-    background-color:whitesmoke;
-    min-height: 100vh;   
+   
+    min-height: 100vh; 
+    padding: 3px;
+    
 }
 
 .head {
-    background-color:cyan;
+    background-color:rgba(0, 255, 255, 0.297);
     text-align: center;
+    padding: 10px;
+    
 }
-
-.cargo {
-    text-align: center;
-
-}
-
 
 .body {
+    
     display: flex;
-    background-color:magenta;
+    flex-direction: row;
+    padding: 5px;
+    min-height: 90vh;
+    gap: 4px;
+
 }
 
-/* layout body */
-
 .left {
-    background-color: grey; 
-    width: 200px;  
+    background-color:rgba(119, 136, 153, 0.55);
+    text-align:start;
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    
 }
 
 .right {
-    background-color: blue;
-    width: 100%;
-    text-align:justify;
-    padding: 10px;
+    background-color:rgba(240, 128, 128, 0.324)
+}
+
+h2 {
+    text-align: left;
+    font-size: 20px;
+    margin: 10px;
+    font-weight: bolder;
+}
+
+strong {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: justify;
+    color: rgba(22, 22, 65, 0.413);
+    vertical-align: 10px ;
+
+}
+
+time {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: justify;
+    color: rgba(22, 22, 65, 0.413);
+    vertical-align: 10px;
+}
+
+ul * {
+    margin: 8px;
+}
+
+ol * {
+    margin: 10px;
+    list-style:circle;
+    list-style-position: inside;
+}
+
+.head__nombre {
+    text-align: center;
+    font-style:inherit;
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+}
+
+.head__cargo {
+    font-weight: bolder;
+    font-size: 30px;
+
+}
+
+.left__education  * {
+    list-style:circle;
+    list-style-position: inside;
+    
 
 }
