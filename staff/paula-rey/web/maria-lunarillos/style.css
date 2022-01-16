@@ -18,7 +18,9 @@
 
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 150px;
 }
 
 .block-1 {
@@ -94,6 +96,65 @@
     height: 60%;
 }
 
+.block-2 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 1200px;
+    flex-flow: row wrap;
+    gap: 7px;
+}
+
+.block-2 * {
+    outline: 1px solid black;
+}
+
+.block-2 > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.block-2__item-1 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisajes-istock-1.jpg);
+    background-size: cover;
+}
+
+.block-2__item-2 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisajes-istock-.jpg);
+    background-size: cover;
+}
+
+.block-2__item-3 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/paisaje-rio-rocas-rojas.png);
+    background-size: cover;
+}
+
+.block-2__item-4 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/paisaje-montana-lago.png);
+    background-size: cover;
+}
+
+.block-2__item-5 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisaje-verano-pixabay-piedra.jpg);
+    background-size: cover;
+}
+
+.block-2__item-6 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisajes-naturales-acantilados-moher-locuraviajes.jpg);
+    background-size: cover;
+}
+
+
+.block-2__item-preview {
+    background-color: rgb(146, 171, 179);
+    opacity: 0.7;
+    width: 200px;
+    height: 60%;
+}
+
+
 @media only screen and (min-width: 768px) {
 
     .block-1 {
@@ -167,17 +228,7 @@
         width: 200px;
         height: 200px;
     }
-}
 
-@media only screen and (min-width: 992px) {
-
-    .block-1__item-preview {
-        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
-        height: 100px;
-    }
-}
-    
-/*
     .block-2 {
         display: grid;
         grid-template-areas: 
@@ -185,10 +236,10 @@
         "one three three"
         "four four five"
         "six six five";
-        gap: 5px;
+        gap: 8px;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: repeat (3, 1fr);
-        width: 600px;
+        width: 610px;
         height: 800px;
     }
 
@@ -200,7 +251,6 @@
         display:flex;
         flex-direction: column;
         justify-content: flex-end;
-        width: 100%;
     }
 
     .block-2__item-1 {
@@ -230,9 +280,23 @@
     }
 
     .block-2__item-preview {
-        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
-        background-color: rgb(29, 131, 80);
+        background-color: rgb(146, 171, 179);
         width: 200px;
-        height: 50px;
+        height: 200px;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+    .block-1__item-preview {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+        height: 100px;
+    }
+
+    .block-2__item-preview {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+        height: 100px;
     }
 }
+    
