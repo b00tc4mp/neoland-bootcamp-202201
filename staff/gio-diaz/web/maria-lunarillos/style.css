@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
+
+* {
+    font-size: 12px;
+    font-family: "arial";
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: column;
+    font-family: "Source Sans Pro";
+    max-width: 25%;
+    margin: 10%;
+}
+
+.titulo h1{
+    font-family: "Source Sans Pro";
+    text-align: center;   
+
+}
+   
+.block-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    height: 1350px;
+    flex-flow: row wrap;
+    gap: 10px;
+    font-family: "Source Sans Pro";
+}
+
+
+.block-1>* {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: min(100%, 325px); 
+    height: 140px;
+}
+.block-1__item-1 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/moldesdereposteria.jpg);
+    background-size: cover;
+
+}
+.block-1__item-2 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/utensiliosbasicos.jpg);
+    background-size: cover;
+}
+.block-1__item-3 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/pequenoelectrodomestico2.jpg);
+    background-size: cover;
+}
+.block-1__item-4 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/capsulas-cupcakes.jpg);
+    background-size: cover;  
+}
+
+.block-1__item-5 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/cortadoresgalletas2.jpg);
+    background-size: cover;
+}
+.block-1__item-6 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/cajas3.jpg);
+    background-size: cover;
+}
+.block-1__item-7 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/stands.jpg);
+    background-size: cover;
+}
+.block-1__item-8 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/banetones.jpg);
+    background-size: cover;
+}
+.block-1__item-9 {
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/toppers3.jpg);
+    background-size: cover;
+}
+
+.block-1__item-preview {
+    display: flex;
+    background: rgba(255,255,255,0.8);
+    width: 200px;
+    height: 60%;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+.block-1__item-preview h2{
+font-size: min(6vw, 18px);
+font-weight: bold;
+
+}
+
+.block-1__item-preview p {
+    display: none;
+}
+
+
+.block-2 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 1800px;
+    flex-flow: row wrap;
+    gap: 7px;
+}
+
+.block-2     {
+    border: 1px solid black;
+}
+
+.block-2>* {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.block-2__item-1 {
+    grid-area: a;
+   background-color: burlywood;
+}
+.block-2__item-2 {
+    grid-area: b;
+    background-color: black;
+}
+.block-2__item-3 {
+    grid-area: c;
+    background-color: rgb(206, 87, 87);
+}
+.block-2__item-4 {
+    grid-area: d;
+    background-color: rgb(121, 99, 172);
+}
+.block-2__item-5 {
+    grid-area: e;
+    background-color: rgb(49, 4, 58);
+}
+.block-2__item-6 {
+    grid-area: f;
+    background-color: rgb(65, 161, 89);
+}
+
+@media only screen and (min-width: 481px) {
+    .block-1 {
+        display: grid;
+        grid-template-areas:
+            "a b b"
+            "a c c"
+            "d d e"
+            "f f e"
+            "g h h"
+            "g i i";
+        gap: 10px;
+        /* grid-template-columns: 1fr 1fr 1fr; */
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+        grid-template-rows: repeat(6, 1fr);
+        width: 620px;
+        height: 1200px;
+    }
+
+    .block-1 >  * {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+    }
+
+    .block-1__item-1 {
+        grid-area: a;
+    }
+
+    .block-1__item-2 {
+        grid-area: b;
+    }
+
+    .block-1__item-3 {
+        grid-area: c;
+        align-items: flex-end;
+    }
+
+    .block-1__item-4 {
+        grid-area: d;
+        align-items: flex-end;
+        background-size: cover;
+    }
+
+    .block-1__item-5 {
+        grid-area: e;
+    }
+
+    .block-1__item-6 {
+        grid-area: f;
+    }
+
+    .block-1__item-7 {
+        grid-area: g;
+    }
+
+    .block-1__item-8 {
+        grid-area: h;
+    }
+
+    .block-1__item-9 {
+        grid-area: i;
+        align-items: flex-end;
+    }
+
+    .block-1__item-preview {
+        width: 200px;
+        height: 200px;
+        
+    }
+
+    .block-1__item-preview > p{
+        display: block;
+        font-size: 14px;
+        color: gray;
+        
+    }
+    .block-1__item-preview h2{
+        font-size: 16px;
+        color: gray;
+    }
+    
+
+
+    .block-2 {
+        display: grid;
+        grid-template-areas:
+            "a b b"
+            "a c c"
+            "d d e"
+            "f f e";
+        gap: 10px;
+        /* grid-template-columns: 1fr 1fr 1fr; */
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; */
+        grid-template-rows: repeat(6, 1fr);
+        width: 620px;
+        height: 1200px;
+    }
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .block-1{
+        width: 900px;
+    }
+
+
+    .block-1__item-preview {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+        height: 110px;
+        width: 300px;
+      
+    }
+    .block-1__item-preview > p{
+       margin-right: 30%;
+        
+    }
+    .block-1__item-preview h2{
+        margin-right: 30%;
+        margin-bottom: 3%;
+    }
+}
+
+
