@@ -1,5 +1,3 @@
-// Queremos una calculadora que sume, reste, multiplique y divida y sea marca casio
-
 let myCalc = new Calc ('casio')
 
 
