@@ -1,4 +1,5 @@
-// Queremos una calculadora que sume, reste, multiplique y divida y sea marca casio
+// The calculator must be casio, it must be able to add, subtract, multiply and divide
+
 
 let myCalc = new Calc ('casio')
 

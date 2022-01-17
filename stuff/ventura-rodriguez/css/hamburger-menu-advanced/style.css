@@ -59,7 +59,7 @@ html, body {
     background-color: brown;
 }
 
-.header__menu__icon {
+.header__menu-icon {
     width: 38px;
     height: 38px;
 }
@@ -74,7 +74,7 @@ html, body {
     min-width: 100vw; /* viewport width */
 }
 
-.header__navbar__item {
+.header__navbar-item {
     background-color: chartreuse;
     height: 42px;
     padding-left: 16px;
@@ -83,7 +83,7 @@ html, body {
     font-size: 16px;
 }
 
-.header__navbar__item:nth-child(odd) {
+.header__navbar-item:nth-child(odd) {
     background-color: yellow;
 }
 
@@ -101,7 +101,7 @@ html, body {
     background-color: tomato;
 }
 
-.header__logo__icon {
+.header__logo-icon {
     width: 38px;
     height: 38px;
 }
@@ -127,7 +127,7 @@ html, body {
         justify-content: flex-end;
     }
 
-    .header__navbar__item { 
+    .header__navbar-item { 
         padding: 0;
         width: 80px;
         justify-content: center;
