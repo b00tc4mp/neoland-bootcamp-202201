@@ -1,0 +1,155 @@
+*{
+    font-size: 12px;
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: black;
+    font-weight: 400px;
+    margin: 0px;
+    padding: 0px;
+    border:0px;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+h1{
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ color:indigo;
+ padding: 10px ;
+ margin: 10px ;
+ font-size: 24px;
+}
+
+
+/*@media only screen and (min-width: 992px){*/
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.block-1 {
+    display: grid;
+
+    grid-template-areas: 
+    "caja1 caja2 caja2"
+    "caja1 caja3 caja3"
+    "caja4 caja4 caja5"
+    "caja6 caja6 caja5"
+    "caja7 caja8 caja8"
+    "caja7 caja9 caja9";
+
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 620px;
+    height: 1200px;
+}
+
+.block-1>*{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+.grid-1__caja1{
+    grid-area: caja1;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/moldesdereposteria.jpg);
+    background-size: cover;
+}
+
+.grid-1__caja2{
+    grid-area: caja2;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/utensiliosbasicos.jpg) ;
+    background-size: cover;
+}
+
+.grid-1__caja3{
+    grid-area: caja3;
+    align-items: flex-end;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/pequenoelectrodomestico2.jpg) ;
+    background-size: cover;
+}
+
+
+.grid-1__caja4{
+    grid-area: caja4;
+    align-items: flex-end;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/capsulas-cupcakes.jpg);
+    background-size: cover;
+}
+
+.grid-1__caja5{
+    grid-area: caja5;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/cortadoresgalletas2.jpg);
+    background-size: cover;
+}
+
+.grid-1__caja6{
+    grid-area: caja6;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/cajas3.jpg);
+    background-size: cover;
+}
+
+.grid-1__caja7{
+    grid-area: caja7;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/stands.jpg);
+    background-size: cover;
+}
+
+.grid-1__caja8{
+    grid-area: caja8;
+    background-image:  url(https://static3.marialunarillos.com/media/wysiwyg/banetones.jpg);
+    background-size: cover;
+}
+.grid-1__caja9{
+    grid-area: caja9;
+    align-items: flex-end;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/toppers3.jpg) ;
+    background-size: cover;
+}
+
+.block-1__item-preview {
+    clip-path: polygon(0 54%, 70% 54%, 100% 100%, 0% 100%);
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 200px;
+}
+/*
+
+    .block-1{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .block-1__item-preview {
+        background-color: white;
+        opacity: 0.7;
+        width: 200px;
+        height: 200px;
+
+}}
+
+*@media only screen and (min-width: 768px){
+
+    .block-1__item-preview{
+        background-color: white;
+        opacity: 0.7;
+        width: 50%;
+        height: 100px;
+
+
+}}
+
+*/
