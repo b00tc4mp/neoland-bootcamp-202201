@@ -20,7 +20,7 @@
 .container {
     display: flex;
     justify-content: center;
-    margin-bottom: 90%;
+    
 }
 
 .container-2 {
@@ -221,3 +221,4 @@
             clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
             height: 100px;
         }
+    }   
