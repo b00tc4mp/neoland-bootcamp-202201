@@ -10,6 +10,8 @@ total = total + cart[0].price * cart[0].qty
 total = total + cart[1].price * cart[1].qty
 total = total + cart[2].price * cart[2].qty
 
+total = 0
+
 cart.length /* nos da la longitud, la cantidad de elemenros que hay */
 
 for(var i = 0; i < cart.length; i++){ 
