@@ -12,4 +12,4 @@ console.log(
   findShort(
     "Waves Dogecoin Lisk ProofOfWork Lisk Dogecoin Classic BTC 21inc 21inc Dogecoin Mine Dash Ethereu"
   )
-); // 3
+);
