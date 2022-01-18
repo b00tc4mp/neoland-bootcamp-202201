@@ -1,3 +1,5 @@
+
+
 var socks = { type: 'socks', brand: 'Tommy', qty: 10, price: 20 }
 
 var tshirt = { type: 't-shirt', brand: 'Levis', qty: 4, price: 25 }
@@ -20,8 +22,8 @@ cart.length
 
 cart
 
-for (var i = 0; i < cart.length; i++); { 
-
+for (var i = 0; i < cart.length; i++); {
+    
     total = total + cart[i].price * cart[i].qty
 
 }
