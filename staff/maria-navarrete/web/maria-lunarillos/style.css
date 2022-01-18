@@ -52,12 +52,12 @@ html, body {
     flex-direction: column;
     justify-content: center;
     flex-flow: row wrap;
-    max-width: 100%;
+    max-width: 325px;
 }
 
 .block-1 > figure{
     width: min(100%, 325px);
-    height: 140px;
+    max-height: 140px;
     display: flex;
     align-items: flex-end;
 }
@@ -149,7 +149,7 @@ html, body {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(6, 1fr);
         margin: 0 5%;
-        max-width: 620px;
+        max-width: 617px;
     }
     
     .block-1__item-1 {
@@ -202,7 +202,7 @@ html, body {
     }
     .block-1__item-vertical {
         
-        min-height: 100%;
+        height: 615px;
     }
 
     .block-1__item-vertical .block-1__caption{
@@ -228,6 +228,37 @@ html, body {
     .block-1__caption p {
         display: block;
     }
+
+}
+
+@media only screen and (min-width:1025px){
+    .block-1{   
+        max-width: 950px;
+    }
+
+    .block-1__caption {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+    }
+
+    .block-1__item-horizontal .block-1__caption{
+        width: 50%;
+        height: 60%;
+    }
+
+    .block-1__item-vertical .block-1__caption{
+        width: 100%;
+        height: 30%;
+    }
+
+    .block-1__caption--title{
+        margin-right: 30%;
+    }
+
+    .block-1__caption p {
+        margin-right: 30%;
+    }
+
+
 
 }
 
