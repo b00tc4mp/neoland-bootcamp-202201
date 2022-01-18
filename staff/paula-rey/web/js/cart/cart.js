@@ -22,5 +22,4 @@ cart.length
 cart
 
 for (var i=0; i < cart.length; i++) {
-    
     total = total + cart[i].price * cart[i].qty}
