@@ -110,6 +110,14 @@ var lola = {
     bloodType: 'AB-'
 }
 
+var andy = {
+    firstName: 'Andy',
+    lastName: 'Garcia',
+    age: 60,
+    gender: 'male',
+    bloodType: 'AB-'
+}
+
 var aitor = {
     firstName: 'Aitor',
     lastName: 'Tilla',
@@ -174,6 +182,14 @@ var electra = {
     bloodType: 'B-'
 }
 
+var andy2 = {
+    firstName: 'Andy',
+    lastName: 'Garcia',
+    age: 31,
+    gender: 'male',
+    bloodType: 'B+'
+}
+
 var people = [
     ele,
     suzana,
@@ -189,6 +205,7 @@ var people = [
     armando,
     mort,
     lola,
+    andy,
     aitor,
     pere,
     juanca,
@@ -196,5 +213,10 @@ var people = [
     son,
     bat,
     spider,
-    electra
+    electra,
+    andy2
 ]
+
+var hospital = {
+    patients: people
+}

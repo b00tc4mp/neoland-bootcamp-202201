@@ -1,20 +1,32 @@
-var hospital = {
-    patients: list
-}
+/*var femaleCount = countPatientsByGender('female')
+console.log('female', femaleCount)
 
+var maleCount = countPatientsByGender('male')
+console.log('male',  maleCount)
 
-var countMale = 0
-var countFemale = 0
+var bloodTypeOPlus = countPatientsByBloodType('O+')
+console.log('O+', bloodTypeOPlus)
 
-for (var i = 0; i < hospital.patients.length; i++) {
-    if (hospital.patients[i].gender === 'male') {
-        countMale++
-    }
-    else {
-        countFemale++
-    }
+var bloodTypeABMinus = countPatientsByBloodType('AB-')
+console.log('AB-', bloodTypeABMinus)
 
-}
+var bloodTypeOMinus = countPatientsByBloodType('O-')
+console.log('O-', bloodTypeOMinus)
 
-console.log('total male patients is: ' + countMale)
-console.log('total female patients is: ' + countFemale)
+var oPlusPatients = getPatientsByBloodType('O+')
+//console.log('O+', oPlusPatients)
+console.log('%c0+ %cpatients', 'color: blue; font-family: courier; font-size: 1rem;', 'color: green;')
+printPatientsNames(oPlusPatients)
+
+var abPlusPatients = getPatientsByBloodType('AB+')
+//console.log('O+', oPlusPatients)
+console.log('%cAB+ %cpatients', 'color: blue; font-family: courier; font-size: 1rem;', 'color: green;')
+printPatientsNames(abPlusPatients)
+
+var andys = getPatientsByNames('Andy', 'Garcia')
+andys[1].notes = 'tiene mala pinta, su cara no sonrie, esta deprimido, le voy dar motivanol'
+console.log(andys[1])*/
+
+var bloodType = prompt('Blood Type')
+var patients = getPatientsByBloodType(bloodType)
+printPatientsNames(patients)
