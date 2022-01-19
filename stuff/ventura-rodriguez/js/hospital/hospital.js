@@ -42,7 +42,7 @@ for(var i = 0; i < hospital.patients.length; i++) {
     if(hospital.patients[i].genre === 'male') {
         countMale++
     }
-    else{
+    else {
         countFemale++
     }
 
