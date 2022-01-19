@@ -60,28 +60,3 @@ function printPatientsData(patients /* typeof Array */) {
 
     document.body.innerHTML = tableInit + tableRows + tableEnd
 }
-
-
-{/* <table class="table">
-<tr class="table-head">
-    <th>first name</th>
-    <th>last name</th>
-    <th>age</th>
-    <th>gender</th>
-    <th>blood type</th>
-</tr>
-<tr class="table-row">
-    <td>Ele</td>
-    <td>Fante</td>
-    <td>27</td>
-    <td>female</td>
-    <td>A+</td>
-</tr>
-<tr class="table-row">
-    <td>Suzana</td>
-    <td>Horia</td>
-    <td>27</td>
-    <td>female</td>
-    <td>A-</td>
-</tr>
-</table> */}
