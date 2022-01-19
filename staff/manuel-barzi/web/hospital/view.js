@@ -13,7 +13,6 @@
 }*/
 
 function printPatientsNames(patients) {
-    debugger
     var names = '<ul>'
 
     for (var i = 0; i < patients.length; i++)
