@@ -8,6 +8,16 @@ function countPatientsByGender(gender) {
     return count
 }
 
+// var countPatientsByBloodType = function(bloodType) {
+//     var count = 0
+
+//     for (var i = 0; i < hospital.patients.length; i++)
+//         if (hospital.patients[i].bloodType === bloodType)
+//             count++
+
+//     return count
+// }
+
 function countPatientsByBloodType(bloodType) {
     var count = 0
 
