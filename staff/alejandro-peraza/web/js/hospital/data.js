@@ -201,4 +201,6 @@ var people = [
     
 ]
 
-var hospital = {patients: people}
+var hospital = {
+    patients: people
+}

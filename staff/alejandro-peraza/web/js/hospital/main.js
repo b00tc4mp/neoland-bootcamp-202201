@@ -27,6 +27,8 @@ var andys = getPatientsByNames('Andy', 'Garcia')
 andys[1].notes = 'tiene mala pinta, su cara no sonrie, esta deprimido, le voy dar motivanol'
 console.log(andys[1])*/
 
-var bloodType = prompt('Blood Type')
-var patients = getPatientsByBloodType(bloodType)
-printPatientsNames(patients)
+// var bloodType = prompt('Blood Type')
+// var patients = getPatientsByBloodType(bloodType)
+// printPatientsNames(patients)
+
+// printPatientsData(hospital.patients)
