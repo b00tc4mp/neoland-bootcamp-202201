@@ -190,46 +190,6 @@ var andy2 = {
     bloodType: 'B+'
 }
 
-var cho = {
-    firstName: 'Cho',
-    lastName: 'Lizo',
-    age: 36,
-    gender: 'male',
-    bloodType: 'AB+'
-}
-
-var e = {
-    firstName: 'E',
-    lastName: 'Lizo',
-    age: 47,
-    gender: 'male',
-    bloodType: 'B-'
-}
-
-var e2 = {
-    firstName: 'E',
-    lastName: 'Lefante',
-    age: 43,
-    gender: 'female',
-    bloodType: 'A-'
-}
-
-var elba2 = {
-    firstName: 'Elba',
-    lastName: 'Ticano',
-    age: 23,
-    gender: 'female',
-    bloodType: 'O-'
-}
-
-var elba3 = {
-    firstName: 'Elba',
-    lastName: 'Lazo',
-    age: 31,
-    gender: 'female',
-    bloodType: 'A-'
-}
-
 var people = [
     ele,
     suzana,
@@ -254,12 +214,7 @@ var people = [
     bat,
     spider,
     electra,
-    andy2,
-    cho,
-    e,
-    e2,
-    elba2,
-    elba3
+    andy2
 ]
 
 var hospital = {

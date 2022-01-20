@@ -1,9 +1,7 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
 * {
     box-sizing: border-box;
-    /* font-family: 'Ubuntu Mono'; */
     font-family: 'Homemade Apple';
 }
 
