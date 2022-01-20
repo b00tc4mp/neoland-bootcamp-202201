@@ -1,34 +1,21 @@
-/*var femaleCount = countPatientsByGender('female')
-console.log('female', femaleCount)
+var firstNameInput = document.querySelector('.first-name')
 
-var maleCount = countPatientsByGender('male')
-console.log('male',  maleCount)
+firstNameInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByFirstName(firstNameInput.value)
 
-var bloodTypeOPlus = countPatientsByBloodType('O+')
-console.log('O+', bloodTypeOPlus)
+        renderPatients(patients)
 
-var bloodTypeABMinus = countPatientsByBloodType('AB-')
-console.log('AB-', bloodTypeABMinus)
+    }
+})
 
-var bloodTypeOMinus = countPatientsByBloodType('O-')
-console.log('O-', bloodTypeOMinus)
+var bloodTypeInput = document.querySelector('.blood-type')
 
-var oPlusPatients = getPatientsByBloodType('O+')
-//console.log('O+', oPlusPatients)
-console.log('%c0+ %cpatients', 'color: blue; font-family: courier; font-size: 1rem;', 'color: green;')
-printPatientsNames(oPlusPatients)
+bloodTypeInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientByBloodType(bloodTypeInput.value)
 
-var abPlusPatients = getPatientsByBloodType('AB+')
-//console.log('O+', oPlusPatients)
-console.log('%cAB+ %cpatients', 'color: blue; font-family: courier; font-size: 1rem;', 'color: green;')
-printPatientsNames(abPlusPatients)
+        renderPatients(patients)
 
-var andys = getPatientsByNames('Andy', 'Garcia')
-andys[1].notes = 'tiene mala pinta, su cara no sonrie, esta deprimido, le voy dar motivanol'
-console.log(andys[1])*/
-
-// var bloodType = prompt('Blood Type')
-// var patients = getPatientsByBloodType(bloodType)
-// printPatientsNames(patients)
-
-// printPatientsData(hospital.patients)
+    }
+})

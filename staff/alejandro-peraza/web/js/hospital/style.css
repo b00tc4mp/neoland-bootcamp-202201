@@ -1,3 +1,6 @@
+ @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap'); 
+/*@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');*/
+
 * {
     box-sizing: border-box;
 }
@@ -9,4 +12,23 @@
 
 .container--column {
     flex-direction: column;
+}
+
+.table {
+    background-color: gray;
+    border: 1px solid black;    
+}
+
+.table thead {
+    background-color: gainsboro;
+    }
+
+.table th {
+    background-color: white;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.table td {
+    padding: 0 10px;
 }

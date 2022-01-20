@@ -9,6 +9,16 @@ function countPatientsByGender(gender) {
     return count
 }
 
+/*function countPatientsByBloodType(bloodType) {
+    var count = 0
+
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].bloodType === bloodType)
+            count++
+
+    return count
+}*/
+
 function countPatientsByBloodType(bloodType) {
     var count = 0
 
@@ -22,15 +32,15 @@ function countPatientsByBloodType(bloodType) {
 function getPatientsByBloodType(bloodType) {
     var patients = []
     var index = 0
+
     for (var i = 0; i < hospital.patients.length; i++)
         if (hospital.patients[i].bloodType === bloodType) {
             patients[index] = hospital.patients[i]
 
-
             index++
         }
 
-    return patients
+    return patients    
 }
 
 function getPatientsByNames(firstName, lastName) {
@@ -38,14 +48,25 @@ function getPatientsByNames(firstName, lastName) {
     var index = 0
 
     for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].firstName === firstName && hospital.patients.lastName === lastName) {
+        if (hospital.patients[i].firstName === firstName && hospital.patients[i].lastName === lastName) {
             patients[index] = hospital.patients[i]
 
             index++
         }
-
+    
     return patients
-
 }
 
+function getPatientsByFirstName(firstName) {
+    var patients = []
+    var index = 0
 
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].firstName === firstName) {
+            patients[index] = hospital.patients[i]
+
+            index++
+        }
+    
+    return patients
+}
