@@ -1,34 +1,65 @@
-/*var femaleCount = countPatientsByGender('female')
-console.log('female', femaleCount)
+var firstNameInput = document.querySelector('.first-name')
 
-var maleCount = countPatientsByGender('male')
-console.log('male',  maleCount)
+firstNameInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByFirstName(firstNameInput.value)
 
-var bloodTypeOPlus = countPatientsByBloodType('O+')
-console.log('O+', bloodTypeOPlus)
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
 
-var bloodTypeABMinus = countPatientsByBloodType('AB-')
-console.log('AB-', bloodTypeABMinus)
+var lastNameInput = document.querySelector('.last-name')
 
-var bloodTypeOMinus = countPatientsByBloodType('O-')
-console.log('O-', bloodTypeOMinus)
+lastNameInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByLastName(lastNameInput.value)
 
-var oPlusPatients = getPatientsByBloodType('O+')
-//console.log('O+', oPlusPatients)
-console.log('%c0+ %cpatients', 'color: blue; font-family: courier; font-size: 1rem;', 'color: green;')
-printPatientsNames(oPlusPatients)
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
 
-var abPlusPatients = getPatientsByBloodType('AB+')
-//console.log('O+', oPlusPatients)
-console.log('%cAB+ %cpatients', 'color: blue; font-family: courier; font-size: 1rem;', 'color: green;')
-printPatientsNames(abPlusPatients)
+var genderInput = document.querySelector('.gender')
 
-var andys = getPatientsByNames('Andy', 'Garcia')
-andys[1].notes = 'tiene mala pinta, su cara no sonrie, esta deprimido, le voy dar motivanol'
-console.log(andys[1])*/
+genderInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByGender(genderInput.value)
 
-var bloodType = prompt('Blood Type')
-var patients = getPatientsByBloodType(bloodType)
-printPatientsNames(patients)
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
 
-  
+var yearInput = document.querySelector('.year')
+
+yearInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByYear(parseInt(yearInput.value))
+
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
+
+var bloodTypeInput = document.querySelector('.blood-type')
+
+bloodTypeInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByBloodType(bloodTypeInput.value)
+
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
+
+var idInput = document.querySelector('.id')
+
+idInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patient = getPatientById(idInput.value)
+
+        renderPatients([patient])
+        mechanizeTableClicks()
+    }
+})

@@ -1,24 +1,40 @@
-/*function printPatientsNames(patients) {
-    for (var i = 0; i < patients.length; i++)
-        console.log(patients[i].firstName, patients[i].lastName)
-}*/
 
-/*function printPatientsNames(patients) {
-    var names = ''
+function renderPatients(patients) {
+    var names = '<table class="table"><thead><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Birth Date</th><th>Gender</th><th>Blood Type</th></tr></thead><tbody>'
 
-    for (var i = 0; i < patients.length; i++)
-        names = names + patients[i].firstName + ' ' + patients[i].lastName + '\n'
+    for (var i = 0; i < patients.length; i++) {
+        var patient = patients[i]
+        var id = patient.id
+        var firstName = patient.firstName
+        var lastName = patient.lastName
+        var birthDate = patient.birthDate.toLocaleDateString()
+        var gender = patient.gender
+        var bloodType = patient.bloodType
 
-     alert(names)
-}*/
+        names =  names + '<tr><td>' + id + '</td><td>' + firstName + '</td><td>' + lastName + '</td><td>' + birthDate + '</td><td>' + gender + '</td><td>' + bloodType + '</td></tr>'
+    }
 
-function printPatientsNames(patients) {
-    var names = '<ul>'
+    names = names + '</tbody></table>'
 
-    for (var i = 0; i < patients.length; i++)
-        names =  names + '<li>' + patients[i].firstName + ' ' + patients[i].lastName + '</li>'
+    var results = document.querySelector('.results')
+    results.innerHTML = names
+}
 
-    names = names + '</ul>'
+function mechanizeTableClicks() {
+    var rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
 
-    document.body.innerHTML = names
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i]
+
+        var cell = row.querySelector('td')
+
+        cell.addEventListener('click', function (event) {
+            var id = event.target.innerText
+
+            var patient = getPatientById(id)
+
+            if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
+                patient.note = prompt('note?')
+        })
+    }
 }
