@@ -13,9 +13,19 @@ var bloodTypeInput = document.querySelector('.blood-type')
 
 bloodTypeInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientByBloodType(bloodTypeInput.value)
+        var patients = getPatientsByBloodType(bloodTypeInput.value)
 
         renderPatients(patients)
 
+    }
+})
+
+var ageTypeInput = document.querySelector('.age')
+
+ageTypeInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        var patients = getPatientsByAge(ageTypeInput.value)
+
+        renderPatients(patients)
     }
 })

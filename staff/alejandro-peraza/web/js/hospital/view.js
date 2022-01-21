@@ -1,62 +1,17 @@
-/*function printPatientsNames(patients) {
-    for (var i = 0; i < patients.length; i++)
-        console.log(patients[i].firstName, patients[i].lastName)
-}*/
+// function renderPatients(patients) {
+//     console.table(patients)
+// }
 
-/*function printPatientsNames(patients) {
-    var names = ''
-
-    for (var i = 0; i < patients.length; i++)
-        names = names + patients[i].firstName + ' ' + patients[i].lastName + '\n'
-
-     alert(names)
-}*/
-
-function printPatientsNames(patients) {
-    var names = '<ul>'
+function renderPatients(patients) {
+    var names = '<table class="table"><thead><tr><th>First Name</th><th>Last Name</th><th>Age</th><th>Gender</th><th>Blood Type</th></tr></thead><tbody>'
 
     for (var i = 0; i < patients.length; i++)
-        names =  names +
-            '<li>' + patients[i].firstName + ' ' + patients[i].lastName + '</li>'
+        names =  names + '<tr><td>' + patients[i].firstName + '</td><td>' + patients[i].lastName + '</td><td>' + patients[i].age + '</td><td>' + patients[i].gender + '</td><td>' + patients[i].bloodType + '</td></tr>'
 
-    names = names + '</ul>'
+    names = names + '</tbody></table>'
 
-    document.body.innerHTML = names
-}
+    //document.body.innerHTML = document.body.innerHTML + names
 
-function printPatientsData(patients /* typeof Array */) {
-
-    var tableInit = `
-        <table class="table">
-            <tr class="table-head">
-                <th>first name</th>
-                <th>last name</th>
-                <th>age</th>
-                <th>gender</th>
-                <th>blood type</th>
-            </tr>
-    `
-
-    var tableRows = ''
-
-    for(var i = 0; i < patients.length; i++) {
-
-        var patient = patients[i]
-
-        var tableRowCells =
-            '<tr class="table-row">' +
-            '<td>' + patient.firstName + '</td>' +
-            '<td>' + patient.lastName + '</td>' +
-            '<td>' + patient.age + '</td>' +
-            '<td>' + patient.gender + '</td>' +
-            '<td>' + patient.bloodType + '</td>' +
-            '</tr>'
-
-        tableRows =  tableRows + tableRowCells
-    }
-
-    var tableEnd = "</table>"
-
-
-    document.body.innerHTML = tableInit + tableRows + tableEnd
+    var results = document.querySelector('.results')
+    results.innerHTML = names
 }

@@ -32,3 +32,17 @@
 .table td {
     padding: 0 10px;
 }
+.title {
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 40px;
+background-color: cyan;
+
+}
+
+body {
+    background-color: lightgray;
+    width: 500px;
+    margin: 0 auto;
+    padding: 5px;
+}

@@ -70,3 +70,16 @@ function getPatientsByFirstName(firstName) {
     
     return patients
 }
+
+
+function getPatientsByAge(age) {
+    var patients = []
+    var index = 0
+
+    for (var i = 0;  i < hospital.patients.length; i++)
+        if (hospital.patients[i].age.toString() === age) {
+            patients[index] = hospital.patients[i]
+            index++
+        }
+    return patients
+}
