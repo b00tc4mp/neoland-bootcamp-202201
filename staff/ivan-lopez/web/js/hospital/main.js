@@ -35,11 +35,11 @@ bloodTypeInput.addEventListener('keypress', function(event) {
 })
 
 
-var ageInput = document.querySelector('.age')
+var yearInput = document.querySelector('.year')
 
-ageInput.addEventListener('keypress', function(event) {
+yearInput.addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsByAge(parseInt(ageInput.value))
+        var patients = getPatientsByYear(parseInt(YearInput.value))
 
         renderPatients(patients)
         mechanizeTableClicks()
@@ -69,6 +69,7 @@ yearInput.addEventListener('keypress', function (event) {
     }
 })
 
+
 var idInput = document.querySelector('.id')
 
 idInput.addEventListener('keypress', function (event) {
@@ -78,4 +79,21 @@ idInput.addEventListener('keypress', function (event) {
         renderPatients([patient])
         mechanizeTableClicks()
     }
+})
+
+
+//var showAllButton = document.querySelector('.show-all') 
+     
+//showAllButton.addEventListener('click', function() { renderPatients(patients) })
+    
+
+var showAllButton = document.querySelector('.show-all')
+
+showAllButton.addEventListener('click', function () {
+
+        var patients = getShowAll()
+
+        renderPatients(patients)
+        
+        mechanizeTableClicks()
 })

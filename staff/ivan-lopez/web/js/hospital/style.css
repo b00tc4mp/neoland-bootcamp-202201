@@ -31,3 +31,9 @@
 .table td {
     padding: 0 10px;
 }
+
+.show-all {
+    background-color: #333;
+    color: beige;
+    width: 70px;
+}
