@@ -1,62 +1,39 @@
-/*function printPatientsNames(patients) {
-    for (var i = 0; i < patients.length; i++)
-        console.log(patients[i].firstName, patients[i].lastName)
-}*/
+function renderPatients(patients) {
+    var names = '<table class="table"><thead><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Birth Date</th><th>Gender</th><th>Blood Type</th></tr></thead><tbody>'
 
-/*function printPatientsNames(patients) {
-    var names = ''
-
-    for (var i = 0; i < patients.length; i++)
-        names = names + patients[i].firstName + ' ' + patients[i].lastName + '\n'
-
-     alert(names)
-}*/
-
-function printPatientsNames(patients) {
-    var names = '<ul>'
-
-    for (var i = 0; i < patients.length; i++)
-        names =  names +
-            '<li>' + patients[i].firstName + ' ' + patients[i].lastName + '</li>'
-
-    names = names + '</ul>'
-
-    document.body.innerHTML = names
-}
-
-function printPatientsData(patients /* typeof Array */) {
-
-    var tableInit = `
-        <table class="table">
-            <tr class="table-head">
-                <th>first name</th>
-                <th>last name</th>
-                <th>age</th>
-                <th>gender</th>
-                <th>blood type</th>
-            </tr>
-    `
-
-    var tableRows = ''
-
-    for(var i = 0; i < patients.length; i++) {
-
+    for (var i = 0; i < patients.length; i++) {
         var patient = patients[i]
+        var id = patient.id
+        var firstName = patient.firstName
+        var lastName = patient.lastName
+        var birthDate = patient.birthDate.toLocaleDateString()
+        var gender = patient.gender
+        var bloodType = patient.bloodType
 
-        var tableRowCells =
-            '<tr class="table-row">' +
-            '<td>' + patient.firstName + '</td>' +
-            '<td>' + patient.lastName + '</td>' +
-            '<td>' + patient.age + '</td>' +
-            '<td>' + patient.gender + '</td>' +
-            '<td>' + patient.bloodType + '</td>' +
-            '</tr>'
-
-        tableRows =  tableRows + tableRowCells
+        names =  names + '<tr><td>' + id + '</td><td>' + firstName + '</td><td>' + lastName + '</td><td>' + birthDate + '</td><td>' + gender + '</td><td>' + bloodType + '</td></tr>'
     }
 
-    var tableEnd = "</table>"
+    names = names + '</tbody></table>'
 
+    var results = document.querySelector('.results')
+    results.innerHTML = names
+}
 
-    document.body.innerHTML = tableInit + tableRows + tableEnd
+function mechanizeTableClicks() {
+    var rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i]
+
+        var cell = row.querySelector('td')
+
+        cell.addEventListener('click', function (event) {
+            var id = event.target.innerText
+
+            var patient = getPatientById(id)
+
+            if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
+                patient.note = prompt('note?')
+        })
+    }
 }

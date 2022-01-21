@@ -1,194 +1,332 @@
-var ele = {
-    firstName: 'Ele',
-    lastName: 'Fante',
-    age: 27,
-    gender: 'female',
-    bloodType: 'A+'
+function Person(id, firstName, lastName, gender, birthDate, bloodType, city, country) {
+    this.id = id
+    this.firstName = firstName
+    this.lastName = lastName
+    this.gender = gender
+    this.birthDate = birthDate
+    this.bloodType = bloodType
+    this.city = city
+    this.country = country
 }
 
-var suzana = {
-    firstName: 'Suzana',
-    lastName: 'Horia',
-    age: 27,
-    gender: 'female',
-    bloodType: 'A-'
-}
+var ele = new Person(
+    generateId(),
+    'Ele',
+    'Fante',
+    'female',
+    newDate(1994, 1, 15),
+    'A+',
+    'New York City',
+    'United States of America'
+)
 
-var ti = {
-    firstName: 'Ti',
-    lastName: 'Greton',
-    age: 50,
-    gender: 'male',
-    bloodType: 'AB+'
-}
+var suzana = new Person(
+    generateId(),
+    'Suzana',
+    'Horia',
+    'female',
+    newDate(1994, 11, 20),
+    'A-',
+    'New York City',
+    'United States of America'
+)
 
-var vi = {
-    firstName: 'Vi',
-    lastName: 'Bora',
-    age: 60,
-    gender: 'female',
-    bloodType: 'AB-'
-}
+var ti = new Person(
+    generateId(),
+    'Ti',
+    'Greton',
+    'male',
+    newDate(1992, 06, 13),
+    'AB+',
+    'New York City',
+    'United States of America'
+)
 
-var luisca = {
-    firstName: 'Luisca',
-    lastName: 'Chondo',
-    age: 19,
-    gender: 'male',
-    bloodType: 'B+'
-}
+var vi = new Person(
+    generateId(),
+    'Vi',
+    'Bora',
+    'female',
+    newDate(1990, 6, 18),
+    'AB-',
+    'New York City',
+    'United States of America'
+)
 
-var pepito = {
-    firstName: 'Pepito',
-    lastName: 'Grillo',
-    age: 33,
-    gender: 'male',
-    bloodType: 'B-'
-}
+var luisca = new Person(
+    generateId(),
+    'Luisca',
+    'Chondo',
+    'male',
+    newDate(2001, 1, 15),
+    'B+',
+    'New York City',
+    'United States of America'
+)
 
-var elba = {
-    firstName: 'Elba',
-    lastName: 'Surero',
-    age: 30,
-    gender: 'female',
-    bloodType: 'O+'
-}
+var pepito = new Person(
+    generateId(),
+    'Pepito',
+    'Grillo',
+    'male',
+    newDate(2000, 12, 12),
+    'B-',
+    'New York City',
+    'United States of America'
+)
 
-var elber = {
-    firstName: 'Elber',
-    lastName: 'Galarga',
-    age: 32,
-    gender: 'male',
-    bloodType: 'O-'
-}
+var elba = new Person(
+    generateId(),
+    'Elba',
+    'Surero',
+    'female',
+    newDate(1986, 3, 10),
+    'O+',
+    'New York City',
+    'United States of America'
+)
 
-var ana = {
-    firstName: 'Ana',
-    lastName: 'Conda',
-    age: 16,
-    gender: 'female',
-    bloodType: 'A+'
-}
+var elber = new Person(
+    generateId(),
+    'Elber',
+    'Galarga',
+    'male',
+    newDate(1967, 9, 21),
+    'O-',
+    'New York City',
+    'United States of America'
+)
 
-var bob = {
-    firstName: 'Bob',
-    lastName: 'Esponja',
-    age: 8,
-    gender: 'male',
-    bloodType: 'O+'
-}
+var ana = new Person(
+    generateId(),
+    'Ana',
+    'Conda',
+    'female',
+    newDate(1986, 10, 03),
+    'A+',
+    'New York City',
+    'United States of America'
+)
 
-var elena = {
-    firstName: 'Elena',
-    lastName: 'De Troya',
-    age: 55,
-    gender: 'female',
-    bloodType: 'B+'
-}
+var bob = new Person(
+    generateId(),
+    'Bob',
+    'Esponja',
+    'male',
+    newDate(1995, 05, 24),
+    'O+',
+    'New York City',
+    'United States of America'
+)
 
-var armando = {
-    firstName: 'Armando',
-    lastName: 'Guerra',
-    age: 33,
-    gender: 'male',
-    bloodType: 'B-'
-}
+var elena = new Person(
+    generateId(),
+    'Elena',
+    'De Troya',
+    'female',
+    newDate(1992, 01, 11),
+    'B+',
+    'New York City',
+    'United States of America'
+)
 
-var mort = {
-    firstName: 'Mort',
-    lastName: 'Adela',
-    age: 25,
-    gender: 'female',
-    bloodType: 'B+'
-}
+var armando = new Person(
+    generateId(),
+    'Armando',
+    'Guerra',
+    'male',
+    newDate(2010, 8, 8),
+    'B-',
+    'New York City',
+    'United States of America'
+)
 
-var lola = {
-    firstName: 'Lola',
-    lastName: 'Mento',
-    age: 20,
-    gender: 'female',
-    bloodType: 'AB-'
-}
+var mort = new Person(
+    generateId(),
+    'Mort',
+    'Adela',
+    'female',
+    newDate(1890, 8, 30),
+    'B+',
+    'New York City',
+    'United States of America'
+)
 
-var andy = {
-    firstName: 'Andy',
-    lastName: 'Garcia',
-    age: 60,
-    gender: 'male',
-    bloodType: 'AB-'
-}
+var lola = new Person(
+    generateId(),
+    'Lola',
+    'Mento',
+    'female',
+    newDate(2000, 12, 12),
+    'AB-',
+    'New York City',
+    'United States of America'
+)
 
-var aitor = {
-    firstName: 'Aitor',
-    lastName: 'Tilla',
-    age: 23,
-    gender: 'male',
-    bloodType: 'AB+'
-}
+var andy = new Person(
+    generateId(),
+    'Andy',
+    'Garcia',
+    'male',
+    newDate(1986, 3, 10),
+    'AB-',
+    'New York City',
+    'United States of America'
+)
 
-var pere = {
-    firstName: 'Pere',
-    lastName: 'Gil',
-    age: 22,
-    gender: 'male',
-    bloodType: 'O-'
-}
+var aitor = new Person(
+    generateId(),
+    'Aitor',
+    'Tilla',
+    'male',
+    newDate(1986, 3, 10),
+    'AB+',
+    'New York City',
+    'United States of America'
+)
 
-var juanca = {
-    firstName: 'Juanca',
-    lastName: 'Daver',
-    age: 42,
-    gender: 'male',
-    bloodType: 'O-'
-}
+var pere = new Person(
+    generateId(),
+    'Pere',
+    'Gil',
+    'male',
+    newDate(1986, 4, 20),
+    'O-',
+    'New York City',
+    'United States of America'
+)
 
-var ador = {
-    firstName: 'Ador',
-    lastName: 'Nandoarboles',
-    age: 31,
-    gender: 'male',
-    bloodType: 'O+'
-}
+var juanca = new Person(
+    generateId(),
+    'Juanca',
+    'Daver',
+    'male',
+    newDate(2001, 5, 16),
+    'O-',
+    'New York City',
+    'United States of America'
+)
 
-var son = {
-    firstName: 'Son',
-    lastName: 'Goku',
-    age: 50,
-    gender: 'male',
-    bloodType: 'A+'
-}
+var ador = new Person(
+    generateId(),
+    'Ador',
+    'Nandoarboles',
+    'male',
+    newDate(1997, 10, 25),
+    'O+',
+    'New York City',
+    'United States of America'
+)
 
-var bat = {
-    firstName: 'Bat',
-    lastName: 'Man',
-    age: 52,
-    gender: 'male',
-    bloodType: 'O+'
-}
+var son = new Person(
+    generateId(),
+    'Son',
+    'Goku',
+    'male',
+    newDate(1986, 8, 22),
+    'A+',
+    'New York City',
+    'United States of America'
+)
 
-var spider = {
-    firstName: 'Spider',
-    lastName: 'Man',
-    age: 28,
-    gender: 'male',
-    bloodType: 'O-'
-}
+var bat = new Person(
+    generateId(),
+    'Bat',
+    'Man',
+    'male',
+    newDate(1986, 3, 10),
+    'O+',
+    'New York City',
+    'United States of America'
+)
 
-var electra = {
-    firstName: 'Electra',
-    lastName: 'Cuta',
-    age: 40,
-    gender: 'female',
-    bloodType: 'B-'
-}
+var spider = new Person(
+    generateId(),
+    'Spider',
+    'Man',
+    'male',
+    newDate(1986, 4, 20),
+    'O-',
+    'New York City',
+    'United States of America'
+)
 
-var andy2 = {
-    firstName: 'Andy',
-    lastName: 'Garcia',
-    age: 31,
-    gender: 'male',
-    bloodType: 'B+'
-}
+var electra = new Person(
+    generateId(),
+    'Electra',
+    'Cuta',
+    'female',
+    newDate(2001, 5, 16),
+    'B-',
+    'New York City',
+    'United States of America'
+)
+
+var andy2 = new Person(
+    generateId(),
+    'Andy',
+    'Garcia',
+    'male',
+    newDate(1997, 10, 25),
+    'B+',
+    'New York City',
+    'United States of America'
+)
+
+var cho = new Person(
+    generateId(),
+    'Cho',
+    'Lizo',
+    'male',
+    newDate(1986, 8, 22),
+    'AB+',
+    'New York City',
+    'United States of America'
+)
+
+var e = new Person(
+    generateId(),
+    'E',
+    'Lizo',
+    'male',
+    newDate(1986, 3, 10),
+    'B-',
+    'New York City',
+    'United States of America'
+)
+
+var e2 = new Person(
+    generateId(),
+    'E',
+    'Lefante',
+    'female',
+    newDate(1986, 4, 20),
+    'A-',
+    'New York City',
+    'United States of America'
+)
+
+var elba2 = new Person(
+    generateId(),
+    'Elba',
+    'Ticano',
+    'female',
+    newDate(1992, 01, 11),
+    'O-',
+    'New York City',
+    'United States of America'
+)
+
+var elba3 = new Person(
+    generateId(),
+    'Elba',
+    'Lazo',
+    'female',
+    newDate(2001, 5, 16),
+    'A-',
+    'New York City',
+    'United States of America'
+)
 
 var people = [
     ele,
@@ -214,7 +352,12 @@ var people = [
     bat,
     spider,
     electra,
-    andy2
+    andy2,
+    cho,
+    e,
+    e2,
+    elba2,
+    elba3
 ]
 
 var hospital = {
