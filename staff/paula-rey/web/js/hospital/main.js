@@ -63,3 +63,12 @@ idInput.addEventListener('keypress', function (event) {
         mechanizeTableClicks()
     }
 })
+
+var showAllButton = document.querySelector('.show-all')
+
+showAllButton.addEventListener('click', function () {
+        var patients = getShowAll(showAllButton.value)
+
+        renderPatients(patients)
+        mechanizeTableClicks()
+})

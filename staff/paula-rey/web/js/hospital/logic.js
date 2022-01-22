@@ -80,3 +80,8 @@ function getPatientsByBloodType(bloodType) {
 
     return patients    
 }
+
+function getShowAll () {
+    var patients = hospital.patients
+    return patients
+}

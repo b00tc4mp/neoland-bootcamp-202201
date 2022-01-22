@@ -32,3 +32,10 @@
 .table td {
     padding: 0 10px;
 }
+
+.show-all {
+    background-color:grey;
+    color:black;
+    width: 40px;
+    height: 40px;
+}
