@@ -16,7 +16,9 @@ function getPatientsByFirstName(firstName) {
   var index = 0;
 
   for (var i = 0; i < hospital.patients.length; i++)
-    if (hospital.patients[i].firstName === firstName) {
+    if (
+      hospital.patients[i].firstName.toLowerCase() === firstName.toLowerCase()
+    ) {
       patients[index] = hospital.patients[i];
 
       index++;
@@ -30,7 +32,9 @@ function getPatientsByLastName(lastName) {
   var index = 0;
 
   for (var i = 0; i < hospital.patients.length; i++)
-    if (hospital.patients[i].lastName === lastName) {
+    if (
+      hospital.patients[i].lastName.toLowerCase() === lastName.toLowerCase()
+    ) {
       patients[index] = hospital.patients[i];
 
       index++;
@@ -44,7 +48,7 @@ function getPatientsByGender(gender) {
   var index = 0;
 
   for (var i = 0; i < hospital.patients.length; i++)
-    if (hospital.patients[i].gender === gender) {
+    if (hospital.patients[i].gender.toLowerCase() === gender.toLowerCase()) {
       patients[index] = hospital.patients[i];
 
       index++;
@@ -72,7 +76,9 @@ function getPatientsByBloodType(bloodType) {
   var index = 0;
 
   for (var i = 0; i < hospital.patients.length; i++)
-    if (hospital.patients[i].bloodType === bloodType) {
+    if (
+      hospital.patients[i].bloodType.toLowerCase() === bloodType.toLowerCase()
+    ) {
       patients[index] = hospital.patients[i];
 
       index++;

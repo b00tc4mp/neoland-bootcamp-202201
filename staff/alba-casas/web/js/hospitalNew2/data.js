@@ -18,6 +18,7 @@ function Person(
   this.country = country;
 }
 
+
 var ele = new Person(
   generateId(),
   "Ele",
