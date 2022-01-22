@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Architects Daughter";
+}
+
+.header {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: aquamarine;
+    border:2px;
+}
+
+.container--column {
+    flex-direction:column;
+}
+
