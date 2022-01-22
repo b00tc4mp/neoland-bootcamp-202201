@@ -35,19 +35,30 @@ printPatientsNames(patients)
 
 */
 
+var idInput = document.querySelector('.id')
+idInput.addEventListener('keypress', function(event){
+    if(event.key === 'Enter'){
+        var patients = getPatientById(idInput.value)
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
+
 var firstNameInput = document.querySelector('.first-name')
 firstNameInput.addEventListener('keypress', function(event){
     if(event.key === 'Enter'){
         var patients = getPatientsByFirstName(firstNameInput.value)
         renderPatients(patients)
+        mechanizeTableClicks()
     }
 })
 
-var bloodTypeInput = document.querySelector('.blood-type')
-bloodTypeInput.addEventListener('keypress', function(event){
+var lastNameInput = document.querySelector('.last-name')
+lastNameInput.addEventListener('keypress', function(event){
     if(event.key === 'Enter'){
-        var patients = getPatientsByBloodType(bloodTypeInput.value)
+        var patients = getPatientsByLastName(lastNameInput.value)
         renderPatients(patients)
+        mechanizeTableClicks()
     }
 })
 
@@ -56,13 +67,26 @@ genderInput.addEventListener('keypress', function(event){
     if(event.key === 'Enter'){
         var patients = getPatientsByGender(genderInput.value)
         renderPatients(patients)
+        mechanizeTableClicks()
     }
 })
 
-var ageInput = document.querySelector('.age')
-ageInput.addEventListener('keypress', function(event){
+var yearInput = document.querySelector('.year')
+yearInput.addEventListener('keypress', function(event){
     if(event.key === 'Enter'){
-        var patients = getPatientsByAge(ageInput.value)
+        var patients = getPatientsByYear(parseInt(yearInput.value))
         renderPatients(patients)
+        mechanizeTableClicks()
     }
 })
+
+var bloodTypeInput = document.querySelector('.blood-type')
+bloodTypeInput.addEventListener('keypress', function(event){
+    if(event.key === 'Enter'){
+        var patients = getPatientsByBloodType(bloodTypeInput.value)
+        renderPatients(patients)
+        mechanizeTableClicks()
+    }
+})
+
+

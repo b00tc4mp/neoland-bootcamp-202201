@@ -1,42 +1,8 @@
-function countPatientsByGender(gender) {
-    var counter = 0
+function getPatientById(id) {
+    var patient;
     for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].gender === gender)
-            counter++
-    return counter
-}
-
-function countPatientsByBloodType(bloodType) {
-    counter = 0;
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].bloodType === bloodType)
-            counter++
-    return counter
-}
-
-function getPatientsByBloodType(bloodType) {
-    var arr = [];
-    var index = 0;
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].bloodType === bloodType) {
-            arr[index] = hospital.patients[i]
-            index++
-        }
-
-    return arr
-}
-
-
-function getPatientsByName(firstName, lastName) {
-    var patients = []
-    var index = 0
-
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].firstName === firstName && hospital.patients[i].lastName === lastName) {
-            patients[index] = hospital.patients[i]
-            index++
-        }
-    return patients
+        if (hospital.patients[i].id === id)
+            return hospital.patients[i]
 }
 
 function getPatientsByFirstName(firstName) {
@@ -45,6 +11,18 @@ function getPatientsByFirstName(firstName) {
 
     for (var i = 0; i < hospital.patients.length; i++)
         if (hospital.patients[i].firstName === firstName) {
+            patients[index] = hospital.patients[i]
+            index++
+        }
+    return patients
+}
+
+function getPatientsByLastName(lastName) {
+    var patients = []
+    var index = 0
+
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].lastName === lastName) {
             patients[index] = hospital.patients[i]
             index++
         }
@@ -63,14 +41,28 @@ function getPatientsByGender(gender) {
     return patients
 }
 
-function getPatientsByAge(age) {
+function getPatientsByYear(year) {
     var patients = []
     var index = 0
 
     for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].age == age) {
+        if (hospital.patients[i].birthDate.getFullYear() === year) {
             patients[index] = hospital.patients[i]
             index++
         }
     return patients
 }
+
+function getPatientsByBloodType(bloodType) {
+    var patients = [];
+    var index = 0;
+    
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].bloodType === bloodType) {
+            patients[index] = hospital.patients[i]
+            index++
+        }
+    return patients
+}
+
+
