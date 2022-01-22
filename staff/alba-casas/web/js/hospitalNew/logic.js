@@ -90,7 +90,7 @@ function getPatientsByAge(age) {
   var index = 0;
 
   for (var i = 0; i < hospital.patients.length; i++)
-    if (hospital.patients[i].age == age) {
+    if (hospital.patients[i].age === age) {
       patients[index] = hospital.patients[i];
 
       index++;

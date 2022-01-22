@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap'); */
+
+* {
+  box-sizing: border-box;
+  font-family: "Ubuntu Mono";
+  /* font-family: 'Homemade Apple'; */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container--column {
+  flex-direction: column;
+}
+
+.table {
+  margin-top: 24px;
+  border-radius: 10px;
+}
+
+.result {
+  justify-content: center;
+}
+
+.table thead {
+  background-color: lightblue;
+  height: 24px;
+}
+
+.table th {
+  text-align: left;
+  padding: 0 10px;
+}
+
+.table td {
+  padding: 0 10px;
+}

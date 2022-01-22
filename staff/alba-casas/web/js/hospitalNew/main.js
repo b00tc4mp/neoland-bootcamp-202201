@@ -32,7 +32,7 @@ var ageInput = document.querySelector(".age");
 
 ageInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    var patients = getPatientsByAge(ageInput.value);
+    var patients = getPatientsByAge(parseInt(ageInput.value));
 
     renderPatients(patients);
   }
