@@ -86,3 +86,21 @@ function getPatientsByBloodType(bloodType) {
 
   return patients;
 }
+
+function getAllPatients() {
+  return hospital.patients;
+}
+
+function getAllPatientsWithNotes() {
+  var patients = [];
+  var index = 0;
+
+  for (var i = 0; i < hospital.patients.length; i++) {
+    if (hospital.patients[i].note) {
+      patients[index] = hospital.patients[i];
+      index++;
+    }
+  }
+
+  return patients;
+}

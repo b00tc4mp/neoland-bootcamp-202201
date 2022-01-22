@@ -4,12 +4,26 @@
 * {
   box-sizing: border-box;
   font-family: "Ubuntu Mono";
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   /* font-family: 'Homemade Apple'; */
 }
 
-.container {
+.wrapper {
   display: flex;
   justify-content: center;
+  width: 100vw;
+  height: auto;
+  background-color: #add8e6;
+}
+
+.container {
+  padding: 24px;
+  width: 800px;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
 }
 
 .container--column {
@@ -21,12 +35,16 @@
   border-radius: 10px;
 }
 
-.result {
-  justify-content: center;
+.results {
+  align-self: center;
+}
+
+.notes {
+  align-self: center;
 }
 
 .table thead {
-  background-color: lightblue;
+  background-color: #add8e6;
   height: 24px;
 }
 
@@ -37,4 +55,26 @@
 
 .table td {
   padding: 0 10px;
+}
+
+.table tbody tr:hover {
+  background: #eee;
+}
+
+.actions {
+  align-self: flex-end;
+}
+
+.button {
+  margin-top: 24px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #add8e6;
+  color: #333;
+  border-radius: 5px;
+  transition: 0.1s linear;
+}
+.button:hover {
+  transform: scale(1.05);
 }

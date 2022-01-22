@@ -63,3 +63,21 @@ idInput.addEventListener("keypress", function (event) {
     mechanizeTableClicks();
   }
 });
+
+var showPatients = document.querySelector(".show-patients");
+
+showPatients.addEventListener("click", () => {
+  var patients = getAllPatients();
+  clearNotes();
+  renderPatients(patients);
+  mechanizeTableClicks();
+});
+
+var showNotes = document.querySelector(".show-notes");
+
+showNotes.addEventListener("click", () => {
+  var patients = getAllPatientsWithNotes();
+  clearPatiens();
+  renderNotes(patients);
+  mechanizeTableClicks();
+});
