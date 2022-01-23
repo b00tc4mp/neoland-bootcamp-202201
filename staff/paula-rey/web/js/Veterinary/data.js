@@ -1,7 +1,7 @@
-function Animal(name, surname, id, mobile, animalName, birthDate, gender, breed) {
+function Animal(id, name, surname, mobile, animalName, birthDate, gender, breed) {
+    this.id = id
     this.name = name
     this.surname = surname
-    this.id = id
     this.mobile = mobile
     this.animalName = animalName
     this.birthDate = birthDate
@@ -10,9 +10,9 @@ function Animal(name, surname, id, mobile, animalName, birthDate, gender, breed)
 }
 
 var aslan = new Animal(
+    generateId(),
     'Ele',
     'Fante',
-    generateId(),
     generateMobile(),
     'Aslan',
     newDate(2015, 1, 15),
@@ -21,9 +21,9 @@ var aslan = new Animal(
 )
 
 var ciro = new Animal(
+    generateId(),
     'Suzana',
     'Horia',
-    generateId(),
     generateMobile(),
     'Ciro',
     newDate(2013, 11, 20),
@@ -32,9 +32,9 @@ var ciro = new Animal(
 )
 
 var hamlet = new Animal(
+    generateId(),
     'Elba',
     'Surero',
-    generateId(),
     generateMobile(),
     'Hamlet',
     newDate(2010, 9, 21),
@@ -43,9 +43,9 @@ var hamlet = new Animal(
 )
 
 var kenta = new Animal(
+    generateId(),
     'Ana',
     'Conda',
-    generateId(),
     generateMobile(),
     'Kenta',
     newDate(2017, 10, 03),
@@ -54,9 +54,9 @@ var kenta = new Animal(
 )
 
 var rayo = new Animal(
+    generateId(),
     'Armando',
     'Guerra',
-    generateId(),
     generateMobile(),
     'Rayo',
     newDate(2019, 08, 08),
@@ -66,9 +66,9 @@ var rayo = new Animal(
 
 
 var otto = new Animal(
+    generateId(),
     'Lola',
     'Mento',
-    generateId(),
     generateMobile(),
     'Otto',
     newDate(2020, 12, 12),
@@ -77,9 +77,9 @@ var otto = new Animal(
 )
 
 var cleo = new Animal(
+    generateId(),
     'Electra',
     'Cuta',
-    generateId(),
     generateMobile(),
     'Cleo',
     newDate(2017, 10, 25),
@@ -88,9 +88,9 @@ var cleo = new Animal(
 )
 
 var anubis = new Animal(
+    generateId(),
     'Cho',
     'Lizo',
-    generateId(),
     generateMobile(),
     'Anubis',
     newDate(2021, 08, 22),
@@ -99,9 +99,9 @@ var anubis = new Animal(
 )
 
 var oreo = new Animal(
+    generateId(),
     'E',
     'Lizo',
-    generateId(),
     generateMobile(),
     'Oreo',
     newDate(2014, 04, 20),
@@ -110,9 +110,9 @@ var oreo = new Animal(
 )
 
 var samy = new Animal(
+    generateId(),
     'Pau',
     'Yer',
-    generateId(),
     generateMobile(),
     'Samy',
     newDate(2015, 1, 15),
@@ -121,7 +121,7 @@ var samy = new Animal(
 )
 
 var animals = [
-    alan,
+    aslan,
     ciro,
     hamlet,
     kenta,
@@ -136,3 +136,8 @@ var animals = [
 var veterinary = {
     users: animals
 }
+
+
+
+
+
