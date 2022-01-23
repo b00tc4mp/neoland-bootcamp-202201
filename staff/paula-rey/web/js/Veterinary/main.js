@@ -2,9 +2,9 @@ var idInput = document.querySelector('.id')
     
 idInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-            var patient = getPatientById(idInput.value)
+            var user = getUserById(idInput.value)
     
-            renderPatients([patient])
+            renderUsers([user])
             mechanizeTableClicks()
         }
     })
@@ -14,9 +14,9 @@ var nameInput = document.querySelector('.name')
 
 nameInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsByName(nameInput.value)
+        var users = getUsersByName(nameInput.value)
 
-        renderPatients(patients)
+        renderUsers(users)
         mechanizeTableClicks()
     }
 })
@@ -26,9 +26,9 @@ var surnameInput = document.querySelector('.surname')
 
 surnameInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsBySurname(surnameInput.value)
+        var users = getUsersBySurname(surnameInput.value)
         
-        renderPatients(patients)
+        renderUsers(users)
         mechanizeTableClicks()
     }
 })
@@ -38,21 +38,21 @@ var mobileInput = document.querySelector('.mobile')
 
 mobileInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsByMobile(mobileInput.value)
+        var users = getUsersByMobile(mobileInput.value)
         
-        renderPatients(patients)
+        renderUsers(users)
         mechanizeTableClicks()
     }
 })
 
 
-var humanNameInput = document.querySelector('.human-name')
+var animalNameInput = document.querySelector('.animal-name')
 
-humanNameInput.addEventListener('keypress', function (event) {
+animalNameInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsByHumanName(humanNameInput.value)
+        var users = getUsersByAnimalName(animalNameInput.value)
         
-        renderPatients(patients)
+        renderUsers(users)
         mechanizeTableClicks()
     }
 })
@@ -62,9 +62,9 @@ var yearInput = document.querySelector('.year')
 
 yearInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsByYear(parseInt(yearInput.value))
+        var users = getUsersByYear(parseInt(yearInput.value))
         
-        renderPatients(patients)
+        renderUsers(users)
         mechanizeTableClicks()
     }
 })
@@ -74,9 +74,9 @@ var genderInput = document.querySelector('.gender')
 
 genderInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        var patients = getPatientsByGender(genderInput.value)
+        var users = getUsersByGender(genderInput.value)
         
-        renderPatients(patients)
+        renderUsers(users)
         mechanizeTableClicks()
     }
 })
@@ -86,13 +86,19 @@ var breedInput = document.querySelector('.breed')
 
 breedInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-            var patients = getPatientsByBreed(breedInput.value)
+            var users = getUsersByBreed(breedInput.value)
 
-            renderPatients(patients)
+            renderUsers(users)
             mechanizeTableClicks()
         }
     })
 
+
+var showAllButton = document.querySelector('.show-all')
+
+showAllButton.addEventListener('click', function () {
+        var users = getShowAll(showAllButton.value)
     
-
-
+        renderUsers(users)
+        mechanizeTableClicks()
+    })

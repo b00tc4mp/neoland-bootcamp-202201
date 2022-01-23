@@ -1,109 +1,115 @@
-function getPatientById(id) {
-    var patient
+function getUserById(id) {
+    var user
 
-    for (var i= 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].id === id) {
-            patient = veterinary.patients[i]
+    for (var i= 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].id === id) {
+            user = veterinary.users[i]
 
             break
         }
-    return patient
+    return user
 }
 
-function getPatientsByName(name) {
-    var patients = []
+function getUsersByName(name) {
+    var users = []
     var index = 0
 
-    for (var i = 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].name === name) {
-            patients[index] = veterinary.patients[i]
+    for (var i = 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].name === name) {
+            users[index] = veterinary.users[i]
 
             index++
         }
-    return patients
+    return users
 }
 
-function getPatientsBySurname(surname) {
-    var patients = []
+function getUsersBySurname(surname) {
+    var users = []
     var index = 0
 
-    for (var i = 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].surname === surname) {
-            patients[index] = veterinary.patients[i]
+    for (var i = 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].surname === surname) {
+            users[index] = veterinary.users[i]
             
             index++
         }
-    return patients
+    return users
 }
 
 
-function getPatientsByMobile(mobile) {
-    var patients = []
+function getUserByMobile(mobile) {
+    var users = []
     var index = 0
 
-    for (var i=0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].mobile === mobile) {
-            patients[index] = veterinary.patients[i]
+    for (var i=0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].mobile === mobile) {
+            users = veterinary.users[i]
 
             index++
         }
-    return patients
+    return users
 }
 
-function getPatientsByHumanName(humanName) {
-    var patients = []
+function getUsersByAnimalName(animalName) {
+    var users = []
     var index = 0
 
-    for (var i = 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].humanName === humanName) {
-            patients[index] = veterinary.patients[i]
-
-            index++
-        }
-
-    return patients
-}
-
-function getPatientsByYear(year) {
-    var patients = []
-    var index = 0
-
-    for (var i = 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].birthDate.getFullYear() === year) {
-            patients[index] = veterinary.patients[i]
+    for (var i = 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].animalName === animalName) {
+            users[index] = veterinary.users[i]
 
             index++
         }
 
-    return patients
+    return users
 }
 
-function getPatientsByGender(gender) {
-    var patients = []
+function getUsersByYear(year) {
+    var users = []
     var index = 0
 
-    for (var i = 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].gender === gender) {
-            patients[index] = veterinary.patients[i]
+    for (var i = 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].birthDate.getFullYear() === year) {
+            users[index] = veterinary.users[i]
 
             index++
         }
 
-    return patients
+    return users
 }
 
-function getPatientsByBreed(breed) {
-    var patients = []
+function getUsersByGender(gender) {
+    var users = []
     var index = 0
 
-    for (var i = 0; i < veterinary.patients.length; i++)
-        if (veterinary.patients[i].breed === breed) {
-            patients[index] = veterinary.patients[i]
+    for (var i = 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].gender === gender) {
+            users[index] = veterinary.users[i]
 
             index++
         }
 
-    return patients
+    return users
+}
+
+function getUsersByBreed(breed) {
+    var users = []
+    var index = 0
+
+    for (var i = 0; i < veterinary.users.length; i++)
+        if (veterinary.users[i].breed === breed) {
+            users[index] = veterinary.users[i]
+
+            index++
+        }
+
+    return users
+}
+
+
+function getShowAll () {
+    var users = veterinary.users
+    return users
 }
 
 

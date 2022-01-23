@@ -1,120 +1,120 @@
-function Cat(id, name, surname, mobile, humanName, birthDate, gender, breed) {
+function Animal(id, name, surname, mobile, animalName, birthDate, gender, breed) {
     this.id = id
     this.name = name
     this.surname = surname
     this.mobile = mobile
-    this.humanName = humanName
+    this.animalName = animalName
     this.birthDate = birthDate
     this.gender = gender 
     this.breed = breed
 }
 
-var aslan = new Cat(
+var aslan = new Animal(
     generateId(),
-    'Aslan',
+    'Ele',
     'Fante',
     111111111,
-    'Ele',
+    'Aslan',
     newDate(2015, 1, 15),
     'male',
     'bengal'
 )
 
-var ciro = new Cat(
+var ciro = new Animal(
     generateId(),
-    'Ciro',
+    'Suzana',
     'Horia',
     222222222,
-    'Suzana',
+    'Ciro',
     newDate(2013, 11, 20),
     'male',
     'ragdoll'
 )
 
-var hamlet = new Cat(
+var hamlet = new Animal(
     generateId(),
-    'Hamlet',
+    'Elba',
     'Surero',
     333333333,
-    'Elba',
+    'Hamlet',
     newDate(2010, 9, 21),
     'female',
     'asian'
 )
 
-var kenta = new Cat(
+var kenta = new Animal(
     generateId(),
-    'Kenta',
+    'Ana',
     'Conda',
     444444444,
-    'Ana',
+    'Kenta',
     newDate(2017, 10, 03),
     'female',
     'siamese'
 )
 
-var rayo = new Cat(
+var rayo = new Animal(
     generateId(),
-    'Rayo',
+    'Armando',
     'Guerra',
     555555555,
-    'Armando',
+    'Rayo',
     newDate(2019, 08, 08),
     'female',
     'european'
 )
 
 
-var otto = new Cat(
+var otto = new Animal(
     generateId(),
-    'Otto',
+    'Lola',
     'Mento',
     666666666,
-    'Lola',
+    'Otto',
     newDate(2020, 12, 12),
     'male',
     'european'
 )
 
-var cleo = new Cat(
+var cleo = new Animal(
     generateId(),
-    'Cleo',
+    'Electra',
     'Cuta',
     777777777,
-    'Electra',
+    'Cleo',
     newDate(2017, 10, 25),
     'female',
     'sphynx'
 )
 
-var anubis = new Cat(
+var anubis = new Animal(
     generateId(),
-    'Anubis',
+    'Cho',
     'Lizo',
     888888888,
-    'Cho',
+    'Anubis',
     newDate(2021, 08, 22),
     'female',
     'bengal'
 )
 
-var oreo = new Cat(
+var oreo = new Animal(
     generateId(),
-    'Oreo',
+    'E',
     'Lizo',
     999999999,
-    'E',
+    'Oreo',
     newDate(2014, 04, 20),
     'female',
     'siamese'
 )
 
-var samy = new Cat(
+var samy = new Animal(
     generateId(),
-    'Samy',
+    'Pau',
     'Yer',
     333333333,
-    'Pau',
+    'Samy',
     newDate(2015, 1, 15),
     'female',
     'european'
@@ -134,7 +134,7 @@ var animals = [
 ]
 
 var veterinary = {
-    patients: animals
+    users: animals
 }
 
 
