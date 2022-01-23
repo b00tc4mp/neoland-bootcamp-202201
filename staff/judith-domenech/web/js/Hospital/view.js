@@ -37,3 +37,12 @@ function mechanizeTableClicks() {
         })
     }
 }
+
+function patientsTable() {
+
+    var button = document.querySelector('.button')
+
+button.addEventListener('click', function (event) {
+    return patients
+}
+}

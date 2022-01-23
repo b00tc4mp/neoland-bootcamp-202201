@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,19 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="container container--column">
-    <input class="id" type="text" placeholder="id">
-    <input class="first-name" type="text" placeholder="first name">
-    <input class="last-name" type="text" placeholder="last name">
-    <input class="gender" type="text" placeholder="gender">
-    <input class="year" type="number" placeholder="year">
-    <input class="blood-type" type="text" placeholder="blood type">
+    <div class="inputs">
+        <input class="id" type="text" placeholder="Id">
+        <input class="first-name" type="text" placeholder="First Name">
+        <input class="last-name" type="text" placeholder="Last Name">
+        <input class="gender" type="text" placeholder="Gender">
+        <input class="year" type="number" placeholder="Year">
+        <input class="blood-type" type="text" placeholder="Blood type">
+        <input class="button" id = "button "type="button" value="List Of Patients">
+    </div>
+
+    
 
     <div class="results"></div>
 
@@ -23,4 +30,5 @@
     <script src="view.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
