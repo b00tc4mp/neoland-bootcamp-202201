@@ -1,3 +1,4 @@
+
 function renderUsers(users) {
     var animalNames = '<table class="table"><thead><tr><th>ID</th><th>Name</th><th>Surname</th><th>Mobile</th><th>Animal Name</th><th>Birth Date</th><th>Gender</th><th>Breed</th></tr></thead><tbody>'
 
@@ -6,7 +7,7 @@ function renderUsers(users) {
         var id = user.id
         var name = user.name
         var surname = user.surname
-        var mobile = user.mobile.toLocalDateString()
+        var mobile = user.mobile
         var animalName = user.animalName
         var birthDate = user.birthDate.toLocalDateString()
         var gender = user.gender
@@ -34,7 +35,7 @@ function mechanizeTableClicks() {
 
             var user = getUserById(id)
 
-            if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
+            if (confirm('Current note: "' + user.note + '". Wanna change it?'))
                 user.note = prompt('note?')
         })
     }

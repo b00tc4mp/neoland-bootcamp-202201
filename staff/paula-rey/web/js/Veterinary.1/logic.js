@@ -38,7 +38,8 @@ function getUsersBySurname(surname) {
 
 
 function getUserByMobile(mobile) {
-    var user
+    var users = []
+    var index = 0
 
     for (var i=0; i < veterinary.users.length; i++)
         if (veterinary.users[i].mobile === mobile) {
@@ -104,4 +105,5 @@ function getUsersByBreed(breed) {
 
     return users
 }
+
 
