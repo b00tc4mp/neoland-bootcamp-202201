@@ -1,60 +1,14 @@
-
-function countPatientsByGender(gender) {
-    var count = 0
-
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].gender === gender)
-            count++
-
-    return count
-}
-
-/*function countPatientsByBloodType(bloodType) {
-    var count = 0
+function getPatientById(id) {
+    var patient
 
     for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].bloodType === bloodType)
-            count++
+        if (hospital.patients[i].id === id) {
+            patient = hospital.patients[i]
 
-    return count
-}*/
-
-function countPatientsByBloodType(bloodType) {
-    var count = 0
-
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].bloodType === bloodType)
-            count++
-
-    return count
-}
-
-function getPatientsByBloodType(bloodType) {
-    var patients = []
-    var index = 0
-
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].bloodType === bloodType) {
-            patients[index] = hospital.patients[i]
-
-            index++
+            break
         }
 
-    return patients    
-}
-
-function getPatientsByNames(firstName, lastName) {
-    var patients = []
-    var index = 0
-
-    for (var i = 0; i < hospital.patients.length; i++)
-        if (hospital.patients[i].firstName === firstName && hospital.patients[i].lastName === lastName) {
-            patients[index] = hospital.patients[i]
-
-            index++
-        }
-    
-    return patients
+    return patient   
 }
 
 function getPatientsByFirstName(firstName) {
@@ -71,15 +25,49 @@ function getPatientsByFirstName(firstName) {
     return patients
 }
 
-
-function getPatientsByAge(age) {
+function getPatientsByLastName(lastName) {
     var patients = []
     var index = 0
 
-    for (var i = 0;  i < hospital.patients.length; i++)
-        if (hospital.patients[i].age.toString() === age) {
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].lastName === lastName) {
             patients[index] = hospital.patients[i]
+
             index++
         }
+    
     return patients
+}
+
+function getPatientsByGender(gender) {
+    var patients = []
+    var index = 0
+
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].gender === gender) {
+            patients[index] = hospital.patients[i]
+
+            index++
+        }
+
+    return patients    
+}
+
+function getPatientsByBloodType(bloodType) {
+    var patients = []
+    var index = 0
+
+    for (var i = 0; i < hospital.patients.length; i++)
+        if (hospital.patients[i].bloodType === bloodType) {
+            patients[index] = hospital.patients[i]
+
+            index++
+        }
+
+    return patients    
+
+    function getShowAll() {
+        var patients = hospital.patients
+        return patients
+    }
 }
