@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200&family=Quicksand&family=Raleway:wght@100&family=Teko:wght@500&display=swap');
+
+* {
+    font-family: 'quicksand';
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color: lightslategray;
+    min-height: 100vh;
+}
+
+.header {
+    height: 72px;
+    display: flex;
+    background-color: lightslategray;
+    padding: 20px;
+    font-size: 2em;
+    text-align: center;
+}
+
+
+.body {
+    height: calc(100vh - 72px - 48px);
+    overflow-y: scroll;
+    background-color: #FDF2E9 ;
+}
+
+
+.footer {
+    height: 48px;
+    background-color: gray;
+    text-align: center;
+    font-size: 70px;
+}
+
+.left {
+    background-color: lightslategray;
+    padding: 20px;
+    text-align: center;
+}
+
+.right { /* <nav><nav/> */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: brown;
+}
+
+.nav--element {
+    background-color: lightslategray;
+    width: auto;
+    height: min-content;
+}
+
+.cabecera {
+    font-size: 30px;
+    text-align: right;
+
+}
+
+.down {
+    padding: 10px;
+    margin: 30px;
+}
+
+.bloque {
+    padding:50px
+}
+
+.work {
+    margin-left: 50px;
+    font-size: 30px;
+}
+
+.lang {
+    font-size: 80px;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    background-color: lightslategray;
+}
+
+.subt {
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+.pie {
+    font-size: 20px;
+}
