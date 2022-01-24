@@ -33,12 +33,16 @@ html, body {
     font-family: "Source Sans Pro";
     max-width: 25%;
     margin: 10%;
+    
 }
 
 .titulo h1{
     font-family: "Source Sans Pro";
-    text-align: center;   
-
+    display: flex;
+    text-decoration-line: overline underline;
+    margin-top: 10%;
+    font-size: 200%;
+   
 }
    
 .block-1 {
@@ -50,6 +54,7 @@ html, body {
     flex-flow: row wrap;
     gap: 10px;
     font-family: "Source Sans Pro";
+  
 }
 
 
