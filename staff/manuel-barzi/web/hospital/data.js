@@ -11,48 +11,46 @@ function Person(id, firstName, lastName, gender, birthDate, bloodType, city, cou
     this.phone = phone
 }
 
+const firstNames = ['Pepito', 'Peter', 'Wendy', 'John', 'Manuel', 'Matias', 'Paula', 'María', 'Judith', 'Alba', 'Alejandro', 'Gio', 'Joel', 'Nicolás', 'Jeremías', 'Ventura', 'Iván', 'Susan', 'Francesc', 'Zoraida', 'Victor', 'Yastá', 'Noseyo', 'Elba', 'Elber', 'Aitor', 'Cindy', 'Ana', 'Bat']
 
-var firstNames = ['Pepito', 'John', 'Manuel', 'Matias', 'Paula', 'María', 'Judith', 'Alba', 'Alejandro', 'Gio', 'Joel', 'Nicolás', 'Jeremías', 'Ventura', 'Iván', 'Susan', 'Francesc', 'Zoraida', 'Victor', 'Yastá', 'Noseyo', 'Elba', 'Elber', 'Aitor', 'Cindy', 'Ana', 'Bat']
+const lastNames = ['Grillo', 'Pan', 'Lennon', 'Barzi', 'Prats', 'Mandioca', 'Tigre', 'Esponja', 'Lechuga', 'Hernández', 'Gonzáles', 'Fumeta', 'Ventura', 'Rodríguez', 'García', 'Lorca', 'Pirulo', 'Campo', 'López', 'Canal', 'Zanahoria', 'Espineta', 'Patata', 'Surero', 'Nero', 'Capullito', 'Alelí', 'Tramboliko', 'Arbolada', 'Fuá', 'Extra']
 
-var lastNames = ['Grillo', 'Lennon', 'Barzi', 'Prats', 'Mandioca', 'Tigre', 'Esponja', 'Lechuga', 'Hernández', 'Gonzáles', 'Fumeta', 'Ventura', 'Rodríguez', 'García', 'Lorca', 'Pirulo', 'Campo', 'López', 'Canal', 'Zanahoria', 'Espineta', 'Patata', 'Surero', 'Nero', 'Capullín', 'Alelí']
+const genders = ['female', 'male', 'other']
 
-var genders = ['female', 'male', 'other']
+const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
 
-var bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
+const cities = ['Platano', 'Naranja', 'Kiwi', 'Arandonos', 'Manzana', 'Pera', 'Kaki', 'Uva', 'Piña', 'Sandía', 'Melón', 'Mango']
+const countries = ['Rojo', 'Verde', 'Amarillo', 'Azul', 'Violeta', 'Rosa', 'Carmín', 'Turquesa', 'Duquesa', 'Morado', 'Sótano']
 
-var cities = ['Platano', 'Naranja', 'Kiwi', 'Arandonos', 'Manzana', 'Pera', 'Kaki', 'Uva', 'Piña', 'Sandía', 'Melón', 'Mango']
-var countries = ['Rojo', 'Verde', 'Amarillo', 'Azul', 'Violeta', 'Rosa', 'Carmín', 'Turquesa', 'Duquesa', 'Morado', 'Sótano']
+const people = []
 
-var people = []
+for (let i = 0; i < 1000; i++) {
+    const id = generateId()
 
-for (var i = 0; i < 1000; i++) {
-    var id = generateId()
+    const firstName = randomElement(firstNames)
+    const lastName = randomElement(lastNames)
 
-    var firstName = randomElement(firstNames)
-    var lastName = randomElement(lastNames)
-
-    var gender = randomElement(genders)
+    const gender = randomElement(genders)
     
-    var bloodType = randomElement(bloodTypes)
+    const bloodType = randomElement(bloodTypes)
     
-    var day = randomInteger(1, 31)
-    var month = randomInteger(1, 12)
-    var year = randomInteger(1900, 2022)
+    const day = randomInteger(1, 31)
+    const month = randomInteger(1, 12)
+    const year = randomInteger(1900, 2022)
     
-    var birthDate = newDate(year, month, day)
+    const birthDate = newDate(year, month, day)
     
-    var city = randomElement(cities) + ' City'
-    var country = randomElement(countries)
+    const city = randomElement(cities) + ' City'
+    const country = randomElement(countries)
     
-    var email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + '@mail.com'
-    var phone = randomInteger(600000000, 790000000)
+    const email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + randomInteger(1000, 9999) + '@mail.com'
+    const phone = randomInteger(600000000, 790000000)
 
-    var person = new Person(id, firstName, lastName, gender, birthDate, bloodType, city, country, email, phone)
+    const person = new Person(id, firstName, lastName, gender, birthDate, bloodType, city, country, email, phone)
 
     people[i] = person
 }
-    
 
-var hospital = {
+const hospital = {
     patients: people
 }
