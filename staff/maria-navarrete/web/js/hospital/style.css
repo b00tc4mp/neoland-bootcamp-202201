@@ -36,3 +36,18 @@
 .off{
     display: none;
 }
+
+.file div {
+    display: flex;
+    margin: 10px;
+    align-items: center;
+  }
+
+.file label{
+    width: 150px;
+}
+
+.file input {
+    width: 250px;
+    padding: 10px;
+  }

@@ -36,7 +36,7 @@ for(let i = 0; i<1000; i++){
     const city = randomElement(cities) + ' City'
     const country = 'Republic of '+ randomElement(countries)
     const domain = randomElement(domains)
-    const email = firstName.toLowerCase() + "." + lastName.toLowerCase() +"@" + domains
+    const email = firstName.toLowerCase() + "." + lastName.toLowerCase() +"@" + domain
     const phone = randomInteger(600000000,790000000)
 
     const person = new Person(id, firstName, lastName, gender, birthDate, bloodType, city, country, email, phone)
