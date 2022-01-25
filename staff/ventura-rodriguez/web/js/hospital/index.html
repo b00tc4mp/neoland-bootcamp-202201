@@ -1,34 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital v3</title>
     <link rel="stylesheet" href="style.css">
+    <title>Hospital</title>
 </head>
-<body class="container container--column">
-    <input class="id" type="text" placeholder="id">
-    <input class="first-name" type="text" placeholder="first name">
-    <input class="last-name" type="text" placeholder="last name">
-    <input class="gender" type="text" placeholder="gender">
-    <input class="year" type="number" placeholder="year">
-    <input class="blood-type" type="text" placeholder="blood type">
 
-    <div class="results"></div>
-
-    <div class="file off">
-        <h2 class="file__full-name"></h2>
-
-        <!--
-            TODO show all personal data from patient in this file
-        -->
+<body class='container container--column'>
+    <div id="search">
+        <input type='text' class='id' placeholder='ID'>
+        <input type='text' class='first-name' placeholder='First Name'>
+        <input type='text' class='last-name' placeholder='Last Name'>
+        <input type='text' class='gender' placeholder='Gender'>
+        <input type='number' class='year' placeholder='Year'>
+        <input type='text' class='blood-type' placeholder='Blood Type'>
     </div>
 
-    <script src="helpers.js"></script>
-    <script src="data.js"></script>
-    <script src="logic.js"></script>
-    <script src="view.js"></script>
-    <script src="main.js"></script>
+    <div class='results'></div>
+    <div class='file off'>
+        <h2 class='file__full-name'></h2>
+        <div class='file__info'>
+            <div>
+                <div class= 'file__info-row'>
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="birthDate">Date of Birth</label>
+                    <input type="text" id="birthDate" name="birthDate" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" readonly />
+                </div>
+            </div>
+            <div>
+                <div class= 'file__info-row'>
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" name="gender" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="bloodType">Blood Type</label>
+                    <input type="text" id="bloodType" name="bloodType" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" readonly />
+                </div>
+                <div class= 'file__info-row'>
+                    <label for="place">Place of Birth</label>
+                    <input type="text" id="place" name="place" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src='helpers.js'></script>
+    <script src='data.js'></script>
+    <script src='logic.js'></script>
+    <script src='view.js'></script>
+    <script src='main.js'></script>
 </body>
+
 </html>
