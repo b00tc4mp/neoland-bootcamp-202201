@@ -37,11 +37,24 @@
     display: none;
 }
 
-.file div {
+.two-col{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.two-col > div{
     display: flex;
     margin: 10px;
     align-items: center;
-  }
+    flex-direction: column;
+}
+
+.profile__info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:10px;
+}
 
 .file label{
     width: 150px;

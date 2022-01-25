@@ -1,9 +1,18 @@
+const resetInputs = () => {
+    const searchInputs = document.querySelectorAll('.search')
+    for(let i=0; searchInputs.length; i++){
+        if(!(searchInputs[i] === document.activeElement))
+            searchInputs[i].value = ""
+    }
+}
+
 const idInput = document.querySelector('.id')
 idInput.addEventListener('keypress', function(event){
     if(event.key === 'Enter'){
         const patients = getPatientById(idInput.value)
         renderPatients(patients)
         mechanizeTableClicks()
+        resetInputs()
     }
 })
 
@@ -13,6 +22,7 @@ firstNameInput.addEventListener('keypress', function(event){
         const patients = getPatientsByFirstName(firstNameInput.value)
         renderPatients(patients)
         mechanizeTableClicks()
+        resetInputs()
     }
 })
 
@@ -22,6 +32,7 @@ lastNameInput.addEventListener('keypress', function(event){
         const patients = getPatientsByLastName(lastNameInput.value)
         renderPatients(patients)
         mechanizeTableClicks()
+        resetInputs()
     }
 })
 
@@ -31,6 +42,7 @@ genderInput.addEventListener('keypress', function(event){
         const patients = getPatientsByGender(genderInput.value)
         renderPatients(patients)
         mechanizeTableClicks()
+        resetInputs()
     }
 })
 
@@ -40,6 +52,7 @@ yearInput.addEventListener('keypress', function(event){
         const patients = getPatientsByYear(parseInt(yearInput.value))
         renderPatients(patients)
         mechanizeTableClicks()
+        resetInputs()
     }
 })
 
@@ -49,6 +62,7 @@ bloodTypeInput.addEventListener('keypress', function(event){
         const patients = getPatientsByBloodType(bloodTypeInput.value)
         renderPatients(patients)
         mechanizeTableClicks()
+        resetInputs()
     }
 })
 

@@ -33,6 +33,8 @@ const renderPatients = patients => {
     resultsPanel.classList.remove('off')    
 }
 
+const renderPatientDetails 
+
 const mechanizeTableClicks = () => {
     const rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
    
