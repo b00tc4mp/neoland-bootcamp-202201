@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital v3</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="container container--column">
+    <div class="inputs">
+      <input class="inputs__id" type="text" placeholder="id" />
+      <input class="inputs__first-name" type="text" placeholder="first name" />
+      <input class="inputs__last-name" type="text" placeholder="last name" />
+      <input class="inputs__gender" type="text" placeholder="gender" />
+      <input class="inputs__year" type="number" placeholder="year" />
+      <input class="inputs__blood-type" type="text" placeholder="blood type" />
+    </div>
+
+    <div class="results"></div>
+
+    <div class="file off">
+      <h2 class="file__full-name"></h2>
+      <h3 class="file__phone"></h3>
+      <h3 class="file__bloodType"></h3>
+
+      <!--
+            TODO show all personal data from patient in this file
+        -->
+    </div>
+
+    <script src="helpers.js"></script>
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
+    <script src="view.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
