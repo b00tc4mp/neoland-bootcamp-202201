@@ -16,6 +16,10 @@
     flex-direction: column;
 }
 
+.off {
+    display: none;
+}
+
 .table {
     border: 1px solid black;
 }

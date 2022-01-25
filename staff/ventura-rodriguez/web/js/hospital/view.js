@@ -1,39 +1,71 @@
 function renderPatients(patients) {
-    var names = '<table class="table"><thead><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Birth Date</th><th>Gender</th><th>Blood Type</th></tr></thead><tbody>'
+    const tableHeaders = ['ID', 'First Name', 'Last Name', 'Birth Date', 'Gender', 'Blood Type', 'E-mail', 'Phone', 'City', 'Country']
 
-    for (var i = 0; i < patients.length; i++) {
-        var patient = patients[i]
-        var id = patient.id
-        var firstName = patient.firstName
-        var lastName = patient.lastName
-        var birthDate = patient.birthDate.toLocaleDateString()
-        var gender = patient.gender
-        var bloodType = patient.bloodType
+     const ths = tableHeaders.map(header => '<th>' + header + '</th>')
 
-        names =  names + '<tr><td>' + id + '</td><td>' + firstName + '</td><td>' + lastName + '</td><td>' + birthDate + '</td><td>' + gender + '</td><td>' + bloodType + '</td></tr>'
+    const thsInline = ths.join('')
+
+    let table = '<table class="table"><thead><tr>' + thsInline + '</tr></thead><tbody>'
+
+    for (let i = 0; i < patients.length; i++) {
+        const patient = patients[i]
+        const id = patient.id
+        const firstName = patient.firstName
+        const lastName = patient.lastName
+        const birthDate = patient.birthDate.toLocaleDateString()
+        const gender = patient.gender
+        const bloodType = patient.bloodType
+        const email = patient.email
+        const phone = patient.phone
+        const city = patient.city
+        const country = patient.country
+
+        const dataValues = [id, firstName, lastName, birthDate, gender, bloodType, email, phone, city, country]
+
+        const tds = dataValues.map(dataValue => '<td>' + dataValue + '</td>')
+
+        const tdsInline = tds.join('')
+
+        table = table + '<tr>' + tdsInline + '</tr>'
     }
 
-    names = names + '</tbody></table>'
+    table = table + '</tbody></table>'
 
-    var results = document.querySelector('.results')
-    results.innerHTML = names
+    const resultsPanel = document.querySelector('.results')
+    resultsPanel.innerHTML = table
+
+    const filePanel = document.querySelector('.file')
+    
+    filePanel.classList.add('off')
+
+    resultsPanel.classList.remove('off')
 }
 
 function mechanizeTableClicks() {
-    var rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
+    const rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
 
-    for (var i = 0; i < rows.length; i++) {
-        var row = rows[i]
-
-        var cell = row.querySelector('td')
+    rows.forEach(row => {
+        const cell = row.querySelector('td')
 
         cell.addEventListener('click', function (event) {
-            var id = event.target.innerText
+            const id = event.target.innerText
 
-            var patient = getPatientById(id)
+            const patient = getPatientById(id)
 
-            if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
-                patient.note = prompt('note?')
+            //if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
+            //    patient.note = prompt('note?')
+
+            const resultsPanel = document.querySelector('.results')
+
+            resultsPanel.classList.add('off')
+
+            const filePanel = document.querySelector('.file')
+
+            const fileFullName = filePanel.querySelector('.file__full-name')
+
+            fileFullName.innerText = patient.firstName + ' ' + patient.lastName
+
+            filePanel.classList.remove('off')
         })
-    }
+    })
 }
