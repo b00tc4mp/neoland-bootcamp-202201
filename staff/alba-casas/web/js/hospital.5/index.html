@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hospital v3</title>
+    <title>Hospital v5</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="container container--column">
@@ -19,15 +19,30 @@
 
     <div class="results"></div>
 
-    <div class="file off">
-      <h2 class="file__full-name"></h2>
-      <h3 class="file__phone"></h3>
-      <h3 class="file__bloodType"></h3>
+    <table class="file table off">
+      <thead>
+        <tr>
+          <td>full name</td>
+          <td>gender</td>
+          <td>year</td>
+          <td>phone</td>
+          <td>blood type</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="file__full-name"></td>
+          <td class="file__gender"></td>
+          <td class="file__year"></td>
+          <td class="file__phone"></td>
+          <td class="file__bloodType"></td>
+        </tr>
+      </tbody>
 
       <!--
             TODO show all personal data from patient in this file
         -->
-    </div>
+    </table>
 
     <script src="helpers.js"></script>
     <script src="data.js"></script>

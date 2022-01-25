@@ -1,4 +1,4 @@
-function renderPatients(patients) {
+const getHeaders = () => {
   const tableHeaders = [
     "ID",
     "First Name",
@@ -12,13 +12,11 @@ function renderPatients(patients) {
     "Country",
   ];
 
-  const ths = tableHeaders.map((header) => "<th>" + header + "</th>");
+  return tableHeaders.map((header) => "<th>" + header + "</th>").join("");
+};
 
-  const thsInline = ths.join("");
-
-  let table =
-    '<table class="table"><thead><tr>' + thsInline + "</tr></thead><tbody>";
-
+const getBody = (patients) => {
+  let body = "";
   for (let i = 0; i < patients.length; i++) {
     const patient = patients[i];
     const id = patient.id;
@@ -45,20 +43,31 @@ function renderPatients(patients) {
       country,
     ];
 
-    const tds = dataValues.map((dataValue) => "<td>" + dataValue + "</td>");
+    const tds = dataValues
+      .map((dataValue) => "<td>" + dataValue + "</td>")
+      .join("");
 
-    const tdsInline = tds.join("");
-
-    table = table + "<tr>" + tdsInline + "</tr>";
+    body += `<tr>${tds}</tr>`;
   }
+  return body;
+};
 
-  table = table + "</tbody></table>";
+function renderPatients(patients) {
+  const table = `
+      <table class="table">
+        <thead>
+          ${getHeaders()}
+        </thead>
+        <tbody>
+          ${getBody(patients)}
+        </tbody>
+      </table>
+    `;
 
   const resultsPanel = document.querySelector(".results");
   resultsPanel.innerHTML = table;
 
   const filePanel = document.querySelector(".file");
-
   filePanel.classList.add("off");
 
   resultsPanel.classList.remove("off");

@@ -17,7 +17,7 @@
 }
 
 .off {
-  display: none;
+  display: none !important;
 }
 
 .table {
@@ -35,11 +35,4 @@
 
 .table td {
   padding: 0 10px;
-}
-
-.file {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
 }

@@ -1,8 +1,8 @@
-const resetInput = (focus) => {
+const resetInput = () => {
   const arrInputs = document.querySelectorAll(".inputs > *");
 
   for (let i = 0; i < arrInputs.length; i++) {
-    if (!(i === focus)) arrInputs[i].value = "";
+    if (!(arrInputs[i] === document.activeElement)) arrInputs[i].value = "";
   }
 };
 
@@ -12,7 +12,7 @@ firstNameInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     const patients = getPatientsByFirstName(firstNameInput.value);
 
-    resetInput(1);
+    resetInput();
     renderPatients(patients);
     mechanizeTableClicks();
   }
@@ -24,7 +24,7 @@ lastNameInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     const patients = getPatientsByLastName(lastNameInput.value);
 
-    resetInput(2);
+    resetInput();
     renderPatients(patients);
     mechanizeTableClicks();
   }
@@ -35,7 +35,7 @@ const genderInput = document.querySelector(".inputs__gender");
 genderInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     const patients = getPatientsByGender(genderInput.value);
-    resetInput(3);
+    resetInput();
     renderPatients(patients);
     mechanizeTableClicks();
   }
@@ -46,7 +46,7 @@ const yearInput = document.querySelector(".inputs__year");
 yearInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     const patients = getPatientsByYear(parseInt(yearInput.value));
-    resetInput(4);
+    resetInput();
     renderPatients(patients);
     mechanizeTableClicks();
   }
@@ -57,7 +57,7 @@ const bloodTypeInput = document.querySelector(".inputs__blood-type");
 bloodTypeInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     const patients = getPatientsByBloodType(bloodTypeInput.value);
-    resetInput(5);
+    resetInput();
     renderPatients(patients);
     mechanizeTableClicks();
   }
@@ -69,7 +69,7 @@ idInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     const patient = getPatientById(idInput.value);
 
-    resetInput(0);
+    resetInput();
     renderPatients([patient]);
     mechanizeTableClicks();
   }

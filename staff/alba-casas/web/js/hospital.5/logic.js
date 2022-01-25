@@ -17,4 +17,3 @@ const getPatientsByYear = (year) =>
   hospital.patients.filter(
     (patient) => patient.birthDate.getFullYear() === year
   );
-
