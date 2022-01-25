@@ -1,76 +1,50 @@
-/*function printPatientsNames(patients) {
-    for (var i = 0; i < patients.length; i++)
-        console.log(patients[i].firstName, patients[i].lastName)
-}
+const renderPatients = patients => {
+    const tableHeaders = ['ID', 'First Name', 'Last Name', 'Birth Date', 'Age', 'Gender', 'Blood Type', 'E-mail', 'Phone', 'City', 'Country']
+    const ths = tableHeaders.map(header => '<th>' + header + '</th>')
+    const thsInline = ths.join('')
+    let table = '<table class="table"><thead><tr>' + thsInline + '</tr></thead></tbody>'
 
-function printPatientsNames(patients) {
-    var names = ''
-    for (var i = 0; i < patients.length; i++)
-        names += patients[i].firstName + ' ' + patients[i].lastName + '\n'
-    alert(names)
-}
+    for (let i = 0; i < patients.length; i++) {
+        const patient = patients[i]
+        const id = patient.id
+        const firstName = patient.firstName
+        const lastName = patient.lastName
+        const birthDate = patient.birthDate.toLocaleDateString()
+        const age = calculateAge(patient.birthDate.getFullYear(), patient.birthDate.getMonth(), patient.birthDate.getDate())
+        const gender = patient.gender
+        const bloodType = patient.bloodType
+        const email = patient.email
+        const phone = patient.phone
+        const city = patient.city
+        const country = patient.country
 
-function renderPatients(patients) {
-     console.table(patients)
-}
-
-
-function printPatientsNames(patients){
-    var names = '<ul>'
-
-    for(var i = 0; i<patients.length; i++)
-        names+= '<li>'+patients[i].firstName + ' '+ patients[i].lastName + '</li>'
-    names+= '</ul>'
-    
-    document.body.innerHTML = names
-}
-*/
-
-function renderPatients(patients) {
-    var names = `<table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Birth Date</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Blood Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>`
-    for (var i = 0; i < patients.length; i++) {
-        var patient = patients[i]
-        var id = patient.id
-        var firstName = patient.firstName
-        var lastName = patient.lastName
-        var birthDate = patient.birthDate.toLocaleDateString()
-        var age = calculateAge(patient.birthDate.getFullYear(), patient.birthDate.getMonth(), patient.birthDate.getDate())
-        var gender = patient.gender
-        var bloodType = patient.bloodType
-
-
-
-        names = names + '<tr><td>' + id + '</td><td>' + firstName + '</td><td>' + lastName + '</td><td>' + birthDate + '</td><td>' + age + '</td><td>' + gender + '</td><td>' + bloodType + '</td></tr>'
+        const dataValues = [id, firstName, lastName, birthDate, age, gender, bloodType, email, phone, city, country]
+        const tds = dataValues.map(dataValue => '<td>' + dataValue + '</td>')
+        const tdsInline = tds.join('')
+        table += '<tr>' + tdsInline + '</tr>'
     }
 
-    names = names + '</tbody></table>'
+    table += '</tbody></table>'
 
-    var results = document.querySelector('.results')
-    results.innerHTML = names
+    const resultsPanel = document.querySelector('.results')
+    resultsPanel.innerHTML = table
+    const filePanel = document.querySelector('.file')
+    filePanel.classList.add('off')
+    resultsPanel.classList.remove('off')
 }
-
-function mechanizeTableClicks() {
-    var rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
-
-    for (var i = 0; i < rows.length; i++) {
-        var cell = rows[i].querySelector('td')
+const mechanizeTableClicks = () => {
+    const rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
+    rows.forEach(row => {
+        const cell = row.querySelector('td')
         cell.addEventListener('click', function (event) {
-            var id = event.target.innerText
-            var patient = getPatientById(id)
-            if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
-                patient.note = prompt('note?')
+            const id = event.target.innerText
+            const patient = getPatientById(id)
+            // if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
+            //     patient.note = prompt('note?')
+            const resultsPanel= document.querySelector('.results')
+            resultsPanel.classList.add('off')
+            const filePanel = document.querySelector('.file')
+            const fileFullName = filePanel
         })
-    }
+    })
 }

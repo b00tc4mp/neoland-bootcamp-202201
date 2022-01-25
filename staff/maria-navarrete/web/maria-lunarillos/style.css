@@ -28,6 +28,8 @@ html, body {
     align-items: center;
     background-color: #f8f8f8;
     padding: 20px 5px;
+    max-width: 325px;
+    margin: 0 auto;
 }
 
 .container__title{
@@ -52,12 +54,12 @@ html, body {
     flex-direction: column;
     justify-content: center;
     flex-flow: row wrap;
-    max-width: 325px;
+    width: 100%;
 }
 
 .block-1 > figure{
     width: min(100%, 325px);
-    max-height: 140px;
+    height: 140px;
     display: flex;
     align-items: flex-end;
 }
@@ -136,6 +138,10 @@ html, body {
 
 
 @media only screen and (min-width:667px){
+    .container{
+        max-width: 617px;
+    }
+    
     .block-1{   
         display: grid;
         gap: 10px;
@@ -149,7 +155,6 @@ html, body {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(6, 1fr);
         margin: 0 5%;
-        max-width: 617px;
     }
     
     .block-1__item-1 {
@@ -196,13 +201,17 @@ html, body {
         align-items: flex-end;
     }
 
-    .block-1__item-horizontal {
-        
-        min-width: 100%
+    .block-1 .block-1__item-vertical{
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
     }
-    .block-1__item-vertical {
-        
-        height: 615px;
+
+    .block-1 .block-1__item-horizontal{
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        height: 165px;
     }
 
     .block-1__item-vertical .block-1__caption{
@@ -231,8 +240,18 @@ html, body {
 
 }
 
+@media only screen and (min-width:768px){
+    .container{
+        max-width: 700px;
+    }
+
+    .block-1 .block-1__item-horizontal{
+        height: 200px;
+    }
+}
+
 @media only screen and (min-width:1025px){
-    .block-1{   
+    .container{   
         max-width: 950px;
     }
 
@@ -256,6 +275,10 @@ html, body {
 
     .block-1__caption p {
         margin-right: 30%;
+    }
+
+    .block-1 .block-1__item-horizontal{
+        height: 260px;
     }
 
 
