@@ -31,14 +31,8 @@ function renderPatients(patients) {
 
     table = table + '</tbody></table>'
 
-    const resultsPanel = document.querySelector('.results')
-    resultsPanel.innerHTML = table
-
-    const filePanel = document.querySelector('.file')
-    
-    filePanel.classList.add('off')
-
-    resultsPanel.classList.remove('off')
+    const results = document.querySelector('.results')
+    results.innerHTML = table
 }
 
 function mechanizeTableClicks() {
@@ -52,20 +46,8 @@ function mechanizeTableClicks() {
 
             const patient = getPatientById(id)
 
-            //if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
-            //    patient.note = prompt('note?')
-
-            const resultsPanel = document.querySelector('.results')
-
-            resultsPanel.classList.add('off')
-
-            const filePanel = document.querySelector('.file')
-
-            const fileFullName = filePanel.querySelector('.file__full-name')
-
-            fileFullName.innerText = patient.firstName + ' ' + patient.lastName
-
-            filePanel.classList.remove('off')
+            if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
+                patient.note = prompt('note?')
         })
     })
 }
