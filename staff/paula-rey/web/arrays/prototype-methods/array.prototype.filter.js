@@ -1,6 +1,6 @@
 const names = ['Peter', 'Laura', 'Mike', 'Jessica', 'Wendy']
 
-const result = names.filter(word => word.length < 5)
+const result = names.filter(word => word.length <= 4)
 
 console.log(result)
 

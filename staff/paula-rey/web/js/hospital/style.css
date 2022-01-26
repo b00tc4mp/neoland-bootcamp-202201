@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap'); 
 /* @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap'); */
 
 * {
@@ -6,6 +6,12 @@
     font-family: 'Ubuntu Mono';
     /* font-family: 'Homemade Apple'; */
 }
+
+
+.off {
+    display: none;
+}
+
 
 .container {
     display: flex;
@@ -33,5 +39,37 @@
     padding: 0 10px;
 }
 
+.file__info {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.file__info > div {
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.file__info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:10px;
+}
+
+.file label {
+    width: 150px;
+}
+
+.file input {
+    width: 250px;
+    padding: 10px;
+  }
+
+.file__comments {
+    display: flex;
+    flex-direction: column;
+}
 
 

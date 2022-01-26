@@ -12,6 +12,7 @@ function find(array, callback) {
 
 }
 
+
 const mike = find(names, (element) => {
     if(element === 'Mike') return true
 })
