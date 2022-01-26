@@ -36,7 +36,6 @@ for (let i = 0; i < 1000; i++) {
     
     const bloodType = randomElement(bloodTypes)
     
-    
     const day = randomInteger(1, 31)
     const month = randomInteger(1, 12)
     const year = randomInteger(1900, 2022)
@@ -44,7 +43,7 @@ for (let i = 0; i < 1000; i++) {
     const birthDate = newDate(year, month, day)
     
     const city = randomElement(cities) + ' City'
-    const country = randomElement(countries)
+    const country = 'Republic of ' + randomElement(countries)
 
     const domain = randomElement(domains)
     

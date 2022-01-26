@@ -1,5 +1,5 @@
 // how to get the age of somebody by his/her date of birth
-
+/*
 function calculateAge(year, month, day) {
     var date = new Date
     
@@ -33,3 +33,4 @@ function calculateAge(year, month, day) {
  
  0 === -0
  true
+ */
