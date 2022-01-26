@@ -4,8 +4,7 @@ firstNameInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const patients = getPatientsByFirstName(firstNameInput.value)
 
-        renderPatients(patients)
-        mechanizeTableClicks()
+        renderResults(patients)
     }
 })
 
@@ -15,8 +14,7 @@ lastNameInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const patients = getPatientsByLastName(lastNameInput.value)
 
-        renderPatients(patients)
-        mechanizeTableClicks()
+        renderResults(patients)
     }
 })
 
@@ -26,8 +24,7 @@ genderInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const patients = getPatientsByGender(genderInput.value)
 
-        renderPatients(patients)
-        mechanizeTableClicks()
+        renderResults(patients)
     }
 })
 
@@ -37,8 +34,7 @@ yearInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const patients = getPatientsByYear(parseInt(yearInput.value))
 
-        renderPatients(patients)
-        mechanizeTableClicks()
+        renderResults(patients)
     }
 })
 
@@ -48,8 +44,7 @@ bloodTypeInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const patients = getPatientsByBloodType(bloodTypeInput.value)
 
-        renderPatients(patients)
-        mechanizeTableClicks()
+        renderResults(patients)
     }
 })
 
@@ -59,7 +54,6 @@ idInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         const patient = getPatientById(idInput.value)
 
-        renderPatients([patient])
-        mechanizeTableClicks()
+        renderResults([patient])
     }
 })
