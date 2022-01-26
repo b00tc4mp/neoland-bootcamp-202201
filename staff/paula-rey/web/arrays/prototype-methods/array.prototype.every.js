@@ -1,9 +1,13 @@
-/*MDN:
+const names = ['Peter', 'John', 'Jack', 'Tiffany', 'Jason', 'Mathew', 'Dave', 'Jessica', 'Wendy', 'Janise', 'Janet', 'Kelly', 'Taylor', 'Christina', 'Mary']
 
-const isBelowThreshold = (currentValue) => currentValue < 40;
+const allMoreThan3Chars = names.every(name => name.length > 3)
 
-const array1 = [1, 30, 39, 29, 10, 13];
+console.log(allMoreThan3Chars)
 
-console.log(array1.every(isBelowThreshold));
-//expected output: true  (o todos ---- o la ---- al rio)
-*/
+const allMoreThan6Chars = names.every(name => name.length > 6)
+
+console.log(allMoreThan6Chars)
+
+const allStrings = names.every(name => typeof name === 'string')
+
+console.log(allStrings)
