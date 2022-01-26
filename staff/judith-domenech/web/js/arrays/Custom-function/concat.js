@@ -1,5 +1,17 @@
-const array1 = ['Judith', 'Paca', 'Isi'];
-const array2 = ['Eustaquia', 'Esther', 'Colero'];
-const array3 = array1.concat(array2);
+const nombre1 = ['Judith', 'Paca', 'Isi'];
+const nombre2 = ['Eustaquia', 'Esther', 'Colero'];
+
+function concat (array, )
 
 
+
+
+
+
+
+
+
+
+crear un nuevo array, 
+recorreer los strings y que el valor de cada posicion se añada al string creado
+imprimir nuevo array creado

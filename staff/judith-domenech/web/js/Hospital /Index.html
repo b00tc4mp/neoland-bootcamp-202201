@@ -5,34 +5,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital</title>
+    <title>Hospital v3</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="container container--column">
+    <h1>Medikito</h1>
     
-    <div class="inputs">
-        <input class="id" type="text" placeholder="Id">
-        <input class="first-name" type="text" placeholder="First Name">
-        <input class="last-name" type="text" placeholder="Last Name">
-        <input class="gender" type="text" placeholder="Gender">
-        <input class="year" type="number" placeholder="Year">
-        <input class="blood-type" type="text" placeholder="Blood type">
-        <button class="show-all" type="button">Show All</button>
-    </div>
+    <input class="id" type="text" placeholder="id">
+    <input class="first-name" type="text" placeholder="first name">
+    <input class="last-name" type="text" placeholder="last name">
+    <input class="gender" type="text" placeholder="gender">
+    <input class="year" type="number" placeholder="year">
+    <input class="blood-type" type="text" placeholder="blood type">
 
     <div class="results"></div>
 
     <div class="file off">
-        <h2 class="file__full-name"></h2>
-        <P class = "file__phone"></P>
-        <p class = "file__mail"></p>
-        <P class = "file__blood-type"></P>
-        <P class = "file__year"></P>
-        <P class = "file__gender"></P>
-        <p class = "file__Age"></p>
-        <P class = "file__city"></P>
-        <p class = "file__country"></p>
+        <h2 class="file__title">Personal file</h2>
+
+        <div class="file__body">
+            <div class="file__column">
+
+                <div class="file__field">
+                    <label class="file__label" for="file__full-name">Full Name</label>
+                    <input disabled id="file__full-name" class="file__full-name">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__id">ID</label>
+                    <input disabled class="file__id">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__birthdate">Birth date</label>
+                    <input disabled id="file__birthdate" class="file__birthdate">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__city">City</label>
+                    <input disabled id="file__city" class="file__city">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__country">Country</label>
+                    <input disabled id="file__country" class="file__country">
+                </div>
+            </div>
+
+            <div class="file__column">
+                <div class="file__field">
+                    <label class="file__label" for="file__gender">Gender</label>
+                    <input disabled id="file__gender" class="file__gender">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__blood-type">Blood type</label>
+                    <input disabled id="file__blood-type" class="file__blood-type">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__age">Age</label>
+                    <input disabled id="file__age" class="file__age">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__phone">Phone</label>
+                    <input disabled id="file__phone" class="file__phone">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__email">E-mail</label>
+                    <input disabled id="file__email" class="file__email">
+                </div>
+            </div>
+        </div>
+
+        <div class="file__note">
+            <textarea class="file__note-text" name="" id="" cols="30" rows="10"></textarea>
+            <button class="file__save-note">Save note</button>
+        </div>
     </div>
 
     <script src="helpers.js"></script>

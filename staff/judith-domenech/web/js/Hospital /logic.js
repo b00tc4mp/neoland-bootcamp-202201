@@ -8,6 +8,4 @@ const getPatientsByGender = gender => hospital.patients.filter(patient => patien
 
 const getPatientsByBloodType = bloodType => hospital.patients.filter(patient => patient.bloodType === bloodType)
 
-const getPatientsByYear = year => hospital.patients.filter(patient => patient.birthDate.getFullYear() === year)
-
-const getShowAll = () => hospital.patients
+const getPatientsByYear = year => hospital.patients.filter(patient => patient.birthDate.getFullYear() === year);
