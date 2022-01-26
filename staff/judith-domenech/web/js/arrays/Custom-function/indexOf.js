@@ -1,7 +1,7 @@
 const numbers = [2, 9, 3, 4, 5, 2, 5, 8];
 
 function indexOf (array, number, index) {
-    debugger
+    
     for(let i = index; i < array.length; i++ ){
 
         if(array[i] === number) {
