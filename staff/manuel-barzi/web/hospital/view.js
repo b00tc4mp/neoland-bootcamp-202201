@@ -62,8 +62,33 @@ function mechanizeTableClicks() {
             const filePanel = document.querySelector('.file')
 
             const fileFullName = filePanel.querySelector('.file__full-name')
-
             fileFullName.innerText = patient.firstName + ' ' + patient.lastName
+
+            const fileId = filePanel.querySelector('.file__id')
+            fileId.innerText = patient.id
+
+            const fileBirthdate = filePanel.querySelector('.file__birthdate')
+            fileBirthdate.innerText = patient.birthDate
+
+            const fileCity = filePanel.querySelector('.file__city')
+            fileCity.innerText = patient.city
+
+            const fileCountry = filePanel.querySelector('.file__country')
+            fileCountry.innerText = patient.country
+
+            const fileGender = filePanel.querySelector('.file__gender')
+            fileGender.innerText = patient.gender
+
+            const fileBloodType = filePanel.querySelector('.file__blood-type')
+            fileBloodType.innerText = patient.bloodType
+
+            const filePhone = filePanel.querySelector('.file__phone')
+            filePhone.innerText = patient.phone
+            filePhone.href = 'tel:' + patient.phone
+
+            const fileEmail = filePanel.querySelector('.file__email')
+            fileEmail.innerText = patient.email
+            fileEmail.href = 'mailto: ' + patient.email
 
             filePanel.classList.remove('off')
         })
