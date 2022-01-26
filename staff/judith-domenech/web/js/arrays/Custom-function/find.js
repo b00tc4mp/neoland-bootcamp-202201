@@ -11,7 +11,7 @@ function find(array, callback) {
 
 }
 
-const mike = find(names, (element) => {
+const mike = find(names, element => {
     if(element === 'Mike') return true
 })
 
@@ -22,7 +22,7 @@ console.log(mike)
 
 // const find = (array, callback) => {
 
-//     let res
+//     let res 
 
 //     for(let i = 0; i < array.length; i++) {
 
@@ -33,8 +33,8 @@ console.log(mike)
 //     }
 
 //     return res
-
 // }
+
 
 // const mike = find(names, (element) => element === 'Mike')
 
