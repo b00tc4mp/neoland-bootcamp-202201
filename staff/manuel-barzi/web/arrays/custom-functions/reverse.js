@@ -1,7 +1,7 @@
 function reverse(array) {
-    // TODO implement me [1, 2, 3, 4, 5, 6]
+    const limit = Math.floor(array.length / 2)
 
-    for (let i = 0; i < Math.floor(array.length / 2); i++) {
+    for (let i = 0; i < limit; i++) {
         const elem1 = array[i]
         const elem2 = array[array.length - 1 - i]
 
@@ -12,14 +12,10 @@ function reverse(array) {
     return array
 }
 
-const numbers = ['one', 'two', 'three']
+const numbers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven']
 console.log('numbers:', numbers)
-// expected output: "numbers:" Array ["one", "two", "three"]
 
 const reversed = reverse(numbers)
 console.log('reversed:', reversed)
-// expected output: "reversed:" Array ["three", "two", "one"]
 
-// Careful: reverse is destructive -- it changes the original array.
 console.log('numbers:', numbers)
-// expected output: "numbers:" Array ["three", "two", "one"]
