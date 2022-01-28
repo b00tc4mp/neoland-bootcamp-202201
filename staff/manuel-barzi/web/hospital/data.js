@@ -11,6 +11,10 @@ function Person(id, firstName, lastName, gender, birthDate, bloodType, city, cou
     this.phone = phone
 }
 
+Person.prototype.getAge = function() {
+    return calculateAge(this.birthDate) // this -> 'context'
+}
+
 const firstNames = ['Pepito', 'Peter', 'Wendy', 'John', 'Manuel', 'Matias', 'Paula', 'María', 'Judith', 'Alba', 'Alejandro', 'Gio', 'Joel', 'Nicolás', 'Jeremías', 'Ventura', 'Iván', 'Susan', 'Francesc', 'Zoraida', 'Victor', 'Yastá', 'Noseyo', 'Elba', 'Elber', 'Aitor', 'Cindy', 'Ana', 'Bat']
 
 const lastNames = ['Grillo', 'Pan', 'Lennon', 'Barzi', 'Prats', 'Mandioca', 'Tigre', 'Esponja', 'Lechuga', 'Hernández', 'Gonzáles', 'Fumeta', 'Ventura', 'Rodríguez', 'García', 'Lorca', 'Pirulo', 'Campo', 'López', 'Canal', 'Zanahoria', 'Espineta', 'Patata', 'Surero', 'Nero', 'Capullito', 'Alelí', 'Tramboliko', 'Arbolada', 'Fuá', 'Extra']

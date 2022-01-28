@@ -1,7 +1,7 @@
 function renderResults(patients) {
     const tableHeaders = ['ID', 'First Name', 'Last Name', 'E-mail', 'Phone']
 
-    const headers = tableHeaders.map(header => `<th>${header}</th>`).join('')
+    const headers = tableHeaders.map(header => `<th>${header}</th>`).join('') // '<th>ID</th><th>First... </th>'
 
     const rows = patients.map(patient => {
         const { id, firstName, lastName, email, phone } = patient
@@ -11,7 +11,7 @@ function renderResults(patients) {
         const cells = dataValues.map(dataValue => `<td>${dataValue}</td>`).join('')
 
         return `<tr>${cells}</tr>`
-    }).join('')
+    }).join('') // '<tr><td>...</td></tr><tr><td>...</td></tr>'
 
     const resultsPanel = document.querySelector('.results')
 
@@ -135,7 +135,8 @@ function renderFile(patient) {
     fileBloodType.value = patient.bloodType
 
     const fileAge = filePanel.querySelector('.file__age')
-    fileAge.value = calculateAge(patient.birthDate)
+    //fileAge.value = calculateAge(patient.birthDate)
+    fileAge.value = patient.getAge()
 
     const filePhone = filePanel.querySelector('.file__phone')
     filePhone.value = patient.phone
