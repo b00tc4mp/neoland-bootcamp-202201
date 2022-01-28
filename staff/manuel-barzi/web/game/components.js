@@ -92,6 +92,8 @@ function Roboloko(color, width, height) {
 
     mouth.add(tooth)
 
+    this.tooth = tooth
+
     this.add(eye)
     this.add(mouth)
 
@@ -102,3 +104,12 @@ function Roboloko(color, width, height) {
 
 Roboloko.prototype = Object.create(Shape.prototype)
 Roboloko.prototype.constructor = Roboloko
+
+Roboloko.prototype.toggleTooth = function () {
+    const { style } = this.tooth.container
+
+    if (style.backgroundColor === 'white')
+        style.backgroundColor = 'black'
+    else
+        style.backgroundColor = 'white'
+}

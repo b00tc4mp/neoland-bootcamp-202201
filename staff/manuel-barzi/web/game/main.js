@@ -4,14 +4,22 @@ const tomato = new Roboloko('tomato', 50, 50)
 tomato.moveRight(100)
 tomato.moveDown(100)
 
-tomato.container.addEventListener('click', () => alert('Give me more, baby!'))
+tomato.container.addEventListener('click', () => {
+    alert('Give me more, baby!')
+
+    tomato.toggleTooth()
+})
 
 const blue = new Roboloko('dodgerblue', 100, 100)
 
 blue.moveRight(200)
 blue.moveDown(100)
 
-blue.container.addEventListener('click', () => alert('Hey, dont touch me!'))
+blue.container.addEventListener('click', () => {
+    alert('Hey, dont touch me!')
+
+    blue.toggleTooth()
+})
 
 const green = new Roboloko('greenyellow', 75, 75)
 
@@ -20,6 +28,8 @@ green.moveDown(100)
 
 green.container.addEventListener('click', () => {
     blue.moveLeft(10)
+
+    green.toggleTooth()
 })
 
 document.body.append(tomato.container)
