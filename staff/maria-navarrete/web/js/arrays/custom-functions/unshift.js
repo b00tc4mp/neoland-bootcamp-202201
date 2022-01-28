@@ -1,16 +1,10 @@
 const names = ['Peter', 'Laura', 'Mike', 'Jessica', 'Wendy']
 
-const shift = array => {
-    const firstItem = array[0]
-    for (let i = 0; i < array.length - 1; i++)
-        array[i] = array[i + 1]
-    array.length = array.length - 1
-    return firstItem
-}
-
-function unshift(array) {
-    for (let i = 1; i < arguments.length; i++) {
-        array[i - 1] = arguments[i]
+function unshift() {
+    const array = arguments[0]
+    for (let i = arguments.length-1; i >=1; i--) {
+        for(let j = array.length; j>=0; j--)
+            j>0 ? array[j]=array[j-1] : array[j]=arguments[i]         
     }
     return array.length
 }
