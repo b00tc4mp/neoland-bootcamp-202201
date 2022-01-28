@@ -13,6 +13,10 @@ class Person {
     }
 }
 
+Person.prototype.getAge = function (){
+    return calculateAge(this.birthDate)
+}
+
 
 const firstNames=['Pepito','Peter', 'Wendy', 'Elba', 'Elsa', 'Elver', 'Aitor', 'Bob', 'Ventura', 'Manuel', 'Susan', 'Ricky', 'Judith', 'Gio', 'Alba', 'Paula', 'Maria', 'Mathias', 'Victor', 'Francesc', 'Joel', 'Ador', 'Juanca', 'Luisca', 'Jeremías', 'Alejandro', 'Ivan']
 const lastNames= ['Pirulo', 'Grillo', 'Pan','Galarga', 'Trambolico', 'Arbolada', 'Fua', 'Surero', 'Pato', 'Pito', 'Guero', 'Esponja', 'Estrella', 'Chondo', 'Lazo', 'Calao', 'Canal', 'Dugo', 'Barzi', 'Ventura', 'Espineta', 'Patata', 'Capullito', 'Nero', 'Lechuga', 'Tilla', 'Gajazo', 'Tedero', 'Aniego', 'Mut', 'Tigo', 'Nano', 'Capuntas', 'Bio', 'Buino', 'Bero', 'Tidor']
@@ -23,18 +27,22 @@ const countries = ['Rojo', 'Verde', 'Amarillo', 'Morado', 'Azul', 'Violeta', 'Bl
 const domains = ['gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com', 'mail.ru', 'pepito.com', 'wendy.com', 'myspace.com', 'messenger.com']
 const people=[]
 
-for(let i = 0; i<1000; i++){
+for(let i = 0; i < 1000; i++){
     const id = generateId()
     const firstName = randomElement(firstNames)
     const lastName = randomElement(lastNames)
     const gender = randomElement (genders)
+    
     const day = randomInteger(1,31)
     const month = randomInteger(1,12)
     const year = randomInteger(1922, 2022)
     const birthDate = newDate(year, month, day)
+    
     const bloodType = randomElement(bloodTypes)
+    
     const city = randomElement(cities) + ' City'
     const country = 'Republic of '+ randomElement(countries)
+    
     const domain = randomElement(domains)
     const email = firstName.toLowerCase() + "." + lastName.toLowerCase() +"@" + domain
     const phone = randomInteger(600000000,790000000)

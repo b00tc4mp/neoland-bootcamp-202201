@@ -2,12 +2,26 @@ const generateId = () => randomInteger(100000000, 999999999).toString() + random
 
 const newDate = (year, month, day) => new Date (year, month-1, day)
 
-const calculateAge = (year,month,day) => {
-    var date = new Date
-    var yearNow = date.getFullYear()
-    var monthNow = date.getMonth()
-    var dayNow = date.getDate()
-    var age
+const randomInteger = (min, max) => min + Math.round((max-min) * Math.random())
+
+const randomElement = iterable => {
+    const index = randomInteger(0,iterable.length-1)
+    return iterable[index]
+} 
+
+const calculateAge = birthdate => {
+    
+    const month = birthdate.getMonth()
+    const day = birthdate.getDate()
+    const year = birthdate.getFullYear()
+    
+    const date = new Date
+    const yearNow = date.getFullYear()
+    const monthNow = date.getMonth()
+    const dayNow = date.getDate()
+    
+    let age
+    
     if(monthNow === month && dayNow>=day || monthNow >= month)
         age = yearNow-year
     else
@@ -15,11 +29,6 @@ const calculateAge = (year,month,day) => {
     return age
 }
 
-const randomInteger = (min, max) => min + Math.round((max-min) * Math.random())
 
-const randomElement = iterable => {
-    const index = randomInteger(0,iterable.length-1)
-    return iterable[index]
-} 
 
 

@@ -1,73 +1,163 @@
-const renderPatients = patients => {
-    const tableHeaders = ['ID', 'First Name', 'Last Name', 'Birth Date', 'Age', 'Gender', 'Blood Type', 'E-mail', 'Phone', 'City', 'Country']
-    const ths = tableHeaders.map(header => '<th>' + header + '</th>')
-    const thsInline = ths.join('')
-    let table = '<table class="table"><thead><tr>' + thsInline + '</tr></thead></tbody>'
+const renderResults = patients => {
+    const tableHeaders = ['ID', 'First Name', 'Last Name', 'E-mail', 'Phone']
+    
+    const headers = tableHeaders.map(header => `<th>${header}</th>`).join('')
 
-    for (let i = 0; i < patients.length; i++) {
-        const patient = patients[i]
-        const id = patient.id
-        const firstName = patient.firstName
-        const lastName = patient.lastName
-        const birthDate = patient.birthDate.toLocaleDateString()
-        const age = calculateAge(patient.birthDate.getFullYear(), patient.birthDate.getMonth(), patient.birthDate.getDate())
-        const gender = patient.gender
-        const bloodType = patient.bloodType
-        const email = patient.email
-        const phone = patient.phone
-        const city = patient.city
-        const country = patient.country
-
-        const dataValues = [id, firstName, lastName, birthDate, age, gender, bloodType, email, phone, city, country]
-        const tds = dataValues.map(dataValue => '<td>' + dataValue + '</td>')
-        const tdsInline = tds.join('')
-        table += '<tr>' + tdsInline + '</tr>'
-    }
-
-    table += '</tbody></table>'
-
+    const rows = patients.map(patient => {
+        const {id, firstName, lastName, email, phone} = patient
+        const dataValues = [id, firstName, lastName, email, phone]
+        const rowsInline = dataValues.map(dataValue => `<td>${dataValue}</td>`).join('')
+        return `<tr>${rowsInline}</tr>`
+    }).join('')
+    
     const resultsPanel = document.querySelector('.results')
-    resultsPanel.innerHTML = table
+        
+    resultsPanel.innerHTML = `<table class ="table">
+                                <thead>
+                                    <tr>${headers}</tr>
+                                </thead>
+                                <tbody>
+                                    ${rows}
+                                </tbody>
+                            </table>`
+
+    resetInputs()
+    mechanizeResultsClicks()
     const filePanel = document.querySelector('.file')
     filePanel.classList.add('off')
-    resultsPanel.classList.remove('off')    
+    resultsPanel.classList.remove('off')
 }
 
-const renderPatientDetails 
+const resetInputs = () => {
+    const searchInputs = document.querySelectorAll('search>*')
+    for(let i=0; searchInputs.length; i++){
+        if(!(searchInputs[i] === document.activeElement))
+            searchInputs[i].value = ""
+    }
+}
 
-const mechanizeTableClicks = () => {
+const mechanizeResultsClicks = () => {
     const rows = document.querySelector('.table').querySelector('tbody').querySelectorAll('tr')
-   
+
     rows.forEach(row => {
-        const cell = row.querySelector('td')
-        cell.addEventListener('click', function (event) {
-            const id = event.target.innerText
+        row.addEventListener('click', function () {
+            const cell = row.querySelector('td')
+            const id = cell.innerText
             const patient = getPatientById(id)
+            renderFile(patient)
             // if (confirm('Current note: "' + patient.note + '". Wanna change it?'))
             //     patient.note = prompt('note?')
-            const resultsPanel= document.querySelector('.results')
-            resultsPanel.classList.add('off')
-            const filePanel = document.querySelector('.file')
-            const fileFullName = filePanel.querySelector('.file__full-name')
-            
-            const year = patient.birthDate.getFullYear() 
-            const month = patient.birthDate.getMonth()
-            const date = patient.birthDate.getDate()
-
-            const age = calculateAge(year,month,date)
-            
-            fileFullName.innerText = patient.firstName + ' ' + patient.lastName + '(' + age + ')'
-            document.getElementById('firstName').value = patient.firstName
-            document.getElementById('lastName').value = patient.lastName
-            document.getElementById('id').value = patient.id
-            document.getElementById('birthDate').value = patient.birthDate.toLocaleDateString()
-            document.getElementById('age').value = age
-            document.getElementById('gender').value = patient.gender
-            document.getElementById('bloodType').value = patient.bloodType
-            document.getElementById('email').value = patient.email
-            document.getElementById('phone').value = patient.phone
-            document.getElementById('place').value = patient.city + ", " + patient.country
-            filePanel.classList.remove('off')
         })
+    })
+}
+
+const renderFile = patient => {
+    const filePanel = document.querySelector('.file')
+
+    filePanel.innerHTML = `<h2 class="file__title">Personal File</h2>
+    <div class="file__body">
+        <div class="file__column">
+            <div class="file__field">
+                <label class="file__label" for="file__full-name">Full Name</label>
+                <input type="text" id="file__full-name" class="file__full-name" name="file__full-name" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__id">ID</label>
+                <input type="text" id="file__id" class="file__id" name="file__id" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__birthdate">Date of Birth</label>
+                <input type="text" id="file__birthdate" class="file__birthdate" name="file__birthdate" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__city">City</label>
+                <input type="text" id="file__city" class="file__city" name="file__city" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__country">Country</label>
+                <input type="text" id="file__country" class="file__country" name="file__country" disabled/>
+            </div>
+        </div>
+        <div class="file__column">
+            <div class="file__field">
+                <label class="file__label" for="file__gender">Gender</label>
+                <input type="text" id="file__gender" class="file__gender" name="file__gender" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__blood-type">Blood Type</label>
+                <input type="text" id="file__blood-type" class="file__blood-type" name="file__blood-type" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__age">Age</label>
+                <input type="number" id="file__age" class="file__age" name="file__age" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__phone">Phone</label>
+                <input type="tel" id="file__phone" class="file__phone" name="file__phone" disabled/>
+            </div>
+            <div class="file__field">
+                <label class="file__label" for="file__email">E-mail</label>
+                <input type="email" id="file__email" class="file__email" name="file__email" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="file__note">
+            <textarea class="file__note-text" name="" id="" cols="30" rows="10"></textarea>
+            <button class="file__save-note">Save Note</button>
+    </div>`
+
+    const fileFullName = filePanel.querySelector('.file__full-name')
+    fileFullName.value=patient.firstName + ' ' + patient.lastName
+    
+    const fileId = filePanel.querySelector('.file__id')
+    fileId.value = patient.id
+
+    const fileBirthdate = filePanel.querySelector('.file__birthdate')
+    fileBirthdate.value = patient.birthDate.toLocaleDateString()
+
+    const fileCity = filePanel.querySelector('.file__city')
+    fileCity.value = patient.city
+
+    const fileCountry = filePanel.querySelector('.file__country')
+    fileCountry.value = patient.country
+
+    const fileGender = filePanel.querySelector('.file__gender')
+    fileGender.value = patient.gender
+
+    const fileBloodType = filePanel.querySelector('.file__blood-type')
+    fileBloodType.value = patient.bloodType
+
+    const fileAge = filePanel.querySelector('.file__age')
+    fileAge.value = patient.getAge()
+
+    const filePhone = filePanel.querySelector('.file__phone')
+    filePhone.value = patient.phone
+
+    const fileEmail = filePanel.querySelector('.file__email')
+    fileEmail.value = patient.email
+
+    const fileNoteTextarea = filePanel.querySelector('.file__note-text')
+
+    if(patient.note)
+        fileNoteTextarea.value = patient.note
+    else
+        fileNoteTextarea.value = ''
+    
+    mechanizeSaveNote(patient)
+
+    const resultsPanel = document.querySelector('.results')
+    resultsPanel.classList.add('off')
+    filePanel.classList.remove('off')
+}
+
+const mechanizeSaveNote = patient =>{
+    const filePanel = document.querySelector('.file')
+
+    const fileSaveNoteButton = filePanel.querySelector('.file__save-note')
+
+    fileSaveNoteButton.addEventListener('click', function (){
+        const fileNoteTextarea = filePanel.querySelector('.file__note-text')
+        const note = fileNoteTextarea.value
+        patient.note = note
     })
 }
