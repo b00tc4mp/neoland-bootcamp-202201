@@ -24,8 +24,12 @@ function Woman(name) {
 Woman.prototype = Object.create(Person.prototype)
 Woman.prototype.constructor = Woman
 
-Woman.prototype.giveBirth = function () {
-    return '👶🏻'
+Woman.prototype.giveBirth = function (expression) {
+    return `${this.name}: ${expression} 👶🏻`
+}
+
+Woman.prototype.doMulti = function(tasks) {
+    return `${this.name}: ${tasks.join(', ')}`
 }
 
 /**
@@ -41,16 +45,25 @@ function Man(name) {
 Man.prototype = Object.create(Person.prototype)
 Man.prototype.constructor = Man
 
-Man.prototype.giveSperm = function () {
-    return '💦'
+Man.prototype.giveSperm = function (expression) {
+    return `${this.name}: ${expression} 💦`
 }
 
+Man.prototype.doNothing = function () {
+    return `${this.name}: ...`
+}
 
 var wendy = new Woman('Wendy')
 var peter = new Man('Peter')
 
 console.log(peter.salute(wendy))
 console.log(wendy.salute(peter))
+
+console.log(peter.giveSperm('✨🤪 ...'))
+console.log(wendy.giveBirth('💨 💨 💨 💨 ...'))
+
+console.log(wendy.doMulti(['work', 'study', 'attend 👶🏻', 'call parents', 'do sports', 'party']))
+console.log(peter.doNothing())
 
 console.log(peter instanceof Object) // true
 console.log(peter instanceof Person) // true
