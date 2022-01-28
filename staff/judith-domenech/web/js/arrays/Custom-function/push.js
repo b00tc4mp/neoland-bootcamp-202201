@@ -1,25 +1,41 @@
-// TODO list
-// Escribo el esquema básico
-// Invoco a la función (la llamo y le paso valores)
-// Me escribo los test (expected output)
-// Escribimos en comportamiento humano cómo lo solucionaríamos nosotros (paso paso)
-// Tratamos de traducirlo a código
-// En caso de falllo debugger
+// Leer la documentación
+// Crear esquema Inicial
+// Crear Datos
+// Crear parametros y escribir que esperamos que devuelva la función
+// Crear los expected outputs
+// Escribimos en lenguaje humano como resolveriasmos nosotros este problema
+// Traducir a codigo
+// En caso de fallito debugger (in love)
 
 
 const animals = ['pigs', 'goats', 'sheep', 'horse']
 
 
-function push(array, value) {
+function push(array, value) {   
     array[array.length] = value
-    return array
+    return array.length
 }
 
-console.log(push(animals, 'dog'))
+console.log(push(animals, 'dog' , 'vaca', ' pajarito'))
 
 
-// expected output: ['pigs', 'goats', 'sheep', 'horse', 'dog']
+// ['pigs', 'goats', 'sheep', 'horse', 'dog'] no añade el resto de elemetos.
 
-// Pillo el valor que me dan, voy al sitio donde tengo que dejarlo,
-// lo dejo en la última posición y ahora cuento cuantos valores hay en total en el array
-// voy al jefe y le cuento cuantos libros hay 
+
+
+
+// Añade todos los elementos con la función aguments que ya viene dada.
+
+const animals = ['pigs', 'goats', 'sheep', 'horse']
+
+
+function push(array) {   
+
+    for(let i = 1; i < arguments.length; i++){
+
+   array[array.length] = arguments[i]
+}
+return array.length
+}
+
+console.log(push(animals, 'dog' , 'vaca', ' dorada '))
