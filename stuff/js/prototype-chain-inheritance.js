@@ -17,7 +17,8 @@ Person.prototype.salute = function (to) {
  * @param {string} name The woman name.
  */
 function Woman(name) {
-    this.name = name
+    //this.name = name
+    Person.call(this, name)
 }
 
 //Woman.prototype = new Person()
@@ -38,7 +39,8 @@ Woman.prototype.doMulti = function(tasks) {
  * @param {string} name The name of the man.
  */
 function Man(name) {
-    this.name = name
+    //this.name = name
+    Person.call(this, name)
 }
 
 // Man.prototype = new Person()
