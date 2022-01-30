@@ -1,14 +1,14 @@
-const names = ['Peter', 'Laura', 'Mike', 'Jessica', 'Wendy']
+const colors = ['red', 'green', 'blue', 'purple', 'yellow', 'magenta', 'white', 'gray', 'tomato', 'navy', 'dodger', 'black', 'brown']
 
-function filter(array){
-    const shortNames = []
-    let index = 0
+function filter(array, callback) {
+    const filtered = []
 
-    for (let i = 0; i < names.length; i++)
-         if (names[i] < 5) {
-             shortNames = shortNames + names[i]
+    for (let i = 0; i < array.lenght; i++) {
+        const element = array [i]
 
-             index++
-         }
-    return shortNames
+        if (callback(element))
+            filtered[filtered.length] = element
+    }
+
+    return filtered
 }
