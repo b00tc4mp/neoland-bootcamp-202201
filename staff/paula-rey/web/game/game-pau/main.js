@@ -1,8 +1,8 @@
 
-const cloud = new SunShine('rgb(93,84, 223)', 200, 200,)
+const cloud = new Cloudy('rgb(93,84, 223)', 150, 150,)
 
-cloud.moveRight(200)
-cloud.moveDown(100)
+cloud.moveRight(400)
+cloud.moveDown(200)
 
 /*
 cloud.container.addEventListener('click', () => {
@@ -11,10 +11,10 @@ cloud.container.addEventListener('click', () => {
     cloud.toggleTooth()
 })*/
 
-const sun = new SunShine('rgb(236, 236, 18)', 150, 150)
+const sun = new Sunny('rgb(236, 236, 18)', 150, 150)
 
-sun.moveRight(300)
-sun.moveDown(100)
+sun.moveRight(400)
+sun.moveDown(500)
 
 /*
 sun.container.addEventListener('click', () => {
