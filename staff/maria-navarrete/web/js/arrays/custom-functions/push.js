@@ -1,10 +1,5 @@
 const names = ['Peter', 'Laura', 'Mike', 'Jessica', 'Wendy']
 
-// const push = (array, item)  =>{
-//     array[array.length]=item
-//     return array.length
-// }
-
 function push () {
     const array = arguments[0]
     for(let i = 1; i<arguments.length; i++)
