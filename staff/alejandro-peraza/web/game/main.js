@@ -1,80 +1,57 @@
- const face = document.createElement('div')
-face.classList.add('face')
+const tomato = new Roboloko ('tomato', 50, 50)
 
-const eye = document.createElement('div')
-eye.classList.add('eye')
+tomato.moveRight(100)
+tomato.moveDown (100)
 
-const pupil = document.createElement('div')
-pupil.x = 0
-pupil.y = 0
-pupil.xStep = 1
-pupil.YStep = 1
-pupil.classList.add('pupil')
-pupil.style.top = `${pupil.y}px`
-pupil.style.left = `${pupil.x}px`
+tomato.container.addEventListener('click', () => {
+    alert('Show me the money!')
 
-setInterval(() => {
-    if (pupil.x >= 10)  
-    pupil.xStep = -Math.random()
-    else if (pupil.x <= 0)
-    pupil.xStep = Math.random()
+    tomato.toggleTooth()
+})
 
-    pupil.x = pupil.x + pupil.xStep
-    pupil.style.left = `${pupil.x}px`
-}, 10)
+const blue = new Roboloko('dodgerblue', 100, 100)
 
-setInterval(() => {
-    if (pupil.y >= 10)
-        pupil.yStep = -Math.random()
-    else if (pupil.y <= 0)
-        pupil.yStep = Math.random()
+blue.moveRight(200)
+blue.moveDown(100)
 
-    pupil.y = pupil.y + pupil.yStep
+blue.container.addEventListener('click', () => {
+    alert('Hey, dont touch me!')
 
-    pupil.style.top = `${pupil.y}px`
-}, 10)
+    blue.toggleTooth()
+})
 
-eye.append(pupil)
-eye.style.top = '20px'
-eye.style.left = '40px'
+const green = new Roboloko('greenyellow', 75, 75)
 
-const mouth = document.createElement('div')
-mouth.classList.add('mouth')
-mouth.style.top = '60px'
-mouth.style.left = '30px'
+green.moveRight(350)
+green.moveDown(100)
 
-const tooth = document.createElement('div')
-tooth.classList.add('tooth')
-tooth.style.left = '30px'
+green.container.addEventListener('click', () => {
+    blue.moveLeft(10)
 
-mouth.append(tooth)
+    green.toggleTooth()
+})
 
-face.append(eye)
-dispatchEvent.append(mouth)
+document.body.append(tomato.container)
+document.body.append(blue.container)
+document.body.append(green.container)
 
-face.x = 100
-face.y = 100
-face.xStep = 10
-face.yStep = 10
-face.style.left = `${faec.x}px`
-face.style.top = `${face.y}px`
+document.addEventListener('keydown', event => {
+    const { key } = event 
+    if (key === 'ArrowUp')
+        tomato.moveUp(10)
+    else if (key === 'ArrowDown')
+        tomato.moveDown(10)
+    else if (key === 'ArrowLeft')
+        tomato.moveLeft(10)
+    else if (key === 'ArrowRight')
+        tomato.moveRight(10)
 
-document.body.append(face)
-
-document.addEventListener('KEYDOWN', EVENT => {
-    const { key } = event
-
-    if (key === 'ArrowUp') {
-        face.y = face.y - face.yStep
-        face.style.top = `${face.y}px`
-    } else if (key === 'ArrowDown') {
-        face.y = face.y + face.yStep
-        face.style.top = `${face.y}px`
-    } else if (key === 'ArrowLeft') {
-        face.x = face.x - face.xStep
-        face.style.left = `${face.x}px`
-    } else if (key === 'ArrowRight') {
-        face.x = face.x + face.xStep
-        face.style.left = `${face.x}px`
-    }
+    if (key === 'w')
+        blue.moveUp(10)
+    else if (key === 's')
+        blue.moveDown(10)
+    else if (key === 'a')
+        blue.moveLeft(10)
+    else if (key === 'd')
+        blue.moveRight(10)
 })
