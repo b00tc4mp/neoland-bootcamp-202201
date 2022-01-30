@@ -1,5 +1,3 @@
-debugger;
-
 const animals = ["pigs", "goats", "sheep"];
 
 function unshift(array, item) {
@@ -10,3 +8,15 @@ function unshift(array, item) {
   return array;
 }
 console.log(unshift(animals, "cow"));
+
+/* function unshift(array, item) {
+  const newArray = [item];
+
+  array.forEach((element) => (newArray[newArray.length] = element));
+
+  return newArray;
+} */
+
+/* function unshift(array, item) {
+  return [item, ...array];
+} */

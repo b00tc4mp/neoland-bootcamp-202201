@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+* {
+  font-family: "Press Start 2P", cursive;
+}
+
+body {
+  background-color: #ded;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.robot {
+  margin-top: -120px;
+  background-color: white;
+  width: 400px;
+  padding: 72px;
+  padding-top: 24px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.robot__wrapper {
+  margin-bottom: 48px;
+}
+
+.robot__input {
+  padding: 8px 16px;
+  background-color: #ded;
+  border: none;
+  border-bottom: 5px solid green;
+}
