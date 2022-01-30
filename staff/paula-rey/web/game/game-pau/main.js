@@ -1,8 +1,8 @@
 
-const cloud = new Cloudy('rgb(93,84, 223)', 150, 150,)
+const cloud = new Cloudy('rgb(93,84, 223)', 240, 200, 30)
 
 cloud.moveRight(400)
-cloud.moveDown(200)
+cloud.moveDown(550)
 
 /*
 cloud.container.addEventListener('click', () => {
@@ -11,7 +11,7 @@ cloud.container.addEventListener('click', () => {
     cloud.toggleTooth()
 })*/
 
-const sun = new Sunny('rgb(236, 236, 18)', 150, 150)
+const sun = new Sunny('rgb(236, 236, 18)', 250, 250, 50)
 
 sun.moveRight(400)
 sun.moveDown(500)
@@ -41,7 +41,8 @@ document.addEventListener('keydown', event => {
 
 document.addEventListener('keydown', event => {
     const { key } = event
-
+    // algo que en caso de que se cumpla la condición se encienda o apage la luz
+    toggleLight()
     if (key === 'ArrowUp')
         sun.moveUp(10)
     else if (key === 'ArrowDown')

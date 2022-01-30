@@ -7,12 +7,12 @@ function join(array, separator) {
     
     for (let i = 0; i < array.length; i++) {
 
-         str += array[i]
+        str += array[i]
          
-         if (i != array.length - 1) {
+        if (!(i === (array.length - 1))) {
 
-             str += separator
-         }
+            str += separator
+        }
     }
         return str
 }
