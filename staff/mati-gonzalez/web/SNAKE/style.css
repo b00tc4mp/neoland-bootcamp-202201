@@ -8,7 +8,7 @@ body {
   background-color: black;
 }
 
-#game-board {
+.game-board {
   background-color: rgb(148, 130, 130);
   width: repeat(21, 15px);
   height: repeat(21, 15px);

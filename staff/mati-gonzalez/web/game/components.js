@@ -1,4 +1,5 @@
-function Shape(color, width, height) {
+class Shape{
+    constructor (color, width, height) {
     const container = document.createElement('div')
     const { style } = container
 
@@ -16,36 +17,38 @@ function Shape(color, width, height) {
     this.container = container
 }
 
-Shape.prototype.moveLeft = function (step) {
+moveLeft(step) {
     this.x = this.x - step
 
     this.container.style.left = `${this.x}px`
 }
 
-Shape.prototype.moveRight = function (step) {
+moveRight(step) {
     this.x = this.x + step
 
     this.container.style.left = `${this.x}px`
 }
 
-Shape.prototype.moveUp = function (step) {
+moveUp(step) {
     this.y = this.y - step
 
     this.container.style.top = `${this.y}px`
 }
 
-Shape.prototype.moveDown = function (step) {
+moveDown(step) {
     this.y = this.y + step
 
     this.container.style.top = `${this.y}px`
 }
 
-Shape.prototype.add = function (shape) {
+add(shape) {
     this.container.append(shape.container)
 }
+}
 
-function Roboloko(color, width, height) {
-    Shape.call(this, color, width, height)
+class Roboloko extends Shape {
+    constructor(color, width, height) {
+    super(this, color, width, height)
 
     const pupil = new Shape('black', width / 10, height / 10)
 
@@ -114,14 +117,13 @@ function Roboloko(color, width, height) {
     style.cursor = 'pointer'
 }
 
-Roboloko.prototype = Object.create(Shape.prototype)
-Roboloko.prototype.constructor = Roboloko
 
-Roboloko.prototype.toggleTooth = function () {
+toggleTooth() {
     const { style } = this.tooth.container
 
     if (style.backgroundColor === 'white')
         style.backgroundColor = 'black'
     else
         style.backgroundColor = 'white'
+}
 }

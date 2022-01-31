@@ -1,17 +1,14 @@
-import { onSnake, expandSnake } from './snake.js'
-import { randomGridPosition } from './grid.js'
-
 let food = getRandomFoodPosition()
 const EXPANSION_RATE = 5
 
-export function update() {
+function update() {
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE)
     food = getRandomFoodPosition()
   }
 }
 
-export function draw(gameBoard) {
+function draw(gameBoard) {
   const foodElement = document.createElement('div')
   foodElement.style.gridRowStart = food.y
   foodElement.style.gridColumnStart = food.x
