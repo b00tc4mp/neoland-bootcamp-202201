@@ -1,5 +1,5 @@
 
-const cloud = new Cloudy('rgb(93,84, 223)', 240, 200, 30)
+const cloud = new Cloudy('rgb(93,84, 223)', 260, 220, 30)
 
 cloud.moveRight(400)
 cloud.moveDown(550)
