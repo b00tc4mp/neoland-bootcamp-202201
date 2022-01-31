@@ -23,6 +23,7 @@ export function draw(gameBoard) {
     snakeElement.style.gridColumnStart = segment.x
     snakeElement.classList.add('snake')
     gameBoard.appendChild(snakeElement)
+    
     const eyeElement = document.createElement('div')
     eyeElement.classList.add('eye')
     eyeElement.style.top = '4px'
