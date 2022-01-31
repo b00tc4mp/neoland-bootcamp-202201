@@ -95,9 +95,13 @@ function Roboloko(color, width, height) {
 
     this.tooth = tooth
 
-    const ear = new Shape(color, width / 10, height / 5)
-    ear.moveRight(width)
-    ear.moveDown(height / 5)
+    const rightEar = new Shape(color, width / 10, height / 5)
+    rightEar.moveRight(width)
+    rightEar.moveDown(height / 5)
+
+    const leftEar = new Shape(color, width / 10, height / 5)
+    leftEar.moveLeft(width / 10)
+    leftEar.moveDown(height / 5)
 
     const nose = new Shape('black', width / 20, height / 20)
     nose.container.style.borderRadius = '50%'
@@ -107,7 +111,8 @@ function Roboloko(color, width, height) {
 
     this.add(eye)
     this.add(mouth)
-    this.add(ear)
+    this.add(rightEar)
+    this.add(leftEar)
     this.add(nose)
 
     const { style } = this.container

@@ -1,4 +1,4 @@
-
+debugger
 const tomato = new Roboloko('tomato', 50, 50)
 
 tomato.moveRight(100)
