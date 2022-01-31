@@ -27,28 +27,20 @@ document.body.append(sun.container)
 document.body.append(cloud.container)
 
 document.addEventListener('keydown', event => {
-    const { key } = event
 
-    if (key === 'w')
-        cloud.moveUp(10)
-    else if (key === 's')
-        cloud.moveDown(10)
-    else if (key === 'a')
-        cloud.moveLeft(10)
-    else if (key === 'd')
-        cloud.moveRight(10)
-})
-
-document.addEventListener('keydown', event => {
     const { key } = event
-    // algo que en caso de que se cumpla la condición se encienda o apage la luz
+    
     toggleLight()
-    if (key === 'ArrowUp')
-        sun.moveUp(10)
-    else if (key === 'ArrowDown')
-        sun.moveDown(10)
-    else if (key === 'ArrowLeft')
-        sun.moveLeft(10)
-    else if (key === 'ArrowRight')
-        sun.moveRight(10)
+
+    if (key === 'w') cloud.moveUp(10)
+    else if (key === 's') cloud.moveDown(10)
+    else if (key === 'a') cloud.moveLeft(10)
+    else if (key === 'd') cloud.moveRight(10)
+
+
+    if (key === 'ArrowUp') sun.moveUp(10)
+    else if (key === 'ArrowDown') sun.moveDown(10)
+    else if (key === 'ArrowLeft') sun.moveLeft(10)
+    else if (key === 'ArrowRight') sun.moveRight(10)
+    
 })
