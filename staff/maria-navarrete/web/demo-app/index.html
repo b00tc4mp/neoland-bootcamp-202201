@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="landing">
+        <div>
+            <a href="" class="landing__login">Login</a> or <a href="" class="landing__register">Register</a>
+        </div>
+    </div>
+
+    <div class="register off">
+        <form class="register__form">
+            <input class="register__name" type="text" name="name" placeholder="Name">
+            <input class="register__surname" type="text" name="surname" placeholder="Surname">
+            <input class="register__email" type="email" name="email" placeholder="E-mail">
+            <input class="register__password" type="password" name="password" placeholder="Password">
+            <button>Register</button>
+            <a href="" class="register__login-link">Login</a>
+        </form>
+    </div>
+
+    <div class="login off">
+        <form class="login__form">
+            <input class="login__email" type="email" name="email" placeholder="E-mail">
+            <input class="login__password" type="password" name="password" placeholder="Password">
+            <button>Login</button>
+            <a href="" class="login__register-link">Register</a>
+        </form>
+    </div>
+
+    <div class="home off">
+        <nav class="home__nav">
+            <a class="nav__home" href="">Home</a>
+            <span> | </span>
+            <a class="nav__profile" href="">Profile</a>
+            <span> | </span>
+            <a class="nav__logout" href="">Log out</a>
+        </nav>
+
+        <h1 class="home__welcome">Hola, Mundo!</h1>
+
+        <div class="profile off">
+            <form class="profile__form">
+                <div class="profile__field">
+                    <label class="profile__name-label" for="profile__name-input">Name</label>
+                    <input class="profile__name-input" id="profile__name-input" type="text" name="name" placeholder="Name">
+                </div>
+                <div class="profile__field">
+                    <label class="profile__surname-label" for="profile__surname-input">Surname</label>
+                    <input class="profile__surname-input" id="profile__surname-input" type="text" name="surname" placeholder="Surname">
+                </div>
+                <div class="profile__field">
+                    <label class="profile__email-label" for="profile__email-input">Email</label>
+                    <input class="profile__email-input" id="profile__email-input" type="email" name="email" placeholder="E-mail">
+                </div>
+                <div class="profile__field">
+                    <label class="profile__password-label" for="profile__password-input">Password</label>
+                    <input class="profile__password-input" id="profile__password-input" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="profile__field">
+                    <label class="profile__new-password-label" for="profile__new-password-input">New Password</label>
+                    <input class="profile__new-password-input" id="profile__new-password-input" type="password" name="password" placeholder="New password">
+                </div>
+                <div class="profile__field">
+                    <label class="profile__new-password-conf-label" for="profile__new-password-conf-input">Confirm New Password</label>
+                    <input class="profile__new-password-conf-input" id="profile__new-password-conf-input" type="password" name="password" placeholder="New password">
+                </div>
+                <button class="profile__submit">Update Profile</button>
+            </form>
+            <button class="profile__delete">Delete Account</button>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
