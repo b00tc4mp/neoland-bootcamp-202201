@@ -1,127 +1,128 @@
-function Shape(color, width, height) {
-    const container = document.createElement('div')
-    const { style } = container
+class Shape {
+    constructor(color, width, height) {
+        const container = document.createElement('div')
+        const { style } = container
 
-    style.position = 'absolute'
-    style.width = `${width}px`
-    style.height = `${height}px`
-    style.backgroundColor = color
+        style.position = 'absolute'
+        style.width = `${width}px`
+        style.height = `${height}px`
+        style.backgroundColor = color
 
-    this.x = 0
-    this.y = 0
+        this.x = 0
+        this.y = 0
 
-    style.top = `${this.y}px`
-    style.left = `${this.x}px`
+        style.top = `${this.y}px`
+        style.left = `${this.x}px`
 
-    this.container = container
+        this.container = container
+    }
+
+    moveLeft(step) {
+        this.x = this.x - step
+
+        this.container.style.left = `${this.x}px`
+    }
+
+    moveRight(step) {
+        this.x = this.x + step
+
+        this.container.style.left = `${this.x}px`
+    }
+
+    moveUp(step) {
+        this.y = this.y - step
+
+        this.container.style.top = `${this.y}px`
+    }
+
+    moveDown(step) {
+        this.y = this.y + step
+
+        this.container.style.top = `${this.y}px`
+    }
+
+    add(shape) {
+        this.container.append(shape.container)
+    }
 }
 
-Shape.prototype.moveLeft = function (step) {
-    this.x = this.x - step
+class Roboloko extends Shape {
+    constructor(color, width, height) {
+        super(color, width, height)
 
-    this.container.style.left = `${this.x}px`
-}
+        const pupil = new Shape('black', width / 10, height / 10)
 
-Shape.prototype.moveRight = function (step) {
-    this.x = this.x + step
+        let xDir
+        let yDir
 
-    this.container.style.left = `${this.x}px`
-}
+        const xLimit = width / 10
+        const yLimit = height / 10
 
-Shape.prototype.moveUp = function (step) {
-    this.y = this.y - step
+        setInterval(() => {
+            if (pupil.x <= 0)
+                xDir = 'right'
+            else if (pupil.x >= xLimit)
+                xDir = 'left'
 
-    this.container.style.top = `${this.y}px`
-}
+            if (xDir === 'right')
+                pupil.moveRight(Math.random())
+            else if (xDir === 'left')
+                pupil.moveLeft(Math.random())
 
-Shape.prototype.moveDown = function (step) {
-    this.y = this.y + step
+            if (pupil.y <= 0)
+                yDir = 'down'
+            else if (pupil.y >= yLimit)
+                yDir = 'up'
 
-    this.container.style.top = `${this.y}px`
-}
+            if (yDir === 'down')
+                pupil.moveDown(Math.random())
+            else if (yDir === 'up')
+                pupil.moveUp(Math.random())
+        }, 100)
 
-Shape.prototype.add = function (shape) {
-    this.container.append(shape.container)
-}
+        const eye = new Shape('yellow', width / 5, height / 5)
+        eye.moveDown(height / 5)
+        eye.moveRight(width / 2.5)
 
-function Roboloko(color, width, height) {
-    Shape.call(this, color, width, height)
+        eye.add(pupil)
 
-    const pupil = new Shape('black', width / 10, height / 10)
+        const mouth = new Shape('black', width / 2, height / 5)
+        mouth.moveDown(height / 1.7)
+        mouth.moveRight(width / 3)
 
-    let xDir
-    let yDir
+        const tooth = new Shape('white', width / 10, height / 6)
+        tooth.moveRight(width / 3)
 
-    const xLimit = width / 10
-    const yLimit = height / 10
+        mouth.add(tooth)
 
-    setInterval(() => {
-        if (pupil.x <= 0)
-            xDir = 'right'
-        else if (pupil.x >= xLimit)
-            xDir = 'left'
+        this.tooth = tooth
 
-        if (xDir === 'right')
-            pupil.moveRight(Math.random())
-        else if (xDir === 'left')
-            pupil.moveLeft(Math.random())
+        const ear = new Shape(color, width / 10, height / 5)
+        ear.moveRight(width)
+        ear.moveDown(height / 5)
 
-        if (pupil.y <= 0)
-            yDir = 'down'
-        else if (pupil.y >= yLimit)
-            yDir = 'up'
+        const nose = new Shape('black', width / 20, height / 20)
+        nose.container.style.borderRadius = '50%'
 
-        if (yDir === 'down')
-            pupil.moveDown(Math.random())
-        else if (yDir === 'up')
-            pupil.moveUp(Math.random())
-    }, 100)
+        nose.moveDown(eye.x + height / 10)
+        nose.moveRight(width / 3)
 
-    const eye = new Shape('yellow', width / 5, height / 5)
-    eye.moveDown(height / 5)
-    eye.moveRight(width / 2.5)
+        this.add(eye)
+        this.add(mouth)
+        this.add(ear)
+        this.add(nose)
 
-    eye.add(pupil)
+        const { style } = this.container
 
-    const mouth = new Shape('black', width / 2, height / 5)
-    mouth.moveDown(height / 1.7)
-    mouth.moveRight(width / 3)
+        style.cursor = 'pointer'
+    }
 
-    const tooth = new Shape('white', width / 10, height / 6)
-    tooth.moveRight(width / 3)
+    toggleTooth() {
+        const { style } = this.tooth.container
 
-    mouth.add(tooth)
-
-    this.tooth = tooth
-
-    const ear = new Shape(color, width / 10, height / 5)
-    ear.moveRight(width)
-    ear.moveDown(height / 5)
-
-    const nose = new Shape('black', width / 20, height / 20)
-    nose.container.style.borderRadius = '50%'
-
-    nose.moveDown(eye.x + height / 10)
-    nose.moveRight(width / 3)
-
-    this.add(eye)
-    this.add(mouth)
-    this.add(ear)
-    this.add(nose)
-
-    const { style } = this.container
-
-    style.cursor = 'pointer'
-}
-
-Roboloko.prototype = Object.create(Shape.prototype)
-Roboloko.prototype.constructor = Roboloko
-
-Roboloko.prototype.toggleTooth = function () {
-    const { style } = this.tooth.container
-
-    if (style.backgroundColor === 'white')
-        style.backgroundColor = 'black'
-    else
-        style.backgroundColor = 'white'
+        if (style.backgroundColor === 'white')
+            style.backgroundColor = 'black'
+        else
+            style.backgroundColor = 'white'
+    }
 }
