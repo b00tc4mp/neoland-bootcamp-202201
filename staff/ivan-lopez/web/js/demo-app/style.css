@@ -1,0 +1,65 @@
+* {
+    font-size: 1.2rem;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.off {
+    display: none !important;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.register__login-link {
+    text-align: center;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.login__register-link {
+    text-align: center;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.home__logout-button {
+    display: flex;
+    background-color: red;
+}
