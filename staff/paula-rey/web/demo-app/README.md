@@ -16,10 +16,20 @@ DONE implement home view
 
 DONE implement logout functionality (go to landing on logout)
 
-TODO implement profile view (allows user data to be updated)
+DONE implement profile view (allows user data to be updated)
 
 TODO implement unregister functionality (accessible from profile view with a button, has it's own unregister view, requires the password to procced, and redirects to landing)
-    HTML
-    Main: catch event and do view logic
-    Logic: fucnionality 
-    Debug 
+
+    - HTML
+    - MAIN
+    - LOGIC
+
+DONE implement update password view (from profile view)
+
+TODO reduce name and surname into just name (and all its functionalities)
+
+TODO add open/close eye in password inputs
+
+TODO add password security level below password inputs
+
+TODO improve password security (do not allow "password", "12345678", ... min length)

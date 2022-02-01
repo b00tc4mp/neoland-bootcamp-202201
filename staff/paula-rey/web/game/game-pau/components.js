@@ -105,23 +105,6 @@ function Cloudy(color, width, height, borderRadius) {
     const anexo3 = new Shape(color, width, height, 30)
     anexo3.moveRight(width / 0.6)
     anexo3.moveUp(height / 0)
-
-    // const eye1 = new Shape('white', width / 4, height / 5, 30)
-    // eye1.moveDown(height / 5)
-    // eye1.moveRight(width / 2)
-
-    // const eye2 = new Shape('white', width / 4, height / 5, 30)
-    // eye2.moveDown(height / 4)
-    // eye2.moveRight(width / 4)
-
-    // const pupil1 = new Shape('black', width / 7, height / 7, 40)
-    // pupil1.moveDown(height / 20)
-    // pupil1.moveRight(width / 40)
-  
-    // const pupil2 = new Shape('black', width / 7, height / 7, 40)
-    // pupil2.moveDown(height / 20)
-    // pupil2.moveRight(width / 40)
-
   
     /*
     const nose = new Shape('black', width / 20, height / 20)
@@ -130,16 +113,9 @@ function Cloudy(color, width, height, borderRadius) {
     nose.moveRight(width / 3)
     */
     
-    
     this.add(anexo1)
     this.add(anexo2)
     this.add(anexo3)
-    
-    //anexo2.add(eye1)
-    //anexo2.add(eye2)
-
-    //eye1.add(pupil1)
-    //eye2.add(pupil2)
     
     const { style } = this.container
     
@@ -155,16 +131,6 @@ Cloudy.prototype.constructor = Cloudy
 /*
 Cloudy.prototype.toggleTooth = function () {
     const { style } = this.tooth.container
-
-    if (style.backgroundColor === 'white')
-        style.backgroundColor = 'black'
-    else
-        style.backgroundColor = 'white'
-}*/
-
-/*
-Cloudy.prototype.rain = function () {
-    const { style } = this.drops.container
 
     if (style.backgroundColor === 'white')
         style.backgroundColor = 'black'

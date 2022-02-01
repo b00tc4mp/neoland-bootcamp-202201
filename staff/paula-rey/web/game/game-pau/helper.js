@@ -11,7 +11,20 @@ const toggleLight = () => { // brightness
         background.style.backgroundColor = 'white'
         contrastElement.style.color = 'black'
     }
+
+
+    if (300 > Math.sqrt((sun.y - cloud.y)**2 + (sun.x - cloud.x)**2 )) {
+        background.style.backgroundColor = 'black'
+        contrastElement.style.color = 'white'
+    }
+    else /*if (sun.y - cloud.y > 200 || sun.y - cloud.y < -200)*/ {
+        background.style.backgroundColor = 'white'
+        contrastElement.style.color = 'black'
+    }
 }
+
+
+
 
 
 
