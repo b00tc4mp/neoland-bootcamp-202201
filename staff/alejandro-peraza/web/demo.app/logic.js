@@ -79,6 +79,20 @@ function unregisterUser(id, password) {
     validateId(id)
     validatePassword(password)
 
+    let index
+    
+    
+    const user = user.find((user, _index) => {
+        index = _index
+        return user.id === id && user.password === password
+
+    })
+
+    if (!user) throw nex Error('incorrect password')
+
+    users.splice(index, 1)
+   
+   
     // if password is correct then delete 
 
 

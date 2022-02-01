@@ -164,7 +164,7 @@ updatePasswordBackLink.onclick = event => {
     event.preventDefault()
 
     updatePasswordView.classList.add('off')
-    
+
     profileView.classList.remove('off')
 }
 
@@ -185,7 +185,7 @@ deleteAccountBackLink.onclick = event => {
     event.preventDefault()
 
     deleteAccountView.classList.add('off')
-    
+
     profileView.classList.remove('off')
 }
 
@@ -206,7 +206,7 @@ profileForm.onsubmit = event => {
         updateUser(userId, name, surname, email)
 
         alert('user updated')
-    } catch(error) {
+    } catch (error) {
         alert(error.message)
     }
 }
@@ -232,27 +232,26 @@ updatePasswordForm.onsubmit = event => {
         rePasswordInput.value = ''
 
         alert('password updated')
-    } catch(error) {
+    } catch (error) {
         alert(error.message)
     }
 }
 
-// Tenéis que pillar el formulario para hacer delete
-// del formulario (etiqueta form) pillamos el submit y ahí implementamos lo que tengamos que implementar
-// se parece bastante al modifyUser
+const deleteAccountForm = deleteAccountView.querySelector('delete-acount__form')
 
-/*deleteAccountView.onclick = event => 
+
+deleteAccountForm.onsubmit = (event) => {
     event.preventDefault()
 
-const .querySelector('.profile__password-input').value
+    const passwordInput = deleteAccountForm.querySelector('.delete-account__input')
 
-if (currPasswordInput === currPasswordInput) {
+    try {
+        unregisterUser(userId, passwordInput.value)
+        profileView.classList.add('off')
         homeView.classList.add('off')
         landingView.classList.remove('off')
-        profileView.classList.add('off')
-        
+        alert('Deleted user')
+    } catch (error) {
+        alert(error.message)
     }
-
-
-}*/
-
+}
