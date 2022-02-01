@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="landing">
+        <div>
+            <a class="landing__login" href="">Login</a> or <a class="landing__register" href="">Register</a>
+        </div>
+    </div>
+
+    <div class="register off">
+        <form class="register__form">
+            <input class="register__name" type="text" name="name" placeholder="name">
+            <input class="register__surname" type="text" name="surname" placeholder="surname">
+            <input class="register__email" type="email" name="email" placeholder="e-mail">
+            <input class="register__password" type="password" name="password" placeholder="password">
+            <button>Register</button>
+            <a class="register__login-link" href="">Login</a>
+        </form>
+    </div>
+
+    <div class="login off">
+        <form class="login__form">
+            <input class="login__email" type="email" name="email" placeholder="e-mail">
+            <input class="login__password" type="password" name="password" placeholder="password">
+            <button>Login</button>
+            <a class="login__register-link" href="">Register</a>
+        </form>
+    </div>
+
+    <div class="home off">
+        <h1 class="home__welcome">Hola, Mundo!</h1>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
