@@ -83,12 +83,10 @@ registerForm.onsubmit = (event) => {
   event.preventDefault();
 
   const nameInput = registerForm.querySelector(".register__name-input");
-  const surnameInput = registerForm.querySelector(".register__surname-input");
   const emailInput = registerForm.querySelector(".register__email-input");
   const passwordInput = registerForm.querySelector(".register__password-input");
 
   const name = nameInput.value;
-  const surname = surnameInput.value;
   const email = emailInput.value;
   const password = passwordInput.value;
 
@@ -96,7 +94,6 @@ registerForm.onsubmit = (event) => {
     registerUser(name, surname, email, password);
 
     nameInput.value = "";
-    surnameInput.value = "";
     emailInput.value = "";
     passwordInput.value = "";
 
@@ -125,15 +122,12 @@ homeProfileLink.onclick = (event) => {
   event.preventDefault();
 
   const profileNameInput = profileView.querySelector(".profile__name-input");
-  const profileSurnameInput = profileView.querySelector(
-    ".profile__surname-input"
-  );
+ 
   const profileEmailInput = profileView.querySelector(".profile__email-input");
 
   const user = retrieveUser(userId);
 
   profileNameInput.value = user.name;
-  profileSurnameInput.value = user.surname;
   profileEmailInput.value = user.email;
 
   updatePasswordView.classList.add("off");
@@ -204,15 +198,13 @@ profileForm.onsubmit = (event) => {
   event.preventDefault();
 
   const nameInput = profileForm.querySelector(".profile__name-input");
-  const surnameInput = profileForm.querySelector(".profile__surname-input");
   const emailInput = profileForm.querySelector(".profile__email-input");
 
   const name = nameInput.value;
-  const surname = surnameInput.value;
   const email = emailInput.value;
 
   try {
-    updateUser(userId, name, surname, email);
+    updateUser(userId, name, email);
 
     alert("user updated");
   } catch (error) {

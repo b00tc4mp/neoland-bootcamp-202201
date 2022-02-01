@@ -19,14 +19,6 @@ function validateName(name) {
   if (SPACES_AROUND_REGEX.test(name)) throw new Error("name has spaces around");
 }
 
-function validateSurname(surname) {
-  if (typeof surname !== "string") throw new Error("surname is not a string");
-  if (surname === "") throw new Error("empty surname");
-  if (BLANK_REGEX.test(surname)) throw new Error("blank surname");
-  if (SPACES_AROUND_REGEX.test(surname))
-    throw new Error("surname has spaces around");
-}
-
 function validateId(id) {
   /* if (typeof id !== "string") throw new Error("id is not a string"); */
   if (id === "") throw new Error("empty id");

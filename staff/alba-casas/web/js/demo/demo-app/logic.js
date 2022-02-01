@@ -31,9 +31,8 @@ function retrieveUser(id) {
   return null;
 }
 
-function registerUser(name, surname, email, password) {
+function registerUser(name, email, password) {
   validateName(name);
-  validateSurname(surname);
   validateEmail(email);
   validatePassword(password);
 
@@ -41,15 +40,14 @@ function registerUser(name, surname, email, password) {
 
   if (user) throw new Error("user already exists");
 
-  user = new User(name, surname, email, password);
+  user = new User(name, email, password);
 
   users.push(user);
 }
 
-function updateUser(id, name, surname, email) {
+function updateUser(id, name, email) {
   validateId(id);
   validateName(name);
-  validateSurname(surname);
   validateEmail(email);
 
   const user = users.find((user) => user.id === id);
@@ -57,7 +55,6 @@ function updateUser(id, name, surname, email) {
   if (!user) throw Error("user not found");
 
   user.name = name;
-  user.surname = surname;
   user.email = email;
 }
 
@@ -80,16 +77,20 @@ function updateUserPassword(id, currPassword, password, rePassword) {
 }
 
 function unregisterUser(id, password) {
-  debugger;
+
   validateId(id);
   validatePassword(password);
 
-  const user = users.find((user) => user.id === id);
+  let index
 
-  if (user.password === password) {
-    const index = users.indexOf(id);
-    users.splice(index, 1);
-  } else {
-    throw new Error("incorrect password");
-  }
+  const user = users.find((user, _index) => {
+    index = _index
+    return user.id === id && user.password === password
+    
+  });
+  
+  if (!user) throw new Error("incorrect password");
+
+  users.splice(index, 1);
+  
 }
