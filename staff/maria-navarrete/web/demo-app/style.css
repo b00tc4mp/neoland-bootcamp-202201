@@ -54,15 +54,14 @@ html, body {
 
 .home {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
+    gap: 2rem;
 }
 
-.home__nav{
-    position: fixed;
-    top: 0;
-    right: 0;
+.home__header{
     width: 100%;
     text-align: right;
     background-color: powderblue;
@@ -73,6 +72,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    height: 100%;
 }
 
 .profile__form {
@@ -91,29 +92,79 @@ html, body {
     width: 100%;
 }
 
+.profile__update-password-link, .profile__delete-account-link {
+    text-align: center;
+}
+
 .profile__submit {
-    width: 50%;
-    background-color:lightgoldenrodyellow;
+    width: 100%;
+    background-color: cornsilk;
     border: none;
-    margin-top: 20px;
-    padding: 12px;
+    margin: 1rem 0;
+    padding: 0.4rem;
     border-radius: 8px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
     cursor: pointer;
 }
 
-.profile__delete {
-     width: 40%;
+.delete-acount__submit {
+     width: 100%;
      background-color: mistyrose;
      border: none;
-     margin-top: 50px;
-     padding: 12px;
+     margin: 1rem 0;
+     padding: 0.4rem;
      border-radius: 8px;
      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
      cursor: pointer;
      font-size: 12px;
 }
 
+.update-password__submit { 
+    width: 100%;
+    background-color: mintcream;
+    border: none;
+    margin: 1rem 0;
+    padding: 0.4rem;
+    border-radius: 8px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    cursor: pointer;
+    font-size: 12px;
+}
 
+.update-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.update-password__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.update-password__back-link {
+    text-align: center;
+}
+
+.delete-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.delete-account__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.delete-account__back-link {
+    text-align: center;
+}
 
 

@@ -1,144 +1,133 @@
 const landingView = document.querySelector('.landing')
-const landingLoginLink = landingView.querySelector('.landing__login')
-const landingRegisterLink = landingView.querySelector('.landing__register')
-
-
 const loginView = document.querySelector('.login')
-const loginRegisterLink = loginView.querySelector('.login__register-link')
-const loginForm = loginView.querySelector('.login__form')
-
 const registerView = document.querySelector('.register')
-const registerLoginLink = registerView.querySelector('.register__login-link')
-const registerForm = registerView.querySelector('.register__form')
-
 const homeView = document.querySelector('.home')
-const homeLinkHome = homeView.querySelector('.nav__home')
-const profileLinkHome = homeView.querySelector('.nav__profile')
-const logoutLinkHome = homeView.querySelector('.nav__logout')
-const titleView = homeView.querySelector('.home__welcome')
-
+const titleView = homeView.querySelector('.home__user')
 const profileView = homeView.querySelector('.profile')
-const profileForm = profileView.querySelector('.profile__form')
-const profileDelete = profileView.querySelector('.profile__delete')
+const updatePasswordView = homeView.querySelector('.update-password')
+const deleteAccountView = homeView.querySelector('.delete-account')
 
 let activeUser = null
 
+const landingLoginLink = landingView.querySelector('.landing__login-link')
 landingLoginLink.onclick = event => {
     event.preventDefault()
-
-    loginForm.querySelector('.login__email').value=""
-    loginForm.querySelector('.login__password').value=""
 
     landingView.classList.add('off')
     loginView.classList.remove('off')
 }
 
+const landingRegisterLink = landingView.querySelector('.landing__register-link')
 landingRegisterLink.onclick = event => {
     event.preventDefault()
-
-    registerForm.querySelector('.register__name').value = ""
-    registerForm.querySelector('.register__surname').value = ""
-    registerForm.querySelector('.register__email').value = ""
-    registerForm.querySelector('.register__password').value = ""
 
     landingView.classList.add('off')
     registerView.classList.remove('off')
 }
 
+const loginRegisterLink = loginView.querySelector('.login__register-link')
 loginRegisterLink.onclick = event => {
     event.preventDefault()
-
-    registerForm.querySelector('.register__name').value = ""
-    registerForm.querySelector('.register__surname').value = ""
-    registerForm.querySelector('.register__email').value = ""
-    registerForm.querySelector('.register__password').value = ""
 
     loginView.classList.add('off')
     registerView.classList.remove('off')
 }
 
-loginForm.onsubmit = event => {
-    event.preventDefault()
-
-    const emailInput = loginForm.querySelector('.login__email')
-    const passwordInput = loginForm.querySelector('.login__password')
-
-    const email = emailInput.value
-    const password = passwordInput.value
-
-    const id = authenticateUser(email, password)
-
-    if (id) {
-        activeUser = retrieveUser(id)
-
-        const homeWelcome = homeView.querySelector('.home__welcome')
-        homeWelcome.innerText = `Hello, ${activeUser.name}!`
-
-        loginView.classList.add('off')
-        homeView.classList.remove('off')
-    }
-    else alert('wrong credentials')
-}
-
+const registerLoginLink = registerView.querySelector('.register__login-link')
 registerLoginLink.onclick = event => {
     event.preventDefault()
 
-    loginForm.querySelector('.login__email').value=""
-    loginForm.querySelector('.login__password').value=""
-
     registerView.classList.add('off')
     loginView.classList.remove('off')
 }
 
-registerForm.onsubmit = event => {
+const loginForm = loginView.querySelector('.login__form')
+loginForm.onsubmit = event => {
     event.preventDefault()
 
-    const nameInput = registerForm.querySelector('.register__name')
-    const surnameInput = registerForm.querySelector('.register__surname')
-    const emailInput = registerForm.querySelector('.register__email')
-    const passwordInput = registerForm.querySelector('.register__password')
+    const emailInput = loginForm.querySelector('.login__email-input')
+    const passwordInput = loginForm.querySelector('.login__password-input')
 
-    const name = nameInput.value
-    const surname = surnameInput.value
     const email = emailInput.value
     const password = passwordInput.value
 
-    registerUser(name, surname, email, password)
+    try {
+        const id = authenticateUser(email, password)
+        activeUser = retrieveUser(id)
 
-    registerView.classList.add('off')
-    loginView.classList.remove('off')
+        emailInput.value = ''
+        passwordInput.value = ''
+
+        const homeUser = homeView.querySelector('.home__user')
+        homeUser.innerText = `Hello, ${activeUser.name}!`
+
+        loginView.classList.add('off')
+        homeView.classList.remove('off')
+    } catch (error) {
+        alert(error.message)
+        passwordInput.value = ''
+    }
 }
 
-homeLinkHome.onclick = event => {
+const registerForm = registerView.querySelector('.register__form')
+registerForm.onsubmit = event => {
     event.preventDefault()
 
-    profileView.classList.add('off')
-    titleView.classList.remove('off')
+    const nameInput = registerForm.querySelector('.register__name-input')
+    const emailInput = registerForm.querySelector('.register__email-input')
+    const passwordInput = registerForm.querySelector('.register__password-input')
+
+    const name = nameInput.value
+    const email = emailInput.value
+    const password = passwordInput.value
+
+    try {
+        registerUser(name, email, password)
+        nameInput.value = ''
+        emailInput.value = ''
+        passwordInput.value = ''
+
+        registerView.classList.add('off')
+        loginView.classList.remove('off')
+    } catch (error) {
+        alert(error.message)
+    }
 }
 
-logoutLinkHome.onclick = event => {
-    event.preventDefault()
-
+const homeLogoutLink = homeView.querySelector('.home__logout-link')
+homeLogoutLink.onclick = () => {
     homeView.classList.add('off')
-    landingView.classList.remove('off')
     profileView.classList.add('off')
+    titleView.classList.remove('off')
+    updatePasswordView.classList.add('off')
+    deleteAccountView.classList.add('off')
+
+    landingView.classList.remove('off')
+}
+
+const homeHomeLink = homeView.querySelector('.home__home-link')
+homeHomeLink.onclick = event => {
+    event.preventDefault()
+    profileView.classList.add('off')
+    updatePasswordView.classList.add('off')
+    deleteAccountView.classList.add('off')
     titleView.classList.remove('off')
 }
 
-profileLinkHome.onclick = event => {
+const homeProfileLink = homeView.querySelector('.home__profile-link')
+const profileForm = profileView.querySelector('.profile__form')
+
+homeProfileLink.onclick = event => {
     event.preventDefault()
 
     const nameInput = profileForm.querySelector('.profile__name-input')
-    const surnameInput = profileForm.querySelector('.profile__surname-input')
     const emailInput = profileForm.querySelector('.profile__email-input')
-    const passwordInput = profileForm.querySelector('.profile__password-input')
 
     nameInput.value = activeUser.name
-    surnameInput.value = activeUser.surname
     emailInput.value = activeUser.email
-    passwordInput.value = ""
 
-
+    updatePasswordView.classList.add('off')
+    deleteAccountView.classList.add('off')
     titleView.classList.add('off')
     profileView.classList.remove('off')
 }
@@ -147,42 +136,90 @@ profileForm.onsubmit = event => {
     event.preventDefault()
 
     const newName = profileForm.querySelector('.profile__name-input').value
-    const newSurname = profileForm.querySelector('.profile__surname-input').value
     const newEmail = profileForm.querySelector('.profile__email-input').value
-    const password = profileForm.querySelector('.profile__password-input').value
-    const newPassword = profileForm.querySelector('.profile__new-password-input').value
-    const newPasswordConfirmation = profileForm.querySelector('.profile__new-password-conf-input').value
-
-    if (activeUser.password === password) {
-        if (!newPassword) {
-            updateUser(activeUser.id, newName, newSurname, newEmail, activeUser.password)
-            alert('Data updated succesfully!')
-        }
-        else {
-            if (newPassword === newPasswordConfirmation) {
-                updateUser(activeUser.id, newName, newSurname, newEmail, newPassword)
-                alert('Data updated succesfully!')
-            }
-            else
-                alert('New password must match!')
-        }
+   
+    try{
+        updateUser(activeUser.id, newName, newEmail)
+        const homeUser = homeView.querySelector('.home__user')
+        homeUser.innerText = `Hello, ${activeUser.name}!`
+        alert('user updated')
+    }catch(error){
+        alert(error.message)
     }
-    else alert('Please confirm your current password')
 }
 
-profileDelete.onclick = event => {
+const profileUpdatePasswordLink = profileView.querySelector('.profile__update-password-link')
+profileUpdatePasswordLink.onclick = event => {
+    event.preventDefault()
+    profileView.classList.add('off')
+    updatePasswordView.classList.remove('off')
+}
+
+const updatePasswordBackLink = updatePasswordView.querySelector('.update-password__back-link')
+updatePasswordBackLink.onclick = event => {
+    event.preventDefault()
+    updatePasswordView.classList.add('off')
+    profileView.classList.remove('off')
+}
+
+const profileDeleteAccountLink = profileView.querySelector('.profile__delete-account-link')
+profileDeleteAccountLink.onclick = event => {
+    event.preventDefault()
+    profileView.classList.add('off')
+    deleteAccountView.classList.remove('off')
+}
+
+const deleteAccountBackLink = deleteAccountView.querySelector('.delete-account__back-link')
+deleteAccountBackLink.onclick = event => {
     event.preventDefault()
 
-    const password = profileForm.querySelector('.profile__password-input').value
+    deleteAccountView.classList.add('off')
+    profileView.classList.remove('off')
+}
 
-    if (activeUser.password === password) {
-        unregisterUser(activeUser.id, password)
-        alert('Account Deleted :(')
+const updatePasswordForm = updatePasswordView.querySelector('.update-password__form')
+updatePasswordForm.onsubmit=event=>{
+    event.preventDefault()
 
-        homeView.classList.add('off')
-        landingView.classList.remove('off')
-        profileView.classList.add('off')
-        titleView.classList.remove('off')
+    const currPasswordInput = updatePasswordForm.querySelector('.update-password__curr-password-input')
+    const passwordInput = updatePasswordForm.querySelector('.update-password__password-input')
+    const rePasswordInput = updatePasswordForm.querySelector('.update-password__re-password-input')
+
+    const currPassword = currPasswordInput.value
+    const password = passwordInput.value
+    const rePassword = rePasswordInput.value
+
+    try{
+        updateUserPassword(activeUser.id, currPassword, password, rePassword)
+        currPasswordInput.value = ''
+        passwordInput.value = ''
+        rePasswordInput.value = ''
+
+        alert('Password updated')
+    }catch(error){
+        alert(error.message)
     }
-    else alert('Please confirm your current password')
+}
+
+const deleteAccountForm = deleteAccountView.querySelector('.delete-account__form')
+deleteAccountForm.onsubmit = event => {
+    event.preventDefault()
+
+    const passwordInput = deleteAccountForm.querySelector('.delete-account__password')
+    const password = passwordInput.value
+
+    try{
+        unregisterUser(activeUser.id, password)
+        passwordInput.value = ''
+
+        alert('Account Deleted :(')
+        homeView.classList.add('off')
+        titleView.classList.remove('off')
+        profileView.classList.add('off')
+        deleteAccountForm.classList.add('off')
+        landingView.classList.remove('off')
+
+    } catch(error){
+        alert(error.message)
+    }
 }
