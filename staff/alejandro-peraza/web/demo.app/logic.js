@@ -4,25 +4,23 @@ const SPACE_REGEX = /\s/
 const SPACES_AROUND_REGEX = /^\s[aA-zZ]\s?[aA-zZ]|[aA-zZ]\s?[aA-zZ]\s$/
 
 function authenticateUser(email, password) {
-
     validateEmail(email)
     validatePassword(password)
 
-const user = users.find(user => user.email === email && user.password === password)
+    const user = users.find(user => user.email === email && user.password === password)
 
     if (user) {
         return user.id
     }
-    
-    throw new Error('wrong credentials')
 
+    throw new Error('wrong credentials')
 }
 
 function retrieveUser(id) {
     validateId(id)
-    
+
     const user = users.find(user => user.id === id)
-    
+
     if (user) {
         return user
     }
@@ -36,36 +34,52 @@ function registerUser(name, surname, email, password) {
     validateEmail(email)
     validatePassword(password)
 
-    
     let user = users.find(user => user.email === email)
 
-    if (user) throw new Error('user already exist')
+    if (user) throw new Error('user already exists')
 
     user = new User(name, surname, email, password)
-    
-    user.push(user)
+
+    users.push(user)
 }
 
 function updateUser(id, name, surname, email) {
     validateId(id)
-    validateName(Name)
+    validateName(name)
     validateSurname(surname)
     validateEmail(email)
-    
-    
-    const user = user.find(user => user.id === id)
+
+    const user = users.find(user => user.id === id)
 
     if (!user) throw Error('user not found')
-    
-    if (user.password !== currPassword) throw new Error('wrong credentials')
-    
-    if (password !== rePassword) throw new Error('password and password retyped do not match')
-    
-    user.password = password
 
+    user.name = name
+    user.surname = surname
+    user.email = email
 }
 
-function upregisterUser(id, password) {
+function updateUserPassword(id, currPassword, password, rePassword) {
     validateId(id)
-    validatePassword(password)    
-}           
+    validatePassword(currPassword)
+    validatePassword(password)
+    validatePassword(rePassword)
+
+    const user = users.find(user => user.id === id)
+
+    if (!user) throw Error('user not found')
+
+    if (user.password !== currPassword) throw new Error('wrong credentials')
+
+    if (password !== rePassword) throw new Error('password and password retyped do not match')
+
+    user.password = password
+}
+
+function unregisterUser(id, password) {
+    validateId(id)
+    validatePassword(password)
+
+    // if password is correct then delete 
+
+
+}

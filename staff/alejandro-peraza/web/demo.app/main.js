@@ -2,7 +2,7 @@ const landingView = document.querySelector('.landing')
 const loginView = document.querySelector('.login')
 const registerView = document.querySelector('.register')
 const homeView = document.querySelector('.home')
-const profileView = document.querySelector('profile')
+const profileView = document.querySelector('.profile')
 const updatePasswordView = document.querySelector('.update-password')
 const deleteAccountView = document.querySelector('.delete-account')
 
@@ -50,30 +50,29 @@ const loginForm = loginView.querySelector('.login__form')
 loginForm.onsubmit = event => {
     event.preventDefault()
 
-    const emailInput = loginForm.querySelector('.login__email')
-    const passwordInput = loginForm.querySelector('.login__password')
+    const emailInput = loginForm.querySelector('.login__email-input')
+    const passwordInput = loginForm.querySelector('.login__password-input')
 
     const email = emailInput.value
     const password = passwordInput.value
 
- 
-
     try {
         userId = authenticateUser(email, password)
 
-        const user = retrieveUser(userid)
+        const user = retrieveUser(userId)
 
         emailInput.value = ''
         passwordInput.value = ''
 
         const homeUser = homeView.querySelector('.home__user')
-        homeuser.innerText = user.name
+        homeUser.innerText = user.name
 
         loginView.classList.add('off')
 
         homeView.classList.remove('off')
     } catch (error) {
         alert(error.message)
+
         passwordInput.value = ''
     }
 }
@@ -94,36 +93,33 @@ registerForm.onsubmit = event => {
     const password = passwordInput.value
 
     try {
-    registerUser(name, surname, email, password)
-    
-    name = nameInput.value = ''
-    surname = surnameInput.value = ''
-    email = emailInput.value = ''
-    password = passwordInput.value = ''
+        registerUser(name, surname, email, password)
 
-    
+        nameInput.value = ''
+        surnameInput.value = ''
+        emailInput.value = ''
+        passwordInput.value = ''
 
-    registerView.classList.add('off')
+        registerView.classList.add('off')
 
-    loginView.classList.remove('off')
-    } catch (error){
+        loginView.classList.remove('off')
+    } catch (error) {
         alert(error.message)
     }
 }
-const homeLogoutButton = homeView.querySelector('.home_logout-button')
+
+const homeLogoutButton = homeView.querySelector('.home__logout-button')
 
 homeLogoutButton.onclick = () => {
     homeView.classList.add('off')
     profileView.classList.add('off')
     updatePasswordView.classList.add('off')
     deleteAccountView.classList.add('off')
-    
-    landingView.classList.remove('off')
 
+    landingView.classList.remove('off')
 }
 
 const homeProfileLink = homeView.querySelector('.home__profile-link')
-
 
 homeProfileLink.onclick = event => {
     event.preventDefault()
@@ -142,8 +138,8 @@ homeProfileLink.onclick = event => {
     deleteAccountView.classList.add('off')
 
     profileView.classList.remove('off')
-    
 }
+
 const homeHomeLink = homeView.querySelector('.home__home-link')
 
 homeHomeLink.onclick = event => {
@@ -168,9 +164,10 @@ updatePasswordBackLink.onclick = event => {
     event.preventDefault()
 
     updatePasswordView.classList.add('off')
-
+    
     profileView.classList.remove('off')
 }
+
 
 const profileDeleteAccountLink = profileView.querySelector('.profile__delete-account-link')
 
@@ -239,3 +236,23 @@ updatePasswordForm.onsubmit = event => {
         alert(error.message)
     }
 }
+
+// Tenéis que pillar el formulario para hacer delete
+// del formulario (etiqueta form) pillamos el submit y ahí implementamos lo que tengamos que implementar
+// se parece bastante al modifyUser
+
+/*deleteAccountView.onclick = event => 
+    event.preventDefault()
+
+const .querySelector('.profile__password-input').value
+
+if (currPasswordInput === currPasswordInput) {
+        homeView.classList.add('off')
+        landingView.classList.remove('off')
+        profileView.classList.add('off')
+        
+    }
+
+
+}*/
+
