@@ -122,7 +122,7 @@ homeProfileLink.onclick = (event) => {
   event.preventDefault();
 
   const profileNameInput = profileView.querySelector(".profile__name-input");
- 
+
   const profileEmailInput = profileView.querySelector(".profile__email-input");
 
   const user = retrieveUser(userId);
@@ -203,8 +203,8 @@ profileForm.onsubmit = (event) => {
   const name = nameInput.value;
   const email = emailInput.value;
 
-  const homeWelcome = homeView.querySelector('.home__user')
-        homeWelcome.innerText = `Hello, ${name}!`
+  const homeWelcome = homeView.querySelector(".home__user");
+  homeWelcome.innerText = `Hello, ${name}!`;
 
   try {
     updateUser(userId, name, email);
@@ -256,7 +256,9 @@ const deleteAccountForm = deleteAccountView.querySelector(
 deleteAccountForm.onsubmit = (event) => {
   event.preventDefault();
 
-  const passwordInput = deleteAccountForm.querySelector(".delete-account__input");
+  const passwordInput = deleteAccountForm.querySelector(
+    ".delete-account__input"
+  );
   try {
     unregisterUser(userId, passwordInput.value);
     profileView.classList.add("off");
@@ -267,3 +269,23 @@ deleteAccountForm.onsubmit = (event) => {
     alert(error.message);
   }
 };
+
+const passwordComponents = document.querySelectorAll(".password-component");
+
+passwordComponents.forEach((component) => {
+  const eye = component.querySelector("i");
+  const input = component.querySelector("input");
+
+  eye.onclick = () => {
+    const type = input.getAttribute("type");
+    if (type === "password") {
+      input.setAttribute("type", "text");
+      eye.classList.remove("bi-eye-slash");
+      eye.classList.add("bi-eye");
+    } else {
+      input.setAttribute("type", "password");
+      eye.classList.add("bi-eye-slash");
+      eye.classList.remove("bi-eye");
+    }
+  };
+});

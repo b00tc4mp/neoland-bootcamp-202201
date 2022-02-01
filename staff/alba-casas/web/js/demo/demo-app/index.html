@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo App</title>
     <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -31,12 +35,15 @@
           name="email"
           placeholder="e-mail"
         />
-        <input
-          class="register__password-input"
-          type="password"
-          name="password"
-          placeholder="password"
-        />
+        <div class="password-component">
+          <input
+            class="register__password-input"
+            type="password"
+            name="password"
+            placeholder="password"
+          />
+          <i class="bi bi-eye-slash"></i>
+        </div>
         <button>Register</button>
         <a class="register__login-link" href="">Login</a>
       </form>
@@ -50,12 +57,16 @@
           name="email"
           placeholder="e-mail"
         />
-        <input
-          class="login__password-input"
-          type="password"
-          name="password"
-          placeholder="password"
-        />
+        <div class="password-component">
+          <input
+            class="login__password-input"
+            type="password"
+            name="password"
+            placeholder="password"
+          />
+          <i class="bi bi-eye-slash"></i>
+        </div>
+
         <button>Login</button>
         <a class="login__register-link" href="">Register</a>
       </form>
@@ -93,24 +104,35 @@
 
       <div class="update-password off">
         <form class="update-password__form">
-          <input
-            class="update-password__curr-password-input"
-            type="password"
-            name="name"
-            placeholder="Current password"
-          />
-          <input
-            class="update-password__password-input"
-            type="password"
-            name="surname"
-            placeholder="New password"
-          />
-          <input
-            class="update-password__re-password-input"
-            type="password"
-            name="email"
-            placeholder="Re-type new password"
-          />
+          <div class="password-component">
+            <input
+              class="update-password__curr-password-component"
+              type="password"
+              name="password"
+              placeholder="Current password"
+            />
+            <i class="bi bi-eye-slash"></i>
+          </div>
+          <div class="password-component">
+            <input
+              class="update-password__password-input"
+              type="password"
+              name="newpassword"
+              placeholder="New password"
+            />
+            <i class="bi bi-eye-slash"></i>
+          </div>
+
+          <div class="password-component">
+            <input
+              class="update-password__re-password-input"
+              type="password"
+              name="newpassword2"
+              placeholder="Re-type new password"
+            />
+            <i class="bi bi-eye-slash"></i>
+          </div>
+
           <button>Update password</button>
           <a class="update-password__back-link" href="">back</a>
         </form>
@@ -118,12 +140,16 @@
 
       <div class="delete-account off">
         <form class="delete-account__form">
-          <input
-            class="delete-account__input"
-            type="password"
-            name="surname"
-            placeholder="New password"
-          />
+          <div class="password-component">
+            <input
+              class="delete-account__input"
+              type="password"
+              name="password"
+              placeholder="Current password"
+            />
+            <i class="bi bi-eye-slash"></i>
+          </div>
+
           <button>Delete account</button>
           <a class="delete-account__back-link" href="">back</a>
         </form>

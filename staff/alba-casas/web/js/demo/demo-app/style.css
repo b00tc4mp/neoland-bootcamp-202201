@@ -131,3 +131,15 @@ body {
 .delete-account__back-link {
   text-align: center;
 }
+
+.password-component {
+  position: relative;
+}
+
+.password-component i {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
