@@ -4,7 +4,7 @@ class User {
   constructor(name, surname, email, password) {
     userCount++;
 
-    this.id = userCount;
+    this.id = `${userCount}`;
     this.name = name;
     this.surname = surname;
     this.email = email;

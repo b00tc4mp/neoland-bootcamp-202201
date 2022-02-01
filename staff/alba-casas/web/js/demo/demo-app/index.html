@@ -5,35 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo App</title>
+    <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="landing">
-      <a class="landing__login" href="">Login</a> or
-      <a class="landing__register" href="">Register</a>
+    <div class="landing _off">
+      <div>
+        <a class="landing__login" href="">Login</a> or
+        <a class="landing__register" href="">Register</a>
+      </div>
     </div>
+
     <div class="register off">
       <form class="register__form">
         <input
-          class="register__name"
+          class="register__name-input"
           type="text"
           name="name"
           placeholder="name"
         />
         <input
-          class="register__surname"
+          class="register__surname-input"
           type="text"
           name="surname"
           placeholder="surname"
         />
         <input
-          class="register__email"
+          class="register__email-input"
           type="email"
-          name="e-mail"
+          name="email"
           placeholder="e-mail"
         />
         <input
-          class="register__password"
+          class="register__password-input"
           type="password"
           name="password"
           placeholder="password"
@@ -42,16 +47,17 @@
         <a class="register__login-link" href="">Login</a>
       </form>
     </div>
+
     <div class="login off">
       <form class="login__form">
         <input
-          class="login__email"
+          class="login__email-input"
           type="email"
           name="email"
           placeholder="e-mail"
         />
         <input
-          class="login__password"
+          class="login__password-input"
           type="password"
           name="password"
           placeholder="password"
@@ -60,53 +66,84 @@
         <a class="login__register-link" href="">Register</a>
       </form>
     </div>
+
     <div class="home off">
-      <nav class="home__nav">
-        <a class="nav__home" href="">Home</a>
-        <a class="nav__profile" href="">Profile</a>
-        <a class="nav__log-out" href="">Log out</a>
-      </nav>
-      <h1 class="home__welcome">Hola, Mundo!</h1>
+      <div class="home__header">
+        <a class="home__home-link" href=""
+          ><img class="home__logo" src="images/demo-logo.png" alt=""
+        /></a>
+        <h1 class="home__user">Wendy</h1>
+        <a class="home__profile-link" href="">Profile</a>
+        <button class="home__logout-button">Logout</button>
+      </div>
+
       <div class="profile off">
         <form class="profile__form">
           <input
-            class="profile__name"
+            class="profile__name-input"
             type="text"
             name="name"
             placeholder="name"
           />
           <input
-            class="profile__surname"
+            class="profile__surname-input"
             type="text"
             name="surname"
             placeholder="surname"
           />
           <input
-            class="profile__email"
+            class="profile__email-input"
             type="email"
-            name="e-mail"
+            name="email"
             placeholder="e-mail"
           />
-          <input
-            class="profile__password"
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-          <button>Update</button>
+          <button>Update profile</button>
+          <a class="profile__update-password-link" href="">update password</a>
+          <a class="profile__delete-account-link" href="">delete account</a>
         </form>
-        <form class="delete-form">
+      </div>
+
+      <div class="update-password off">
+        <form class="update-password__form">
           <input
-            class="delete-form__input"
-            name="password"
-            placeholder="password"
+            class="update-password__curr-password-input"
             type="password"
+            name="name"
+            placeholder="Current password"
           />
-          <button class="delete-form__submit">Delete account</button>
+          <input
+            class="update-password__password-input"
+            type="password"
+            name="surname"
+            placeholder="New password"
+          />
+          <input
+            class="update-password__re-password-input"
+            type="password"
+            name="email"
+            placeholder="Re-type new password"
+          />
+          <button>Update password</button>
+          <a class="update-password__back-link" href="">back</a>
+        </form>
+      </div>
+
+      <div class="delete-account off">
+        <form class="delete-account__form">
+          <input
+            class="delete-account__input"
+            type="password"
+            name="surname"
+            placeholder="New password"
+          />
+          <button>Delete account</button>
+          <a class="delete-account__back-link" href="">back</a>
         </form>
       </div>
     </div>
+
     <script src="data.js"></script>
+    <script src="validators.js"></script>
     <script src="logic.js"></script>
     <script src="main.js"></script>
   </body>
