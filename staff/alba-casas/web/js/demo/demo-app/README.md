@@ -22,7 +22,7 @@ DONE implement unregister functionality (accessible from profile view with a but
 
 DONE implement update password view (from profile view)
 
-TODO reduce name and surname into just name (and all its functionalities)
+DONE reduce name and surname into just name (and all its functionalities)
 
 TODO add open/close eye in password inputs
 

@@ -91,7 +91,7 @@ registerForm.onsubmit = (event) => {
   const password = passwordInput.value;
 
   try {
-    registerUser(name, surname, email, password);
+    registerUser(name, email, password);
 
     nameInput.value = "";
     emailInput.value = "";
@@ -202,6 +202,9 @@ profileForm.onsubmit = (event) => {
 
   const name = nameInput.value;
   const email = emailInput.value;
+
+  const homeWelcome = homeView.querySelector('.home__user')
+        homeWelcome.innerText = `Hello, ${name}!`
 
   try {
     updateUser(userId, name, email);

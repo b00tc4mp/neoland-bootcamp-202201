@@ -46,6 +46,7 @@ function registerUser(name, email, password) {
 }
 
 function updateUser(id, name, email) {
+  debugger
   validateId(id);
   validateName(name);
   validateEmail(email);
