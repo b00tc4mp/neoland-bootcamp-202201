@@ -30,4 +30,4 @@ TODO add password security level below password inputs (password strength feedba
 
 DONE improve password security (do not allow "password", "12345678", ... min length)
 
-TODO re-organise project into separarate files
+DONE re-organise project into separarate files
