@@ -6,6 +6,8 @@ const profileView = document.querySelector(".profile");
 const updatePasswordView = document.querySelector(".update-password");
 const deleteAccountView = document.querySelector(".delete-account");
 
+landingView.classList.remove("off");
+
 const landingLoginLink = landingView.querySelector(".landing__login");
 const landingRegisterLink = landingView.querySelector(".landing__register");
 
@@ -61,11 +63,11 @@ loginForm.onsubmit = (event) => {
 
     const user = retrieveUser(userId);
 
-    emailInput.value = "";
-    passwordInput.value = "";
-
     const homeUser = homeView.querySelector(".home__user");
     homeUser.innerText = user.name;
+
+    emailInput.value = "";
+    passwordInput.value = "";
 
     loginView.classList.add("off");
 
@@ -259,14 +261,17 @@ deleteAccountForm.onsubmit = (event) => {
   const passwordInput = deleteAccountForm.querySelector(
     ".delete-account__input"
   );
+  const password = passwordInput.value;
+
   try {
-    unregisterUser(userId, passwordInput.value);
+    unregisterUser(userId, password);
     profileView.classList.add("off");
     homeView.classList.add("off");
     landingView.classList.remove("off");
     alert("Deleted user");
   } catch (error) {
     alert(error.message);
+    passwordInput.value = "";
   }
 };
 

@@ -1,9 +1,3 @@
-const EMAIL_REGEX =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const BLANK_REGEX = /^\s+$/;
-const SPACE_REGEX = /\s/;
-const SPACES_AROUND_REGEX = /^\s[aA-zZ]\s?[aA-zZ]|[aA-zZ]\s?[aA-zZ]\s$/;
-
 function authenticateUser(email, password) {
   validateEmail(email);
   validatePassword(password);
@@ -28,7 +22,7 @@ function retrieveUser(id) {
     return user;
   }
 
-  return null;
+  throw new Error("user not found");
 }
 
 function registerUser(name, email, password) {
@@ -46,7 +40,7 @@ function registerUser(name, email, password) {
 }
 
 function updateUser(id, name, email) {
-  debugger
+  debugger;
   validateId(id);
   validateName(name);
   validateEmail(email);
@@ -78,20 +72,32 @@ function updateUserPassword(id, currPassword, password, rePassword) {
 }
 
 function unregisterUser(id, password) {
-
   validateId(id);
   validatePassword(password);
 
-  let index
+  let index;
 
   const user = users.find((user, _index) => {
-    index = _index
-    return user.id === id && user.password === password
-    
+    index = _index;
+    return user.id === id && user.password === password;
   });
-  
+
   if (!user) throw new Error("incorrect password");
 
   users.splice(index, 1);
-  
 }
+
+/* function unregisterUser(id, password) {
+  const user = users.find((user) => user.id === id);
+  if (user) {
+    if (user.password === password) {
+      const index = users.indexOf(user);
+      users.splice(index, 1);
+
+      return;
+    }
+    throw new Error("wrong credentials");
+  }
+
+  throw new Error("user not found");
+} */

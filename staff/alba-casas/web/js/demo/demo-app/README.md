@@ -24,7 +24,7 @@ DONE implement update password view (from profile view)
 
 DONE reduce name and surname into just name (and all its functionalities)
 
-TODO add open/close eye in password inputs
+DONE add open/close eye in password inputs
 
 TODO add password security level below password inputs
 
