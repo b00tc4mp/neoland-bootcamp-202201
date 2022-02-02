@@ -6,6 +6,9 @@ const profileView = document.querySelector('.profile')
 const updatePasswordView = document.querySelector('.update-password')
 const deleteAccountView = document.querySelector('.delete-account')
 
+landingView.classList.remove('off')
+// loginView.classList.remove('off')
+
 const landingLoginLink = landingView.querySelector('.landing__login')
 const landingRegisterLink = landingView.querySelector('.landing__register')
 
@@ -47,6 +50,10 @@ registerLoginLink.onclick = event => {
 
 const loginForm = loginView.querySelector('.login__form')
 
+loginForm.addEventListener('submit', event => {
+    // ...
+})
+
 loginForm.onsubmit = event => {
     event.preventDefault()
 
@@ -61,17 +68,73 @@ loginForm.onsubmit = event => {
 
         const user = retrieveUser(userId)
 
+        const homeUser = homeView.querySelector('.home__user')
+        homeUser.innerText = user.name
+
         emailInput.value = ''
         passwordInput.value = ''
 
-        const homeUser = homeView.querySelector('.home__user')
-        homeUser.innerText = user.name
+        emailInput.classList.remove('login__input--error')
+
+        const emailFeedback = loginForm.querySelector('.login__email-feedback')
+        emailFeedback.classList.add('off')
+
+        passwordInput.classList.remove('login__input--error')
+
+        const passwordFeedback = loginForm.querySelector('.login__password-feedback')
+        passwordFeedback.classList.add('off')
+
+        const feedback = loginForm.querySelector('.login__feedback')
+        feedback.classList.add('off')
 
         loginView.classList.add('off')
 
         homeView.classList.remove('off')
     } catch (error) {
-        alert(error.message)
+        //alert(error.message)
+
+        // const message = error.message
+        const { message } = error
+
+        if (message.includes('email')) {
+            emailInput.classList.add('login__input--error')
+
+            const emailFeedback = loginForm.querySelector('.login__email-feedback')
+            emailFeedback.innerText = message
+
+            const passwordFeedback = loginForm.querySelector('.login__password-feedback')
+            passwordFeedback.classList.add('off')
+            passwordInput.classList.remove('login__input--error')
+
+            const feedback = loginForm.querySelector('.login__feedback')
+            feedback.classList.add('off')
+
+            emailFeedback.classList.remove('off')
+        } else if (message.includes('password')) {
+            emailInput.classList.remove('login__input--error')
+
+            const emailFeedback = loginForm.querySelector('.login__email-feedback')
+            emailFeedback.classList.add('off')
+            passwordInput.classList.add('login__input--error')
+
+            const passwordFeedback = loginForm.querySelector('.login__password-feedback')
+            passwordFeedback.innerText = message
+            passwordFeedback.classList.remove('off')
+        } else {
+            emailInput.classList.remove('login__input--error')
+
+            const emailFeedback = loginForm.querySelector('.login__email-feedback')
+            emailFeedback.classList.add('off')
+
+            passwordInput.classList.remove('login__input--error')
+
+            const passwordFeedback = loginForm.querySelector('.login__password-feedback')
+            passwordFeedback.classList.add('off')
+
+            const feedback = loginForm.querySelector('.login__feedback')
+            feedback.innerText = message
+            feedback.classList.remove('off')
+        }
 
         passwordInput.value = ''
     }
@@ -164,7 +227,7 @@ updatePasswordBackLink.onclick = event => {
     event.preventDefault()
 
     updatePasswordView.classList.add('off')
-    
+
     profileView.classList.remove('off')
 }
 
@@ -185,7 +248,7 @@ deleteAccountBackLink.onclick = event => {
     event.preventDefault()
 
     deleteAccountView.classList.add('off')
-    
+
     profileView.classList.remove('off')
 }
 
@@ -206,7 +269,7 @@ profileForm.onsubmit = event => {
         updateUser(userId, name, surname, email)
 
         alert('user updated')
-    } catch(error) {
+    } catch (error) {
         alert(error.message)
     }
 }
@@ -232,33 +295,35 @@ updatePasswordForm.onsubmit = event => {
         rePasswordInput.value = ''
 
         alert('password udpated')
-    } catch(error) {
+    } catch (error) {
         alert(error.message)
     }
 }
 
-
 const deleteAccountForm = deleteAccountView.querySelector('.delete-account__form')
 
-deleteAccountForm.onsubmit = event => {
+deleteAccountForm.addEventListener('submit', event => {
     event.preventDefault()
 
     const passwordInput = deleteAccountForm.querySelector('.delete-account__password-input')
+
     const password = passwordInput.value
 
     try {
         unregisterUser(userId, password)
 
-        alert('profile deleted')
+        passwordInput.value = ''
 
         deleteAccountView.classList.add('off')
-    
-        homeView.classList.remove('off')
 
-    }   catch(error) {
+        profileView.classList.add('off')
+
+        homeView.classList.add('off')
+
+        landingView.classList.remove('off')
+    } catch (error) {
         alert(error.message)
+
+        passwordInput.value = ''
     }
-}
-
-
-// TODO catch event of delete form submit
+})

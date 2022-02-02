@@ -20,10 +20,6 @@ DONE implement profile view (allows user data to be updated)
 
 TODO implement unregister functionality (accessible from profile view with a button, has it's own unregister view, requires the password to procced, and redirects to landing)
 
-    - HTML
-    - MAIN
-    - LOGIC
-
 DONE implement update password view (from profile view)
 
 TODO reduce name and surname into just name (and all its functionalities)

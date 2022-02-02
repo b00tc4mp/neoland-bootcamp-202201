@@ -1,8 +1,3 @@
-const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-const BLANK_REGEX = /^\s+$/
-const SPACE_REGEX = /\s/
-const SPACES_AROUND_REGEX = /^\s[aA-zZ]\s?[aA-zZ]|[aA-zZ]\s?[aA-zZ]\s$/
-
 function authenticateUser(email, password) {
     validateEmail(email)
     validatePassword(password)
@@ -25,7 +20,7 @@ function retrieveUser(id) {
         return user
     }
 
-    return null
+    throw new Error('user not found')
 }
 
 function registerUser(name, surname, email, password) {
@@ -76,21 +71,22 @@ function updateUserPassword(id, currPassword, password, rePassword) {
 }
 
 function unregisterUser(id, password) {
-    
     validateId(id)
     validatePassword(password)
 
-    const user = find(users, (passwordInput) => passwordInput === password)
+    const user = users.find(user => user.id === id)
 
-    const index = users.indexOf(user => user.id === id) 
+    if (user) {
+        if (user.password === password) {
+            const index = users.indexOf(user)
 
-    if (!user) throw Error('password incorrect')
+            users.splice(index, 1)
 
-    if (index.password === password) {
+            return
+        }
 
-    users = users.splice(index, 1)
+        throw new Error('wrong credentials')
     }
 
+    throw new Error('user not found')
 }
-
-
