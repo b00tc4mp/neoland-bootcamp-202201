@@ -107,3 +107,14 @@ loginForm.onsubmit = (event) => {
     passwordInput.value = "";
   }
 };
+
+const input = loginForm.querySelector(".login__password-input");
+const capWarning = loginForm.querySelector(".login__warning-caps");
+
+input.addEventListener("keyup", function (event) {
+  if (event.getModifierState("CapsLock")) {
+    capWarning.classList.remove("off");
+  } else {
+    capWarning.classList.add("off");
+  }
+});

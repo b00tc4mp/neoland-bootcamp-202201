@@ -22,7 +22,7 @@
   </head>
 
   <body>
-    <div class="landing _off">
+    <div class="landing off">
       <div>
         <a class="landing__login" href="">Login</a> or
         <a class="landing__register" href="">Register</a>
@@ -37,12 +37,14 @@
           name="name"
           placeholder="name"
         />
+        <span class="register__name-feedback off">Invalid name</span>
         <input
           class="register__email-input"
           type="email"
           name="email"
           placeholder="e-mail"
         />
+        <span class="register__email-feedback off">Wrong email</span>
         <div class="password-component">
           <input
             class="register__password-input"
@@ -53,6 +55,7 @@
           <i class="bi bi-eye-slash"></i>
         </div>
         <button>Register</button>
+        <span class="register__feedback off">Wrong credentials</span>
         <a class="register__login-link" href="">Login</a>
       </form>
     </div>
@@ -65,7 +68,7 @@
           name="email"
           placeholder="e-mail"
         />
-        <span class="login__email-feedback off">wrong email</span>
+        <span class="login__email-feedback off">Wrong email</span>
         <div class="password-component">
           <input
             class="login__password-input"
@@ -75,9 +78,10 @@
           />
           <i class="bi bi-eye-slash"></i>
         </div>
-        <span class="login__password-feedback off">wrong password</span>
+        <span class="login__warning-caps off">WARNING! Caps lock is ON.</span>
+        <span class="login__password-feedback off">Wrong password</span>
         <button>Login</button>
-        <span class="login__feedback off">wrong credentials</span>
+        <span class="login__feedback off">Wrong credentials</span>
         <a class="login__register-link" href="">Register</a>
       </form>
     </div>

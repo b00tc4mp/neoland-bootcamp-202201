@@ -30,3 +30,9 @@
 .login__register-link {
   text-align: center;
 }
+
+.login__warning-caps {
+  color: tomato;
+  font-size: 1rem;
+  text-align: right;
+}

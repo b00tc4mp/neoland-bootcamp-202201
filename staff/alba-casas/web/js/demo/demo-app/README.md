@@ -26,6 +26,8 @@ DONE reduce name and surname into just name (and all its functionalities)
 
 DONE add open/close eye in password inputs
 
-TODO add password security level below password inputs
+DONE improve password security (do not allow "password", "12345678", ... min length)
 
-TODO improve password security (do not allow "password", "12345678", ... min length)
+DONE re-organise project into separarate files
+
+TODO add password security level below password inputs (password strength feedback)
