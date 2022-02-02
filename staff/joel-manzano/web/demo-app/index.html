@@ -2,17 +2,26 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo App</title>
-
     <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="components/landing.css">
+    <link rel="stylesheet" href="components/register.css">
+    <link rel="stylesheet" href="components/login.css">
+    <link rel="stylesheet" href="components/home.css">
+    <link rel="stylesheet" href="components/profile.css">
+    <link rel="stylesheet" href="components/update-password.css">
+    <link rel="stylesheet" href="components/delete-account.css">
+
 </head>
 
 <body>
-    <div class="landing _off ">
+    <div class="landing off ">
         <div>
             <a class="landing__login" href="">login</a> or <a class="landing__register" href="">Register</a>
         </div>
@@ -32,8 +41,11 @@
     <div class="login off">
         <form class="login__form">
             <input class="login__email-input" type="email" name="email" placeholder="e-mail">
+            <span class="login__email-feedback off">wrong email</span>
             <input class="login__password-input" type="password" name="password" placeholder="password">
+            <span class="login__password-feedback off">wrong password</span>
             <button>Login</button>
+            <span class="login__feedback off">wrong credentials</span>
             <a class="login__register-link" href="">Register</a>
         </form>
     </div>
@@ -76,10 +88,32 @@
         </div>
     </div>
 
-    <script src="data.js"></script>
-    <script src="validators.js"></script>
-    <script src="logic.js"></script>
-    <script src="main.js"></script>
+    <!-- utils -->
+    <script src="utils/validators.js"></script>
+    
+    <!-- data layer -->
+    <script src="data/models/user.js"></script>
+    <script src="data/users.js"></script>
+    
+    <!-- business (logic) layer -->
+    <script src="logic/authenticate-user.js"></script>
+    <script src="logic/retrieve-user.js"></script>
+    <script src="logic/register-user.js"></script>
+    <script src="logic/update-user.js"></script>
+    <script src="logic/update-password.js"></script>
+    <script src="logic/unregister-user.js"></script>
+
+    <!-- presentation layer -->
+    <script src="components/app.js"></script>
+    <script src="components/landing.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/home.js"></script>
+    <script src="components/profile.js"></script>
+    <script src="components/update-password.js"></script>
+    <script src="components/delete-account.js"></script>
+    
+    <script src="index.js"></script>
 
 </body>
 </html>
