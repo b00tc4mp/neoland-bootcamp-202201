@@ -1,0 +1,23 @@
+.home {
+    justify-content: flex-start;
+    gap: 2rem;
+    background-color: var(--primary);
+}
+
+.home__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    background-color: var(--secondary);
+}
+
+.home__logo {
+    filter: invert(1);
+    width: 8rem;
+}
+
+.home__logout-button {
+    background-color: var(--warning)
+}

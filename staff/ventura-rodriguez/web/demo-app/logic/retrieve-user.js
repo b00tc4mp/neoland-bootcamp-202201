@@ -7,5 +7,5 @@ function retrieveUser(id) {
         return user
     }
 
-    return null
+    throw new Error('user not found')
 }

@@ -9,5 +9,3 @@ function User(name, surname, email, password) {
     this.email = email
     this.password = password
 }
-
-const users = [new User('Pepito', 'Grillo', 'pepigri@mail.com', '12345678')]
