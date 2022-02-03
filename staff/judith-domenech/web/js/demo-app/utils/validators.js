@@ -15,6 +15,7 @@ function validatePassword(password) {
     if (BLANK_REGEX.test(password)) throw new Error('blank password')
     if (SPACE_REGEX.test(password)) throw new Error('password has empty spaces')
     if (password === '') throw new Error('empty password')
+    if (password.length < 8 ) throw new Error ('password is shorter than 8 characters')
 }
 
 function validateName(name) {
