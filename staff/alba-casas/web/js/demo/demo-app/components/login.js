@@ -111,10 +111,16 @@ loginForm.onsubmit = (event) => {
 const input = loginForm.querySelector(".login__password-input");
 const capWarning = loginForm.querySelector(".login__warning-caps");
 
-input.addEventListener("keyup", function (event) {
+// si la que se va a pulsar es mayusculas...
+input.addEventListener("keydown", function (event) {
   if (event.getModifierState("CapsLock")) {
     capWarning.classList.remove("off");
-  } else {
+  }
+});
+
+// si la que se va a dejar de pulsar es mayusculas...
+input.addEventListener("keyup", function (event) {
+  if (event.getModifierState("CapsLock")) {
     capWarning.classList.add("off");
   }
 });

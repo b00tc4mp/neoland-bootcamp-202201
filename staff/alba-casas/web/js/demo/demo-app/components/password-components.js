@@ -16,4 +16,13 @@ passwordComponents.forEach((component) => {
       eye.classList.remove("bi-eye");
     }
   };
+  /* const capWarning = component.querySelector(".warning-caps");
+
+  input.addEventListener("keyup", function (event) {
+    if (event.getModifierState("CapsLock")) {
+      capWarning.classList.remove("off");
+    } else {
+      capWarning.classList.add("off");
+    }
+  }); */
 });
