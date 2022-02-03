@@ -9,5 +9,3 @@ class User{
         this.password = password
     }
 }
-const pepito = new User ('Pepito Grillo', 'pepito@mail.com', '12345')
-const users=[pepito]

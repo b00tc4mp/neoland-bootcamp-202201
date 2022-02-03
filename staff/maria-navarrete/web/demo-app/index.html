@@ -7,7 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo App</title>
     <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="components/landing.css">
+    <link rel="stylesheet" href="components/login.css">
+    <link rel="stylesheet" href="components/register.css">
+    <link rel="stylesheet" href="components/home.css">
+    <link rel="stylesheet" href="components/profile.css">
+    <link rel="stylesheet" href="components/update-password.css">
+    <link rel="stylesheet" href="components/delete-account.css">
+
 </head>
 
 <body>
@@ -21,7 +30,10 @@
         <form class="register__form">
             <input class="register__name-input" type="text" name="name" placeholder="Name">
             <input class="register__email-input" type="email" name="email" placeholder="E-mail">
-            <input class="register__password-input" type="password" name="password" placeholder="Password">
+            <div class ="register__password-area">     
+                <input class="register__password-input" type="password" name="password" placeholder="Password">
+                <label class="register__toggle-icon register__toggle-icon--show" id="togglePassword"></lab>
+            </div>
             <button>Register</button>
             <a href="" class="register__login-link">Login</a>
         </form>
@@ -29,9 +41,16 @@
 
     <div class="login off">
         <form class="login__form">
-            <input class="login__email-input" type="email" name="email" placeholder="E-mail">
-            <input class="login__password-input" type="password" name="password" placeholder="Password">
+            <input class="login__email-input" type="text" name="email" placeholder="E-mail">
+            <span class="login__email-feedback off"></span>
+            <div class ="login__password-area">
+                <input class="login__password-input" type="password" name="password" placeholder="Password">
+                <label class="login__toggle-icon login__toggle-icon--show" id="togglePassword"></label>
+            </div>
+            <span class="login__password-caps-status _off">*Caps Lock On</span>
+            <span class="login__password-feedback off"></span>
             <button>Login</button>
+            <span class="login__feedback off"></span>
             <a href="" class="login__register-link">Register</a>
         </form>
     </div>
@@ -65,9 +84,18 @@
 
         <div class="update-password off">
             <form class="update-password__form">
-                <input class="update-password__curr-password-input" type="password" name="curr-password" placeholder="Current password">
-                <input class="update-password__password-input" type="password" name="password" placeholder="New password">
-                <input class="update-password__re-password-input" type="password" name="re-password" placeholder="Confirm new password">
+                <div class ="update-password__curr-password-area">     
+                    <input class="update-password__curr-password-input" type="password" name="curr-password" placeholder="Current password">
+                    <label class="curr-password__toggle-icon curr-password__toggle-icon--show" id="togglePassword"></label>
+                </div>
+                <div class ="update-password__password-area">     
+                    <input class="update-password__password-input" type="password" name="password" placeholder="New password">
+                    <label class="password__toggle-icon password__toggle-icon--show" id="togglePassword"></label>
+                </div>
+                <div class ="update-password__re-password-area">     
+                    <input class="update-password__re-password-input" type="password" name="re-password" placeholder="Confirm new password">
+                    <label class="re-password__toggle-icon re-password__toggle-icon--show" id="togglePassword"></label>
+                </div>
                 <button class="update-password__submit">Update Password</button>
                 <a class="update-password__back-link" href="">back</a>
             </form>
@@ -75,17 +103,42 @@
 
         <div class="delete-account off">
             <form class="delete-account__form">
-                <input class="delete-account__password" type="password" name="password" placeholder="Password">
+                <div class ="delete-account__password-area">
+                    <input class="delete-account__password-input" type="password" name="password" placeholder="Password">
+                    <label class="delete-account__toggle-icon delete-account__toggle-icon--show" id="togglePassword"></label>
+                </div>
                 <button class="delete-acount__submit">Delete Account</button>
                 <a class="delete-account__back-link" href="">back</a>
             </form>
         </div>
     </div>
 
-    <script src="data.js"></script>
-    <script src="validators.js"></script>
-    <script src="logic.js"></script>
-    <script src="main.js"></script>
+    <!-- utils -->
+    <script src="utils/validators.js"></script>
+
+    <!-- data layer -->
+    <script src="data/models/user.js"></script>
+    <script src="data/users.js"></script>
+
+    <!-- business (data) layer -->
+    <script src="logic/authenticate-user.js"></script>
+    <script src="logic/retrieve-user.js"></script>
+    <script src="logic/register-user.js"></script>
+    <script src="logic/update-user.js"></script>
+    <script src="logic/update-password.js"></script>
+    <script src="logic/unregister-user.js"></script>
+
+    <!-- view layer -->
+    <script src="components/app.js"></script>
+    <script src="components/landing.js"></script>
+    <script src="components/login.js"></script>  
+    <script src="components/register.js"></script>
+    <script src="components/home.js"></script>
+    <script src="components/profile.js"></script>
+    <script src="components/update-password.js"></script>
+    <script src="components/delete-account.js"></script>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
