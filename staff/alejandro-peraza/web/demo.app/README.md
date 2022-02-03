@@ -1,6 +1,6 @@
 # Demo App
 
-TODO
+blah blah blah
 
 ## Tasks
 
@@ -15,17 +15,17 @@ DONE implement login view
 DONE implement home view
 
 DONE implement logout functionality (go to landing on logout)
-    - Create logout button (basic)
-    - Catch button event and develop visual functionality
-    - Debug all
 
-TODO implement unregister functionality (accessible from profle view with a button, has its's own unregister view, requires the password to procced, and redirects to landing)
-    - Create new panel (profile)
-    - Create link for navigate from home to profile
-    - Create unregister button (basic)
-    - Catch button event and develop visual functionality
-    - Develop unregisterUser (in Logic.js file)
-    - End implementation details
-    - Debug all
+DONE implement profile view (allows user data to be updated)
 
-TODO implement profile view (allows user data to be updated)
+TODO implement unregister functionality (accessible from profile view with a button, has it's own unregister view, requires the password to procced, and redirects to landing)
+
+DONE implement update password view (from profile view)
+
+TODO reduce name and surname into just name (and all its functionalities)
+
+TODO add open/close eye in password inputs
+
+TODO add password security level below password inputs
+
+TODO improve password security (do not allow "password", "12345678", ... min length)
