@@ -11,9 +11,3 @@ html, body {
 .off {
     display: none !important;
 }
-
-.login__password-caps-status{
-    color: gray;
-    font-size: 0.8rem;
-    text-align: right;
-}

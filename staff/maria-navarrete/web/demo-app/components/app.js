@@ -7,6 +7,7 @@ const titleView = homeView.querySelector('.home__user')
 const profileView = homeView.querySelector('.profile')
 const updatePasswordView = homeView.querySelector('.update-password')
 const deleteAccountView = homeView.querySelector('.delete-account')
+const searchView = document.querySelector('.search')
 
 //state
-let activeUser = null
+let activeUser

@@ -19,6 +19,16 @@ loginToggleIcon.onclick = () => {
 }
 
 const passwordInput = loginForm.querySelector('.login__password-input')
+passwordInput.addEventListener('keydown', function(event){
+    const passwordCapsStatus = loginForm.querySelector('.login__password-caps-status')
+    
+    if(event.getModifierState('CapsLock'))
+        passwordCapsStatus.classList.remove('off')
+    
+    else
+        passwordCapsStatus.classList.add('off')    
+})
+
 passwordInput.addEventListener('keyup', function(event){
     const passwordCapsStatus = loginForm.querySelector('.login__password-caps-status')
     

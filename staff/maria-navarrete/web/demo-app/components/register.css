@@ -31,7 +31,7 @@
     grid-column: two / three;
     grid-row: first / second;
     background-position: 0;
-    background-size: contain;
+    background-size: cover;
     cursor: pointer;
 }
 
@@ -41,4 +41,10 @@
 
 .register__toggle-icon--hide {
     background-image: url('../images/closed-eye.png');
+}
+
+.register__password-caps-status{
+    color: gray;
+    font-size: 0.8rem;
+    text-align: right;
 }
