@@ -15,9 +15,9 @@ loginForm.addEventListener('submit', event => {
 })
 
 const warning = loginForm.querySelector(".login__warning")
-const miInput = loginForm.querySelector('.login__password-input');
+const myInput = loginForm.querySelector('.login__password-input');
 
-miInput.addEventListener('keyup', function (event) {
+myInput.addEventListener('keyup', function(event) {
   if (event.getModifierState('CapsLock')) {
     warning.classList.remove("off")
   } 
