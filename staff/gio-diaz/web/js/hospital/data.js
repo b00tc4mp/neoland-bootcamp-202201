@@ -22,6 +22,8 @@ const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
 const cities = ['Platano', 'Naranja', 'Kiwi', 'Arandonos', 'Manzana', 'Pera', 'Kaki', 'Uva', 'Piña', 'Sandía', 'Melón', 'Mango']
 const countries = ['Rojo', 'Verde', 'Amarillo', 'Azul', 'Violeta', 'Rosa', 'Carmín', 'Turquesa', 'Duquesa', 'Morado', 'Sótano']
 
+const domains = ['gmail.com', 'outlook.com', 'yahoo.com', 'hotmail.com', 'mail.ru', 'gmx.de', 'pepito.com', 'wendy.com', 'myspace.com', 'messenger.com']
+
 const people = []
 
 for (let i = 0; i < 1000; i++) {
@@ -41,9 +43,11 @@ for (let i = 0; i < 1000; i++) {
     const birthDate = newDate(year, month, day)
     
     const city = randomElement(cities) + ' City'
-    const country = randomElement(countries)
+    const country = 'Republic of ' + randomElement(countries)
+
+    const domain = randomElement(domains)
     
-    const email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + randomInteger(1000, 9999) + '@mail.com'
+    const email = firstName.toLowerCase() + '.' + lastName.toLowerCase() + '@' + domain
     const phone = randomInteger(600000000, 790000000)
 
     const person = new Person(id, firstName, lastName, gender, birthDate, bloodType, city, country, email, phone)
