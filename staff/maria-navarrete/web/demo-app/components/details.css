@@ -1,0 +1,19 @@
+.details {
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+    align-items: center;
+    gap: 1rem;
+    background-color: pink;
+    padding: 3rem 2rem;
+    border-radius: 27%;
+    box-shadow: 1rem 1rem 2rem powderblue;
+  }
+
+.details__img {
+    max-width: 600px;
+}
+
+.details__list {
+    list-style: none;
+}
