@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="components/profile.css">
     <link rel="stylesheet" href="components/update-password.css">
     <link rel="stylesheet" href="components/delete-account.css">
+    <link rel="stylesheet" href="components/search.css">
+    <link rel="stylesheet" href="components/details.css">
 </head>
 
 <body>
@@ -41,6 +43,9 @@
             <input class="login__email-input" type="email" name="email" placeholder="e-mail">
             <span class="login__email-feedback off">wrong email</span>
             <input class="login__password-input" type="password" name="password" placeholder="password">
+            <!--  -->
+            <span class="login__warning-caps off"> ! Caps lock is on</span>
+            <!--  -->
             <span class="login__password-feedback off">wrong password</span>
             <button>Login</button>
             <span class="login__feedback off">wrong credentials</span>
@@ -84,6 +89,34 @@
                 <a class="delete-account__back-link" href="">back</a>
             </form>
         </div>
+
+        <div class="search">
+            <form class="search__form">
+                <input class="search__query-input" type="text" name="query" placeholder="query">
+                <button>Search</button>
+            </form>
+            <ul class="search__results-list off"></ul>
+        </div>
+
+        <div class="details off">
+            <img class="details__image">
+            <div class="details__info">
+                <h2 class="details__name"></h2>
+                <h3 class="details__price"></h3>
+                <ul class="details__list">
+                    <li class="details__maker"></li>
+                    <li class="details__year"></li>
+                    <li class="details__style"></li>
+                    <li class="details__color"></li>
+                    <li class="details__collection"></li>
+                    <li class="details__description"></li>
+                </ul>
+            </div>
+                
+
+            </img>
+        </div>
+
     </div>
 
     <!-- utils -->
@@ -100,6 +133,8 @@
     <script src="logic/update-user.js"></script>
     <script src="logic/update-password.js"></script>
     <script src="logic/unregister-user.js"></script>
+    <script src="logic/search-vehicles.js"></script>
+    <script src="logic/retrieve-vehicle.js"></script>
 
     <!-- presentation layer -->
     <script src="components/app.js"></script>
@@ -110,6 +145,7 @@
     <script src="components/profile.js"></script>
     <script src="components/update-password.js"></script>
     <script src="components/delete-account.js"></script>
+    <script src="components/search.js"></script>
     
     <script src="index.js"></script>
 </body>
