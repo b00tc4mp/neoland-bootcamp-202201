@@ -5,6 +5,5 @@ const homeView = document.querySelector(".home");
 const profileView = document.querySelector(".profile");
 const updatePasswordView = document.querySelector(".update-password");
 const deleteAccountView = document.querySelector(".delete-account");
-const searchView = document.querySelector(".search");
 
 let userId;

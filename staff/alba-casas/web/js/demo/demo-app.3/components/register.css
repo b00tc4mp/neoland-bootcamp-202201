@@ -1,0 +1,46 @@
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register__login-link {
+  text-align: center;
+}
+
+/* .register__password-bar--strong {
+  background-color: green;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 16px;
+  align-items: center;
+  color: white;
+}
+
+.register__password-bar--weak {
+  background-color: tomato;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 16px;
+  align-items: center;
+  color: white;
+}
+
+.register__password-bar--medium {
+  background-color: rgb(233, 233, 27);
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 16px;
+  align-items: center;
+  color: white;
+} */
