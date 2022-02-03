@@ -10,6 +10,10 @@ loginRegisterLink.onclick = event => {
 
 const loginForm = loginView.querySelector('.login__form')
 
+loginForm.addEventListener('submit', event => {
+    // ...
+})
+
 loginForm.onsubmit = event => {
     event.preventDefault()
 
