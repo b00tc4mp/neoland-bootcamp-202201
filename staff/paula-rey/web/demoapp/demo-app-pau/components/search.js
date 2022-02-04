@@ -14,6 +14,7 @@ searchForm.onsubmit = event => {
 
             vehicles.forEach(vehicle => {
                 const listItem = document.createElement('li')
+                listItem.classList.add('search__list-item')
 
                 const { id, name, thumbnail, price } = vehicle
 

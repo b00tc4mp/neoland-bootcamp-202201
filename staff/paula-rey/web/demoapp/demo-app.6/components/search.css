@@ -15,4 +15,6 @@
     list-style-type: none;
 }
 
-
+.search__list-item {
+    cursor: pointer;
+}
