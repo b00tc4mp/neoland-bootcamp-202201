@@ -10,9 +10,6 @@ loginRegisterLink.onclick = event => {
 
 const loginForm = loginView.querySelector('.login__form')
 
-loginForm.addEventListener('submit',event => {
-
-})
 loginForm.onsubmit = event => {
     event.preventDefault()
 
@@ -23,34 +20,41 @@ loginForm.onsubmit = event => {
     const password = passwordInput.value
 
     try {
-        userId = authenticateUser(email, password)
+        authenticateUser(email, password)
+            .then(token => {
+                userToken = token
 
-        const user = retrieveUser(userId)
+                return retrieveUser(userToken)
+            })
+            .then(user => {
+                const homeUser = homeView.querySelector('.home__user')
+                homeUser.innerText = user.name
 
-        const homeUser = homeView.querySelector('.home__user')
-        homeUser.innerText = user.name
-        
+                emailInput.value = ''
+                passwordInput.value = ''
 
-        emailInput.value = ''
-        passwordInput.value = ''
+                emailInput.classList.remove('login__input--error')
 
-        emailInput.classList.remove('login__input--error')
+                const emailFeedback = loginForm.querySelector('.login__email-feedback')
+                emailFeedback.classList.add('off')
 
-        const emailFeedback = loginForm.querySelector('.login__email-feedback')
-        emailFeedback.classList.add('off')
+                passwordInput.classList.remove('login__input--error')
 
-        passwordInput.classList.remove('.login__input-error')
+                const passwordFeedback = loginForm.querySelector('.login__password-feedback')
+                passwordFeedback.classList.add('off')
 
-        const passwordFeedback = loginForm.querySelector('.login__password-feedback')
-        emailFeedback.classList.add('off')
+                const feedback = loginForm.querySelector('.login__feedback')
+                feedback.classList.add('off')
 
+                loginView.classList.add('off')
 
-        loginView.classList.add('off')
-
-        homeView.classList.remove('off')
+                homeView.classList.remove('off')
+            })
+            .catch(error => alert(error.message))
     } catch (error) {
         //alert(error.message)
 
+        // const message = error.message
         const { message } = error
 
         if (message.includes('email')) {
@@ -96,4 +100,3 @@ loginForm.onsubmit = event => {
         passwordInput.value = ''
     }
 }
-        

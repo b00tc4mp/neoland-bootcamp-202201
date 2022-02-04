@@ -26,17 +26,20 @@ registerForm.onsubmit = event => {
 
     try {
         registerUser(name, surname, email, password)
+            .then(() => {
 
-        nameInput.value = ''
-        surnameInput.value = ''
-        emailInput.value = ''
-        passwordInput.value = ''
-
-        registerView.classList.add('off')
-
+                nameInput.value = ''
+                surnameInput.value = ''
+                emailInput.value = ''
+                passwordInput.value = ''
         
-        loginView.classList.remove('off')
+                registerView.classList.add('off')
         
+                loginView.classList.remove('off')
+        })
+        .catch(error => {
+            alert(error.message)
+        })
     } catch (error) {
         alert(error.message)
     }
