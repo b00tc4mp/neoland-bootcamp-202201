@@ -9,4 +9,4 @@ const deleteAccountView = document.querySelector('.delete-account')
 const searchView = document.querySelector('.search')
 
 // state
-let userToken
+let userId

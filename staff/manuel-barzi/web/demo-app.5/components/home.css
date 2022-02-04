@@ -1,20 +1,23 @@
-.search {
+.home {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     height: 100%;
+    gap: 2rem;
 }
 
-.search__form {
+.home__header {
     display: flex;
-    gap: .5rem;
+    align-items: center;
+    gap: 1rem;
 }
 
-.search__results-list {
-    list-style-type: none;
+.home__logo {
+    filter: invert(1);
+    width: 8rem;
 }
 
-.search__list-item {
+.home__logout-button {
     cursor: pointer;
 }

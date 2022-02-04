@@ -20,37 +20,32 @@ loginForm.onsubmit = event => {
     const password = passwordInput.value
 
     try {
-        authenticateUser(email, password)
-            .then(token => {
-                userToken = token
+        userId = authenticateUser(email, password)
 
-                return retrieveUser(userToken)
-            })
-            .then(user => {
-                const homeUser = homeView.querySelector('.home__user')
-                homeUser.innerText = user.name
+        const user = retrieveUser(userId)
 
-                emailInput.value = ''
-                passwordInput.value = ''
+        const homeUser = homeView.querySelector('.home__user')
+        homeUser.innerText = user.name
 
-                emailInput.classList.remove('login__input--error')
+        emailInput.value = ''
+        passwordInput.value = ''
 
-                const emailFeedback = loginForm.querySelector('.login__email-feedback')
-                emailFeedback.classList.add('off')
+        emailInput.classList.remove('login__input--error')
 
-                passwordInput.classList.remove('login__input--error')
+        const emailFeedback = loginForm.querySelector('.login__email-feedback')
+        emailFeedback.classList.add('off')
 
-                const passwordFeedback = loginForm.querySelector('.login__password-feedback')
-                passwordFeedback.classList.add('off')
+        passwordInput.classList.remove('login__input--error')
 
-                const feedback = loginForm.querySelector('.login__feedback')
-                feedback.classList.add('off')
+        const passwordFeedback = loginForm.querySelector('.login__password-feedback')
+        passwordFeedback.classList.add('off')
 
-                loginView.classList.add('off')
+        const feedback = loginForm.querySelector('.login__feedback')
+        feedback.classList.add('off')
 
-                homeView.classList.remove('off')
-            })
-            .catch(error => alert(error.message))
+        loginView.classList.add('off')
+
+        homeView.classList.remove('off')
     } catch (error) {
         //alert(error.message)
 
