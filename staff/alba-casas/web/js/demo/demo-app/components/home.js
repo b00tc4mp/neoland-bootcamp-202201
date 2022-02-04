@@ -25,6 +25,7 @@ homeProfileLink.onclick = (event) => {
 
   updatePasswordView.classList.add("off");
   deleteAccountView.classList.add("off");
+  searchView.classList.add("off");
 
   profileView.classList.remove("off");
 };
@@ -35,4 +36,5 @@ homeHomeLink.onclick = (event) => {
   event.preventDefault();
 
   profileView.classList.add("off");
+  searchView.classList.remove("off");
 };

@@ -1,1 +1,2 @@
-loginView.classList.remove("off");
+landingView.classList.add("off");
+homeView.classList.remove("off");
