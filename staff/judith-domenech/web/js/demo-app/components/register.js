@@ -38,14 +38,3 @@ registerForm.onsubmit = event => {
         alert(error.message)
     }
 }
-
-   /*  const registerPasswordInput = registerForm.querySelector('.register__sewcurity-bar')
-
-    registerPasswordInput.addEventListener('keypress', function (event) {
-        if(event.password.length <= 3){
-            registerPasswordInput.classList.remove('.off')
-        } else if (event.password.length <= 5) {
-            registerPasswordInput.classList.remove('.off')
-            } else (password.length < 8) ('.secure')
-        })
-     */

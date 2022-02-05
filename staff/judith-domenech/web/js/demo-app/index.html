@@ -15,8 +15,12 @@
     <link rel="stylesheet" href="components/login.css">
     <link rel="stylesheet" href="components/home.css">
     <link rel="stylesheet" href="components/profile.css">
+    <link rel="stylesheet" href="components/search.css">
     <link rel="stylesheet" href="components/update-password.css">
     <link rel="stylesheet" href="components/delete-account.css">
+    <link rel="stylesheet" href="components/details.css" .css">
+
+
 </head>
 
 <body>
@@ -29,10 +33,12 @@
     <div class="register off">
         <form class="register__form">
             <input class="register__name-input register__input-style" type="text" name="name" placeholder="name">
-            <input class="register__surname-input register__input-style" type="text" name="surname" placeholder="surname">
+            <input class="register__surname-input register__input-style" type="text" name="surname"
+                placeholder="surname">
             <input class="register__email-input register__input-style" type="email" name="email" placeholder="e-mail">
-            <input class="register__password-input register__input-style" type="password" name="password" placeholder="password">
-            <div class= "register__seccurity-bar"> </div>
+            <input class="register__password-input register__input-style" type="password" name="password"
+                placeholder="password">
+            <div class="register__seccurity-bar"> </div>
             <button class="register__button">Register</button>
             <a class="register__login-link" href="">Login</a>
         </form>
@@ -42,9 +48,9 @@
         <form class="login__form">
             <input class="login__email-input login__input-style" type="email" name="email" placeholder="e-mail">
             <span class="login__email-feedback off">wrong email</span>
-            <input class="login__password-input login__input-style" type="password" name="password" placeholder="password">
-                <input class= "login__hidden-password" type="checkbox" id ="hidden-password">
-                <label for="hidden-password">Show password</label> -->
+            <input class="login__password-input login__input-style" type="password" name="password"
+                placeholder="password">
+            <input class="login__hidden-password" type="checkbox" id="hidden-password">
             <span class="login__password-feedback off">wrong password</span>
             <button class="login__button">Login</button>
             <span class="login__feedback off">wrong credentials</span>
@@ -91,7 +97,19 @@
                 <a class="delete-account__back-link" href="">back</a>
             </form>
         </div>
+
+        <div class="search">
+            <form class="search__form">
+                <input class="search__query-input" type="text" name="query" placeholder="query">
+                <button>Search</button>
+            </form>
+
+            <ul class="search__results-list off"></ul>
+
+            <div class="detail off"></div>
+        </div>
     </div>
+
 
     <!-- utils -->
     <script src="utils/validators.js"></script>
@@ -107,6 +125,8 @@
     <script src="logic/update-user.js"></script>
     <script src="logic/update-password.js"></script>
     <script src="logic/unregister-user.js"></script>
+    <script src="logic/search-vehicles.js"></script>
+    <script src="logic/retrieve-vehicles.js"></script>
 
     <!-- presentation layer -->
     <script src="components/app.js"></script>
@@ -117,6 +137,7 @@
     <script src="components/profile.js"></script>
     <script src="components/update-password.js"></script>
     <script src="components/delete-account.js"></script>
+    <script src="components/search.js"></script>
 
     <script src="index.js"></script>
 

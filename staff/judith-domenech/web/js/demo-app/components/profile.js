@@ -39,5 +39,3 @@ profileForm.onsubmit = event => {
         alert(error.message)
     }
 }
-
- 

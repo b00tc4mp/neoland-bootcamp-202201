@@ -32,8 +32,16 @@ function validateSurname(surname) {
     if (SPACES_AROUND_REGEX.test(surname)) throw new Error('surname has spaces around')
 }
 
-function validateId(id) {
-    if (typeof id !== 'string') throw new Error('id is not a string')
-    if (id === '') throw new Error('empty id')
-    if (SPACE_REGEX.test(id)) throw new Error('id has empty spaces')
+function validateToken(token) {
+    if (typeof token !== 'string') throw new TypeError('token is not a string')
+    
+    const parts = token.split('.')
+
+    if (parts.length !== 3) throw new Error('token is not valid')
+
+    parts.forEach(part => {
+        if (part=== '') throw new Error('token part is empty')
+        if(BLANK_REGEX.test(part)) throw new Error('token part is blank')
+    })
+
 }
