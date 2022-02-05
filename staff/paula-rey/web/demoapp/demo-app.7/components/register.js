@@ -26,7 +26,6 @@ registerForm.onsubmit = event => {
     try {
         registerUser(name, surname, email, password)
             .then(() => {
-
                 nameInput.value = ''
                 surnameInput.value = ''
                 emailInput.value = ''

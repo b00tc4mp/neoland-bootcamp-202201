@@ -1,16 +1,40 @@
-function updateUserPassword(id, currPassword, password, rePassword) {
-    validateId(id)
+function updateUserPassword(token, currPassword, password, rePassword) {
+    validateToken(token)
     validatePassword(currPassword)
     validatePassword(password)
     validatePassword(rePassword)
 
-    const user = users.find(user => user.id === id)
+    
 
-    if (!user) throw Error('user not found')
+    return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+        //MODIFY, PASSWORD
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ oldPassword: currPassword, password }) 
+    })
+        .then(res => {
+            const {status} = res
 
-    if (user.password !== currPassword) throw new Error('wrong credentials')
+            if (status === 204) return
+            
+            else if (status >= 400 && status < 500) {
+                
+                return res.json()
+                    .then(({error}) => {
 
-    if (password !== rePassword) throw new Error('password and password retyped do not match')
+                        throw new Error(error)
 
-    user.password = password
+                    })
+            } else if ( status >= 500) {
+                
+                throw new Error('server error')
+
+            } else {
+                throw new Error('unknown error')
+            }
+        })
 }
+

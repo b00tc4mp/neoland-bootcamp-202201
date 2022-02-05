@@ -18,20 +18,24 @@ deleteAccountForm.addEventListener('submit', event => {
     const password = passwordInput.value
 
     try {
-        unregisterUser(userId, password)
+        unregisterUser(userToken, password)
+            .then(() => {
 
-        passwordInput.value = ''
+                deleteAccountForm.reset() // passwordInput.value = ''
 
-        deleteAccountView.classList.add('off')
+                deleteAccountView.classList.add('off')
 
-        profileView.classList.add('off')
+                profileView.classList.add('off')
 
-        homeView.classList.add('off')
+                homeView.classList.add('off')
 
-        landingView.classList.remove('off')
+                landingView.classList.remove('off')
+
+            })
     } catch (error) {
         alert(error.message)
 
-        passwordInput.value = ''
+        // passwordInput.value = ''
+        deleteAccountForm.reset()
     }
 })
