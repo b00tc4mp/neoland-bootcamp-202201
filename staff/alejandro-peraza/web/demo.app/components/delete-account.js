@@ -10,20 +10,16 @@ deleteAccountBackLink.onclick = event => {
 
 const deleteAccountForm = deleteAccountView.querySelector('.delete-account__form')
 
-
-/*deleteAccountForm.onsubmit = event => {
-    event.preventDefault()
-}*/
-
 deleteAccountForm.addEventListener('submit', event => {
     event.preventDefault()
 
     const passwordInput = deleteAccountForm.querySelector('.delete-account__password-input')
 
     const password = passwordInput.value
+
     try {
         unregisterUser(userId, password)
-        
+
         passwordInput.value = ''
 
         deleteAccountView.classList.add('off')

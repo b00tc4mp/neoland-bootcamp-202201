@@ -24,18 +24,17 @@ homeProfileLink.onclick = event => {
                 profileNameInput.value = user.name
                 profileSurnameInput.value = user.surname
                 profileEmailInput.value = user.email
-
+            
                 searchView.classList.add('off')
                 updatePasswordView.classList.add('off')
                 deleteAccountView.classList.add('off')
-
+            
                 profileView.classList.remove('off')
             })
             .catch(error => alert(error.message))
     } catch(error) {
-            alert(error.message)
+        alert(error.message)
     }
-    
 }
 
 const homeHomeLink = homeView.querySelector('.home__home-link')

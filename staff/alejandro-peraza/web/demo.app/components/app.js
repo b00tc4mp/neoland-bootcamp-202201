@@ -1,5 +1,4 @@
 // views
-
 const landingView = document.querySelector('.landing')
 const loginView = document.querySelector('.login')
 const registerView = document.querySelector('.register')
@@ -9,5 +8,5 @@ const updatePasswordView = document.querySelector('.update-password')
 const deleteAccountView = document.querySelector('.delete-account')
 const searchView = document.querySelector('.search')
 
-//state
-let userId
+// state
+let userToken

@@ -12,9 +12,6 @@
     gap: .5rem;
 }
 
-.profile__update-password-link {
-    text-align: center;
-}
-.profile__delete-account-link {
+.profile__update-password-link, .profile__delete-account-link {
     text-align: center;
 }

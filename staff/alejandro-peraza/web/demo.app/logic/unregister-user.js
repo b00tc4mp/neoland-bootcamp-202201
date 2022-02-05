@@ -1,5 +1,5 @@
-function unregisterUser(id, password) {
-    validateId(id)
+function unregisterUser(token, password) {
+    validateId(token)
     validatePassword(password)
 
     
@@ -17,3 +17,4 @@ function unregisterUser(id, password) {
     }
     throw new Error('user not found')
 }
+
