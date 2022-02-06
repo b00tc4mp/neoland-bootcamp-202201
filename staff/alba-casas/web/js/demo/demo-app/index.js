@@ -1,2 +1,1 @@
-landingView.classList.add("off");
-homeView.classList.remove("off");
+landingView.classList.remove("off");
