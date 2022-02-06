@@ -16,6 +16,7 @@ function updateUserPassword(token, currPassword, password, rePassword) {
         body: JSON.stringify({ oldPassword: currPassword, password }) 
     })
         .then(res => {
+            // const status = res.status
             const {status} = res
 
             if (status === 204) return
