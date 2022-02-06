@@ -32,7 +32,12 @@
             <input class="register__name-input" type="text" name="name" placeholder="name">
             <input class="register__surname-input" type="text" name="surname" placeholder="surname">
             <input class="register__email-input" type="email" name="email" placeholder="e-mail">
-            <input class="register__password-input" type="password" name="password" placeholder="password">
+            <!-- <fieldset> en vez de <div> -->
+            <div class ="register__password-area">     
+                <input class="register__password-input" type="password" name="password" placeholder="Password">
+                <label class="register__toggle-icon register__toggle-icon--show" id="togglePassword"></lab>
+            </div>
+            <span class="register__warning-caps off"> *Caps Lock On</span>
             <button>Register</button>
             <a class="register__login-link" href="">Login</a>
         </form>
@@ -42,10 +47,11 @@
         <form class="login__form">
             <input class="login__email-input" type="email" name="email" placeholder="e-mail">
             <span class="login__email-feedback off">wrong email</span>
-            <input class="login__password-input" type="password" name="password" placeholder="password">
-            <!--  -->
-            <span class="login__warning-caps off"> ! Caps lock is on</span>
-            <!--  -->
+            <div class ="login__password-area">     
+                <input class="login__password-input" type="password" name="password" placeholder="Password">
+                <label class="login__toggle-icon login__toggle-icon--show" id="togglePassword"></lab>
+            </div>
+            <span class="login__warning-caps off"> *Caps Lock On</span>
             <span class="login__password-feedback off">wrong password</span>
             <button>Login</button>
             <span class="login__feedback off">wrong credentials</span>
@@ -74,9 +80,21 @@
 
         <div class="update-password off">
             <form class="update-password__form">
-                <input class="update-password__curr-password-input" type="password" name="name" placeholder="Current password">
-                <input class="update-password__password-input" type="password" name="surname" placeholder="New password">
-                <input class="update-password__re-password-input" type="password" name="email" placeholder="Re-type new password">
+                <div class ="update-password__curr-password-area">     
+                    <input class="update-password__curr-password-input" type="password" name="curr-password" placeholder="Current password">
+                    <label class="curr-password__toggle-icon curr-password__toggle-icon--show" id="togglePassword"></label>
+                </div>
+                <span class="update-password__curr-password-warning-caps off"> *Caps Lock On</span>
+                <div class ="update-password__password-area">     
+                    <input class="update-password__password-input" type="password" name="new-password" placeholder="New password">
+                    <label class="password__toggle-icon password__toggle-icon--show" id="togglePassword"></label>
+                </div>
+                <span class="update-password__password-warning-caps off"> *Caps Lock On</span>
+                <div class ="update-password__re-password-area">     
+                    <input class="update-password__re-password-input" type="password" name="re-password" placeholder="Confirm new password">
+                    <label class="re-password__toggle-icon re-password__toggle-icon--show" id="togglePassword"></label>
+                </div>
+                <span class="update-password__re-password-warning-caps off"> *Caps Lock On</span>
                 <button>Update password</button>
                 <a class="update-password__back-link" href="">back</a>
             </form>
@@ -84,7 +102,11 @@
 
         <div class="delete-account off">
             <form class="delete-account__form">
-                <input class="delete-account__password-input" type="password" name="password" placeholder="Password">
+                <div class ="delete-account__password-area">
+                    <input class="delete-account__password-input" type="password" name="password" placeholder="Password">
+                    <label class="delete-account__toggle-icon delete-account__toggle-icon--show" id="togglePassword"></label>
+                </div>
+                <span class="delete-account__password-warning-caps off">*Caps Lock On</span>
                 <button>Delete account</button>
                 <a class="delete-account__back-link" href="">back</a>
             </form>

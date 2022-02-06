@@ -10,9 +10,23 @@ loginRegisterLink.onclick = event => {
 
 const loginForm = loginView.querySelector('.login__form')
 
-loginForm.addEventListener('submit', event => {
-    // ...
-})
+const loginPasswordInput = loginForm.querySelector('.login__password-input')
+const loginToggleIcon = loginForm.querySelector('.login__toggle-icon')
+
+loginToggleIcon.onclick = () => {
+    const type = loginPasswordInput.type
+
+    if(type === 'password'){
+        loginToggleIcon.classList.remove('login__toggle-icon--show')
+        loginToggleIcon.classList.add('login__toggle-icon--hide')
+        loginPasswordInput.type = 'text'
+    }
+    else{
+        loginToggleIcon.classList.add('login__toggle-icon--show')
+        loginToggleIcon.classList.remove('login__toggle-icon--hide')
+        loginPasswordInput.type = 'password'
+    }
+}
 
 loginForm.onsubmit = event => {
     event.preventDefault()

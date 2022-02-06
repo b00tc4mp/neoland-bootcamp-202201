@@ -30,6 +30,34 @@
     text-align: center;
 }
 
+.login__password-area {
+    display: grid;
+    grid-template-columns: [one] 82% [two] 18% [three];
+    grid-template-rows: [first] 1fr [second];
+    width: fit-content;
+}
+
+.login__password-input {
+    grid-column: one / three;
+    grid-row: first / second;
+}
+
+.login__toggle-icon {
+    grid-column: two / three;
+    grid-row: first / second;
+    background-position: 0;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.login__toggle-icon--show {
+    background-image: url('../images/eye-open.png');
+}
+
+.login__toggle-icon--hide {
+    background-image: url('../images/eye-close.png');
+}
+
 .login__warning-caps {
     font-weight: bold;
     color: tomato;

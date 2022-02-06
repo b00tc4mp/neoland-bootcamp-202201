@@ -1,15 +1,15 @@
-const registerLoginLink = registerView.querySelector('.register__login-link')
+const registerForm = registerView.querySelector('.register__form')
 
-registerLoginLink.onclick = event => {
-    event.preventDefault()
+const registerPasswordInput = registerForm.querySelector('.register__password-input')
+const registerToggleIcon = registerView.querySelector('.register__toggle-icon')
 
-    registerView.classList.add('off')
+registerToggleIcon.onclick = () => {
+    const type = registerPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password'
+    registerPasswordInput.setAttribute('type', type)
 
-    loginView.classList.remove('off')
+    registerToggleIcon.classList.toggle('bi-eye')
 }
 
-
-const registerForm = registerView.querySelector('.register__form')
 
 registerForm.onsubmit = event => {
     event.preventDefault()
@@ -33,9 +33,21 @@ registerForm.onsubmit = event => {
         passwordInput.value = ''
 
         registerView.classList.add('off')
-
         loginView.classList.remove('off')
     } catch (error) {
         alert(error.message)
     }
 }
+
+
+const registerLoginLink = registerView.querySelector('.register__login-link')
+
+registerLoginLink.onclick = event => {
+    event.preventDefault()
+
+    registerView.classList.add('off')
+
+    loginView.classList.remove('off')
+}
+
+

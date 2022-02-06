@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    background-color: white;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+h1 {
+    color: tomato;
+}
