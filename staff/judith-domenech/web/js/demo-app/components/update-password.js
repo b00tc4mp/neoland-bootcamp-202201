@@ -22,7 +22,7 @@ updatePasswordForm.onsubmit = event => {
     const rePassword = rePasswordInput.value
 
     try {
-        updateUserPassword(userId, currPassword, password, rePassword)
+        updateUserPassword(userToken, currPassword, password, rePassword)
 
         currPasswordInput.value = ''
         passwordInput.value = ''

@@ -56,7 +56,7 @@ searchForm.onsubmit = event => {
 
                             const backLink = document.createElement('a')
                             backLink.href = '#'
-                            backLink.innerText = '< back'
+                            backLink.innerText = '<-- back'
                             backLink.onclick = event => {
                                 event.preventDefault()
 

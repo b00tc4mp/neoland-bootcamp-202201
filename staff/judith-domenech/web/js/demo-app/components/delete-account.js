@@ -18,7 +18,7 @@ deleteAccountForm.addEventListener('submit', event => {
     const password = passwordInput.value
 
     try {
-        unregisterUser(userId, password)
+        unregisterUser(userToken, password)
 
         passwordInput.value = ''
 

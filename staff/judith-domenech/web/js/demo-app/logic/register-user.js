@@ -7,7 +7,7 @@ function registerUser(name, surname, email, password) {
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json'    
         },
         body: JSON.stringify({ name, surname, username: email, password })
     })
