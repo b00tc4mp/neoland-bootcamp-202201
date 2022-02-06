@@ -12,7 +12,7 @@ searchForm.onsubmit = event => {
             const resultsList = searchView.querySelector('.search__results-list')
             const detailView = searchView.querySelector('.detail')
             
-            resultsList.innerHTML = ''
+            resultsListView.innerHTML = ''
 
             vehicles.forEach(vehicle => {
                 const listItem = document.createElement('li')
@@ -34,7 +34,6 @@ searchForm.onsubmit = event => {
                 resultsList.append(listItem)
             
 
-            resultsList.classList.remove('off')
             listItem.addEventListener('click', event => { // listItem.onclick = event => { .... }
                 retrieveVehicle(vehicle.id)
                     .then(({ name, image, description, price, url }) => {
