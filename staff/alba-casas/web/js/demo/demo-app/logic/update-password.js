@@ -1,5 +1,5 @@
 function updateUserPassword(id, currPassword, password, rePassword) {
-  validateId(id);
+  validateToken(id);
   validatePassword(currPassword);
   validatePassword(password);
   validatePassword(rePassword);

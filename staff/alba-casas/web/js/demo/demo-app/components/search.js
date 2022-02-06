@@ -9,13 +9,16 @@ searchForm.onsubmit = (event) => {
 
   searchVehicles(query)
     .then((vehicles) => {
-      const resultsList = searchView.querySelector(".search__results-list");
-      resultsList.innerHTML = "";
+      const resultsListView = searchView.querySelector(".search__results-list");
+      const detailView = searchView.querySelector(".detail");
+
+      resultsListView.innerHTML = "";
 
       vehicles.forEach((vehicle) => {
         const listItem = document.createElement("li");
+        listItem.classList.add("search__list-item");
 
-        const { id, name, thumbnail, price } = vehicle;
+        const { name, thumbnail, price } = vehicle;
 
         const itemTitle = document.createElement("h2");
         itemTitle.innerText = name;
@@ -26,45 +29,59 @@ searchForm.onsubmit = (event) => {
         const itemPrice = document.createElement("span");
         itemPrice.innerText = `${price} $`;
 
-        const itemId = document.createElement("id");
-        itemId.innerText = id;
+        listItem.append(itemTitle, itemImage, itemPrice);
 
-        listItem.append(itemTitle, itemImage, itemPrice, itemId);
+        resultsListView.append(listItem);
 
-        resultsList.append(listItem);
+        listItem.addEventListener("click", (event) => {
+          retrieveVehicle(vehicle.id).then(
+            ({ name, image, description, price, url }) => {
+              detailView.innerHTML = "";
 
-        listItem.onclick = () => {
-          retrieveVehicle(id).then((vehicle) => {
-            console.log(vehicle);
-            detailsView.querySelector(
-              ".details__name"
-            ).innerText = `Name: ${vehicle.name}`;
-            detailsView.querySelector(
-              ".details__price"
-            ).innerText = `Price: ${vehicle.price}`;
-            detailsView.querySelector(
-              ".details__maker"
-            ).innerText = `Maker: ${vehicle.maker}`;
-            detailsView.querySelector(".details__image").src = vehicle.image;
-            detailsView.querySelector(
-              ".details__year"
-            ).innerText = `Year: ${vehicle.year}`;
-            detailsView.querySelector(
-              ".details__style"
-            ).innerText = `Style: ${vehicle.style}`;
-            detailsView.querySelector(
-              ".details__color"
-            ).innerText = `Color: ${vehicle.color}`;
-            detailsView.querySelector(
-              ".details__description"
-            ).innerText = `Description: ${vehicle.description}`;
-          });
-          searchView.classList.add("off");
-          detailsView.classList.remove("off");
-        };
+              const itemTitle = document.createElement("h2");
+              itemTitle.innerText = name;
+
+              const itemImage = document.createElement("img");
+              itemImage.src = image;
+              itemImage.classList.add("detail__image");
+
+              const itemDescription = document.createElement("p");
+              itemDescription.innerText = description;
+
+              const itemPrice = document.createElement("span");
+              itemPrice.innerText = `${price} $`;
+
+              const itemLink = document.createElement("a");
+              itemLink.href = url;
+
+              const backLink = document.createElement("a");
+              backLink.href = "#";
+              backLink.innerText = "< back";
+              backLink.onclick = (event) => {
+                event.preventDefault();
+
+                detailView.classList.add("off");
+                resultsListView.classList.remove("off");
+              };
+
+              detailView.append(
+                itemTitle,
+                itemImage,
+                itemDescription,
+                itemPrice,
+                itemLink,
+                backLink
+              );
+
+              resultsListView.classList.add("off");
+              detailView.classList.remove("off");
+            }
+          );
+        });
       });
 
-      resultsList.classList.remove("off");
+      detailView.classList.add("off");
+      resultsListView.classList.remove("off");
     })
     .catch((error) => alert(error.message));
 };

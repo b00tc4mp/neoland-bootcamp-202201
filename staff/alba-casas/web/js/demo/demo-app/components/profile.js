@@ -28,16 +28,15 @@ profileForm.onsubmit = (event) => {
   event.preventDefault();
 
   const nameInput = profileForm.querySelector(".profile__name-input");
+  const surnameInput = profileForm.querySelector(".profile__surname-input");
   const emailInput = profileForm.querySelector(".profile__email-input");
 
   const name = nameInput.value;
+  const surname = surnameInput.value;
   const email = emailInput.value;
 
-  const homeWelcome = homeView.querySelector(".home__user");
-  homeWelcome.innerText = `Hello, ${name}!`;
-
   try {
-    updateUser(userId, name, email);
+    updateUser(userId, name, surname, email);
 
     alert("user updated");
   } catch (error) {

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -5,21 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo App</title>
     <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
+
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="components/landing.css" />
     <link rel="stylesheet" href="components/register.css" />
     <link rel="stylesheet" href="components/login.css" />
     <link rel="stylesheet" href="components/home.css" />
     <link rel="stylesheet" href="components/profile.css" />
-    <link rel="stylesheet" href="components/search.css" />
-    <link rel="stylesheet" href="components/details.css">
     <link rel="stylesheet" href="components/update-password.css" />
     <link rel="stylesheet" href="components/delete-account.css" />
-    <link rel="stylesheet" href="components/password-components.css" />
+    <link rel="stylesheet" href="components/details.css" />
+    <link rel="stylesheet" href="components/search.css" />
   </head>
 
   <body>
@@ -38,25 +35,25 @@
           name="name"
           placeholder="name"
         />
-        <span class="register__name-feedback off">Invalid name</span>
+        <input
+          class="register__surname-input"
+          type="text"
+          name="surname"
+          placeholder="surname"
+        />
         <input
           class="register__email-input"
           type="email"
           name="email"
           placeholder="e-mail"
         />
-        <span class="register__email-feedback off">Wrong email</span>
-        <div class="password-component">
-          <input
-            class="register__password-input"
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-          <i class="bi bi-eye-slash"></i>
-        </div>
+        <input
+          class="register__password-input"
+          type="password"
+          name="password"
+          placeholder="password"
+        />
         <button>Register</button>
-        <span class="register__feedback off">Wrong credentials</span>
         <a class="register__login-link" href="">Login</a>
       </form>
     </div>
@@ -69,20 +66,16 @@
           name="email"
           placeholder="e-mail"
         />
-        <span class="login__email-feedback off">Wrong email</span>
-        <div class="password-component">
-          <input
-            class="login__password-input"
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-          <i class="bi bi-eye-slash"></i>
-        </div>
-        <span class="login__warning-caps off">WARNING! Caps lock is ON.</span>
-        <span class="login__password-feedback off">Wrong password</span>
+        <span class="login__email-feedback off">wrong email</span>
+        <input
+          class="login__password-input"
+          type="password"
+          name="password"
+          placeholder="password"
+        />
+        <span class="login__password-feedback off">wrong password</span>
         <button>Login</button>
-        <span class="login__feedback off">Wrong credentials</span>
+        <span class="login__feedback off">wrong credentials</span>
         <a class="login__register-link" href="">Register</a>
       </form>
     </div>
@@ -106,8 +99,14 @@
             placeholder="name"
           />
           <input
-            class="profile__email-input"
+            class="profile__surname-input"
             type="text"
+            name="surname"
+            placeholder="surname"
+          />
+          <input
+            class="profile__email-input"
+            type="email"
             name="email"
             placeholder="e-mail"
           />
@@ -119,35 +118,24 @@
 
       <div class="update-password off">
         <form class="update-password__form">
-          <div class="password-component">
-            <input
-              class="update-password__curr-password-component"
-              type="password"
-              name="password"
-              placeholder="Current password"
-            />
-            <i class="bi bi-eye-slash"></i>
-          </div>
-          <div class="password-component">
-            <input
-              class="update-password__password-input"
-              type="password"
-              name="newpassword"
-              placeholder="New password"
-            />
-            <i class="bi bi-eye-slash"></i>
-          </div>
-
-          <div class="password-component">
-            <input
-              class="update-password__re-password-input"
-              type="password"
-              name="newpassword2"
-              placeholder="Re-type new password"
-            />
-            <i class="bi bi-eye-slash"></i>
-          </div>
-
+          <input
+            class="update-password__curr-password-input"
+            type="password"
+            name="name"
+            placeholder="Current password"
+          />
+          <input
+            class="update-password__password-input"
+            type="password"
+            name="surname"
+            placeholder="New password"
+          />
+          <input
+            class="update-password__re-password-input"
+            type="password"
+            name="email"
+            placeholder="Re-type new password"
+          />
           <button>Update password</button>
           <a class="update-password__back-link" href="">back</a>
         </form>
@@ -155,16 +143,12 @@
 
       <div class="delete-account off">
         <form class="delete-account__form">
-          <div class="password-component">
-            <input
-              class="delete-account__input"
-              type="password"
-              name="password"
-              placeholder="Current password"
-            />
-            <i class="bi bi-eye-slash"></i>
-          </div>
-
+          <input
+            class="delete-account__password-input"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
           <button>Delete account</button>
           <a class="delete-account__back-link" href="">back</a>
         </form>
@@ -180,28 +164,21 @@
           />
           <button>Search</button>
         </form>
-        <ul class="search__results-list off"></ul>
-      </div>
 
-      <div class="details off">
-        <ul class="details__list">
-          <img class="details__image"></img>
-          <li class="details__name"></li>
-          <li class="details__price"></li>
-          <li class="details__year"></li>
-          <li class="details__style"></li>
-          <li class="details__maker"></li>
-          <li class="details__color"></li>
-          <li class="details__description"></li>
-        </ul>
+        <ul class="search__results-list off"></ul>
+
+        <div class="detail off"></div>
       </div>
     </div>
 
+    <!-- utils -->
     <script src="utils/validators.js"></script>
 
+    <!-- data layer -->
     <script src="data/models/user.js"></script>
     <script src="data/users.js"></script>
 
+    <!-- business (logic) layer -->
     <script src="logic/authenticate-user.js"></script>
     <script src="logic/retrieve-user.js"></script>
     <script src="logic/register-user.js"></script>
@@ -211,13 +188,13 @@
     <script src="logic/search-vehicle.js"></script>
     <script src="logic/retrieve-vehicle.js"></script>
 
+    <!-- presentation layer -->
     <script src="components/app.js"></script>
     <script src="components/landing.js"></script>
     <script src="components/login.js"></script>
     <script src="components/register.js"></script>
     <script src="components/home.js"></script>
     <script src="components/profile.js"></script>
-    <script src="components/password-components.js"></script>
     <script src="components/update-password.js"></script>
     <script src="components/delete-account.js"></script>
     <script src="components/search.js"></script>

@@ -14,22 +14,29 @@ const deleteAccountForm = deleteAccountView.querySelector(
   ".delete-account__form"
 );
 
-deleteAccountForm.onsubmit = (event) => {
+deleteAccountForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const passwordInput = deleteAccountForm.querySelector(
-    ".delete-account__input"
+    ".delete-account__password-input"
   );
+
   const password = passwordInput.value;
 
   try {
-    unregisterUser(userId, password);
-    profileView.classList.add("off");
-    homeView.classList.add("off");
-    landingView.classList.remove("off");
-    alert("Deleted user");
+    unregisterUser(userToken, password).then(() => {
+      deleteAccountForm.reset();
+      deleteAccountView.classList.add("off");
+
+      profileView.classList.add("off");
+
+      homeView.classList.add("off");
+
+      landingView.classList.remove("off");
+    });
   } catch (error) {
     alert(error.message);
-    passwordInput.value = "";
+
+    deleteAccountForm.reset();
   }
-};
+});

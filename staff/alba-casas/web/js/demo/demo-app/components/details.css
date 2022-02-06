@@ -1,17 +1,12 @@
 .details {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100vw;
-  background-color: #f7ecde;
-  padding-top: 70px;
+  flex-direction: column;
+  margin: 0 1rem;
+  width: 100px;
 }
 
-.details__list {
-  background-color: #fbf8f1;
-  padding: 100px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 20px;
-  justify-content: center;
-  width: 800px;
+.detail__image {
+  width: 70vw;
+  align-self: center;
 }

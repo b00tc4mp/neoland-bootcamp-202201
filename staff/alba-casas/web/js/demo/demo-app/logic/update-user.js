@@ -1,6 +1,6 @@
 function updateUser(id, name, email) {
   debugger;
-  validateId(id);
+  validateToken(id);
   validateName(name);
   validateEmail(email);
 
