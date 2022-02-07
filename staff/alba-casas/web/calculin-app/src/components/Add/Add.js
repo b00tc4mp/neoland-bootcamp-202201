@@ -22,7 +22,7 @@ function Add() {
 
     try {
       const res = add(a, b);
-      setResult(res);
+      setResult(res.toFixed(2));
     } catch (error) {
       alert(error.message);
     }

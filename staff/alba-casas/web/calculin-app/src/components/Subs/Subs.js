@@ -20,7 +20,7 @@ function Subs() {
     try {
       const res = substract(a, b);
 
-      setResult(res);
+      setResult(res.toFixed(2));
     } catch (error) {
       alert(error.message);
     }

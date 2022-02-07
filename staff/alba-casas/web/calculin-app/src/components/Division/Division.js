@@ -1,8 +1,8 @@
-import "./Mul.css";
+import "./Division.css";
 import { useState } from "react";
-import multiply from "../../logic/multiply";
+import division from "../../logic/division";
 
-function Mul() {
+function Div() {
   const [result, setResult] = useState();
 
   const operate = (event) => {
@@ -18,7 +18,7 @@ function Mul() {
     const b = +vb;
 
     try {
-      const res = multiply(a, b);
+      const res = division(a, b);
 
       setResult(res.toFixed(2));
     } catch (error) {
@@ -27,19 +27,19 @@ function Mul() {
   };
 
   return (
-    <div className="mul">
-      <h2 className="mul__title">Mul</h2>
-      <form className="mul__form" onSubmit={operate}>
+    <div className="division">
+      <h2 className="division__title">Division</h2>
+      <form className="division__form" onSubmit={operate}>
         <input
-          className="mul__input"
+          className="division__input"
           type="number"
           name="a"
           placeholder="a"
           step="any"
         ></input>
-        x
+        :
         <input
-          className="mul__input"
+          className="division__input"
           type="number"
           name="b"
           placeholder="b"
@@ -52,4 +52,4 @@ function Mul() {
   );
 }
 
-export default Mul;
+export default Div;
