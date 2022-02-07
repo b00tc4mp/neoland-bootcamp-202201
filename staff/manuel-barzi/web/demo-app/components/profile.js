@@ -32,9 +32,9 @@ profileForm.onsubmit = event => {
     const email = emailInput.value
 
     try {
-        updateUser(userId, name, surname, email)
-
-        alert('user updated')
+        updateUser(userToken, name, surname, email)
+            .then(() => alert('user updated'))
+            .catch(error => alert(error.message))
     } catch (error) {
         alert(error.message)
     }

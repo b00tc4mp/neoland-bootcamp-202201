@@ -1,20 +1,34 @@
-function unregisterUser(id, password) {
-    validateId(id)
+function unregisterUser(token, password) {
+    validateToken(token)
     validatePassword(password)
 
-    const user = users.find(user => user.id === id)
+    return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ password })
+    })
+        .then(res => {
+            const { status } = res
 
-    if (user) {
-        if (user.password === password) {
-            const index = users.indexOf(user)
+            if (status === 204) {
+                // TODO manage happy path
+                return
+            } else if (status >= 400 && status < 500) {
+                // DONE manage client error
+                return res.json()
+                    .then(payload => {
+                        const { error } = payload
 
-            users.splice(index, 1)
-
-            return
-        }
-
-        throw new Error('wrong credentials')
-    }
-
-    throw new Error('user not found')
+                        throw new Error(error)
+                    })
+            } else if (status >= 500) {
+                // DONE manage server error
+                throw new Error('server error')
+            } else {
+                throw new Error('unknown error')
+            }
+        })
 }

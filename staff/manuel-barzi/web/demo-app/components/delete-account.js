@@ -19,16 +19,18 @@ deleteAccountForm.addEventListener('submit', event => {
 
     try {
         unregisterUser(userId, password)
-
-        passwordInput.value = ''
-
-        deleteAccountView.classList.add('off')
-
-        profileView.classList.add('off')
-
-        homeView.classList.add('off')
-
-        landingView.classList.remove('off')
+            .then(() => {
+                passwordInput.value = ''
+        
+                deleteAccountView.classList.add('off')
+        
+                profileView.classList.add('off')
+        
+                homeView.classList.add('off')
+        
+                landingView.classList.remove('off')
+            })
+            .catch(error => alert(error.message))
     } catch (error) {
         alert(error.message)
 
