@@ -1,0 +1,20 @@
+.sub{
+    background-color: orange;
+    padding: 1rem;
+    width:100%;
+    max-width:300px;
+}
+
+.sub__title{
+    margin:0;
+}
+
+.sub__form{
+    display:flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.sub__input{
+    width: 4rem;
+}

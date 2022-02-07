@@ -1,0 +1,20 @@
+.mul{
+    background-color: pink;
+    padding: 1rem;
+    width:100%;
+    max-width:300px;
+}
+
+.mul__title{
+    margin:0;
+}
+
+.mul__form{
+    display:flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.mul__input{
+    width: 4rem;
+}

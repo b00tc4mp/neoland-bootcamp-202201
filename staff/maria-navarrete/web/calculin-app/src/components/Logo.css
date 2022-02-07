@@ -1,0 +1,14 @@
+.logo{
+    display:flex
+}
+
+.logo__text{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.logo__icon{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
