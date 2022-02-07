@@ -1,14 +1,12 @@
+import "./Power.css";
 import { useState } from "react";
-import add from "../../logic/add";
-import "./Add.css";
+import power from "../../logic/power";
 
-function Add() {
+function Power() {
   const [result, setResult] = useState();
+
   const operate = (event) => {
     event.preventDefault();
-    /* const a = +event.target.a.value;
-    const b = +event.target.b.value;
-    */
 
     const {
       target: {
@@ -16,31 +14,32 @@ function Add() {
         b: { value: vb },
       },
     } = event;
-
     const a = +va;
     const b = +vb;
 
     try {
-      const res = add(a, b);
+      const res = power(a, b);
+
       setResult(Math.round(res * 100) / 100);
     } catch (error) {
       alert(error.message);
     }
   };
+
   return (
-    <div className="add">
-      <h2 className="add__title">Add</h2>
-      <form className="add__form" onSubmit={operate}>
+    <div className="power">
+      <h2 className="power__title">Power</h2>
+      <form className="power__form" onSubmit={operate}>
         <input
-          className="add__input"
+          className="power__input"
           type="number"
           name="a"
           placeholder="a"
           step="any"
         ></input>
-        +
+        ^
         <input
-          className="add__input"
+          className="power__input"
           type="number"
           name="b"
           placeholder="b"
@@ -53,4 +52,4 @@ function Add() {
   );
 }
 
-export default Add;
+export default Power;

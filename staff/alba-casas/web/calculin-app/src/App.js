@@ -4,6 +4,7 @@ import Add from "./components/Add/Add";
 import Mul from "./components/Mul/Mul";
 import Subs from "./components/Subs/Subs";
 import Division from "./components/Division/Division";
+import Power from "./components/Power/Power";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Mul />
       <Subs />
       <Division />
+      <Power />
     </div>
   );
 }
