@@ -1,24 +1,30 @@
 import './Add.css'
 import { useState } from 'react'
-import add from '../logic/add'
+import { add } from '../logic'
+
 
 function Add() {
+    // 1. variables
+    // 2. handlers (functions)
+    // 3. render (return jsx)
     const [result, setResult] = useState()
 
-    const operate = event => {
+    const operate = event => { // arrow
         event.preventDefault()
 
         //const a = Number(event.target.a.value)
         //const b = Number(event.target.b.value)
-        
+
         const { target: { a: { value: va }, b: { value: vb } } } = event
         const a = Number(va)
         const b = Number(vb)
 
         try {
+
             const res = add(a, b)
 
             setResult(res)
+
         } catch (error) {
             alert(error.message)
         }
@@ -35,5 +41,6 @@ function Add() {
         </form>
     </div>
 }
+
 
 export default Add
