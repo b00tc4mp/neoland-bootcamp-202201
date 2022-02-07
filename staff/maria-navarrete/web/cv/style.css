@@ -101,7 +101,7 @@ body {
 }
 
 .section {
-    padding: 0 8%;
+    padding: 0 4rem;
     margin: 4rem 0;
 }
 
@@ -238,6 +238,10 @@ body {
     color: #92A9BD;
 }
 
+.section-work {
+    margin: 1.5rem 0;
+  }
+
 .section-work__logos {
     display: flex;
     gap: 1%;
@@ -251,25 +255,138 @@ body {
   }
 
 .experience__tasks {
-    margin-bottom: 0 0 0 40px;
     font-size: 0.9rem;
 }
+
+.experience__video {
+    padding: 50% 0 0 0;
+    position: relative;
+    margin-top: 1rem;
+}
+
 
 .experience__tasks::before {
     content: "· ";
 }
 
-.section-work__experience em {
+.section-work__experience h3 {
     letter-spacing: 1px;
     color: #92A9BD;
     margin: 1.1rem 0 0;
     display: block;
+    font-size: 1.3rem;
 }
 
 strong {
     font-weight: 400;
 }
 
+.experience__details {
+    margin: 0.5rem 0;
+  }
+
+.experience__show-details {
+    background-color: #92A9BD;
+    padding: 0.3rem;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    border-radius: 0.6rem;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+.block__hobbies {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.hobbies__item {
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: [one] 100% [two];
+    grid-template-rows: [first] 100% [second];
+}
+
+.hobbies__item img {
+    width: 100%;
+    grid-column: one/two;
+    grid-row: first/second;
+}
+
+.hobbies__item figcaption {
+    height: 100%;
+    grid-column: one/two;
+    grid-row: first/second;
+    background-color: #FFEFEF;
+    align-items: end;
+    font-size: 1.8rem;
+    justify-content: center;
+    padding: 2rem 1rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    opacity: 90%;
+    display: none;
+    color: #92A9BD;
+}
+
+.hobbies__item:hover figcaption{
+    display:flex
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: flex-start;
+    margin: auto;
+    max-width: 600px;
+}
+
+.contact-form label {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.contact-form input {
+    border: 1px solid gray;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.contact-form textarea {
+    width: 100%;
+    align-self: center;
+    border: 1px solid gray;
+    margin-bottom: 2rem;
+}
+
+.contact-form button {
+    width: 100%;
+    align-self: center;
+    padding: 0.7rem 0;
+    background-color: #ffefef;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    font-size: 1.2rem;
+    max-width: 300px;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    color: #7C99AC;
+}
+
+.contact-form__submitted-text {
+    font-size: 1.5rem;
+    align-self: center;
+    text-align: center;
+}
+
+.off{
+    display: none !important;
+}
 
 
 @media only screen and (max-width:768px){
@@ -343,11 +460,25 @@ strong {
 .section-work {
     padding: 1rem;
 }
+
+.block__hobbies {
+    grid-template-columns: 1fr 1fr;
+}
+
 }
 
 @media only screen and (max-width:480px){
 .section__education-panel {
     flex-direction: column;
 }
+
+.block__hobbies {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 
 }
