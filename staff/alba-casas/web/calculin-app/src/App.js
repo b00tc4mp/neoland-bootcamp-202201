@@ -1,7 +1,8 @@
 import "./App.css";
-import Logo from "./components/Logo";
-import Add from "./components/Add";
-import Mul from "./components/Mul";
+import Logo from "./components/Logo/Logo";
+import Add from "./components/Add/Add";
+import Mul from "./components/Mul/Mul";
+import Subs from "./components/Subs/Subs";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <p>Hola Mundo!</p>
       <Add />
       <Mul />
+      <Subs />
     </div>
   );
 }

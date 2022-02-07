@@ -1,12 +1,14 @@
-import "./Mul.css";
 import { useState } from "react";
-import multiply from "../logic/multiply";
+import add from "../../logic/add";
+import "./Add.css";
 
-function Mul() {
+function Add() {
   const [result, setResult] = useState();
-
   const operate = (event) => {
     event.preventDefault();
+    /* const a = +event.target.a.value;
+    const b = +event.target.b.value;
+    */
 
     const {
       target: {
@@ -14,32 +16,31 @@ function Mul() {
         b: { value: vb },
       },
     } = event;
+
     const a = +va;
     const b = +vb;
 
     try {
-      const res = multiply(a, b);
-
+      const res = add(a, b);
       setResult(res);
     } catch (error) {
       alert(error.message);
     }
   };
-
   return (
-    <div className="mul">
-      <h2 className="mul__title">Mul</h2>
-      <form className="mul__form" onSubmit={operate}>
+    <div className="add">
+      <h2 className="add__title">Add</h2>
+      <form className="add__form" onSubmit={operate}>
         <input
-          className="mul__input"
+          className="add__input"
           type="number"
           name="a"
           placeholder="a"
           step="any"
         ></input>
-        x
+        +
         <input
-          className="mul__input"
+          className="add__input"
           type="number"
           name="b"
           placeholder="b"
@@ -52,4 +53,4 @@ function Mul() {
   );
 }
 
-export default Mul;
+export default Add;
