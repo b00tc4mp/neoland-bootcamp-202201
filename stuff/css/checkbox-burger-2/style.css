@@ -1,0 +1,44 @@
+:root {
+    --bg-color-inactive: red;
+    --bg-color-active: dodgerblue;
+    --bg-color-default: lightgray;
+}
+
+.menu {
+    background-color: var(--bg-color-default);
+}
+
+.menu__burger {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    background-color: var(--bg-color-inactive);
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    background-image: url('burger.png');
+    background-size: cover;
+    cursor: pointer;
+    transition: background-image .5s linear;
+}
+
+.menu__burger:checked {
+    background-color: var(--bg-color-active);
+    background-image: url('cross.png');
+    transition: background-image .5s linear;
+}
+
+.menu__options {
+    display: none;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.menu__burger:checked ~ .menu__options {
+    display: block;
+}
+
+.menu__option:hover {
+    background-color: var(--bg-color-active);
+}

@@ -1,0 +1,19 @@
+.level-bar[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 250px;
+    height: 20px;
+    transform: rotate(180deg);
+}
+
+.level-bar[value]::-webkit-progress-bar {
+    background-color: lightgray;
+    background: -webkit-linear-gradient(left, greenyellow, yellow, tomato);
+}
+
+.level-bar[value]::-webkit-progress-value {
+    background-color: lightgray;
+    background-size: 100% 100%;
+}

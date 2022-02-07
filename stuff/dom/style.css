@@ -1,0 +1,17 @@
+.box-1 {
+    background-color: yellow;
+    padding: 3rem;
+    opacity: .75;
+}
+
+.box-2 {
+    background-color: dodgerblue;
+    padding: 3rem;
+    opacity: .75;
+}
+
+.box-3 {
+    background-color: tomato;
+    opacity: .75;
+    padding: 3rem;
+}
