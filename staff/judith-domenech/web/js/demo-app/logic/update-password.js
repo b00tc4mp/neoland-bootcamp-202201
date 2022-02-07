@@ -4,35 +4,35 @@ function updateUserPassword(token, currPassword, password, rePassword) {
     validatePassword(password)
     validatePassword(rePassword)
 
+    if (password !== rePassword) throw new Error('retyped password doesn\'t match password')
+
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
         },
-
-        body: JSON.stringify({ token, oldPassword: currPassword, password, rePassword })
+        body: JSON.stringify({ oldPassword: currPassword, password })
     })
-
         .then(res => {
             const { status } = res
 
-            if(status === 204) return
-            else if (status >= 400 && status < 500) {
+            if (status === 204) {
+            
+                return
+            } else if (status >= 400 && status < 500) {
+                
                 return res.json()
-                .then(({ error }) =>{
-                    throw new Error(error)
-                })
-            }
+                    .then(payload => {
+                        const { error } = payload
 
-            else if (status >=500) throw new Error('server error')
-            else throw new Error('unknow error')
+                        throw new Error(error)
+                    })
+            } else if (status >= 500) {
+                
+                throw new Error('server error')
+            } else {
+                throw new Error('unknown error')
+            }
         })
-            }
-    
-           /* if (!user) throw Error('user not found')
-
-            if (user.password !== currPassword) throw new Error('wrong credentials')
-
-            if (password !== rePassword) throw new Error('password and password retyped do not match')
-
-            user.password = password */
+}

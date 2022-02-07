@@ -10,7 +10,7 @@ function updateUser(token, name, surname, email) {
         Authorization: `Bearer ${token}`
        },
        
-       body: JSON.stringify({ token, name , surname, username: email})
+       body: JSON.stringify({name , surname, username: email})
     })
 
     .then(res => {

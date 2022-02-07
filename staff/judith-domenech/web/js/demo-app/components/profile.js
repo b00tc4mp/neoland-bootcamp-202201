@@ -20,25 +20,22 @@ profileDeleteAccountLink.onclick = event => {
 
 const profileForm = profileView.querySelector('.profile__form')
 
-profileForm.onsubmit = event => {
-    event.preventDefault()
-
-    const nameInput = profileForm.querySelector('.profile__name-input')
-    const surnameInput = profileForm.querySelector('.profile__surname-input')
-    const emailInput = profileForm.querySelector('.profile__email-input')
-
-    const name = nameInput.value
-    const surname = surnameInput.value
-    const email = emailInput.value
-
-    try {
-        updateUser(userToken, name, surname, email)
-        .then(()=> {
-
-            alert('user updated')
-        })
-
-    } catch (error) {
-        alert(error.message)
+    profileForm.onsubmit = event => {
+        event.preventDefault()
+    
+        const nameInput = profileForm.querySelector('.profile__name-input')
+        const surnameInput = profileForm.querySelector('.profile__surname-input')
+        const emailInput = profileForm.querySelector('.profile__email-input')
+    
+        const name = nameInput.value
+        const surname = surnameInput.value
+        const email = emailInput.value
+    
+        try {
+            updateUser(userToken, name, surname, email)
+                .then(() => alert('user updated'))
+                .catch(error => alert(error.message))
+        } catch (error) {
+            alert(error.message)
+        }
     }
-}
