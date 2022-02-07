@@ -1,0 +1,18 @@
+.mul {
+    background-color: rgb(252, 226, 205);
+    padding: 1rem;
+    height: 5rem;
+}
+
+.mul__title {
+    margin: 0;
+}
+
+.mul__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.mul__input {
+    width: 6rem;
+}
