@@ -32,13 +32,15 @@ updatePasswordForm.onsubmit = (event) => {
   const rePassword = rePasswordInput.value;
 
   try {
-    updateUserPassword(userId, currPassword, password, rePassword);
+    updateUserPassword(userToken, currPassword, password, rePassword)
+      .then(() => {
+        currPasswordInput.value = "";
+        passwordInput.value = "";
+        rePasswordInput.value = "";
 
-    currPasswordInput.value = "";
-    passwordInput.value = "";
-    rePasswordInput.value = "";
-
-    alert("password udpated");
+        alert("password udpated");
+      })
+      .catch((error) => alert(error.message));
   } catch (error) {
     alert(error.message);
   }
