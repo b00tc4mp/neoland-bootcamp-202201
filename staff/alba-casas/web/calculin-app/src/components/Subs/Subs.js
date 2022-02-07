@@ -20,7 +20,7 @@ function Subs() {
     try {
       const res = substract(a, b);
 
-      setResult(res.toFixed(2));
+      setResult(Math.round(res * 100) / 100);
     } catch (error) {
       alert(error.message);
     }
