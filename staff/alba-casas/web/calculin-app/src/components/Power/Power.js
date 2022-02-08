@@ -1,7 +1,6 @@
 import "./Power.css";
 import { useState } from "react";
-import power from "../../logic/power";
-
+import { power } from "../../logic";
 function Power() {
   const [result, setResult] = useState();
 

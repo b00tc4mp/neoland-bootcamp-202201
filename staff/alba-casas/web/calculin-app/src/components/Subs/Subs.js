@@ -1,7 +1,6 @@
 import "./Subs.css";
 import { useState } from "react";
-import substract from "../../logic/substract";
-
+import { substract } from "../../logic";
 function Subs() {
   const [result, setResult] = useState();
 

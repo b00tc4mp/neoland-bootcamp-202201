@@ -1,5 +1,5 @@
 import { useState } from "react";
-import add from "../../logic/add";
+import { add } from "../../logic";
 import "./Add.css";
 
 function Add() {

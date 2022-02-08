@@ -1,7 +1,6 @@
 import "./Mul.css";
 import { useState } from "react";
-import multiply from "../../logic/multiply";
-
+import { multiply } from "../../logic";
 function Mul() {
   const [result, setResult] = useState();
 

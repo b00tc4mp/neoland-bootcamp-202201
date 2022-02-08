@@ -1,6 +1,6 @@
 import "./Division.css";
 import { useState } from "react";
-import division from "../../logic/division";
+import { division } from "../../logic";
 
 function Div() {
   const [result, setResult] = useState();
