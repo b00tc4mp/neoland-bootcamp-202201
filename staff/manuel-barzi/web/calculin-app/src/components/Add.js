@@ -1,6 +1,6 @@
 import './Add.css'
 import { useState } from 'react'
-import add from '../logic/add'
+import { add } from '../logic'
 
 function Add() {
     const [result, setResult] = useState()
@@ -10,7 +10,7 @@ function Add() {
 
         //const a = Number(event.target.a.value)
         //const b = Number(event.target.b.value)
-        
+
         const { target: { a: { value: va }, b: { value: vb } } } = event
         const a = Number(va)
         const b = Number(vb)

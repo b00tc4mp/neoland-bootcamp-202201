@@ -1,6 +1,6 @@
 import './Mul.css'
 import { useState } from 'react'
-import multiply from '../logic/multiply'
+import { multiply } from '../logic'
 
 function Mul() {
     const [result, setResult] = useState()
@@ -10,7 +10,7 @@ function Mul() {
 
         //const a = Number(event.target.a.value)
         //const b = Number(event.target.b.value)
-        
+
         const { target: { a: { value: va }, b: { value: vb } } } = event
         const a = Number(va)
         const b = Number(vb)
