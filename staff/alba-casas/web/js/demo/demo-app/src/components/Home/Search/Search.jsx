@@ -1,6 +1,6 @@
 import { useState } from "react";
-import searchVehicles from "../../logic/logic/search-vehicle";
-import Detail from "../Details/Details";
+import searchVehicles from "../../../logic/logic/search-vehicle";
+import Detail from "./Details/Details";
 import "./Search.css";
 
 function Search() {

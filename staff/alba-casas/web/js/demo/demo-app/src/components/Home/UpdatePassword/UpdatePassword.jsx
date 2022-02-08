@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./UpdatePassword.css";
 
-function UpdatePassword() {
+function UpdatePassword({ onProfile }) {
   return (
     <div className="update-password">
       <form className="update-password__form">
@@ -23,7 +24,15 @@ function UpdatePassword() {
           placeholder="Re-type new password"
         />
         <button>Update password</button>
-        <a className="update-password__back-link" href="">
+        <a
+          className="update-password__back-link"
+          href=""
+          onClick={(event) => {
+            event.preventDefault();
+
+            onProfile();
+          }}
+        >
           back
         </a>
       </form>

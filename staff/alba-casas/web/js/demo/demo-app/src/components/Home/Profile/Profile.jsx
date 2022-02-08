@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Profile.css";
 
-function Profile() {
+function Profile({ onUpdatePasswordClick, onDeletePasswordClick }) {
   return (
     <div className="profile">
       <form className="profile__form">
@@ -23,10 +24,25 @@ function Profile() {
           placeholder="e-mail"
         />
         <button>Update profile</button>
-        <a className="profile__update-password-link" href="">
+        <a
+          className="profile__update-password-link"
+          href=""
+          onClick={(event) => {
+            onUpdatePasswordClick();
+            event.preventDefault();
+          }}
+        >
           update password
         </a>
-        <a className="profile__delete-account-link" href="">
+
+        <a
+          className="profile__delete-account-link"
+          href=""
+          onClick={(event) => {
+            onDeletePasswordClick();
+            event.preventDefault();
+          }}
+        >
           delete account
         </a>
       </form>

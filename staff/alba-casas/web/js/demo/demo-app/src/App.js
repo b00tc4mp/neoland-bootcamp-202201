@@ -16,6 +16,10 @@ function App() {
     setView("home");
   };
 
+  const showLanding = () => {
+    setView("landing");
+  };
+
   return (
     <>
       {view === "landing" && (
@@ -27,7 +31,7 @@ function App() {
       {view === "register" && (
         <Register onLogin={showLogin} onRegistered={showLogin} />
       )}
-      {view === "home" && <Home token={token} />}
+      {view === "home" && <Home token={token} onLanding={showLanding} />}
     </>
   );
 }
