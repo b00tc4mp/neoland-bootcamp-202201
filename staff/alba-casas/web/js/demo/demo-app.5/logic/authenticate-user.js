@@ -1,3 +1,5 @@
+import { validateEmail, validatePassword } from "./headers/validators";
+
 function authenticateUser(email, password) {
   validateEmail(email);
   validatePassword(password);
