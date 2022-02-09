@@ -10,6 +10,9 @@ function App() {
 
     const showLogin = () => setView('login')
     const showRegister = () => setView ('register')
+    const showLanding = () => setView('landing')
+
+   
 
     const showHome = token =>{
         setToken(token)
@@ -20,7 +23,9 @@ function App() {
     { view === 'landing' && <Landing onLogin={showLogin} onRegister={showRegister} />}
     { view === 'login' && <Login onAuthenticated={showHome} onRegister={showRegister} />}
     { view === 'register' && <Register onLogin={showLogin} onRegistered={showLogin} />}
-    {view === 'home' && <Home token = {token} />}
+    { view === 'home' && <Home token = {token} showLanding={showLanding} /> }
+  
+   
     </>
 }
 

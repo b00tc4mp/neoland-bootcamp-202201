@@ -1,11 +1,11 @@
 import './Register.css'
 import { registerUser } from '../logic'
 
-function Register ({ onLogin, onRegistered}) {
+function Register({ onLogin, onRegistered }) {
     const register = event => {
         event.preventDefault()
 
-        const { target: { name: {value: name}, surname: {value: surname}, email: {value: email} } } = event
+        const { target: { name: { value: name }, surname: { value: surname }, email: { value: email }, password: { value: password } } } = event
 
         try {
             registerUser(name, surname, email, password)
@@ -14,9 +14,9 @@ function Register ({ onLogin, onRegistered}) {
         } catch(error) {
             alert(error.message)
         }
-}
+    }
 
-return <div className="register">
+    return <div className="register">
         <form className="register__form" onSubmit={register}>
             <input className="register__name-input" type="text" name="name" placeholder="name" />
             <input className="register__surname-input" type="text" name="surname" placeholder="surname" />
