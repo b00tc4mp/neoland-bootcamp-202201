@@ -1,10 +1,14 @@
 import { useState } from "react";
 import searchVehicles from "../../../logic/logic/search-vehicle";
-import Detail from "./Details/Details";
+import Details from "./Details/Details";
 import "./Search.css";
 
 function Search() {
   const [vehicles, setVehicles] = useState([]);
+  const [view, setView] = useState("results");
+  const [vehicleId, setVehicleId] = useState();
+
+  const showDetails = () => setView("details");
 
   const search = (event) => {
     event.preventDefault();
@@ -33,18 +37,26 @@ function Search() {
       </form>
       {/* doble negacion, consigue un valor booleano true o false, en este caso
         consigue un valor de false  */}
-      {!!vehicles.length && (
+      {!!vehicles.length && view === "results" && (
         <ul className="search__results-list">
           {vehicles.map((vehicle) => (
             <li>
               <h2>{vehicle.name}</h2>
-              <img src={vehicle.thumbnail} alt="vehicle" />
+              <img
+                src={vehicle.thumbnail}
+                alt="vehicle"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setVehicleId(vehicle.id);
+                  showDetails();
+                }}
+              />
               <span>{vehicle.price} $</span>
             </li>
           ))}
         </ul>
       )}
-      <Detail />
+      {view === "details" && <Details vehicleId={vehicleId} />}
     </div>
   );
 }

@@ -34,6 +34,6 @@ function App() {
       {view === "home" && <Home token={token} onLanding={showLanding} />}
     </>
   );
-}
+}  
 
 export default App;

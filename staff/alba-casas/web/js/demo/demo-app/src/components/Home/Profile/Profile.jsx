@@ -10,25 +10,29 @@ function Profile({ onUpdatePasswordClick, onDeletePasswordClick, token }) {
   const [email, setEmail] = useState("");
 
   const handleChangeName = (event) => {
-    const {
+    /*   const {
       target: { value: name },
-    } = event;
+    } = event; */
+
+    const { value: name } = event.target;
 
     setName(name);
   };
 
   const handleChangeSurname = (event) => {
-    const {
+    /*   const {
       target: { value: surname },
-    } = event;
+    } = event; */
+    const { value: surname } = event.target;
 
     setSurname(surname);
   };
 
   const handleChangeEmail = (event) => {
-    const {
+    /*  const {
       target: { value: email },
-    } = event;
+    } = event; */
+    const { value: email } = event.target;
 
     setEmail(email);
   };
