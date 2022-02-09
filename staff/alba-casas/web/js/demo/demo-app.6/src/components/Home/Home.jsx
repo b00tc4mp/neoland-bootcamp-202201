@@ -69,7 +69,6 @@ function Home({ token, onLanding }) {
         <Profile
           onUpdatePasswordClick={showUpdatePassword}
           onDeletePasswordClick={showDeletePassword}
-          token={token}
         />
       )}
       {view === "update-password" && <UpdatePassword onProfile={showProfile} />}
