@@ -7,7 +7,10 @@ import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
 
+//function Home(props) {
 function Home({ token }) {
+    // const token = props.token
+    //const { token } = props
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
@@ -15,8 +18,8 @@ function Home({ token }) {
     useEffect(() => {
         try {
             retrieveUser(token)
-            .then(user => setName(user.name))
-            .catch(error => alert(error.message))
+                .then(user => setName(user.name))
+                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }

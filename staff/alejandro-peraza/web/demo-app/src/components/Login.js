@@ -2,9 +2,9 @@ import './Login.css'
 import { authenticateUser } from '../logic'
 import { useState } from 'react'
 
-//function Login(props) {
+
 function Login({ onAuthenticated, onRegister }) {
-    //const { onAuthenticated, onRegister } = props
+ 
     const [emailFeedback, setEmailFeedback] = useState()
     const [passwordFeedback, setPasswordFeedback] = useState()
     const [feedback, setFeedback] = useState()

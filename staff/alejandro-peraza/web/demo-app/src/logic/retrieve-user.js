@@ -36,3 +36,5 @@ function retrieveUser(token) {
             }
         })
 }
+
+export default retrieveUser
