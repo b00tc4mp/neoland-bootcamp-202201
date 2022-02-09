@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+
+* {
+  font-family: 'Zen Loop';
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
