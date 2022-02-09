@@ -6,6 +6,7 @@ import Search from './Search'
 import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
+import Logo from './Logo'
 
 //function Home(props) {
 function Home({ token }) {
@@ -27,7 +28,7 @@ function Home({ token }) {
 
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href=""><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
+            <a className="home__home-link" href=""><Logo/></a>
             <h1 className="home__user">{name}</h1>
             <a className="home__profile-link" href="">Profile</a>
             <button className="home__logout-button">Logout</button>
