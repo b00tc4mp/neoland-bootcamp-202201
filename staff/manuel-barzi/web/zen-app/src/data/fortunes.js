@@ -18,3 +18,5 @@ const fortunes = [
     'Everything that is was first a dream.',
     'To be found, stop hiding.'
 ]
+
+export default fortunes

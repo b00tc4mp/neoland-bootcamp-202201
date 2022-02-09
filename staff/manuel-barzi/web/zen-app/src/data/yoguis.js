@@ -19,3 +19,5 @@ const yoguis = [
     'The best way of life is to be, simply be.',
     'To learn, read. To know, write. To master, teach.'
 ]
+
+export default yoguis

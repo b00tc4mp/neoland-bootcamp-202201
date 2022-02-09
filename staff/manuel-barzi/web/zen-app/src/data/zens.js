@@ -167,3 +167,5 @@ const zens = [
     'Prefer to be defeated in the presence of the wise than to excel among fools. Dogen',
     'Doing nothing is better than being busy doing nothing. Lao Tzu Click to tweet'
 ]
+
+export default zens
