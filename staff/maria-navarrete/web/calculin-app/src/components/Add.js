@@ -1,6 +1,6 @@
 import './Add.css'
 import { useState } from 'react'
-import add from '../logic/add'
+import add from '../logic'
 
 function Add() {
     const [result, setResult] = useState()

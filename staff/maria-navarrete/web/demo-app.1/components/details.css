@@ -1,0 +1,25 @@
+.details {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin: 0 2rem;
+    gap: 1rem;
+    background-color: pink;
+    padding: 4rem;
+    border-radius: 21%;
+    box-shadow: 1.2rem 1.2rem dodgerblue;
+}
+
+.details__title{
+    text-align: left;
+}
+
+.details__image {
+    width: 70vw;
+    max-width: 600px;
+    align-self: center;
+}
+
+.details__list {
+    list-style: none;
+}

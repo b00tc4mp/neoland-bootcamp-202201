@@ -1,5 +1,5 @@
 setInterval(() => {
-    let banana = new Banana('#ffe328',60, 80, Math.random() * document.querySelector('body').getBoundingClientRect().width-60, 0, 50)
+    let banana = new Banana('#ffe328',60, 80, Math.random() * document.querySelector('body').getBoundingClientRect().width-80, 0, 50)
     document.body.append(banana.container)
     setInterval(() => {
         banana.moveDown(Math.random())

@@ -7,15 +7,17 @@ import Sub from './components/Sub'
 import Pow from './components/Pow'
 
 function App() {
-  return <div className="app">
-    <Logo />
-    <p>Hola Mundo</p>
-    <Add/>
-    <Div/>
-    <Mul/>
-    <Sub/>
-    <Pow/>
-  </div>
+  return <>
+    <div className="app">
+      <Logo />
+      <p>Hola Mundo</p>
+      <Add />
+      <Div />
+      <Mul />
+      <Sub />
+      <Pow />
+    </div>
+  </>
 }
 
 export default App;

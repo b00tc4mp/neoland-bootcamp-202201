@@ -80,5 +80,7 @@ class Minion extends Shape {
 
         const overall = new Shape('#0A75BC', width, height/2.7, 0, height/1.5, '0 0 50% 50')
         this.add(overall)
+
+        
     }
 }

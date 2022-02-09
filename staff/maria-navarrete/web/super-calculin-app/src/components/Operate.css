@@ -1,0 +1,21 @@
+.operate{
+    background-color: yellowgreen;
+    padding: 1rem;
+    width:100%;
+    max-width:300px;
+    margin-top: 2rem;
+}
+
+.operate__title{
+    margin:0;
+}
+
+.operate__form{
+    display:flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.operate__input{
+    width: 4rem;
+}

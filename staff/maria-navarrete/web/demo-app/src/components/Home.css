@@ -1,0 +1,15 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    gap: 2rem;
+}
+
+.home__header{
+    width: 100%;
+    text-align: right;
+    background-color: powderblue;
+    padding: 10px;
+}
