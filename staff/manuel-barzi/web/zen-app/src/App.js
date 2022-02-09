@@ -1,11 +1,11 @@
 import './App.css'
-import { randomYogui } from './logic'
-
+import Logo from './components/Logo'
+import RandomYogui from './components/RandomYogui'
 
 function App() {
   return <div className="app">
-    <h1>hola mundo</h1>
-    <p>{randomYogui()}</p>
+    <Logo />
+    <RandomYogui />
   </div>
 }
 
