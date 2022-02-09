@@ -2,7 +2,6 @@ import './Profile.css'
 
 function Profile() {
 
-
     return <div className="profile">
         <form className="profile__form">
             <input className="profile__name-input" type="text" name="name" placeholder="name" />

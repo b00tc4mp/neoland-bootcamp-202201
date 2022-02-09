@@ -10,7 +10,7 @@ import Landing from './Landing'
 
 
 //function Home(props) {
-function Home({ token, showLanding}) {
+function Home({ token, showLanding }) {
     // const token = props.token
     //const { token } = props
    
