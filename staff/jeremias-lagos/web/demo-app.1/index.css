@@ -1,0 +1,13 @@
+* {
+    font-size: 1.2rem;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: lightslategray
+}
+
+.off {
+    display: none !important;
+}
