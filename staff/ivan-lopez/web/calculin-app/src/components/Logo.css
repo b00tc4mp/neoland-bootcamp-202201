@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.logo {
+    display: flex;
+}
+
+.logo_text {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.logo__icon {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    left: 530px;
+    top: 25px;
+}

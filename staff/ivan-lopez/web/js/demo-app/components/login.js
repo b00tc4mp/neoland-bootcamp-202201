@@ -9,10 +9,6 @@ loginRegisterLink.onclick = event => {
 
 const loginForm = loginView.querySelector('.login__form')
 
-loginForm.addEventListener('submit', event => {
-
-})
-
 loginForm.onsubmit = event => {
     event.preventDefault()
 
@@ -23,31 +19,36 @@ loginForm.onsubmit = event => {
     const password = passwordInput.value
 
     try {
-        userId = authenticateUser(email, password)
+        authenticateUser(email, password)
+            .then(token => {
+                userToken = token
+
+                return retrieveUser(userToken)
+            })
+            .then(user => {
+                const homeUser = homeView.querySelector('.home__user')
+                homeUser.innerText = user.name
         
-        const user = retrieveUser(userId)
+                emailInput.value = ''
+                passwordInput.value = ''
+        
+                emailInput.classList.remove('login__input--error')
+        
+                const emailFeedback = loginForm.querySelector('.login__email-feedback')
+                emailFeedback.classList.add('off')
+                passwordInput.classList.remove('login__input--error')
+        
+                const feedback = loginForm.querySelector('.login__feedback')
+                feedback.classList.add('off')
+                loginView.classList.add('off')
+                homeView.classList.remove('off')
+            })
+            .catch (error => alert(error.message))
+        } catch (error) {
+            
+            const { message } = error
 
-        const homeUser = homeView.querySelector('.home__user')
-        homeUser.innerText = user.name
-
-        emailInput.value = ''
-        passwordInput.value = ''
-
-        emailInput.classList.remove('login__input--error')
-
-        const emailFeedback = loginForm.querySelector('.login__email-feedback')
-        emailFeedback.classList.add('off')
-        passwordInput.classList.remove('login__input--error')
-
-        const feedback = loginForm.querySelector('.login__feedback')
-        feedback.classList.add('off')
-        loginView.classList.add('off')
-        homeView.classList.remove('off')
-
-    } catch (error) {
-        const { message } = error
-
-        if (message.includes('email')) {
+            if (message.includes('email')) {
             emailInput.classList.add('login__input--error')
 
             const emailFeedback = loginForm.querySelector('.login__email-feedback')

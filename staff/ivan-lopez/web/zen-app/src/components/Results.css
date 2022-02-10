@@ -1,0 +1,8 @@
+.results__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.results__item, .results__feedback {
+    font-size: 1.4rem;
+}
