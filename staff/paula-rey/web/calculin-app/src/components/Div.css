@@ -1,0 +1,17 @@
+.div {
+    background-color:blueviolet;
+    padding: 1rem;
+}
+
+.div___title {
+    margin: 0;
+}
+
+.div__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.div__input {
+    width: 4rem;
+}

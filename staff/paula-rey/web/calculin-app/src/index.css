@@ -1,0 +1,20 @@
+/* *{
+    font-family: 'Poppins';
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing : border-box;
+} */
+
+.add__title, .sub__title, .mul__title, .div__title {
+    font-family: 'Supermercado One', cursive;
+}

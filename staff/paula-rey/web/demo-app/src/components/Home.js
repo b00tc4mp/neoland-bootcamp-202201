@@ -15,6 +15,7 @@ function Home({ token, showLanding }) {
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
+    
 
     const showProfile = () => setView('profile')
     
@@ -47,7 +48,7 @@ function Home({ token, showLanding }) {
 
         {view === 'search' && <Search />}
 
-        {view === 'profile' && <Profile />} 
+        {view === 'profile' && <Profile token={token} />} 
 
         {view === 'update-password' && <UpdatePassword />}
 

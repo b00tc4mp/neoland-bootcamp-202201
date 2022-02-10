@@ -1,0 +1,9 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    /* background-color: #66926f; */
+    background: linear-gradient(to bottom, #3A5F42, #93ad98);
+}
