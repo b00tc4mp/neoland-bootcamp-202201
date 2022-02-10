@@ -9,8 +9,6 @@ function Details({ vehicleId }) {
 
   const showSearch = () => setView("search");
 
-  const showDetails = () => setView("details");
-
   useEffect(() => {
     try {
       retrieveVehicle(vehicleId).then((vehicle) => setVehicle(vehicle));
