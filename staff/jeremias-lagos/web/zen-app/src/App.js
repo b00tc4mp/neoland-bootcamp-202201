@@ -1,12 +1,16 @@
-import './App.css';
-import { randomYogui } from './logic'
-import Logo from './components/Logo'
-
+import Landing from './components/Landing'
+import Home from './components/Home'
+import { useState } from 'react'
 
 function App() {
-  return <div className="app">
-    <p>{randomYogui()}</p>
-  </div>
+  const [view, setView] = useState('landing')
+
+  const showHome = () => setView('home')
+
+  return <>
+    {view === 'landing' && <Landing onEnter={showHome} />}
+    {view === 'home' && <Home />}
+  </>
 }
 
-export default App;
+export default App
