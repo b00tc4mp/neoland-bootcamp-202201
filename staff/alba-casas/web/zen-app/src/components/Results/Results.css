@@ -1,0 +1,13 @@
+.results__item,
+.results__feedback {
+  font-size: 24px;
+}
+
+.results__list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.results__item::before {
+  content: "💡";
+}

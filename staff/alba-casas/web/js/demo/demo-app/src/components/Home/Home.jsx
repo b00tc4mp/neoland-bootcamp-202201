@@ -17,6 +17,8 @@ function Home({ token, onLanding }) {
   const showDeletePassword = () => setView("delete-account");
   const showSearch = () => setView("search");
 
+  const refreshData = (data) => setName(data);
+
   useEffect(() => {
     try {
       retrieveUser(token)
@@ -70,6 +72,7 @@ function Home({ token, onLanding }) {
           onUpdatePasswordClick={showUpdatePassword}
           onDeletePasswordClick={showDeletePassword}
           token={token}
+          refreshData={refreshData}
         />
       )}
       {view === "update-password" && <UpdatePassword onProfile={showProfile} />}

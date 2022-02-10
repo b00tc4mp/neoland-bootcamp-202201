@@ -16,11 +16,9 @@ function Search() {
     const query = event.target.query.value;
 
     try {
-      searchVehicles(query)
-        .then((vehicles) => setVehicles(vehicles))
-        .catch((error) => alert(error.message));
-    } catch (error) {
-      alert(error.message);
+      searchVehicles(query).then((vehicles) => setVehicles(vehicles));
+    } catch ({ message }) {
+      alert(message);
     }
   };
 
@@ -40,7 +38,7 @@ function Search() {
       {!!vehicles.length && view === "results" && (
         <ul className="search__results-list">
           {vehicles.map((vehicle) => (
-            <li>
+            <li key={vehicle.id}>
               <h2>{vehicle.name}</h2>
               <img
                 src={vehicle.thumbnail}

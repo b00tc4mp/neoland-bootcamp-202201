@@ -1,17 +1,17 @@
-import "./App.css";
-import Logo from "./components/Logo/Logo";
-import RandomYogi from "./components/RandomYogi/RandomYogi";
-import Search from "./components/Search/Search";
+import { useState } from "react";
+import Home from "./components/Home/Home";
+import Landing from "./components/Landing/Landing";
 
 function App() {
+  const [view, setView] = useState("landing");
+
+  const showHome = () => setView("home");
+
   return (
-    <div className="app">
-      <div className="app__header">
-        <Logo />
-        <RandomYogi />
-      </div>
-      <Search />
-    </div>
+    <>
+      {view === "landing" && <Landing onEnter={showHome} />}
+      {view === "home" && <Home />}
+    </>
   );
 }
 

@@ -1,12 +1,12 @@
-/* import {
+import {
   validateToken,
   validateName,
   validateSurname,
   validateEmail,
-} from "../helpers";
+} from "../helpers/validators";
 
-function updateUser(surname, name, email) {
-  validateToken(userToken);
+function updateUser(token, name, surname, email) {
+  validateToken(token);
   validateName(name);
   validateSurname(surname);
   validateEmail(email);
@@ -15,7 +15,7 @@ function updateUser(surname, name, email) {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${userToken}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, surname, email }),
   }).then((res) => {
@@ -32,4 +32,3 @@ function updateUser(surname, name, email) {
 }
 
 export default updateUser;
- */

@@ -1,0 +1,9 @@
+.search__button,
+.search__input {
+  font-size: 24px;
+}
+
+.search__feedback {
+  text-align: center;
+  font-size: 24px;
+}

@@ -1,10 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Profile.css";
 import { useEffect } from "react";
-import { retrieveUser } from "../../../logic/logic";
+import { retrieveUser, updateUser } from "../../../logic/logic";
 import { useState } from "react";
 
-function Profile({ onUpdatePasswordClick, onDeletePasswordClick, token }) {
+function Profile({
+  onUpdatePasswordClick,
+  onDeletePasswordClick,
+  token,
+  refreshData,
+}) {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -14,46 +19,65 @@ function Profile({ onUpdatePasswordClick, onDeletePasswordClick, token }) {
       target: { value: name },
     } = event; */
 
-    const { value: name } = event.target;
+    /* const { value: name } = event.target; */
 
-    setName(name);
+    setName(event.target.value);
   };
 
   const handleChangeSurname = (event) => {
     /*   const {
       target: { value: surname },
     } = event; */
-    const { value: surname } = event.target;
+    /* const { value: surname } = event.target; */
 
-    setSurname(surname);
+    setSurname(event.target.value);
   };
 
   const handleChangeEmail = (event) => {
     /*  const {
       target: { value: email },
     } = event; */
-    const { value: email } = event.target;
+    /*  const { value: email } = event.target; */
 
-    setEmail(email);
+    setEmail(event.target.value);
   };
 
   useEffect(() => {
     try {
-      retrieveUser(token)
-        .then(({ name, surname, email }) => {
-          setName(name);
-          setSurname(surname);
-          setEmail(email);
-        })
-        .catch(({ message }) => alert(message));
-    } catch (error) {
-      alert(error.message);
+      retrieveUser(token).then(({ name, surname, email }) => {
+        setName(name);
+        setSurname(surname);
+        setEmail(email);
+      });
+    } catch ({ message }) {
+      alert(message);
     }
   }, []);
 
+  const updateProfile = (event) => {
+    event.preventDefault();
+    const {
+      target: {
+        name: { value: name },
+        surname: { value: surname },
+        email: { value: email },
+      },
+    } = event;
+    try {
+      updateUser(token, name, surname, email).then(() => {
+        setName(name);
+        setSurname(surname);
+        setEmail(email);
+        refreshData(name);
+      });
+    } catch ({ message }) {
+      alert(message);
+    }
+  };
+
   return (
     <div className="profile">
-      <form className="profile__form">
+      <form className="profile__form" onSubmit={updateProfile}>
         <input
           className="profile__name-input"
           type="text"

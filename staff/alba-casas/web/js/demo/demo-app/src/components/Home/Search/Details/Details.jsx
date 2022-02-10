@@ -9,11 +9,12 @@ function Details({ vehicleId }) {
 
   const showSearch = () => setView("search");
 
+  const showDetails = () => setView("details");
+
   useEffect(() => {
     try {
       retrieveVehicle(vehicleId).then((vehicle) => setVehicle(vehicle));
     } catch ({ message }) {
-      debugger;
       alert(message);
     }
   }, []);
@@ -22,12 +23,18 @@ function Details({ vehicleId }) {
     <div className="details">
       {vehicle.id && view !== "search" && (
         <>
-          <h2>{vehicle.name}</h2>
-          <img src={vehicle.thumbnail} alt="Vehicle"></img>
+          <div className="details__header">
+            <h2> {vehicle.name}</h2>
+            <p>{vehicle.year}</p>
+          </div>
+          <img
+            className="details__image"
+            src={vehicle.image}
+            alt="Vehicle"
+          ></img>
           <p>{vehicle.price}</p>
           <p>{vehicle.maker}</p>
           <p>{vehicle.color}</p>
-          <p>{vehicle.year}</p>
           <p>{vehicle.description}</p>
           <p>{vehicle.url}</p>
           <button
@@ -39,7 +46,7 @@ function Details({ vehicleId }) {
           >
             Back
           </button>
-          {view === "search" && <Search  />}
+          {view === "search" && <Search />}
         </>
       )}
     </div>
