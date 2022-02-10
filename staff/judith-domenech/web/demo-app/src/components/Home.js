@@ -16,10 +16,11 @@ function Home({ token, showLanding }) {
    
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
-    const showProfile=() => setView('profile')
+    
+
+    const showProfile= () => setView('profile')
+    const showSearch = () => setView('search')
    
-
-
     useEffect(() => {
         try {
             retrieveUser(token)
@@ -32,7 +33,11 @@ function Home({ token, showLanding }) {
 
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href=""><Logo/></a>
+            <a className="home__home-link" href="" onClick = {event => {
+                event.preventDefault()
+
+                showSearch()
+            }}><Logo/></a>
             <h1 className="home__user">{name}</h1>
            
             <a className="home__profile-link" href="" onClick = {event => {
@@ -49,7 +54,7 @@ function Home({ token, showLanding }) {
 
         {view === 'search' && <Search />}
 
-        {view === 'profile' && <Profile  />}
+        {view === 'profile' && <Profile  token={token}/>}
 
         {view === 'landing' && <Landing />}
 

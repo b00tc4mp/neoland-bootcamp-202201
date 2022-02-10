@@ -1,5 +1,7 @@
-import randomYogui from './get-random-yogui'
+import randomYogui from './random-yogui'
+import findYoguis from './find-yoguis'
 
-export{
-    randomYogui
+export {
+    randomYogui,
+    findYoguis
 }

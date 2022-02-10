@@ -2,8 +2,14 @@
 
 *{
   font-family: 'Handlee', cursive;
+  font-size: 1rem;
 }
 html, body, #root{
   height: 100%;
   margin: 0;
+}
+
+body {
+  padding: 1rem;
+  background-color: rgb(245, 215, 219);
 }
