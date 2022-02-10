@@ -1,0 +1,17 @@
+.mul {
+    background-color: tomato;
+    padding: 1rem;
+}
+
+.mul__title {
+    margin: 0;
+}
+
+.mul__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.mul__input {
+    width: 4rem;
+}

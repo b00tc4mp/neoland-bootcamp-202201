@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo App</title>
-    <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png">
+    <link rel= "shortcut icon" href="images/demo-favicon.png" type="image/png">
     
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="components/landing.css">
@@ -17,13 +16,15 @@
     <link rel="stylesheet" href="components/profile.css">
     <link rel="stylesheet" href="components/update-password.css">
     <link rel="stylesheet" href="components/delete-account.css">
-
+    <link rel="stylesheet" href="components/search.css">
+    <link rel="stylesheet" href="components/retrieve-vehicle.css">
 </head>
 
 <body>
-    <div class="landing off ">
+    
+    <div class="landing _off">
         <div>
-            <a class="landing__login" href="">login</a> or <a class="landing__register" href="">Register</a>
+            <a class="landing__login" href="">Login</a> or <a class="landing__register" href="">Register</a>
         </div>
     </div>
 
@@ -39,21 +40,22 @@
     </div>
 
     <div class="login off">
-        <form class="login__form">
-            <input class="login__email-input" type="email" name="email" placeholder="e-mail">
-            <span class="login__email-feedback off">wrong email</span>
-            <input class="login__password-input" type="password" name="password" placeholder="password">
-            <span class="login__password-feedback off">wrong password</span>
-            <button>Login</button>
-            <span class="login__feedback off">wrong credentials</span>
-            <a class="login__register-link" href="">Register</a>
-        </form>
+            <form class="login__form">
+                <input class="login__email-input" type="email" name="email" placeholder="e-mail">
+                <span class="login__email-feedback off">wrong email</span>
+                <input class="login__password-input" type="password" name="password" placeholder="password">
+                <span class="login__password-feedback off">wrong password</span>
+                <button>Login</button>
+                <span class="login__feedback off">wrong credentials</span>
+                <a class="login__register-link" href="">Register</a>
+            </form>
     </div>
-
+    
+    
     <div class="home off">
         <div class="home__header">
-            <a class="home__home-link" href=""><img class="home__logo" src="images/demo-logo.png" alt=""></a>
-            <h1 class="home__user">Wendy</h1>
+            <a class="home__home-link" href=""><img class="home__logo" src="images/Logo remake2.png" alt=""></a>
+            <h1 class="home__user">Hola, Mundo!</h1>
             <a class="home__profile-link" href="">Profile</a>
             <button class="home__logout-button">Logout</button>
         </div>
@@ -66,7 +68,7 @@
                 <button>Update profile</button>
                 <a class="profile__update-password-link" href="">update password</a>
                 <a class="profile__delete-account-link" href="">delete account</a>
-            </form>
+            </form>  
         </div>
 
         <div class="update-password off">
@@ -86,24 +88,58 @@
                 <a class="delete-account__back-link" href="">back</a>
             </form>
         </div>
-    </div>
 
-    <!-- utils -->
+        <div class="search">
+            <form class="search__form">
+                <input class="search__query-input" type="text" name="query" placeholder="query">
+                <button>Search</button>
+            </form>
+            <ul class="search__results-list off"></ul>
+        </div>
+
+        <div class="details-vehicle off">
+            <h2>Item List</h2>
+            <img src="" alt="">
+            <ul>
+                <li class="details-id"></li>
+                <li class="">itemName</li>
+                <li class="">itemYear</li>
+                <li class="">itemColor</li>
+                <li class="">itemMaker</li>
+                <li class="">itemCollection</li>
+                <li class="">itemStyle</li>
+                <li class="">itemDescription</li>
+                <li class="">itemPrice</li>
+                <li class="">itemUrl</li>
+
+
+            </ul>
+
+
+        </div>
+
+    </div>
+    
+
+    <!-- utils-->
     <script src="utils/validators.js"></script>
     
-    <!-- data layer -->
+    <!-- data layer-->
     <script src="data/models/user.js"></script>
     <script src="data/users.js"></script>
-    
-    <!-- business (logic) layer -->
+
+    <!-- business ( logic ) layer-->
     <script src="logic/authenticate-user.js"></script>
     <script src="logic/retrieve-user.js"></script>
     <script src="logic/register-user.js"></script>
     <script src="logic/update-user.js"></script>
     <script src="logic/update-password.js"></script>
     <script src="logic/unregister-user.js"></script>
+    <script src="logic/search-vehicles.js"></script>
+    <script src="logic/retrieve-vehicle.js"></script>
 
-    <!-- presentation layer -->
+
+    <!-- presentation layer-->
     <script src="components/app.js"></script>
     <script src="components/landing.js"></script>
     <script src="components/login.js"></script>
@@ -112,8 +148,11 @@
     <script src="components/profile.js"></script>
     <script src="components/update-password.js"></script>
     <script src="components/delete-account.js"></script>
-    
-    <script src="index.js"></script>
+    <script src="components/search.js"></script>
+    <script src="components/retrieve-vehicle.js"></script>
 
+
+    <script src="index.js"></script>
 </body>
+
 </html>
