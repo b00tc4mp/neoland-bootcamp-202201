@@ -24,7 +24,6 @@ function Register({ onLogin, onRegistered }) {
                 <input className="register__password-input" type="password" name="password" placeholder="Password" />
                 <label className="register__toggle-icon register__toggle-icon--show" id="togglePassword"></label>
             </div>
-            <span className="register__password-caps-status">*Caps Lock On</span>
             <button>Register</button>
             <a href="" className="register__login-link" onClick={ event => {
                 event.preventDefault()

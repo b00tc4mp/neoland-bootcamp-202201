@@ -12,4 +12,13 @@
     text-align: right;
     background-color: powderblue;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
+
+
+.home__user{
+    display: inline;
+    align-self: center;
+}
+

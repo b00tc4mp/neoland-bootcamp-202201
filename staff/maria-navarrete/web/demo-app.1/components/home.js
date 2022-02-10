@@ -15,14 +15,23 @@ homeProfileLink.onclick = event => {
     const nameInput = profileView.querySelector('.profile__name-input')
     const emailInput = profileView.querySelector('.profile__email-input')
 
-    nameInput.value = activeUser.name
-    emailInput.value = activeUser.email
+    try {
+        retrieveUser(userToken)
+            .then(user => {
+                nameInput.value = user.name
+                emailInput.value = user.email
 
-    updatePasswordView.classList.add('off')
-    deleteAccountView.classList.add('off')
-    titleView.classList.add('off')
-    profileView.classList.remove('off')
-    searchView.classList.add('off')
+                updatePasswordView.classList.add('off')
+                deleteAccountView.classList.add('off')
+                titleView.classList.add('off')
+                searchView.classList.add('off')
+                profileView.classList.remove('off')
+            })
+            .catch(error => alert(error.message))
+    } catch (error) {
+        alert(error.message)
+    }
+
 }
 
 const homeLogoutLink = homeView.querySelector('.home__logout-link')

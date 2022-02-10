@@ -1,9 +1,8 @@
 import './Home.css'
-// import Profile from './Profile'
+import Search from './Search'
+import Profile from './Profile'
 // import UpdatePassword from './UpdatePassword'
 // import DeleteAccount from './DeleteAccount'
-// import Search from './Search'
-
 import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
@@ -12,6 +11,11 @@ function Home({ token }) {
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
+
+    const showSearch = () => setView('search')
+    const showProfile = () => setView('profile')
+
+    const refreshData = data => setName(data)
 
     useEffect(() => {
         try {
@@ -25,19 +29,26 @@ function Home({ token }) {
 
     return <div className="home">
         <nav className="home__header">
-            <a className="home__home-link" href="">Home</a>
-            <span> | </span>
-            <a className="home__profile-link" href="">Profile</a>
-            <span> | </span>
-            <a className="home__logout-link" href="">Log out</a>
+            <h1 className="home__user">Hola, {name}</h1>
+            <div>
+                <a className="home__home-link" href="" onClick={event => {
+                    event.preventDefault()
+                    showSearch()
+                }}>Home</a>
+                <span> | </span>
+                <a className="home__profile-link" href="" onClick={event => {
+                    event.preventDefault()
+                    showProfile()
+                }
+                }>Profile</a>
+                <span> | </span>
+                <a className="home__logout-link" href="">Log out</a>
+            </div>
         </nav>
-
-        <h1 className="home__user">Hola, {name}</h1>
-
-        {/* {view === 'search' && <Search />}
-        {view === 'profile' && <Profile />}
-        {view === 'update-password' && <UpdatePassword />}
-        {view === 'delete-account' && <DeleteAccount />} */}
+        {view === 'search' && <Search />}
+        {view === 'profile' && <Profile token={token} refreshData ={refreshData}/>}
+        {/* {view === 'update-password' && <UpdatePassword />}
+        {view === 'delete-account' && <DeleteAccount />}  */}
     </div>
 }
 

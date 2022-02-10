@@ -6,12 +6,12 @@ const loginToggleIcon = loginForm.querySelector('.login__toggle-icon')
 loginToggleIcon.onclick = () => {
     const type = loginPasswordInput.type
 
-    if(type === 'password'){
+    if (type === 'password') {
         loginToggleIcon.classList.remove('login__toggle-icon--show')
         loginToggleIcon.classList.add('login__toggle-icon--hide')
         loginPasswordInput.type = 'text'
     }
-    else{
+    else {
         loginToggleIcon.classList.add('login__toggle-icon--show')
         loginToggleIcon.classList.remove('login__toggle-icon--hide')
         loginPasswordInput.type = 'password'
@@ -19,24 +19,24 @@ loginToggleIcon.onclick = () => {
 }
 
 const passwordInput = loginForm.querySelector('.login__password-input')
-passwordInput.addEventListener('keydown', function(event){
+passwordInput.addEventListener('keydown', function (event) {
     const passwordCapsStatus = loginForm.querySelector('.login__password-caps-status')
-    
-    if(event.getModifierState('CapsLock'))
+
+    if (event.getModifierState('CapsLock'))
         passwordCapsStatus.classList.remove('off')
-    
+
     else
-        passwordCapsStatus.classList.add('off')    
+        passwordCapsStatus.classList.add('off')
 })
 
-passwordInput.addEventListener('keyup', function(event){
+passwordInput.addEventListener('keyup', function (event) {
     const passwordCapsStatus = loginForm.querySelector('.login__password-caps-status')
-    
-    if(event.getModifierState('CapsLock'))
+
+    if (event.getModifierState('CapsLock'))
         passwordCapsStatus.classList.remove('off')
-    
+
     else
-        passwordCapsStatus.classList.add('off')    
+        passwordCapsStatus.classList.add('off')
 })
 
 
@@ -48,31 +48,38 @@ loginForm.onsubmit = event => {
 
     const email = emailInput.value
     const password = passwordInput.value
-    
+
     const emailFeedback = loginForm.querySelector('.login__email-feedback')
     const passwordFeedback = loginForm.querySelector('.login__password-feedback')
     const feedback = loginForm.querySelector('.login__feedback')
-    
+
     try {
-        const id = authenticateUser(email, password)
-        activeUser = retrieveUser(id)
+        authenticateUser(email, password)
+            .then(token => {
+                userToken = token
+                return retrieveUser(userToken)
+            })
+            .then(user => {
 
-        const homeUser = homeView.querySelector('.home__user')
-        homeUser.innerText = `Hello, ${activeUser.name}!`
+                const homeUser = homeView.querySelector('.home__user')
+                homeUser.innerText = `Hello, ${user.name}!`
 
-        emailInput.value = ''
-        passwordInput.value = ''
+                emailInput.value = ''
+                passwordInput.value = ''
 
-        emailInput.classList.remove('login__input--error')
-        emailFeedback.classList.add('off')
+                emailInput.classList.remove('login__input--error')
+                emailFeedback.classList.add('off')
 
-        passwordInput.classList.remove('login__input--error')
-        passwordFeedback.classList.add('off')
+                passwordInput.classList.remove('login__input--error')
+                passwordFeedback.classList.add('off')
 
-        feedback.classList.add('off')
+                feedback.classList.add('off')
 
-        loginView.classList.add('off')
-        homeView.classList.remove('off')
+                loginView.classList.add('off')
+                homeView.classList.remove('off')
+
+            })
+            .catch(error => alert(error.message))
     } catch (error) {
 
         const { message } = error
@@ -92,16 +99,16 @@ loginForm.onsubmit = event => {
         else if (message.includes('password')) {
             emailInput.classList.remove('login__input--error')
             emailFeedback.classList.add('off')
-            
+
             passwordInput.classList.add('login__input--error')
             passwordFeedback.innerText = message
             passwordFeedback.classList.remove('off')
         }
 
-        else{  
+        else {
             emailInput.classList.remove('login__input--error')
             emailFeedback.classList.add('off')
-            
+
             passwordInput.classList.remove('login__input--error')
             passwordFeedback.classList.add('off')
 

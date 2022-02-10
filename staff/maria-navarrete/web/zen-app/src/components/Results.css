@@ -1,0 +1,11 @@
+.results__item, .results__feedback {
+    font-size: 1.4rem;
+}
+
+.results__list{
+    list-style-type: none;
+}
+
+.results__item::before{
+    content:'☼ '
+}

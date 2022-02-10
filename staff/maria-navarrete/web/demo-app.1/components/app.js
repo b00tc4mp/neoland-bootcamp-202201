@@ -10,4 +10,4 @@ const deleteAccountView = homeView.querySelector('.delete-account')
 const searchView = document.querySelector('.search')
 
 //state
-let activeUser
+let userToken

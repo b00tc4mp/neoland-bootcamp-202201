@@ -1,4 +1,4 @@
-import { validateToken, validateName, validateEmail } from '.helpers/validators'
+import { validateToken, validateName, validateEmail } from './helpers/validators'
 
 
 function updateUser(token, name, email) {
