@@ -9,7 +9,6 @@
     animation-name: beat;
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease;
 }
 
 @keyframes beat {
