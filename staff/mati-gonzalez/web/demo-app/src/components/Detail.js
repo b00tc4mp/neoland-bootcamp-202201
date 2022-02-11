@@ -10,8 +10,7 @@ function Details({ vehicleId }) {
     const showSearch = () => setView('search')
 
     useEffect(() => {
-        try{
-            debugger    
+        try{   
             retrieveVehicle(VehicleId)
                 .then(vehicle => setVehicle(vehicle))
         } catch ({ message }) {
