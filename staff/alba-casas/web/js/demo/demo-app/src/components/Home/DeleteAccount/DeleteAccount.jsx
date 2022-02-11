@@ -1,11 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./DeleteAccount.css";
 import unregisterUser from "../../../logic/logic/unregister-user";
-import { useState } from "react";
 
 function DeleteAccount({ onProfile, token, onLanding }) {
-  const [password, setPassword] = useState("");
-
   const deleteAccount = (event) => {
     event.preventDefault();
     const {
@@ -30,7 +27,6 @@ function DeleteAccount({ onProfile, token, onLanding }) {
           type="password"
           name="password"
           placeholder="Password"
-          defaultValue={password}
         />
         <button type="submit">Delete account</button>
 
