@@ -2,30 +2,24 @@
 import "./Landing.css";
 
 const Landing = ({ onLogin, onRegister }) => {
+  const goLogin = (event) => {
+    event.preventDefault();
+
+    onLogin();
+  };
+  const goRegister = (event) => {
+    event.preventDefault();
+    onRegister();
+  };
+
   return (
     <div className="landing">
       <div>
-        <a
-          className="landing__login"
-          href=""
-          onClick={(event) => {
-            event.preventDefault();
-
-            onLogin();
-          }}
-        >
+        <a className="landing__login" href="" onClick={goLogin}>
           Login
         </a>
-        or
-        <a
-          className="landing__register"
-          href=""
-          onClick={(event) => {
-            event.preventDefault();
-
-            onRegister();
-          }}
-        >
+        {" or "}
+        <a className="landing__register" href="" onClick={goRegister}>
           Register
         </a>
       </div>

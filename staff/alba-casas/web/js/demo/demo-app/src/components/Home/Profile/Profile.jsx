@@ -10,37 +10,37 @@ function Profile({
   token,
   refreshData,
 }) {
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState();
+  const [surname, setSurname] = useState();
+  const [email, setEmail] = useState();
 
-  const handleChangeName = (event) => {
-    /*   const {
+  /*   const handleChangeName = (event) => {
+    const {
       target: { value: name },
-    } = event; */
+    } = event;
 
-    /* const { value: name } = event.target; */
+    const { value: name } = event.target;
 
     setName(event.target.value);
   };
 
   const handleChangeSurname = (event) => {
-    /*   const {
+      const {
       target: { value: surname },
-    } = event; */
-    /* const { value: surname } = event.target; */
+    } = event;
+    const { value: surname } = event.target;
 
     setSurname(event.target.value);
   };
 
   const handleChangeEmail = (event) => {
-    /*  const {
+     const {
       target: { value: email },
-    } = event; */
-    /*  const { value: email } = event.target; */
+    } = event;
+     const { value: email } = event.target;
 
     setEmail(event.target.value);
-  };
+  }; */
 
   useEffect(() => {
     try {
@@ -55,7 +55,9 @@ function Profile({
   }, []);
 
   const updateProfile = (event) => {
+    debugger;
     event.preventDefault();
+
     const {
       target: {
         name: { value: name },
@@ -69,6 +71,8 @@ function Profile({
         setSurname(surname);
         setEmail(email);
         refreshData(name);
+        console.log(retrieveUser(token));
+        alert("profile updated");
       });
     } catch ({ message }) {
       alert(message);
@@ -83,24 +87,21 @@ function Profile({
           type="text"
           name="name"
           placeholder="name"
-          value={name}
-          onChange={handleChangeName}
+          defaultValue={name}
         />
         <input
           className="profile__surname-input"
           type="text"
           name="surname"
           placeholder="surname"
-          value={surname}
-          onChange={handleChangeSurname}
+          defaultValue={surname}
         />
         <input
           className="profile__email-input"
           type="email"
           name="email"
           placeholder="e-mail"
-          value={email}
-          onChange={handleChangeEmail}
+          defaultValue={email}
         />
         <button>Update profile</button>
         <a

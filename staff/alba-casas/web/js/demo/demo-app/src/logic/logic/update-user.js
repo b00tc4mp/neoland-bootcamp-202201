@@ -17,7 +17,7 @@ function updateUser(token, name, surname, email) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, surname, email }),
+    body: JSON.stringify({ name, surname, username: email }),
   }).then((res) => {
     const { status } = res;
 
