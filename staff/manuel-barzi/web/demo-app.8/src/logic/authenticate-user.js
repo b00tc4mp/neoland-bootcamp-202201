@@ -1,25 +1,27 @@
-import { validateToken, validateName, validateSurname, validateEmail } from './helpers/validators'
+import { validateEmail, validatePassword } from './helpers/validators'
 
-function updateUser(token, name, surname, email) {
-    validateToken(token)
-    validateName(name)
-    validateSurname(surname)
+function authenticateUser(email, password) {
     validateEmail(email)
+    validatePassword(password)
 
-    return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
-        method: 'PATCH',
+    return fetch('https://b00tc4mp.herokuapp.com/api/v2/users/auth', {
+        method: 'POST',
         headers: {
-            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, surname, username: email })
+        body: JSON.stringify({ username: email, password })
     })
         .then(res => {
             const { status } = res
 
-            if (status === 204) {
-                // TODO manage happy path
-                return
+            if (status === 200) {
+                // DONE manage happy path
+                return res.json()
+                    .then(payload => {
+                        const { token } = payload
+
+                        return token
+                    })
             } else if (status >= 400 && status < 500) {
                 // DONE manage client error
                 return res.json()
@@ -37,4 +39,4 @@ function updateUser(token, name, surname, email) {
         })
 }
 
-export default updateUser
+export default authenticateUser

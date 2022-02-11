@@ -1,7 +1,6 @@
 import './Login.css'
 import { authenticateUser } from '../logic'
 import { useState } from 'react'
-import Feedback from './Feedback'
 
 //function Login(props) {
 function Login({ onAuthenticated, onRegister }) {
@@ -50,13 +49,13 @@ function Login({ onAuthenticated, onRegister }) {
     return <div className="login">
         <form className="login__form" onSubmit={login}>
             <input className={`login__email-input ${emailFeedback? 'login__input--error' : ''}`} type="_email" name="email" placeholder="e-mail" />
-            {emailFeedback && <Feedback message={emailFeedback} level="error" version="mini" />}
+            {emailFeedback && <span className="login__email-feedback">{emailFeedback}</span>}
 
             <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" />
-            {passwordFeedback && <Feedback message={passwordFeedback} level="error" version="mini" />}
+            {passwordFeedback && <span className="login__password-feedback">{passwordFeedback}</span>}
 
             <button>Login</button>
-            {feedback && <Feedback message={feedback} level="error" />}
+            {feedback && <span className="login__feedback">{feedback}</span>}
 
             <a className="login__register-link" href="" onClick={event => {
                 event.preventDefault()

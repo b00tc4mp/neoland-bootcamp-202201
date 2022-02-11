@@ -1,20 +1,16 @@
-.login {
+.register {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
 
-.login__form {
+.register__form {
     display: flex;
     flex-direction: column;
     gap: .5rem;
 }
 
-.login__input--error {
-    border: 1px solid tomato;
-}
-
-.login__register-link {
+.register__login-link {
     text-align: center;
 }
