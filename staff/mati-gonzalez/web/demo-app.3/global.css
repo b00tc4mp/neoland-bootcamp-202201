@@ -1,0 +1,90 @@
+/* generic styles */
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/Poppins-Regular.ttf');
+}
+
+
+/* variables */
+:root {
+
+    --primary: thistle;
+    --secondary: cadetblue;
+    --warning: tomato;
+    --link: dodgerblue;
+    --dark: black;
+
+    --radius-s: 3px;
+
+}
+
+
+/* Resets */
+* {
+    font-family: 'Poppins';
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing : border-box;
+    cursor: default;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+
+/* defaults elements */
+
+a {
+    font-size: 1.4rem;
+    color: var(--link);
+    cursor: pointer;
+}
+
+p {
+    font-size: 1.4rem;
+}
+
+span {
+    font-size: 1.4rem;
+}
+
+input {
+    font-size: 1.4rem;
+    border: 1px solid var(--dark);
+    border-radius: var(--radius-s);
+}
+
+label {
+    font-size: 1.4rem;
+}
+
+button {
+    font-size: 1.4rem;
+    border-radius: var(--radius-s);
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

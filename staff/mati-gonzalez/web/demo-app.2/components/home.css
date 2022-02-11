@@ -1,0 +1,72 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 2rem;
+}
+
+.home__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home__logo {
+    filter: invert(1);
+    width: 8rem;
+}
+
+.home__logout-button {
+    cursor: pointer;
+}
+
+.home-home {
+    display: flex;
+    flex-direction: column;
+}
+
+.home__box-1 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__box-2 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__box-3 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__box-4 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
