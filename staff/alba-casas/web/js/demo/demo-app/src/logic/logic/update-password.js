@@ -1,4 +1,4 @@
-import { validateToken, validatePassword } from "../helpers";
+import { validateToken, validatePassword } from "../helpers/validators";
 
 function updateUserPassword(token, currPassword, password, rePassword) {
   validateToken(token);
