@@ -32,3 +32,5 @@ function unregisterUser(token, password) {
             }
         })
 }
+
+export default unregisterUser

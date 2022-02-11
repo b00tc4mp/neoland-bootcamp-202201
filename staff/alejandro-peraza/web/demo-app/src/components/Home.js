@@ -4,16 +4,18 @@ import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import Search from './Search'
 import { useState } from 'react'
-import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
+import { retrieveUser } from '../logic'
+import Landing from './Landing'
 
-//function Home(props) {
-function Home({ token }) {
-    // const token = props.token
-    //const { token } = props
+
+function Home({ token, showLanding }) {
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
+
+
+    const showProfile = () => setView('profile')
 
     useEffect(() => {
         try {
@@ -29,13 +31,21 @@ function Home({ token }) {
         <div className="home__header">
             <a className="home__home-link" href=""><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
-            <a className="home__profile-link" href="">Profile</a>
-            <button className="home__logout-button">Logout</button>
+            <a className="home__profile-link" href="" onClick={event => {
+                event.preventDefault()
+                
+                showProfile()
+            }}>Profile</a>
+            <button className="home__logout-button" onClick={event => {
+                event.preventDefault()
+
+            }}>Logout</button>
+        
         </div>
 
         {view === 'search' && <Search />}
 
-        {view === 'profile' && <Profile />}
+        {view === 'profile' && <Profile token={token} />}
 
         {view === 'update-password' && <UpdatePassword />}
 
