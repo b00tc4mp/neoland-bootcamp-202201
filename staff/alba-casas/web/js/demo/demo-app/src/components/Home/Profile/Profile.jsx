@@ -26,6 +26,7 @@ function Profile({
     } catch ({ message }) {
       alert(message);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateProfile = (event) => {
@@ -104,5 +105,3 @@ function Profile({
 }
 
 export default Profile;
-
-// Cuando tu recuperas los datos debes guardarlos en un state y renderizar el compo solo si ese state no es undefined

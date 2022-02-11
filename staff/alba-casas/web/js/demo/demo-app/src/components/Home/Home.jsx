@@ -75,8 +75,16 @@ function Home({ token, onLanding }) {
           refreshData={refreshData}
         />
       )}
-      {view === "update-password" && <UpdatePassword onProfile={showProfile} />}
-      {view === "delete-account" && <DeleteAccount onProfile={showProfile} />}
+      {view === "update-password" && (
+        <UpdatePassword onProfile={showProfile} token={token} />
+      )}
+      {view === "delete-account" && (
+        <DeleteAccount
+          onProfile={showProfile}
+          token={token}
+          onLanding={onLanding}
+        />
+      )}
     </div>
   );
 }

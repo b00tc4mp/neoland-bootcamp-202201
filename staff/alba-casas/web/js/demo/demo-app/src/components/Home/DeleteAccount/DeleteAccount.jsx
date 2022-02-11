@@ -1,17 +1,39 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./DeleteAccount.css";
+import unregisterUser from "../../../logic/logic/unregister-user";
+import { useState } from "react";
 
-function DeleteAccount({ onProfile }) {
+function DeleteAccount({ onProfile, token, onLanding }) {
+  const [password, setPassword] = useState("");
+
+  const deleteAccount = (event) => {
+    event.preventDefault();
+    const {
+      target: {
+        password: { value: password },
+      },
+    } = event;
+    try {
+      unregisterUser(token, password);
+      alert("deleted user");
+    } catch ({ message }) {
+      alert(message);
+    }
+    onLanding();
+  };
+
   return (
     <div className="delete-account">
-      <form className="delete-account__form">
+      <form className="delete-account__form" onSubmit={deleteAccount}>
         <input
           className="delete-account__password-input"
           type="password"
           name="password"
           placeholder="Password"
+          defaultValue={password}
         />
-        <button>Delete account</button>
+        <button type="submit">Delete account</button>
+
         <a
           className="delete-account__back-link"
           href=""

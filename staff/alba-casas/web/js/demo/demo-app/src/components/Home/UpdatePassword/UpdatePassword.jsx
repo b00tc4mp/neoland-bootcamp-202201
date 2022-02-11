@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./UpdatePassword.css";
 
-function UpdatePassword({ onProfile }) {
+function UpdatePassword({ onProfile, token }) {
   return (
     <div className="update-password">
       <form className="update-password__form">

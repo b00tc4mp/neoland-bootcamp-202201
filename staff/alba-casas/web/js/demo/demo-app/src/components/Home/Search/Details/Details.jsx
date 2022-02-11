@@ -44,9 +44,9 @@ function Details({ vehicleId }) {
           >
             Back
           </button>
-          {view === "search" && <Search />}
         </>
       )}
+      {view === "search" && <Search />}
     </div>
   );
 }
