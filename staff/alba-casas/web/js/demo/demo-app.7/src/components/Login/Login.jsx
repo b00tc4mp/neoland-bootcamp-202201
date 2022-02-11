@@ -2,7 +2,6 @@
 import "./Login.css";
 import { authenticateUser } from "../../logic/logic";
 import { useState } from "react";
-import Feedback from "../Feedback/Feedback";
 
 const Login = ({ onAuthenticated, onRegister }) => {
   const [emailFeedback, setEmailFeedback] = useState();
@@ -49,12 +48,12 @@ const Login = ({ onAuthenticated, onRegister }) => {
           className={`login__email-input ${
             emailFeedback ? "login__input--error" : ""
           }`}
-          type="_email"
+          type="email"
           name="email"
           placeholder="e-mail"
         />
         {emailFeedback && (
-          <Feedback message={emailFeedback} level="error" version="mini" />
+          <span className="login__email-feedback off">{emailFeedback}</span>
         )}
 
         <input
@@ -66,12 +65,12 @@ const Login = ({ onAuthenticated, onRegister }) => {
           placeholder="password"
         />
         {passwordFeedback && (
-          <Feedback message={passwordFeedback} level="error" version="mini" />
+          <span className="login__password-feedback off">
+            {passwordFeedback}
+          </span>
         )}
-
         <button>Login</button>
-        {feedback && <Feedback message={feedback} level="error" />}
-
+        {feedback && <span className="login__feedback off">{feedback}</span>}
         <a
           className="login__register-link"
           href=""

@@ -3,7 +3,6 @@ import "./Profile.css";
 import { useEffect } from "react";
 import { retrieveUser, updateUser } from "../../../logic/logic";
 import { useState } from "react";
-import Feedback from "../../Feedback/Feedback";
 
 function Profile({
   onUpdatePasswordClick,
@@ -14,7 +13,34 @@ function Profile({
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
-  const [feedback, setFeedback] = useState();
+
+  /*   const handleChangeName = (event) => {
+    const {
+      target: { value: name },
+    } = event;
+
+    const { value: name } = event.target;
+
+    setName(event.target.value);
+  };
+
+  const handleChangeSurname = (event) => {
+      const {
+      target: { value: surname },
+    } = event;
+    const { value: surname } = event.target;
+
+    setSurname(event.target.value);
+  };
+
+  const handleChangeEmail = (event) => {
+     const {
+      target: { value: email },
+    } = event;
+     const { value: email } = event.target;
+
+    setEmail(event.target.value);
+  }; */
 
   useEffect(() => {
     try {
@@ -29,6 +55,7 @@ function Profile({
   }, []);
 
   const updateProfile = (event) => {
+    debugger;
     event.preventDefault();
 
     const {
@@ -44,10 +71,11 @@ function Profile({
         setSurname(surname);
         setEmail(email);
         refreshData(name);
-        setFeedback("profile updated");
+        console.log(retrieveUser(token));
+        alert("profile updated");
       });
     } catch ({ message }) {
-      setFeedback(message);
+      alert(message);
     }
   };
 
@@ -76,7 +104,6 @@ function Profile({
           defaultValue={email}
         />
         <button>Update profile</button>
-        {feedback && <Feedback message={feedback} level="success" />}
         <a
           className="profile__update-password-link"
           href=""
