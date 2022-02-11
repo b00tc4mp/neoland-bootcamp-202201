@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import retrieveVehicle from "../../../../logic/logic/retrieve-vehicle";
-import Search from "../Search";
 import "./Details.css";
 
-function Details({ vehicleId }) {
-  const [view, setView] = useState();
+function Details({ vehicleId, onBack }) {
   const [vehicle, setVehicle] = useState({});
-
-  const showSearch = () => setView("search");
 
   useEffect(() => {
     try {
@@ -15,11 +11,11 @@ function Details({ vehicleId }) {
     } catch ({ message }) {
       alert(message);
     }
-  }, []);
+  }, [vehicleId]);
 
   return (
     <div className="details">
-      {vehicle.id && view !== "search" && (
+      {vehicle.id && (
         <>
           <div className="details__header">
             <h2> {vehicle.name}</h2>
@@ -38,15 +34,13 @@ function Details({ vehicleId }) {
           <button
             onClick={(event) => {
               event.preventDefault();
-
-              showSearch();
+              onBack();
             }}
           >
             Back
           </button>
         </>
       )}
-      {view === "search" && <Search />}
     </div>
   );
 }

@@ -9,6 +9,7 @@ function Search() {
   const [vehicleId, setVehicleId] = useState();
 
   const showDetails = () => setView("details");
+  const showResults = () => setView("results");
 
   const search = (event) => {
     event.preventDefault();
@@ -54,7 +55,9 @@ function Search() {
           ))}
         </ul>
       )}
-      {view === "details" && <Details vehicleId={vehicleId} />}
+      {view === "details" && (
+        <Details onBack={showResults} vehicleId={vehicleId} />
+      )}
     </div>
   );
 }
