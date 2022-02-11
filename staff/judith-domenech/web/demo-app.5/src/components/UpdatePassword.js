@@ -1,26 +1,8 @@
 import './UpdatePassword.css'
-import {retrieveUser} from '../logic'
-import {useState, useEffect} from 'react'
 
-const UpdatePassword = event =>{
-    event.preventDefault()
-
-    const {}
-}
-
-
-
-
-
-
-
-
-
-
-
-
+function UpdatePassword() {
     return <div className="update-password">
-        <form className="update-password__form" >
+        <form className="update-password__form">
             <input className="update-password__curr-password-input" type="password" name="name" placeholder="Current password" />
             <input className="update-password__password-input" type="password" name="surname" placeholder="New password" />
             <input className="update-password__re-password-input" type="password" name="email" placeholder="Re-type new password" />

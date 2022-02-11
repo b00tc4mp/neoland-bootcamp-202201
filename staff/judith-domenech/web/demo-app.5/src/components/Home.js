@@ -18,7 +18,7 @@ function Home({ token, showLanding }) {
     const [name, setName] = useState('name')
     
 
-    const showProfile= () => setView('profile') 
+    const showProfile= () => setView('profile')
     const showSearch = () => setView('search')
 
    
@@ -32,7 +32,7 @@ function Home({ token, showLanding }) {
         }
     }, [])
 
-    const goToSearch = event => {
+    const goToProfile = event => {
         event.preventDefault()
 
         showSearch()
@@ -50,13 +50,9 @@ function Home({ token, showLanding }) {
         showLanding()
     }
 
-    const showUpdatePassword =() => {
-        setView('update-password')
-    }
-
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href="" onClick = {goToSearch}><Logo/></a>
+            <a className="home__home-link" href="" onClick = {goToProfile}><Logo/></a>
             <h1 className="home__user">{name}</h1>
             <a className="home__profile-link" href="" onClick = {ToProfile}> Profile</a>
             <button className="home__logout-button" onClick={goToLanding}> Logout</button>
@@ -64,7 +60,7 @@ function Home({ token, showLanding }) {
 
         {view === 'search' && <Search />}
 
-        {view === 'profile' && <Profile  token={token} onUpdatePassword={showUpdatePassword}/>}
+        {view === 'profile' && <Profile  token={token}/>}
 
         {view === 'landing' && <Landing />}
 
