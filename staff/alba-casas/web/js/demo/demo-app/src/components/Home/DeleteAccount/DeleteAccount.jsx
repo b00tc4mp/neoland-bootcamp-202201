@@ -1,8 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./DeleteAccount.css";
 import unregisterUser from "../../../logic/logic/unregister-user";
+import { useState } from "react";
+import Feedback from "../../Feedback/Feedback";
 
 function DeleteAccount({ onProfile, token, onLanding }) {
+  const [feedBack, setFeedback] = useState();
+
   const deleteAccount = (event) => {
     event.preventDefault();
     const {
@@ -15,7 +19,7 @@ function DeleteAccount({ onProfile, token, onLanding }) {
       alert("deleted user");
       onLanding();
     } catch ({ message }) {
-      alert(message);
+      setFeedback(message);
     }
   };
 
@@ -28,6 +32,7 @@ function DeleteAccount({ onProfile, token, onLanding }) {
           name="password"
           placeholder="Password"
         />
+        {feedBack && <Feedback message={feedBack} level="error" />}
         <button type="submit">Delete account</button>
 
         <a
