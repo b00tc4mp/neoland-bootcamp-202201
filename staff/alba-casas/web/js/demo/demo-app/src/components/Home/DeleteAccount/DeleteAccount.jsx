@@ -13,10 +13,10 @@ function DeleteAccount({ onProfile, token, onLanding }) {
     try {
       unregisterUser(token, password);
       alert("deleted user");
+      onLanding();
     } catch ({ message }) {
       alert(message);
     }
-    onLanding();
   };
 
   return (
