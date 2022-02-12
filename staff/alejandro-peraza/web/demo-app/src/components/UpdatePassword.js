@@ -1,6 +1,12 @@
 import './UpdatePassword.css'
+/*import {useState} from 'react'
+import {useEffect} from 'react'
+import Feedback from './Feedback'*/
+
 
 function UpdatePassword() {
+
+
     return <div className="update-password">
     <form className="update-password__form">
         <input className="update-password__curr-password-input" type="password" name="name" placeholder="Current password" />

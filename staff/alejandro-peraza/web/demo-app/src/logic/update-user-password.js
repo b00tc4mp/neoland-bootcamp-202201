@@ -1,5 +1,3 @@
-import UpdatePassword from "../components/UpdatePassword"
-
 function updateUserPassword(token, currPassword, password, rePassword) {
     validateToken(token)
     validatePassword(currPassword)
@@ -20,10 +18,10 @@ function updateUserPassword(token, currPassword, password, rePassword) {
             const { status } = res
 
             if (status === 204) {
-              
+     
                 return
             } else if (status >= 400 && status < 500) {
-              
+ 
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -31,12 +29,10 @@ function updateUserPassword(token, currPassword, password, rePassword) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
-                // DONE manage server error
+        
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')
             }
         })
 }
-
-export default updateUserPassword
