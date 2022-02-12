@@ -1,6 +1,6 @@
 .feedback {
   font-weight: bold;
-  color: white;
+  color: var(--color-white);
   padding: 0.5rem;
   text-align: center;
   border-radius: 1rem;
@@ -11,15 +11,15 @@
 }
 
 .feedback--success {
-  background-color: green;
+  background-color: var(--success);
 }
 
 .feedback--warn {
-  background-color: gold;
+  background-color: var(--warning);
 }
 
 .feedback--error {
-  background-color: tomato;
+  background-color: var(--danger);
 }
 
 .feedback--mini {
@@ -30,17 +30,17 @@
 }
 
 .feedback--info.feedback--mini {
-  color: black;
+  color: var(--text-color);
 }
 
 .feedback--success.feedback--mini {
-  color: green;
+  color: var(--success);
 }
 
 .feedback--warn.feedback--mini {
-  color: gold;
+  color: var(--warning);
 }
 
 .feedback--error.feedback--mini {
-  color: tomato;
+  color: var(--danger);
 }

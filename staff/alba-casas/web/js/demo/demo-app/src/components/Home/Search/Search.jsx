@@ -30,7 +30,7 @@ function Search() {
           className="search__query-input"
           type="text"
           name="query"
-          placeholder="query"
+          placeholder="search"
         />
         <button>Search</button>
       </form>

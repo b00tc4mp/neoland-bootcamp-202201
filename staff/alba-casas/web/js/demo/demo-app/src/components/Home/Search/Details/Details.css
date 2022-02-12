@@ -4,11 +4,12 @@
   justify-content: center;
   margin: 0 1rem;
   align-items: center;
-  background-color: blanchedalmond;
+  background-color: var(--secondary);
   border-radius: 10px;
   width: 800px;
   margin-top: 40px;
   padding: 24px 48px;
+  gap: 24px;
 }
 
 .details__image {
@@ -19,6 +20,12 @@
 }
 
 .details__header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.details__info {
   display: flex;
   justify-content: space-between;
   width: 100%;

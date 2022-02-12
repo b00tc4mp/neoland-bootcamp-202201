@@ -18,7 +18,7 @@ function Details({ vehicleId, onBack }) {
       {vehicle.id && (
         <>
           <div className="details__header">
-            <h2> {vehicle.name}</h2>
+            <h2>{vehicle.name}</h2>
             <p>{vehicle.year}</p>
           </div>
           <img
@@ -26,9 +26,11 @@ function Details({ vehicleId, onBack }) {
             src={vehicle.image}
             alt="Vehicle"
           ></img>
-          <p>{vehicle.price}</p>
-          <p>{vehicle.maker}</p>
-          <p>{vehicle.color}</p>
+          <div className="details__info">
+            <p>Price: {vehicle.price}$</p>
+            <p>Maker: {vehicle.maker}</p>
+            <p>Color: {vehicle.color}</p>
+          </div>
           <p>{vehicle.description}</p>
           <p>{vehicle.url}</p>
           <button

@@ -32,8 +32,8 @@ function DeleteAccount({ onProfile, token, onLanding }) {
           name="password"
           placeholder="Password"
         />
-        {feedBack && <Feedback message={feedBack} level="error" />}
         <button type="submit">Delete account</button>
+        {feedBack && <Feedback message={feedBack} level="error" />}
 
         <a
           className="delete-account__back-link"
