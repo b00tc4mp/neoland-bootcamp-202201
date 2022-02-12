@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Register.css";
 import { registerUser } from "../../logic/logic";
+import PasswordInput from "../PasswordInput/PasswordInput";
 
 const Register = ({ onLogin, onRegistered }) => {
   const register = (event) => {
@@ -45,12 +46,7 @@ const Register = ({ onLogin, onRegistered }) => {
           name="email"
           placeholder="e-mail"
         />
-        <input
-          className="register__password-input"
-          type="password"
-          name="password"
-          placeholder="password"
-        />
+        <PasswordInput />
         <button>Register</button>
         <a
           className="register__login-link"

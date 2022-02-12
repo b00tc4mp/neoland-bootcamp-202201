@@ -3,6 +3,7 @@ import "./Login.css";
 import { authenticateUser } from "../../logic/logic";
 import { useState } from "react";
 import Feedback from "../Feedback/Feedback";
+import PasswordInput from "../PasswordInput/PasswordInput";
 
 const Login = ({ onAuthenticated, onRegister }) => {
   const [emailFeedback, setEmailFeedback] = useState();
@@ -42,6 +43,7 @@ const Login = ({ onAuthenticated, onRegister }) => {
       }
     }
   };
+
   return (
     <div className="login">
       <form className="login__form" onSubmit={login}>
@@ -57,18 +59,7 @@ const Login = ({ onAuthenticated, onRegister }) => {
           <Feedback message={emailFeedback} level="error" version="mini" />
         )}
 
-        <input
-          className={`login__password-input ${
-            passwordFeedback ? "login__input--error" : ""
-          }`}
-          type="password"
-          name="password"
-          placeholder="password"
-        />
-        {passwordFeedback && (
-          <Feedback message={passwordFeedback} level="error" version="mini" />
-        )}
-
+        <PasswordInput passwordFeedback={passwordFeedback} />
         <button>Login</button>
         {feedback && <Feedback message={feedback} level="error" />}
 

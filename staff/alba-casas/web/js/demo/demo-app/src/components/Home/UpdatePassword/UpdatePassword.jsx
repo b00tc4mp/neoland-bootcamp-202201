@@ -3,6 +3,7 @@ import "./UpdatePassword.css";
 import { useState } from "react";
 import { updateUserPassword } from "../../../logic/logic/";
 import Feedback from "../../Feedback/Feedback";
+import PasswordInput from "../../PasswordInput/PasswordInput";
 
 function UpdatePassword({ onProfile, token }) {
   const [feedBack, setFeedback] = useState();
@@ -30,21 +31,9 @@ function UpdatePassword({ onProfile, token }) {
   return (
     <div className="update-password">
       <form className="update-password__form" onSubmit={updatePassword}>
-        <input
-          className="update-password__curr-password-input"
-          type="password"
-          name="currentPassword"
-          placeholder="Current password"
-        />
-        <input
-          className="update-password__password-input"
-          type="password"
-          name="newPassword"
-          placeholder="New password"
-        />
-        <input
-          className="update-password__re-password-input"
-          type="password"
+        <PasswordInput name="currentPassword" placeholder="Current password" />
+        <PasswordInput name="newPassword" placeholder="New password" />
+        <PasswordInput
           name="retypePassword"
           placeholder="Re-type new password"
         />

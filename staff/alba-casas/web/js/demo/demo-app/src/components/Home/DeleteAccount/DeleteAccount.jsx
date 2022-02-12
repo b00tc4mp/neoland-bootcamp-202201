@@ -3,6 +3,7 @@ import "./DeleteAccount.css";
 import unregisterUser from "../../../logic/logic/unregister-user";
 import { useState } from "react";
 import Feedback from "../../Feedback/Feedback";
+import PasswordInput from "../../PasswordInput/PasswordInput";
 
 function DeleteAccount({ onProfile, token, onLanding }) {
   const [feedBack, setFeedback] = useState();
@@ -26,12 +27,7 @@ function DeleteAccount({ onProfile, token, onLanding }) {
   return (
     <div className="delete-account">
       <form className="delete-account__form" onSubmit={deleteAccount}>
-        <input
-          className="delete-account__password-input"
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
+        <PasswordInput />
         <button type="submit">Delete account</button>
         {feedBack && <Feedback message={feedBack} level="error" />}
 
