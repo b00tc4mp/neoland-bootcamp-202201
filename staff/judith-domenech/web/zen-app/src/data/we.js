@@ -8,9 +8,12 @@ const we = [
     'Se va a enterar, se va a enterar',
     'Se va a enterar, se va a enterar',
     'Uii, que papelon...',
+    'Fuuuáááá',
     'Vale vale vale',
     'Quiero un Monther',
     'Amigüis 👯‍♀️👯‍♂️ ',
     ''
 
 ]
+
+export default we
