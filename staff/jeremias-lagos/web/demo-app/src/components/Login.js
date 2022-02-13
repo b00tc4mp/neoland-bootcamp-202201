@@ -1,10 +1,11 @@
 import './Login.css'
 import { authenticateUser } from '../logic'
 import { useState } from 'react'
+import Feedback from './Feedback'
 
-//function Login(props) {
+
 function Login({ onAuthenticated, onRegister }) {
-    //const { onAuthenticated, onRegister } = props
+ 
     const [emailFeedback, setEmailFeedback] = useState()
     const [passwordFeedback, setPasswordFeedback] = useState()
     const [feedback, setFeedback] = useState()
@@ -12,8 +13,7 @@ function Login({ onAuthenticated, onRegister }) {
     const login = event => {
         event.preventDefault()
 
-        // const email = event.target.email.value
-        // const password = event.target.password.value
+
         const { target: { email: { value: email }, password: { value: password } } } = event
 
         try {
@@ -27,11 +27,8 @@ function Login({ onAuthenticated, onRegister }) {
                     setFeedback(error.message)
                 })
         } catch (error) {
-            //alert(error.message)
-
-            // TODO use feedback instead of ugly monster alert
-
-            const { message } = error
+          
+             const { message } = error
             
             setFeedback()
             
@@ -48,13 +45,13 @@ function Login({ onAuthenticated, onRegister }) {
     return <div className="login">
         <form className="login__form" onSubmit={login}>
             <input className={`login__email-input ${emailFeedback? 'login__input--error' : ''}`} type="_email" name="email" placeholder="e-mail" />
-            {emailFeedback && <span className="login__email-feedback">{emailFeedback}</span>}
+            {emailFeedback && <Feedback message={emailFeedback} level="error" version="mini" />}
 
             <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" />
-            {passwordFeedback && <span className="login__password-feedback">{passwordFeedback}</span>}
+            {passwordFeedback && <Feedback message={passwordFeedback} level="error" version="mini" />}
 
             <button>Login</button>
-            {feedback && <span className="login__feedback">{feedback}</span>}
+            {feedback && <Feedback message={feedback} level="error" />}
 
             <a className="login__register-link" href="" onClick={event => {
                 event.preventDefault()

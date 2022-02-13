@@ -6,6 +6,7 @@ import { useState } from 'react'
 function Search() {
     const [vehicles, setVehicles] = useState([])
 
+    
     const search = event => {
         event.preventDefault()
 
@@ -13,7 +14,7 @@ function Search() {
 
         try {
             searchVehicles(query)
-                .then(vehicles => setVehicles(vehicles))
+            .then(vehicles => setVehicles(vehicles))
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
