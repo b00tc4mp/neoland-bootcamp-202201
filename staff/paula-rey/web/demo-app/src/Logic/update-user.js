@@ -1,3 +1,5 @@
+import {validateToken, validateName, validateSurname, validateEmail } from './helpers/validators'
+
 function updateUser(token, name, surname, email) {
     validateToken(token)
     validateName(name)
@@ -39,29 +41,3 @@ function updateUser(token, name, surname, email) {
 
 export default updateUser
 
-/*  //function raw of res.json()//
-
-     response.json().then(data => {
-     // do something with your data //
-     });
-*/
-
-
-
-/*   //function before of insomnia//
-
-function updateUser(id, name, surname, email) {
-    validateId(id)
-    validateName(name)
-    validateSurname(surname)
-    validateEmail(email)
-
-    const user = users.find(user => user.id === id)
-
-    if (!user) throw Error('user not found')
-
-    user.name = name
-    user.surname = surname
-    user.email = email
-}
-*/

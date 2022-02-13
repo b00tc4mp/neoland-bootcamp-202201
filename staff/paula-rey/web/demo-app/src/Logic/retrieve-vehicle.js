@@ -3,4 +3,4 @@ function retrieveVehicle(id) {
         .then(res => res.json())
 }
 
-export default retrieveVehicles
+export default retrieveVehicle

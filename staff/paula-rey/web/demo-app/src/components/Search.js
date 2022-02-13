@@ -5,6 +5,10 @@ import { useState } from 'react'
 
 function Search() {
     const [vehicles, setVehicles] = useState([])
+    const [view, setView] = useState('results')
+    const [vehicleId, setVehicleId] = useState('') 
+
+    const showDetail = () => setView('detail')
 
     const search = event => {
         event.preventDefault()
@@ -26,15 +30,20 @@ function Search() {
             <button>Search</button>
         </form>
 
-        {!!vehicles.length && <ul className="search__results-list">
-            {vehicles.map(vehicle => <li key={vehicle.id}>
+        {!!vehicles.length && view === 'results' && <ul className="search__results-list">
+
+            {vehicles.map(vehicle => <li key={vehicle.id} onClick={event => {
+                event.preventDefault()
+                setVehicleId(vehicle.id)
+                showDetail()
+            }}>
                 <h2>{vehicle.name}</h2>
                 <img src={vehicle.thumbnail} />
                 <span>{vehicle.price} $</span>
             </li>)}
         </ul>}
 
-        <Detail />
+        {view == 'detail' && <Detail vehicleId={vehicleId} />}
     </div>
 }
 

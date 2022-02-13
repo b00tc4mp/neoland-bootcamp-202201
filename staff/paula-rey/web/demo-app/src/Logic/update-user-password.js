@@ -1,10 +1,12 @@
+import {validateToken, validatePassword} from './helpers/validators'
+
 function updateUserPassword(token, currPassword, password, rePassword) {
     validateToken(token)
     validatePassword(currPassword)
     validatePassword(password)
     validatePassword(rePassword)
 
-    if (password !== rePassword) throw new Error('password and password retyped do not match') 
+    if (password !== rePassword) throw new Error('retyped password doesn\'t match password') 
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         //MODIFY, PASSWORD
@@ -39,4 +41,4 @@ function updateUserPassword(token, currPassword, password, rePassword) {
         })
 }
 
-export default updatePassword
+export default updateUserPassword

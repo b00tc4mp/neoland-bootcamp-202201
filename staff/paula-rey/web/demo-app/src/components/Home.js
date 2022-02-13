@@ -9,15 +9,12 @@ import Logo from './Logo'
 import Landing from './Landing'
 
 //function Home(props) {
-function Home({ token, showLanding }) {
+function Home({ token, onLanding }) {
     // const token = props.token
     // const { token } = props
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
-    
-
-    const showProfile = () => setView('profile')
     
 
     useEffect(() => {
@@ -30,29 +27,49 @@ function Home({ token, showLanding }) {
         }
     }, [])
 
+    const showProfile = event => {
+        event.preventDefault()
+
+        setView('profile')
+    }
+
+    const showSearch = event => {
+        event.preventDefault()
+
+        setView('search')
+    }
+
+    const showUpdatePassword = () => {
+        setView('update-password')
+    }
+
+    const showDeleteAccount = () => {
+        setView('delete-account')
+    }
+
+    const showLanding = () => {
+        onLanding()
+    }
+
+    const showDetail = () => {
+        setView('detail')
+    }
+
+
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href=""><Logo /></a>
+            <a className="home__home-link" href=""onClick={showSearch}><Logo /></a>
             <h1 className="home__user">{name}</h1>
-            <a className="home__profile-link" href="" onClick={event => {
-                event.preventDefault()
-
-                showProfile()
-            }}>Profile</a>
-            <button className="home__logout-button" onClick={event => {
-                event.preventDefault()
-
-                showLanding()
-            }}>Logout</button>
+            <a className="home__profile-link" href="" onClick={showProfile}>Profile</a>
+            <button className="home__logout-button" onClick={showLanding}>Logout</button>
         </div>
 
-        {view === 'search' && <Search />}
-
-        {view === 'profile' && <Profile token={token} />} 
-
-        {view === 'update-password' && <UpdatePassword />}
-
-        {view === 'delete-account' && <DeleteAccount />}
+        
+        {view === 'search' && <Search /> }
+        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} 
+        {view === 'landing' && <Landing />}
+        {view === 'update-password' && <UpdatePassword token={token} onProfile={showProfile} />}
+        {view === 'delete-account' && <DeleteAccount token={token} onProfile={showProfile} onLanding={showLanding} />}
 
 
     </div>
