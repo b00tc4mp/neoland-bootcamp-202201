@@ -1,3 +1,5 @@
+import { validateToken, validateName, validateSurname, validateEmail } from './helpers/validators'
+
 function updateUser(token, name, surname, email) {
     validateToken(token)
     validateName(name)
@@ -34,3 +36,5 @@ function updateUser(token, name, surname, email) {
             }
         })
 }
+
+export default updateUser

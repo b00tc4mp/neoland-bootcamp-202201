@@ -1,46 +1,47 @@
-import './Details.css'
+import './Detail.css'
 import { retrieveVehicle } from '../logic'
-import { useState } from 'react' 
-import Search from './Search'
+import { useEffect, useState } from 'react'
 
-function Details({ vehicleId }) {
+function Detail({ vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
-    const [view, setView] = useState()
-
-    const showSearch = () => setView('search')
 
     useEffect(() => {
-        try{   
-            retrieveVehicle(VehicleId)
+        try {
+            retrieveVehicle(vehicleId)
                 .then(vehicle => setVehicle(vehicle))
-        } catch ({ message }) {
-            alert(message)
+                .catch(error => alert(error.message))
+        } catch (error) {
+            alert(error.message)
         }
     }, [])
 
-    return <div className="details">
-        {vehicle && view !== 'search' &&
-            (<>
-                <h2>{vehicle.name}</h2>
-                <img src={vehicle.image} className='details__image'></img>
-                <p>{vehicle.description}</p>
-                <p>{vehicle.price}</p>
-                <a href={vehicle.url}>Visit Site</a>
-                <p>Maker: {vehicle.maker}</p>
-                <p>Year: {vehicle.year}</p>
-                <p>Color: {vehicle.color}</p>
-                <p>Collection: {vehicle.collection}</p>
-                <p>Style: {vehicle.style}</p>
-                <button onClicl={e => {
-                    e.preventDefault()
-                    showSearch();
-                }}>Back</button>
-                {view === 'search' && <Search />}
-            </>
-            )}
+    const goBack = event => {
+        event.preventDefault()
 
-        
-    </div>
+        onBack()
+    }
+
+    if (vehicle)
+        return <div className="detail">
+            <h1>{vehicle.name}</h1>
+
+            <span>🤍</span>
+            
+            <img className="detail__image" src={vehicle.image} />
+            
+            <span>{vehicle.price} $</span>
+            
+            <p>{vehicle.description}</p>
+            
+            <span>{vehicle.color}</span>
+            <span>{vehicle.year}</span>
+            <span>{vehicle.maker}</span>
+            
+            <a href={vehicle.url}>original store</a>
+
+            <a href=""onClick={goBack}>back</a>
+        </div>
+    else return null
 }
 
-export default Details
+export default Detail

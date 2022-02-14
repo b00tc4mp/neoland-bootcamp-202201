@@ -1,28 +1,30 @@
 import './Search.css'
-import Details from './Details'
-import { searchVehicles } from '../logic'
+import Detail from './Detail'
 import { useState } from 'react'
+import Results from './Results'
+
 
 function Search() {
-    const [vehicles, setVehicles] = useState([])
-    const [view, setView] = useState('results')
-    const [vehicle, setVehicle] = useState()
+    const [query, setQuery] = useState()
+    const [view, setView] = useState()
+    const [vehicleId, setVehicleId] = useState()
 
     const search = event => {
         event.preventDefault()
 
         const query = event.target.query.value
 
-        try {
-            searchVehicles(query)
-                .then(vehicles => setVehicles(vehicles))
-                .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
-        }
+        setQuery(query)
+        
+        showResults()
     }
 
-    const showDetails = () => setView('details')
+    const goToDetail = id => {
+        setVehicleId(id)
+        setView('detail')
+    }
+
+    const showResults = () => setView('results')
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
@@ -30,19 +32,9 @@ function Search() {
             <button>Search</button>
         </form>
 
-        {!!vehicles.length && view === 'results' && (
-        <ul className="search__results-list">
-            {vehicles.map(vehicle => <li key ={vehicle.id} className='search__list-item' onClick={(e) => {
-                e.preventDefault()
-                setVehicle(vehicle)
-                showDetails()
-            }}>
-                <h2 className='details__title'>{vehicle.name}</h2>
-                <img src={vehicle.thumbnail} />
-                <span>{vehicle.price} $</span>
-            </li>)}
-        </ul>)}
-            {view === 'details' && <Details vehicleId ={vehicle.id} />}
+        {view === 'results' && <Results query={query} onItem={goToDetail} />}
+
+        {view === 'detail' && <Detail vehicleId={vehicleId} onBack={showResults} />}
     </div>
 }
 
