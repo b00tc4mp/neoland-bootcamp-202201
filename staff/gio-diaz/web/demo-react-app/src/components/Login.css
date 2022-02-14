@@ -1,0 +1,20 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.login__input--error {
+    border: 1px solid tomato;
+}
+
+.login__register-link {
+    text-align: center;
+}

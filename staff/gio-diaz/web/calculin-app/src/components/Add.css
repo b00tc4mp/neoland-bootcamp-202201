@@ -1,0 +1,19 @@
+.add {
+    background-color: rgb(139, 53, 114);
+    padding: 1rem;
+    border-radius: 20px;
+
+}
+
+.add__title {
+    margin: 0;
+}
+
+.add__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.add__input {
+    width: 4rem;
+}
