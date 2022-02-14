@@ -18,7 +18,7 @@ function toggleFavVehicle(token, id) {
                     //JSON.parse(res.body)
 
                     .then(user => {
-                        const { favs } = user
+                        let { favs } = user
                         //const favs = user.favs
 
                         if (favs) {
