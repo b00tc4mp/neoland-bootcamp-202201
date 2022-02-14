@@ -9,6 +9,7 @@ function Profile({ token, onUpdatePassword, onDeleteAccount }) {
     const [surname, setSurName] = useState()
     const [email, setEmail] = useState()
     const [feedback, setFeedback] = useState()
+    const [feedbackLevel, setFeedbackLevel] = useState()
 
 
     useEffect(() => {
@@ -34,12 +35,15 @@ function Profile({ token, onUpdatePassword, onDeleteAccount }) {
             updateUser(token, name, surname, email)
                 .then(() => {
                     setFeedback('Profile updated')
+                    setFeedbackLevel('success')
                 })
                 .catch(error => {
                     setFeedback(error.message)
+                    setFeedbackLevel('error')
                 })
         } catch (error) {
-            alert(error.message)
+            setFeedback(error.message)
+            setFeedbackLevel('error')
         }
     }
 
@@ -55,15 +59,15 @@ function Profile({ token, onUpdatePassword, onDeleteAccount }) {
         onDeleteAccount()
     }
 
-
+//method="post" para que no se vea en link password en caso de error
     return <div className="profile">
-        <form className="profile__form" onSubmit={updateProfile}>
+        <form className="profile__form" onSubmit={updateProfile} method="post">  
             <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name}/>
             <input className="profile__surname-input" type="text" name="surname" placeholder="surname" defaultValue={surname}/>
             <input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email}/>
 
             <button>Update profile</button>
-            {feedback && <Feedback message={feedback} level="success" />}
+            {feedback && <Feedback message={feedback} level={feedbackLevel} />}
 
             <a className="profile__update-password-link" href="" onClick={goToProfilePassword}>update password</a>
             <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>

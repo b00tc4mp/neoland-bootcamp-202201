@@ -5,59 +5,63 @@ import { updateUserPassword } from '../Logic'
 import Feedback from './Feedback'
 
 
-function UpdatePassword({ onProfile, token }) {
-    const [currPassword, setCurrPassword] = useState()
-    const [password, setPassword] = useState()
-    const [rePassword, setRePassword] = useState()
+function UpdatePassword({ token, onBack }) {
+
     const [feedback, setFeedback] = useState()
-
-    // useEffect(() => {
-    //     try {
-    //         updateUserPassword(token)
-    //             .then(({ currPassword, password, rePassword }) => {
-    //                 setCurrPassword(currPassword)
-    //                 setPassword(password)
-    //                 setRePassword(rePassword)
-    //             })
-    //             .catch(error => alert(error.message))
-    //     } catch (error) {
-    //         alert(error.message)
-    //     }
-    // }, [])
-
+    const [ feedbackLevel, setFeedbackLevel] = useState()
+ 
     const updatePassword = event => {
         event.preventDefault()
 
-        const { target: { currentPassword: { value: currPassword }, newPassword: { value: password }, retypePassword: { value: rePassword } } } = event
+        // const currPassword = event.target.currPassword.value
+        // const password = event.target.password.value
+        // const confirmPassword = event.target.confirmPassword.value
+
+        // const form = event.target
+        // const currPassword = form.currPassword.value
+        // const password = form.password.value
+        // const confirmPassword = form.confirmPassword.value
+
+        const { target: { currPassword: { value: currPassword }, password: { value: password }, confirmPassword: { value: confirmPassword } } } = event
 
         try {
-            updateUserPassword(token, currPassword, password, rePassword)
+            updateUserPassword(token, currPassword, password, confirmPassword)
                 .then(() => {
-                    setCurrPassword(currPassword)
-                    setPassword(password)
-                    setRePassword(rePassword)
                     setFeedback('Password updated')
+                    setFeedbackLevel('success')
                 })
                 .catch(error => {
                     setFeedback(error.message)
+                    setFeedbackLevel('error')
                 })
         } catch (error) {
-            alert(error.message)
+            setFeedback(error.message)
+            setFeedbackLevel('error')
         }
     }
 
+    const goBack = event => {
+        event.preventDefault()
+
+        onBack()
+    }
 
 
     return <div className="update-password">
         <form className="update-password__form" onSubmit={updatePassword}>
-            <input className="update-password__curr-password-input" type="password" name="name" placeholder="Current password" defaultValue={currPassword} />
-            <input className="update-password__password-input" type="password" name="surname" placeholder="New password" defaultValue={password} />
-            <input className="update-password__re-password-input" type="password" name="email" placeholder="Re-type new password" defaultValue={rePassword} />
+            <label htmlFor="currPassword">Current password</label>
+            <input id="currPassword" className="update-password__curr-password-input" type="password" name="currPassword" />
+
+            <label htmlFor="password">New password</label>
+            <input id="password" className="update-password__password-input" type="password" name="password" />
+
+            <label htmlFor="confirmPassword">Confirm new password</label>
+            <input id="confirmPassword" className="update-password__re-password-input" type="password" name="confirmPassword" />
 
             <button type="submit">Update password</button>
-            {feedback && <Feedback message={feedback} level="success" />}
-                                                          {/* 'error' */}
-            <a className="update-password__back-link" href="" onClick={onProfile}>back</a>
+            {feedback && <Feedback message={feedback} level={feedbackLevel} />}
+
+            <a className="update-password__back-link" href="" onClick={goBack}>back</a>
         </form>
     </div>
 }

@@ -3,69 +3,46 @@ import { useState, useEffect } from 'react'
 import { retrieveVehicle } from '../Logic'
 
 
-function Detail({ vehicleId }) {
+function Detail({ vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
 
     useEffect(() => {
         try {
             retrieveVehicle(vehicleId)
-                .then(({ vehicle }) => {
-                    setVehicle(vehicle)
-                })
+                .then(vehicle => setVehicle(vehicle))
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
-    })
+    }, [])
 
-    return <div className="detail"> {vehicle && <>
+    const goBack = event => {
+        event.preventDefault()
 
-        <h1>{vehicle.name}</h1>
-        <img className="detail__image"src={vehicle.image} />
+        onBack()
+    }
 
-        <div className="detail__attributes-wrapper">
-            <div className="detail__attributes"> 
-                <p>Year: </p>
-                <p> {vehicle.year}</p>
-            </div>
-            <div className="detail__attributes"> 
-                <p>Color:</p>
-                <p>{vehicle.color}</p>
-            </div>
-        </div >
-        <div className="detail__attributes-wrapper">
-            <div className="detail__attributes"> 
-                <p>Maker: </p>
-                <p>{vehicle.maker}</p>
-            </div>
-            <div className="detail__attributes"> 
-                <p>Collection: </p>
-                <p>{vehicle.collection}</p>
-            </div>
-        </div>
+    if (vehicle)
+        return <div className="detail">
+            <h1>{vehicle.name}</h1>
 
-        <div className="detail__attributes-wrapper">
-            <div className="detail__attributes"> 
-                <p>Price: </p>
-                <p>{vehicle.price}$</p>
-            </div>
-            <div className="detail__attributes"> 
-                <p>Style: </p>
-                <p>{vehicle.style}</p>
-            </div>
+            <span>🤍</span>
 
-        </div>
-        
-        <div className=""> 
-            <p>Url: </p>
-            <p>{vehicle.url}</p>
-        </div>
-        <div className=""> 
-            <p>Description: </p>
+            <img className="detail__image" src={vehicle.image} />
+
+            <span>{vehicle.price} $</span>
+
             <p>{vehicle.description}</p>
+
+            <span>{vehicle.color}</span>
+            <span>{vehicle.year}</span>
+            <span>{vehicle.maker}</span>
+
+            <a href={vehicle.url}>original store</a>
+
+            <a href="" onClick={goBack}>back</a>
         </div>
-    </>}
-    </div>
+    else return null
 }
 
 export default Detail

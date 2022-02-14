@@ -1,12 +1,12 @@
 import {validateToken, validatePassword} from './helpers/validators'
 
-function updateUserPassword(token, currPassword, password, rePassword) {
+function updateUserPassword(token, currPassword, newPassword, confirmPassword) {
     validateToken(token)
-    validatePassword(currPassword)
-    validatePassword(password)
-    validatePassword(rePassword)
+    validatePassword(currPassword, 'curr password')
+    validatePassword(newPassword, 'new password')
+    validatePassword(confirmPassword, 'confirm password')
 
-    if (password !== rePassword) throw new Error('retyped password doesn\'t match password') 
+    if (newPassword !== confirmPassword) throw new Error('retyped password doesn\'t match password') 
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         //MODIFY, PASSWORD
@@ -15,7 +15,7 @@ function updateUserPassword(token, currPassword, password, rePassword) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ oldPassword: currPassword, password }) 
+        body: JSON.stringify({ oldPassword: currPassword, password: newPassword }) 
     })
         .then(res => {
             // const status = res.status

@@ -6,10 +6,9 @@ import Search from './Search'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../Logic'
 import Logo from './Logo'
-import Landing from './Landing'
 
 //function Home(props) {
-function Home({ token, onLanding }) {
+function Home({ token, onLogout }) {
     // const token = props.token
     // const { token } = props
 
@@ -27,49 +26,40 @@ function Home({ token, onLanding }) {
         }
     }, [])
 
-    const showProfile = event => {
+    const goToProfile = event => {
         event.preventDefault()
 
-        setView('profile')
+        showProfile()
     }
 
-    const showSearch = event => {
+    const showProfile = () => setView('profile')
+
+    const showUpdatePassword = () => setView('update-password')
+
+    const showDeleteAccount = () => setView('delete-account')
+ 
+    const goToSearch = event => {
         event.preventDefault()
 
-        setView('search')
+        showSearch()
     }
 
-    const showUpdatePassword = () => {
-        setView('update-password')
-    }
-
-    const showDeleteAccount = () => {
-        setView('delete-account')
-    }
-
-    const showLanding = () => {
-        onLanding()
-    }
-
-    const showDetail = () => {
-        setView('detail')
-    }
-
+    const showSearch = () => setView('search')
 
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href=""onClick={showSearch}><Logo /></a>
+            <a className="home__home-link" href=""onClick={goToSearch}><Logo /></a>
             <h1 className="home__user">{name}</h1>
-            <a className="home__profile-link" href="" onClick={showProfile}>Profile</a>
-            <button className="home__logout-button" onClick={showLanding}>Logout</button>
+            <a href="">Favs</a>
+            <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
+            <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
         
         {view === 'search' && <Search /> }
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} 
-        {view === 'landing' && <Landing />}
-        {view === 'update-password' && <UpdatePassword token={token} onProfile={showProfile} />}
-        {view === 'delete-account' && <DeleteAccount token={token} onProfile={showProfile} onLanding={showLanding} />}
+        {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
+        {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
 
 
     </div>

@@ -55,7 +55,7 @@ function Login({ onAuthenticated, onRegister }) {
             <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" />
             {passwordFeedback && <Feedback message={passwordFeedback} level="error" version="mini" />}
 
-            <button>Login</button>
+            <button type="submit" >Login</button>
             {feedback && <Feedback message={feedback} level="error" />}
 
             <a className="login__register-link" href="" onClick={event => {

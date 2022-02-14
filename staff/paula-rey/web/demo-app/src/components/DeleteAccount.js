@@ -3,37 +3,44 @@ import { useState } from 'react'
 import { unregisterUser } from '../Logic'
 import Feedback from './Feedback'
 
-function DeleteAccount({ token, onProfile, onLanding }) {
+function DeleteAccount({ token, onBack, onDeletedAccount }) {
     const [feedback, setFeedback] = useState()
-    const [password, setPassword] = useState()
+    const [feedbackLevel, setFeedbackLevel] = useState()
+
+    const goBack = event => {
+        event.preventDefault()
+
+        onBack()
+    }
 
     const deleteAccount = event => {
         event.preventDefault()
 
-        const { target: { password: { value: password } } } = event
+        //const { target: { password: { value: password } } } = event
+        const password = event.target.password.value
 
         try {
             unregisterUser(token, password)
-                .then(() => {
-                    setFeedback('User deleted')
-                    setPassword()
-                    onLanding()
-                })
+                .then(() => onDeletedAccount())
                 .catch(error => {
                     setFeedback(error.message)
+                    setFeedbackLevel('error')
                 })
         } catch (error) {
-            alert(error.message)
+            setFeedback(error.message)
+            setFeedbackLevel('error')
         }
     }
 
 
     return <div className="delete-account">
-        <form className="delete-account__form" onSubmit={deleteAccount}>
-            <input className="delete-account__password-input" type="password" name="password" placeholder="Password" defaultValue={password} />
+        <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
+            <input className="delete-account__password-input" type="password" name="password" placeholder="Password" />
+
             <button type="submit">Delete account</button>
-            {feedback && <Feedback message={feedback} level="error" />}
-            <a className="delete-account__back-link" href="" onClick={onProfile}>back</a>
+            {feedback && <Feedback message={feedback} level={feedbackLevel} />}
+
+            <a className="delete-account__back-link" href="" onClick={goBack}>back</a>
         </form>
     </div>
 }
