@@ -8,12 +8,13 @@ const we = [
     'Se va a enterar, se va a enterar',
     'Se va a enterar, se va a enterar',
     'Uii, que papelon...',
-    'Fuuuáááá',
+    'Tienes que sacar el FUUUÁÁÁ',
     'Vale, vale vale vale',
     'Quiero un Monther',
     'Amigüis 👯‍♀️👯‍♂️ ',
     'Nooo Carnaaaaal!!',
-    'Ostiaaaa'
+    'Ostiaaaa',
+    'Nunca cambies'
 
 ]
 
