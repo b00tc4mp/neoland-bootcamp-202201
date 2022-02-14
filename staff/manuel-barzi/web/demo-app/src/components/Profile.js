@@ -42,7 +42,7 @@ function Profile({ token, onUpdatePassword }) {
         }
     }
 
-    const goToProfile = event => {
+    const goToUpdatePassword = event => {
         event.preventDefault()
 
         onUpdatePassword()
@@ -57,7 +57,7 @@ function Profile({ token, onUpdatePassword }) {
             <button>Update profile</button>
             {feedback && <Feedback message={feedback} level="success" />}
 
-            <a className="profile__update-password-link" href="" onClick={goToProfile}>update password</a>
+            <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
             <a className="profile__delete-account-link" href="">delete account</a>
         </form>
     </div>

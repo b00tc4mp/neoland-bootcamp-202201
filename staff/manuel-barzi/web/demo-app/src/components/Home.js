@@ -25,21 +25,21 @@ function Home({ token }) {
         }
     }, [])
 
-    const showProfile = event => {
+    const goToProfile = event => {
         event.preventDefault()
 
-        setView('profile')
+        showProfile()
     }
 
-    const showUpdatePassword = () => {
-        setView('update-password')
-    }
+    const showProfile = () => setView('profile')
+
+    const showUpdatePassword = () => setView('update-password')
 
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href=""><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
-            <a className="home__profile-link" href="" onClick={showProfile}>Profile</a>
+            <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
             <button className="home__logout-button">Logout</button>
         </div>
 
@@ -47,7 +47,7 @@ function Home({ token }) {
 
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} />}
 
-        {view === 'update-password' && <UpdatePassword />}
+        {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
 
         {view === 'delete-account' && <DeleteAccount />}
     </div>
