@@ -20,7 +20,6 @@ function Details({ vehicleId, onBack }) {
           <div className="details__header">
             <h2>{vehicle.name}</h2>
             <p>{vehicle.year}</p>
-            <span className="details__fav">🤍</span>
           </div>
           <img
             className="details__image"
@@ -33,7 +32,7 @@ function Details({ vehicleId, onBack }) {
             <p>Color: {vehicle.color}</p>
           </div>
           <p>{vehicle.description}</p>
-          <a href={vehicle.url}>Original store</a>
+          <p>{vehicle.url}</p>
           <button
             onClick={(event) => {
               event.preventDefault();
