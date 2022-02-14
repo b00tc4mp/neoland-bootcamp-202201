@@ -15,6 +15,7 @@ function Profile({
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
   const [feedback, setFeedback] = useState();
+  const [feedBackLevel, setFeedBackLevel] = useState();
 
   useEffect(() => {
     try {
@@ -26,7 +27,7 @@ function Profile({
     } catch ({ message }) {
       alert(message);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateProfile = (event) => {
@@ -46,9 +47,11 @@ function Profile({
         setEmail(email);
         refreshData(name);
         setFeedback("profile updated");
+        setFeedBackLevel("success");
       });
     } catch ({ message }) {
       setFeedback(message);
+      setFeedBackLevel("error");
     }
   };
 
@@ -77,7 +80,7 @@ function Profile({
           defaultValue={email}
         />
         <button>Update profile</button>
-        {feedback && <Feedback message={feedback} level="success" />}
+        {feedback && <Feedback message={feedback} level={feedBackLevel} />}
         <a
           className="profile__update-password-link"
           href=""
