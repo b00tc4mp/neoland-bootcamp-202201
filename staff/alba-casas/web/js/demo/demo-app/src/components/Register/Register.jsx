@@ -28,24 +28,13 @@ const Register = ({ onLogin, onRegistered }) => {
   return (
     <div className="register ">
       <form className="register__form" onSubmit={register}>
-        <input
-          className="register__name-input"
-          type="text"
-          name="name"
-          placeholder="name"
-        />
-        <input
-          className="register__surname-input"
-          type="text"
-          name="surname"
-          placeholder="surname"
-        />
-        <input
-          className="register__email-input"
-          type="email"
-          name="email"
-          placeholder="e-mail"
-        />
+        <label htmlFor="name">name</label>
+        <input className="register__name-input" type="text" name="name" />
+        <label htmlFor="surname">Surname</label>
+        <input className="register__surname-input" type="text" name="surname" />
+        <label htmlFor="currPassword">Email</label>
+        <input className="register__email-input" type="email" name="email" />
+        <label htmlFor="Password">Password</label>
         <PasswordInput />
         <button>Register</button>
         <a

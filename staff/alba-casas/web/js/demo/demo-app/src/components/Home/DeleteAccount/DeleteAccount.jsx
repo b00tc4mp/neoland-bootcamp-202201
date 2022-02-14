@@ -27,6 +27,7 @@ function DeleteAccount({ onProfile, token, onLanding }) {
   return (
     <div className="delete-account">
       <form className="delete-account__form" onSubmit={deleteAccount}>
+        <label htmlFor="password">Password</label>
         <PasswordInput />
         <button type="submit">Delete account</button>
         {feedBack && <Feedback message={feedBack} level="error" />}

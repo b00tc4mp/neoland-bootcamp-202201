@@ -47,18 +47,18 @@ const Login = ({ onAuthenticated, onRegister }) => {
   return (
     <div className="login">
       <form className="login__form" onSubmit={login}>
+        <label htmlFor="email">Email</label>
         <input
           className={`login__email-input ${
             emailFeedback ? "login__input--error" : ""
           }`}
           type="_email"
           name="email"
-          placeholder="e-mail"
         />
         {emailFeedback && (
           <Feedback message={emailFeedback} level="error" version="mini" />
         )}
-
+        <label htmlFor="Password">Password</label>
         <PasswordInput passwordFeedback={passwordFeedback} />
         <button>Login</button>
         {feedback && <Feedback message={feedback} level="error" />}

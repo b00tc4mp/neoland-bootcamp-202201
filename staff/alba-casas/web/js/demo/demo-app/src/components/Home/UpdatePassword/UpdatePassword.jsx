@@ -7,9 +7,9 @@ import PasswordInput from "../../PasswordInput/PasswordInput";
 
 function UpdatePassword({ onProfile, token }) {
   const [feedBack, setFeedback] = useState();
+  const [feedBackLevel, setFeedBackLevel] = useState();
 
   const updatePassword = (event) => {
-    debugger;
     event.preventDefault();
     const {
       target: {
@@ -20,25 +20,32 @@ function UpdatePassword({ onProfile, token }) {
     } = event;
 
     try {
-      updateUserPassword(token, currPassword, password, rePassword).then(() => {
-        setFeedback("update password");
-      });
+      updateUserPassword(token, currPassword, password, rePassword)
+        .then(() => {
+          setFeedback("update password");
+          setFeedBackLevel("success");
+        })
+        .catch((error) => {
+          setFeedback(error.message);
+          setFeedBackLevel("error");
+        });
     } catch ({ message }) {
       setFeedback(message);
+      setFeedBackLevel("error");
     }
   };
 
   return (
     <div className="update-password">
       <form className="update-password__form" onSubmit={updatePassword}>
-        <PasswordInput name="currentPassword" placeholder="Current password" />
-        <PasswordInput name="newPassword" placeholder="New password" />
-        <PasswordInput
-          name="retypePassword"
-          placeholder="Re-type new password"
-        />
+        <label htmlFor="currPassword">Current password</label>
+        <PasswordInput id="currPassword" name="currentPassword" />
+        <label htmlFor="password">New password</label>
+        <PasswordInput id="newPassword" name="newPassword" />
+        <label htmlFor="confirmPassword">Confirm new password</label>
+        <PasswordInput id="retypePassword" name="retypePassword" />
         <button>Update password</button>
-        {feedBack && <Feedback message={feedBack} level="error" />}
+        {feedBack && <Feedback message={feedBack} level={feedBackLevel} />}
         <a
           className="update-password__back-link"
           href=""
