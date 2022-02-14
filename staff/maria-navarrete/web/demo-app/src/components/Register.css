@@ -15,6 +15,11 @@
     text-align: center;
 }
 
+.register__input--error{
+    border: 1px solid tomato
+}
+
+
 .register__password-area {
     display: grid;
     grid-template-columns: [one] 82% [two] 18% [three];

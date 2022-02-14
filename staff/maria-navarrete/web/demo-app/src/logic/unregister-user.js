@@ -1,4 +1,4 @@
-import { validateToken, validatePassword } from '.helpers/validators'
+import { validateToken, validatePassword } from './helpers/validators'
 
 function unregisterUser(token, password) {
     validateToken(token)

@@ -4,6 +4,8 @@ import registerUser from './register-user'
 import searchVehicles from './search-vehicles'
 import retrieveVehicle from './retrieve-vehicle'
 import updateUser from './update-user'
+import updateUserPassword from './update-password'
+import unregisterUser from './unregister-user'
 
 export {
     authenticateUser,
@@ -11,5 +13,7 @@ export {
     registerUser,
     searchVehicles, 
     retrieveVehicle,
-    updateUser
+    updateUser, 
+    updateUserPassword, 
+    unregisterUser
 }
