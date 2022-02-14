@@ -37,7 +37,11 @@ function UpdatePassword({ onProfile, token }) {
 
   return (
     <div className="update-password">
-      <form className="update-password__form" onSubmit={updatePassword}>
+      <form
+        className="update-password__form"
+        onSubmit={updatePassword}
+        method="post"
+      >
         <label htmlFor="currPassword">Current password</label>
         <PasswordInput id="currPassword" name="currentPassword" />
         <label htmlFor="password">New password</label>

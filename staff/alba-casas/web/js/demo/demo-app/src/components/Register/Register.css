@@ -14,3 +14,7 @@
 .register__login-link {
   text-align: center;
 }
+
+.register__input--error {
+  border: 1px solid tomato;
+}

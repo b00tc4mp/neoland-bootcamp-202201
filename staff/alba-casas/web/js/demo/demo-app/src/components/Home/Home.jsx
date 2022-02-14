@@ -7,6 +7,7 @@ import Search from "./Search/Search";
 import { useState } from "react";
 import { retrieveUser } from "../../logic/logic";
 import { useEffect } from "react";
+import Favs from "./Favs/Favs";
 
 function Home({ token, onLanding }) {
   const [view, setView] = useState("search");
@@ -16,6 +17,7 @@ function Home({ token, onLanding }) {
   const showUpdatePassword = () => setView("update-password");
   const showDeletePassword = () => setView("delete-account");
   const showSearch = () => setView("search");
+  const showfFavs = () => setView("favs");
 
   const refreshData = (data) => setName(data);
 
@@ -55,6 +57,17 @@ function Home({ token, onLanding }) {
         >
           Profile
         </a>
+        <a
+          className="home__profile-favs"
+          href=""
+          onClick={(event) => {
+            event.preventDefault();
+
+            showfFavs();
+          }}
+        >
+          Favs
+        </a>
         <button
           className="home__logout-button"
           onClick={(event) => {
@@ -66,7 +79,7 @@ function Home({ token, onLanding }) {
           Logout
         </button>
       </div>
-
+      {view === "favs" && <Favs />}
       {view === "search" && <Search />}
       {view === "profile" && (
         <Profile

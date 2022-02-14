@@ -33,7 +33,7 @@ function Details({ vehicleId, onBack }) {
             <p>Color: {vehicle.color}</p>
           </div>
           <p>{vehicle.description}</p>
-          <a href={vehicle.url}>Original store</a>
+          <a href={vehicle.url}>Go to original store</a>
           <button
             onClick={(event) => {
               event.preventDefault();

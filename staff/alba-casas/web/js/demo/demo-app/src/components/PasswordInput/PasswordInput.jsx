@@ -5,7 +5,12 @@ import "./PasswordInput.css";
 
 const CAPS_CHAR = 20;
 
-const PasswordInput = ({ passwordFeedback, id, name = "password" }) => {
+const PasswordInput = ({
+  passwordFeedback,
+  id,
+  name = "password",
+  className,
+}) => {
   const [capsLoock, setCapsLoock] = useState();
 
   const handleKeyDown = (event) => {
@@ -22,9 +27,7 @@ const PasswordInput = ({ passwordFeedback, id, name = "password" }) => {
   return (
     <>
       <input
-        className={`password-input ${
-          passwordFeedback ? "password-input--error" : ""
-        }`}
+        className={className}
         type="password"
         name={name}
         id={id}
