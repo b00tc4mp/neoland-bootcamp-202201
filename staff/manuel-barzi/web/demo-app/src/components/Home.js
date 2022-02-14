@@ -8,7 +8,7 @@ import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
 
 //function Home(props) {
-function Home({ token }) {
+function Home({ token, onLogout }) {
     // const token = props.token
     //const { token } = props
 
@@ -35,21 +35,32 @@ function Home({ token }) {
 
     const showUpdatePassword = () => setView('update-password')
 
+    const showDeleteAccount = () => setView('delete-account')
+
+    const goToSearch = event => {
+        event.preventDefault()
+
+        showSearch()
+    }
+
+    const showSearch = () => setView('search')
+
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href=""><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
+            <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
+            <a href="">Favs</a>
             <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
-            <button className="home__logout-button">Logout</button>
+            <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
         {view === 'search' && <Search />}
 
-        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} />}
+        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
 
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
 
-        {view === 'delete-account' && <DeleteAccount />}
+        {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
     </div>
 }
 

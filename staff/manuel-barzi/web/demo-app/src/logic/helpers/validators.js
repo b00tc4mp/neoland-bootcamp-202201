@@ -51,11 +51,20 @@ function validateQuery(query) {
     if (BLANK_REGEX.test(query)) throw new Error('blank query')
 }
 
+
+function validateString(string, explain = 'string') {
+    if (typeof string !== 'string') throw new TypeError(`${explain} is not a string`)
+    if (string === '') throw new Error(`empty ${explain}`)
+    if (BLANK_REGEX.test(string)) throw new Error(`blank ${explain}`)
+    if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
+}
+
 export {
     validateEmail,
     validateName,
     validatePassword,
     validateSurname,
     validateToken,
-    validateQuery
+    validateQuery,
+    validateString
 }

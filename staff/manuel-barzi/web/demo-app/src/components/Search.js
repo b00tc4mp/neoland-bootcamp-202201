@@ -1,24 +1,30 @@
 import './Search.css'
 import Detail from './Detail'
-import { searchVehicles } from '../logic'
 import { useState } from 'react'
+import Results from './Results'
+
 
 function Search() {
-    const [vehicles, setVehicles] = useState([])
+    const [query, setQuery] = useState()
+    const [view, setView] = useState()
+    const [vehicleId, setVehicleId] = useState()
 
     const search = event => {
         event.preventDefault()
 
         const query = event.target.query.value
 
-        try {
-            searchVehicles(query)
-                .then(vehicles => setVehicles(vehicles))
-                .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
-        }
+        setQuery(query)
+        
+        showResults()
     }
+
+    const goToDetail = id => {
+        setVehicleId(id)
+        setView('detail')
+    }
+
+    const showResults = () => setView('results')
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
@@ -26,15 +32,9 @@ function Search() {
             <button>Search</button>
         </form>
 
-        {!!vehicles.length && <ul className="search__results-list">
-            {vehicles.map(vehicle => <li>
-                <h2>{vehicle.name}</h2>
-                <img src={vehicle.thumbnail} />
-                <span>{vehicle.price} $</span>
-            </li>)}
-        </ul>}
+        {view === 'results' && <Results query={query} onItem={goToDetail} />}
 
-        <Detail />
+        {view === 'detail' && <Detail vehicleId={vehicleId} onBack={showResults} />}
     </div>
 }
 
