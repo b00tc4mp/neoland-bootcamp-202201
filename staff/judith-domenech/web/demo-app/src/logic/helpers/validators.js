@@ -10,12 +10,12 @@ function validateEmail(email) {
     if (!EMAIL_REGEX.test(email)) throw new Error('invalid email')
 }
 
-function validatePassword(password) {
-    if (typeof password !== 'string') throw new Error('password is not a string')
-    if (BLANK_REGEX.test(password)) throw new Error('blank password')
-    if (SPACE_REGEX.test(password)) throw new Error('password has empty spaces')
-    if (password === '') throw new Error('empty password')
-    if (password.length < 8 ) throw new Error ('password is shorter than 8 characters')
+function validatePassword(password, explain ='password') {
+    if (typeof password !== 'string') throw new Error(`${explain} password is not a string`)
+    if (BLANK_REGEX.test(password)) throw new Error(`${explain} blank password`)
+    if (SPACE_REGEX.test(password)) throw new Error(`${explain} password has empty spaces`)
+    if (password === '') throw new Error(`${explain} empty password`)
+    if (password.length < 8 ) throw new Error (`${explain} password is shorter than 8 characters`)
 }
 
 function validateName(name) {
@@ -44,11 +44,18 @@ function validateToken(token) {
         if(BLANK_REGEX.test(part)) throw new Error('token part is blank')
     })
 }
-
+ 
 function validateQuery(query) {
     if (typeof query !== 'string') throw new TypeError('query is not a string')
     if (query === '') throw new Error('empty query')
     if (BLANK_REGEX.test(query)) throw new Error ('blank query')
+}
+
+function validateString(string, explain = 'string') {
+    if (typeof string !== 'string') throw new TypeError(`${explain} is not a string`)
+    if (string === '') throw new Error(`empty ${explain}`)
+    if (BLANK_REGEX.test(string)) throw new Error(`blank ${explain}`)
+    if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
 }
 
 export{
@@ -57,5 +64,6 @@ export{
     validatePassword,
     validateSurname,
     validateToken,
-    validateQuery
+    validateQuery,
+    validateString
 }

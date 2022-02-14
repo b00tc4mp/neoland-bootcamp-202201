@@ -3,12 +3,11 @@
     color: white;
     padding: .5rem;
     text-align: center;
-    border: .5rem dashed white;
     border-radius: 1rem;
 }
 
 .feedback--info {
-background-color: black;
+color: black;
 }
 
 .feedback--success {
@@ -20,7 +19,7 @@ color: gold;
 }
 
 .feedback--error {
-  color: tomato;
+color: tomato;
 }
 
 .feedback--mini {
