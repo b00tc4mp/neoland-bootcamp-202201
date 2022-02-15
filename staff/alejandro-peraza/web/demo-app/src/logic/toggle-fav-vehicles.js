@@ -1,25 +1,40 @@
-import { validateToken, validatePassword } from './helpers/validators'
 
-function unregisterUser(token, password) {
+    // TODO validate token and id
+    // TODO call api to retrieve user favs
+    // TODO update favs array (if fav was already there, remove it, if not, add it)
+    // TODO call api to update user favs
+
+import { validateToken, validateId } from './helpers/validators'
+
+
+
+function toggleFavVehicle(token, id) {
     validateToken(token)
-    validatePassword(password)
+    validateVehicleId(id)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
-        method: 'DELETE',
+        method: 'PATCH'
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ password })
+        body: JSON.stringify({ vehicleid })
+
     })
+
         .then(res => {
             const { status } = res
 
-            if (status === 204) {
-            
-                return
+            if (status === 200) {
+
+                return res.json()
+                    .then(payload => {
+                        const { token } = payload
+
+                        return token
+                    })
             } else if (status >= 400 && status < 500) {
-       
+
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -27,12 +42,15 @@ function unregisterUser(token, password) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
-           
+
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')
             }
         })
-}
 
-export default unregisterUser
+
+
+    }
+    
+    export default toggleFavVehicle

@@ -1,7 +1,7 @@
 import './Register.css'
 import { registerUser } from '../logic'
 
-function Register({ onLogin, onRegistered }){
+function Register({ onLogin, onRegistered }) {
     const register = event => {
         event.preventDefault()
 

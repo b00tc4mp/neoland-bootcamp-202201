@@ -27,42 +27,46 @@ function Home({ token, onLogout }) {
         }
     }, [])
 
-    const showProfile = event => {
+    const goToProfile = event => {
         event.preventDefault()
 
-        setView('profile')
+        showProfile()
     }
 
-
-
-
-    const showUpdatePassword = () => {
-        setView('update-password')
 
     
-    }
+    const showProfile = () => setView('profile')
 
-    return <div className="home">
+    const showUpdatePassword = () => setView('update-password')
+    
+    const showDeleteAccount = () => setView('delete-account')
+
+
+const goToSearch = event => {
+    event.preventDefault()
+
+        showSearch()
+}
+
+
+const showSearch = () => setView('search')
+
+return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href=""><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
+            <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
-            <a className="home__profile-link" href="" onClick={showProfile}>Profile</a>
-        
+            <a href="">Favs</a>
+            <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
+            <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
-            <button className="home__logout-button" onClick={ event =>{
-                event.preventDefault()
-                onLogout()
-                }}>Logout</button>
 
         {view === 'search' && <Search />}
 
-        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} />}
+        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
 
-        {view === 'update-password' && <UpdatePassword />}
+        {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
 
-        {view === 'delete-account' && <DeleteAccount />}
-
-        
+        {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
     </div>
 }
 

@@ -20,7 +20,7 @@
 }
 
 .feedback--error {
-    background-color: tomato;
+    background-color: purple;
 }
 
 .feedback--mini {
@@ -35,7 +35,7 @@
 }
 
 .feedback--success.feedback--mini {
-    color: green;
+    color: aquamarine;
 }
 
 .feedback--warn.feedback--mini {
@@ -43,5 +43,5 @@
 }
 
 .feedback--error.feedback--mini {
-    color: tomato;
+    color: purple;
 }
