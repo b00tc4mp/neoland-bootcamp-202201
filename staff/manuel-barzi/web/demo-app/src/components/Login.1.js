@@ -2,8 +2,6 @@ import './Login.css'
 import { authenticateUser } from '../logic'
 import { useState } from 'react'
 import Feedback from './Feedback'
-import Password from './Password';
-import Input from './Input'
 
 //function Login(props) {
 function Login({ onAuthenticated, onRegister }) {
@@ -49,19 +47,13 @@ function Login({ onAuthenticated, onRegister }) {
         }
     }
 
-    const clearPasswordFeedback = () => setPasswordFeedback()
-
-    const clearEmailFeedback = () => setEmailFeedback()
-
     return <div className="login">
         <form className="login__form" onSubmit={login}>
-            {/* <input className={`login__email-input ${emailFeedback? 'login__input--error' : ''}`} type="_email" name="email" placeholder="e-mail" /> */}
-            {/* {emailFeedback && <Feedback message={emailFeedback} level="error" version="mini" />} */}
-            <Input type="email" name="email" feedback={emailFeedback} onFocus={clearEmailFeedback} />
+            <input className={`login__email-input ${emailFeedback? 'login__input--error' : ''}`} type="_email" name="email" placeholder="e-mail" />
+            {emailFeedback && <Feedback message={emailFeedback} level="error" version="mini" />}
 
-            {/* <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" /> */}
-            {/* {passwordFeedback && <Feedback message={passwordFeedback} level="error" version="mini" />} */}
-            <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
+            <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" />
+            {passwordFeedback && <Feedback message={passwordFeedback} level="error" version="mini" />}
 
             <button>Login</button>
             {feedback && <Feedback message={feedback} level="error" />}
