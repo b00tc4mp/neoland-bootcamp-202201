@@ -5,10 +5,7 @@ import Feedback from './Feedback'
 import Password from './Password';
 import Input from './Input'
 
-//function Login(props) {
 function Login({ onAuthenticated, onRegister }) {
-    //const { onAuthenticated, onRegister } = props
-    
     const [emailFeedback, setEmailFeedback] = useState()
     const [passwordFeedback, setPasswordFeedback] = useState()
     const [feedback, setFeedback] = useState()
@@ -16,8 +13,6 @@ function Login({ onAuthenticated, onRegister }) {
     const login = event => {
         event.preventDefault()
 
-        // const email = event.target.email.value
-        // const password = event.target.password.value
         const { target: { email: { value: email }, password: { value: password } } } = event
 
         try {
@@ -31,10 +26,6 @@ function Login({ onAuthenticated, onRegister }) {
                     setFeedback(error.message)
                 })
         } catch (error) {
-            //alert(error.message)
-
-            // TODO use feedback instead of ugly monster alert
-
             const { message } = error
             
             setFeedback()
@@ -55,12 +46,7 @@ function Login({ onAuthenticated, onRegister }) {
 
     return <div className="login">
         <form className="login__form" onSubmit={login}>
-            {/* <input className={`login__email-input ${emailFeedback? 'login__input--error' : ''}`} type="_email" name="email" placeholder="e-mail" /> */}
-            {/* {emailFeedback && <Feedback message={emailFeedback} level="error" version="mini" />} */}
             <Input type="email" name="email" feedback={emailFeedback} onFocus={clearEmailFeedback} />
-
-            {/* <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" /> */}
-            {/* {passwordFeedback && <Feedback message={passwordFeedback} level="error" version="mini" />} */}
             <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
 
             <button>Login</button>

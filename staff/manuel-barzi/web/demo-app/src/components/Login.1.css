@@ -11,6 +11,10 @@
     gap: .5rem;
 }
 
+.login__input--error {
+    border: 1px solid tomato;
+}
+
 .login__register-link {
     text-align: center;
 }
