@@ -21,7 +21,6 @@ function retrieveUser(token) {
                         return user
                     })
             } else if (status >= 400 && status < 500) {
-
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -29,7 +28,6 @@ function retrieveUser(token) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
-
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')

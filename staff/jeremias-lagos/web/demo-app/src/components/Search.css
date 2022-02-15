@@ -10,11 +10,3 @@
     display: flex;
     gap: .5rem;
 }
-
-.search__results-list {
-    list-style-type: none;
-}
-
-.search__list-item {
-    cursor: pointer;
-}

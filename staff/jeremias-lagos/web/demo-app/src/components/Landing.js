@@ -17,9 +17,7 @@ function Landing(props) {
 
     return <div className="landing">
         <div>
-            <a className="landing__login" href="" onClick={goToLogin}>Login</a> 
-            <p className="landing__text">or</p> 
-            <a className="landing__register" href="" onClick={goToRegister}>Register</a>
+            <a className="landing__login" href="" onClick={goToLogin}>Login</a> or <a className="landing__register" href="" onClick={goToRegister}>Register</a>
         </div>
     </div>
 }

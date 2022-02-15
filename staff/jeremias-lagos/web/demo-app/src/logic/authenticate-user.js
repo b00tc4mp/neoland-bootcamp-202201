@@ -15,7 +15,7 @@ function authenticateUser(email, password) {
             const { status } = res
 
             if (status === 200) {
-        
+                // DONE manage happy path
                 return res.json()
                     .then(payload => {
                         const { token } = payload
@@ -23,7 +23,7 @@ function authenticateUser(email, password) {
                         return token
                     })
             } else if (status >= 400 && status < 500) {
-  
+                // DONE manage client error
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -31,7 +31,7 @@ function authenticateUser(email, password) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
- 
+                // DONE manage server error
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')
