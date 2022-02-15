@@ -1,6 +1,9 @@
 import './Login.css'
 import { authenticateUser } from '../logic'
 import { useState } from 'react'
+import Feedback from './Feedback'
+import Password from './Password'
+import Input from './Input'
 
 //function Login(props) {
 function Login({ onAuthenticated, onRegister }) {
@@ -45,16 +48,17 @@ function Login({ onAuthenticated, onRegister }) {
         }
     }
 
+    const clearPasswordFeedback = () => setPasswordFeedback()
+
+    const clearEmailFeedback = () => setEmailFeedback()
+
     return <div className="login">
         <form className="login__form" onSubmit={login}>
-            <input className={`login__email-input ${emailFeedback? 'login__input--error' : ''}`} type="_email" name="email" placeholder="e-mail" />
-            {emailFeedback && <span className="login__email-feedback">{emailFeedback}</span>}
-
-            <input className={`login__password-input ${passwordFeedback? 'login__input--error' : ''}`} type="password" name="password" placeholder="password" />
-            {passwordFeedback && <span className="login__password-feedback">{passwordFeedback}</span>}
+            <Input type="email" name="email" feedback={emailFeedback} onFocus={clearEmailFeedback} />
+            <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
 
             <button>Login</button>
-            {feedback && <span className="login__feedback">{feedback}</span>}
+            {feedback && <Feedback message={feedback} level="error" />}
 
             <a className="login__register-link" href="" onClick={event => {
                 event.preventDefault()

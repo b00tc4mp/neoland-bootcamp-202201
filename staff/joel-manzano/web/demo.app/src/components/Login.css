@@ -11,21 +11,6 @@
     gap: .5rem;
 }
 
-.login__input--error {
-    border: 1px solid tomato;
-}
-
-.login__email-feedback, .login__password-feedback {
-    color: tomato;
-    font-size: 1rem;
-    text-align: right;
-}
-
-.login__feedback {
-    color: tomato;
-    text-align: center;
-}
-
 .login__register-link {
     text-align: center;
 }

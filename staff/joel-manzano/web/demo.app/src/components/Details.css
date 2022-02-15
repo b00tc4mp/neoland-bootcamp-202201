@@ -35,3 +35,8 @@
 .details__attributes__title{
     font-weight: 700;
 }
+
+.details__fav {
+    cursor: pointer;
+    user-select: none;
+}

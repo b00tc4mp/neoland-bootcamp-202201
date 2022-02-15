@@ -1,28 +1,30 @@
 import './Search.css'
 import Details from './Details'
-import { searchVehicles } from '../logic'
+//import { searchVehicles } from '../logic'
 import { useState } from 'react'
+import Results from './Results'
 
-function Search() {
-    const [vehicles, setVehicles] = useState([])
-    const [view, setView] = useState('results')
-    const [vehicleId, setVehicleId] = useState('')
+function Search({ token }) {
+    const [query, setQuery] = useState()
+    const [view, setView] = useState()
+    const [vehicleId, setVehicleId] = useState()
     
-    const showDetails = () => setView('details')
-   
     const search = event => {
         event.preventDefault()
 
         const query = event.target.query.value
 
-        try {
-            searchVehicles(query)
-                .then(vehicles => setVehicles(vehicles))
-                .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
-        }
+        setQuery(query)
+
+        showResults()
     }
+
+    const goToDetails = id => {
+        setVehicleId(id)
+        setView('details')
+    }
+
+    const showResults = () => setView('results')
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
@@ -30,20 +32,10 @@ function Search() {
             <button>Search</button>
         </form>
 
-        {!!vehicles.length && view === 'results' && <ul className="search__results-list">
-            
-            {vehicles.map(vehicle => <li key={vehicle.id} onClick={event => {
-                event.preventDefault();
-                setVehicleId(vehicle.id);
-                showDetails()
-            }}>
-                <h2>{vehicle.name}</h2>
-                <img src={vehicle.thumbnail} />
-                <span>{vehicle.price} $</span>
-            </li>)}
-        </ul>}
 
-        {view == 'details' && <Details vehicleId ={vehicleId} />}
+        {view === 'results' && <Results query={query} onItem={goToDetails} />}
+
+        {view === 'details' && <Details token={token} vehicleId ={vehicleId} onBack={showResults} />}
     </div>
 }
 
