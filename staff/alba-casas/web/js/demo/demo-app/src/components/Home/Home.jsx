@@ -80,7 +80,7 @@ function Home({ token, onLanding }) {
         </button>
       </div>
       {view === "favs" && <Favs />}
-      {view === "search" && <Search />}
+      {view === "search" && <Search token={token} />}
       {view === "profile" && (
         <Profile
           onUpdatePasswordClick={showUpdatePassword}

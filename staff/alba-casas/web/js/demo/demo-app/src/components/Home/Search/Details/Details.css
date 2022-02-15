@@ -33,4 +33,6 @@
 
 .details__fav {
   font-size: 40px;
+  cursor: pointer;
+  user-select: none;
 }

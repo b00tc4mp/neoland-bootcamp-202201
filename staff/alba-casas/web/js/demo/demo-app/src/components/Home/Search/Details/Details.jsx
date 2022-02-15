@@ -1,17 +1,34 @@
 import { useState, useEffect } from "react";
 import retrieveVehicle from "../../../../logic/logic/retrieve-vehicle";
+import { toggleFavVehicle } from "../../../../logic/logic";
 import "./Details.css";
 
-function Details({ vehicleId, onBack }) {
+function Details({ token, vehicleId, onBack }) {
   const [vehicle, setVehicle] = useState({});
+  const [fav, setFav] = useState(false);
 
   useEffect(() => {
     try {
-      retrieveVehicle(vehicleId).then((vehicle) => setVehicle(vehicle));
-    } catch ({ message }) {
-      alert(message);
+      retrieveVehicle(token, vehicleId)
+        .then((vehicle) => {
+          setVehicle(vehicle);
+          setFav(vehicle.isFav);
+        })
+        .catch((error) => alert(error.message));
+    } catch (error) {
+      alert(error.message);
     }
-  }, [vehicleId]);
+  }, []);
+
+  const onFavClick = () => {
+    try {
+      toggleFavVehicle(token, vehicleId)
+        .then(() => setFav(!fav))
+        .catch((error) => alert(error.message));
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <div className="details">
@@ -20,7 +37,9 @@ function Details({ vehicleId, onBack }) {
           <div className="details__header">
             <h2>{vehicle.name}</h2>
             <p>{vehicle.year}</p>
-            <span className="details__fav">🤍</span>
+            <span className="details__fav" onClick={onFavClick}>
+              {fav ? "♥️" : "🤍"}
+            </span>
           </div>
           <img
             className="details__image"

@@ -3,7 +3,7 @@ import Details from "./Details/Details";
 import Results from "./Results/Results";
 import "./Search.css";
 
-function Search() {
+function Search({ token }) {
   const [query, setQuery] = useState();
   const [view, setView] = useState();
   const [vehicleId, setVehicleId] = useState();
@@ -37,7 +37,7 @@ function Search() {
       </form>
       {view === "results" && <Results query={query} onItem={goToDetail} />}
       {view === "detail" && (
-        <Details onBack={showResults} vehicleId={vehicleId} />
+        <Details token={token} onBack={showResults} vehicleId={vehicleId} />
       )}
     </div>
   );
