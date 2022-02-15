@@ -9,3 +9,8 @@
     width: 90vw;
     align-self: center;
 }
+
+.detail__fav {
+    cursor: pointer;
+    user-select: none;
+}

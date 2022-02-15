@@ -8,11 +8,8 @@ function Detail({ token, vehicleId, onBack }) {
 
     useEffect(() => {
         try {
-            retrieveVehicle(token, vehicleId)
-                .then(vehicle => {
-                    setVehicle(vehicle)
-                    setFav(vehicle.isFav)
-                })
+            retrieveVehicle(vehicleId)
+                .then(vehicle => setVehicle(vehicle))
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
