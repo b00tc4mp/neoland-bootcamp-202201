@@ -1,69 +1,65 @@
 import './Details.css'
+import { retrieveVehicle, toggleFavVehicle } from '../logic'
 import { useEffect, useState } from 'react'
-import { retrieveVehicle } from '../logic'
 
-function Details({ vehicleId }) {
-
+function Details({ token, vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
+    const [fav, setFav] = useState(false)
 
     useEffect(() => {
         try {
-            retrieveVehicle(vehicleId)
-            .then(vehicle => setVehicle(vehicle))
-            .catch(error => alert(error.message))
+            retrieveVehicle(token, vehicleId)
+                .then(vehicle => {
+                    setVehicle(vehicle)
+                    setFav(vehicle.isFav)
+
+                })
+                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
     }, [])
+
+    const goBack = event => {
+        event.preventDefault()
+
+        onBack()
+    }
+
+    const onFavClick = event => {
+        event.preventDefault()
+
+        try {
+            toggleFavVehicle(token, vehicleId)
+                .then(() => setFav(!fav))
+                .catch(error => alert(error.message))
+        } catch(error) {
+            alert(error.message)
+        }
+    }
+
+    if (vehicle)
     
-    return <div className="details"> {vehicle && <>
+        return <div className="detail">
+            <h1>{vehicle.name}</h1>
 
-        <h1>{vehicle.name}</h1>
-        <img className="details__image"src={vehicle.image} />
-       
-        <div className="details__attributes-wrapper">
-            <div className="details__attributes"> 
-                <p>Year: </p>
-                <p> {vehicle.year}</p>
-            </div>
-            <div className="details__attributes"> 
-                <p>Color:</p>
-                <p>{vehicle.color}</p>
-            </div>
-        </div >
-        <div className="details__attributes-wrapper">
-            <div className="details__attributes"> 
-                <p>Maker: </p>
-                <p>{vehicle.maker}</p>
-            </div>
-            <div className="details__attributes"> 
-                <p>Collection: </p>
-                <p>{vehicle.collection}</p>
-            </div>
-        </div>
+            <span className="detail__fav" onClick={onFavClick}>{fav ? '❤️' : '🤍'}</span>
 
-        <div className="details__attributes-wrapper">
-            <div className="details__attributes"> 
-                <p>Price: </p>
-                <p>{vehicle.price}$</p>
-            </div>
-            <div className="details__attributes"> 
-                <p>Style: </p>
-                <p>{vehicle.style}</p>
-            </div>
+            <img className="detail__image" src={vehicle.image} />
 
-        </div>
-        
-        <div className=""> 
-            <p>Url: </p>
-            <p>{vehicle.url}</p>
-        </div>
-        <div className=""> 
-            <p>Description: </p>
+            <span>{vehicle.price} $</span>
+
             <p>{vehicle.description}</p>
+
+            <span>{vehicle.color}</span>
+            <span>{vehicle.year}</span>
+            <span>{vehicle.maker}</span>
+
+            <a href={vehicle.url}>original store</a>
+
+            <a href="" onClick={goBack}>back</a>
         </div>
-    </>}
-    </div>
+    else return null
 }
 
 export default Details

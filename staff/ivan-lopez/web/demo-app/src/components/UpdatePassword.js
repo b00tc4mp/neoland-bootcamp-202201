@@ -1,13 +1,62 @@
 import './UpdatePassword.css'
+import { updateUserPassword } from '../logic'
+import Feedback from './Feedback'
+import { useState } from 'react'
 
-function UpdatePassword() {
+function UpdatePassword({ token, onBack }) {
+    const [feedback, setFeedback] = useState()
+    const [feedbackLevel, setFeedbackLevel] = useState()
+
+    const updatePassword = event => {
+        event.preventDefault()
+
+        const currPassword = event.target.currPassword.value
+        const password = event.target.password.value
+        const confirmPassword = event.target.confirmPassword.value
+
+
+        // Lo mismo pero con destructuring:
+
+        // const { target: { oldPassword: { value: oldPassword },
+        // password: {value: password}, confirmPassword: { value: confirmPassword } } } = event
+        
+        try {
+            updateUserPassword(token, currPassword, password, confirmPassword)
+                .then(() => {
+                    setFeedback('Password updated')
+                    setFeedbackLevel('success')
+                })
+                .catch(error => {
+                    setFeedback(error.message)
+                    setFeedbackLevel('error')
+                })
+        } catch (error) {
+            setFeedback(error.message)
+            setFeedbackLevel('error')
+        }
+    }
+
+    const goBack = event => {
+        event.preventDefault()
+
+        onBack()
+    }
+
     return <div className="update-password">
-        <form className="update-password__form">
-            <input className="update-password__curr-password-input" type="password" name="name" placeholder="Current password" />
-            <input className="update-password__password-input" type="password" name="surname" placeholder="New password" />
-            <input className="update-password__re-password-input" type="password" name="email" placeholder="Re-type new password" />
+        <form className="update-password__form" onSubmit={updatePassword}>
+            <label htmlFor="currPassword">Current password</label>
+            <input id="currPassword" className="update-password__curr-password-input" type="password" name="currPassword" />
+            
+            <label htmlFor="password">New password</label>
+            <input id="password" className="update-password__password-input" type="password" name="password" />
+            
+            <label htmlFor="confirmPassword">Confirm new password</label>
+            <input id="confirmPassword" className='update-password__re-password-input' type="password" name="confirmPassword" />
+
             <button>Update password</button>
-            <a className="update-password__back-link" href="">back</a>
+            {feedback && <Feedback message={feedback} level={feedbackLevel} />}
+
+            <a className="update-password__back-link" href="" onClick={goBack}>back</a>
         </form>
     </div>
 }

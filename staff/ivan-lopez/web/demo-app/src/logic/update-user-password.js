@@ -1,8 +1,11 @@
+import { validateToken, validatePassword } from './helpers/validators';
+
 function updateUserPassword(token, currPassword, password, rePassword) {
-    validateToken(token)
-    validatePassword(currPassword)
-    validatePassword(password)
-    validatePassword(rePassword)
+    validateToken(token);
+    validatePassword(currPassword);
+    validatePassword(password);
+    validatePassword(rePassword);
+
 
     if (password !== rePassword) throw new Error('retyped password doesn\'t match password')
 
@@ -36,3 +39,5 @@ function updateUserPassword(token, currPassword, password, rePassword) {
             }
         })
 }
+
+export default updateUserPassword;

@@ -5,14 +5,32 @@
     justify-content: flex-start;
     height: 100%;
     gap: 2rem;
+    background-color: antiquewhite;
 }
 
 .home__header {
     display: flex;
+    height: auto;
     align-items: center;
     gap: 1rem;
+    background-color:dimgrey;
 }
 
+
+.home__profile-link {
+    background-color: beige;
+    cursor: pointer;
+    
+}
+
+
+.home__logo {
+    width: 8rem;
+
+}
+
+
 .home__logout-button {
+    background-color: beige;
     cursor: pointer;
 }
