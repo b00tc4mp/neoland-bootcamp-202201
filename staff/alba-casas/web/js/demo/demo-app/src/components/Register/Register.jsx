@@ -25,7 +25,6 @@ const Register = ({ onLogin, onRegistered }) => {
     } = event;
 
     try {
-      debugger;
       registerUser(name, surname, email, password)
         .then(() => onRegistered())
         .catch((error) => {
@@ -105,17 +104,10 @@ const Register = ({ onLogin, onRegistered }) => {
           <Feedback message={emailFeedback} level="error" version="mini" />
         )}
         <label htmlFor="Password">Password</label>
-        <PasswordInput
-          className={`register__password-input ${
-            passwordFeedback ? "register__input--error" : ""
-          }`}
-        />
-        {passwordFeedback && (
-          <Feedback message={passwordFeedback} level="error" version="mini" />
-        )}
+        <PasswordInput passwordFeedback={passwordFeedback} className />
+
         <button>Register</button>
         {feedback && <Feedback message={feedback} level="error" />}
-
         <a
           className="register__login-link"
           href=""

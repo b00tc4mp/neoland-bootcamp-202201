@@ -12,6 +12,18 @@ const PasswordInput = ({
   className,
 }) => {
   const [capsLoock, setCapsLoock] = useState();
+  const [type, setType] = useState("password");
+  const [icon, setIcon] = useState("🙈");
+
+  const changeIcon = () => {
+    if (type === "password") {
+      setType("tex");
+      setIcon("🐵");
+    } else {
+      setType("password");
+      setIcon("🙈");
+    }
+  };
 
   const handleKeyDown = (event) => {
     if (event.keyCode === CAPS_CHAR) {
@@ -26,14 +38,19 @@ const PasswordInput = ({
   };
   return (
     <>
-      <input
-        className={className}
-        type="password"
-        name={name}
-        id={id}
-        onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp}
-      />
+      <div className={`password ${passwordFeedback && "password--error"}`}>
+        <input
+          className={`password__input ${className}`}
+          type={type}
+          name={name}
+          id={id}
+          onKeyDown={handleKeyDown}
+          onKeyUp={handleKeyUp}
+        />
+        <span onClick={changeIcon} className="password__icon">
+          {icon}
+        </span>
+      </div>
       {passwordFeedback && (
         <Feedback message={passwordFeedback} level="error" version="mini" />
       )}

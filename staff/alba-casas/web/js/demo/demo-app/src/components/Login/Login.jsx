@@ -59,7 +59,10 @@ const Login = ({ onAuthenticated, onRegister }) => {
           <Feedback message={emailFeedback} level="error" version="mini" />
         )}
         <label htmlFor="Password">Password</label>
-        <PasswordInput passwordFeedback={passwordFeedback} />
+        <PasswordInput
+          className="login__password-input"
+          passwordFeedback={passwordFeedback}
+        />
         <button>Login</button>
         {feedback && <Feedback message={feedback} level="error" />}
 
