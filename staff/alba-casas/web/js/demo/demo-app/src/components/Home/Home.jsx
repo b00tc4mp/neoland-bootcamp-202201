@@ -8,18 +8,26 @@ import { useState } from "react";
 import { retrieveUser } from "../../logic/logic";
 import { useEffect } from "react";
 import Favs from "./Favs/Favs";
+import Details from "./Search/Details/Details";
 
 function Home({ token, onLanding }) {
   const [view, setView] = useState("search");
   const [name, setName] = useState("name");
+  const [vehicleId, setVehicleId] = useState();
 
   const showProfile = () => setView("profile");
   const showUpdatePassword = () => setView("update-password");
   const showDeletePassword = () => setView("delete-account");
   const showSearch = () => setView("search");
   const showFavs = () => setView("favs");
+  const showDetails = () => setView("details");
 
   const refreshData = (data) => setName(data);
+
+  const goToDetail = (id) => {
+    setVehicleId(id);
+    showDetails();
+  };
 
   useEffect(() => {
     try {
@@ -79,7 +87,12 @@ function Home({ token, onLanding }) {
           Logout
         </button>
       </div>
-      {view === "favs" && <Favs token={token} />}
+
+      {view === "details" && (
+        <Details token={token} vehicleId={vehicleId} onBack={showFavs} />
+      )}
+
+      {view === "favs" && <Favs token={token} onItem={goToDetail} />}
       {view === "search" && <Search token={token} />}
       {view === "profile" && (
         <Profile
