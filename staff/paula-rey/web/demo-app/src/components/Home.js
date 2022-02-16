@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { retrieveUser } from '../Logic'
 import Logo from './Logo'
 import Favs from './Favs'
+import Detail from './Detail'
 
 //function Home(props) {
 function Home({ token, onLogout }) {
@@ -15,6 +16,7 @@ function Home({ token, onLogout }) {
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
+    const [vehicleId, setVehicleId] = useState()
     
 
     useEffect(() => {
@@ -55,6 +57,13 @@ function Home({ token, onLogout }) {
 
     const showFavs = () => setView('favs')
 
+    const showDetail = () => setView('detail')
+
+    const goToDetail = (id) => {
+        setVehicleId(id)
+        showDetail()
+    }
+
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href=""onClick={goToSearch}><Logo /></a>
@@ -64,13 +73,18 @@ function Home({ token, onLogout }) {
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
-        
-        {view === 'search' && <Search token={token} /> }
-        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} 
+        {view === 'search' && <Search token={token} />}
+
+        {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
+
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
+
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
 
-        {view === 'favs' && <Favs token={token} />}
+        {view === 'favs' && <Favs token={token} onItem={goToDetail} />}
+
+        {view === 'detail' && <Detail token={token} vehicleId={vehicleId} onBack={showFavs} />}
+
     </div>
 }
 
