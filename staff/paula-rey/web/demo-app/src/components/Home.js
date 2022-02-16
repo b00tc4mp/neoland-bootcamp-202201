@@ -56,7 +56,7 @@ function Home({ token, onLogout }) {
         </div>
 
         
-        {view === 'search' && <Search /> }
+        {view === 'search' && <Search token={token} /> }
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} 
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}

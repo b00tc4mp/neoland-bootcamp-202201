@@ -1,18 +1,15 @@
 import './Detail.css'
 import { useState, useEffect } from 'react'
-import { retrieveVehicle, toggleFavVehicle } from '../Logic'
+import { retrieveVehicle } from '../Logic'
 
-function Detail({ token, vehicleId, onBack }) {
+
+function Detail({ vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
-    const [fav, setFav] = useState(false)
 
     useEffect(() => {
         try {
-            retrieveVehicle(token, vehicleId)
-                .then(vehicle => {
-                    setVehicle(vehicle)
-                    setFav(vehicle.isFav)
-                })
+            retrieveVehicle(vehicleId)
+                .then(vehicle => setVehicle(vehicle))
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
@@ -25,23 +22,11 @@ function Detail({ token, vehicleId, onBack }) {
         onBack()
     }
 
-    const onFavClick = event => {
-        event.preventDefault()
-
-        try {
-            toggleFavVehicle(token, vehicleId)
-                .then(() => setFav(!fav))
-                .catch(error => alert(error.message))
-        } catch(error) {
-            alert(error.message)
-        }
-    }
-
     if (vehicle)
         return <div className="detail">
             <h1>{vehicle.name}</h1>
 
-            <span className="detail__fav" onClick={onFavClick}>{fav ? '❤️' : '🤍'}</span>
+            <span>🤍</span>
 
             <img className="detail__image" src={vehicle.image} />
 

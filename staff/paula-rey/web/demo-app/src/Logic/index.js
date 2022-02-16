@@ -6,6 +6,7 @@ import updateUser from './update-user'
 import updateUserPassword from './update-user-password'
 import unregisterUser from './unregister-user'
 import retrieveVehicle from './retrieve-vehicle'
+import toggleFavVehicle from './toggle-fav-vehicle'
 
 export {
     authenticateUser,
@@ -16,4 +17,5 @@ export {
     updateUserPassword,
     unregisterUser,
     retrieveVehicle,
+    toggleFavVehicle
 }

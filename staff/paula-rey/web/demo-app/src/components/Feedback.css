@@ -27,21 +27,22 @@
     font-size: .8rem;
     text-align: right;
     background-color: transparent;
-    padding: 0 .1rem .5rem .1rem;
+    padding: .5rem 0;
+    border: none;
 }
 
-.feedback--info .feedback--mini {
+.feedback--info.feedback--mini {
     color: black;
 }
 
-.feedback--success .feedback--mini {
+.feedback--success.feedback--mini {
     color: green;
 }
 
-.feedback--warn .feedback--mini {
+.feedback--warn.feedback--mini {
     color: gold;
 }
 
-.feedback--error .feedback--mini {
+.feedback--error.feedback--mini {
     color: tomato;
 }
