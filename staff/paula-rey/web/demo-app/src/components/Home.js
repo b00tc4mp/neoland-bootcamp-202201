@@ -6,6 +6,7 @@ import Search from './Search'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../Logic'
 import Logo from './Logo'
+import Favs from './Favs'
 
 //function Home(props) {
 function Home({ token, onLogout }) {
@@ -46,11 +47,19 @@ function Home({ token, onLogout }) {
 
     const showSearch = () => setView('search')
 
+    const goToFavs = event => {
+        event.preventDefault()
+
+        showFavs()
+    }
+
+    const showFavs = () => setView('favs')
+
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href=""onClick={goToSearch}><Logo /></a>
             <h1 className="home__user">{name}</h1>
-            <a href="">Favs</a>
+            <a href="" onClick={goToFavs}>Favs</a>
             <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
@@ -61,7 +70,7 @@ function Home({ token, onLogout }) {
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
 
-
+        {view === 'favs' && <Favs token={token} />}
     </div>
 }
 
