@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react'
 import { retrieveUser } from '../logic'
 import Logo from './Logo'
 import Landing from './Landing'
+import Favs from './Favs'
+import Detail from './Detail'
 
 
 function Home({ token, onLogout, }) {
@@ -15,6 +17,7 @@ function Home({ token, onLogout, }) {
    
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
+    const [vehicleId, setVehicleId] = useState()
    
     useEffect(() => {
         try {
@@ -33,10 +36,9 @@ function Home({ token, onLogout, }) {
     }
 
     const showProfile = () => setView('profile')
-
     const showUpdatePassword = () => setView('update-password')
-
     const showDeleteAccount = () => setView('delete-account')
+    
 
     const goToSearch = event => {
         event.preventDefault()
@@ -46,11 +48,27 @@ function Home({ token, onLogout, }) {
 
     const showSearch = () => setView('search')
 
+    const goToFavs = event => {
+        event.preventDefault()
+
+        showFavs()
+    }
+
+    const showFavs = () => setView('favs')
+
+    const showDetails= () => setView('details')
+
+    const goToDetail = (id) => {
+        setVehicleId(id)
+        showDetails()
+    }
+    
+
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch}><Logo/></a>
             <h1 className="home__user">{name}</h1>
-            <a href="">Favs</a>
+            <a href="" onClick={goToFavs}>Favs</a>
             <a className="home__profile-link" href="" onClick={goToProfile}> Profile</a>
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
         </div>
@@ -64,6 +82,10 @@ function Home({ token, onLogout, }) {
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
 
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout}/>}
+   
+        {view === 'favs' && <Favs token={token} onItem={goToDetail}/>}
+
+        {view === 'details' && <Detail  token={token} vehicleId={vehicleId} onBack={showFavs} />}
     </div>
 }
 

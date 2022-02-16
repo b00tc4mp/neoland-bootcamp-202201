@@ -9,11 +9,31 @@
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    align-items: center;
+    box-shadow: 0px 0px 20px 0px black;
+    padding: 3rem;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.register__button{
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+}
+
+.register__button:hover{
+    background-color: rgb(92, 238, 189);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .register__login-link {
     text-align: center;
+    text-align: center;
+    color: burlywood;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 
@@ -22,17 +42,6 @@
     box-shadow: 0px 10px 10px 0px black;
     margin: 8px;
     font-family: 'Gochi Hand', cursive;
-}
-
-
-.register__button{
-    display: flex;
-    background-color: yellow;
-    width: 200px;
-    border-radius: 50%;
-    margin-top: 10px;
-    justify-content: center;
-
 }
 
 .register__login-link{

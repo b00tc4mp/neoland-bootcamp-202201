@@ -57,12 +57,12 @@ function Register({ onLogin, onRegistered }) {
 
     return <div className="register">
         <form className="register__form" onSubmit={register}>
-            <Input type="text" name="name" placeholder="name" feedback={nameFeedback} onFocus={clearNameFeedback} />
-            <Input type="text" name="surname" placeholder="surname" feedback={surnameFeedback} onFocus={clearSurnameFeedback} />
-            <Input type="email" name="email" placeholder="e-mail" feedback={emailFeedback} onFocus={clearEmailFeedback} />
-            <Password name="password" placeholder="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
+            <Input type="text" name="name" placeholder="Name" feedback={nameFeedback} onFocus={clearNameFeedback} />
+            <Input type="text" name="surname" placeholder="Surname" feedback={surnameFeedback} onFocus={clearSurnameFeedback} />
+            <Input type="email" name="email" placeholder="E-mail" feedback={emailFeedback} onFocus={clearEmailFeedback} />
+            <Password name="password" placeholder="Password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
 
-            <button>Register</button>
+            <button className='register__button'>Register</button>
             {feedback && <Feedback message={feedback} level="error" />}
 
             <a className="register__login-link" href="" onClick={event => {

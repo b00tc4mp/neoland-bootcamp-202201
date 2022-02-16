@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 function Detail({ token, vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
+    debugger
 
     useEffect(() => {
         try {

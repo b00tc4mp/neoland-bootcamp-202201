@@ -11,11 +11,11 @@ function validateEmail(email) {
 }
 
 function validatePassword(password, explain ='password') {
-    if (typeof password !== 'string') throw new Error(`${explain} password is not a string`)
-    if (BLANK_REGEX.test(password)) throw new Error(`${explain} blank password`)
-    if (SPACE_REGEX.test(password)) throw new Error(`${explain} password has empty spaces`)
-    if (password === '') throw new Error(`${explain} empty password`)
-    if (password.length < 8 ) throw new Error (`${explain} password is shorter than 8 characters`)
+    if (typeof password !== 'string') throw new Error(`${explain} is not a string`)
+    if (BLANK_REGEX.test(password)) throw new Error(` Blank ${explain}`)
+    if (SPACE_REGEX.test(password)) throw new Error(`${explain} has empty spaces`)
+    if (password === '') throw new Error(` Empty ${explain}`)
+    if (password.length < 8 ) throw new Error (`${explain} is shorter than 8 characters`)
 }
 
 function validateName(name) {

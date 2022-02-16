@@ -3,6 +3,11 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 1rem;
+    background-color: white;
+    box-shadow: 0px 0px 20px 0px black;
+    margin: 3.5rem;
+    padding: 2.8rem;
+    border-radius: 5px;
 }
 
 .detail__image {

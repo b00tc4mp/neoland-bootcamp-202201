@@ -50,8 +50,8 @@ const clearEmailFeedback = () => setEmailFeedback()
 
     return <div className="login">
         <form className="login__form" onSubmit={login}>
-            <Input type="email" name="email" feedback={emailFeedback} onFocus={clearEmailFeedback} />
-            <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
+            <Input type="email" name="email" feedback={emailFeedback} onFocus={clearEmailFeedback} placeholder='E-mail'/>
+            <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} placeholder='Password'/>
 
             <button className="login__button">Login</button>
             {feedback && <Feedback message={feedback} level="error" />}

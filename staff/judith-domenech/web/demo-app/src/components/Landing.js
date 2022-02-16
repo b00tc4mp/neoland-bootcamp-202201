@@ -15,7 +15,7 @@ function Landing({ onLogin, onRegister }) {
     }
 
     return <div className="landing">
-        <div>
+        <div className='landing__links'>
             <a className="landing__login" href="" onClick={goTologin}>Login</a> or
             <a className="landing__register" href="" onClick={goToRegister}>Register</a>
         </div>

@@ -20,6 +20,7 @@ function Results ({ query, onItem }) {
     }
     
     return <div className="results">
+      <div className='results__list-items'>
         {!!vehicles.length && <ul className="results__list">
             {vehicles.map(vehicle => <li key={vehicle.id} className="results__item" onClick={() => goToItem(vehicle.id)}>
                 <h2>{vehicle.name}</h2>
@@ -27,6 +28,7 @@ function Results ({ query, onItem }) {
                 <span>{vehicle.price} $</span>
             </li>)}
         </ul>}
+        </div>
     </div>
 }
 
