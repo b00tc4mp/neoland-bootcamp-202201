@@ -6,7 +6,6 @@ import Search from './Search'
 import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
-import Favs from './Favs'
 
 //function Home(props) {
 function Home({ token, onLogout }) {
@@ -46,32 +45,22 @@ function Home({ token, onLogout }) {
 
     const showSearch = () => setView('search')
 
-    const goToFavs = event => {
-        event.preventDefault()
-
-        showFavs()
-    }
-
-    const showFavs = () => setView('favs')
-
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
-            <a href="" onClick={goToFavs}>Favs</a>
+            <a href="">Favs</a>
             <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
-        {view === 'search' && <Search token={token} />}
+        {view === 'search' && <Search />}
 
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
 
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
 
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
-
-        {view === 'favs' && <Favs token={token} />}
     </div>
 }
 

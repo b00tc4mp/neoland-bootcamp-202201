@@ -1,0 +1,25 @@
+:root {
+  --feedback-color: rgb(111, 146, 66);
+  --bg-color--primary: rgb(133, 141, 137);
+  --bg-color--secondary:rgb(165, 124, 175);
+  --link-color: rgb(184, 32, 118);
+  --input-color: rgb(64, 88, 95);
+}
+
+* {
+  font-size: 1.2rem;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+form input {
+ background-color: var(--bg-color--secondary);
+ color: var(--input-color);
+}

@@ -20,13 +20,7 @@
     max-width: 600px;
     align-self: center;
 } 
-
 /* 
 .detail__list {
     list-style: none;
 }  */
-
-.detail__fav {
-    cursor: pointer;
-    user-select: none;
-}
