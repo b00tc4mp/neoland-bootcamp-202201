@@ -34,7 +34,7 @@ function Profile({ token, onUpdatePassword, onDeleteAccount }) {
             updateUser(token, name, surname, email)
                 .then(() => {
                     setFeedback('Profile updated')
-                    setFeedbackLevel('sucess')
+                    setFeedbackLevel('success')
                 })
                 .catch(error => {
                     setFeedback(error.message)
@@ -46,18 +46,18 @@ function Profile({ token, onUpdatePassword, onDeleteAccount }) {
         }
     }
 
+    const goToUpdatePassword = event => {
+        event.preventDefault()
+
+        onUpdatePassword()
+    }
+
     const goToDeleteAccount = event => {
         event.preventDefault()
 
         onDeleteAccount()
     }
 
-    
-    const goToUpdatePassword = event => {
-        event.preventDefault()
-
-        onUpdatePassword()
-    }
     return <div className="profile">
         <form className="profile__form" onSubmit={updateProfile} method="post">
             <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} />
@@ -68,7 +68,7 @@ function Profile({ token, onUpdatePassword, onDeleteAccount }) {
             {feedback && <Feedback message={feedback} level={feedbackLevel} />}
 
             <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
-            <a className="profile__delete-account-link" href=""onClick={goToDeleteAccount}>delete account</a>
+            <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
         </form>
     </div>
 }

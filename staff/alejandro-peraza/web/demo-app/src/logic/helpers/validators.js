@@ -59,8 +59,6 @@ function validateString(string, explain = 'string') {
     if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
 }
 
-
-
 export {
     validateEmail,
     validateName,
@@ -68,6 +66,5 @@ export {
     validateSurname,
     validateToken,
     validateQuery,
-    validateString,
-    validateId
+    validateString
 }

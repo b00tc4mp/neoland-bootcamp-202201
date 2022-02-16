@@ -3,10 +3,7 @@ import Feedback from './Feedback'
 import { unregisterUser } from '../logic'
 import { useState } from 'react'
 
-
-
-function DeleteAccount({ token, onBack, onDeleteAccount }) {
-
+function DeleteAccount({ token, onBack, onDeletedAccount }) {
     const [feedback, setFeedback] = useState()
     const [feedbackLevel, setFeedbackLevel] = useState()
 
@@ -14,20 +11,17 @@ function DeleteAccount({ token, onBack, onDeleteAccount }) {
         event.preventDefault()
 
         onBack()
-
     }
 
     const deleteAccount = event => {
         event.preventDefault()
-
-
 
         //const { target: { password: { value: password } } } = event
         const password = event.target.password.value
 
         try {
             unregisterUser(token, password)
-                .then(() => onDeleteAccount())
+                .then(() => onDeletedAccount())
                 .catch(error => {
                     setFeedback(error.message)
                     setFeedbackLevel('error')
@@ -38,9 +32,8 @@ function DeleteAccount({ token, onBack, onDeleteAccount }) {
         }
     }
 
-    return <div className="delete-account" >
-
-        <form className="delete-account__form" method="post" onsubmit={deleteAccount}>
+    return <div className="delete-account">
+        <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
             <input className="delete-account__password-input" type="password" name="password" placeholder="Password" />
 
             <button>Delete account</button>

@@ -7,15 +7,13 @@ import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
 
-
-
-
+//function Home(props) {
 function Home({ token, onLogout }) {
-    
+    // const token = props.token
+    //const { token } = props
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
-
 
     useEffect(() => {
         try {
@@ -33,25 +31,21 @@ function Home({ token, onLogout }) {
         showProfile()
     }
 
-
-    
     const showProfile = () => setView('profile')
 
     const showUpdatePassword = () => setView('update-password')
-    
+
     const showDeleteAccount = () => setView('delete-account')
 
-
-const goToSearch = event => {
-    event.preventDefault()
+    const goToSearch = event => {
+        event.preventDefault()
 
         showSearch()
-}
+    }
 
+    const showSearch = () => setView('search')
 
-const showSearch = () => setView('search')
-
-return <div className="home">
+    return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
@@ -60,7 +54,7 @@ return <div className="home">
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
-        {view === 'search' && <Search />}
+        {view === 'search' && <Search token={token} />}
 
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
 

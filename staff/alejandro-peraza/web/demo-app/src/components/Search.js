@@ -1,9 +1,10 @@
 import './Search.css'
 import Detail from './Detail'
 import { useState } from 'react'
-import Results from './Results' 
+import Results from './Results'
 
-function Search() {
+
+function Search({ token }) {
     const [query, setQuery] = useState()
     const [view, setView] = useState()
     const [vehicleId, setVehicleId] = useState()
@@ -17,7 +18,6 @@ function Search() {
 
         showResults()
     }
-
 
     const goToDetail = id => {
         setVehicleId(id)
@@ -34,7 +34,7 @@ function Search() {
 
         {view === 'results' && <Results query={query} onItem={goToDetail} />}
 
-        {view === 'detail' && <Detail vehicleId={vehicleId} onBack={showResults} />}
+        {view === 'detail' && <Detail token={token} vehicleId={vehicleId} onBack={showResults} />}
     </div>
 }
 
