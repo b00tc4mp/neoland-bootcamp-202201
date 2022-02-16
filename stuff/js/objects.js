@@ -1,5 +1,7 @@
 debugger
 var socks = { type: 'socks', brand: 'Tommy', qty: 10, price: 20 }
+// cart demo
+
 //undefined
 var tshirt = { type: 't-shirt', brand: 'Levis', qty: 4, price: 25 }
 //undefined
