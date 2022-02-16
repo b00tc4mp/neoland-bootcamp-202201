@@ -2,60 +2,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    background-image: url(https://media.canalnet.tv/2019/05/Los-Simpson-living-974x550.jpg);
-    background-size: cover; 
+    height: 100%;   
 }
 
 .login__form {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    align-items: center;
-    
+    box-shadow: 0px 0px 20px 0px black;
+    padding: 3rem;
+    border-radius: 5px;
+}
+
+.login__button{
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+}
+
+.login__button:hover{
+    background-color: rgb(92, 238, 189);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .login__input--error {
     border: 1px solid tomato;
 }
 
-.login__email-feedback, .login__password-feedback {
-    color: tomato;
-    font-size: 1rem;
-    text-align: right;
-}
-
-.login__feedback {
-    color: tomato;
-    text-align: center;
-}
-
 .login__register-link {
     text-align: center;
-}
-
-.login__input-style{
-    border: 2px solid black;
-    box-shadow: 0px 10px 10px 0px black;
-    margin: 8px;
-    font-family: 'Gochi Hand', cursive;
-}
-
-::placeholder{
-    color: rgb(199, 196, 196);
-}
-
-.login__button{
-    display: flex;
-    background-color: yellow;
-    width: 200px;
-    border-radius: 50%;
-    margin-top: 10px;
-    justify-content: center;
-
-}
-
-.login__register-link{
-    margin-top: 10px;
-    color: white;
 }

@@ -55,7 +55,7 @@ function Home({ token, onLogout, }) {
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
         </div>
 
-        {view === 'search' && <Search />}
+        {view === 'search' && <Search token={token} />}
 
         {view === 'profile' && <Profile  token={token} onUpdatePassword={showUpdatePassword} onDeletedAccount={showDeleteAccount}/>}
 

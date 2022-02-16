@@ -3,7 +3,8 @@ import Detail from './Detail'
 import { useState } from 'react'
 import Results from './Results'
 
-function Search() {
+
+function Search({ token }) {
     const [query, setQuery] = useState()
     const [view, setView] = useState()
     const [vehicleId, setVehicleId] = useState()
@@ -14,7 +15,7 @@ function Search() {
         const query = event.target.query.value
 
         setQuery(query)
-        
+
         showResults()
     }
 
@@ -33,7 +34,7 @@ function Search() {
 
         {view === 'results' && <Results query={query} onItem={goToDetail} />}
 
-        {view === 'detail' && <Detail vehicleId={vehicleId} onBack={showResults} />}
+        {view === 'detail' && <Detail token={token} vehicleId={vehicleId} onBack={showResults} />}
     </div>
 }
 

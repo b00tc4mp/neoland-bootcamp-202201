@@ -2,9 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    background-image: url(https://www.lavanguardia.com/files/image_948_465/files/fp/uploads/2021/11/05/61855e2059e86.r_d.384-256-5846.jpeg);
-    background-size: cover; 
+    height: 100%; 
 }
 
 .register__form {
@@ -39,8 +37,6 @@
 
 .register__login-link{
     margin-top: 10px;
-    color: white;
-
 }
 
 .insecure{
