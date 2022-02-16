@@ -47,4 +47,11 @@ var box1 = box('123123123')
 var box2 = box('234234234')
 
 box1.keepSecret('el padre de mi abuela tenia una doble vida', '123123123')
-console.log(box1.recoverSecret('123123'))
+console.log(box1.recoverSecret('123123123'))
+
+box2.keepSecret('me estoy quedando calvo', '234234234')
+
+box1.changePassword('123123123', '234234234', '234234234')
+console.log(box1.recoverSecret('234234234'))
+
+console.log(box2.recoverSecret('234234234'))
