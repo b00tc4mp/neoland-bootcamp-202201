@@ -5,6 +5,7 @@ import searchVehicles from "./search-vehicle";
 import updateUser from "./update-user";
 import updateUserPassword from "./update-password";
 import toggleFavVehicle from "./toggle-fav-vehicle";
+import retrieveFavVehicles from "./retrieve-favs-vehicles";
 
 export {
   authenticateUser,
@@ -14,4 +15,5 @@ export {
   updateUser,
   updateUserPassword,
   toggleFavVehicle,
+  retrieveFavVehicles,
 };

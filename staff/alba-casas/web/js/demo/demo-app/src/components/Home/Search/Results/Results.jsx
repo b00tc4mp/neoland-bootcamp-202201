@@ -2,8 +2,6 @@ import "./Results.css";
 import { useEffect, useState } from "react";
 import { searchVehicles } from "../../../../logic/logic";
 
-import React from "react";
-
 const Results = ({ query, onItem }) => {
   const [vehicles, setVehicles] = useState([]);
 

@@ -17,7 +17,7 @@ const PasswordInput = ({
 
   const changeIcon = () => {
     if (type === "password") {
-      setType("tex");
+      setType("text");
       setIcon("🐵");
     } else {
       setType("password");
@@ -38,6 +38,7 @@ const PasswordInput = ({
   };
   return (
     <>
+      <p className="password-input__text-capsLock">{capsLoock}</p>
       <div className={`password ${passwordFeedback && "password--error"}`}>
         <input
           className={`password__input ${className}`}
@@ -54,7 +55,6 @@ const PasswordInput = ({
       {passwordFeedback && (
         <Feedback message={passwordFeedback} level="error" version="mini" />
       )}
-      <p className="password-input__text-capsLock">{capsLoock}</p>
     </>
   );
 };

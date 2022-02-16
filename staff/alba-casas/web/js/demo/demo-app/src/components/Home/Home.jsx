@@ -17,7 +17,7 @@ function Home({ token, onLanding }) {
   const showUpdatePassword = () => setView("update-password");
   const showDeletePassword = () => setView("delete-account");
   const showSearch = () => setView("search");
-  const showfFavs = () => setView("favs");
+  const showFavs = () => setView("favs");
 
   const refreshData = (data) => setName(data);
 
@@ -63,7 +63,7 @@ function Home({ token, onLanding }) {
           onClick={(event) => {
             event.preventDefault();
 
-            showfFavs();
+            showFavs();
           }}
         >
           Favs
@@ -79,7 +79,7 @@ function Home({ token, onLanding }) {
           Logout
         </button>
       </div>
-      {view === "favs" && <Favs />}
+      {view === "favs" && <Favs token={token} />}
       {view === "search" && <Search token={token} />}
       {view === "profile" && (
         <Profile
