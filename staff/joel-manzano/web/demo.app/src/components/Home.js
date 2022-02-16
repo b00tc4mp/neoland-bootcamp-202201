@@ -6,7 +6,8 @@ import Search from './Search'
 import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
-//import Logo from './Logo'
+import Favs from './Favs/Favs'
+import Details from "./Search/Details";
 
 //function Home(props) {
 function Home({ token, onLogout }) {
@@ -15,17 +16,29 @@ function Home({ token, onLogout }) {
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
+    const [vehicleId, setVehicleId] = useState()
+
+    useEffect(() => {
+        try {
+            retrieveUser(token)
+                .then((user) => setName(user.name))
+                .catch((error) => alert(error.message))
+        } catch (error) {
+            alert(error.message)
+        }
+    }, [])
 
     const goToProfile = event => {
         event.preventDefault()
 
         showProfile()
     }
-    
+
     const showProfile = () => setView('profile')
+
     const showUpdatePassword = () => setView('update-password')
+
     const showDeleteAccount = () => setView('delete-account')
-    const showSearch = () => setView('search')
 
     const goToSearch = event => {
         event.preventDefault()
@@ -33,33 +46,41 @@ function Home({ token, onLogout }) {
         showSearch()
     }
 
-    useEffect(() => {
-        try {
-            retrieveUser(token)
-                .then(user => setName(user.name))
-                .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
-        }
-    }, [])
+    const showSearch = () => setView('search')
+
+    const goToFavs = event => {
+        event.preventDefault()
+
+        showFavs()
+    }
+
+    const showFavs = () => setView('favs')
+    const showDetails = () => setView("details")
+    const goToDetails = (id) => {
+        setVehicleId(id)
+        showDetails()
+    }
 
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" onClick={goToSearch}></a>
+            <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
             <h1 className="home__user">{name}</h1>
-            <a href="">Favs</a>
-            <a className="home__profile-link" onClick={goToProfile}>Profile</a> 
-            <button className="home__logout-button" onClick={onLogout}>Logout</button>            
+            <a className="home__profile-favs" href="" onClick={goToFavs}>Favs</a>
+            <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
+            <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
         {view === 'search' && <Search token={token} />}
 
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
 
-        {view === 'update-password' && <UpdatePassword />}
+        {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
 
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
 
+        {view === 'favs' && <Favs token={token} onItem={goToDetails} />}
+
+        {view === 'details' && <Details token={token} vehicleId={vehicleId} onBack={showFavs} />}
     </div>
 }
 
