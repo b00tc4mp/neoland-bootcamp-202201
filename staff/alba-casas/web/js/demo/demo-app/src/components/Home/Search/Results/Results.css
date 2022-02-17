@@ -5,3 +5,12 @@
 .results__item {
   cursor: pointer;
 }
+
+.results__item-fav-button {
+  font-size: 36px;
+}
+.results__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

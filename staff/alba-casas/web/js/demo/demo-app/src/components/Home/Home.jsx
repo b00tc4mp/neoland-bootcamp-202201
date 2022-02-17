@@ -9,6 +9,7 @@ import { retrieveUser } from "../../logic/logic";
 import { useEffect } from "react";
 import Favs from "./Favs/Favs";
 import Details from "./Search/Details/Details";
+import Cart from "./Cart/Cart";
 
 function Home({ token, onLanding }) {
   const [view, setView] = useState("search");
@@ -23,6 +24,7 @@ function Home({ token, onLanding }) {
   const showSearch = () => setView("search");
   const showFavs = () => setView("favs");
   const showDetails = () => setView("details");
+  const showCart = () => setView("cart");
   const goBackFromDetail = () => setView(previousView);
 
   const refreshData = (data) => setName(data);
@@ -49,6 +51,7 @@ function Home({ token, onLanding }) {
       <div className="home__header">
         <a
           className="home__home-link"
+          title="Search"
           href=""
           onClick={(event) => {
             event.preventDefault();
@@ -59,8 +62,11 @@ function Home({ token, onLanding }) {
         </a>
         <h1 className="home__user">{name}</h1>
         <a
-          className="home__profile-link"
+          className={`home_menu-link ${
+            view === "profile" ? "home__menu-link--active" : ""
+          }`}
           href=""
+          title="Profile"
           onClick={(event) => {
             event.preventDefault();
 
@@ -70,7 +76,9 @@ function Home({ token, onLanding }) {
           Profile
         </a>
         <a
-          className="home__profile-favs"
+          className={`home_menu-link ${
+            view === "favs" ? "home__menu-link--active" : ""
+          }`}
           href=""
           onClick={(event) => {
             event.preventDefault();
@@ -79,6 +87,19 @@ function Home({ token, onLanding }) {
           }}
         >
           Favs
+        </a>
+        <a
+          className={`home_menu-link ${
+            view === "cart" ? "home__menu-link--active" : ""
+          }`}
+          href=""
+          onClick={(event) => {
+            event.preventDefault();
+
+            showCart();
+          }}
+        >
+          Cart
         </a>
         <button
           className="home__logout-button"
@@ -99,7 +120,7 @@ function Home({ token, onLanding }) {
           onBack={goBackFromDetail}
         />
       )}
-
+      {view === "cart" && <Cart token={token} onItem={goToDetail} />}
       {view === "favs" && <Favs token={token} onItem={goToDetail} />}
       {view === "search" && (
         <Search

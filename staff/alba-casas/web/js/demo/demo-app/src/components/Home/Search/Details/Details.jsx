@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import retrieveVehicle from "../../../../logic/logic/retrieve-vehicle";
-import { toggleFavVehicle } from "../../../../logic/logic";
+import { addVehicleToCart, toggleFavVehicle } from "../../../../logic/logic";
 import "./Details.css";
 
 function Details({ token, vehicleId, onBack }) {
@@ -30,6 +30,16 @@ function Details({ token, vehicleId, onBack }) {
     }
   };
 
+  const addToCart = () => {
+    try {
+      addVehicleToCart(token, vehicleId)
+        .then(() => alert("Vehicle added to cart"))
+        .catch((error) => alert(error.message));
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="details">
       {vehicle.id && (
@@ -51,6 +61,9 @@ function Details({ token, vehicleId, onBack }) {
             <p>Maker: {vehicle.maker}</p>
             <p>Color: {vehicle.color}</p>
           </div>
+          <button className="details__button" onClick={addToCart}>
+            Add to cart
+          </button>
           <p>{vehicle.description}</p>
           <a href={vehicle.url}>Go to original store</a>
           <button

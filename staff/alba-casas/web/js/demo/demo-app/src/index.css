@@ -2,14 +2,14 @@
 
 :root {
   --text-color: black;
-  --primary: #6867ac;
-  --secondary: #fbf8f1;
-  --hover: #a267ac;
+  --primary: #fbdb68;
+  --background: #fbf8f1;
+  --hover: #fbdb68;
   --warning: #a86800;
   --danger: tomato;
   --success: green;
   --color-gray: #f5f7f9;
-  --color-white: #fff;
+  --color-white: black;
 }
 
 * {

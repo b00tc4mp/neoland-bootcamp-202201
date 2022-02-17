@@ -2,7 +2,7 @@ import { useState } from "react";
 import Results from "./Results/Results";
 import "./Search.css";
 
-function Search({ onItem, onQuery, query }) {
+function Search({ token, onItem, onQuery, query }) {
   const [view, setView] = useState(query && "results");
 
   const search = (event) => {
@@ -29,7 +29,9 @@ function Search({ onItem, onQuery, query }) {
         />
         <button>Search</button>
       </form>
-      {view === "results" && <Results query={query} onItem={onItem} />}
+      {view === "results" && (
+        <Results token={token} query={query} onItem={onItem} />
+      )}
     </div>
   );
 }

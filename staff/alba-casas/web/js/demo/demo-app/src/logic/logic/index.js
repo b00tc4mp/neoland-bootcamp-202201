@@ -6,6 +6,9 @@ import updateUser from "./update-user";
 import updateUserPassword from "./update-password";
 import toggleFavVehicle from "./toggle-fav-vehicle";
 import retrieveFavVehicles from "./retrieve-favs-vehicles";
+import addVehicleToCart from "./add-vehicle-to-cart";
+import removeVehicleFromCart from "./remove-vehicle-to-cart";
+import retrieveVehiclesFromCart from "./retrieve-vehicles-from-cart";
 
 export {
   authenticateUser,
@@ -16,4 +19,7 @@ export {
   updateUserPassword,
   toggleFavVehicle,
   retrieveFavVehicles,
+  addVehicleToCart,
+  removeVehicleFromCart,
+  retrieveVehiclesFromCart,
 };

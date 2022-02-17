@@ -21,3 +21,8 @@
 .home__logout-button {
   cursor: pointer;
 }
+
+.home__menu-link--active {
+  color: black;
+  border-bottom: 4px solid #495371;
+}

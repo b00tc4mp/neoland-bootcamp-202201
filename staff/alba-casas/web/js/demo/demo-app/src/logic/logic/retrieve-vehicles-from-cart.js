@@ -1,5 +1,6 @@
 import { validateToken } from "../helpers/validators";
-function retrieveFavVehicles(token) {
+
+function retrieveVehiclesFromCart(token) {
   validateToken(token);
 
   return fetch("https://b00tc4mp.herokuapp.com/api/v2/users", {
@@ -11,19 +12,23 @@ function retrieveFavVehicles(token) {
 
     if (status === 200) {
       return res.json().then((user) => {
-        const { favs = [] } = user;
+        const { cart = [], favs = [] } = user;
 
-        if (!favs.length) return [];
+        if (!cart.length) return [];
 
-        const fetches = favs.map((vehicleId) => {
+        const fetches = cart.map((item) => {
           return fetch(
-            `https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`
+            `https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${item.id}`
           ).then((res) => {
             const { status } = res;
 
             if (status === 200) {
               return res.json().then((vehicle) => {
-                vehicle.isFav = true;
+                vehicle.qty = item.qty;
+
+                vehicle.total = vehicle.price * vehicle.qty;
+
+                vehicle.isFav = favs.includes(vehicle.id);
 
                 return vehicle;
               });
@@ -31,16 +36,26 @@ function retrieveFavVehicles(token) {
               return res.json().then((payload) => {
                 const { error } = payload;
 
-                new Error(error);
+                throw new Error(error);
               });
             } else if (status >= 500) {
-              new Error("server error");
+              throw new Error("server error");
             } else {
-              new Error("unknown error");
+              throw new Error("unknown error");
             }
           });
         });
-        return Promise.all(fetches);
+
+        return Promise.all(fetches).then((vehicles) => {
+          const total = vehicles.reduce(
+            (acc, vehicle) => vehicle.total + acc,
+            0
+          );
+
+          vehicles.total = total;
+
+          return vehicles;
+        });
       });
     } else if (status >= 400 && status < 500) {
       return res.json().then((payload) => {
@@ -55,4 +70,5 @@ function retrieveFavVehicles(token) {
     }
   });
 }
-export default retrieveFavVehicles;
+
+export default retrieveVehiclesFromCart;
