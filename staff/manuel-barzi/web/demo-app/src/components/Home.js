@@ -8,6 +8,7 @@ import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
 import Favs from './Favs'
 import Detail from './Detail'
+import Cart from './Cart'
 
 function Home({ token, onLogout }) {
     const [view, setView] = useState('search')
@@ -66,12 +67,20 @@ function Home({ token, onLogout }) {
 
     const goBackFromDetail = () => setView(previousView)
 
+    const goToCart = event => {
+        event.preventDefault()
+
+        showCart()
+    }
+
+    const showCart = () => setView('cart')
+
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
-            <h1 className="home__user">{name}</h1>
-            <a href="" onClick={goToFavs}>Favs</a>
-            <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
+            <a className="home__home-link" href="" onClick={goToSearch} title="search"><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
+            <a className={`home__menu-link ${view === 'profile'? 'home__menu-link--active' :''}`} href="" onClick={goToProfile} title="profile">{name}</a>
+            <a className={`home__menu-link ${view === 'favs'? 'home__menu-link--active' :''}`} href="" onClick={goToFavs}>Favs</a>
+            <a className={`home__menu-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToCart}>Cart</a>
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
@@ -86,6 +95,8 @@ function Home({ token, onLogout }) {
         {view === 'favs' && <Favs token={token} onItem={goToDetail} />}
 
         {view === 'detail' && <Detail token={token} vehicleId={vehicleId} onBack={goBackFromDetail} />}
+
+        {view === 'cart' && <Cart token={token} onItem={goToDetail} />}
     </div>
 }
 

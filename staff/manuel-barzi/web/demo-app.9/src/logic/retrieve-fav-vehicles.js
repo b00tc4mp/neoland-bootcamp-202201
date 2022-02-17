@@ -24,7 +24,7 @@ function retrieveFavVehicles(token) {
                             let count = 0
 
                             favs.forEach((vehicleId, index) => {
-                                return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
+                                fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
                                     .then(res => {
                                         const { status } = res
 
