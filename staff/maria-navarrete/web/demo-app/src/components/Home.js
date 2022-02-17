@@ -1,11 +1,12 @@
 import './Home.css'
-import Search from './Search'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
+import Search from './Search'
 import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
+import Favs from './Favs'
 
 function Home({ token, onLogout }) {
 
@@ -23,17 +24,24 @@ function Home({ token, onLogout }) {
 
     const goToSearch = event => {
         event.preventDefault()
-        setView('search') 
+        showSearch()
     }
 
     const goToProfile = event =>{
         event.preventDefault()
-        setView('profile')
+        showProfile()
     } 
+
+    const goToFavs = event => {
+        event.preventDefault()
+        showFavs()
+    }
 
     const showUpdatePassword = () => setView('update-password')
     const showProfile = () => setView('profile')
     const showDeleteAccount = () => setView('delete-account')
+    const showSearch = () => setView('search') 
+    const showFavs = () => setView('favs') 
     
     const refreshData = data => setName(data)
 
@@ -44,15 +52,18 @@ function Home({ token, onLogout }) {
             <div>
                 <a className="home__home-link" href="" onClick={goToSearch}>Home</a>
                 <span> | </span>
+                <a className="home__favs-link" href="" onClick={goToFavs}>Favs</a>
+                <span> | </span>
                 <a className="home__profile-link" href="" onClick={goToProfile}>Profile</a>
                 <span> | </span>
                 <a className="home__logout-link" href="">Log out</a>
             </div>
         </nav>
-        {view === 'search' && <Search />}
+        {view === 'search' && <Search token ={token} />}
         {view === 'profile' && <Profile token={token} refreshData={refreshData} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount}/>}
         {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile}/>}
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout}/>}
+        {view === 'favs' && <Favs token={token}/>}
     </div>
 }
 

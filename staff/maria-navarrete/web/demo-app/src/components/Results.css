@@ -1,8 +1,9 @@
 .results-list{
     list-style-type:none;
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .results__list-item{

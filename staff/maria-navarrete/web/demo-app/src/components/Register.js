@@ -2,6 +2,8 @@ import './Register.css'
 import { registerUser } from '../logic'
 import { useState } from 'react'
 import Feedback from './Feedback'
+import Password from './Password'
+import Input from './Input'
 
 function Register({ onLogin, onRegistered }) {
     const [nameFeedback, setNameFeedback] = useState()
@@ -26,7 +28,7 @@ function Register({ onLogin, onRegistered }) {
         } catch({message}){
             setFeedback()
 
-            if(message.includes('name')){
+            if(message.search(/\bname\b/)!==-1){
                 setPasswordFeedback()
                 setEmailFeedback()
                 setNameFeedback(message)
@@ -47,18 +49,18 @@ function Register({ onLogin, onRegistered }) {
         onLogin()
     }
 
+    const clearNameFeedback = () => setNameFeedback()
+    const clearEmailFeedback = () => setEmailFeedback()
+    const clearPasswordFeedback = () => setPasswordFeedback()
+
     return <div className="register">
         <form className="register__form" onSubmit={register}>
-            <input className={`register__name-input ${nameFeedback? 'register__input--error':''}`} type="text" name="name" placeholder="Name" />
-            {nameFeedback && <Feedback message={nameFeedback} level ="error" version="mini"/>}
-            <input className={`register__email-input ${emailFeedback? 'register__input--error':''}`} type="email" name="email" placeholder="E-mail" />
-            {emailFeedback && <Feedback message={emailFeedback} level ="error" version="mini"/>}
-            <div className="register__password-area">
-                <input className={`register__password-input ${passwordFeedback? 'register__input--error':''}`} type="password" name="password" placeholder="Password" />
-                {passwordFeedback && <Feedback message={passwordFeedback} level ="error" version="mini"/>}
-                <label className="register__toggle-icon register__toggle-icon--show" id="togglePassword"></label>
-            </div>
+            <Input type="text" name="name" placeholder="Name" feedback={nameFeedback} onFocus={clearNameFeedback}/>
+            <Input  type="email" name="email" placeholder="E-mail" feedback={emailFeedback} onFocus={clearEmailFeedback} />
+            <Password name="password" placeholder="Password" feedback={passwordFeedback} onFocus={clearPasswordFeedback}/>
             <button>Register</button>
+            {feedback && <Feedback message={feedback} level="error"/>}
+            
             <a href="" className="register__login-link" onClick={goToLogin}>Login</a>
         </form>
     </div>

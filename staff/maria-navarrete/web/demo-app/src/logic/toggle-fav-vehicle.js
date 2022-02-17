@@ -1,7 +1,7 @@
 import { validateString, validateToken } from './helpers/validators'
 
-function toggleFavVehicle(token, id) {
-    validateString(id, 'id')
+function toggleFavVehicle(token, vehicleId) {
+    validateString(vehicleId, 'id')
     validateToken(token)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
@@ -11,24 +11,19 @@ function toggleFavVehicle(token, id) {
     })
         .then(res => {
             const { status } = res
-            //const status = res.status
 
             if (status === 200) {
                 return res.json()
-                    //JSON.parse(res.body)
 
                     .then(user => {
-                        let { favs } = user
-                        //const favs = user.favs
+                        const { favs = [] } = user
 
-                        if (favs) {
-                            const index = favs.indexOf(id)
-                            if (index === -1) favs.push(id)
-                            else favs.splice(index, 1)
-                        }
-                        else {
-                            favs = [id]
-                        }
+                        const index = favs.indexOf(vehicleId)
+                        
+                        if (index === -1) favs.push(vehicleId)
+                        else favs.splice(index, 1)
+
+
                         return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
                             method: 'PATCH',
                             headers: {
@@ -36,6 +31,27 @@ function toggleFavVehicle(token, id) {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({ favs })
+                        })
+                        .then(res => {
+                            const { status } = res
+
+                            if (status === 204) {
+                                // TODO manage happy path
+                                return
+                            } else if (status >= 400 && status < 500) {
+                                // DONE manage client error
+                                return res.json()
+                                    .then(payload => {
+                                        const { error } = payload
+
+                                        throw new Error(error)
+                                    })
+                            } else if (status >= 500) {
+                                // DONE manage server error
+                                throw new Error('server error')
+                            } else {
+                                throw new Error('unknown error')
+                            }
                         })
                     })
             } else if (status >= 400 && status < 500) {

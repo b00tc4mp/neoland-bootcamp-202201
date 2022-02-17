@@ -22,3 +22,6 @@
     align-self: center;
 }
 
+.home__logout-button {
+    cursor: pointer;
+}

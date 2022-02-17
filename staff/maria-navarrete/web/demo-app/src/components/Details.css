@@ -24,3 +24,8 @@
 .details__list {
     list-style: none;
 }
+
+.detail__fav {
+    cursor: pointer;
+    user-select: none;
+}
