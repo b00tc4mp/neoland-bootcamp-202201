@@ -7,14 +7,14 @@ import { useState } from 'react'
 import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
 import Favs from './Favs'
-import Detail from './Detail'
 
+//function Home(props) {
 function Home({ token, onLogout }) {
+    // const token = props.token
+    //const { token } = props
+
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
-    const [vehicleId, setVehicleId] = useState()
-    const [query, setQuery] = useState()
-    const [previousView, setPreviousView] = useState()
 
     useEffect(() => {
         try {
@@ -54,18 +54,6 @@ function Home({ token, onLogout }) {
 
     const showFavs = () => setView('favs')
 
-    const goToDetail = id => {
-        setVehicleId(id)
-
-        setPreviousView(view)
-        
-        showDetail()
-    }
-
-    const showDetail = () => setView('detail')
-
-    const goBackFromDetail = () => setView(previousView)
-
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch}><img className="home__logo" src="images/demo-logo.png" alt="" /></a>
@@ -75,7 +63,7 @@ function Home({ token, onLogout }) {
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </div>
 
-        {view === 'search' && <Search token={token} onItem={goToDetail} onQuery={setQuery} query={query} />}
+        {view === 'search' && <Search token={token} />}
 
         {view === 'profile' && <Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
 
@@ -83,9 +71,7 @@ function Home({ token, onLogout }) {
 
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
 
-        {view === 'favs' && <Favs token={token} onItem={goToDetail} />}
-
-        {view === 'detail' && <Detail token={token} vehicleId={vehicleId} onBack={goBackFromDetail} />}
+        {view === 'favs' && <Favs token={token} />}
     </div>
 }
 

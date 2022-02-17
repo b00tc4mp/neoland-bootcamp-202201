@@ -1,6 +1,6 @@
 import { validateToken, validateString } from './helpers/validators'
 
-function toggleFavVehicle(token, vehicleId) {
+function retrieveVehicle(token, vehicleId) {
     validateToken(token)
     validateString(vehicleId, 'id')
 
@@ -17,26 +17,17 @@ function toggleFavVehicle(token, vehicleId) {
                     .then(user => {
                         const { favs = [] } = user
 
-                        const index = favs.indexOf(vehicleId)
-
-                        if (index === -1)
-                            favs.push(vehicleId)
-                        else
-                            favs.splice(index, 1)
-
-                        return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
-                            method: 'PATCH',
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ favs })
-                        })
+                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
                             .then(res => {
                                 const { status } = res
 
-                                if (status === 204) {
-                                    return
+                                if (status === 200) {
+                                    return res.json()
+                                        .then(vehicle => {
+                                            vehicle.isFav = favs.includes(vehicle.id)
+
+                                            return vehicle
+                                        })
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {
@@ -66,4 +57,4 @@ function toggleFavVehicle(token, vehicleId) {
         })
 }
 
-export default toggleFavVehicle
+export default retrieveVehicle
