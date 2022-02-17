@@ -1,25 +1,18 @@
 import { useState } from "react";
-import Details from "./Details/Details";
 import Results from "./Results/Results";
 import "./Search.css";
 
-function Search({ token }) {
-  const [query, setQuery] = useState();
-  const [view, setView] = useState();
-  const [vehicleId, setVehicleId] = useState();
+function Search({ onItem, onQuery, query }) {
+  const [view, setView] = useState(query && "results");
+
   const search = (event) => {
     event.preventDefault();
 
     const query = event.target.query.value;
 
-    setQuery(query);
+    onQuery(query);
 
     showResults();
-  };
-
-  const goToDetail = (id) => {
-    setVehicleId(id);
-    setView("detail");
   };
 
   const showResults = () => setView("results");
@@ -32,13 +25,11 @@ function Search({ token }) {
           type="text"
           name="query"
           placeholder="search"
+          defaultValue={query}
         />
         <button>Search</button>
       </form>
-      {view === "results" && <Results query={query} onItem={goToDetail} />}
-      {view === "detail" && (
-        <Details token={token} onBack={showResults} vehicleId={vehicleId} />
-      )}
+      {view === "results" && <Results query={query} onItem={onItem} />}
     </div>
   );
 }

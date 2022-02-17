@@ -14,6 +14,8 @@ function Home({ token, onLanding }) {
   const [view, setView] = useState("search");
   const [name, setName] = useState("name");
   const [vehicleId, setVehicleId] = useState();
+  const [query, setQuery] = useState();
+  const [previousView, setPreviousView] = useState();
 
   const showProfile = () => setView("profile");
   const showUpdatePassword = () => setView("update-password");
@@ -21,11 +23,13 @@ function Home({ token, onLanding }) {
   const showSearch = () => setView("search");
   const showFavs = () => setView("favs");
   const showDetails = () => setView("details");
+  const goBackFromDetail = () => setView(previousView);
 
   const refreshData = (data) => setName(data);
 
   const goToDetail = (id) => {
     setVehicleId(id);
+    setPreviousView(view);
     showDetails();
   };
 
@@ -89,11 +93,22 @@ function Home({ token, onLanding }) {
       </div>
 
       {view === "details" && (
-        <Details token={token} vehicleId={vehicleId} onBack={showFavs} />
+        <Details
+          token={token}
+          vehicleId={vehicleId}
+          onBack={goBackFromDetail}
+        />
       )}
 
       {view === "favs" && <Favs token={token} onItem={goToDetail} />}
-      {view === "search" && <Search token={token} />}
+      {view === "search" && (
+        <Search
+          token={token}
+          onItem={goToDetail}
+          onQuery={setQuery}
+          query={query}
+        />
+      )}
       {view === "profile" && (
         <Profile
           onUpdatePasswordClick={showUpdatePassword}

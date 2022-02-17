@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { retrieveFavVehicles, toggleFavVehicle } from "../../../logic/logic";
-
 import "./Favs.css";
 
 const Favs = ({ token, onItem }) => {

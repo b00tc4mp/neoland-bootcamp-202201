@@ -18,7 +18,7 @@ function Details({ token, vehicleId, onBack }) {
     } catch (error) {
       alert(error.message);
     }
-  }, []);
+  }, [token, vehicleId]);
 
   const onFavClick = () => {
     try {
