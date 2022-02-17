@@ -7,6 +7,10 @@ import updateUserPassword from './update-user-password'
 import unregisterUser from './unregister-user'
 import retrieveVehicle from './retrieve-vehicle'
 import toggleFavVehicle from './toggle-fav-vehicle'
+import retrieveFavVehicles from './retrieve-fav-vehicles'
+import addVehicleToCart from './add-vehicle-to-cart'
+import removeVehicleFromCart from './remove-vehicle-from-cart'
+import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart'
 
 export {
     authenticateUser,
@@ -17,5 +21,9 @@ export {
     updateUserPassword,
     unregisterUser,
     retrieveVehicle,
-    toggleFavVehicle
+    toggleFavVehicle,
+    retrieveFavVehicles,
+    addVehicleToCart,
+    removeVehicleFromCart,
+    retrieveVehiclesFromCart
 }
