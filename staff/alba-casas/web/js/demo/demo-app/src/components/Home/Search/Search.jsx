@@ -27,7 +27,7 @@ function Search({ token, onItem, onQuery, query }) {
           placeholder="search"
           defaultValue={query}
         />
-        <button>Search</button>
+        <span className="search__icon">🔍</span>
       </form>
       {view === "results" && (
         <Results token={token} query={query} onItem={onItem} />

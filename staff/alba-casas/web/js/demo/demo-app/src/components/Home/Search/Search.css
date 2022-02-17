@@ -8,8 +8,11 @@
 
 .search__form {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
   margin-bottom: 40px;
+  background-color: var(--color-gray);
+  border-radius: 20px;
 }
 
 .search__results-list {
@@ -18,4 +21,16 @@
 
 .search__list-item {
   cursor: pointer;
+}
+
+.search__icon {
+  position: relative;
+  margin-right: 20px;
+}
+
+.search__query-input {
+  width: 300px;
+  background-color: transparent;
+  user-select: none;
+  border-radius: 20px;
 }
