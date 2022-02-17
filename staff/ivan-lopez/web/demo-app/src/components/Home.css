@@ -17,13 +17,6 @@
 }
 
 
-.home__profile-link {
-    background-color: beige;
-    cursor: pointer;
-    
-}
-
-
 .home__logo {
     width: 8rem;
 
@@ -33,4 +26,9 @@
 .home__logout-button {
     background-color: beige;
     cursor: pointer;
+}
+
+.home__menu-link--active {
+    color: white;
+    background-color: black;
 }

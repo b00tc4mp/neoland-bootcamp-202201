@@ -1,5 +1,5 @@
 import './Details.css'
-import { retrieveVehicle, toggleFavVehicle } from '../logic'
+import { retrieveVehicle, toggleFavVehicle,  addVehicleToCart } from '../logic'
 import { useEffect, useState } from 'react'
 
 function Details({ token, vehicleId, onBack }) {
@@ -38,6 +38,16 @@ function Details({ token, vehicleId, onBack }) {
         }
     }
 
+    const addToCart = () => {
+        try {
+            addVehicleToCart(token, vehicleId)
+                .then(() => alert('Vehicle added to cart'))
+                .catch(error => alert(error.message))
+        } catch(error) {
+            alert(error.message)
+        }
+    }
+
     if (vehicle)
     
         return <div className="detail">
@@ -48,6 +58,8 @@ function Details({ token, vehicleId, onBack }) {
             <img className="detail__image" src={vehicle.image} />
 
             <span>{vehicle.price} $</span>
+
+            <button onClick={addToCart}Add to Cart></button>
 
             <p>{vehicle.description}</p>
 
