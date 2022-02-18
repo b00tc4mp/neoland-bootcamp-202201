@@ -31,10 +31,7 @@ function Favs({ token, onItem }) {
 
     const goToItem = id => {
          
-        //TODO for tomorrow
-
-        //onItem(id)
-
+        onItem(id)
     }
 
     return <div className="favs">
