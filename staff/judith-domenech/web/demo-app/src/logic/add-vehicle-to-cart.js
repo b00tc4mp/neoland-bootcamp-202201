@@ -1,6 +1,6 @@
-import { validateToken, validateString } from './helpers/validators'
+import { validateToken, validateString } from  './helpers/validators'
 
-function toggleFavVehicle(token, vehicleId) {
+function addVehicleToCart(token, vehicleId) {
     validateToken(token)
     validateString(vehicleId, 'id')
 
@@ -15,14 +15,17 @@ function toggleFavVehicle(token, vehicleId) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                        const { favs = [] } = user
+                        const { cart = [] } = user
 
-                        const index = favs.indexOf(vehicleId)
+                        let item = cart.find(item => item.id === vehicleId)
 
-                        if (index === -1)
-                            favs.push(vehicleId)
-                        else
-                            favs.splice(index, 1)
+                        if (!item) {
+                            item = { id: vehicleId, qty: 1 }
+
+                            cart.push(item)
+                        } else {
+                            item.qty++
+                        }
 
                         return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
                             method: 'PATCH',
@@ -30,16 +33,14 @@ function toggleFavVehicle(token, vehicleId) {
                                 Authorization: `Bearer ${token}`,
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ favs })
+                            body: JSON.stringify({ cart })
                         })
                             .then(res => {
                                 const { status } = res
 
                                 if (status === 204) {
-                                    
                                     return
                                 } else if (status >= 400 && status < 500) {
-                                    // DONE manage client error
                                     return res.json()
                                         .then(payload => {
                                             const { error } = payload
@@ -47,7 +48,6 @@ function toggleFavVehicle(token, vehicleId) {
                                             throw new Error(error)
                                         })
                                 } else if (status >= 500) {
-                                    // DONE manage server error
                                     throw new Error('server error')
                                 } else {
                                     throw new Error('unknown error')
@@ -69,4 +69,4 @@ function toggleFavVehicle(token, vehicleId) {
         })
 }
 
-export default toggleFavVehicle
+export default addVehicleToCart

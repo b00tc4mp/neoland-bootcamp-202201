@@ -33,7 +33,6 @@ function Favs({ token, onItem }) {
 
     const goToItem = id => {
         onItem(id)
-        setView('details')
     }
 
     return <div className="results">
@@ -54,8 +53,6 @@ function Favs({ token, onItem }) {
             </ul> : <p className='favs__empty'>No favs yet</p>)}
 
         </div>
-
-
     </div>
 }
 

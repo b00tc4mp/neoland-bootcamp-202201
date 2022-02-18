@@ -1,40 +1,31 @@
 import './Search.css'
-import Detail from './Detail'
 import { useState } from 'react'
 import Results from './Results'
 
 
-function Search({ token }) {
-    const [query, setQuery] = useState()
-    const [view, setView] = useState()
-    const [vehicleId, setVehicleId] = useState()
+function Search({ token, onItem, onQuery, query}) {
+    const [view, setView] = useState(query && 'results')
+    
 
     const search = event => {
         event.preventDefault()
 
         const query = event.target.query.value
 
-        setQuery(query)
+        onQuery(query)
 
         showResults()
-    }
-
-    const goToDetail = id => {
-        setVehicleId(id)
-        setView('detail')
     }
 
     const showResults = () => setView('results')
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
-            <input className="search__query-input" type="text" name="query" placeholder="query" />
+            <input className="search__query-input" type="text" name="query" placeholder="query" defaultValue={query} />
             <button>Search</button>
         </form>
 
-        {view === 'results' && <Results query={query} onItem={goToDetail} />}
-
-        {view === 'detail' && <Detail token={token} vehicleId={vehicleId} onBack={showResults} />}
+        {view === 'results' && <Results token={token} query={query} onItem={onItem} />}
     </div>
 }
 

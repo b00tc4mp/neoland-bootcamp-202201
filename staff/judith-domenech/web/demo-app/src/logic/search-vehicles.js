@@ -1,8 +1,8 @@
-import { validateToken, validateString } from './helpers/validators'
+import { validateToken, validateQuery } from './helpers/validators'
 
-function toggleFavVehicle(token, vehicleId) {
+function searchVehicles(token, query) {
     validateToken(token)
-    validateString(vehicleId, 'id')
+    validateQuery(query)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -17,29 +17,18 @@ function toggleFavVehicle(token, vehicleId) {
                     .then(user => {
                         const { favs = [] } = user
 
-                        const index = favs.indexOf(vehicleId)
-
-                        if (index === -1)
-                            favs.push(vehicleId)
-                        else
-                            favs.splice(index, 1)
-
-                        return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
-                            method: 'PATCH',
-                            headers: {
-                                Authorization: `Bearer ${token}`,
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ favs })
-                        })
+                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles?q=${query}`)
                             .then(res => {
                                 const { status } = res
 
-                                if (status === 204) {
-                                    
-                                    return
+                                if (status === 200) {
+                                    return res.json()
+                                        .then(vehicles => {
+                                            vehicles.forEach(vehicle => vehicle.isFav = favs.includes(vehicle.id))
+
+                                            return vehicles
+                                        })
                                 } else if (status >= 400 && status < 500) {
-                                    // DONE manage client error
                                     return res.json()
                                         .then(payload => {
                                             const { error } = payload
@@ -47,7 +36,6 @@ function toggleFavVehicle(token, vehicleId) {
                                             throw new Error(error)
                                         })
                                 } else if (status >= 500) {
-                                    // DONE manage server error
                                     throw new Error('server error')
                                 } else {
                                     throw new Error('unknown error')
@@ -69,4 +57,4 @@ function toggleFavVehicle(token, vehicleId) {
         })
 }
 
-export default toggleFavVehicle
+export default searchVehicles

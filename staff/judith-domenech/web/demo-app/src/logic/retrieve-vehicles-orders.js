@@ -1,28 +1,27 @@
 import { validateToken } from './helpers/validators'
 
-function retrieveUser(token) {
+function retrieveVehiclesOrders(token) {
     validateToken(token)
-
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
+
         .then(res => {
             const { status } = res
 
             if (status === 200) {
-               
                 return res.json()
                     .then(user => {
-                        user.email = user.username
+                        const { orders = [] } = user
 
-                        delete user.username
+                        if (!orders.length) throw new Error('No orders yet')
 
-                        return user
+                        return orders
                     })
+
             } else if (status >= 400 && status < 500) {
-                
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -30,7 +29,6 @@ function retrieveUser(token) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
-               
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')
@@ -38,4 +36,4 @@ function retrieveUser(token) {
         })
 }
 
-export default retrieveUser
+export default retrieveVehiclesOrders

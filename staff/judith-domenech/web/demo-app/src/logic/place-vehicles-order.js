@@ -1,9 +1,7 @@
-import { validateToken, validateString } from './helpers/validators'
+import { validateToken } from './helpers/validators'
 
-function toggleFavVehicle(token, vehicleId) {
+function placeVehiclesOrder(token) {
     validateToken(token)
-    validateString(vehicleId, 'id')
-
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
             Authorization: `Bearer ${token}`
@@ -15,14 +13,22 @@ function toggleFavVehicle(token, vehicleId) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                        const { favs = [] } = user
+             
+                        let { cart = [], orders = [] } = user
 
-                        const index = favs.indexOf(vehicleId)
+                        if (!cart.length) throw new Error('cart is empty')
 
-                        if (index === -1)
-                            favs.push(vehicleId)
-                        else
-                            favs.splice(index, 1)
+                        const id = `ORD-${Date.now()}` 
+
+                        const order = {
+                            id,
+                            date: new Date().toISOString(),
+                            cart
+                        }
+
+                        orders.push(order)
+
+                        cart = []
 
                         return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
                             method: 'PATCH',
@@ -30,16 +36,14 @@ function toggleFavVehicle(token, vehicleId) {
                                 Authorization: `Bearer ${token}`,
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ favs })
+                            body: JSON.stringify({ cart, orders })
                         })
                             .then(res => {
                                 const { status } = res
 
                                 if (status === 204) {
-                                    
-                                    return
+                                   
                                 } else if (status >= 400 && status < 500) {
-                                    // DONE manage client error
                                     return res.json()
                                         .then(payload => {
                                             const { error } = payload
@@ -47,7 +51,6 @@ function toggleFavVehicle(token, vehicleId) {
                                             throw new Error(error)
                                         })
                                 } else if (status >= 500) {
-                                    // DONE manage server error
                                     throw new Error('server error')
                                 } else {
                                     throw new Error('unknown error')
@@ -69,4 +72,5 @@ function toggleFavVehicle(token, vehicleId) {
         })
 }
 
-export default toggleFavVehicle
+
+export default placeVehiclesOrder
