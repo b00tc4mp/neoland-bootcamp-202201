@@ -1,8 +1,8 @@
-import { validateToken, validateQuery } from './helpers/validators'
+import { validateToken, validateString } from './helpers/validators'
 
-function searchVehicles(token, query) {
+function retrieveVehicle(token, vehicleId) {
     validateToken(token)
-    validateQuery(query)
+    validateString(vehicleId, 'id')
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -17,16 +17,16 @@ function searchVehicles(token, query) {
                     .then(user => {
                         const { favs = [] } = user
 
-                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles?q=${query}`)
+                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
                             .then(res => {
                                 const { status } = res
 
                                 if (status === 200) {
                                     return res.json()
-                                        .then(vehicles => {
-                                            vehicles.forEach(vehicle => vehicle.isFav = favs.includes(vehicle.id))
+                                        .then(vehicle => {
+                                            vehicle.isFav = favs.includes(vehicle.id)
 
-                                            return vehicles
+                                            return vehicle
                                         })
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
@@ -57,4 +57,4 @@ function searchVehicles(token, query) {
         })
 }
 
-export default searchVehicles
+export default retrieveVehicle

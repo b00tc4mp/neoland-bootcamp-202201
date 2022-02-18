@@ -16,10 +16,8 @@ function unregisterUser(token, password) {
             const { status } = res
 
             if (status === 204) {
-                // TODO manage happy path
                 return
             } else if (status >= 400 && status < 500) {
-                // DONE manage client error
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -27,7 +25,6 @@ function unregisterUser(token, password) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
-                // DONE manage server error
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')

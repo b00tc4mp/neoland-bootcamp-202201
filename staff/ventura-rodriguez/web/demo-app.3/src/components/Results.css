@@ -5,7 +5,3 @@
 .results__item {
     cursor: pointer;
 }
-
-.results__item-add {
-    text-align: right;
-}
