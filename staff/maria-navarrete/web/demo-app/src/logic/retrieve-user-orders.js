@@ -1,5 +1,4 @@
 import { validateToken } from './helpers/validators'
-import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart'
 
 function retrieveUserOrders(token) {
     validateToken(token)
