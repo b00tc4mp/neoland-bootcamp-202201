@@ -1,9 +1,8 @@
+import Landing from './components/Landing'
+import Login from './components/Login'
 import { useState } from 'react'
-import Landing from './components/Landing';
-import Register from './components/Register';
-import Login from './components/Login';
-import Home from './components/Home';
-
+import Register from './components/Register'
+import Home from './components/Home'
 
 function App() {
   const [view, setView] = useState('landing')
@@ -16,20 +15,19 @@ function App() {
   const keepTokenAndShowHome = token => {
     setToken(token)
     setView('home')
-
   }
+
   const logout = () => {
     setToken()
     setView('landing')
-  } 
-  
+  }
+
   return <>
     {view === 'landing' && <Landing onLogin={showLogin} onRegister={showRegister} />}
+    {view === 'login' && <Login onAuthenticated={keepTokenAndShowHome} onRegister={showRegister} />}
+    {view === 'register' && <Register onLogin={showLogin} onRegistered={showLogin} />}
     {view === 'home' && <Home token={token} onLogout={logout} />}
-    {view === 'register' && <Register onRegistered={showLogin} onLogin={showLogin} />}
-    {view === 'login' && <Login onAuthenticated={keepTokenAndShowHome} onRegister={showRegister}/>}
   </>
-
 }
 
 export default App

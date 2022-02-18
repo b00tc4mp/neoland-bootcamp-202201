@@ -1,8 +1,7 @@
-import { validateToken, validateString } from './helpers/validators'
+import { validateToken } from './helpers/validators'
 
-function retrieveVehicle(token, vehicleId) {
+function retrieveFavVehicles(token) {
     validateToken(token)
-    validateString(vehicleId, 'id')
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -17,14 +16,18 @@ function retrieveVehicle(token, vehicleId) {
                     .then(user => {
                         const { favs = [] } = user
 
-                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
+                        if (!favs.length) return []
+
+                       
+                        const fetches = favs.map((vehicleId) => {
+                            return fetch (`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
                             .then(res => {
                                 const { status } = res
 
                                 if (status === 200) {
                                     return res.json()
                                         .then(vehicle => {
-                                            vehicle.isFav = favs.includes(vehicle.id)
+                                            vehicle.isFav = true
 
                                             return vehicle
                                         })
@@ -41,7 +44,10 @@ function retrieveVehicle(token, vehicleId) {
                                     throw new Error('unknown error')
                                 }
                             })
-                    })
+                        })
+
+                    return Promise.all(fetches)
+                })
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -57,4 +63,4 @@ function retrieveVehicle(token, vehicleId) {
         })
 }
 
-export default retrieveVehicle
+export default retrieveFavVehicles

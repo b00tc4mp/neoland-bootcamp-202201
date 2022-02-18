@@ -1,8 +1,11 @@
-import { validateToken, validateString } from './helpers/validators'
+import { validateToken } from './helpers/validators'
+import { generateOrderDate, generateOrderId } from './helpers/helpers'
 
-function retrieveVehicle(token, vehicleId) {
+function placeVehiclesOrder(token) {
     validateToken(token)
-    validateString(vehicleId, 'id')
+
+    const orderId = generateOrderId()
+    const orderDate = generateOrderDate()
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -15,24 +18,37 @@ function retrieveVehicle(token, vehicleId) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                        const { favs = [] } = user
+                        let { cart=[], orders = [] } = user
 
-                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
+                        if(cart.length === 0){
+                            throw new Error ('cart is empty')
+                        } 
+                        else{
+                            const order = {id: orderId, date: orderDate, cart: cart}
+
+                            orders.push(order)
+
+                            cart = []
+
+    
+                            return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+                                method: 'PATCH',
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({orders, cart})
+                            })
                             .then(res => {
                                 const { status } = res
-
-                                if (status === 200) {
-                                    return res.json()
-                                        .then(vehicle => {
-                                            vehicle.isFav = favs.includes(vehicle.id)
-
-                                            return vehicle
-                                        })
+    
+                                if (status === 204) {
+                                    return
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {
                                             const { error } = payload
-
+    
                                             throw new Error(error)
                                         })
                                 } else if (status >= 500) {
@@ -41,6 +57,7 @@ function retrieveVehicle(token, vehicleId) {
                                     throw new Error('unknown error')
                                 }
                             })
+                        }
                     })
             } else if (status >= 400 && status < 500) {
                 return res.json()
@@ -57,4 +74,4 @@ function retrieveVehicle(token, vehicleId) {
         })
 }
 
-export default retrieveVehicle
+export default placeVehiclesOrder
