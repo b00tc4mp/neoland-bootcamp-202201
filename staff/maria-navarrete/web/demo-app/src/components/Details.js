@@ -1,5 +1,5 @@
 import './Details.css'
-import { retrieveVehicle, toggleFavVehicle } from '../logic'
+import { retrieveVehicle, toggleFavVehicle, addVehicleToCart } from '../logic'
 import { useState, useEffect } from 'react'
 
 
@@ -14,6 +14,7 @@ function Details({ token, vehicleId, onBack }) {
                     setVehicle(vehicle)
                     setFav(vehicle.isFav)
                 })
+                .catch(error => alert(error.message))
         } catch ({ message }) {
             alert(message)
         }
@@ -29,7 +30,19 @@ function Details({ token, vehicleId, onBack }) {
         try {
             toggleFavVehicle(token, vehicleId)
                 .then(() => setFav(!fav))
+                .catch(error => alert(error.message))
         } catch ({ message }) {
+            alert(message)
+        }
+    }
+
+    const addToCart = () => {
+        try {
+            addVehicleToCart(token, vehicleId)
+                .then(() => alert("vehicle added to cart"))
+                .catch(error => alert(error.message))
+        }
+        catch ({ message }) {
             alert(message)
         }
     }
@@ -37,10 +50,11 @@ function Details({ token, vehicleId, onBack }) {
     if (vehicle)
         return <div className="details">
             <h2>{vehicle.name}</h2>
-            <span className="detail__fav" onClick={onFavClick}>{fav?'❤️':'🖤'}</span>
-            <img src={vehicle.image} className="details__image"></img>
+            <span className="detail__fav" onClick={onFavClick}>{fav ? '❤️' : '🖤'}</span>
+            <img className="details__image" src={vehicle.image}></img>
+            <span>{vehicle.price}$</span>
+            <button onClick={addToCart}>Add to cart</button>
             <p>{vehicle.description}</p>
-            <p>{vehicle.price}$</p>
             <a href={vehicle.url}>Visit site</a>
             <p>Maker: {vehicle.maker}</p>
             <p>Year: {vehicle.year}</p>

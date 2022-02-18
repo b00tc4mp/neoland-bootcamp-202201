@@ -16,12 +16,11 @@
     justify-content: space-between;
 }
 
-
-.home__user{
-    display: inline;
-    align-self: center;
-}
-
 .home__logout-button {
     cursor: pointer;
+}
+
+.home__menu-link--active {
+    color: white;
+    background-color:  black;
 }

@@ -26,7 +26,7 @@ function Login({ onAuthenticated, onRegister }) {
                     setPasswordFeedback()
                     setFeedback(error.message)
                 })
-        } catch ({message}) {
+        } catch ({ message }) {
             setFeedback()
 
             if (message.includes('email')) {
@@ -39,7 +39,7 @@ function Login({ onAuthenticated, onRegister }) {
         }
     }
 
-    const goToRegister = event =>{
+    const goToRegister = event => {
         event.preventDefault()
         onRegister()
     }
@@ -50,10 +50,10 @@ function Login({ onAuthenticated, onRegister }) {
     return <div className="login">
         <form className="login__form" onSubmit={login}>
             <Input type="email" name="email" feedback={emailFeedback} onFocus={clearEmailFeedback} />
-           <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback}/>
+            <Password name="password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
 
             <button>Login</button>
-            {feedback && <Feedback message={feedback} level="error"/>}
+            {feedback && <Feedback message={feedback} level="error" />}
             <a href="" className="login__register-link" onClick={goToRegister}>Register</a>
         </form>
     </div>

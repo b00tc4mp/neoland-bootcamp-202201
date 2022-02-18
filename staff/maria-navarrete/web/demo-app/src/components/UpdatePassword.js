@@ -16,6 +16,10 @@ function UpdatePassword({ token, onBack }) {
                     setFeedback('Password Updated')
                     setFeedbackLevel('success')
                 })
+                .catch(error => {
+                    setFeedback(error.message)
+                    setFeedbackLevel('error')
+                })
         } catch ({ message }) {
             setFeedback(message)
             setFeedbackLevel('error')
@@ -41,7 +45,7 @@ function UpdatePassword({ token, onBack }) {
 
             <button className="update-password__submit">Update Password</button>
             {feedback && <Feedback message={feedback} level={feedbackLevel} />}
-            
+
             <a className="update-password__back-link" href="" onClick={goBack}>back</a>
         </form>
     </div>

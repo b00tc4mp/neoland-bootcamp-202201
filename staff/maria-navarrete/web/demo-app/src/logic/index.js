@@ -8,6 +8,11 @@ import updateUserPassword from './update-password'
 import unregisterUser from './unregister-user'
 import toggleFavVehicle from './toggle-fav-vehicle'
 import retrieveFavVehicles from './retrieve-fav-vehicles'
+import addVehicleToCart from './add-vehicle-to-cart'
+import removeVehicleFromCart from './remove-vehicle-from-cart'
+import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart'
+import placeVehiclesOrder from './place-vehicles-order'
+import retrieveUserOrders from './retrieve-user-orders'
 
 export {
     authenticateUser,
@@ -19,5 +24,10 @@ export {
     updateUserPassword, 
     unregisterUser,
     toggleFavVehicle,
-    retrieveFavVehicles
+    retrieveFavVehicles, 
+    addVehicleToCart,
+    removeVehicleFromCart,
+    retrieveVehiclesFromCart,
+    placeVehiclesOrder,
+    retrieveUserOrders
 }

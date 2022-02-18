@@ -1,8 +1,8 @@
-import { validateToken, validateQuery } from './helpers/validators'
+import { validateString, validateToken } from './helpers/validators'
 
-function searchVehicles(token, query) {
+function addVehicleToCart(token, vehicleId) {
+    validateString(vehicleId, 'id')
     validateToken(token)
-    validateQuery(query)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -14,19 +14,32 @@ function searchVehicles(token, query) {
 
             if (status === 200) {
                 return res.json()
+
                     .then(user => {
-                        const { favs = [] } = user
+                        const { cart = [] } = user
 
-                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles?q=${query}`)
+                        let item = cart.find(item => item.id === vehicleId)
+
+                        if (!item) {
+                            item = { id: vehicleId, qty: 1 }
+                            cart.push(item)
+                        } else {
+                            item.qty++
+                        }
+
+                        return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+                            method: 'PATCH',
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ cart })
+                        })
                             .then(res => {
-                                const {status} = res
+                                const { status } = res
 
-                                if(status === 200){
-                                    return res.json()
-                                        .then(vehicles => {
-                                            vehicles.forEach(vehicle => vehicle.isFav = favs.includes(vehicle.id))
-                                            return vehicles
-                                        })
+                                if (status === 204) {
+                                    return
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {
@@ -45,7 +58,6 @@ function searchVehicles(token, query) {
                 return res.json()
                     .then(payload => {
                         const { error } = payload
-
                         throw new Error(error)
                     })
             } else if (status >= 500) {
@@ -54,6 +66,7 @@ function searchVehicles(token, query) {
                 throw new Error('unknown error')
             }
         })
+
 }
 
-export default searchVehicles
+export default addVehicleToCart

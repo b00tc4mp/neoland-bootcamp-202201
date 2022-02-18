@@ -15,28 +15,28 @@ function Register({ onLogin, onRegistered }) {
         event.preventDefault()
 
         const { target: { name: { value: name }, email: { value: email }, password: { value: password } } } = event
-    
-        try{
+
+        try {
             registerUser(name, email, password)
                 .then(() => onRegistered())
-                .catch(error=>{
+                .catch(error => {
                     setNameFeedback()
                     setEmailFeedback()
                     setPasswordFeedback()
                     setFeedback(error.message)
                 })
-        } catch({message}){
+        } catch ({ message }) {
             setFeedback()
 
-            if(message.search(/\bname\b/)!==-1){
+            if (message.search(/\bname\b/) !== -1) {
                 setPasswordFeedback()
                 setEmailFeedback()
                 setNameFeedback(message)
-            } else if(message.includes('email')){
+            } else if (message.includes('email')) {
                 setPasswordFeedback()
                 setEmailFeedback(message)
                 setNameFeedback()
-            } else if(message.includes('password')){
+            } else if (message.includes('password')) {
                 setPasswordFeedback(message)
                 setEmailFeedback()
                 setNameFeedback()
@@ -44,7 +44,7 @@ function Register({ onLogin, onRegistered }) {
         }
     }
 
-    const goToLogin = event =>{
+    const goToLogin = event => {
         event.preventDefault()
         onLogin()
     }
@@ -55,12 +55,12 @@ function Register({ onLogin, onRegistered }) {
 
     return <div className="register">
         <form className="register__form" onSubmit={register}>
-            <Input type="text" name="name" placeholder="Name" feedback={nameFeedback} onFocus={clearNameFeedback}/>
-            <Input  type="email" name="email" placeholder="E-mail" feedback={emailFeedback} onFocus={clearEmailFeedback} />
-            <Password name="password" placeholder="Password" feedback={passwordFeedback} onFocus={clearPasswordFeedback}/>
+            <Input type="text" name="name" placeholder="Name" feedback={nameFeedback} onFocus={clearNameFeedback} />
+            <Input type="email" name="email" placeholder="E-mail" feedback={emailFeedback} onFocus={clearEmailFeedback} />
+            <Password name="password" placeholder="Password" feedback={passwordFeedback} onFocus={clearPasswordFeedback} />
             <button>Register</button>
-            {feedback && <Feedback message={feedback} level="error"/>}
-            
+            {feedback && <Feedback message={feedback} level="error" />}
+
             <a href="" className="register__login-link" onClick={goToLogin}>Login</a>
         </form>
     </div>

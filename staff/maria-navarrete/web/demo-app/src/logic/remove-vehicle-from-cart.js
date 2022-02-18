@@ -1,6 +1,6 @@
 import { validateString, validateToken } from './helpers/validators'
 
-function toggleFavVehicle(token, vehicleId) {
+function removeVehicleFromCart(token, vehicleId) {
     validateString(vehicleId, 'id')
     validateToken(token)
 
@@ -16,13 +16,19 @@ function toggleFavVehicle(token, vehicleId) {
                 return res.json()
 
                     .then(user => {
-                        const { favs = [] } = user
+                        const { cart = [] } = user
 
-                        const index = favs.indexOf(vehicleId)
-                        
-                        if (index === -1) favs.push(vehicleId)
-                        else favs.splice(index, 1)
+                        const item = cart.find(item => item.id  === vehicleId)
 
+                        if(!item){
+                            throw new Error('item not found')
+                        }
+                        else if(item.qty === 1){
+                            cart.splice(cart.indexOf(item),1)
+                        }
+                        else{
+                            item.qty--
+                        }
 
                         return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
                             method: 'PATCH',
@@ -30,7 +36,7 @@ function toggleFavVehicle(token, vehicleId) {
                                 Authorization: `Bearer ${token}`,
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ favs })
+                            body: JSON.stringify({ cart })
                         })
                         .then(res => {
                             const { status } = res
@@ -66,4 +72,4 @@ function toggleFavVehicle(token, vehicleId) {
 
 }
 
-export default toggleFavVehicle
+export default removeVehicleFromCart
