@@ -13,11 +13,11 @@
 }
 
 .input__body--error {
-    border-color: tomato;
+    border-color: purple;
 }
 
 .input:focus-within {
-    border-color: dodgerblue;
+    border-color: yellowgreen;
 }
 
 .input__input {
@@ -26,3 +26,6 @@
     background-color: transparent;
     width: 100%;
 }
+
+
+

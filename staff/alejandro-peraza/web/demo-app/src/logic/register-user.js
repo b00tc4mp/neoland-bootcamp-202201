@@ -14,14 +14,11 @@ function registerUser(name, surname, email, password) {
         body: JSON.stringify({ name, surname, username: email, password })
     })
         .then(res => {
-           
             const { status } = res
 
             if (status === 201) {
-
                 return
             } else if (status >= 400 && status < 500) {
-         
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -29,7 +26,6 @@ function registerUser(name, surname, email, password) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
-               
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')
@@ -38,3 +34,4 @@ function registerUser(name, surname, email, password) {
 }
 
 export default registerUser
+    

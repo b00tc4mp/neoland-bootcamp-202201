@@ -5,6 +5,7 @@
     justify-content: flex-start;
     height: 100%;
     gap: 2rem;
+    background-color: antiquewhite;
 }
 
 .home__header {
@@ -20,4 +21,9 @@
 
 .home__logout-button {
     cursor: pointer;
+}
+
+.home__menu-link--active {
+    color: white;
+    background-color:  black;
 }

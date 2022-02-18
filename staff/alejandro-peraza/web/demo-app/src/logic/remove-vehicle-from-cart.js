@@ -1,8 +1,8 @@
-import { validateToken, validateQuery } from './helpers/validators'
+import { validateToken, validateString } from  './helpers/validators'
 
-function searchVehicles(token, query) {
+function removeVehicleFromCart(token, vehicleId) {
     validateToken(token)
-    validateQuery(query)
+    validateString(vehicleId, 'id')
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -15,19 +15,31 @@ function searchVehicles(token, query) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                        const { favs = [] } = user
+                        const { cart = [] } = user
 
-                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles?q=${query}`)
+                        const item = cart.find(item => item.id === vehicleId)
+
+                        if (!item) throw new Error('item not found')
+
+                        if (item.qty === 1) {
+                            cart.splice(cart.indexOf(item), 1)
+                        } else {
+                            item.qty--
+                        }
+
+                        return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+                            method: 'PATCH',
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ cart })
+                        })
                             .then(res => {
                                 const { status } = res
 
-                                if (status === 200) {
-                                    return res.json()
-                                        .then(vehicles => {
-                                            vehicles.forEach(vehicle => vehicle.isFav = favs.includes(vehicle.id))
-
-                                            return vehicles
-                                        })
+                                if (status === 204) {
+                                    return
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {
@@ -57,4 +69,4 @@ function searchVehicles(token, query) {
         })
 }
 
-export default searchVehicles
+export default removeVehicleFromCart
