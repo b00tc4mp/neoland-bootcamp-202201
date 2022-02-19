@@ -93,7 +93,7 @@ function Home({ token, onLogout }) {
             <span> | </span>
             <a className={`home__menu-link ${view === 'orders' ? 'home__menu-link--active' : ''}`} href="" onClick={goToOrders}>Orders</a>
             <span> | </span>
-            <button className="home__logout-link" href="">Log out</button>
+            <button className="home__logout-link" href="" onClick={onLogout}>Log out</button>
         </nav>
         {view === 'search' && <Search token={token} onItem={goToDetails} onQuery={setQuery} query={query} />}
         {view === 'profile' && <Profile token={token} refreshData={refreshData} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}
