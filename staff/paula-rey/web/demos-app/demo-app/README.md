@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+### flujo crear pedido
+1. crear un boton en la vista carrito para lanzar el proceso de compra
+2. crear funcion disparadora que capture el evento del usuario al pinchar el boton (onClick)
+3. crear la funcion manejadora para manejar place order (funcion de capa de presentacion -> Cart.js
+4. abrir un manejador de errores (esto lo hacemos porque dentro vamos a escribir un codigo asynchronous & logico)
+5. **AQUI** llamamos a la logica que cree un nuevo pedido (place-vehicles-order.js) y le pasamos la info que necesite (en este caso = autentificacion del usuario)
+6. como esta logica hace una llamada a una api ( osea llamada asincrona) entonces podemos tener dos tipos de resultado (todo bien || algo mal)
+7. en caso de que todo bien entonces avisaremos al usuario de que todo ha salido bien y mostraremos los detalles del pedido
+- Mostraremos los detalles del pedido
+- 7.1 creamos una nueva logica retrieve-order (por id)
+- 7.2 creamos una nueva vista en el componente (Home) que maneja las vistas
+- 7.3 creamos el componente OrderDetails.js en todo lo relacionado a vista/render (HTML/CSS)
+- 7.4 linkeamos (ponemos los props y seteamos la view en nuestra view de OrderDetails.js) el view al padre --> Home.js
+- 7.5 gestionar llamada a Api y pintar el pedido con los datos conseguidos de dicha llamada (desarrollo similar al 3. para abajo)
+8. en caso de que algo salga mal informaremos al usuario del error que haya tenido
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### flujo ver mis pedidos
+//TODO ON TEAM :D
 
-In the project directory, you can run:
+1. crear logica retrieve-orders pasandole la autentificacion
+2. crear boton en la vista Home para ver mis pedidos (orders)
+3. crear funcion disparadora que capture el evento del usuario al pinchar el boton
+4. crear nuevo componente Orders.js
+5. crear funcion manejadora (en Home) igual que el punto 3, 4, 5... 
+6. en caso de que salga bien -> que te setee la vista a Orders.js (nuevo comp) parecido o similar al 7
+7. en el componente Orders traeremos los pedidos que tenga el usuario pasandole la identificacion correspondiente (token)
+ 
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ print.

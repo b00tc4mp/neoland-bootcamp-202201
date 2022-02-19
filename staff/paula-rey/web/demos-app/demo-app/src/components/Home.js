@@ -18,6 +18,45 @@ function Home({ token, onLogout }) {
     const [query, setQuery] = useState()
     const [previousView, setPreviousView] = useState()
     
+    const showProfile = () => setView('profile')
+    const showUpdatePassword = () => setView('update-password')
+    const showDeleteAccount = () => setView('delete-account')
+    const showSearch = () => setView('search')
+    const showFavs = () => setView('favs')
+    const showDetail = () => setView('detail')
+    const showCart = () => setView('cart')
+
+    const goToProfile = event => {
+        event.preventDefault()
+
+        showProfile()
+    }
+ 
+    const goToSearch = event => {
+        event.preventDefault()
+
+        showSearch()
+    }
+
+    const goToFavs = event => {
+        event.preventDefault()
+
+        showFavs()
+    }
+    
+    const goToDetail = (id) => {
+        setVehicleId(id)
+        setPreviousView(view)
+        showDetail()
+    }
+
+    const goBackFromDetail = () => setView(previousView)
+
+    const goToCart = event => {
+        event.preventDefault()
+
+        showCart()
+    }
 
     useEffect(() => {
         try {
@@ -29,54 +68,9 @@ function Home({ token, onLogout }) {
         }
     }, [])
 
-    const goToProfile = event => {
-        event.preventDefault()
-
-        showProfile()
-    }
-
-    const showProfile = () => setView('profile')
-
-    const showUpdatePassword = () => setView('update-password')
-
-    const showDeleteAccount = () => setView('delete-account')
- 
-    const goToSearch = event => {
-        event.preventDefault()
-
-        showSearch()
-    }
-
-    const showSearch = () => setView('search')
-
-    const goToFavs = event => {
-        event.preventDefault()
-
-        showFavs()
-    }
-
-    const showFavs = () => setView('favs')
-
-    
-    const goToDetail = (id) => {
-        setVehicleId(id)
-        setPreviousView(view)
-        showDetail()
-    }
-    
-    const showDetail = () => setView('detail')
-
-    const goBackFromDetail = () => setView(previousView)
-
-    const goToCart = event => {
-        event.preventDefault()
-
-        showCart()
-    }
-
-    const showCart = () => setView('cart')
 
     return <div className="home">
+        
         <div className="home__header">
             <a className="home__home-link" href=""onClick={goToSearch} title="search"><Logo /></a>
             <a className={`home__menu-link ${view === 'profile'? 'home__menu-link--active' :''}`} href="" onClick={goToProfile} title="profile">{name}</a>

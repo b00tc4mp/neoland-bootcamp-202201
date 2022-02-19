@@ -1,26 +1,25 @@
-import { validateToken } from "./helpers/validators";
-
-function retrieveVehiclesOrders(token) {
-    validateToken(token)
+function registerUser(name, surname, email, password) {
+    validateName(name)
+    validateSurname(surname)
+    validateEmail(email)
+    validatePassword(password)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+        method: 'POST',
         headers: {
-            Authorization: `Barer ${token}`
-        }
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, surname, username: email, password })
     })
         .then(res => {
+            // const status = res.status
             const { status } = res
 
-            if (status === 200) {
-                return res.json()
-                    .then(user => {
-                        const { orders = [] } = user
-                        
-                        if (!orders.length) throw new Error('no orders')
-
-                        return orders
-                    })
+            if (status === 201) {
+                // DONE manage happy path
+                return
             } else if (status >= 400 && status < 500) {
+                // DONE manage client error
                 return res.json()
                     .then(payload => {
                         const { error } = payload
@@ -28,12 +27,10 @@ function retrieveVehiclesOrders(token) {
                         throw new Error(error)
                     })
             } else if (status >= 500) {
+                // DONE manage server error
                 throw new Error('server error')
             } else {
                 throw new Error('unknown error')
             }
         })
-
 }
-
-export default retrieveVehiclesOrders

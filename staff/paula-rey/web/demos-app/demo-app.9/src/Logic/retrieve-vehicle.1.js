@@ -1,11 +1,12 @@
-import { validateToken } from "./helpers/validators";
+import { validateToken, validateString } from './helpers/validators'
 
-function retrieveVehiclesOrders(token) {
+function retrieveVehicle(token, vehicleId) {
     validateToken(token)
+    validateString(vehicleId, 'id')
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
-            Authorization: `Barer ${token}`
+            Authorization: `Bearer ${token}`
         }
     })
         .then(res => {
@@ -14,11 +15,15 @@ function retrieveVehiclesOrders(token) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                        const { orders = [] } = user
-                        
-                        if (!orders.length) throw new Error('no orders')
+                        const { favs = [] } = user
 
-                        return orders
+                        return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${vehicleId}`)
+                            .then(res => res.json())
+                            .then(vehicle => {
+                                vehicle.isFav = favs.includes(vehicle.id)
+
+                                return vehicle
+                            })
                     })
             } else if (status >= 400 && status < 500) {
                 return res.json()
@@ -33,7 +38,6 @@ function retrieveVehiclesOrders(token) {
                 throw new Error('unknown error')
             }
         })
-
 }
 
-export default retrieveVehiclesOrders
+export default retrieveVehicle
