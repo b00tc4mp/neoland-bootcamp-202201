@@ -55,7 +55,7 @@ function Details({ token, vehicleId, onBack }) {
             <span>{vehicle.price}$</span>
             <button onClick={addToCart}>Add to cart</button>
             <p>{vehicle.description}</p>
-            <a href={vehicle.url}>Visit site</a>
+            <a href={vehicle.url} target="_blank">Visit site</a>
             <p>Maker: {vehicle.maker}</p>
             <p>Year: {vehicle.year}</p>
             <p>Color: {vehicle.color}</p>
