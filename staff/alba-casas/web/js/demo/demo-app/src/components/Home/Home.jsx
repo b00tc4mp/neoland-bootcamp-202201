@@ -29,6 +29,10 @@ function Home({ token, onLanding }) {
   const showOrders = () => setView("orders");
   const goBackFromDetail = () => setView(previousView);
 
+  const goToOrders = () => {
+    showOrders();
+  };
+
   const refreshData = (data) => setName(data);
 
   const goToDetail = (id) => {
@@ -135,7 +139,9 @@ function Home({ token, onLanding }) {
           onBack={goBackFromDetail}
         />
       )}
-      {view === "cart" && <Cart token={token} onItem={goToDetail} />}
+      {view === "cart" && (
+        <Cart token={token} onItem={goToDetail} onPlaceOrder={goToOrders} />
+      )}
       {view === "favs" && <Favs token={token} onItem={goToDetail} />}
       {view === "search" && (
         <Search

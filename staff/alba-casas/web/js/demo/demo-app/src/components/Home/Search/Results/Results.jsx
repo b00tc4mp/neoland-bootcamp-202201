@@ -62,7 +62,6 @@ const Results = ({ token, query, onItem }) => {
                 <span
                   className="results__item-fav-button"
                   onClick={(event) => {
-                    debugger;
                     event.stopPropagation();
 
                     toggleFav(vehicle.id);

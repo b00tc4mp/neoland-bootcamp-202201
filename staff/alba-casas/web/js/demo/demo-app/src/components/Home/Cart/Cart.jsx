@@ -4,10 +4,11 @@ import {
   retrieveVehiclesFromCart,
   toggleFavVehicle,
   removeVehicleFromCart,
+  placeVehiclesOrder,
 } from "../../../logic/logic";
 import "./Cart.css";
 
-const Cart = ({ token, onItem }) => {
+const Cart = ({ token, onItem, onPlaceOrder }) => {
   const [vehicles, setVehicles] = useState();
 
   useEffect(() => {
@@ -36,6 +37,10 @@ const Cart = ({ token, onItem }) => {
 
   const goToItem = (id) => {
     onItem(id);
+  };
+
+  const goToOrders = () => {
+    onPlaceOrder();
   };
 
   const addToCart = (vehicleId) => {
@@ -121,7 +126,15 @@ const Cart = ({ token, onItem }) => {
 
             <div className="cart__total">
               <span>total {vehicles.total} $</span>
-              <button>Place order</button>
+              <button
+                onClick={() =>
+                  placeVehiclesOrder(token).then(() => {
+                    goToOrders();
+                  })
+                }
+              >
+                Place order
+              </button>
             </div>
           </div>
         ) : (

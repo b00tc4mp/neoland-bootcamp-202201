@@ -11,6 +11,7 @@ import removeVehicleFromCart from "./remove-vehicle-to-cart";
 import retrieveVehiclesFromCart from "./retrieve-vehicles-from-cart";
 import placeVehiclesOrder from "./place-vehicles-order";
 import retrieveVehiclesOrders from "./retrieve-vehicles-orders";
+import retrieveVehiclesFromOrder from "./retrieve-vehicles-from-order";
 
 export {
   authenticateUser,
@@ -26,4 +27,5 @@ export {
   retrieveVehiclesFromCart,
   placeVehiclesOrder,
   retrieveVehiclesOrders,
+  retrieveVehiclesFromOrder,
 };
