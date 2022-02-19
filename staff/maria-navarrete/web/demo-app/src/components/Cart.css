@@ -21,3 +21,8 @@
 .cart__total{
     margin-top: 1.3rem;
 }
+
+.cart__place-order{
+    margin: 1rem;
+    width:100%;
+}

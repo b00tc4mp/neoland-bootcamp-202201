@@ -1,0 +1,33 @@
+.order__list {
+    list-style-type: none;
+    margin-top: 2rem;
+}
+
+.order__item {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 0.5rem;
+}
+
+.order__item-fav-button {
+    display: block;
+}
+
+.order__item-image {
+    width: 20vw;
+}
+
+.order__item-total{
+    text-align: center;
+}
+
+.order__total {
+    text-align: right;
+}
+
+.order__total{
+    margin-top: 1.3rem;
+}

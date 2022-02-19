@@ -46,7 +46,7 @@ function Results({ token, query, onItem }) {
     return <div className="results">
         {!!vehicles.length && <ul className="results-list">
             {vehicles.map(vehicle => <li key={vehicle.id} className="results__list-item" onClick={() => goToItem(vehicle.id)}>
-                <h2 className="details__title">{vehicle.name}</h2>
+                <h2 className="results__title">{vehicle.name}</h2>
                 <div>
                     <span className="results__item-fav-button" onClick={event => {
                         event.stopPropagation()

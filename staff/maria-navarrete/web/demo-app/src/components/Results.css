@@ -9,4 +9,5 @@
 .results__list-item{
     cursor:pointer;
     border: 1px solid powderblue;
+    padding: 0.5rem;
 }

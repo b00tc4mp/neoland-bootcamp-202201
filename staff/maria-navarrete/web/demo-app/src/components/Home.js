@@ -9,6 +9,8 @@ import { retrieveUser } from '../logic'
 import { useEffect } from 'react'
 import Favs from './Favs'
 import Cart from './Cart'
+import Order from './Order'
+import Orders from './Orders'
 
 function Home({ token, onLogout }) {
 
@@ -17,6 +19,7 @@ function Home({ token, onLogout }) {
     const [vehicleId, setVehicleId] = useState()
     const [query, setQuery] = useState()
     const [previousView, setPreviousView] = useState()
+    const [orderId, setOrderId] = useState()
 
     useEffect(() => {
         try {
@@ -35,6 +38,8 @@ function Home({ token, onLogout }) {
     const showFavs = () => setView('favs')
     const showDetails = () => setView('details')
     const showCart = () => setView('cart')
+    const showOrder = () => setView('order')
+    const showOrders = () => setView('orders')
     const goBackFromDetail = () => setView(previousView)
 
     const goToSearch = event => {
@@ -57,10 +62,20 @@ function Home({ token, onLogout }) {
         setPreviousView(view)
         showDetails()
     }
-
+    
     const goToCart = event => {
         event.preventDefault()
         showCart()
+    }
+    
+    const goToOrder = id => {
+        setOrderId(id)
+        showOrder()
+    }
+
+    const goToOrders = event => {
+        event.preventDefault()
+        showOrders()
     }
 
     const refreshData = data => setName(data)
@@ -76,6 +91,8 @@ function Home({ token, onLogout }) {
             <span> | </span>
             <a className={`home__menu-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href="" onClick={goToCart}>Cart</a>
             <span> | </span>
+            <a className={`home__menu-link ${view === 'orders' ? 'home__menu-link--active' : ''}`} href="" onClick={goToOrders}>Orders</a>
+            <span> | </span>
             <button className="home__logout-link" href="">Log out</button>
         </nav>
         {view === 'search' && <Search token={token} onItem={goToDetails} onQuery={setQuery} query={query} />}
@@ -84,7 +101,9 @@ function Home({ token, onLogout }) {
         {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />}
         {view === 'favs' && <Favs token={token} onItem={goToDetails} />}
         {view === 'details' && <Details token={token} vehicleId={vehicleId} onBack={goBackFromDetail} />}
-        {view === 'cart' && <Cart token={token} onItem={goToDetails} />}
+        {view === 'cart' && <Cart token={token} onItem={goToDetails} onOrder={goToOrder} />}
+        {view === 'order' && <Order token={token} orderId={orderId} onItem={goToDetails} />}
+        {view === 'orders' && <Orders token={token} onOrder={goToOrder}/>} 
     </div>
 }
 

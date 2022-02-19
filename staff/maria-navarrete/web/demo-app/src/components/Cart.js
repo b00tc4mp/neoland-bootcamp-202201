@@ -1,8 +1,8 @@
 import './Cart.css'
 import { useEffect, useState } from 'react'
-import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart } from '../logic'
+import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart, placeVehiclesOrder } from '../logic'
 
-function Cart({ token, onItem }) {
+function Cart({ token, onItem, onOrder }) {
     const [vehicles, setVehicles] = useState()
 
     useEffect(() => {
@@ -33,6 +33,7 @@ function Cart({ token, onItem }) {
         onItem(id)
     }
 
+
     const addToCart = vehicleId => {
         try {
             addVehicleToCart(token, vehicleId)
@@ -55,6 +56,22 @@ function Cart({ token, onItem }) {
                         .then(vehicles => setVehicles(vehicles))
                         .catch(error => alert(error.message))
                 )
+                .catch(error => alert(error.message))
+        } catch ({ message }) {
+            alert(message)
+        }
+    }
+
+    const goToOrder = id => {
+        onOrder(id)
+    }
+
+    const placeOrder = () => {
+        try {
+            placeVehiclesOrder(token)
+                .then(id => {
+                    goToOrder(id)
+                })
                 .catch(error => alert(error.message))
         } catch ({ message }) {
             alert(message)
@@ -86,6 +103,8 @@ function Cart({ token, onItem }) {
             <div className="cart__total">
                 <span>total {vehicles.total} $</span>
             </div>
+            <button className="cart__place-order" onClick={placeOrder}>Place Order</button>
+
         </div> : <p className="cart__empty">No cart yet</p>)}
     </div>
 }
