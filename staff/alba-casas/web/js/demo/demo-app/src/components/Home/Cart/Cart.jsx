@@ -121,6 +121,7 @@ const Cart = ({ token, onItem }) => {
 
             <div className="cart__total">
               <span>total {vehicles.total} $</span>
+              <button>Place order</button>
             </div>
           </div>
         ) : (

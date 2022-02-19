@@ -9,6 +9,8 @@ import retrieveFavVehicles from "./retrieve-favs-vehicles";
 import addVehicleToCart from "./add-vehicle-to-cart";
 import removeVehicleFromCart from "./remove-vehicle-to-cart";
 import retrieveVehiclesFromCart from "./retrieve-vehicles-from-cart";
+import placeVehiclesOrder from "./place-vehicles-order";
+import retrieveVehiclesOrders from "./retrieve-vehicles-orders";
 
 export {
   authenticateUser,
@@ -22,4 +24,6 @@ export {
   addVehicleToCart,
   removeVehicleFromCart,
   retrieveVehiclesFromCart,
+  placeVehiclesOrder,
+  retrieveVehiclesOrders,
 };

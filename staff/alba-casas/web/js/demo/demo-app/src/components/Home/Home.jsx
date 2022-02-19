@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import Favs from "./Favs/Favs";
 import Details from "./Search/Details/Details";
 import Cart from "./Cart/Cart";
+import Orders from "./Orders/Orders";
 
 function Home({ token, onLanding }) {
   const [view, setView] = useState("search");
@@ -25,6 +26,7 @@ function Home({ token, onLanding }) {
   const showFavs = () => setView("favs");
   const showDetails = () => setView("details");
   const showCart = () => setView("cart");
+  const showOrders = () => setView("orders");
   const goBackFromDetail = () => setView(previousView);
 
   const refreshData = (data) => setName(data);
@@ -101,6 +103,19 @@ function Home({ token, onLanding }) {
         >
           Cart
         </a>
+        <a
+          className={`home_menu-link ${
+            view === "orders" ? "home__menu-link--active" : ""
+          }`}
+          href=""
+          onClick={(event) => {
+            event.preventDefault();
+
+            showOrders();
+          }}
+        >
+          Orders
+        </a>
         <button
           className="home__logout-button"
           onClick={(event) => {
@@ -148,6 +163,7 @@ function Home({ token, onLanding }) {
           onLanding={onLanding}
         />
       )}
+      {view === "orders" && <Orders token={token} />}
     </div>
   );
 }
