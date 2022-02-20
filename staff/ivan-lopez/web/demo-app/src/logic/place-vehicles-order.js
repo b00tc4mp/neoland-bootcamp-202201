@@ -1,32 +1,52 @@
-import { validateToken, validateString } from './helpers/validators'
-
-function addVehicleToCart(token, vehicleId) {
-    validateToken(token)
-    validateString(vehicleId, 'id')
-
+function placeVehiclesOrder(token) {
+    //TODO generate order id
+    //TODO call api to get user cart array
+    //TODO call api to add order with id and date into orders array (and empty cart array)
+    
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(res => {
             const { status } = res
 
-            if (status === 200) {
+            if (status === 200) { 
                 return res.json()
                     .then(user => {
-                        const { cart = [] } = user
-                    
+                        /*
+                        extraer el carrito (cart)
+                        extraer las ordenes (orders)
 
-                        let item = cart.find(item => item.id === vehicleId)
+                        si cart vacío entonces lanzar error ('empty cart')
 
-                        if (!item) {
-                            item = { id: vehicleId, qty: 1 }
+                        crear objeto order {}
+                        poner propiedad id
+                        poner propiedad date
+                        poner propiedad cart
 
-                            cart.push(item)
-                        } else {
-                            item.qty++
+                        poner order en orders
+
+                        poner cart a 0 ([])
+
+                        llamar a api y actualizar el usuario (cart y orders)
+                        */
+                        let { cart = [], orders = [] } = user
+
+                        if (!cart.length) throw new Error('cart is empty')
+                        
+                        const orderId = `ORD-${Date.now()}`  //ORD- + number
+
+                        const order = {
+                            orderId,
+                            date: new Date().toISOString(),
+                            cart
                         }
+
+                        orders.push(order)
+
+                        //cart.length = 0 //             WARN!
+                        cart = []
 
                         return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
                             method: 'PATCH',
@@ -34,13 +54,13 @@ function addVehicleToCart(token, vehicleId) {
                                 Authorization: `Bearer ${token}`,
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ cart })
+                            body: JSON.stringify({ cart, orders })
                         })
                             .then(res => {
                                 const { status } = res
 
                                 if (status === 204) {
-                                    return
+                                    return orderId
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {
@@ -59,7 +79,7 @@ function addVehicleToCart(token, vehicleId) {
                 return res.json()
                     .then(payload => {
                         const { error } = payload
-    
+
                         throw new Error(error)
                     })
             } else if (status >= 500) {
@@ -70,4 +90,4 @@ function addVehicleToCart(token, vehicleId) {
         })
 }
 
-export default addVehicleToCart
+export default placeVehiclesOrder

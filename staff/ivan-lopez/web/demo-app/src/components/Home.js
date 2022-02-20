@@ -10,8 +10,7 @@ import Logo from './Logo'
 import Favs from './Favs'
 import Details from './Details'
 import Cart from './Cart'
-
-
+import Order from './Order'
 
 //function Home(props) {
 function Home({ token, onLogout }) {
@@ -21,6 +20,8 @@ function Home({ token, onLogout }) {
     const [vehicleId, setVehicleId] = useState()
     const [query, setQuery] = useState()
     const [previousView, setPreviousView] = useState()
+    const [orderId, setOrderId] = useState()
+    
 
     useEffect(() => {
         try {
@@ -32,33 +33,34 @@ function Home({ token, onLogout }) {
         }
     }, [])
 
+    const showSearch = () => setView('search')
+    const showUpdatePassword = () => setView("update-password")
+    const showDeleteAccount = () => setView('delete-account')
+    const showFavs = () => setView('favs')
+    const showDetails = () => setView('details')
+    const goBackFromDetails = () => setView(previousView)
+    const showCart = () => setView('cart')
+    const showProfile = () => setView('profile')
+    const showOrder = () => setView('order')
+
+    
     const goToProfile = event => {
         event.preventDefault()
 
         showProfile()
     }
 
-    const showProfile = () => setView('profile')
-
-    const showUpdatePassword = () => setView("update-password");
-
-    const showDeleteAccount = () => setView('delete-account')
-
     const goToSearch = event => {
         event.preventDefault()
 
         showSearch()
     }
-
-    const showSearch = () => setView('search')
-
+    
     const goToFavs = event => {
         event.preventDefault()
 
         showFavs()
     }
-
-    const showFavs = () => setView('favs')
 
     const goToDetails = id => {
         setVehicleId(id)
@@ -68,17 +70,16 @@ function Home({ token, onLogout }) {
         showDetails()
     }
 
-    const showDetails = () => setView('details')
-
-    const goBackFromDetails = () => setView(previousView)
-
     const goToCart = event => {
         event.preventDefault()
 
         showCart()
     }
 
-    const showCart = () => setView('cart')
+    const goToOrder = id => {
+        setOrderId(id)
+        showOrder()
+    }
 
     return <div className="home">
         <div className="home__header">
@@ -121,15 +122,30 @@ function Home({ token, onLogout }) {
         {view === 'favs' && <Favs token={token} onItem={goToDetails} />}
 
         {view === 'details' && (
-            <Details 
-            token={token}
-            vehicleId={vehicleId}
-            onBack={goBackFromDetails}
+        <Details 
+        token={token}
+        vehicleId={vehicleId}
+        onBack={goBackFromDetails}
             
             />
         )}
 
-        {view === 'cart' && <Cart token={token} onItem={goToDetails} />}
+        {view === 'cart' && (
+        <Cart
+        token={token}
+        onItem={goToDetails}
+        onOrder={goToOrder}
+
+            />
+         )}
+
+        {view === 'order' && (
+        <Order
+        token={token}
+        orderId={orderId}
+
+            />
+         )}
 
     </div>
 
