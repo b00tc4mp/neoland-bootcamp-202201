@@ -2,7 +2,6 @@ import { validateToken, validateString } from  './helpers/validators'
 
 
 function addVehicleToCart(token, vehicleId) {
-    debugger
     validateToken(token)
     validateString(vehicleId, 'id')
 

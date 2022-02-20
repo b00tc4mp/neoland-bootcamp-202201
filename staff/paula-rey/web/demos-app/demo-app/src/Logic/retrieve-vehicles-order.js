@@ -1,6 +1,6 @@
-import { validateToken } from "./helpers/validators";
+import { validateToken, validateString } from "./helpers/validators";
 
-function retrieveVehiclesOrders(token) {
+function retrieveVehiclesOrder(token) {
     validateToken(token)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
@@ -36,4 +36,4 @@ function retrieveVehiclesOrders(token) {
 
 }
 
-export default retrieveVehiclesOrders
+export default retrieveVehiclesOrder

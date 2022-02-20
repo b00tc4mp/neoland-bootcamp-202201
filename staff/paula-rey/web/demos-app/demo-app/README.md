@@ -1,17 +1,40 @@
 ### flujo crear pedido
-1. crear un boton en la vista carrito para lanzar el proceso de compra
-2. crear funcion disparadora que capture el evento del usuario al pinchar el boton (onClick)
-3. crear la funcion manejadora para manejar place order (funcion de capa de presentacion -> Cart.js
-4. abrir un manejador de errores (esto lo hacemos porque dentro vamos a escribir un codigo asynchronous & logico)
-5. **AQUI** llamamos a la logica que cree un nuevo pedido (place-vehicles-order.js) y le pasamos la info que necesite (en este caso = autentificacion del usuario)
-6. como esta logica hace una llamada a una api ( osea llamada asincrona) entonces podemos tener dos tipos de resultado (todo bien || algo mal)
-7. en caso de que todo bien entonces avisaremos al usuario de que todo ha salido bien y mostraremos los detalles del pedido
-- Mostraremos los detalles del pedido
-- 7.1 creamos una nueva logica retrieve-order (por id)
-- 7.2 creamos una nueva vista en el componente (Home) que maneja las vistas
-- 7.3 creamos el componente OrderDetails.js en todo lo relacionado a vista/render (HTML/CSS)
-- 7.4 linkeamos (ponemos los props y seteamos la view en nuestra view de OrderDetails.js) el view al padre --> Home.js
-- 7.5 gestionar llamada a Api y pintar el pedido con los datos conseguidos de dicha llamada (desarrollo similar al 3. para abajo)
+
+0. Crear logica que necesitamos: 
+    *pillar array cart y pasarlo a un nuebo array orders*
+
+1. Crear un boton en la vista Cart para lanzar el proceso de compra/hacer el pedido. 
+    *Crear etiqueta HTML de button place order en la vista Cart*
+
+2. Crear funcion disparadora que capture el evento del usuario al pinchar el boton.
+    *onClick*
+
+3. Crear la FUNCION MANEJADORA(o de capa de presentacion) para manejar place order:
+                const placeOrder = event => {
+                    event.preventDefault()
+                    try {
+
+                        // onOrderDetails()
+                    }
+                    catch ({ message }) {
+                        alert(message)
+                    }
+                }
+    *ojo funcion manejadora(placeOrder) NO es la funcion principal(OrderDetails) del compo)*
+
+    - Abrir un manejador de errores dentro de la funcion manejadora (porque dentro vamos a escribir un codigo asynchronous & logico) --> *try/catch*
+
+    - Llamamos a la LOGICA (dentro de la funcion maneajdora) que cree un nuevo pedido (place-vehicles-order.js) y le pasamos la info que necesite (en este caso = autentificacion del usuario/TOKEN)
+
+    - Como esta logica hace una llamada a una api ( osea llamada asincrona) entonces podemos tener dos tipos de resultado 
+     (todo bien || algo mal)--> *try/catch*
+
+4. Tomando el caso de que todo salga bien, se avisará al usuario de que todo ok  *feedback* y mostraremos los detalles del pedido (*numero de pedido, fecha, y vehiculos seleccionados*) 
+
+    - Creamos el nuevo componente (*OrderDetails.js*) y todo lo relacionado a vista/render (HTML/CSS)
+    - Creamos una nueva vista en el componente que la va a manejar (*Home.js*)
+    - Linkeamos el view al padre (*Home.js*) (*{view === 'order-details' && <OrderDetails />}*) 
+    - Gestionar llamada a Api y pintar el pedido con los datos conseguidos de dicha llamada (desarrollo similar al 3. para abajo)
 8. en caso de que algo salga mal informaremos al usuario del error que haya tenido
 
 

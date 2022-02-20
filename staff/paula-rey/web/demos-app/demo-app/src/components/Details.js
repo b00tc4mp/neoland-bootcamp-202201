@@ -1,8 +1,8 @@
-import './Detail.css'
+import './Details.css'
 import { useState, useEffect } from 'react'
 import { retrieveVehicle, toggleFavVehicle, addVehicleToCart } from '../Logic'
 
-function Detail({ token, vehicleId, onBack }) {
+function Details({ token, vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
 
@@ -72,4 +72,4 @@ function Detail({ token, vehicleId, onBack }) {
     else return null
 }
 
-export default Detail
+export default Details

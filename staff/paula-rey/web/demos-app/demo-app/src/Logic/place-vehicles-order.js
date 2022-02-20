@@ -47,10 +47,11 @@ function placeVehiclesOrder(token) {
                         if (!cart.length) throw new Error('cart is empty') 
 
                         const id = `ORD-${Date.now()}` // 'ORD-' + number
+                        const date = new Date().toISOString()
 
                         const order = {
                             id,
-                            date: new Date().toISOString(),
+                            date,
                             cart
                         }
 
@@ -70,7 +71,7 @@ function placeVehiclesOrder(token) {
                                 const { status } = res
 
                                 if (status === 204) {
-                                    return //return id
+                                    return 
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {

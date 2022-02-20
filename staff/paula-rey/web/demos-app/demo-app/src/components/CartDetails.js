@@ -1,5 +1,7 @@
+//junto con Cart2
 import { useEffect, useState } from 'react'
 import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart } from '../Logic'
+import { placeVehiclesOrder } from '../Logic'
 
 
 function CartDetails ({ token, onItem, onOrderDetails }) {
@@ -68,12 +70,14 @@ function CartDetails ({ token, onItem, onOrderDetails }) {
     const placeOrder = event => {
         event.preventDefault()
         try {
-
-            // onOrderDetails()
-        }
-        catch ({ message }) {
+            placeVehiclesOrder(token)
+                .then(() => alert('order placed'))
+                .catch(error => alert(error.message))
+        } catch ({ message }) {
             alert(message)
         }
+
+        //onOrderDetails()
     }
 
 
