@@ -20,7 +20,7 @@ const Home = () => {
       <Grid>
         {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}
         {pokemonList?.map((pokemon) => {
-          return <Card key={pokemon.name} pokemonName={pokemon.name} />;
+          return <Card pokemonName={pokemon.name} key={pokemon.name} />;
         })}
       </Grid>
     </Layout>

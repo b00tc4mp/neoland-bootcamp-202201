@@ -23,9 +23,23 @@ export const getCssBackgroundByType = (type) => {
     case "bug":
       return css`
         background: ${gradient}, ${({ theme }) => theme.colors.types.bug};
-        color: black;
       `;
-
+    case "electric":
+      return css`
+        background: ${gradient}, ${({ theme }) => theme.colors.types.electric};
+      `;
+    case "psychic":
+      return css`
+        background: ${gradient}, ${({ theme }) => theme.colors.types.psychic};
+      `;
+    case "rock":
+      return css`
+        background: ${gradient}, ${({ theme }) => theme.colors.types.rock};
+      `;
+    case "ghost":
+      return css`
+        background: ${gradient}, ${({ theme }) => theme.colors.types.ghost};
+      `;
     default:
       return css`
         background: ${gradient}, ${({ theme }) => theme.colors.types.normal};

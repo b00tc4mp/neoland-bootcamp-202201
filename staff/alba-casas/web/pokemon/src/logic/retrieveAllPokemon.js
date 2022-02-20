@@ -1,5 +1,5 @@
 function retrieveAllPokemon() {
-  return fetch(`https://pokeapi.co/api/v2/pokemon`).then((res) => {
+  return fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`).then((res) => {
     const { status } = res;
 
     if (status === 200) {
