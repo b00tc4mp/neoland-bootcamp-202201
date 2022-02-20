@@ -63,7 +63,7 @@ export const TypeCircle = styled.span`
   text-transform: uppercase;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme, type }) => theme.colors.types[type]};
+  ${({ type }) => getCssBackgroundByType(type)};
   letter-spacing: 1px;
 `;
 
