@@ -1,53 +1,34 @@
 import { css } from "styled-components";
 
+const gradient = `radial-gradient(
+  100% 338% at 0% 0%,
+  rgba(255, 255, 255, 0.3) 0%,
+  rgba(255, 255, 255, 0) 100%
+)`;
+
 export const getCssBackgroundByType = (type) => {
   switch (type) {
     case "water":
       return css`
-        background: radial-gradient(
-            100% 338% at 0% 0%,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0) 100%
-          ),
-          #3899f8;
+        background: ${gradient}, ${({ theme }) => theme.colors.types.water};
       `;
     case "fire":
       return css`
-        background: radial-gradient(
-            100% 338% at 0% 0%,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0) 100%
-          ),
-          tomato;
+        background: ${gradient}, ${({ theme }) => theme.colors.types.fire};
       `;
     case "grass":
       return css`
-        background: radial-gradient(
-            100% 338% at 0% 0%,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0) 100%
-          ),
-          #3f960a;
+        background: ${gradient}, ${({ theme }) => theme.colors.types.grass};
       `;
     case "bug":
       return css`
-        background: radial-gradient(
-            100% 338% at 0% 0%,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0) 100%
-          ),
-          #bdde6f;
+        background: ${gradient}, ${({ theme }) => theme.colors.types.bug};
         color: black;
       `;
 
     default:
       return css`
-        background: radial-gradient(
-            100% 338% at 0% 0%,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0) 100%
-          ),
-          #aba974;
+        background: ${gradient}, ${({ theme }) => theme.colors.types.normal};
       `;
   }
 };

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import icon from "../../assets/pokeball.png";
 import { retrievePokemonByName } from "../../logic";
+import Stat from "./Stat";
+import Image from "./Image";
 import {
   Pokeball,
   StyledCard,
   Header,
-  PokemonImg,
-  CircleBackground,
   Container,
   PokemonName,
   TypeCircle,
-  Stats,
   Footer,
 } from "./styled";
 
@@ -33,9 +32,12 @@ const Card = ({ pokemonName }) => {
     setIsFav(!isFav);
   };
 
+  const pokemonType = apiPokemon?.types[0].type.name;
+  const pokemonImage = apiPokemon?.sprites?.front_default;
+
   return (
     <StyledCard>
-      <Header type={apiPokemon?.types[0].type.name}>
+      <Header type={pokemonType}>
         <Pokeball
           isFav={isFav}
           src={icon}
@@ -44,28 +46,15 @@ const Card = ({ pokemonName }) => {
         />
       </Header>
       <Container>
-        <CircleBackground>
-          {/* Optional chaining: Coge la propiedad SOLO SI PUEDE (si apiPokemon es un objeto que contiene sprites) */}
-          <PokemonImg src={apiPokemon?.sprites?.front_default} alt="pokemon" />
-        </CircleBackground>
+        {/* Optional chaining: Coge la propiedad SOLO SI PUEDE (si apiPokemon es un objeto que contiene sprites) */}
+        <Image src={pokemonImage} />
         <PokemonName>{pokemonName}</PokemonName>
-        <TypeCircle type={apiPokemon?.types[0].type.name}>
-          {apiPokemon?.types[0].type.name}
-        </TypeCircle>
+        <TypeCircle type={pokemonType}>{pokemonType}</TypeCircle>
       </Container>
       <Footer>
-        <Stats>
-          <span>Exp</span>
-          <span>{apiPokemon?.base_experience} pts</span>
-        </Stats>
-        <Stats>
-          <span>Height</span>
-          <span>{apiPokemon?.height} m</span>
-        </Stats>
-        <Stats>
-          <span>Weight</span>
-          <span>{apiPokemon?.height} kg</span>
-        </Stats>
+        <Stat title="Exp">{apiPokemon?.base_experience} pts</Stat>
+        <Stat title="Height">{apiPokemon?.height} m</Stat>
+        <Stat title="Weight">{apiPokemon?.weight} kg</Stat>
       </Footer>
     </StyledCard>
   );

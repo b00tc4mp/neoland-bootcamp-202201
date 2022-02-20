@@ -150,9 +150,4 @@ export default css`
   * {
     box-sizing: border-box;
   }
-  body {
-    font-family: "Rubik", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-  }
 `;

@@ -10,6 +10,7 @@ export const Pokeball = styled.img`
   opacity: ${({ isFav }) => (isFav ? 1 : 0.5)};
   margin: 8px;
   cursor: pointer;
+  user-select: none;
 `;
 
 export const Header = styled.header`
@@ -22,8 +23,8 @@ export const Header = styled.header`
     rgba(255, 255, 255, 0) 100%
   );
   border-radius: 8px 8px 0 0;
-  ${({ type }) => getCssBackgroundByType(type)}
   z-index: 1;
+  ${({ type }) => getCssBackgroundByType(type)};
 `;
 
 export const StyledCard = styled.div`
@@ -33,32 +34,9 @@ export const StyledCard = styled.div`
   width: 260px;
   height: 360px;
   align-items: center;
-  background: ${({ theme }) => theme.colors.lightGray};
+  background: ${({ theme }) => theme.colors.white};
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 8px;
-`;
-
-export const PokemonImg = styled.img`
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  object-position: center;
-`;
-
-export const CircleBackground = styled.div`
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(
-      50% 50% at 50% 50%,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(211, 211, 211, 0.8) 100%
-    ),
-    ${({ theme }) => theme.colors.secondary};
-  border-radius: 190px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-  margin-top: 40px;
 `;
 
 export const Container = styled.figure`
@@ -70,10 +48,10 @@ export const Container = styled.figure`
 `;
 
 export const PokemonName = styled.figcaption`
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   margin-bottom: 15px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   text-transform: capitalize;
 `;
 
@@ -85,16 +63,8 @@ export const TypeCircle = styled.span`
   text-transform: uppercase;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.white};
-  ${({ type }) => getCssBackgroundByType(type)}
-`;
-
-export const Stats = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: ${({ theme }) => theme.colors.white};
-  gap: 10px;
-  font-weight: 700;
+  background: ${({ theme, type }) => theme.colors.types[type]};
+  letter-spacing: 1px;
 `;
 
 export const Footer = styled.footer`

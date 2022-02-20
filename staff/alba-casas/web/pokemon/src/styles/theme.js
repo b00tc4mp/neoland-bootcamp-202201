@@ -2,12 +2,17 @@ const theme = {
   colors: {
     primary: "#ffcc03",
     secondary: "#3899f8",
-    background: "#d3d3d3",
-    darkGray: "#696969",
-    lightGray: "#808080",
-    white: " #ffff",
-    textBlack: "black",
-    textBlue: "#2c71b8",
+    background: "#F0F2F6",
+    lightGray: "#AAB3C7",
+    white: " #fff",
+    black: "#3E454E",
+    types: {
+      fire: "#FB6C6C",
+      water: "#74bdfd",
+      grass: "#48d0b0",
+      bug: "#bdde6f",
+      normal: "#aba974",
+    },
   },
 };
 
