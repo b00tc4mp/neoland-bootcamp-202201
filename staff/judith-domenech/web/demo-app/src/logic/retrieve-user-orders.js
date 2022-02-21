@@ -1,13 +1,13 @@
 import { validateToken } from './helpers/validators'
 
-function retrieveVehiclesOrders(token) {
+function retrieveUserOrders(token) {
     validateToken(token)
+
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
-
         .then(res => {
             const { status } = res
 
@@ -15,8 +15,6 @@ function retrieveVehiclesOrders(token) {
                 return res.json()
                     .then(user => {
                         const { orders = [] } = user
-
-                        if (!orders.length) throw new Error('No orders yet')
 
                         return orders
                     })
@@ -36,4 +34,4 @@ function retrieveVehiclesOrders(token) {
         })
 }
 
-export default retrieveVehiclesOrders
+export default retrieveUserOrders

@@ -1,8 +1,8 @@
 import './Cart.css'
 import { useEffect, useState } from 'react'
-import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart} from '../logic'
+import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart, placeVehiclesOrder } from '../logic'
 
-function Cart({ token, query, onItem }) {
+function Cart({ token, onItem, onOrder }) {
     const [vehicles, setVehicles] = useState()
 
     useEffect(() => {
@@ -19,11 +19,10 @@ function Cart({ token, query, onItem }) {
         try {
             toggleFavVehicle(token, vehicleId)
                 .then(() =>
-                retrieveVehiclesFromCart(token, query)
+                retrieveVehiclesFromCart(token)
                         .then(vehicles => setVehicles(vehicles))
                         .catch(error => alert(error.message))
                 )
-                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
@@ -55,9 +54,24 @@ function Cart({ token, query, onItem }) {
                         .then(vehicles => setVehicles(vehicles))
                         .catch(error => alert(error.message))
                 )
-                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
+        }
+    }
+
+    const goToOrder = id => {
+        onOrder(id)
+    }
+
+    const placeOrder = () => {
+        try {
+            placeVehiclesOrder(token)
+                .then(id => {
+                    goToOrder(id)
+                })
+                .catch(error => alert(error.message))
+        } catch ({ message }) {
+            alert(message)
         }
     }
 
@@ -89,6 +103,7 @@ function Cart({ token, query, onItem }) {
             <div className="cart__total">
                 <span>Total💰 = {vehicles.total}$</span>
             </div>
+            <button className="cart__place-order" onClick={placeOrder}>Place Order</button>
         </div> : <p className="cart__empty">No cart yet</p>)}
     </div>
 }

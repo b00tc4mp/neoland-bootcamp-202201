@@ -1,7 +1,11 @@
 #root{
 --color-link: black;
 --background: burlywood;
-
+--card: #F0F0F0;
+--button: #3E497A;
+--letter: #f0f0f0;
+--hover-button: #5b6591;
+--hover-letter: #f0f0f0;
 }
 
 * {
@@ -9,7 +13,7 @@
 }
 
 html, body, #root {
-    height: 100%;
+    height: 100vh;
     margin: 0;
-    background-color: burlywood;
+    background-color: var(--background);
   }

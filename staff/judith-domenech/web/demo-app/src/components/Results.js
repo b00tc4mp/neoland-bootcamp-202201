@@ -30,7 +30,6 @@ function Results ({ token , query, onItem }) {
                         })
                         .catch(error => alert(error.message))
                 )
-                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }

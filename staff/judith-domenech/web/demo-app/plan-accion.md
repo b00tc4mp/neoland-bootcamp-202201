@@ -16,4 +16,6 @@
 9. 
 
 ### flujo ver mis pedidos
-TODO for tomorrow
+1. Crear un link (en la home) que te diroja a la vista de las ordenes que has hecho.
+2. crear funcion disparadora que capture el evento de link
+3. cear uan funcion de capa de presentacion para cambiar de vista.

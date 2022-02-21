@@ -1,11 +1,12 @@
 import './Detail.css'
 import { addVehicleToCart, retrieveVehicle, toggleFavVehicle } from '../logic'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-function Detail({ token, vehicleId, onBack }) {
+function Detail({ token, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
-    debugger
+    const { vehicleId } = useParams()
 
     useEffect(() => {
         try {
@@ -58,7 +59,7 @@ function Detail({ token, vehicleId, onBack }) {
             <img className="detail__image" src={vehicle.image} />
 
             <span>{vehicle.price} $</span>
-            <button onClick={addToCart}>Add to cart</button>
+            <button className='buttom__add-to-cart' onClick={addToCart}>Add to cart</button>
 
             <p>{vehicle.description}</p>
 

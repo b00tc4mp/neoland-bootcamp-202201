@@ -11,7 +11,10 @@ import retrieveFavVehicles from './retrieve-fav-vehicle'
 import addVehicleToCart from './add-vehicle-to-cart'
 import removeVehicleFromCart from './remove-vehicle-from-cart'
 import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart'
-
+import placeVehiclesOrder from './place-vehicles-order'
+import retrieveUserOrders from './retrieve-user-orders'
+import retrieveOrder from './retrieve-user-orders'
+import retrieveVehiclesFromOrder from './retrieve-vehicles-from-order'
 
 export {
     authenticateUser,
@@ -26,6 +29,9 @@ export {
     retrieveFavVehicles,
     addVehicleToCart,
     removeVehicleFromCart,
-    retrieveVehiclesFromCart
-   
+    retrieveVehiclesFromCart,
+    placeVehiclesOrder,
+    retrieveUserOrders,
+    retrieveOrder, 
+    retrieveVehiclesFromOrder
 }

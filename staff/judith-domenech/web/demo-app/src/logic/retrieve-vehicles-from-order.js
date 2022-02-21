@@ -1,11 +1,8 @@
-import { validateToken } from './helpers/validators'
-import { generateOrderDate, generateOrderId } from './helpers/helpers'
+import { validateToken, validateString } from './helpers/validators'
 
-function placeVehiclesOrder(token) {
+function retrieveVehiclesFromOrder(token, orderId) {
     validateToken(token)
-
-    const orderId = generateOrderId()
-    const orderDate = generateOrderDate()
+    validateString(orderId)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -18,30 +15,30 @@ function placeVehiclesOrder(token) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                        let { cart = [], orders = [] } = user
 
-                        if (!cart.length) throw new Error('cart is empty')
+                        const { orders = [] } = user
 
-                        else {
-                            const order = { id: orderId, date: orderDate, cart }
+                        if (!orders.length) throw new Error('no orders placed yet')
 
-                            orders.push(order)
+                        const order = orders.find(order => order.id === orderId)
 
-                            cart = []
+                        const { cart = [] } = order
 
-                            return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
-                                method: 'PATCH',
-                                headers: {
-                                    Authorization: `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({ orders, cart })
-                            })
+                        if (!cart.length) throw new Error('no cart in the order')
+
+                        const fetches = cart.map((item) => {
+                            return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${item.id}`)
                                 .then(res => {
                                     const { status } = res
 
-                                    if (status === 204) {
-                                        return orderId
+                                    if (status === 200) {
+                                        return res.json()
+                                            .then(vehicle => {
+                                                vehicle.qty = item.qty
+                                                vehicle.total = vehicle.price * vehicle.qty
+
+                                                return vehicle
+                                            })
                                     } else if (status >= 400 && status < 500) {
                                         return res.json()
                                             .then(payload => {
@@ -55,7 +52,15 @@ function placeVehiclesOrder(token) {
                                         throw new Error('unknown error')
                                     }
                                 })
-                        }
+                        })
+                        return Promise.all(fetches)
+                            .then(vehicles => {
+                                const total = vehicles.reduce((acc, vehicle) => vehicle.total + acc, 0)
+
+                                vehicles.total = total
+
+                                return vehicles
+                            })
                     })
             } else if (status >= 400 && status < 500) {
                 return res.json()
@@ -72,4 +77,4 @@ function placeVehiclesOrder(token) {
         })
 }
 
-export default placeVehiclesOrder
+export default retrieveVehiclesFromOrder

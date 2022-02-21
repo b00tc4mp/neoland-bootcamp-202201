@@ -6,10 +6,12 @@ import Search from './Search'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../logic'
 import Logo from './Logo'
-import Landing from './Landing'
 import Favs from './Favs'
 import Detail from './Detail'
 import Cart from './Cart'  
+import Orders from './Order'
+import Order from './Orders' 
+import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
 
 function Home({ token, onLogout, }) {
@@ -19,8 +21,13 @@ function Home({ token, onLogout, }) {
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
     const [vehicleId, setVehicleId] = useState()
-    const [query, setQuery] = useState()
     const [previousView, setPreviousView] = useState()
+    const navigate = useNavigate()
+    const [search, setSearch] = useSearchParams()
+    const q = search.get('q')
+    const [orderId, setOrderId] = useState()
+    const [query, setQuery] = useState(q)
+    const location = useLocation()
    
     useEffect(() => {
         try {
@@ -38,9 +45,10 @@ function Home({ token, onLogout, }) {
         showProfile()
     }
 
-    const showProfile = () => setView('profile')
-    const showUpdatePassword = () => setView('update-password')
-    const showDeleteAccount = () => setView('delete-account')
+    const showProfile = () => navigate('profile')
+
+    const showUpdatePassword = () => navigate('profile/update-password')
+    const showDeleteAccount = () => navigate('profile/delete-account')
     
 
     const goToSearch = event => {
@@ -49,7 +57,7 @@ function Home({ token, onLogout, }) {
         showSearch()
     }
 
-    const showSearch = () => setView('search')
+    const showSearch = () => navigate(!query? '/' : `search?q=${query}`)
 
     const goToFavs = event => {
         event.preventDefault()
@@ -57,19 +65,20 @@ function Home({ token, onLogout, }) {
         showFavs()
     }
 
-    const showFavs = () => setView('favs')
-
-    const showDetails= () => setView('details')
-
-    const goBackFromDetail = () => setView(previousView)
-
+    const showDetails= (id) => navigate(`vehicles/${id}`)
+    const showFavs = () => navigate('favs')
+    
     const goToDetail = (id) => {
         setVehicleId(id)
 
-        setPreviousView(view)
+        setPreviousView(`${location.pathname}${location.search? location.search: ''}`)
         
-        showDetails()
+        showDetails(id)
     }
+
+
+    const goBackFromDetail = () => 
+        navigate(previousView || '/')
 
     const goToCart = event => {
         event.preventDefault()
@@ -77,32 +86,52 @@ function Home({ token, onLogout, }) {
         showCart()
     }
 
-    const showCart = () => setView('cart')
+    const showCart = () => navigate('cart')
+
+    const doSearch = query => {
+        setQuery(query)
+
+        navigate(`search?q=${query}`)
+    }
+
+    const goToOrder = id => {
+        setOrderId(id)
+        showOrder()
+    } 
+
+    const showOrder = () => navigate('order') 
+
+    const goToOrders = event =>{
+        event.preventDefault()
+
+        showOrders()
+    }
+
+    const showOrders = () => navigate('orders')
 
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch} title="search" ><Logo/></a>
-            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToProfile} title="profile"> {name}</a>
-            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToFavs}>Favs</a>
-            <a className={`home__menu-link ${view === 'cart'? 'home__menu-link--active' :''}`} href=''  onClick={goToCart}> 🛒 Cart</a>
+            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToProfile} title="profile"> 👤 {name}</a>
+            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToFavs}> ♥️ Favs</a>
+            <a className={`home__profile-link${view === 'cart'? 'home__menu-link--active' :''}`} href=''  onClick={goToCart}> 🛒 Cart</a>
+            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href=''  onClick={goToOrders}> 🛍 Orders</a>
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
         </div>
 
-        {view === 'search' && <Search token={token} onItem={goToDetail} onQuery={setQuery} query={query} />}
-
-        {view === 'profile' && <Profile  token={token} onUpdatePassword={showUpdatePassword} onDeletedAccount={showDeleteAccount}/>}
-
-        {view === 'landing' && <Landing />}
-
-        {view === 'update-password' && <UpdatePassword token={token} onBack={showProfile} />}
-
-        {view === 'delete-account' && <DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout}/>}
-   
-        {view === 'favs' && <Favs token={token} onItem={goToDetail}/>}
-
-        {view === 'details' && <Detail  token={token} vehicleId={vehicleId} onBack={goBackFromDetail} />}
-      
-        {view === 'cart' && <Cart token={token} onItem={goToDetail} />}
+        
+        <Routes>
+            <Route index element={<Search token={token} onItem={goToDetail} onQuery={doSearch} query={query} />} />
+            <Route path="search" element={<Search token={token} onItem={goToDetail} onQuery={doSearch} query={query} />} />
+            <Route path="favs" element={<Favs token={token} onItem={goToDetail} />} />
+            <Route path="cart" element={<Cart token={token} onItem={goToDetail} />} />
+            <Route path="profile" element={<Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} />
+            <Route path="profile/update-password" element={<UpdatePassword token={token} onBack={showProfile} />} />
+            <Route path="profile/delete-account" element={<DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />} />
+            <Route path="vehicles/:vehicleId" element={<Detail token={token} onBack={goBackFromDetail} />} />
+            <Route path="order" element={<Order token={token} orderId={orderId} onItem={goToDetail} /> } />
+            <Route path="orders" element={<Orders token={token} onOrder={goToOrder}/>} />
+        </Routes>
 
     </div>
 }
