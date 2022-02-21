@@ -1,4 +1,5 @@
 function retrieveAllPokemon() {
+  //`https://pokeapi.co/api/v2/pokemon?limit=${quantity}&offset=${offset}`
   return fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`).then((res) => {
     const { status } = res;
 

@@ -16,6 +16,11 @@ const theme = {
       psychic: "#F55692",
       rock: "#958450",
       ghost: "#8F54A4",
+      poison: "#ca72eb",
+      fighting: "#D45F65",
+      ground: "#E2D15B",
+      ice: "#1A94A3",
+      dragon: "#8B56FE",
     },
   },
 };

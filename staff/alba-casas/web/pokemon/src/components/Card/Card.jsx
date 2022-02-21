@@ -53,8 +53,8 @@ const Card = ({ pokemonName }) => {
       </Container>
       <Footer>
         <Stat title="Exp">{apiPokemon?.base_experience} pts</Stat>
-        <Stat title="Height">{apiPokemon?.height} m</Stat>
-        <Stat title="Weight">{apiPokemon?.weight} kg</Stat>
+        <Stat title="Height">{apiPokemon?.height / 10} m</Stat>
+        <Stat title="Weight">{apiPokemon?.weight / 10} kg</Stat>
       </Footer>
     </StyledCard>
   );
