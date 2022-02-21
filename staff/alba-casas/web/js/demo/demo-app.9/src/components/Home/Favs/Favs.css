@@ -1,0 +1,23 @@
+.favs__list {
+  list-style-type: none;
+}
+
+.favs__item {
+  cursor: pointer;
+}
+
+.favs__item-fav-button {
+  display: block;
+  font-size: 48px;
+  margin: 48px;
+}
+
+.favs__item-image {
+  width: 50vh;
+}
+
+.favs__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

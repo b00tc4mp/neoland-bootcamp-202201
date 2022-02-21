@@ -11,53 +11,36 @@ import Favs from "./Favs/Favs";
 import Details from "./Search/Details/Details";
 import Cart from "./Cart/Cart";
 import Orders from "./Orders/Orders";
-import {
-  Routes,
-  Route,
-  useNavigate,
-  useSearchParams,
-  useLocation,
-} from "react-router-dom";
 
 function Home({ token, onLanding }) {
   const [view, setView] = useState("search");
   const [name, setName] = useState("name");
   const [vehicleId, setVehicleId] = useState();
+  const [query, setQuery] = useState();
   const [previousView, setPreviousView] = useState();
-  const navigate = useNavigate();
-  const [search, setSearch] = useSearchParams();
-  const q = search.get("q");
-  const [query, setQuery] = useState(q);
-  const location = useLocation();
 
-  const showProfile = () => navigate("profile");
-  const showUpdatePassword = () => navigate("profile/update-password");
-  const showDeletePassword = () => navigate("profile/delete-account");
-  const showSearch = () => navigate(!query ? "/" : `search?q=${query}`);
-  const showFavs = () => navigate("favs");
-  const showDetails = (id) => navigate(`vehicles/${id}`);
-  const showCart = () => navigate("cart");
-  const showOrders = () => navigate("orders");
-  const goBackFromDetail = () => navigate(previousView || "/");
+  const showProfile = () => setView("profile");
+  const showUpdatePassword = () => setView("update-password");
+  const showDeletePassword = () => setView("delete-account");
+  const showSearch = () => setView("search");
+  const showFavs = () => setView("favs");
+  const showDetails = () => setView("details");
+  const showCart = () => setView("cart");
+  const showOrders = () => setView("orders");
+  const goBackFromDetail = () => setView(previousView);
 
   const goToOrders = () => {
     showOrders();
   };
+
   const refreshData = (data) => setName(data);
 
   const goToDetail = (id) => {
     setVehicleId(id);
-    setPreviousView(
-      `${location.pathname}${location.search ? location.search : ""}`
-    );
-    showDetails(id);
+    setPreviousView(view);
+    showDetails();
   };
 
-  const doSearch = (query) => {
-    setQuery(query);
-
-    navigate(`search?q=${query}`);
-  };
   useEffect(() => {
     try {
       retrieveUser(token)
@@ -149,76 +132,44 @@ function Home({ token, onLanding }) {
         </button>
       </div>
 
-      <Routes>
-        <Route
-          path="vehicles/:vehicleId"
-          element={
-            <Details
-              token={token}
-              vehicleId={vehicleId}
-              onBack={goBackFromDetail}
-            />
-          }
+      {view === "details" && (
+        <Details
+          token={token}
+          vehicleId={vehicleId}
+          onBack={goBackFromDetail}
         />
-        <Route
-          path="cart"
-          element={
-            <Cart token={token} onItem={goToDetail} onPlaceOrder={goToOrders} />
-          }
+      )}
+      {view === "cart" && (
+        <Cart token={token} onItem={goToDetail} onPlaceOrder={goToOrders} />
+      )}
+      {view === "favs" && <Favs token={token} onItem={goToDetail} />}
+      {view === "search" && (
+        <Search
+          token={token}
+          onItem={goToDetail}
+          onQuery={setQuery}
+          query={query}
         />
-        <Route
-          path="favs"
-          element={<Favs token={token} onItem={goToDetail} />}
+      )}
+      {view === "profile" && (
+        <Profile
+          onUpdatePasswordClick={showUpdatePassword}
+          onDeletePasswordClick={showDeletePassword}
+          token={token}
+          refreshData={refreshData}
         />
-        <Route
-          index
-          element={
-            <Search
-              token={token}
-              onItem={goToDetail}
-              onQuery={doSearch}
-              query={query}
-            />
-          }
+      )}
+      {view === "update-password" && (
+        <UpdatePassword onProfile={showProfile} token={token} />
+      )}
+      {view === "delete-account" && (
+        <DeleteAccount
+          onProfile={showProfile}
+          token={token}
+          onLanding={onLanding}
         />
-        <Route
-          path="search"
-          element={
-            <Search
-              token={token}
-              onItem={goToDetail}
-              onQuery={doSearch}
-              query={query}
-            />
-          }
-        />
-        <Route
-          path="profile"
-          element={
-            <Profile
-              onUpdatePasswordClick={showUpdatePassword}
-              onDeletePasswordClick={showDeletePassword}
-              token={token}
-              refreshData={refreshData}
-            />
-          }
-        />
-        <Route
-          path="profile/update-password"
-          element={<UpdatePassword onProfile={showProfile} token={token} />}
-        />
-        <Route
-          path="profile/delete-account"
-          element={
-            <DeleteAccount
-              onProfile={showProfile}
-              token={token}
-              onLanding={onLanding}
-            />
-          }
-        />
-        <Route path="orders" element={<Orders token={token} />} />
-      </Routes>
+      )}
+      {view === "orders" && <Orders token={token} />}
     </div>
   );
 }
