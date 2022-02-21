@@ -2,9 +2,11 @@ import './Details.css'
 import { retrieveVehicle, toggleFavVehicle, addVehicleToCart } from '../logic'
 import { useEffect, useState } from 'react'
 
+
 function Details({ token, vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
+    
 
     useEffect(() => {
         try {

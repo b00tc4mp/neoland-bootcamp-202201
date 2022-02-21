@@ -1,8 +1,8 @@
 import './Cart.css'
 import { useEffect, useState } from 'react'
-import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart } from '../logic'
+import { retrieveVehiclesFromCart, toggleFavVehicle, addVehicleToCart, removeVehicleFromCart, placeVehiclesOrder } from '../logic'
 
-function Cart({ token, onItem }) {
+function Cart({ token, onItem, onOrder }) {
     const [vehicles, setVehicles] = useState()
 
     useEffect(() => {
@@ -36,12 +36,12 @@ function Cart({ token, onItem }) {
     const addToCart = vehicleId => {
         try {
             addVehicleToCart(token, vehicleId)
-                .then(() => 
+                .then(() =>
                     retrieveVehiclesFromCart(token)
                         .then(vehicles => setVehicles(vehicles))
                         .catch(error => alert(error.message))
                 )
-                .catch(error => alert (error.message))
+                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
@@ -61,6 +61,22 @@ function Cart({ token, onItem }) {
         }
     }
 
+    const goToOrder = orderId => {
+        onOrder(orderId)
+    }
+
+    const placeOrder = () => {
+        try {
+            placeVehiclesOrder(token)
+                .then(orderId => {
+                    goToOrder(orderId)
+                })
+                .catch(error => alert(error.message))
+        } catch ({ message }) {
+            alert(message)
+        }
+    }
+
     return <div className="cart">
         {vehicles && (vehicles.length ? <div>
             <ul className="cart__list">
@@ -72,24 +88,26 @@ function Cart({ token, onItem }) {
 
                         toggleFav(vehicle.id)
                     }}>{vehicle.isFav ? '❤️' : '🤍'}</span>
-                    
+
                     <img className="cart__item-image" src={vehicle.image} />
-                        <span><button onClick={event => {
-                            event.stopPropagation()
+                    <span><button onClick={event => {
+                        event.stopPropagation()
 
-                            addToCart(vehicle.id)
-                        }}>+</button><button onClick={event => {
-                            event.stopPropagation()
+                        addToCart(vehicle.id)
+                    }}>+</button><button onClick={event => {
+                        event.stopPropagation()
 
-                            removeFromCart(vehicle.id)
-                        }}>-</button> {vehicle.qty} x {vehicle.price} $ = {vehicle.total} $</span>
-                    </li>)}
-                </ul>
+                        removeFromCart(vehicle.id)
+                    }}>-</button> {vehicle.qty} x {vehicle.price} $ = {vehicle.total} $</span>
+                </li>)}
+            </ul>
 
-                <div className="cart__total">
-                    <span>total {vehicles.total} $</span>
-                </div>
-            </div> : <p className="cart__empty">No cart yet</p>)}
+            <div className="cart__total">
+                <span>total {vehicles.total} $</span>
+            </div>
+
+            <button onClick={placeOrder}>Place order</button >
+        </div> : <p className="cart__empty">No cart yet</p>)}
     </div>
 }
 
