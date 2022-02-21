@@ -13,6 +13,8 @@ import removeVehicleFromCart from './remove-vehicle-from-cart';
 import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart';
 import placeVehiclesOrder from './place-vehicles-order';
 import retrieveOrder from './retrieve-order-by-id'
+import retrieveVehiclesFromOrder from './retrieve-vehicles-from-order'
+import retrieveUserOrders from './retrieve-user-orders'
 
 export {
     authenticateUser,
@@ -29,5 +31,7 @@ export {
     removeVehicleFromCart,
     retrieveVehiclesFromCart,
     placeVehiclesOrder,
-    retrieveOrder
+    retrieveOrder,
+    retrieveVehiclesFromOrder,
+    retrieveUserOrders
 }
