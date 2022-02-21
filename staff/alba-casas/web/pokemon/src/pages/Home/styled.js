@@ -9,6 +9,12 @@ export const Layout = styled.div`
   background: ${({ theme }) => theme.colors.background};
 `;
 
+export const Main = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+`;
+
 export const Grid = styled.div`
   max-width: 980px;
   height: fit-content;

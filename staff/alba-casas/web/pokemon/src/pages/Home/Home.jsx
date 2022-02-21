@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { retrieveAllPokemon } from "../../logic";
-import { Grid, Layout } from "./styled";
+import { Grid, Layout, Main } from "./styled";
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState();
@@ -17,15 +17,18 @@ const Home = () => {
         alert(message);
       });
   }, []);
+
   return (
     <Layout>
       <Sidebar />
-      <Grid>
-        {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}
-        {pokemonList?.map((pokemon) => {
-          return <Card pokemonName={pokemon.name} key={pokemon.name} />;
-        })}
-      </Grid>
+      <Main>
+        <Grid>
+          {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}
+          {pokemonList?.map((pokemon) => {
+            return <Card pokemonName={pokemon.name} key={pokemon.name} />;
+          })}
+        </Grid>
+      </Main>
     </Layout>
   );
 };

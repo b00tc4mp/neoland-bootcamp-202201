@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import Input from "../Input";
 
 export const SideBar = styled.div`
+  position: sticky;
+  left: 0;
+  top: 0;
   width: 280px;
-  height: auto;
+  height: 100vh;
   background-color: ${({ theme }) => theme.colors.white};
-  margin-right: 200px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 32px;
 `;
@@ -20,4 +23,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+`;
+
+export const StyledInput = styled(Input)`
+  margin-top: 24px;
+  margin-bottom: 24px;
 `;

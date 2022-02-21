@@ -25,13 +25,11 @@ const Results = ({ token, query, onItem }) => {
 
   const toggleFav = (vehicleId) => {
     try {
-      toggleFavVehicle(token, vehicleId)
-        .then(() =>
-          searchVehicles(token, query)
-            .then((vehicles) => setVehicles(vehicles))
-            .catch((error) => alert(error.message))
-        )
-        .catch((error) => alert(error.message));
+      toggleFavVehicle(token, vehicleId).then(() =>
+        searchVehicles(token, query)
+          .then((vehicles) => setVehicles(vehicles))
+          .catch((error) => alert(error.message))
+      );
     } catch (error) {
       alert(error.message);
     }

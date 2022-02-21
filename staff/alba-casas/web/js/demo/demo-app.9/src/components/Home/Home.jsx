@@ -133,11 +133,7 @@ function Home({ token, onLanding }) {
       </div>
 
       {view === "details" && (
-        <Details
-          token={token}
-          vehicleId={vehicleId}
-          onBack={goBackFromDetail}
-        />
+        <Details token={token} onBack={goBackFromDetail} />
       )}
       {view === "cart" && (
         <Cart token={token} onItem={goToDetail} onPlaceOrder={goToOrders} />

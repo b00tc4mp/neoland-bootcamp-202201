@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import retrieveVehicle from "../../../../logic/logic/retrieve-vehicle";
 import { addVehicleToCart, toggleFavVehicle } from "../../../../logic/logic";
+import { useParams } from "react-router-dom";
 import "./Details.css";
 
-function Details({ token, vehicleId, onBack }) {
+function Details({ token, onBack }) {
   const [vehicle, setVehicle] = useState({});
   const [fav, setFav] = useState(false);
+  const { vehicleId } = useParams();
 
   useEffect(() => {
     try {
