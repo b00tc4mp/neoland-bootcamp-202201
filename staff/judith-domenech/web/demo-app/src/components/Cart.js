@@ -60,6 +60,7 @@ function Cart({ token, onItem, onOrder }) {
     }
 
     const goToOrder = id => {
+debugger
         onOrder(id)
     }
 
@@ -98,8 +99,8 @@ function Cart({ token, onItem, onOrder }) {
                         removeFromCart(vehicle.id)
                     }}>-</button> {vehicle.qty} x {vehicle.price} $ = {vehicle.total} $</span>
                 </li>)}
+                
             </ul>
-
             <div className="cart__total">
                 <span>Total💰 = {vehicles.total}$</span>
             </div>

@@ -4,7 +4,7 @@
     
     function Orders({ token, onOrder }) {
         const [orders, setOrders] = useState()
-    
+
         useEffect(() => {
             try {
                 retrieveUserOrders(token)

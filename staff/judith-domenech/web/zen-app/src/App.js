@@ -19,7 +19,7 @@ function App() {
 
   const logout = () => {
     setToken()
-    setView('landing')
+    delete sessionStorage.token
   }
 
   return <>

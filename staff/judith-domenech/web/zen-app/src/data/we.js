@@ -14,7 +14,10 @@ const we = [
     'Amigüis 👯‍♀️👯‍♂️ ',
     'Nooo Carnaaaaal!!',
     'Ostiaaaa',
-    'Nunca cambies'
+    'Nunca cambien',
+    'Maldita infeliz',
+    'Ni tan mal',
+    'Callate drogadicta'
 
 ]
 

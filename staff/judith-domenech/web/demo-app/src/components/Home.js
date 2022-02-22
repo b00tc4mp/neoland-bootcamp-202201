@@ -8,16 +8,16 @@ import { retrieveUser } from '../logic'
 import Logo from './Logo'
 import Favs from './Favs'
 import Detail from './Detail'
-import Cart from './Cart'  
+import Cart from './Cart'
 import Orders from './Order'
-import Order from './Orders' 
+import Order from './Orders'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
 
 function Home({ token, onLogout, }) {
     // const token = props.token
     //const { token } = props
-   
+
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
     const [vehicleId, setVehicleId] = useState()
@@ -28,7 +28,7 @@ function Home({ token, onLogout, }) {
     const [orderId, setOrderId] = useState()
     const [query, setQuery] = useState(q)
     const location = useLocation()
-   
+
     useEffect(() => {
         try {
             retrieveUser(token)
@@ -49,7 +49,7 @@ function Home({ token, onLogout, }) {
 
     const showUpdatePassword = () => navigate('profile/update-password')
     const showDeleteAccount = () => navigate('profile/delete-account')
-    
+
 
     const goToSearch = event => {
         event.preventDefault()
@@ -57,7 +57,7 @@ function Home({ token, onLogout, }) {
         showSearch()
     }
 
-    const showSearch = () => navigate(!query? '/' : `search?q=${query}`)
+    const showSearch = () => navigate(!query ? '/' : `search?q=${query}`)
 
     const goToFavs = event => {
         event.preventDefault()
@@ -65,19 +65,16 @@ function Home({ token, onLogout, }) {
         showFavs()
     }
 
-    const showDetails= (id) => navigate(`vehicles/${id}`)
+    const showDetails = (id) => navigate(`vehicles/${id}`)
     const showFavs = () => navigate('favs')
-    
+
     const goToDetail = (id) => {
         setVehicleId(id)
-
-        setPreviousView(`${location.pathname}${location.search? location.search: ''}`)
-        
+        setPreviousView(`${location.pathname}${location.search ? location.search : ''}`)
         showDetails(id)
     }
 
-
-    const goBackFromDetail = () => 
+    const goBackFromDetail = () =>
         navigate(previousView || '/')
 
     const goToCart = event => {
@@ -97,13 +94,13 @@ function Home({ token, onLogout, }) {
     const goToOrder = id => {
         setOrderId(id)
         showOrder()
-    } 
+    }
 
-    const showOrder = () => navigate('order') 
+    const showOrder = () => navigate('order')
 
-    const goToOrders = event =>{
+    const goToOrders = event => {
         event.preventDefault()
-
+        
         showOrders()
     }
 
@@ -111,15 +108,15 @@ function Home({ token, onLogout, }) {
 
     return <div className="home">
         <div className="home__header">
-            <a className="home__home-link" href="" onClick={goToSearch} title="search" ><Logo/></a>
-            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToProfile} title="profile"> 👤 {name}</a>
-            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href="" onClick={goToFavs}> ♥️ Favs</a>
-            <a className={`home__profile-link${view === 'cart'? 'home__menu-link--active' :''}`} href=''  onClick={goToCart}> 🛒 Cart</a>
-            <a className={`home__profile-link ${view === 'cart'? 'home__menu-link--active' :''}`} href=''  onClick={goToOrders}> 🛍 Orders</a>
+            <a className="home__home-link" href="" onClick={goToSearch} title="search" ><Logo /></a>
+            <a className={`home__profile-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href="" onClick={goToProfile} title="profile"> 👤 {name}</a>
+            <a className={`home__profile-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href="" onClick={goToFavs}> ♥️ Favs</a>
+            <a className={`home__profile-link${view === 'cart' ? 'home__menu-link--active' : ''}`} href='' onClick={goToCart}> 🛒 Cart</a>
+            <a className={`home__profile-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href='' onClick={goToOrders}> 🛍 Orders</a>
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
         </div>
 
-        
+
         <Routes>
             <Route index element={<Search token={token} onItem={goToDetail} onQuery={doSearch} query={query} />} />
             <Route path="search" element={<Search token={token} onItem={goToDetail} onQuery={doSearch} query={query} />} />
@@ -129,8 +126,8 @@ function Home({ token, onLogout, }) {
             <Route path="profile/update-password" element={<UpdatePassword token={token} onBack={showProfile} />} />
             <Route path="profile/delete-account" element={<DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />} />
             <Route path="vehicles/:vehicleId" element={<Detail token={token} onBack={goBackFromDetail} />} />
-            <Route path="order" element={<Order token={token} orderId={orderId} onItem={goToDetail} /> } />
-            <Route path="orders" element={<Orders token={token} onOrder={goToOrder}/>} />
+            <Route path="order" element={<Order token={token} orderId={orderId} onItem={goToDetail} />} />
+            <Route path="orders" element={<Orders token={token} onOrder={goToOrder} />} />
         </Routes>
 
     </div>
