@@ -10,7 +10,7 @@ function Cart({ token, onItem, onOrder }) {
         try {
             retrieveVehiclesFromCart(token)
                 .then(vehicles => setVehicles(vehicles))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error})
         } catch (error) {
             alert(error.message)
         }
@@ -19,14 +19,12 @@ function Cart({ token, onItem, onOrder }) {
     const toggleFav = vehicleId => {
         try {
             toggleFavVehicle(token, vehicleId)
-                .then(() =>
-                    retrieveVehiclesFromCart(token)
-                        .then(vehicles => setVehicles(vehicles))
-                        .catch(error => alert(error.message))
-                )
-                .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
+            .then(() => retrieveVehiclesFromCart(token))
+            .then(vehicles => setVehicles(vehicles))
+            .catch(error => { throw error })
+        }
+        catch ({ message }) {
+            alert(message)
         }
     }
 

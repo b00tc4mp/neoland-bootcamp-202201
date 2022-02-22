@@ -1,10 +1,12 @@
 import './Details.css'
 import { useState, useEffect } from 'react'
 import { retrieveVehicle, toggleFavVehicle, addVehicleToCart } from '../Logic'
+import { useParams } from 'react-router-dom'
 
-function Details({ token, vehicleId, onBack }) {
+function Details({ token, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
+    const { vehicleId } = useParams()
 
     useEffect(() => {
         try {

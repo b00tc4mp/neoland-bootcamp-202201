@@ -71,7 +71,7 @@ function placeVehiclesOrder(token) {
                                 const { status } = res
 
                                 if (status === 204) {
-                                    return 
+                                    return id
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {

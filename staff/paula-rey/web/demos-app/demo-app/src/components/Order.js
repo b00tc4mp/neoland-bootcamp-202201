@@ -10,17 +10,32 @@ function Order({ token, orderId, onItem }) {
     useEffect(() => {
         try {
             retrieveVehiclesOrder(token, orderId)
-                .then(order => {
-                    setOrder(order)
-                    retrieveVehiclesFromOrder(token, orderId)
-                        .then(vehicles => setVehicles(vehicles))
-                        .catch(error => alert(error.message))
-                })
-                .catch(error => alert(error.message))
+            .then(order => {
+                setOrder(order)
+                return retrieveVehiclesFromOrder(token, orderId)
+            })
+            .then(vehicles => setVehicles(vehicles))
+            .catch(error => {throw error})
         } catch ({ message }) {
             alert(message)
         }
     }, [])
+
+
+    // useEffect(() => {
+    //     try {
+    //         retrieveVehiclesOrder(token, orderId)
+    //             .then(order => {
+    //                 setOrder(order)
+    //                 retrieveVehiclesFromOrder(token, orderId)
+    //                     .then(vehicles => setVehicles(vehicles))
+    //                     .catch(error => alert(error.message))
+    //             })
+    //             .catch(error => alert(error.message))
+    //     } catch ({ message }) {
+    //         alert(message)
+    //     }
+    // }, [])
 
 
     const goToItem = id => {

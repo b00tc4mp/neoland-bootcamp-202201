@@ -1,7 +1,8 @@
 import { validateToken, validateString } from "./helpers/validators";
 
-function retrieveVehiclesOrder(token) {
+function retrieveVehiclesOrder(token, orderId) {
     validateToken(token)
+    validateString(orderId)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
@@ -14,11 +15,12 @@ function retrieveVehiclesOrder(token) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
+                        // const orders = user.orders || []
                         const { orders = [] } = user
                         
                         if (!orders.length) throw new Error('no orders')
 
-                        return orders
+                        return orders.find(order => order.id === orderId)
                     })
             } else if (status >= 400 && status < 500) {
                 return res.json()
