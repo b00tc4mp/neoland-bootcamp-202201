@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 1rem;
+    background-color: beige;
 }
 
 .detail__image {

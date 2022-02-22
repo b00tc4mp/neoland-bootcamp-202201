@@ -1,3 +1,7 @@
+.cart {
+    background-color: beige;
+}
+
 .cart__list {
     list-style-type: none;
 }

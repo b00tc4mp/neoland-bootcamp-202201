@@ -1,11 +1,8 @@
 import './Favs.css'
 import { useEffect, useState } from 'react'
 import { retrieveFavVehicles, toggleFavVehicle } from '../logic'
-import Detail from './Detail'
-import Results from './Results'
 
 function Favs({ token, onItem }) {
-    
     const [vehicles, setVehicles] = useState()
 
     useEffect(() => {
@@ -13,8 +10,8 @@ function Favs({ token, onItem }) {
             retrieveFavVehicles(token)
                 .then(vehicles => setVehicles(vehicles))
                 .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
+        } catch ({ message }) {
+            alert(message)
         }
     }, [])
 
@@ -27,33 +24,28 @@ function Favs({ token, onItem }) {
                         .catch(error => alert(error.message))
                 )
                 .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
+        } catch ({ message }) {
+            alert(message)
         }
     }
 
     const goToItem = id => {
         onItem(id)
-       
     }
 
     return <div className="favs">
         {vehicles && (vehicles.length ? <ul className="favs__list">
             {vehicles.map(vehicle => <li key={vehicle.id} className="favs__item" onClick={() => goToItem(vehicle.id)}>
-                <h2>{vehicle.name}</h2>
-
+                <h2 className="details__title">{vehicle.name}</h2>
                 <span className="favs__item-fav-button" onClick={event => {
                     event.stopPropagation()
-
                     removeFav(vehicle.id)
                 }}>❤️</span>
-
                 <img className="favs__item-image" src={vehicle.image} />
-                <span>{vehicle.price} $</span>
+                <span>{vehicle.price}$</span>
             </li>)}
         </ul> : <p className="favs__empty">No favs yet</p>)}
     </div>
-
 }
 
 export default Favs

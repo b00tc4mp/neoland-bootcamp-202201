@@ -20,9 +20,8 @@ function placeVehiclesOrder(token) {
                     .then(user => {
                         let { cart=[], orders = [] } = user
 
-                        if(cart.length === 0){
-                            throw new Error ('cart is empty')
-                        } 
+                        if(!cart.length) throw new Error ('cart is empty')
+                        
                         else{
                             const order = {id: orderId, date: orderDate, cart: cart}
 

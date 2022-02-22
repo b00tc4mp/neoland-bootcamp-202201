@@ -1,3 +1,8 @@
+.results{
+    background-color: beige;
+    
+}
+
 .results__list {
     list-style-type: none;
 }

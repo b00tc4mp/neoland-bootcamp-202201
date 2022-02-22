@@ -31,14 +31,10 @@ function DeleteAccount({ token, onBack, onDeletedAccount }) {
 
     return <div className="delete-account">
         <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
-            <div className="delete-account__password-area">
-                <input className="delete-account__password-input" type="password" name="password"
-                    placeholder="Password" />
-                <label className="delete-account__toggle-icon delete-account__toggle-icon--show"
-                    id="togglePassword"></label>
-            </div>
+            <input className="delete-account__password-input" type="password" name="password" placeholder="Password" />
+
             <button className="delete-acount__submit">Delete Account</button>
-            {feedback && <Feedback message={feedback} level={feedbackLevel}/>}
+            {feedback && <Feedback message={feedback} level={feedbackLevel} />}
             <a className="delete-account__back-link" href="" onClick={goBack}>back</a>
         </form>
     </div>

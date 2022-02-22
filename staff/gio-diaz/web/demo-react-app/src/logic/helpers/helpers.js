@@ -1,7 +1,7 @@
 const generateOrderDate = () => {
     const today = new Date()
-    const date = today.getDate().toString() + "-" +  (today.getMonth() + 1).toString() + "-" + today.getFullYear().toString()
-    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const date = `${today.getDate()} - ${(today.getMonth() + 1)} - ${today.getFullYear()}`
+    const time = `${today.getHours()} : ${today.getMinutes()} : ${today.getSeconds()}`
 
     return date + " " + time
 }
@@ -15,6 +15,6 @@ const randomElement = iterable => {
 
 const generateOrderId = () => {
     const today = new Date()
-    const date = today.getDate().toString() +  (today.getMonth() + 1).toString() + today.getFullYear().toString()
-    return "PO" + randomInteger(1000, 9999).toString() + randomElement('ABCDEFGHIJKLMNOPQRSTUVWXYZ') +  date
+    const date = `${today.getDate()} +  ${(today.getMonth() + 1)} + ${today.getFullYear()}`
+    return `"PO" + ${randomInteger(1000, 9999)} + randomElement('ABCDEFGHIJKLMNOPQRSTUVWXYZ') +  date`
 }

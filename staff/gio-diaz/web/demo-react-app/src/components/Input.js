@@ -9,7 +9,6 @@ function Input({ type = 'text', name, feedback, onFocus, placeholder = '' }) {
         setFeedbackMessage(feedback)
     }, [feedback])
 
-
     const onChange = () => setFeedbackMessage()
 
     return (
@@ -17,7 +16,6 @@ function Input({ type = 'text', name, feedback, onFocus, placeholder = '' }) {
             <div className={`input__body ${feedbackMessage && 'input__body--error'}`}>
                 <input className="input__input" type={type} name={name} onFocus={onFocus} placeholder={placeholder} onChange={onChange} />
             </div>
-
             {feedbackMessage && <Feedback message={feedbackMessage} level="error" version="mini" />}
         </div>
     )

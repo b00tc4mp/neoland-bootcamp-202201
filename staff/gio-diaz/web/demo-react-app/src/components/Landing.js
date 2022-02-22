@@ -1,23 +1,20 @@
 import './Landing.css'
 
-function Landing(props) {
-    const { onLogin, onRegister } = props
+function Landing({ onLogin, onRegister }) {
 
     const goToLogin = event => {
         event.preventDefault()
-
         onLogin()
     }
 
     const goToRegister = event => {
         event.preventDefault()
-
         onRegister()
     }
 
     return <div className="landing">
         <div>
-            <a className="landing__login" href="" onClick={goToLogin}>Login</a> or <a className="landing__register" href="" onClick={goToRegister}>Register</a>
+            <a href="" className="landing__login-link" onClick={goToLogin}>Login</a> or <a href="" className="landing__register-link" onClick={goToRegister}>Register</a>
         </div>
     </div>
 }

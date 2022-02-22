@@ -1,3 +1,8 @@
+.favs {
+    background-color: beige;
+}
+
+
 .favs__list {
     list-style-type: none;
 }

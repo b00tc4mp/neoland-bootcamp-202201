@@ -1,0 +1,12 @@
+.order {
+    background-color: beige;
+}
+
+.orders-list{
+    list-style-type: none;
+}
+
+.orders__list-item{
+    cursor:pointer;
+    margin: 1rem;
+}

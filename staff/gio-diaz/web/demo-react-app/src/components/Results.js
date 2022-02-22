@@ -1,6 +1,6 @@
 import './Results.css'
 import { useEffect, useState } from 'react'
-import { searchVehicles, toggleFavVehicle, addVehicleToCart } from '../logic'
+import { searchVehicles, toggleFavVehicle, addVehicleToCart } from '../logic';
 
 function Results({ token, query, onItem }) {
     const [vehicles, setVehicles] = useState([])
@@ -10,10 +10,10 @@ function Results({ token, query, onItem }) {
             searchVehicles(token, query)
                 .then(vehicles => setVehicles(vehicles))
                 .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
+        } catch ({ message }) {
+            alert(message)
         }
-    }, [query])
+    }, [query]);
 
     const goToItem = id => {
         onItem(id)
@@ -28,8 +28,8 @@ function Results({ token, query, onItem }) {
                         .catch(error => alert(error.message))
                 )
                 .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
+        } catch ({ message }) {
+            alert(message)
         }
     }
 
@@ -38,32 +38,27 @@ function Results({ token, query, onItem }) {
             addVehicleToCart(token, vehicleId)
                 .then(() => alert('Vehicle added to cart'))
                 .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
+        } catch ({ message }) {
+            alert(message)
         }
     }
 
     return <div className="results">
-        {!!vehicles.length && <ul className="results__list">
-            {vehicles.map(vehicle => <li key={vehicle.id} className="results__item" onClick={() => goToItem(vehicle.id)}>
-                <h2>{vehicle.name}</h2>
-
+        {!!vehicles.length && <ul className="results-list">
+            {vehicles.map(vehicle => <li key={vehicle.id} className="results__list-item" onClick={() => goToItem(vehicle.id)}>
+                <h2 className="results__title">{vehicle.name}</h2>
                 <div>
                     <span className="results__item-fav-button" onClick={event => {
                         event.stopPropagation()
-
                         toggleFav(vehicle.id)
-                    }}>{vehicle.isFav ? '❤️' : '🤍'}</span>
+                    }}>{vehicle.isFav ? '❤️' : '🖤'}</span>
                 </div>
-
                 <img src={vehicle.thumbnail} />
-
                 <span>{vehicle.price} $</span>
 
                 <div className="results__item-add">
                     <button onClick={event => {
                         event.stopPropagation()
-
                         addToCart(vehicle.id)
                     }}>Add to cart</button>
                 </div>
