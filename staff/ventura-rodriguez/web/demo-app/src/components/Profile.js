@@ -15,7 +15,10 @@ function Profile({ token, onUpdatePassword, onDeleteAccount, onProfile, onLogout
     const [feedbackLevel, setFeedbackLevel] = useState()
     const navigate = useNavigate()
 
-        const showProfile = () => navigate('/profile')
+    const showProfile = () => navigate(-1)
+    // const showProfile = () => navigate('/profile')
+    // const showProfile = () => navigate.onBack()
+    // const showProfile = () => navigate.onForward()
 
     useEffect(() => {
         try {
