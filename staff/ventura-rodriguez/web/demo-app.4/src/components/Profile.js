@@ -1,21 +1,14 @@
 import './Profile.css'
-import UpdatePassword from './UpdatePassword'
-import DeleteAccount from './DeleteAccount'
 import { updateUser, retrieveUser } from '../logic'
 import { useEffect, useState } from 'react'
 import Feedback from './Feedback'
-import { Routes, Route, useNavigate } from 'react-router-dom'
 
-
-function Profile({ token, onUpdatePassword, onDeleteAccount, onProfile, onLogout }) {
+function Profile({ token, onUpdatePassword, onDeleteAccount }) {
     const [name, setName] = useState()
     const [surname, setSurname] = useState()
     const [email, setEmail] = useState()
     const [feedback, setFeedback] = useState()
     const [feedbackLevel, setFeedbackLevel] = useState()
-    const navigate = useNavigate()
-
-        const showProfile = () => navigate('/profile')
 
     useEffect(() => {
         try {
@@ -55,32 +48,28 @@ function Profile({ token, onUpdatePassword, onDeleteAccount, onProfile, onLogout
 
     const goToUpdatePassword = event => {
         event.preventDefault()
+
         onUpdatePassword()
     }
 
     const goToDeleteAccount = event => {
         event.preventDefault()
+
         onDeleteAccount()
     }
 
     return <div className="profile">
-        <Routes>
-            <Route index element={
-                <form className="profile__form" onSubmit={updateProfile} method="post">
-                    <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} />
-                    <input className="profile__surname-input" type="text" name="surname" placeholder="surname" defaultValue={surname} />
-                    <input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email} />
-        
-                    <button>Update profile</button>
-                    {feedback && <Feedback message={feedback} level={feedbackLevel} />}
+        <form className="profile__form" onSubmit={updateProfile} method="post">
+            <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} />
+            <input className="profile__surname-input" type="text" name="surname" placeholder="surname" defaultValue={surname} />
+            <input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email} />
 
-                    <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
-                    <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
-                </form>
-            } />
-            <Route path="update-password" element={<UpdatePassword token={token} onBack={showProfile} />} />
-            <Route path="delete-account" element={<DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />} />
-        </Routes>
+            <button>Update profile</button>
+            {feedback && <Feedback message={feedback} level={feedbackLevel} />}
+
+            <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
+            <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
+        </form>
     </div>
 }
 

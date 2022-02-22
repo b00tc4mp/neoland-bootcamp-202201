@@ -1,0 +1,11 @@
+.results__list {
+    list-style-type: none;
+}
+
+.results__item {
+    cursor: pointer;
+}
+
+.results__item-add {
+    text-align: right;
+}
