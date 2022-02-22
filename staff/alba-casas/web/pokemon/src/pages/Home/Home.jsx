@@ -6,6 +6,7 @@ import { Grid, Layout, Main } from "./styled";
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState();
+  console.log(pokemonList);
 
   useEffect(() => {
     // retrieveAllPokemon(0, 6) -> con paginación: offset 0, quantity 6 (desde el 0, pinta los prox 6)
@@ -20,7 +21,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <Sidebar />
+      <Sidebar pokemonList={pokemonList} setPokemonList={setPokemonList} />
       <Main>
         <Grid>
           {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}

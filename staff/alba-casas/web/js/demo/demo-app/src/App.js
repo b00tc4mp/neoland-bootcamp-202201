@@ -19,6 +19,7 @@ function App() {
   };
 
   const showLanding = () => {
+    delete sessionStorage.token;
     setToken();
   };
 
