@@ -18,7 +18,7 @@ const intervalId = setInterval(() => {
     let steps = randomInteger(0, 5)
     thieve.x += steps
 
-    let road = ''
+    let road = '', 
 
     if (thieve.x < 10)
         road = ' '.repeat(thieve.x) + thieve.icon
