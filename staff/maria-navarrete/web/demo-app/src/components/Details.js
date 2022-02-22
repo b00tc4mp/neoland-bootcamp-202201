@@ -1,11 +1,13 @@
 import './Details.css'
 import { retrieveVehicle, toggleFavVehicle, addVehicleToCart } from '../logic'
 import { useState, useEffect } from 'react'
+import {useParams} from 'react-router-dom'
 
-
-function Details({ token, vehicleId, onBack }) {
+function Details({ token, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
+    const {vehicleId} = useParams()
+    
 
     useEffect(() => {
         try {
@@ -14,7 +16,7 @@ function Details({ token, vehicleId, onBack }) {
                     setVehicle(vehicle)
                     setFav(vehicle.isFav)
                 })
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
@@ -30,7 +32,7 @@ function Details({ token, vehicleId, onBack }) {
         try {
             toggleFavVehicle(token, vehicleId)
                 .then(() => setFav(!fav))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
@@ -40,7 +42,7 @@ function Details({ token, vehicleId, onBack }) {
         try {
             addVehicleToCart(token, vehicleId)
                 .then(() => alert("vehicle added to cart"))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         }
         catch ({ message }) {
             alert(message)

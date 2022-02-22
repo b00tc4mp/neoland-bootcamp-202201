@@ -6,8 +6,6 @@ function Search({ onItem, onQuery, query, token }) {
     
     const [view, setView] = useState(query && 'results')
     
-
-
     const search = event => {
         event.preventDefault()
 

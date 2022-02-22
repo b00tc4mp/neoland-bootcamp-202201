@@ -17,7 +17,7 @@ function Profile({ token, refreshData, onUpdatePassword, onDeleteAccount }) {
                     setName(name)
                     setEmail(email)
                 })
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
@@ -28,18 +28,18 @@ function Profile({ token, refreshData, onUpdatePassword, onDeleteAccount }) {
         const { target: { name: { value: name }, email: { value: email } } } = event
         try {
             updateUser(token, name, email)
-            .then(() => {
-                setName(name)
-                setEmail(email)
-                refreshData(name)
+                .then(() => {
+                    setName(name)
+                    setEmail(email)
+                    refreshData(name)
 
-                setFeedback('Profile updated')
-                setFeedbackLevel('success')
-            })
-            .catch(error => {
-                setFeedback(error.message)
-                setFeedbackLevel('error')
-            })
+                    setFeedback('Profile updated')
+                    setFeedbackLevel('success')
+                })
+                .catch(error => {
+                    setFeedback(error.message)
+                    setFeedbackLevel('error')
+                })
         } catch ({ message }) {
             setFeedback(message)
             setFeedbackLevel('error')

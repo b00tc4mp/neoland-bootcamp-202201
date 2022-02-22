@@ -9,7 +9,7 @@ function Favs({ token, onItem }) {
         try {
             retrieveFavVehicles(token)
                 .then(vehicles => setVehicles(vehicles))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
@@ -18,12 +18,9 @@ function Favs({ token, onItem }) {
     const removeFav = vehicleId => {
         try {
             toggleFavVehicle(token, vehicleId)
-                .then(() =>
-                    retrieveFavVehicles(token)
-                        .then(vehicles => setVehicles(vehicles))
-                        .catch(error => alert(error.message))
-                )
-                .catch(error => alert(error.message))
+                .then(() => retrieveFavVehicles(token))
+                .then(vehicles => setVehicles(vehicles))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }

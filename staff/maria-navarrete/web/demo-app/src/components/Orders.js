@@ -9,7 +9,7 @@ function Orders({ token, onOrder }) {
         try {
             retrieveUserOrders(token)
                 .then(orders => setOrders(orders))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         }
         catch ({ message }) {
             alert(message)

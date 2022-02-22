@@ -9,7 +9,7 @@ function Results({ token, query, onItem }) {
         try {
             searchVehicles(token, query)
                 .then(vehicles => setVehicles(vehicles))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
@@ -22,12 +22,9 @@ function Results({ token, query, onItem }) {
     const toggleFav = vehicleId => {
         try {
             toggleFavVehicle(token, vehicleId)
-                .then(() =>
-                    searchVehicles(token, query)
-                        .then(vehicles => setVehicles(vehicles))
-                        .catch(error => alert(error.message))
-                )
-                .catch(error => alert(error.message))
+                .then(() => searchVehicles(token, query))
+                .then(vehicles => setVehicles(vehicles))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
@@ -37,7 +34,7 @@ function Results({ token, query, onItem }) {
         try {
             addVehicleToCart(token, vehicleId)
                 .then(() => alert('Vehicle added to cart'))
-                .catch(error => alert(error.message))
+                .catch(error => { throw error })
         } catch ({ message }) {
             alert(message)
         }
