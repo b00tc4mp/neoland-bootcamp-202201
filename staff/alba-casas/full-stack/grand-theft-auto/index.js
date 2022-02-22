@@ -1,4 +1,4 @@
-const thieve = {
+const thief = {
   icon: "🚘",
   x: 0,
 };
@@ -16,21 +16,29 @@ let intervals = 0;
 const intervalId = setInterval(() => {
   console.clear();
 
-  let steps = randomInteger(0, 1);
-  thieve.x += steps;
-
-  steps = randomInteger(0, 5);
-  police.x += steps;
+  let steps = randomInteger(0, 5);
+  thief.x += steps;
 
   let road = "";
 
-  if (thieve.x >= 0 && thieve.x <= 10)
-    road = " ".repeat(thieve.x) + thieve.icon;
-  else if (thieve.x >= 10)
-    road =
-      " ".repeat(police.x + 10) +
-      police.icon +
-      " ".repeat(thieve.x - 10) +
-      thieve.icon;
+  if (thief.x < 10) road = " ".repeat(thief.x) + thief.icon;
+  else {
+    let steps = randomInteger(0, 5);
+    police.x += steps;
+
+    if (police.x >= thief.x) {
+      console.log("police wins");
+      clearInterval(intervalId);
+    } else if (thief.x >= 100) {
+      console.log("thief wins");
+      clearInterval(intervalId);
+    } else if (police.x < thief.x) {
+      road =
+        " ".repeat(police.x) +
+        police.icon +
+        " ".repeat(thief.x - police.x) +
+        thief.icon;
+    }
+  }
   console.log(road);
 }, 100);
