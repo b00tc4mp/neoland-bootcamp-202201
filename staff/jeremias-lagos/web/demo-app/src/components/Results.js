@@ -16,7 +16,8 @@ function Results({ token, query, onItem }) {
     }, [query])
 
     const goToItem = id => {
-        onItem(id)
+       debugger 
+       onItem(id)
     }
 
     const toggleFav = vehicleId => {
