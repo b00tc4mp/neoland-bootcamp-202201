@@ -20,6 +20,7 @@ function App() {
   }
 
   const logout = () => {
+    sessionStorage.token = ""
     setToken()
   }
 
