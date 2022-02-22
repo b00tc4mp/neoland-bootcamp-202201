@@ -1,0 +1,17 @@
+.add {
+    background-color: yellow;
+    padding: 1rem;
+}
+
+.add__title {
+    margin: 0;
+}
+
+.add__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.add__input {
+    width: 4rem;
+} 

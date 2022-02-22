@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Poppins&display=swap');
+* {
+  font-family: MedievalSharp;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+p {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 10px;
+  color: rgb(31, 61, 74);
+  box-shadow: 5px 5px 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: rgb(99, 135, 167);
+  
+}
+.jonSnow {
+  color: rgb(178, 186, 160);
+  /* box-shadow: 0px 5px ; */
+  animation-name: beat;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}

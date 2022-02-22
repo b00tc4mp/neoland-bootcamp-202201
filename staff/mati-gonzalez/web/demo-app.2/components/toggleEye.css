@@ -1,0 +1,14 @@
+.password-component {
+    position: relative;
+    /* display: grid;
+    width: repeat(10, 1fr); */
+}
+
+.password-component i {
+    position: absolute;
+    /* grid-area: 1/10; */
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

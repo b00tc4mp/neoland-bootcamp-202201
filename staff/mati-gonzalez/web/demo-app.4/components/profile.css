@@ -1,0 +1,9 @@
+.profile { }
+
+.profile__form {
+    gap: .5rem;
+}
+
+.profile__update-password-link, .profile__delete-account-link {
+    text-align: center;
+} 

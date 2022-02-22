@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo App</title>
+    <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="components/landing.css">
+    <link rel="stylesheet" href="components/register.css">
+    <link rel="stylesheet" href="components/login.css">
+    <link rel="stylesheet" href="components/home.css">
+    <link rel="stylesheet" href="components/profile.css">
+    <link rel="stylesheet" href="components/update-password.css">
+    <link rel="stylesheet" href="components/delete-account.css">
+    <link rel="stylesheet" href="components/toggleEye.css">
+</head>
+<body>
+    <div class="landing background off">
+        <div>
+            <a class="landing__login" href="">Login</a> or <a class="landing__register" href="">Register</a>
+        </div>
+    </div>
+
+    <div class="register background off">
+        <form class="register__form">
+            <input class="register__name-input" type="text" name="name" placeholder="name">
+            <input class="register__surname-input" type="text" name="surname" placeholder="surname">
+            <input class="register__email-input" type="email" name="email" placeholder="e-mail">
+            <div class="password-component">
+                <input class="register__password-input" type="password" name="password" placeholder="password" />
+                <i class="bi bi-eye-slash"></i>
+            </div>
+            <button>Register</button>
+            <a class="register__login-link" href="">Login</a>
+        </form>
+    </div>
+
+    <div class="login background _off">
+        <form class="login__form">
+            <input class="login__email-input" type="email" name="email" placeholder="e-mail">
+            <span class="login__email-feedback off">wrong email</span>
+            <div class="password-component">
+                <input class="login__password-input" type="password" name="password" placeholder="password" />
+                <i class="bi bi-eye-slash"></i>
+            </div>
+            <span class="login__password-feedback off">wrong password</span>
+            <button>login</button>
+            <span class="login__feedback off">Wrong credentials</span>
+            <a class="login__register-link" href="">Register</a>
+        </form>
+    </div>
+
+    <div class="home background off">
+        <nav class="home__header">
+            <a class="home__home-link" href=""><img class="home__logo" src="images/demo-logo.png" alt=""></a>
+            <h1 class="home__user">Wendy</h1>
+            <a class="home__profile-link" href="">Profile</a>
+            <button class="home__logout-button">Logout</button>
+        </nav>
+
+        <div class="home-home" id="edit" contenteditable="true">
+            <div class="home__box-1">
+                <h1>Bio</h1>
+                <p>I am a full stack wannabe !!</p>
+
+            </div>
+            <div class="home__box-2">
+                <h1>Interests</h1>
+                <p>Challenging friends to CSS battles !!</p>
+
+            </div>
+            <div class="home__box-3">
+                <h1>Strengths</h1>
+                <ul>
+                    <li>No filter humor :)</li>
+                    <li>Usually good at something if I pay attention</li>
+                    <li>Good at reflecting</li>
+                    <li>"Good" with computers</li>
+                </ul>
+
+            </div>
+            <div class="home__box-4">
+                <h1>Weaknesses</h1>
+                <ul>
+                    <li>Lose focus easily</li>
+                    <li>Have a very heavy personality :(</li>
+                    <li>Heavy social anxiety problem</li>
+                    <li>Cannot control what I eat</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="profile background off">
+            <form class="profile__form">
+                <input class="profile__name-input" type="text" name="name" placeholder="name">
+                <input class="profile__surname-input" type="text" name="surname" placeholder="surname">
+                <input class="profile__email-input" type="email" name="email" placeholder="e-mail">
+                <button>Update profile</button>
+                <a class="profile__update-password-link" href="">update password</a>
+                <a class="profile__delete-account-link" href="">delete account</a>
+            </form>
+        </div>
+
+        <div class="update-password background off">
+            <form class="update-password__form">
+                <div class="password-component">
+                    <input class="update-password__curr-password-input" type="password" name="currPassword" placeholder="Current password"/>
+                    <i class="bi bi-eye-slash"></i>
+                </div>
+                <div class="password_component">
+                    <input class="update-password__password-input" type="password" name="password" placeholder="New password"/>
+                    <i class="bi bi-eye-slash"></i>
+                </div>
+                <div class="password-component">
+                    <input class="update-password__re-password-input" type="password" name="rePassword" placeholder="Re-type new password"/>
+                    <i class="bi bi-eye-slash"></i>
+                </div>
+                <button>Update password</button>
+                <a class="update-password__back-link" href="">back</a>
+            </form>
+        </div>
+
+        <div class="delete-account background off">
+            <form class="delete-account__form">
+                <div class="password-component">
+                    <input class="delete-account__input" type="password" name="password" placeholder="Confirm password"/>
+                    <i class="bi bi-eye-slash"></i>
+                </div>
+                <button>Delete account</button>
+                <a class="delete-account__back-link" href="">back</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- utils -->
+    <script src="utils/validators.js"></script>
+
+    <!-- data layer -->
+    <script src="data/models/user.js"></script>
+    <script src="data/users.js"></script>
+
+    <!-- business (logic) layer -->
+    <script src="logic/authenticate-user.js"></script>
+    <script src="logic/retrieve-user.js"></script>
+    <script src="logic/register-user.js"></script>
+    <script src="logic/update-user.js"></script>
+    <script src="logic/update-password.js"></script>
+    <script src="logic/unregister-user.js"></script>
+
+    <!-- presentation layer -->
+    <script src="components/app.js"></script>
+    <script src="components/landing.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/home.js"></script>
+    <script src="components/profile.js"></script>
+    <script src="components/update-password.js"></script>
+    <script src="components/delete-account.js"></script>
+    <script src="components/toggleEye.js"></script>
+
+    <script src="index.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="container container--column">
+    <h1>Medikitohklk</h1>
+
+    <input class="id" type="text" placeholder="id">
+    <input class="first-name" type="text" placeholder="first name">
+    <input class="last-name" type="text" placeholder="last name">
+    <input class="gender" type="text" placeholder="gender">
+    <input class="year" type="text" placeholder="year">
+    <input class="blood-type" type="text" placeholder="blood type">
+
+    <div class="results"></div>
+
+    <div class="file off">
+        <h2 class="file__title">Personal file</h2>
+        <div class="file__body">
+            <div class="file__column">
+                <div class="file__field">
+                    <label class="file__label" for="file__full-name"></label>
+                    <input disabled id="file__full-name" class="file__full-name">
+                </div>
+                
+                <div class="file__field">
+                    <label class="file__label" for="file__id">ID</label>
+                    <input disabled class="file__id">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__birthDate">Birth Date</label>
+                    <input disabled id="file__birthDate" class="file__birthDate">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__city">Label</label>
+                    <input disabled id="file__city" class="file__city">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__country">Country</label>
+                    <input disabled id="file__country" class="file__country">
+                </div>
+            </div>
+
+            <div class="file__column">
+                <div class="file__field">
+                    <label class="file__label" for="file__gender">Gender</label>
+                    <input disabled id="file__gender" class="file__gender">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__blood-type">Blood Type</label>
+                    <input disabled id="file__blood-type" class="file__blood-type">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__age">Age</label>
+                    <input disabled id="file__age" class="file__age">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__phone">Phone</label>
+                    <input disabled id="file__phone" class="file__phone">
+                </div>
+
+                <div class="file__field">
+                    <label class="file__label" for="file__email">E-mail</label>
+                    <input disabled id="file__email" class="file__email">
+                </div>
+            </div>
+        </div>
+        <div class="file__note">
+            <textarea class="file__note-text" name="" id="" cols="30" rows="10"></textarea>
+            <button class="file__save-note">Save note</button>
+        </div>
+    </div>
+
+    <script src="helpers.js"></script>
+    <script src="data.js"></script>
+    <script src="logic.js"></script>
+    <script src="view.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

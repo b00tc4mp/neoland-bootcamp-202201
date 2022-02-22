@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo App</title>
+    <link rel="shortcut icon" href="images/demo-favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="components/landing.css">
+    <link rel="stylesheet" href="components/register.css">
+    <link rel="stylesheet" href="components/login.css">
+    <link rel="stylesheet" href="components/home.css">
+    <link rel="stylesheet" href="components/profile.css">
+    <link rel="stylesheet" href="components/update-password.css">
+    <link rel="stylesheet" href="components/delete-account.css">
+    <link rel="stylesheet" href="components/search.css">
+</head>
+
+<body>
+    <section class="landing off">
+        <div>
+            <a class="landing__login" href="">Login</a> or <a class="landing__register" href="">Register</a>
+        </div>
+    </section>
+
+    <section class="register off">
+        <form class="register__form">
+            <input class="register__name-input" type="text" name="name" placeholder="name">
+            <input class="register__surname-input" type="text" name="surname" placeholder="surname">
+            <input class="register__email-input" type="email" name="email" placeholder="e-mail">
+            <input class="register__password-input" type="password" name="password" placeholder="password">
+            <button>Register</button>
+            <a class="register__login-link" href="">Login</a>
+        </form>
+    </section>
+
+    <section class="login off">
+        <form class="login__form">
+            <input class="login__email-input" type="email" name="email" placeholder="e-mail">
+            <span class="login__email-feedback off">wrong email</span>
+            <input class="login__password-input" type="password" name="password" placeholder="password">
+            <span class="login__password-feedback off">wrong password</span>
+            <button>Login</button>
+            <span class="login__feedback off">wrong credentials</span>
+            <a class="login__register-link" href="">Register</a>
+        </form>
+    </section>
+
+    <section class="home off">
+        <nav class="home__header">
+            <a class="home__home-link" href=""><img class="home__logo" src="assets/demo-logo.png" alt=""></a>
+            <h1 class="home__user">Wendy</h1>
+            <a class="home__profile-link" href="">Profile</a>
+            <button class="home__logout-button">Logout</button>
+        </nav>
+
+        <div class="profile pannel off">
+            <form class="profile__form pannel">
+                <input class="profile__name-input" type="text" name="name" placeholder="name">
+                <input class="profile__surname-input" type="text" name="surname" placeholder="surname">
+                <input class="profile__email-input" type="email" name="email" placeholder="e-mail">
+                <button>Update profile</button>
+                <a class="profile__update-password-link" href="">update password</a>
+                <a class="profile__delete-account-link" href="">delete account</a>
+            </form>
+        </div>
+
+        <div class="update-password pannel off">
+            <form class="update-password__form">
+                <input class="update-password__curr-password-input" type="password" name="name" placeholder="Current password">
+                <input class="update-password__password-input" type="password" name="surname" placeholder="New password">
+                <input class="update-password__re-password-input" type="password" name="email" placeholder="Re-type new password">
+                <button>Update password</button>
+                <a class="update-password__back-link" href="">back</a>
+            </form>
+        </div>
+
+        <div class="delete-account pannel off">
+            <form class="delete-account__form">
+                <input class="delete-account__password-input" type="password" name="password" placeholder="Password">
+                <button>Delete account</button>
+                <a class="delete-account__back-link" href="">back</a>
+            </form>
+        </div>
+    </section>
+
+        <div class="search pannel off">
+            <form class="search__form">
+                <input class="search__query-input" type="text" name="query" placeholder="query">
+                <button>Search</button>
+            </form>
+            <ul class="search__results-list off"></ul>
+        </div>
+    </section>
+
+    <!-- utils -->
+    <script src="utils/validators.js"></script>
+
+    <!-- data layer -->
+    <script src="data/models/user.js"></script>
+    <script src="data/users.js"></script>
+
+    <!-- business (logic) layer -->
+    <script src="logic/authenticate-user.js"></script>
+    <script src="logic/retrieve-user.js"></script>
+    <script src="logic/register-user.js"></script>
+    <script src="logic/update-user.js"></script>
+    <script src="logic/update-password.js"></script>
+    <script src="logic/unregister-user.js"></script>
+    <script src="logic/search-vehicles.js"></script>
+    <script src="logic/retrieve-vehicle.js"></script>
+
+    <!-- presentation layer -->
+    <script src="components/app.js"></script>
+    <script src="components/landing.js"></script>
+    <script src="components/login.js"></script>
+    <script src="components/register.js"></script>
+    <script src="components/home.js"></script>
+    <script src="components/profile.js"></script>
+    <script src="components/update-password.js"></script>
+    <script src="components/delete-account.js"></script>
+    <script src="components/search.js"></script>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

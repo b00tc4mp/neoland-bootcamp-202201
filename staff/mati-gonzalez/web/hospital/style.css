@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap'); */
+
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu Mono';
+    /* font-family: 'Homemade Apple'; */
+}
+
+html, input {
+    font-size: 16px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container--column {
+    flex-direction: column;
+}
+
+.off {
+    display: none !important;
+}
+
+.table {
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.table thead {
+    background-color: aquamarine;
+}
+
+.table th {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.table tr:hover {
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.table td {
+    padding: .25rem 1rem;
+}
+
+.file {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border: 1px solid black;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.file__title {
+    margin: 0 0 1rem 0;
+}
+
+.file__body {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+
+.file__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.file__field {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.file__label {
+    text-align: left;
+    width: 100%;
+}
+
+.file__note {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media only screen and (max-width: 650px) {
+    .file__body {
+        flex-direction: column;
+        align-items: center;
+    }
+}

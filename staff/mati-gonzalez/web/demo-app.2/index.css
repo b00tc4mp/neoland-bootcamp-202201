@@ -1,0 +1,36 @@
+* {
+    font-size: 1.2rem;
+}
+
+.background {
+    background-color: rgb(107, 133, 133) ;
+}
+
+::placeholder{
+    color: rgba(240, 204, 240, 0.747);
+}
+
+a {
+    color: #292730;
+}
+
+button {
+    background-color: rgb(137, 139, 135);
+    color: cornsilk;
+    box-shadow: 5px 5px 5px black;
+    cursor: pointer;
+} 
+
+input {
+    background-color: rgb(108, 81, 133);
+    color: rgba(240, 204, 240, 0.747);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.off {
+    display: none !important;
+}

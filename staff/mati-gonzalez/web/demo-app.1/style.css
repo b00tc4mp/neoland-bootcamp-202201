@@ -1,0 +1,214 @@
+* {
+    font-size: 1.2rem;
+}
+
+.background {
+    background-color: rgb(199, 219, 219) ;
+}
+
+::placeholder{
+    color: silver;
+}
+
+
+button, input {
+    background-color: blueviolet;
+    color: silver;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.off {
+    display: none !important;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.register__password-input {
+    position: relative;
+}
+
+.register__login-link {
+    text-align: center;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.login__register-link {
+    text-align: center;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100vw;
+}
+
+.home__header {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    background-color: thistle;
+    width: 100vw;
+    gap: 1rem;
+}
+
+.home-home {
+    display: flex;
+    flex-direction: column;
+}
+
+.home__box-1 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__box-2 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__box-3 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__box-4 {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color:rgb(146, 88, 173);
+    color: rgb(252, 255, 59);
+    box-shadow: 0px 0px 20px 20px rgba(197, 118, 118, 0.692);
+
+}
+
+.home__logo {
+    filter: invert(1);
+    width: 8rem;
+}
+
+.home__logout-button {
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.profile__update-password-link, .profile__delete-account-link {
+    text-align: center;
+}
+
+.update-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.update-password__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.update-password__back-link {
+    text-align: center;
+}
+
+.delete-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.delete-account__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.delete-account__back-link {
+    text-align: center;
+}
+
+.password-component {
+    position: relative;
+}
+
+.password-component i {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
