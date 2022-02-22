@@ -15,16 +15,13 @@ function retrieveUser(token) {
                 return res.json()
                     .then(user => {
                         user.email = user.username
-
                         delete user.username
-
                         return user
                     })
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
                         const { error } = payload
-
                         throw new Error(error)
                     })
             } else if (status >= 500) {

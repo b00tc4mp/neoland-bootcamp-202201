@@ -1,8 +1,8 @@
 import { validateToken, validateString } from './helpers/validators'
 
 function retrieveVehicle(token, vehicleId) {
-    validateToken(token)
     validateString(vehicleId, 'id')
+    validateToken(token)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {

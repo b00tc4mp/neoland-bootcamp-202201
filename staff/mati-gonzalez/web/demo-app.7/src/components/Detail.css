@@ -1,0 +1,32 @@
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1rem;
+    margin-top: 1rem;
+    /* gap: 1rem; */
+    background-color: thistle;
+    padding: 4rem;
+    border-radius: 5%;
+    /* box-shadow: 1.2rem 1.2rem 1.2rem thistle; */
+}
+
+/* .detail__title {
+    text-align: left;
+} */
+
+ .detail__image {
+    width: 70vw;
+    max-width: 600px;
+    align-self: center;
+} 
+
+/* 
+.detail__list {
+    list-style: none;
+}  */
+
+.detail__fav {
+    cursor: pointer;
+    user-select: none;
+}
