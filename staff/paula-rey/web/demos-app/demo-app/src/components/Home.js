@@ -11,7 +11,7 @@ import Favs from './Favs'
 import Details from './Details'
 import Cart from './Cart'
 import Order from './Order'
-//import Orders from './Orders'
+import Orders from './Orders'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
 function Home({ token, onLogout }) {
@@ -125,14 +125,14 @@ function Home({ token, onLogout }) {
 
 
 
-    // const goToOrders = event => {
-    //    event.preventDefault()
-    //    showOrders()
-    // }
+    const goToOrders = event => {
+       event.preventDefault()
+       showOrders()
+    }
 
-    // const showOrders = () => 
-    //    //setView('orders')
-    //    navigate('orders')
+    const showOrders = () => 
+       //setView('orders')
+       navigate('orders')
 
 
 
@@ -143,7 +143,7 @@ function Home({ token, onLogout }) {
             <a className={`home__menu-link ${view === 'profile' ? 'home__menu-link--active' : ''}`} href="" onClick={goToProfile} title="profile">{name}</a>
             <a className={`home__menu-link ${view === 'favs' ? 'home__menu-link--active' : ''}`} href="" onClick={goToFavs}>Favs</a>
             <a className={`home__menu-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href="" onClick={goToCart}>Cart</a>
-            {/* <a className={`home__menu-link ${view === 'orders'? 'home__menu-link--active' :''}`} href="" onClick={goToOrders}>Orders</a> */}
+            <a className={`home__menu-link ${view === 'orders'? 'home__menu-link--active' :''}`} href="" onClick={goToOrders}>Orders</a>
 
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
         </nav>
@@ -168,7 +168,7 @@ function Home({ token, onLogout }) {
             <Route path='profile/delete-account' element={<DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />} />
             <Route path='vehicles/:vehicleId' element={<Details token={token} onBack={goBackFromDetails} />} />
             <Route path='order' element={<Order token={token} orderId={orderId} onItem={goToDetails} />} />
-            {/* <Route path='orders' element={<Orders token={token} onOrderDetails={goToOrderDetails}/>} /> */}
+            <Route path='orders' element={<Orders token={token} onOrder={goToOrder}/>} />
             {/* <Route path="" element={<Navigate replace to="/" />} /> */}
         </Routes>
     </div>

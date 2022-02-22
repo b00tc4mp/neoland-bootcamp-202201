@@ -14,6 +14,7 @@ import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart'
 import placeVehiclesOrder from './place-vehicles-order'
 import retrieveVehiclesOrder from './retrieve-vehicles-order'
 import retrieveVehiclesFromOrder from './retrieve-vehicles-from-order'
+import retrieveUserOrders from './retrieve-user-orders'
 
 export {
     authenticateUser,
@@ -31,5 +32,6 @@ export {
     retrieveVehiclesFromCart,
     placeVehiclesOrder,
     retrieveVehiclesOrder,
-    retrieveVehiclesFromOrder
+    retrieveVehiclesFromOrder,
+    retrieveUserOrders
 }

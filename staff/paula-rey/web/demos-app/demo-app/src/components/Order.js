@@ -45,7 +45,7 @@ function Order({ token, orderId, onItem }) {
 
     return <div className="order">
         {vehicles && (vehicles.length ? <div>
-            <h1 className="order__title">ORD-{order.id}</h1>
+            <h1 className="order__title">{order.id}</h1>
             <p>Date: {order.date}</p>
             <ul className="order__list">
                 {vehicles.map(vehicle => <li key={vehicle.id} className="order__item" onClick={() => goToItem(vehicle.id)}>
