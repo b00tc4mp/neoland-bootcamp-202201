@@ -1,14 +1,26 @@
 import Landing from './components/Landing'
 import Login from './components/Login'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Register from './components/Register'
 import Home from './components/Home'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { validateToken }  from './logic/helpers/validators'
 
 function App() {
   // const [view, setView] = useState('landing')
-  const [token, setToken] = useState(sessionStorage.token)
+
+  let tokenValid = true
+
+  try {
+    validateToken(sessionStorage.token)
+  } catch(error) {
+    tokenValid = false
+  }
+
+  const [token, setToken] = useState(tokenValid? sessionStorage.token : undefined)
   const navigate = useNavigate()
+
+  useEffect(() => !tokenValid && navigate('/'), [])
 
   // const showLogin = () => setView('login')
   const showLogin = () => navigate('login')
@@ -24,6 +36,8 @@ function App() {
   }
 
   const logout = () => {
+    delete sessionStorage.token
+    
     setToken()
     // setView('landing')
   }

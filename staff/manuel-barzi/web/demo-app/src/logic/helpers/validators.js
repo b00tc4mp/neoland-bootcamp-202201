@@ -43,6 +43,30 @@ function validateToken(token) {
         if (part === '') throw new Error('token part is empty')
         if (BLANK_REGEX.test(part)) throw new Error('token part is blank')
     })
+
+    const [header, payload] = parts
+
+    try {
+        atob(header)
+    } catch (error) {
+        throw new Error('token invalid')
+    }
+
+    let json
+    
+    try {
+        json = atob(payload)
+    } catch(error) {
+        throw new Error('token invalid')
+    }
+
+    const { exp } = JSON.parse(json)
+
+    const expStamp = exp * 1000
+
+    const expired = Date.now() > expStamp
+
+    if (expired) throw new Error('token expired')
 }
 
 function validateQuery(query) {
@@ -50,7 +74,6 @@ function validateQuery(query) {
     if (query === '') throw new Error('empty query')
     if (BLANK_REGEX.test(query)) throw new Error('blank query')
 }
-
 
 function validateString(string, explain = 'string') {
     if (typeof string !== 'string') throw new TypeError(`${explain} is not a string`)
