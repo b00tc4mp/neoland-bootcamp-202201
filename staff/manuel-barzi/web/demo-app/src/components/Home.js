@@ -11,7 +11,7 @@ import Detail from './Detail'
 import Cart from './Cart'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
-function Home({ token, onLogout }) {
+function Home({ token, onLogout, onToggleTheme }) {
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
     const [vehicleId, setVehicleId] = useState()
@@ -21,6 +21,7 @@ function Home({ token, onLogout }) {
     const q = search.get('q')
     const [query, setQuery] = useState(q)
     const location = useLocation()
+    const [themeState, setThemeState] = useState('🌚')
 
     useEffect(() => {
         try {
@@ -103,13 +104,20 @@ function Home({ token, onLogout }) {
         navigate(`search?q=${query}`)
     }
 
+    const toggleTheme = () => {
+        setThemeState(themeState === '🌚'? '🌝' : '🌚')
+
+        onToggleTheme()
+    }
+
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch} title="search"><img className="home__logo" src="/images/demo-logo.png" alt="" /></a>
             <a className={`home__menu-link ${view === 'profile' ? 'home__menu-link--active' : ''}`} href="" onClick={goToProfile} title="profile">{name}</a>
             <a className={`home__menu-link ${view === 'favs' ? 'home__menu-link--active' : ''}`} href="" onClick={goToFavs}>Favs</a>
             <a className={`home__menu-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href="" onClick={goToCart}>Cart</a>
-            <button className="home__logout-button" onClick={onLogout}>Logout</button>
+            <button className="home__button" onClick={onLogout}>Logout</button>
+            <button className="home__button" onClick={toggleTheme}>{themeState}</button>
         </div>
 
         {/* {view === 'search' && <Search token={token} onItem={goToDetail} onQuery={setQuery} query={query} />} */}
