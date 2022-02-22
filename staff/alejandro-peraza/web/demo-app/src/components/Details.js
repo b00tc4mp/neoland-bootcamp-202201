@@ -1,8 +1,8 @@
-import './Detail.css'
+import './Details.css'
 import { retrieveVehicle, toggleFavVehicle, addVehicleToCart } from '../logic'
 import { useEffect, useState } from 'react'
 
-function Detail({ token, vehicleId, onBack }) {
+function Details({ token, vehicleId, onBack }) {
     const [vehicle, setVehicle] = useState()
     const [fav, setFav] = useState(false)
 
@@ -48,12 +48,12 @@ function Detail({ token, vehicleId, onBack }) {
     }
 
     if (vehicle)
-        return <div className="detail">
+        return <div className="details">
             <h1>{vehicle.name}</h1>
 
-            <span className="detail__fav" onClick={onFavClick}>{fav ? '❤️' : '🤍'}</span>
+            <span className="details__fav" onClick={onFavClick}>{fav ? '❤️' : '🤍'}</span>
 
-            <img className="detail__image" src={vehicle.image} />
+            <img className="details__image" src={vehicle.image} />
 
             <span>{vehicle.price} $</span>
 
@@ -72,4 +72,4 @@ function Detail({ token, vehicleId, onBack }) {
     else return null
 }
 
-export default Detail
+export default Details

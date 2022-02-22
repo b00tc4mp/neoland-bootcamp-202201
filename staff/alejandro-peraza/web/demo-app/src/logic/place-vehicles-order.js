@@ -1,8 +1,9 @@
 function placeVehiclesOrder(token) {
-// TODO generate order id
-// TODO call api to get user cart array
-// TODO call api to add order with id and date into orders array (and empty cart array)
-return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
+    //TODO generate order id
+    //TODO call api to get user cart array
+    //TODO call api to add order with id and date into orders array (and empty cart array)
+    
+    return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -10,7 +11,7 @@ return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         .then(res => {
             const { status } = res
 
-            if (status === 200) {
+            if (status === 200) { 
                 return res.json()
                     .then(user => {
                         /*
@@ -30,23 +31,21 @@ return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
 
                         llamar a api y actualizar el usuario (cart y orders)
                         */
-
-                        // const cart = user.cart || []
                         let { cart = [], orders = [] } = user
 
                         if (!cart.length) throw new Error('cart is empty')
-
-                        const id = `ORD-${Date.now()}` // 'ORD-' + number
+                        
+                        const orderId = `ORD-${Date.now()}`  //ORD- + number
 
                         const order = {
-                            id,
+                            orderId,
                             date: new Date().toISOString(),
                             cart
                         }
 
                         orders.push(order)
 
-                        //cart.length = 0 // WARN!
+                        //cart.length = 0 //             WARN!
                         cart = []
 
                         return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
@@ -61,7 +60,7 @@ return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
                                 const { status } = res
 
                                 if (status === 204) {
-                                    return
+                                    return orderId
                                 } else if (status >= 400 && status < 500) {
                                     return res.json()
                                         .then(payload => {
@@ -90,4 +89,5 @@ return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
             }
         })
 }
-}
+
+export default placeVehiclesOrder

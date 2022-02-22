@@ -1,7 +1,5 @@
 import './Landing.css'
-
-function Landing(props) {
-    const { onLogin, onRegister } = props
+function Landing({ onLogin, onRegister }) {
 
     const goToLogin = event => {
         event.preventDefault()

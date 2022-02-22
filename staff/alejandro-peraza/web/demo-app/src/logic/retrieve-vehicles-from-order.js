@@ -1,7 +1,9 @@
-import { validateToken } from './helpers/validators'
+import { validateToken, validateString } from './helpers/validators'
 
-function retrieveVehiclesFromCart(token) {
+function retrieveVehiclesFromOrder(token, orderId) {
     validateToken(token)
+    validateString(orderId)
+
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
             Authorization: `Bearer ${token}`
@@ -13,12 +15,18 @@ function retrieveVehiclesFromCart(token) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
-                       
-                        const { cart = [], favs = [] } = user
 
-                        if (!cart.length) return []
+                        const { orders = [] } = user
 
-                        const fetches = cart.map(item => {
+                        if (!orders.length) throw new Error('no orders placed yet')
+
+                        const order = orders.find(order => order.id === orderId)
+
+                        const { cart = [] } = order
+
+                        if (!cart.length) throw new Error('no cart in the order')
+
+                        const fetches = cart.map((item) => {
                             return fetch(`https://b00tc4mp.herokuapp.com/api/hotwheels/vehicles/${item.id}`)
                                 .then(res => {
                                     const { status } = res
@@ -27,10 +35,7 @@ function retrieveVehiclesFromCart(token) {
                                         return res.json()
                                             .then(vehicle => {
                                                 vehicle.qty = item.qty
-
                                                 vehicle.total = vehicle.price * vehicle.qty
-
-                                                vehicle.isFav = favs.includes(vehicle.id)
 
                                                 return vehicle
                                             })
@@ -48,13 +53,12 @@ function retrieveVehiclesFromCart(token) {
                                     }
                                 })
                         })
-
                         return Promise.all(fetches)
                             .then(vehicles => {
                                 const total = vehicles.reduce((acc, vehicle) => vehicle.total + acc, 0)
 
                                 vehicles.total = total
-                                
+
                                 return vehicles
                             })
                     })
@@ -73,4 +77,4 @@ function retrieveVehiclesFromCart(token) {
         })
 }
 
-export default retrieveVehiclesFromCart
+export default retrieveVehiclesFromOrder
