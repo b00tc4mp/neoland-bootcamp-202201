@@ -19,13 +19,20 @@ const intervalId = setInterval(() => {
     vehicle2 = ' '.repeat(steps) + vehicle2
     console.log(vehicle2) 
 
-    if(vehicle.length >= 100){
+    if(vehicle.length >=100 || vehicle1.length >= 100 || vehicle2.length >=100){
+
+        console.clear()
+        
+        console.log(vehicle)
+        console.log(vehicle1)
+        console.log(vehicle2)
+
+        const results = [vehicle, vehicle1, vehicle2].sort()
+        console.log(`Winner ${results[0].trim()} Score: ${results[0].length}`, 
+                    `Second Place: ${results[1].trim()} Score: ${results[1].length}`,
+                    `Loser: ${results[2].trim()} Score: ${results[2].length}`)
         clearInterval(intervalId)
-    } 
-    if(vehicle1.length >= 100){
-        clearInterval(intervalId)
-    } 
-    if(vehicle2.length >= 100){
-        clearInterval(intervalId)
-    } 
+}
+
 }, 100)
+
