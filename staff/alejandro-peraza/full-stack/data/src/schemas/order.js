@@ -1,15 +1,17 @@
 const { Schema } = require('mongoose')
-
+const { Types: { ObjectId } } = Schema
 
 const order = new Schema({
     stock: {
-        type: String,
-        required: true
+        type: ObjectId,
+        required: true,
+        ref: 'Stock'
     },
 
-    serian: {
-        type: String,
-        required: true
+    user: {
+        type: ObjectId,
+        required: true,
+        ref: 'User'
     },
 
     quantity: {
