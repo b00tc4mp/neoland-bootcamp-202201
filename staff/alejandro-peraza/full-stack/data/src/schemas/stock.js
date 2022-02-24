@@ -1,20 +1,21 @@
-const { Schema } = required('mongoose')
+const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
 
 const stock = new Schema({
     product: [{
         type: ObjectId,
+        ref: 'Product',
         required: true
     }],
 
     color: {
-        type: Color,
+        type: String,
         required: true
 
     },
 
     size: {
-        type: Number,
+        type: Object,
         required: true
     },
 

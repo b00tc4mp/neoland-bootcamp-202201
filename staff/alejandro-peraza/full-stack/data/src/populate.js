@@ -1,4 +1,3 @@
-const { notDeepStrictEqual } = require('assert')
 const { connect, disconnect } = require('mongoose')
 const { User, CreditCard, Property, Brand, Product, Stock, Order } = require('./models')
 
@@ -12,30 +11,27 @@ connect('mongodb://localhost:27017/demo-db')
         Product.deleteMany(),
         Stock.deleteMany(),
         Order.deleteMany()
-
     ]))
 
     .then(() => {
         const agua = new User({ name: 'Agua Cate', email: 'agua@cate.com', password: '123123123' })
-        const ore = new User({ name: 'Ora Culo', email: 'ora@culo.com', password: '123123123' })
+        const ora = new User({ name: 'Ora Culo', email: 'ora@culo.com', password: '123123123' })
 
         return Promise.all([agua.save(), ora.save()])
     })
-
     .then(users => {
         const [agua, ora] = users
 
-        const aguaCard = new CreditCard({ fullname: 'Agua Cate Quesis', number: '1234 1234 1234 1234', expiration: new Date })
+        const aguaCard = new CreditCard({ fullName: 'Agua Cate Quesis', number: '1234 1234 1234 1234', expiration: new Date })
         agua.creditCards.push(aguaCard)
 
-        const aguaCard2 = new CredicCard({ fullname: 'Agua Cate Quesis', number: '2345 2345 2345 2345', expiration: new Date })
-        agua.CredicCard2.push(aguaCard2)
+        const aguaCard2 = new CreditCard({ fullName: 'Agua Cate Quesis', number: '3456 3456 3456 3456', expiration: new Date })
+        agua.creditCards.push(aguaCard2)
 
-        const oraCard = new CreditCard({ fullname: 'Ora Culo Quesis', number: '2345 2345 2345 2345', expiration: new Date })
-        ora.CredicCard.push(oraCard)
+        const oraCard = new CreditCard({ fullName: 'Ora Culo Quesis', number: '2345 2345 2345 2345', expiration: new Date })
+        ora.creditCards.push(oraCard)
 
         return Promise.all([agua.save(), ora.save()])
-
     })
 
     .then(() => {
@@ -43,10 +39,8 @@ connect('mongodb://localhost:27017/demo-db')
         const adidas = new Brand({ name: 'Adidas' })
         const converse = new Brand({ name: 'Converse' })
 
-        return Promise. all([nike.save(), adidas.save(), converse.save()])
-
+        return Promise.all([nike.save(), adidas.save(), converse.save()])
     })
-
     .then(([nike, adidas, converse]) => {
         const airMax = new Product({ brand: nike.id, model: 'Air Max', cost: 100, price: 120, serial: 'NIKE-SERIAL-123123123', image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/04f7ca5f-2412-4511-993c-2e08e542eb33/air-max-90-zapatillas-6SdNzK.png' })
         const airMax2 = new Product({ brand: nike.id, model: 'Air Max 2', cost: 110, price: 135, serial: 'NIKE-SERIAL-234234234', image: 'https://m.media-amazon.com/images/I/61S9rdrwGsL._AC_UY395_.jpg' })
@@ -65,14 +59,12 @@ connect('mongodb://localhost:27017/demo-db')
         const converses = [allStar, chuck70]
 
         return Promise.all([
-            Promise.all(nike.map(nike => nike.save())),
+            Promise.all(nikes.map(nike => nike.save())),
             Promise.all(adidass.map(adidas => adidas.save())),
             Promise.all(converses.map(converse => converse.save()))
         ])
-
-
     })
-    .then(([[airMax, airMax2, vaporMax ], [nizza, stanSmith], [allStar, chuck70]]) => {
+    .then(([[airMax, airMax2, vaporMax], [nizza, stanSmith], [allStar, chuck70]]) => {
         const airMaxBlack42 = new Stock({ product: airMax.id, quantity: 150, color: 'black', size: 42 })
         const airMaxWhite42 = new Stock({ product: airMax.id, quantity: 100, color: 'white', size: 42 })
         const airMaxBlack43 = new Stock({ product: airMax.id, quantity: 100, color: 'black', size: 43 })
@@ -92,14 +84,14 @@ connect('mongodb://localhost:27017/demo-db')
             Promise.all(nizzasStocks.map(stock => stock.save()))
         ])
     })
-    .then(([[airMaxBlack42, airMaxBlack43, airMaxWhite43], [nizzaBlack42, nizzaWhite42, nizzaBlack43, nizzaWhite43]]) => {
+    .then(([[airMaxBlack42, airMaxWhite42, airMaxBlack43, airMaxWhite43], [nizzaBlack42, nizzaWhite42, nizzaBlack43, nizzaWhite43]]) => {
         return User.findOne({ name: 'Agua Cate' })
             .then(user => {
-                const airMaxBlack42Order = new Order({ stock: arirMaxBlack42.id, user: user.id, quantity: 1, date: new Date })
+                const airMaxBlack42Order = new Order({ stock: airMaxBlack42.id, user: user.id, quantity: 1, date: new Date })
 
                 airMaxBlack42.quantity--
 
-                return Promise.all([ airMaxBlack42.save, airMaxBlack42Order.save()])
+                return Promise.all([airMaxBlack42.save(), airMaxBlack42Order.save()])
             })
             .then(([airMaxBlack42, airMaxBlack42Order]) => {
                 return airMaxBlack42Order.id
@@ -116,7 +108,6 @@ connect('mongodb://localhost:27017/demo-db')
                 console.log('stock', stock._doc)
 
                 return Product.findById(stock.product)
-
             })
             .then(product => {
                 console.log('product', product._doc)
@@ -125,6 +116,7 @@ connect('mongodb://localhost:27017/demo-db')
             })
             .then(brand => console.log('brand', brand))
     })
+
 
     .then(() => disconnect())
     .then(() => console.log('disconnected'))

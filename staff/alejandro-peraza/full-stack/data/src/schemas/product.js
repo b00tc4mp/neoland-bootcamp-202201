@@ -5,14 +5,11 @@ const product = new Schema({
     brand: {
         type: ObjectId,
         ref: 'Brand',
-        unique: true,
         required: true
     },
 
     model: [{
         type: String,
-        year: Number,
-        edition: String,
         required: true
 
     }],
@@ -21,11 +18,20 @@ const product = new Schema({
         type: Number,
         required: true
     },
+    price: {
+        type: Number,
+        required: true
+    },
 
     serial: {
         type: String,
         required: true,
         unique: true
+    },
+
+    image: {
+        type: String,
+        required: true
     }
 })
 
