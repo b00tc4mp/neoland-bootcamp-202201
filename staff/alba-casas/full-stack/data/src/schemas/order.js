@@ -15,7 +15,7 @@ const order = new Schema({
     ref: "User",
   },
   quantity: {
-    type: number,
+    type: Number,
     required: true,
   },
 });

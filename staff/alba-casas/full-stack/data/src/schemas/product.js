@@ -6,8 +6,8 @@ const {
 const product = new Schema({
   brand: {
     type: ObjectId,
-    required: true,
     ref: "Brand",
+    required: true,
   },
   model: {
     type: String,
@@ -22,6 +22,11 @@ const product = new Schema({
     required: true,
   },
   serial: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  image: {
     type: String,
     required: true,
   },
