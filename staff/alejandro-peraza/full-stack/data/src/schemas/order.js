@@ -1,6 +1,21 @@
-TODO implement me
+const { Schema } = require('mongoose')
 
-properties
-- stock (object id)
-- user (object id)
-- quantity (number)
+
+const order = new Schema({
+    stock: {
+        type: String,
+        required: true
+    },
+
+    serian: {
+        type: String,
+        required: true
+    },
+
+    quantity: {
+        type: Number,
+        required: true
+    }
+})
+
+module.exports = order

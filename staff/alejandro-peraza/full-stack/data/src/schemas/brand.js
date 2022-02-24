@@ -1,4 +1,10 @@
-TODO implement me
+const { Schema } = require('mongoose')
 
-properties
-- name
+const brand = new Schema({
+    name: {
+        type: String,
+        required: true
+    }
+})
+
+module.exports = brand
