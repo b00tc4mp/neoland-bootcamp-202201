@@ -1,3 +1,4 @@
+/*
 TODO implement me
 
 properties
@@ -6,3 +7,39 @@ properties
 - cost (number)
 - price (number)
 - serial (string)
+*/
+
+const { Schema } = require('mongoose')
+// const ObjectId = Schema.Types.ObjectId
+const { Types: { ObjectId }} = Schema
+
+const product = new Schema({
+    brand: {
+        type: ObjectId,
+        ref: 'Brand',
+        required: true
+    },
+
+    model: {
+        type: String,
+        required: true
+    },
+
+    cost: {
+        type: Number,
+        required: true
+    },
+
+    price: {
+        type: Number,
+        required: true
+    },
+
+    serial: {
+        type: String,
+        required: true,
+        unique: true
+    }
+})
+
+module.exports = product
