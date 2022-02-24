@@ -1,0 +1,26 @@
+.login { }
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.login__input--error {
+    border: 1px solid var(--warning);
+}
+
+.login__email-feedback, .login__password-feedback {
+    color: var(--warning);
+    font-size: 1rem;
+    text-align: right;
+}
+
+.login__feedback {
+    color: var(--warning);
+    text-align: center;
+}
+
+.login__register-link {
+    text-align: center;
+}

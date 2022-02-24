@@ -1,0 +1,15 @@
+.favs__list {
+    list-style-type: none;
+}
+
+.favs__item {
+    cursor: pointer;
+}
+
+.favs__item-fav-button {
+    display: block;
+}
+
+.favs__item-image {
+    width: 50vw;
+}
