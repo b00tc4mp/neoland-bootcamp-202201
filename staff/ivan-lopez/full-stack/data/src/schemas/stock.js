@@ -11,16 +11,17 @@ const { Types: { ObjectId } } = Schema
 const stock = new Schema({
     product: [{
         type: ObjectId,
+        ref: 'Product',
         required: true
     }],
 
     color: {
-        type: color,
+        type: String,
         required: true
     },
 
     size: {
-        type: ObjectId,
+        type: Object,
         required: true
     },
 

@@ -1,19 +1,27 @@
 // TODO implement me
 const { Schema } = require('mongoose')
+const { Types: { ObjectId } } = Schema
 
 const order = new Schema ({
     stock: {
-        type: String,
+        type: ObjectId,
+        ref: 'Stock',
         required: true
     },
 
-    serial: {
-        type: String,
+    user: {
+        type: ObjectId,
+        ref: 'User',
         required: true
     },
 
     quantity: {
         type: Number,
+        required: true
+    },
+
+    date: {
+        type: Date,
         required: true
     }
 })

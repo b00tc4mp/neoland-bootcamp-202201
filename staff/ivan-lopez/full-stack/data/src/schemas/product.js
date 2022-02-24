@@ -13,16 +13,14 @@ const { Types: { ObjectId } } = Schema
 const product = new Schema ({
     brand: [{
         type: ObjectId,
+        ref: 'Brand',
         required: true
 
     }],
 
     model: {
         type: String,
-        year: Number,
-        edition: String,
-        required: true,
-
+        required: true
     },
 
     cost: {
@@ -39,7 +37,12 @@ const product = new Schema ({
         type: String,
         required: true,
         unique: true
-    }
+    },
+
+    // image: {
+    //     type: String,
+    //     required: true
+    // }
 })
 
 module.exports = product

@@ -1,4 +1,4 @@
-const { Schema } = require('mongooose')
+const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
 
 const property = new Schema({
