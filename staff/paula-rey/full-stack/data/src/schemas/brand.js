@@ -3,7 +3,8 @@ const { Schema } = require('mongoose')
 const brand = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }
 
 })
@@ -11,5 +12,3 @@ const brand = new Schema({
 
 module.exports = brand
 
-// properties
-// - name
