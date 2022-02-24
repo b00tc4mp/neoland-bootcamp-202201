@@ -9,7 +9,6 @@ const product = new Schema({
     },
     model: {
         type: String,
-        year: Number,
         required: true
     },
     cost: {
@@ -22,10 +21,15 @@ const product = new Schema({
     },
 
     serial: {
-        type: Number,
+        type: String,
         required: true,
         unique: true   
     },
+
+    image: {
+        type: String,
+        required: true
+    }
 })
 
 module.exports = product

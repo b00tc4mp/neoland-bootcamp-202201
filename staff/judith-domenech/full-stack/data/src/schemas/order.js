@@ -1,18 +1,26 @@
 const { Schema } = require('mongoose')
+const { Types: { ObjectId } } = Schema
 
 const order = new Schema({
     stock: {
-        type: String,
+        type: ObjectId,
+        ref: 'Stock',
         required: true
     },
     user: {
-        type: String,
+        type: ObjectId,
+        ref: 'User',
         required: true
     },
     quantity: {
         type: Number,
         required: true
     },
+
+    date: {
+        type: Date,
+        required: true
+    }
 })
 
 module.exports = order
