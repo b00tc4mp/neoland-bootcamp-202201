@@ -10,12 +10,17 @@ function updateUser(id, { name, email }) {
     })
 }
 
+//refactor1:
+
 // function updateUser(id, {name, email}) {
 
 //     return User.findById(id)
 //         .then(user => user.updateOne({ name, email }))
 
 // }
+
+
+//refactor2:
 
 // function updateUser(id, {name, email}) {
     
