@@ -4,14 +4,14 @@ const authenticateUser = require('./authenticateUser')
 
 connect('mongodb://localhost:27017/demo-db')
     .then(() => Promise.all([
-        // User.deleteMany()
+        User.deleteMany()
     ]))
 
-    // .then(() => registerUser('Pepito Grillo', 'pepito@grillo.com', '123123123'))
-    // .then(() => console.log('user registered'))
+    .then(() => registerUser('Pepito Grillo', 'pepito_grillo.com', '123123123'))
+    .then(() => console.log('user registered'))
 
-    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
-    .then(userId => console.log('user id', userId))
+    // .then(() => authenticateUser('pepito_grillo.com', '123123123'))
+    // .then(userId => console.log('user id', userId))
 
     .catch(error => console.error(error.message))
     .then(() => disconnect())
