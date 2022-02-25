@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <Sidebar pokemonList={pokemonList} setPokemonList={setPokemonList} />
+      <Sidebar setPokemonList={setPokemonList} />
       <Main>
         <Grid>
           {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}

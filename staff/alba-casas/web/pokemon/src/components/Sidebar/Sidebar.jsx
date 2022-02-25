@@ -1,13 +1,18 @@
 import { Container, Logo, SideBar, StyledInput } from "./styled";
 import icon from "../../assets/pokemon.png";
 import Select from "../Select";
+import retrieveAllPokemon from "../../logic/retrieveAllPokemon";
 
-const Sidebar = ({ pokemonList, setPokemonList }) => {
+const Sidebar = ({ setPokemonList }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const query = event.target[0].value;
-    console.log(query);
-    
+    retrieveAllPokemon().then((allPokemon) => {
+      const query = event.target[0].value;
+      const result = allPokemon.results.filter((pokemon) => {
+        return pokemon.name.includes(query);
+      });
+      setPokemonList(result);
+    });
   };
 
   return (
