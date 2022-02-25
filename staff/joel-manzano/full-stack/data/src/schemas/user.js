@@ -1,5 +1,5 @@
 const { Schema } = require('mongoose')
-const credtiCard = require('./creditCard')
+const creditCard = require('./creditCard')
 
 const user = new Schema({
     name: {

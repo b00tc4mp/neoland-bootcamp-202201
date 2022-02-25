@@ -1,19 +1,27 @@
-//TODO implement me
+/*
+TODO implement me
+
+properties
+- brand (object id)
+- model (string)
+- cost (number)
+- price (number)
+- serial (string)
+*/
+
 
 const { Schema } = require('mongoose')
-const { types:  { objectId } } = Schema
+const { Types:  { ObjectId } } = Schema
 
 const product = new Schema ({
     brand: {
-        type: objectId,
-        ref: 'Brand'
-       
+        type: ObjectId,
+        ref: 'Brand',
+        required: true
     },
 
     model: {
         type: String,
-        year: Number,
-        edition: String,
         required: true
     },
 
@@ -31,7 +39,12 @@ const product = new Schema ({
         type: String,
         require: true,
         unique: true
-    }
+    },
+
+    //image: {
+        //type: String,
+        //required: true
+    //}
 
 
 })
