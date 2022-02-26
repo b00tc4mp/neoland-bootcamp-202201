@@ -118,7 +118,6 @@ connect('mongodb://localhost:27017/demo-db')
                     Promise.all(ultraBoostStocks.map(stock => stock.save())),
                     Promise.all(jGoldCrownStocks.map(stock => stock.save())),
                     Promise.all(glideStepStocks.map(stock => stock.save()))
-
                 ])      
             })
 

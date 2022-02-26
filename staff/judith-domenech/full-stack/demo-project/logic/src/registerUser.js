@@ -5,5 +5,5 @@ function registerUser(name, email, password){
         .then(user => {})
 }
 
-module. exports = registerUser
+module.exports = registerUser
 
