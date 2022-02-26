@@ -1,14 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Landing from "./components/Landing/Landing";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import Container from "./components/Container/Container";
+import { validateToken } from "./logic/helpers/validators";
 
 function App() {
   const [theme, setTheme] = useState("light");
-  const [token, setToken] = useState(sessionStorage.token);
+  let tokenValid = true;
+  const [token, setToken] = useState(
+    tokenValid ? sessionStorage.token : undefined
+  );
+
+  try {
+    validateToken(sessionStorage.token);
+  } catch (error) {
+    tokenValid = false;
+  }
+
+  useEffect(() => !tokenValid && navigate("/"), []);
+
   const navigate = useNavigate();
 
   const showLogin = () => navigate("login");
