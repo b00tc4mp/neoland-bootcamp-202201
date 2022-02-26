@@ -1,0 +1,19 @@
+.container {
+  min-height: 100vh;
+}
+
+.container--light {
+  background-color: white;
+}
+
+.container--dark {
+  background-color: #1d1d1d;
+}
+
+.container--dark :is(a, span, h1, h2, h3) {
+  color: #fff;
+}
+
+.container--dark img {
+  filter: invert(0%);
+}

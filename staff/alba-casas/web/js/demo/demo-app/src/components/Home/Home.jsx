@@ -19,7 +19,7 @@ import {
   useLocation,
 } from "react-router-dom";
 
-function Home({ token, onLanding }) {
+function Home({ token, onLanding, onToggleTheme }) {
   const [view, setView] = useState("search");
   const [name, setName] = useState("name");
   const [vehicleId, setVehicleId] = useState();
@@ -29,6 +29,7 @@ function Home({ token, onLanding }) {
   const q = search.get("q");
   const [query, setQuery] = useState(q);
   const location = useLocation();
+  const [themeState, setThemeState] = useState("🌚");
 
   const showProfile = () => navigate("profile");
   const showUpdatePassword = () => navigate("profile/update-password");
@@ -68,6 +69,12 @@ function Home({ token, onLanding }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const toggleTheme = () => {
+    setThemeState(themeState === "🌚" ? "🌝" : "🌚");
+
+    onToggleTheme();
+  };
 
   return (
     <div className="home">
@@ -146,6 +153,9 @@ function Home({ token, onLanding }) {
           }}
         >
           Logout
+        </button>
+        <button className="home__button" onClick={toggleTheme}>
+          {themeState}
         </button>
       </div>
 

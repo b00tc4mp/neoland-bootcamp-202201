@@ -4,8 +4,10 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Home from "./components/Home/Home";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import Container from "./components/Container/Container";
 
 function App() {
+  const [theme, setTheme] = useState("light");
   const [token, setToken] = useState(sessionStorage.token);
   const navigate = useNavigate();
 
@@ -23,14 +25,20 @@ function App() {
     setToken();
   };
 
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+
   return (
-    <>
+    <Container theme={theme}>
       <Routes>
         <Route
           path="/*"
           element={
             token ? (
-              <Home token={token} onLanding={showLanding} />
+              <Home
+                token={token}
+                onLanding={showLanding}
+                onToggleTheme={toggleTheme}
+              />
             ) : (
               <Landing onLogin={showLogin} onRegister={showRegister} />
             )
@@ -67,7 +75,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </Container>
   );
 }
 

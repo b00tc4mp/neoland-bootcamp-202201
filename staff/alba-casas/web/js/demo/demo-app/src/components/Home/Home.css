@@ -18,11 +18,11 @@
   width: 8rem;
 }
 
-.home__logout-button {
+.home__button {
   cursor: pointer;
 }
 
 .home__menu-link--active {
-  color: black;
-  border-bottom: 4px solid #495371;
+  color: white;
+  background-color: black;
 }
