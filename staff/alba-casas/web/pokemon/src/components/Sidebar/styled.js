@@ -33,3 +33,12 @@ export const StyledInput = styled(Input)`
   margin-top: 24px;
   margin-bottom: 24px;
 `;
+
+export const Checkbox = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+`;

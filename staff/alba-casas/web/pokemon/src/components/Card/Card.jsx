@@ -13,7 +13,7 @@ import {
   Footer,
 } from "./styled";
 
-const Card = ({ pokemonName, selectedType }) => {
+const Card = ({ pokemonName, selectedType, shouldOnlyShowFavs }) => {
   const [apiPokemon, setApiPokemon] = useState();
   const [isFav, setIsFav] = useState(false);
 
@@ -35,7 +35,12 @@ const Card = ({ pokemonName, selectedType }) => {
   const pokemonType = apiPokemon?.types[0].type.name;
   const pokemonImage = apiPokemon?.sprites?.front_default;
 
-  if (selectedType === pokemonType || !selectedType) {
+  if (
+    (shouldOnlyShowFavs && isFav && selectedType === pokemonType) ||
+    (!shouldOnlyShowFavs && selectedType === pokemonType) ||
+    (shouldOnlyShowFavs && isFav && !selectedType) ||
+    (!shouldOnlyShowFavs && !selectedType)
+  ) {
     return (
       <StyledCard>
         <Header type={pokemonType}>

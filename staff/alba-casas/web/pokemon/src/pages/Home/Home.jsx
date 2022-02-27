@@ -7,6 +7,7 @@ import { Grid, Layout, Main } from "./styled";
 const Home = () => {
   const [pokemonList, setPokemonList] = useState();
   const [selectedType, setSelectedType] = useState();
+  const [shouldOnlyShowFavs, setShouldOnlyShowFavs] = useState(false);
 
   useEffect(() => {
     // retrieveAllPokemon(0, 6) -> con paginación: offset 0, quantity 6 (desde el 0, pinta los prox 6)
@@ -23,9 +24,17 @@ const Home = () => {
     setSelectedType(selectedType);
   };
 
+  const onChecked = (checked) => {
+    setShouldOnlyShowFavs(checked);
+  };
+
   return (
     <Layout>
-      <Sidebar setPokemonList={setPokemonList} onSelect={onSelect} />
+      <Sidebar
+        setPokemonList={setPokemonList}
+        onSelect={onSelect}
+        onChecked={onChecked}
+      />
       <Main>
         <Grid>
           {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}
@@ -35,6 +44,7 @@ const Home = () => {
                 pokemonName={pokemon.name}
                 key={pokemon.name}
                 selectedType={selectedType}
+                shouldOnlyShowFavs={shouldOnlyShowFavs}
               />
             );
           })}

@@ -1,9 +1,9 @@
-import { Container, Logo, SideBar, StyledInput } from "./styled";
+import { Checkbox, Container, Logo, SideBar, StyledInput } from "./styled";
 import icon from "../../assets/pokemon.png";
 import Select from "../Select";
 import retrieveAllPokemon from "../../logic/retrieveAllPokemon";
 
-const Sidebar = ({ setPokemonList, onSelect }) => {
+const Sidebar = ({ setPokemonList, onSelect, onChecked }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     retrieveAllPokemon().then((allPokemon) => {
@@ -17,6 +17,10 @@ const Sidebar = ({ setPokemonList, onSelect }) => {
 
   const handleChange = (event) => {
     onSelect(event.target.value);
+  };
+
+  const handleCheckbox = (event) => {
+    onChecked(event.target.checked);
   };
 
   return (
@@ -42,6 +46,10 @@ const Sidebar = ({ setPokemonList, onSelect }) => {
             <option value="ice">ICE</option>
             <option value="dragon">DRAGON</option>
           </Select>
+          <Checkbox onChange={handleCheckbox}>
+            <label htmlFor="favsCheckbox">⭐️ Show only favourites</label>
+            <input type="checkbox" id="favsCheckbox" />
+          </Checkbox>
         </form>
       </Container>
     </SideBar>
