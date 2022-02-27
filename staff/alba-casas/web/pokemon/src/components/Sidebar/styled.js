@@ -10,6 +10,10 @@ export const SideBar = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 32px;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const Logo = styled.img`

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import { retrieveAllPokemon } from "../../logic";
 import { Grid, Layout, Main } from "./styled";
 

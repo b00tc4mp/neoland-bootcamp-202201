@@ -22,4 +22,11 @@ export const Grid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px;
   padding-top: 50px;
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `;
