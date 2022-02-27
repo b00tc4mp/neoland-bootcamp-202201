@@ -132,6 +132,7 @@ function Home({ token, onLogout, }) {
            event.preventDefault()
            showOrders()
         }
+
         const showOrders = () => 
        
        navigate('orders')
@@ -162,6 +163,6 @@ function Home({ token, onLogout, }) {
         </Routes>
 
     </div>
-}
+}}
 
 export default Home
