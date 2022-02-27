@@ -3,7 +3,7 @@ import icon from "../../assets/pokemon.png";
 import Select from "../Select";
 import retrieveAllPokemon from "../../logic/retrieveAllPokemon";
 
-const Sidebar = ({ setPokemonList }) => {
+const Sidebar = ({ setPokemonList, onSelect }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     retrieveAllPokemon().then((allPokemon) => {
@@ -15,13 +15,17 @@ const Sidebar = ({ setPokemonList }) => {
     });
   };
 
+  const handleChange = (event) => {
+    onSelect(event.target.value);
+  };
+
   return (
     <SideBar>
       <Container>
         <Logo src={icon} alt="pokemon"></Logo>
         <form onSubmit={handleSubmit} method="post">
           <StyledInput placeholder="Search by name" />
-          <Select>
+          <Select onChange={handleChange}>
             <option value="">Any type</option>
             <option value="water">WATER</option>
             <option value="fire">FIRE</option>
@@ -38,7 +42,6 @@ const Sidebar = ({ setPokemonList }) => {
             <option value="ice">ICE</option>
             <option value="dragon">DRAGON</option>
           </Select>
-          <button type="submit">Filter</button>
         </form>
       </Container>
     </SideBar>

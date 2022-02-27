@@ -6,7 +6,7 @@ import { Grid, Layout, Main } from "./styled";
 
 const Home = () => {
   const [pokemonList, setPokemonList] = useState();
-  console.log(pokemonList);
+  const [selectedType, setSelectedType] = useState();
 
   useEffect(() => {
     // retrieveAllPokemon(0, 6) -> con paginación: offset 0, quantity 6 (desde el 0, pinta los prox 6)
@@ -19,14 +19,24 @@ const Home = () => {
       });
   }, []);
 
+  const onSelect = (selectedType) => {
+    setSelectedType(selectedType);
+  };
+
   return (
     <Layout>
-      <Sidebar setPokemonList={setPokemonList} />
+      <Sidebar setPokemonList={setPokemonList} onSelect={onSelect} />
       <Main>
         <Grid>
           {/* Si pokemonList contiene map (en su prototipado), hace el map (Optional Chaining) */}
           {pokemonList?.map((pokemon) => {
-            return <Card pokemonName={pokemon.name} key={pokemon.name} />;
+            return (
+              <Card
+                pokemonName={pokemon.name}
+                key={pokemon.name}
+                selectedType={selectedType}
+              />
+            );
           })}
         </Grid>
       </Main>
