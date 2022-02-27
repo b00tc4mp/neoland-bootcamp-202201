@@ -14,7 +14,7 @@ import Order from './Order'
 import Orders from './Orders'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
-function Home({ token, onLogout }) {
+function Home({ token, onLogout, onToggleTheme }) {
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
     const [vehicleId, setVehicleId] = useState()
@@ -25,6 +25,7 @@ function Home({ token, onLogout }) {
     const [query, setQuery] = useState(q)
     const location = useLocation()
     const [orderId, setOrderId] = useState()
+    const [themeState, setThemeState] = useState('🌚')
 
     useEffect(() => {
         try {
@@ -135,6 +136,13 @@ function Home({ token, onLogout }) {
        navigate('orders')
 
 
+    const toggleTheme = () => {
+        setThemeState(themeState === '🌚'? '🌝' : '🌚')
+
+        onToggleTheme()
+    }
+
+
 
     return <div className="home">
 
@@ -146,6 +154,7 @@ function Home({ token, onLogout }) {
             <a className={`home__menu-link ${view === 'orders'? 'home__menu-link--active' :''}`} href="" onClick={goToOrders}>Orders</a>
 
             <button className="home__logout-button" onClick={onLogout}>Logout</button>
+            <button className="home__theme-button" onClick={toggleTheme}>{themeState}</button>
         </nav>
 
         {/* {view === 'search' && <Search token={token} onItem={goToDetails} onQuery={setQuery} query={query} />}

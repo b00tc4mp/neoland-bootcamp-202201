@@ -10,7 +10,7 @@ function validateEmail(email) {
     if (!EMAIL_REGEX.test(email)) throw new Error('invalid email')
 }
 
-function validatePassword(password, explain= 'password') {
+function validatePassword(password, explain = 'password') {
     if (typeof password !== 'string') throw new TypeError(`${explain} is not a string`)
     if (BLANK_REGEX.test(password)) throw new Error(`blank ${explain}`)
     if (SPACE_REGEX.test(password)) throw new Error(`${explain} has empty spaces`)
@@ -43,6 +43,30 @@ function validateToken(token) {
         if (part === '') throw new Error('token part is empty')
         if (BLANK_REGEX.test(part)) throw new Error('token part is blank')
     })
+
+    const [header, payload] = parts
+
+    try {
+        atob(header)
+    } catch (error) {
+        throw new Error('token invalid')
+    }
+
+    let json
+    
+    try {
+        json = atob(payload)
+    } catch(error) {
+        throw new Error('token invalid')
+    }
+
+    const { exp } = JSON.parse(json)
+
+    const expStamp = exp * 1000
+
+    const expired = Date.now() > expStamp
+
+    if (expired) throw new Error('token expired')
 }
 
 function validateQuery(query) {
