@@ -1,6 +1,6 @@
 import './Order.css'
-import { retrieveOrder, retrieveVehiclesFromOrder } from '../logic'
 import { useEffect, useState } from 'react'
+import { retrieveVehiclesOrder, retrieveVehiclesFromOrder } from '../logic'
 
 
 function Order({ token, orderId, onItem }) {
@@ -9,14 +9,13 @@ function Order({ token, orderId, onItem }) {
 
     useEffect(() => {
         try {
-            retrieveOrder(token, orderId)
-                .then(order => {
-                    setOrder(order)
-                    retrieveVehiclesFromOrder(token, orderId)
-                        .then(vehicles => setVehicles(vehicles))
-                        .catch(error => alert(error.message))
-                })
-                .catch(error => alert(error.message))
+            retrieveVehiclesOrder(token, orderId)
+            .then(order => {
+                setOrder(order)
+                return retrieveVehiclesFromOrder(token, orderId)
+            })
+            .then(vehicles => setVehicles(vehicles))
+            .catch(error => {throw error})
         } catch ({ message }) {
             alert(message)
         }
@@ -26,9 +25,10 @@ function Order({ token, orderId, onItem }) {
         onItem(id)
     }
 
+
     return <div className="order">
         {vehicles && (vehicles.length ? <div>
-            <h1 className="order__title">ORD-{order.id}</h1>
+            <h1 className="order__title">{order.id}</h1>
             <p>Date: {order.date}</p>
             <ul className="order__list">
                 {vehicles.map(vehicle => <li key={vehicle.id} className="order__item" onClick={() => goToItem(vehicle.id)}>

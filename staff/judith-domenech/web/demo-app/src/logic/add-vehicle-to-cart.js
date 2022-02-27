@@ -9,7 +9,7 @@ function addVehicleToCart(token, vehicleId) {
             Authorization: `Bearer ${token}`
         }
     })
-        .then(res => {
+        .then(res => { 
             const { status } = res
 
             if (status === 200) {

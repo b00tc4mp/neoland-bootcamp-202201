@@ -13,7 +13,7 @@ import removeVehicleFromCart from './remove-vehicle-from-cart'
 import retrieveVehiclesFromCart from './retrieve-vehicles-from-cart'
 import placeVehiclesOrder from './place-vehicles-order'
 import retrieveUserOrders from './retrieve-user-orders'
-import retrieveOrder from './retrieve-user-orders'
+import retrieveVehiclesOrder from './retrieve-vehicles-order'
 import retrieveVehiclesFromOrder from './retrieve-vehicles-from-order'
 
 export {
@@ -32,6 +32,6 @@ export {
     retrieveVehiclesFromCart,
     placeVehiclesOrder,
     retrieveUserOrders,
-    retrieveOrder, 
-    retrieveVehiclesFromOrder
+    retrieveVehiclesOrder, 
+    retrieveVehiclesFromOrder,
 }

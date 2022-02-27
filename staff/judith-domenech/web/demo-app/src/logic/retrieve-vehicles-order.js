@@ -1,12 +1,12 @@
-import { validateToken, validateString } from './helpers/validators'
+import { validateToken, validateString } from "./helpers/validators";
 
-function retrieveOrder(token, orderId) {
+function retrieveVehiclesOrder(token, orderId) {
     validateToken(token)
     validateString(orderId)
 
     return fetch('https://b00tc4mp.herokuapp.com/api/v2/users', {
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Barer ${token}`
         }
     })
         .then(res => {
@@ -15,9 +15,10 @@ function retrieveOrder(token, orderId) {
             if (status === 200) {
                 return res.json()
                     .then(user => {
+                        // const orders = user.orders || []
                         const { orders = [] } = user
-
-                        if (!orders.length) throw new Error('no orders placed yet')
+                        
+                        if (!orders.length) throw new Error('no orders')
 
                         return orders.find(order => order.id === orderId)
                     })
@@ -34,6 +35,7 @@ function retrieveOrder(token, orderId) {
                 throw new Error('unknown error')
             }
         })
+
 }
 
-export default retrieveOrder
+export default retrieveVehiclesOrder
