@@ -62,9 +62,16 @@ function validateString(string, explain = 'string') {
     if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
 }
 
+function validateId(id) {
+    validateString(id, 'id')
+
+    if (id.length !== 24) throw new Error('wrong id length')
+}
+
 module.exports = {
     validateEmail,
     validatePassword,
     validateToken,
-    validateString
+    validateString,
+    validateId
 }
