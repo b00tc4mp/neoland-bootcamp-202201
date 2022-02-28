@@ -148,7 +148,7 @@ import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-
             <a className={`home__profile-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href='' onClick={goToOrders}> 🛍 Orders</a>
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
             <button className="home__button" onClick={toggleTheme}>{themeState}</button>
-        </div>
+       
 
 
         <Routes>
@@ -164,7 +164,7 @@ import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-
             <Route path='orders' element={<Orders token={token} onOrder={goToOrder}/>} />
             {/* <Route path="" element={<Navigate replace to="/" />} /> */}
         </Routes>
-
+        </div>
     </div>
 }
 

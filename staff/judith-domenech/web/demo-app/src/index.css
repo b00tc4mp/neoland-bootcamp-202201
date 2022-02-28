@@ -10,10 +10,14 @@
 
 * {
     font-size: 1.2rem;
-}
-
-html, body, #root {
-    height: 100vh;
+  }
+  
+  html, body, #root {
     margin: 0;
+    height: 100%;
     background-color: var(--background);
+  }
+  
+  button {
+    cursor: pointer;
   }

@@ -1,10 +1,9 @@
-
 .container {
     min-height: 100vh;
 }
 
 .container--light {
-    background-color: whitesmoke;
+    background-color: var(--background);
 }
 
 .container--dark {
