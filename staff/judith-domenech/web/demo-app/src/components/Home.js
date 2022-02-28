@@ -9,8 +9,8 @@ import Logo from './Logo'
 import Favs from './Favs'
 import Detail from './Detail'
 import Cart from './Cart'
-import Orders from './Order'
-import Order from './Orders'
+import Order from './Order'
+import Orders from './Orders'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
     function Home({ token, onLogout, onToggleTheme }) {
@@ -149,7 +149,7 @@ import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
             <button className="home__button" onClick={toggleTheme}>{themeState}</button>
        
-
+            </div>
 
         <Routes>
             <Route index element={<Search token={token} onItem={goToDetails} onQuery={doSearch} query={query} />} />
@@ -164,7 +164,7 @@ import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-
             <Route path='orders' element={<Orders token={token} onOrder={goToOrder}/>} />
             {/* <Route path="" element={<Navigate replace to="/" />} /> */}
         </Routes>
-        </div>
+        
     </div>
 }
 
