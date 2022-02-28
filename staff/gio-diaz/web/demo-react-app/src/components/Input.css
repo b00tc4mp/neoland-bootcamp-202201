@@ -1,0 +1,29 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: beige;
+}
+
+.input__body {
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    border-radius: .2rem;
+    width: 100%;
+}
+
+.input__body--error {
+    border-color: tomato;
+}
+
+.input:focus-within {
+    border-color: dodgerblue;
+}
+
+.input__input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+}

@@ -1,0 +1,35 @@
+*{ font-size: 12px;
+    font-family: "arial";
+    text-decoration: none;
+    color: black;
+    font-weight: 400px;
+    margin: 0px;
+    padding: 0px;
+    border:0px;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+.foto{
+   display: block;
+   margin: auto;
+   border-radius: 10%;
+   clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+}
+.titulo{
+   text-align: center;
+   background-color: gray;  
+   font-size: xx-large;
+   border-radius: 40%;
+}
+.subtitulos{
+    background-color: lightcyan;
+}
