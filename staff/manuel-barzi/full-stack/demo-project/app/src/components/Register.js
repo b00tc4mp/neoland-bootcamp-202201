@@ -1,7 +1,7 @@
 import './Register.css'
 import { registerUser } from '../logic'
 
-function Register() {
+function Register({ onRegistered }) {
     const register = event => {
         event.preventDefault()
 
@@ -9,7 +9,7 @@ function Register() {
 
         try {
             registerUser(name, email, password)
-                .then(() => alert('user registered'))
+                .then(onRegistered)
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
