@@ -13,11 +13,7 @@ import Orders from './Order'
 import Order from './Orders'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
-
-function Home({ token, onLogout, }) {
-    // const token = props.token
-    //const { token } = props
-    function Home({ token, onLogout }) {
+    function Home({ token, onLogout, onToggleTheme }) {
         const [view, setView] = useState('search')
         const [name, setName] = useState('name')
         const [vehicleId, setVehicleId] = useState()
@@ -28,6 +24,7 @@ function Home({ token, onLogout, }) {
         const [query, setQuery] = useState(q)
         const location = useLocation()
         const [orderId, setOrderId] = useState()
+        const [themeState, setThemeState] = useState('🌙')
     
         useEffect(() => {
             try {
@@ -137,6 +134,11 @@ function Home({ token, onLogout, }) {
        
        navigate('orders')
 
+   const toggleTheme = () => {
+        setThemeState(themeState === '🌙'? '🌞' : '🌙')
+
+        onToggleTheme()
+    }
     return <div className="home">
         <div className="home__header">
             <a className="home__home-link" href="" onClick={goToSearch} title="search" ><Logo /></a>
@@ -145,24 +147,25 @@ function Home({ token, onLogout, }) {
             <a className={`home__profile-link${view === 'cart' ? 'home__menu-link--active' : ''}`} href='' onClick={goToCart}> 🛒 Cart</a>
             <a className={`home__profile-link ${view === 'cart' ? 'home__menu-link--active' : ''}`} href='' onClick={goToOrders}> 🛍 Orders</a>
             <button className="home__logout-button" onClick={onLogout}> Logout</button>
+            <button className="home__button" onClick={toggleTheme}>{themeState}</button>
         </div>
 
 
         <Routes>
-            <Route index element={<Search token={token} onItem={goToDetail} onQuery={doSearch} query={query} />} />
-            <Route path='search' element={<Search token={token} onItem={goToDetail} onQuery={doSearch} query={query} />} />
-            <Route path='favs' element={<Favs token={token} onItem={goToDetail} />} />
-            <Route path='cart' element={<Cart token={token} onItem={goToDetail} onOrder={goToOrder} />} />
+            <Route index element={<Search token={token} onItem={goToDetails} onQuery={doSearch} query={query} />} />
+            <Route path='search' element={<Search token={token} onItem={goToDetails} onQuery={doSearch} query={query} />} />
+            <Route path='favs' element={<Favs token={token} onItem={goToDetails} />} />
+            <Route path='cart' element={<Cart token={token} onItem={goToDetails} onOrder={goToOrder} />} />
             <Route path='profile' element={<Profile token={token} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} />
             <Route path='profile/update-password' element={<UpdatePassword token={token} onBack={showProfile} />} />
             <Route path='profile/delete-account' element={<DeleteAccount token={token} onBack={showProfile} onDeletedAccount={onLogout} />} />
-            <Route path='vehicles/:vehicleId' element={<Details token={token} onBack={goBackFromDetail} />} />
-            <Route path='order' element={<Order token={token} orderId={orderId} onItem={goToDetail} />} />
+            <Route path='vehicles/:vehicleId' element={<Detail token={token} onBack={goBackFromDetails} />} />
+            <Route path='order' element={<Order token={token} orderId={orderId} onItem={goToDetails} />} />
             <Route path='orders' element={<Orders token={token} onOrder={goToOrder}/>} />
             {/* <Route path="" element={<Navigate replace to="/" />} /> */}
         </Routes>
 
     </div>
-}}
+}
 
 export default Home

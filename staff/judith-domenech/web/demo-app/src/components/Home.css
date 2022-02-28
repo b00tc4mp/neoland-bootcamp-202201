@@ -18,7 +18,15 @@
     width: 8rem;
 }
 
-
 .home__logout-button {
     cursor: pointer;
+}
+
+.home__menu-link--active {
+    font-size: 2rem;
+}
+
+.home__button{
+    background-color: transparent;
+    
 }
