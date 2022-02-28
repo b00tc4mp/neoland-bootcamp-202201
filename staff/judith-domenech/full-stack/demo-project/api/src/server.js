@@ -1,6 +1,6 @@
 const { mongoose: { connect, disconnect }} = require('data')
 const express = require('express')
-const { registerUser } = require('logic')
+const { registerUser, authenticateUser } = require('logic')
 const cors = require('cors')
 
 connect('mongodb://localhost:27017/demo-db')
@@ -9,6 +9,12 @@ connect('mongodb://localhost:27017/demo-db')
         const server = express()
 
         server.use(cors())
+
+       /*  server.use((req, res, next) =>{
+            res.set('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE')
+            res.set('Access-Control-Allow-Headers', 'Content-TYpe' )
+            res.set('Access-Control-Allow-Origin', '*')
+        }) */
 
         const jsonBodyParser = express.json()
         
@@ -34,6 +40,19 @@ connect('mongodb://localhost:27017/demo-db')
                     .then(() => res.status(201).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch(error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.post('users/auth', jsonBodyParse, (res,req) => {
+            try{
+                const{body: { email, password } } = req
+                authenticateUser(email, password)
+                .then(id => {
+                    jetw
+                })
+                .catch(error => res.status(400))
+            }catch (error){
                 res.status(400).json({ error: error.message })
             }
         })
