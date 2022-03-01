@@ -1,49 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-import { validators } from 'commons'
-
-const { validateString } = validators
+import './App.css'
+import { Register, Login, Home } from './components'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 function App() {
+  const navigate = useNavigate()
 
-  const search = event => {
-    event.preventDefeault()
+  const showLogin = () => navigate('login')
 
-    const query = event.target.query.value
+  const keepTokenNShowHome = token => {
+    sessionStorage.token = token
 
-    try {
-      validateString(query, 'query')
-
-      alert('todo ok')
-
-    } catch(error) {
-        alert(error.message)
-    }
-
+    navigate('/')
   }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <form onSubmit={ search }>
-        <input type="text" name="query"/>
-        <button>Search</button>
-      </form>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      
-    </div>
-  );
+
+  return <div>
+    <Routes>
+      <Route path="/*" element={<Home />} />
+      <Route path="register" element={<Register onRegistered={showLogin} />} />
+      <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome} />} />
+    </Routes>
+  </div>
 }
 
-export default App;
+export default App
