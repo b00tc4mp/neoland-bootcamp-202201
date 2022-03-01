@@ -9,3 +9,5 @@ function updateUserPassword(id, { name, email }) {
       return user.save();
     })
 }
+
+module.exports = updateUserPassword
