@@ -1,26 +1,19 @@
 const { models: { User } } = require("data")
-const { validators: { validateId } } = require('commons')
+const { validators: { validateId, validatePassword } } = require('commons')
 
 function updateUserPassword(id, { currPassword, newPassword }) {
-  validateId(id)
+  validateId(id, "id")
+  validatePassword(currPassword, "currPassword")
+  validatePassword(newPassword, "newPassword")
 
   return User.findById(id)
-    .then(async (user) => {
-      if (user.password === currPassword) {
-        return User.updateOne({ _id: id }, { password: newPassword })
+    .then((user) => {
+      if (user.password ===  currPassword) {
+        return User.updateOne({ _id: id}, {password: newPassword })
+        .then(() => {})
       } else throw new Error("Wrong credentials")
     })
-    .then(user => {
-      const doc = user._doc
-
-      // sanitize
-      delete doc._id
-      delete doc.password
-      delete doc.creditCards
-      delete doc.__v
-
-      return doc
-    })
+   
 }
 
 module.exports = updateUserPassword

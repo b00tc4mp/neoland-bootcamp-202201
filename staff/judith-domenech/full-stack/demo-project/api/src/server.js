@@ -1,6 +1,6 @@
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
-const { registerUser, authenticateUser, retrieveUser, createNote, listNotes } = require('logic')
+const { registerUser, authenticateUser, retrieveUser, createNote, listNotes, updateNote, deleteNote, updateUserPassword } = require('logic')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
@@ -91,7 +91,58 @@ connect('mongodb://localhost:27017/demo-db')
 
                 listNotes(id)
                     .then(notes => res.json(notes))
-                    .catch(error => res.status(400).json({ error: error.message }))
+                    .catch(error => { throw error })
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.patch('/notes', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, body: { id: noteId, text, color } } = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: id } = payload
+
+                updateNote(id, noteId, text, color)
+                    .then(() => res.status(201).send())
+                    .catch(error => { throw error })
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.delete('/notes', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, body: { id } } = req
+
+                const [, token] = authorization.split(' ')
+                jwt.verify(token, 'mi super secreto')
+
+                deleteNote(id)
+                    .then(() => res.status(201).send())
+                    .catch(error => { throw error })
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.patch('/users', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, body: { currPassword, newPassword } } = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: id } = payload
+
+                updateUserPassword(id, { currPassword, newPassword })
+                    .then(() => res.status(201).send())
+                    .catch(error => { throw error })
             } catch (error) {
                 res.status(400).json({ error: error.message })
             }
@@ -101,4 +152,3 @@ connect('mongodb://localhost:27017/demo-db')
 
         server.listen(8080, () => console.log('server started'))
     })
-    

@@ -11,7 +11,7 @@ function updateUser(id, { name, email }) {
 
         return User.updateOne({ _id: id }, { name, email })
                 .then(user => {
-                        const doc = user_doc
+                        const doc = user._doc
 
                         // sanitize
                         delete doc._id

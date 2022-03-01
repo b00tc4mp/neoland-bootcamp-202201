@@ -5,6 +5,9 @@ const deleteUser = require("./deleteUser")
 const retrieveUser = require("./retrieveUser")
 const updateUserPassword = require("./updateUserPassword")
 const createNote = require('./createNote')
+const listNotes = require('./listNotes')
+const updateNote = require('./updateNote')
+const deleteNote = require('./deleteNote')
 
 module.exports = {
   registerUser,
@@ -13,5 +16,8 @@ module.exports = {
   deleteUser,
   retrieveUser,
   updateUserPassword,
-  createNote
+  listNotes,
+  createNote,
+  updateNote,
+  deleteNote
 }
