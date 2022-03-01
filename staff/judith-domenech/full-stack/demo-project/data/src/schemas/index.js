@@ -5,6 +5,7 @@ const brand = require('./brand')
 const product = require('./product')
 const order = require('./order')
 const stock = require('./stock')
+const note = require('./note')
 
 module.exports = {
     user,
@@ -13,6 +14,6 @@ module.exports = {
     brand,
     product,
     order,
-    stock
-
+    stock,
+    note 
 }
