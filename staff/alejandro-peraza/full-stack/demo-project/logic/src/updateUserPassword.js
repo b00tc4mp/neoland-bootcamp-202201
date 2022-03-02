@@ -1,13 +1,19 @@
-const { models: { User } } = require('data')
+const { models: { User } } = require("data")
+const { validators: { validateId, validatePassword } } = require('commons')
 
-function updateUserPassword(id, { name, email }) {
-    return User.findById(id)
+function updateUserPassword(id, { currPassword, newPassword }) {
+  validateId(id, "id")
+  validatePassword(currPassword, "currPassword")
+  validatePassword(newPassword, "newPassword")
+
+  return User.findById(id)
     .then((user) => {
-      user.name = name || user.name;
-      user.email = email || user.email;
-  
-      return user.save();
+      if (user.password ===  currPassword) {
+        return User.updateOne({ _id: id}, {password: newPassword })
+        .then(() => {})
+      } else throw new Error("Wrong credentials")
     })
+   
 }
 
 module.exports = updateUserPassword

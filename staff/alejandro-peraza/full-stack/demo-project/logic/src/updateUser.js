@@ -1,27 +1,22 @@
-const { models: { User } } = require('data')
+const { models: { User }} = require("data");
+const { validators: { validateId } } = require("commons");
+
 
 function updateUser(id, { name, email }) {
-    return User.findById(id)
-    .then((user) => {
-      user.name = name || user.name;
-      user.email = email || user.email;
-  
-      return user.save();
-    })
+        validateId(id)
+
+        return User.updateOne({ _id: id }, { name, email })
+                .then(user => {
+                        const doc = user._doc
+
+                        // sanitize
+                        delete doc._id
+                        delete doc.password
+                        delete doc.creditCards
+                        delete doc.__v
+
+                        return doc
+                })
 }
-
-// function updateUser(id, {name, email}) {
-
-//     return User.findById(id)
-//         .then(user => user.updateOne({ name, email }))
-
-// }
-
-// function updateUser(id, {name, email}) {
-    
-//     return User.updateOne({_id: id}, { name, email })
-
-// }
-
 
 module.exports = updateUser
