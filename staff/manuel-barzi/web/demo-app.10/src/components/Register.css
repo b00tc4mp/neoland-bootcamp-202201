@@ -1,0 +1,16 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.register__login-link {
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
+
+* {
+  font-size: 1.2rem;
+  font-family: 'Barrio', cursive;
+}
+
+html, body, #root {
+  margin: 0;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
