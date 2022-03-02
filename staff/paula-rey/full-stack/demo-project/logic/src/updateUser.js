@@ -1,5 +1,21 @@
-const { models: { User } } = require('data')
-const { validators: { validateId } } = require('commons')
+const { models: { User } } = require("data")
+const { validators: { validateId, validateString, validateEmail } } = require('commons')
+
+
+function updateUser(userId, name, email) {
+    validateId(userId, 'user id')
+    validateString(name, 'name')
+    validateEmail(email, 'email')
+
+    return User.updateOne({ _id: userId }, { name, email })
+        .then( result => {
+            if (result.modifiedCount === 0) throw new Error(`user with id ${id} does not exist`)
+        })
+}
+
+
+module.exports = updateUser
+
 
 // function updateUser(id, { name, email }) {
 //     return User.findById(id)
@@ -23,20 +39,18 @@ const { validators: { validateId } } = require('commons')
 
 // refactor2:
 
-function updateUser(id, {name, email}) {
-  validateId(id)
+// function updateUser(userId, {name, email}) {
+//   validateId(userId, 'user id')
     
-    return User.updateOne({_id: id}, { name, email })
-      .then(user => {
+//     return User.updateOne({_id: userId}, { name, email })
+//       .then(user => {
+//         const doc = user._doc
 
-        delete doc._id
-        delete doc.password
-        delete doc.creditCard
-        delete doc.__v
+//         delete doc._id
+//         delete doc.password
+//         delete doc.creditCard
+//         delete doc.__v
 
-        return doc
-      })
-}
-
-
-module.exports = updateUser
+//         return doc
+//       })
+// }
