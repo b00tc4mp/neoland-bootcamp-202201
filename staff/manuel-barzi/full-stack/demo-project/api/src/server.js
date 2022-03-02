@@ -1,6 +1,16 @@
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
-const { registerUser, authenticateUser, retrieveUser, createNote, listNotes } = require('logic')
+const {
+    registerUser,
+    authenticateUser,
+    retrieveUser,
+    createNote,
+    listNotes,
+    updateNote,
+    listPublicNotes,
+    listPublicNotesFromUser,
+    deleteNote
+} = require('logic')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
@@ -33,7 +43,7 @@ connect('mongodb://localhost:27017/demo-db')
 
                 authenticateUser(email, password)
                     .then(id => {
-                        const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 2 * 60 }, 'mi super secreto')
+                        const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 10 * 60 }, 'mi super secreto')
 
                         res.json({ token })
                     })
@@ -91,6 +101,64 @@ connect('mongodb://localhost:27017/demo-db')
 
                 listNotes(id)
                     .then(notes => res.json(notes))
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.patch('/notes/:noteId', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, body: { text, color, public }, params: { noteId } } = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: userId } = payload
+
+                updateNote(userId, noteId, text, color, public)
+                    .then(() => res.status(204).send())
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.get('/notes/public', (req, res) => {
+            try {
+                listPublicNotes()
+                    .then(notes => res.json(notes))
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.get('/users/:userId/notes/public', (req, res) => {
+            try {
+                const { params: { userId } } = req
+
+                listPublicNotesFromUser(userId)
+                    .then(notes => res.json(notes))
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.delete('/notes/:noteId', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, params: { noteId } } = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: userId } = payload
+
+                deleteNote(userId, noteId)
+                    .then(() => res.status(204).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
