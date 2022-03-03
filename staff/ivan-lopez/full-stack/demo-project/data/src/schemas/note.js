@@ -17,6 +17,22 @@ const note = new Schema({
         type: String,
         required: true,
         default: 'yellow'
+    },
+
+    public: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
+
+    updatedAt: {
+        type: Date
     }
 })
 
