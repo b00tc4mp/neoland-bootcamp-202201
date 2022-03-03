@@ -69,7 +69,7 @@ connect('mongodb://localhost:27017/demo-db')
 
         api.patch('/users', jsonBodyParser, (req, res) => {
             try {
-                const { headers: { authorization }, body: { name, email } } = req
+                const { headers: { authorization }, body } = req
 
                 const [, token] = authorization.split(' ')
 
@@ -77,7 +77,7 @@ connect('mongodb://localhost:27017/demo-db')
 
                 const { sub: id } = payload
 
-                updateUser(id, name, email)
+                updateUser(id, body)
                     .then(() => res.status(200).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {

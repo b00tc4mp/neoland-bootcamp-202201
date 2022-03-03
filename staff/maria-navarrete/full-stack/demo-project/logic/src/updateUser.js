@@ -2,7 +2,7 @@ const { models: { User } } = require("data")
 const { validators: { validateId, validateString, validateEmail } } = require('commons')
 
 
-function updateUser(userId, name, email) {
+function updateUser(userId, {name, email}) {
     validateId(userId, 'userId')
     validateString(name, 'name')
     validateEmail(email)
