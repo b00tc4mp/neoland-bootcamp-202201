@@ -8,16 +8,22 @@ const createNote = require('./createNote')
 const listNotes = require('./listNotes')
 const updateNote = require('./updateNote')
 const deleteNote = require('./deleteNote')
+const listPublicNotes = require('./listPublicNotes')
+const listPublicNotesFromUser = require("./listPublicNotesFromUser")
+const retrieveNote = require('./retrieveNote')
 
 module.exports={
-    authenticateUser,
-    deleteUser,
     registerUser,
+    authenticateUser,
     retrieveUser,
     updateUser,
     updateUserPassword,
+    deleteUser,
     createNote,
     listNotes, 
     updateNote,
-    deleteNote
+    deleteNote,
+    listPublicNotes,
+    listPublicNotesFromUser,
+    retrieveNote
 }

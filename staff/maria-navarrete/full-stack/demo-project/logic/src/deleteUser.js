@@ -1,10 +1,14 @@
 const { models: { User } } = require('data')
-const { validators: { validateId } } = require('commons')
+const { validators: { validateId, validatePassword } } = require('commons')
 
 
-function deleteUser(id) {
+function deleteUser(id, password) {
     validateId(id)
-    return User.deleteOne({ _id: id })
+    validatePassword(password)
+    return User.deleteOne({ id, password })
+        .then(result => {
+            if (result.deletedCount === 0) throw new Error(`wrong user ${id} or password`)
+        })
 }
 
 module.exports = deleteUser

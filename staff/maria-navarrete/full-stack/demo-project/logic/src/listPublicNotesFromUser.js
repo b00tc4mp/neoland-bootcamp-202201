@@ -1,10 +1,10 @@
 const { validators: { validateId } } = require('commons')
 const { models: { Note } } = require('data')
 
-function listNotes(userId) {
+function listPublicNotesFromUser(userId) {
     validateId(userId, 'userId')
 
-    return Note.find({ user: userId })
+    return Note.find({ user: userId, public: true })
         .then(notes => {
             const docs = notes.map(note => {
                 const doc = note._doc
@@ -21,4 +21,4 @@ function listNotes(userId) {
         })
 }
 
-module.exports = listNotes
+module.exports = listPublicNotesFromUser
