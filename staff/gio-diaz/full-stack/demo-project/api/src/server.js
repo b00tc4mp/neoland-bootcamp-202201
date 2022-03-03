@@ -106,7 +106,7 @@ connect('mongodb://localhost:27017/demo-db')
                 const { sub: id } = payload
 
                 updateUserPassword(id, oldPassword, newPassword)
-                    .then(() => res.status(200).send())
+                    .then(() => res.status(204).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
@@ -207,21 +207,25 @@ connect('mongodb://localhost:27017/demo-db')
             }
         })
 
-        api.delete('/notes', jsonBodyParser, (req, res) => {
+        api.delete('/notes/:noteId', jsonBodyParser, (req, res) => {
             try {
-                const { headers: { authorization }, body: { id } } = req
+                const { headers: { authorization }, params: { noteId } } = req
 
                 const [, token] = authorization.split(' ')
 
-                jwt.verify(token, 'mi super secreto')
+                const payload = jwt.verify(token, 'mi super secreto')
 
-                deleteNote(id)
+                const { sub: userId } = payload
+
+                deleteNote(userId, noteId)
                     .then(() => res.status(201).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
             }
         })
+
+       
 
         server.use('/api', api)
 

@@ -1,23 +1,23 @@
-import { validators } from 'commons'
-const { validateToken, validateString, validateEmail } = validators
+import { validators } from '.commons'
 
-function updateUser(token, name, email) {
+const { validateToken, validatePassword } = validators
+
+function updateUser(token, password) {
     validateToken(token)
-    validateString(name)
-    validateEmail(email)
+    validatePassword(password)
 
     return fetch('http://localhost:8080/api/users', {
-        method: 'PATCH',
+        method: 'DELETE',
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email })
+        body: JSON.stringify({ password })
     })
         .then(res => {
             const { status } = res
 
-            if (status === 200) {
+            if (status === 204) {
                 // TODO manage happy path
                 return
             } else if (status >= 400 && status < 500) {

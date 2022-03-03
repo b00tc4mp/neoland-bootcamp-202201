@@ -1,12 +1,21 @@
-const { models: { User }} = require('data');
+const { models: { User, Note }} = require('data');
 const { validators: { validateId, validatePassword } } = require('commons')
 
-function deleteUser(id, password) {
+function deleteUser(userId, password) {
     validateId(id)
-    validatePassword
-    return User.deleteOne({ _id: id, password })
-    .then(result =>  {
-        if(result.deletedCount === 0) throw new Error (`User with Id ${id} does not exist`)
+    validatePassword(password)
+
+    return Note.deleteMany({ user: userId })
+    .then(() => {
+        
+        return User.deleteOne({ _id: userId, password })
+        .then(result =>  {
+            if(result.deletedCount === 0) throw new Error (`User with Id ${id} does not exist`)
+            else{
+            }
+
+    })
+            
     })
 }
 
