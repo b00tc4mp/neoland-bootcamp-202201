@@ -1,8 +1,8 @@
-const { validators: { validateId, validateString, validateBoolean } } = require('commons')
 const { models: { Note } } = require('data')
+const { validators: { validateId, validateString, validateBoolean } } = require('commons')
 
-function createNote(userId, text, color, public = false) {
-    validateId(userId)
+function createNote(userId, text, color = "yellow", public = false) {
+    validateId(userId, 'userId')
     validateString(text, 'text')
     validateString(color, 'color')
     validateBoolean(public, 'public')

@@ -1,14 +1,22 @@
-const { validators: { validateId, validatePassword }} = require('commons')
-const { models: { User }} = require('data')
+const { models: { User, Note } } = require('data')
+const { validators: { validateId, validatePassword } } = require('commons')
 
-function deleteUser(id, password) {
-    validateId(id)
-    validatePassword
-    
-    return User.deleteOne({ _id: id, password })
-        .then(result => {
-            if (result.deletedCount === 0) throw new Error(`node cannot delete ${userId}`)
+
+function deleteUser(userId, password) {
+    validateId(userId)
+    validatePassword(password)
+
+    return Note.deleteMany({ user: userId })
+        .then(() => {
+            return User.deleteOne({ id: userId, password })
+                .then(result => {
+                    if (result.deletedCount === 0) throw new Error(`wrong user ${userId} or password`)
+                    else {
+
+                    }
+                })
         })
-}
+
+    }
 
 module.exports = deleteUser

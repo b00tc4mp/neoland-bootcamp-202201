@@ -1,9 +1,13 @@
-import Register from './Register'
-import Login from './Login'
-import Home from './Home'
+import registerUser from './registerUser'
+import retrieveUser from './retrieveUser'
+import authenticateUser from './authenticateUser'
+import deleteUser from './deteleUser'
+import updateUser from './updateUser'
 
 export {
-    Register,
-    Login,
-    Home
+    registerUser,
+    authenticateUser,
+    retrieveUser, 
+    deleteUser, 
+    updateUser
 }

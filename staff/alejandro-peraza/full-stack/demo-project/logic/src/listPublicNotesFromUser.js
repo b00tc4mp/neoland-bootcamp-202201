@@ -13,7 +13,6 @@ function listPublicNotesFromUser(userId) {
                 doc.id = doc._id.toString()
                 delete doc._id
                 delete doc.__v
-
                 delete doc.user
 
                 return doc

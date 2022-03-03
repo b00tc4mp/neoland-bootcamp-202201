@@ -12,9 +12,9 @@ function validateEmail(email) {
 
 function validatePassword(password, explain = 'password') {
     if (typeof password !== 'string') throw new TypeError(`${explain} is not a string`)
+    if (password === '') throw new Error(`empty ${explain}`)
     if (BLANK_REGEX.test(password)) throw new Error(`blank ${explain}`)
     if (SPACE_REGEX.test(password)) throw new Error(`${explain} has empty spaces`)
-    if (password === '') throw new Error(`empty ${explain}`)
     if (password.length < 8) throw new Error(`${explain} is shorter than 8 characters`)
 }
 
@@ -22,16 +22,13 @@ function validateToken(token) {
     if (typeof token !== 'string') throw new TypeError('token is not a string')
 
     const parts = token.split('.')
-
-    if (parts.length !== 3) throw new Error('token it not valid')
-
+    if (parts.length !== 3) throw new Error('token is not valid')
     parts.forEach(part => {
         if (part === '') throw new Error('token part is empty')
         if (BLANK_REGEX.test(part)) throw new Error('token part is blank')
     })
 
     const [header, payload] = parts
-
     try {
         atob(header)
     } catch (error) {
@@ -39,21 +36,19 @@ function validateToken(token) {
     }
 
     let json
-    
     try {
         json = atob(payload)
-    } catch(error) {
+    } catch (error) {
         throw new Error('token invalid')
     }
 
     const { exp } = JSON.parse(json)
-
     const expStamp = exp * 1000
-
     const expired = Date.now() > expStamp
 
     if (expired) throw new Error('token expired')
 }
+
 
 function validateString(string, explain = 'string') {
     if (typeof string !== 'string') throw new TypeError(`${explain} is not a string`)
@@ -62,14 +57,13 @@ function validateString(string, explain = 'string') {
     if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
 }
 
-function validateBoolean(boolean, explain = 'boolean') {
-    if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not a boolean`)
+function validateId(id, explain = 'id') {
+    validateString(id, explain)
+    if (id.length !== 24) throw new Error(`wrong ${explain} length`)
 }
 
-function validateId(id, explain = 'ide') {
-    validateString(id, explain)
-
-    if (id.length !== 24) throw new Error(`wrong ${explain} length`)
+function validateBoolean(boolean, explain = 'boolean') {
+    if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not a boolean`)
 }
 
 module.exports = {

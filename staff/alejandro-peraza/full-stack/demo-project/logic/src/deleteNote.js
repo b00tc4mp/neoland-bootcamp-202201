@@ -1,5 +1,5 @@
-const { validators: { validateId }} = require('commons')
 const { models: { Note }} = require('data')
+const { validators: { validateId }} = require('commons')
 
 function deleteNote(userId, noteId) {
     validateId(userId, 'user id')
