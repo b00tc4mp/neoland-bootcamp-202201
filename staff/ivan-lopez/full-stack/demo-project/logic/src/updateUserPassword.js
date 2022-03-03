@@ -1,17 +1,20 @@
 const { models: { User } } = require('data')
 const { validators: { validateId, validatePassword } } = require('commons')
 
-function updateUserPassword(id, { password }) {
-    validateId(id);
-    validatePassword(password);
+function updateUserPassword(userId, currPassword, newPassword) {
+    validateId(userId, 'user id')
+    validatePassword(currPassword)
+    validatePassword(newPassword)
 
-    return User.findById(id)
+    return User.findById(userId)
     .then((user) => {
-        user.password = password || user.password; 
-    
-//  .then(user => user.updateOne({ name, email })) Esto es lo mismo que linea 5-6-7
-
-        return user.save();
+        if(!user) throw new Error(`user with id ${userId} does not exist`)
+        if (user.password === currPassword)
+            return User.updateOne({ _id: userId }, { password: newPassword })
+                .then(result => {
+                    if (result.modifiedCount === 0) throw new Error(`user with id ${userId} does not exist`)
+                })
+        else throw new Error('wrong credentials')
     })
 }
 

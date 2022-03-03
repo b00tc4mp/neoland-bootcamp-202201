@@ -1,34 +1,27 @@
 import { validators } from 'commons'
 
-const { validateEmail, validatePassword } = validators
+const { validateToken, validatePassword } = validators
 
-function authenticateUser(email, password) {
-    validateEmail(email)
+function deleteUser(token, password) {
+    validateToken(token)
     validatePassword(password)
-    
 
-    return fetch('http://localhost:8080/api/users/auth', {
-        mehod: 'POST',
+    return fetch('http://localhost:8080/api/users', {
+        method: 'DELETE',
         headers: {
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ password })
     })
         .then(res => {
             const { status } = res
-
-            if (status === 200) {
-                return res.json()
-                    .then(payload => {
-                        const { token } = payload
-
-                        return token
-                    })
+            if (status === 204) {
+                return
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
                         const { error } = payload
-
                         throw new Error(error)
                     })
             } else if (status >= 500) {
@@ -39,4 +32,4 @@ function authenticateUser(email, password) {
         })
 }
 
-export default authenticateUser
+export default deleteUser

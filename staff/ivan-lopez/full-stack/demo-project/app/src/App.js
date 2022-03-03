@@ -7,15 +7,15 @@ import { validateToken } from 'commons';
 function App() {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    //llamar validateToken y poner Try and catch
-    validateToken()
-    try {
+  // useEffect(() => {
+  //   //llamar validateToken y poner Try and catch
+  //   validateToken()
+  //   try {
       
-    } catch (error) {
+  //   } catch (error) {
       
-    }
-  })
+  //   }
+  // })
 
   const showLogin = () => navigate('login')
 

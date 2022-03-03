@@ -8,7 +8,7 @@ function Login({ onLoggedIn }) {
         const { target: { email: { value: email }, password: { value: password } } } = event
 
         try {
-            debugger
+            
             authenticateUser(email, password)
                 .then(onLoggedIn)
                 .catch(error => alert(error.message))

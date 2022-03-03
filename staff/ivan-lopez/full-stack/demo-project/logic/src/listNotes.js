@@ -2,7 +2,7 @@ const { validators: { validateId } } = require('commons')
 const { models: { Note } } = require('data')
 
 function listNotes(userId) {
-    validateId(userId)
+    validateId(userId, 'userId')
 
     return Note.find({ user: userId})
         .then(notes => {

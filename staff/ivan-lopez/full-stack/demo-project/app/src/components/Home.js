@@ -1,8 +1,12 @@
 import { retrieveUser } from '../logic'
+import { Profile } from './index'
 import { useEffect, useState } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 function Home() {
     const [name, setName] = useState()
+    const [view, setView] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         try {
@@ -14,8 +18,22 @@ function Home() {
         }
     })
 
-    return <div>
-        <h1>Welcome Home, {name}!</h1>
+    const showProfile = () => navigate('profile')
+
+    const goToProfile = event => {
+        event.preventDefault()
+        showProfile()
+    }
+
+    return <div className='home'>
+        <nav className='home__header'>
+            <a href='' onClick={goToProfile}>Profile</a>
+        </nav>
+        <h1>Welcome home, {name}!</h1>
+
+        <Routes>
+            <Route path='profile' element={<Profile/>} />
+        </Routes>
     </div>
 }
 
