@@ -1,18 +1,20 @@
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
-const { registerUser, 
-        authenticateUser,
-        updateUser, 
-        retrieveUser, 
-        createNote, 
-        listNotes, 
-        updateNote, 
-        listPublicNotes,
-        listPublicNotesFromUser,
-        deleteNote, 
-        updateUserPassword,
-        retrieveNote 
-} = require('logic')
+const { handlerRegisterUser, 
+        handlerRetrieveUser,
+        handlerAuthenticateUser,
+        handlerUpdateUser,
+        handlerUpdateUserPassword,
+        handlerDeleteUser,
+        handlerCreateNote,
+        handlerRetrieveNote,
+        handlerUpdateNote,
+        handlerDeleteNote,
+        handlerListNotes,
+        handlerListPublicNotes,
+        handlerListPublicNotesFromUser
+     } = require('./handlers')
+
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
@@ -28,205 +30,31 @@ connect('mongodb://localhost:27017/demo-db')
         const api = express.Router()
 
 
-        api.post('/users', jsonBodyParser, (req, res) => {
-            try {
-                const { body: { name, email, password } } = req
+        api.post('/users', jsonBodyParser, handlerRegisterUser) //ojo! no ejecutar funcion: handlerRegisterUser()
 
-                registerUser(name, email, password)
-                    .then(() => res.status(201).send())
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
+        api.post('/users/auth', jsonBodyParser, handlerAuthenticateUser)
 
-        api.post('/users/auth', jsonBodyParser, (req, res) => {
-            try {
-                const { body: { email, password } } = req
-
-                authenticateUser(email, password)
-                    .then(id => {
-                        const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 10 * 60 }, 'mi super secreto')
-
-                        res.json({ token })
-                    })
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.get('/users', (req, res) => {
-            try {
-                const { headers: { authorization } } = req
-
-                const [, token] = authorization.split(' ')
-
-                const payload = jwt.verify(token, 'mi super secreto')
-
-                const { sub: id } = payload
-
-                retrieveUser(id)
-                    .then(user => res.json(user))
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
+        api.get('/users', handlerRetrieveUser)
         
+        api.patch('/users', jsonBodyParser, handlerUpdateUser)
 
-        api.patch('/users', jsonBodyParser, (req, res) => {
-            try {
-                const { headers: { authorization }, body: { name, email } } = req
+        api.patch('/users/change-password', jsonBodyParser, handlerUpdateUserPassword)
 
-                const [, token] = authorization.split(' ')
+        api.delete('/users', jsonBodyParser, handlerDeleteUser)
 
-                const payload = jwt.verify(token, 'mi super secreto')
+        api.post('/notes', jsonBodyParser, handlerCreateNote)
 
-                const { sub: userId } = payload
+        api.get('/notes/:noteId', jsonBodyParser, handlerRetrieveNote)
 
-                updateUser( userId, name, email )
-                    .then(() => res.status(201).send())
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
+        api.patch('/notes/:noteId', jsonBodyParser, handlerUpdateNote)
 
+        api.delete('/notes/:noteId', jsonBodyParser, handlerDeleteNote)
 
+        api.get('/notes', handlerListNotes)
 
-        api.patch('/users/change-password', jsonBodyParser, (req, res) => {
-            try {
-                const { headers: { authorization }, body: { currPassword, newPassword } } = req
+        api.get('/notes/public', handlerListPublicNotes)
 
-                const [, token] = authorization.split(' ')
-
-                const payload = jwt.verify(token, 'mi super secreto')
-
-                const { sub: userId } = payload
-
-                updateUserPassword({ userId, currPassword, newPassword })
-                    .then(() => res.status(200).send())
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.post('/notes', jsonBodyParser, (req, res) => {
-            try {
-                const { headers: { authorization }, body: { text, color } } = req
-
-                const [, token] = authorization.split(' ')
-
-                const payload = jwt.verify(token, 'mi super secreto')
-
-                const { sub: id } = payload
-
-                createNote(id, text, color)
-                    .then(() => res.status(201).send())
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.get('/notes/:noteId', (req, res) => {
-            try {
-                const { params: { noteId } } = req
-
-                retrieveNote(noteId)
-                    .then(note => res.json(note))
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.patch('/notes/:noteId', jsonBodyParser, (req, res) => {
-            try {
-                const { headers: { authorization }, body: { text, color, public }, params: { noteId} } = req
-
-                const [, token] = authorization.split(' ')
-
-                const payload = jwt.verify(token, 'mi super secreto')
-
-                const { sub: userId } = payload
-
-                updateNote(userId, noteId, text, color, public)
-                    .then(() => res.status(204).send())
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.delete('/notes/:noteId', jsonBodyParser, (req, res) => {
-            try {
-                const { headers: { authorization }, params: { noteId } } = req
-
-                const [, token] = authorization.split(' ')
-
-                const payload = jwt.verify(token, 'mi super secreto')
-
-                const { sub: userId } = payload
-
-                deleteNote(userId, noteId)
-                    .then(() => res.status(204).send())
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.get('/notes', (req, res) => {
-            try {
-                const { headers: { authorization } } = req
-
-                const [, token] = authorization.split(' ')
-
-                const payload = jwt.verify(token, 'mi super secreto')
-
-                const { sub: id } = payload
-
-                listNotes(id)
-                    .then(notes => res.json(notes))
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-
-        api.get('/notes/public', (req, res) => {
-            try {
-                listPublicNotes()
-                    .then(notes => res.json(notes))
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
-
-
-        api.get('/users/:userId/notes/public', (req, res) => {
-            try {
-                const { params: { userId } } = req
-
-                listPublicNotesFromUser(userId)
-                    .then(notes => res.json(notes))
-                    .catch(error => res.status(400).json({ error: error.message }))
-            } catch (error) {
-                res.status(400).json({ error: error.message })
-            }
-        })
+        api.get('/users/:userId/notes/public', handlerListPublicNotesFromUser)
 
 
         server.use('/api', api)
