@@ -1,26 +1,30 @@
 const { models: { User } } = require('data')
-const { validators: { validateId } } = require('commons')
+const { validators: { validateId, validateEmail, validateString } } = require('commons')
 
 /* function updateUser(id, {name, email}) {
         return User.findById(id)
                 .then(user => user.updateOne({ name, email }),)
 } */
 
-function updateUser(id, { name, email }) {
+/* function updateUser(id, name, email) {
         validateId(id)
-
+        validateString(name, 'name')
+        validateEmail(email)
+    
         return User.updateOne({ _id: id }, { name, email })
-                .then(user => {
-                        const doc = user._doc
+            .then( result => {
+                if (result.modifiedCount === 0) throw new Error(`user with id ${id} does not exist`)
+            })
+    } */
+   
 
-                        // sanitize
-                        delete doc._id
-                        delete doc.password
-                        delete doc.creditCards
-                        delete doc.__v
+function updateUser(userId, {name, email} ) {
+        validateId(userId)
+        validateString(name, 'name')
+        validateEmail(email)
 
-                        return doc
-                })
+        return User.updateOne({ _id: userId }, { name, email })
+               
 }
 
 module.exports = updateUser

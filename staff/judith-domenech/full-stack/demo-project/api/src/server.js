@@ -1,6 +1,18 @@
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
-const { registerUser, authenticateUser, retrieveUser, createNote, listNotes, updateNote, deleteNote, updateUserPassword } = require('logic')
+const {
+    registerUser,
+    authenticateUser,
+    retrieveUser,
+    createNote,
+    listNotes,
+    updateNote,
+    listPublicNotes,
+    listPublicNotesFromUser,
+    deleteNote,
+    updateUserPassword,
+    updateUser
+} = require('logic')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
@@ -33,7 +45,7 @@ connect('mongodb://localhost:27017/demo-db')
 
                 authenticateUser(email, password)
                     .then(id => {
-                        const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 2 * 60 }, 'mi super secreto')
+                        const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 60 * 60 }, 'mi super secreto')
 
                         res.json({ token })
                     })
@@ -55,6 +67,42 @@ connect('mongodb://localhost:27017/demo-db')
 
                 retrieveUser(id)
                     .then(user => res.json(user))
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.patch('/users', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, body: { name, email }} = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: userId } = payload
+
+                updateUser(userId, { name, email} )
+                    .then(() => res.status(201).send())
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.patch('/users', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, body: { currPassword, newPassword } } = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: userId } = payload
+
+                updateUserPassword(userId, { currPassword, newPassword })
+                    .then(() => res.status(201).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
@@ -91,58 +139,65 @@ connect('mongodb://localhost:27017/demo-db')
 
                 listNotes(id)
                     .then(notes => res.json(notes))
-                    .catch(error => { throw error })
+                    .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
             }
         })
 
-        api.patch('/notes', jsonBodyParser, (req, res) => {
+        api.patch('/notes/:noteId', jsonBodyParser, (req, res) => {
             try {
-                const { headers: { authorization }, body: { id: noteId, text, color } } = req
+                const { headers: { authorization }, body: { text, color, public }, params: { noteId } } = req
 
                 const [, token] = authorization.split(' ')
 
                 const payload = jwt.verify(token, 'mi super secreto')
 
-                const { sub: id } = payload
+                const { sub: userId } = payload
 
-                updateNote(id, noteId, text, color)
-                    .then(() => res.status(201).send())
-                    .catch(error => { throw error })
+                updateNote(userId, noteId, text, color, public)
+                    .then(() => res.status(204).send())
+                    .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
             }
         })
 
-        api.delete('/notes', jsonBodyParser, (req, res) => {
+        api.get('/notes/public', (req, res) => {
             try {
-                const { headers: { authorization }, body: { id } } = req
-
-                const [, token] = authorization.split(' ')
-                jwt.verify(token, 'mi super secreto')
-
-                deleteNote(id)
-                    .then(() => res.status(201).send())
-                    .catch(error => { throw error })
+                listPublicNotes()
+                    .then(notes => res.json(notes))
+                    .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
             }
         })
 
-        api.patch('/users', jsonBodyParser, (req, res) => {
+        api.get('/users/:userId/notes/public', (req, res) => {
             try {
-                const { headers: { authorization }, body: { currPassword, newPassword } } = req
+                const { params: { userId } } = req
+
+                listPublicNotesFromUser(userId)
+                    .then(notes => res.json(notes))
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.delete('/notes/:noteId', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, params: { noteId } } = req
 
                 const [, token] = authorization.split(' ')
 
                 const payload = jwt.verify(token, 'mi super secreto')
 
-                const { sub: id } = payload
+                const { sub: userId } = payload
 
-                updateUserPassword(id, { currPassword, newPassword })
-                    .then(() => res.status(201).send())
-                    .catch(error => { throw error })
+                deleteNote(userId, noteId)
+                    .then(() => res.status(204).send())
+                    .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
             }
