@@ -9,7 +9,8 @@ const {
     updateNote,
     listPublicNotes,
     listPublicNotesFromUser,
-    deleteNote
+    deleteNote,
+    retrieveNote
 } = require('logic')
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
@@ -159,6 +160,24 @@ connect('mongodb://localhost:27017/demo-db')
 
                 deleteNote(userId, noteId)
                     .then(() => res.status(204).send())
+                    .catch(error => res.status(400).json({ error: error.message }))
+            } catch (error) {
+                res.status(400).json({ error: error.message })
+            }
+        })
+
+        api.get('/notes/:noteId', jsonBodyParser, (req, res) => {
+            try {
+                const { headers: { authorization }, params: { noteId } } = req
+
+                const [, token] = authorization.split(' ')
+
+                const payload = jwt.verify(token, 'mi super secreto')
+
+                const { sub: userId } = payload
+
+                retrieveNote(userId, noteId)
+                    .then(note => res.json(note))
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
                 res.status(400).json({ error: error.message })
