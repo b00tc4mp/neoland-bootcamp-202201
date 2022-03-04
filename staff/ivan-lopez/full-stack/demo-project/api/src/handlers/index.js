@@ -1,31 +1,31 @@
-const handlerRegisterUser = require('./handlerRegisterUser')
-const handlerAuthenticateUser = require('./handlerAuthenticateUser')
-const handlerRetrieveUser = require('./handlerRetrieveUser')
-const handlerCreateNote = require('./handlerCreateNote')
-const handlerListNotes = require('./handlerListNotes')
-const handlerUpdateNote = require('./handlerUpdateNote')
-const handlerUpdateUser = require('./handlerUpdateUser')
-const handlerUpdateUserPassword = require('./handlerUpdateUserPassword')
-const handlerListPublicNotes = require('./handlerListPublicNotes')
-const handlerPublicNotesFromUser = require('./handlerPublicNotesFromUser')
-const handlerDeleteNote = require('./handlerDeleteNote')
-const handlerRetrieveNote = require('./handlerRetrieveNote')
-const handlerDeleteUser = require('./handlerDeleteUser')
+const registerUser = require('./registerUser')
+const authenticateUser = require('./authenticateUser')
+const retrieveUser = require('./retrieveUser')
+const createNote = require('./createNote')
+const listNotes = require('./listNotes')
+const updateNote = require('./updateNote')
+const updateUser = require('./updateUser')
+const updateUserPassword = require('./updateUserPassword')
+const listPublicNotes = require('./listPublicNotes')
+const listPublicNotesFromUser = require('./listPublicNotesFromUser')
+const deleteNote = require('./deleteNote')
+const retrieveNote = require('./retrieveNote')
+const deleteUser = require('./deleteUser')
 
 
 module.exports = {
     
-    handlerDeleteUser,
-    handlerRetrieveNote,
-    handlerDeleteNote,
-    handlerPublicNotesFromUser,
-    handlerListPublicNotes,
-    handlerUpdateUserPassword,
-    handlerUpdateUser,
-    handlerUpdateNote,
-    handlerListNotes,
-    handlerCreateNote,
-    handlerRetrieveUser,
-    handlerRegisterUser,
-    handlerAuthenticateUser
+    deleteUser,
+    retrieveNote,
+    deleteNote,
+    listPublicNotesFromUser,
+    listPublicNotes,
+    updateUserPassword,
+    updateUser,
+    updateNote,
+    listNotes,
+    createNote,
+    retrieveUser,
+    registerUser,
+    authenticateUser
 }

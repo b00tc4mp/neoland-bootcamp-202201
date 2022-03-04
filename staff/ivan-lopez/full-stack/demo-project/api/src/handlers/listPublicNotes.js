@@ -1,13 +1,11 @@
-const handlerPublicNotesFromUser = (req, res) => {
-    try {
-        const { params: { userId } } = req
+const { listPublicNotes } = require('logic')
 
-        listPublicNotesFromUser(userId)
+module.exports = (req, res) => {
+    try {
+        listPublicNotes()
             .then(notes => res.json(notes))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 }
-
-module.exports = handlerPublicNotesFromUser

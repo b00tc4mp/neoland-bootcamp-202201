@@ -1,13 +1,13 @@
 const { authenticateUser } = require('logic')
-const jwt = require('jsonwebtoken')
+const { createTokenWithUserId } = require('../helpers')
 
-const handlerAuthenticateUser = (req, res) => {
+module.exports = (req, res) => {
     try {
         const { body: { email, password } } = req
 
         authenticateUser(email, password)
-            .then(id => {
-                const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 20 * 60 }, 'mi super secreto')
+            .then(userId => {
+                const token = createTokenWithUserId(userId)
 
                 res.json({ token })
             })
@@ -16,5 +16,3 @@ const handlerAuthenticateUser = (req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
-
-module.exports = handlerAuthenticateUser
