@@ -1,7 +1,6 @@
 const { registerUser } = require('logic')
 
-
-const handlerRegisterUser = (req, res) => { //middleware
+module.exports = (req, res) => {
     try {
         const { body: { name, email, password } } = req
 
@@ -12,6 +11,3 @@ const handlerRegisterUser = (req, res) => { //middleware
         res.status(400).json({ error: error.message })
     }
 }
-
-
-module.exports = handlerRegisterUser

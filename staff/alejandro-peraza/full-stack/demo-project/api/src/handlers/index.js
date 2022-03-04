@@ -1,30 +1,30 @@
-const handlerRegisterUser = require('./handlerRegisterUser')
-const handlerAuthenticateUser = require('./handlerAuthenticateUser')
-const handlerRetrieveUser = require('./handlerRetrieveUser')
-const handlerUpdateUser = require('./handlerUpdateUser')
-const handlerUpdateUserPassword = require('./handlerUpdateUserPassword')
-const handlerDeleteUser = require('./handlerDeleteUser')
-const handlerCreateNote = require('./handlerCreateNote')
-const handlerListNotes = require('./handlerListNotes')
-const handlerListPublicNotes = require('./handlerListPublicNotes')
-const handlerListPublicNotesFromUser = require('./handlerListPublicNotesFromUser')
-const handlerRetrieveNote = require('./handlerRetrieveNote')
-const handlerUpdateNote = require('./handlerUpdateNote')
-const handlerDeleteNote = require('./handlerDeleteNote')
+const registerUser = require('./registerUser')
+const authenticateUser = require('./authenticateUser')
+const retrieveUser = require('./retrieveUser')
+const updateUser = require('./updateUser')
+const updateUserPassword = require('./updateUserPassword')
+const deleteUser = require('./deleteUser')
+const createNote = require('./createNote')
+const listNotes = require('./listNotes')
+const listPublicNotes = require('./listPublicNotes')
+const listPublicNotesFromUser = require('./listPublicNotesFromUser')
+const retrieveNote = require('./retrieveNote')
+const updateNote = require('./updateNote')
+const deleteNote = require('./deleteNote')
 
 
 module.exports = {
-    handlerRegisterUser,
-    handlerAuthenticateUser,
-    handlerRetrieveUser,
-    handlerUpdateUser,
-    handlerUpdateUserPassword,
-    handlerDeleteUser,
-    handlerCreateNote,
-    handlerListNotes,
-    handlerListPublicNotes,
-    handlerListPublicNotesFromUser,
-    handlerRetrieveNote,
-    handlerUpdateNote,
-    handlerDeleteNote
+    registerUser,
+    authenticateUser,
+    retrieveUser,
+    updateUser,
+    updateUserPassword,
+    deleteUser,
+    createNote,
+    listNotes,
+    listPublicNotes,
+    listPublicNotesFromUser,
+    retrieveNote,
+    updateNote,
+    deleteNote
 }

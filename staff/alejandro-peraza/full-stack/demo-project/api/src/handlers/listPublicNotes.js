@@ -1,7 +1,6 @@
 const { listPublicNotes } = require('logic')
 
-
-const handlerListPublicNotes = (req, res) => {
+module.exports = (req, res) => {
     try {
         listPublicNotes()
             .then(notes => res.json(notes))
@@ -10,5 +9,3 @@ const handlerListPublicNotes = (req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
-
-module.exports = handlerListPublicNotes
