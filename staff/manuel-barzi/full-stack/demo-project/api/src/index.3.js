@@ -43,8 +43,8 @@ connect('mongodb://localhost:27017/demo-db')
                 const { body: { email, password } } = req
 
                 authenticateUser(email, password)
-                    .then(id => {
-                        const token = jwt.sign({ sub: id, exp: Math.floor(Date.now() / 1000) + 10 * 60 }, 'mi super secreto')
+                    .then(userId => {
+                        const token = jwt.sign({ sub: userId, exp: Math.floor(Date.now() / 1000) + 10 * 60 }, 'mi super secreto')
 
                         res.json({ token })
                     })
@@ -62,9 +62,9 @@ connect('mongodb://localhost:27017/demo-db')
 
                 const payload = jwt.verify(token, 'mi super secreto')
 
-                const { sub: id } = payload
+                const { sub: userId } = payload
 
-                retrieveUser(id)
+                retrieveUser(userId)
                     .then(user => res.json(user))
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
@@ -80,9 +80,9 @@ connect('mongodb://localhost:27017/demo-db')
 
                 const payload = jwt.verify(token, 'mi super secreto')
 
-                const { sub: id } = payload
+                const { sub: userId } = payload
 
-                createNote(id, text, color)
+                createNote(userId, text, color)
                     .then(() => res.status(201).send())
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
@@ -98,9 +98,9 @@ connect('mongodb://localhost:27017/demo-db')
 
                 const payload = jwt.verify(token, 'mi super secreto')
 
-                const { sub: id } = payload
+                const { sub: userId } = payload
 
-                listNotes(id)
+                listNotes(userId)
                     .then(notes => res.json(notes))
                     .catch(error => res.status(400).json({ error: error.message }))
             } catch (error) {
