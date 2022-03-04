@@ -1,12 +1,17 @@
-import Home from './Home'
-import Login from './Login'
 import Register from './Register'
+import Login from './Login'
+import Home from './Home'
 import Profile from './Profile'
-
+import UpdatePassword from './UpdatePassword'
+import DeleteAccount from './DeleteAccount.js'
+import Landing from './Landing'
 
 export {
-    Home,
-    Login,
     Register,
-    Profile
+    Login,
+    Home, 
+    Profile,
+    UpdatePassword,
+    DeleteAccount,
+    Landing
 }
