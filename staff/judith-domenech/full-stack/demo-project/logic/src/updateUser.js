@@ -16,15 +16,17 @@ const { validators: { validateId, validateEmail, validateString } } = require('c
                 if (result.modifiedCount === 0) throw new Error(`user with id ${id} does not exist`)
             })
     } */
-   
 
-function updateUser(userId, {name, email} ) {
-        validateId(userId)
+
+function updateUser(userId, { name, email }) {
+        validateId(userId, 'userId')
         validateString(name, 'name')
         validateEmail(email)
 
         return User.updateOne({ _id: userId }, { name, email })
-               
+                .then(result => {
+                        if (result.matchedCount === 0) throw new Error(`user with id ${userId} does not exist`)
+                })
 }
 
 module.exports = updateUser
