@@ -15,8 +15,6 @@ function Search({ onItem, onQuery, query, token }) {
         showResults()
     }
 
-
-
     const showResults = () => setView('results')
 
     return <div className="search">

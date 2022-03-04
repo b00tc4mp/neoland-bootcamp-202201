@@ -13,7 +13,7 @@ import Order from './Order'
 import Orders from './Orders'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
-function Home({ token, onLogout }) {
+function Home({ token, onLogout, onToggleTheme }) {
 
     const [view, setView] = useState('search')
     const [name, setName] = useState('name')
@@ -25,6 +25,7 @@ function Home({ token, onLogout }) {
     const [query, setQuery] = useState(q)
     const [orderId, setOrderId] = useState()
     const location = useLocation()
+    const [themeState, setThemeState] = useState('🌚')
 
     useEffect(() => {
         try {
@@ -36,56 +37,64 @@ function Home({ token, onLogout }) {
         }
     }, [])
 
-    const showProfile = () => navigate('profile')
-    const showUpdatePassword = () => navigate('profile/update-password')
-    const showDeleteAccount = () => navigate('profile/delete-account')
-    const showSearch = () => navigate(!query ? '/' : `search?q=${query}`)
-    const showFavs = () => navigate('favs')
-    const showDetails = id => navigate(`vehicles/${id}`)
-    const showCart = () => navigate('cart')
-    const showOrder = () => navigate('order')
-    const showOrders = () => navigate('orders')
-    const goBackFromDetail = () => navigate(previousView || '/')
-
-
     const goToProfile = event => {
         event.preventDefault()
         showProfile()
     }
+    const showProfile = () => navigate('profile')
+
+    const showUpdatePassword = () => navigate('profile/update-password')
+
+    const showDeleteAccount = () => navigate('profile/delete-account')
+
     const goToSearch = event => {
         event.preventDefault()
         showSearch()
     }
+    const showSearch = () => navigate(!query ? '/' : `search?q=${query}`)
 
     const goToFavs = event => {
         event.preventDefault()
         showFavs()
     }
+    const showFavs = () => navigate('favs')
 
     const goToDetails = id => {
         setVehicleId(id)
         setPreviousView(`${location.pathname}${location.search ? location.search : ''}`)
         showDetails(id)
     }
+    const showDetails = id => navigate(`vehicles/${id}`)
+
+    const goBackFromDetail = () => navigate(previousView || '/')
 
     const goToCart = event => {
         event.preventDefault()
         showCart()
     }
+    const showCart = () => navigate('cart')
+
 
     const goToOrder = id => {
         setOrderId(id)
         showOrder()
     }
+    const showOrder = () => navigate('order')
 
     const goToOrders = event => {
         event.preventDefault()
         showOrders()
     }
+    const showOrders = () => navigate('orders')
 
     const doSearch = query => {
         setQuery(query)
         navigate(`search?q=${query}`)
+    }
+
+    const toggleTheme = () => {
+        setThemeState(themeState === '🌚' ? '🌝' : '🌚')
+        onToggleTheme()
     }
 
     const refreshData = data => setName(data)
@@ -103,7 +112,8 @@ function Home({ token, onLogout }) {
             <span> | </span>
             <a className={`home__menu-link ${view === 'orders' ? 'home__menu-link--active' : ''}`} href="" onClick={goToOrders}>Orders</a>
             <span> | </span>
-            <button className="home__logout-link" href="" onClick={onLogout}>Log out</button>
+            <button className="home__button" href="" onClick={onLogout}>Log out</button>
+            <button className="home__button" href="" onClick={toggleTheme}>{themeState}</button>
         </nav>
 
         <Routes>
