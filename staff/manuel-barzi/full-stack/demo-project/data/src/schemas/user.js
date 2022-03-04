@@ -18,6 +18,13 @@ const user = new Schema({
         required: true
     },
 
+    role: {
+        type: String,
+        required: true,
+        enum: ['user', 'admin'],
+        default: 'user'
+    },
+
     creditCards: [creditCard]
 })
 
