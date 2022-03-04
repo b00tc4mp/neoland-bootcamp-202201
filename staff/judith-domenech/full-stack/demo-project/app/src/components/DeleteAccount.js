@@ -1,7 +1,7 @@
 import './DeleteAccount.css'
 import { deleteUser } from '../logic'
 
-function DeleteAccount ({onBack, onDeleteAccount}){
+function DeleteAccount ({onBack, onDeletedAccount}){
     const goBack = event =>{
         event.preventDefault()
         onBack()
@@ -14,7 +14,7 @@ function DeleteAccount ({onBack, onDeleteAccount}){
 
         try{
             deleteUser(sessionStorage.token, password)
-                .then(() => onDeleteAccount())
+                .then(() => onDeletedAccount())
                 .catch(error => {throw error})
         } catch({message}){
             alert(message)
