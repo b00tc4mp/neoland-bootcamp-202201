@@ -1,8 +1,6 @@
 const { connect, disconnect } = require('mongoose')
 const { User, CreditCard, Property, Brand, Product, Stock, Order } = require('./models')
 
-
-
 connect('mongodb://localhost:27017/demo-db')
     .then(() => console.log('connected'))
     .then(() => Promise.all([
