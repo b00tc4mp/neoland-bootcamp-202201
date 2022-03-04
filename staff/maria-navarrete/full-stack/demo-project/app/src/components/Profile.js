@@ -2,7 +2,7 @@ import './Profile.css'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-function Profile() {
+function Profile({onUpdatePassword, onDeleteAccount}) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
 
@@ -34,6 +34,16 @@ function Profile() {
         }
     }
 
+    const goToUpdatePassword = event => {
+        event.preventDefault()
+        onUpdatePassword()
+    }
+
+    const goToDeleteAccount = event => {
+        event.preventDefault()
+        onDeleteAccount()
+    }
+
     return <div className="profile">
         <form className="profile__form" onSubmit={updateProfile} method="post">
             <div className="profile__field">
@@ -46,6 +56,8 @@ function Profile() {
             </div>
             <button className="profile__submit">Update Profile</button>
 
+            <a href="" onClick={goToUpdatePassword}>Update Password</a>
+            <a href="" onClick={goToDeleteAccount}>Delete Account</a>
         </form>
     </div>
 

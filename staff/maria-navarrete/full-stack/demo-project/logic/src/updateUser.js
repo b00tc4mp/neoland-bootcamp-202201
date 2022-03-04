@@ -9,7 +9,7 @@ function updateUser(userId, {name, email}) {
 
     return User.updateOne({ _id: userId }, { name, email })
         .then(result => {
-            if (result.modifiedCount === 0) throw new Error(`user with id ${userId} does not exist`)
+            if (result.matchedCount === 0) throw new Error(`user with id ${userId} does not exist`)
         })
 }
 

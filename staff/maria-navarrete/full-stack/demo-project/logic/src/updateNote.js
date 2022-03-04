@@ -11,7 +11,7 @@ function updateNote(userId, noteId, text, color, public = false) {
 
     return Note.updateOne({ _id: noteId, user: userId }, { text, color, public, updatedAt: new Date })
         .then(result => {
-            if (result.modifiedCount === 0) throw new Error(`note with id ${noteId} and userId ${userId} does not exist`)
+            if (result.matchedCount === 0) throw new Error(`note with id ${noteId} and userId ${userId} does not exist`)
         })
 }
 
