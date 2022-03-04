@@ -3,10 +3,9 @@ import { retrieveUser } from '../logic'
 import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
-function Home() {
+function Home({onLogOut}) {
     const [name, setName] = useState()
     const navigate = useNavigate()
-    const [view, setView] = useState()
 
     useEffect(() => {
         try {
@@ -37,7 +36,7 @@ function Home() {
         <Routes>
             <Route path='profile' element={<Profile  onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />}></Route>
             <Route path='profile/update-password' element={<UpdatePassword onBack={showProfile} />} ></Route>
-            <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile} />}></Route>
+            <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile} onDeletedAccount={onLogOut}/>}></Route>
         </Routes>
     </div>
 }

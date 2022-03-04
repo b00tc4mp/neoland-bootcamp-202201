@@ -25,7 +25,7 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
         const { target: { name: { value: name }, email: { value: email } } } = event
         
         try {
-            debugger
+            
             updateUser(sessionStorage.token, name, email)
                 .then(() => {
                     setName(name)
