@@ -12,7 +12,7 @@ function Landing({ onLogin, onRegistered }) {
     }
 
     return <div className="landing">
-        <a onClick={goToLogIn}>Login</a> or <a onClick={goToRegister}>Register</a>
+        <a href="" onClick={goToLogIn}>Login</a> or <a href="" onClick={goToRegister}>Register</a>
     </div>
 }
 export default Landing

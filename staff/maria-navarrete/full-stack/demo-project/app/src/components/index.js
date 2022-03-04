@@ -5,6 +5,7 @@ import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import Landing from './Landing'
+import Notes from './Notes'
 
 export {
     Register,
@@ -13,5 +14,6 @@ export {
     Profile,
     UpdatePassword,
     DeleteAccount,
-    Landing
+    Landing,
+    Notes
 }

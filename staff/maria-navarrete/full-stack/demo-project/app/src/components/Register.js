@@ -1,7 +1,8 @@
 import './Register.css'
 import { registerUser } from '../logic'
 
-function Register({ onRegistered }) {
+function Register({ onLogin, onRegistered }) {
+
     const register = event => {
         event.preventDefault()
 
@@ -16,12 +17,21 @@ function Register({ onRegistered }) {
         }
     }
 
-    return <form onSubmit={register}>
-        <input type="text" name="name" placeholder="name" />
-        <input type="email" name="email" placeholder="email" />
-        <input type="password" name="password" placeholder="password" />
-        <button>Register</button>
-    </form>
+    const goToLogin = event => {
+        event.preventDefault()
+        onLogin()
+    }
+
+    return <div className="register">
+        <form onSubmit={register}>
+            <input type="text" name="name" placeholder="name" />
+            <input type="email" name="email" placeholder="email" />
+            <input type="password" name="password" placeholder="password" />
+            <button>Register</button>
+            <a href="" onClick={goToLogin}>Login</a>
+        </form>
+    </div>
+
 }
 
 export default Register
