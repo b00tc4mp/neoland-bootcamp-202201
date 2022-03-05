@@ -5,7 +5,9 @@
 
 Coctail's for dummies es una APP que consiste en acercar al usuario medio el fantástico mundo de la coctelería profesional. Dentro de CFD encontraremos un completo buscador de cocteles clásicos, modernos y sin alcohol.
 
-CFD ofrece un completo listado de recetas, detallado en centilitros
+CFD ofrece un completo listado de recetas, detallado en centilitros y onzas, aprobados por IBA junto con la descripción del proceso para realizarlo.
+
+La experiencia CFD permite al usuario crear y guardar sus  recetas favoritas y añadir comentarios al recetario.
 
 
 ## Functional Description
@@ -16,7 +18,8 @@ CFD ofrece un completo listado de recetas, detallado en centilitros
 
 ##### Main Views
 
-![alt Main Views](./images/main-views.png)
+![alt](./images/users-view.png)
+![alt](./images/profile-view.png)
 
 ## Technical Description
 
