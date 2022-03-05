@@ -7,6 +7,8 @@ function retrieveUser(id) {
     return User.findById(id)
          .then((user) => {
              const doc = user._doc
+             
+             // sanitize
 
              delete doc._id
              delete doc.password
