@@ -27,6 +27,7 @@ function App() {
 
   const logout = () => {
     delete sessionStorage.token
+    navigate('/')
   }
 
   return <div>

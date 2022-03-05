@@ -1,9 +1,10 @@
 import './Notes.css'
-import { retrieveUser } from '../logic'
+import { retrieveUser, listNotes } from '../logic'
 import { useEffect, useState } from 'react'
 
 function Notes() {
     const [name, setName] = useState()
+    const [notes, setNotes] = useState()
 
     useEffect(() => {
         try {
@@ -17,6 +18,7 @@ function Notes() {
 
     return <div className="notes">
         <h1>welcome home, {name}!</h1>
+
     </div>
 }
 export default Notes
