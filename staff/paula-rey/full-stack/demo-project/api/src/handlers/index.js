@@ -1,29 +1,29 @@
-const handlerRegisterUser = require('./handlerRegisterUser')
-const handlerAuthenticateUser = require('./handlerAuthenticateUser')
-const handlerRetrieveUser = require('./handlerRetrieveUser')
-const handlerUpdateUser = require('./handlerUpdateUser')
-const handlerUpdateUserPassword = require('./handlerUpdateUserPassword')
-const handlerDeleteUser = require('./handlerDeleteUser')
-const handlerCreateNote = require('./handlerCreateNote')
-const handlerRetrieveNote = require('./handlerRetrieveNote')
-const handlerUpdateNote = require('./handlerUpdateNote')
-const handlerDeleteNote = require('./handlerDeleteNote')
-const handlerListNotes = require('./handlerListNotes')
-const handlerListPublicNotes = require('./handlerListPublicNotes')
-const handlerListPublicNotesFromUser = require('./handlerListPublicNotesFromUser')
+const registerUser = require('./registerUser')
+const authenticateUser = require('./authenticateUser')
+const retrieveUser = require('./retrieveUser')
+const updateUser = require('./updateUser')
+const updateUserPassword = require('./updateUserPassword')
+const deleteUser = require('./deleteUser')
+const createNote = require('./createNote')
+const retrieveNote = require('./retrieveNote')
+const updateNote = require('./updateNote')
+const deleteNote = require('./deleteNote')
+const listNotes = require('./listNotes')
+const listPublicNotes = require('./listPublicNotes')
+const listPublicNotesFromUser = require('./listPublicNotesFromUser')
 
 module.exports = {
-    handlerRegisterUser,
-    handlerAuthenticateUser,
-    handlerRetrieveUser,
-    handlerUpdateUser,
-    handlerUpdateUserPassword,
-    handlerDeleteUser,
-    handlerCreateNote,
-    handlerRetrieveNote,
-    handlerUpdateNote,
-    handlerDeleteNote,
-    handlerListNotes,
-    handlerListPublicNotes,
-    handlerListPublicNotesFromUser
+    registerUser,
+    authenticateUser,
+    retrieveUser,
+    updateUser,
+    updateUserPassword,
+    deleteUser,
+    createNote,
+    retrieveNote,
+    updateNote,
+    deleteNote,
+    listNotes,
+    listPublicNotes,
+    listPublicNotesFromUser
 }

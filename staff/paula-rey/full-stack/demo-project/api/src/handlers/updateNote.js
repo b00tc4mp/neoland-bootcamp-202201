@@ -1,9 +1,9 @@
-const { deleteUser } = require('logic')
+const { updateNote } = require('logic')
 const jwt = require('jsonwebtoken')
 
-const handlerDeleteUser = (req, res) => {
+module.exports = (req, res) => {
     try {
-        const { headers: { authorization }, body: { password } } = req
+        const { headers: { authorization }, body: { text, color, public }, params: { noteId} } = req
 
         const [, token] = authorization.split(' ')
 
@@ -11,7 +11,7 @@ const handlerDeleteUser = (req, res) => {
 
         const { sub: userId } = payload
 
-        deleteUser(userId, password)
+        updateNote(userId, noteId, text, color, public)
             .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
@@ -19,4 +19,3 @@ const handlerDeleteUser = (req, res) => {
     }
 }
 
-module.exports = handlerDeleteUser

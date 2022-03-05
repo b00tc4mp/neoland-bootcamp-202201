@@ -1,10 +1,9 @@
-const { updateUserPassword } = require('logic')
+const { retrieveUser } = require('logic')
 const jwt = require('jsonwebtoken')
 
-
-const handlerUpdateUserPassword = (req, res) => {
+module.exports = (req, res) => {
     try {
-        const { headers: { authorization }, body: { currPassword, newPassword } } = req
+        const { headers: { authorization } } = req
 
         const [, token] = authorization.split(' ')
 
@@ -12,12 +11,11 @@ const handlerUpdateUserPassword = (req, res) => {
 
         const { sub: userId } = payload
 
-        updateUserPassword({ userId, currPassword, newPassword })
-            .then(() => res.status(200).send())
+        retrieveUser(userId)
+            .then(user => res.json(user))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 }
 
-module.exports = handlerUpdateUserPassword

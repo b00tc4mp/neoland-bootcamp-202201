@@ -1,7 +1,7 @@
 const { deleteNote } = require('logic')
 const jwt = require('jsonwebtoken')
 
-const handlerDeleteNote = (req, res) => {
+module.exports = (req, res) => {
     try {
         const { headers: { authorization }, params: { noteId } } = req
 
@@ -18,5 +18,3 @@ const handlerDeleteNote = (req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
-
-module.exports = handlerDeleteNote

@@ -1,7 +1,7 @@
 const { listNotes } = require('logic')
 const jwt = require('jsonwebtoken')
 
- const handlerListNotes = (req, res) => {
+module.exports = (req, res) => {
     try {
         const { headers: { authorization } } = req
 
@@ -9,9 +9,9 @@ const jwt = require('jsonwebtoken')
 
         const payload = jwt.verify(token, 'mi super secreto')
 
-        const { sub: id } = payload
+        const { sub: userId } = payload
 
-        listNotes(id)
+        listNotes(userId)
             .then(notes => res.json(notes))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
@@ -19,7 +19,7 @@ const jwt = require('jsonwebtoken')
     }
 }
 
-module.exports = handlerListNotes
+
 
 
 

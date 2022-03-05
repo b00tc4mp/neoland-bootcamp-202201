@@ -1,10 +1,10 @@
-const { retrieveNote } = require('logic')
+const { updateUserPassword } = require('logic')
 const jwt = require('jsonwebtoken')
 
-const handlerRetrieveNote = (req, res) => {
-    try {
 
-        const { headers: { authorization }, params: { noteId } } = req
+module.exports = (req, res) => {
+    try {
+        const { headers: { authorization }, body: { currPassword, newPassword } } = req
 
         const [, token] = authorization.split(' ')
 
@@ -12,12 +12,11 @@ const handlerRetrieveNote = (req, res) => {
 
         const { sub: userId } = payload
 
-        retrieveNote(userId, noteId)
-            .then(note => res.json(note))
+        updateUserPassword({ userId, currPassword, newPassword })
+            .then(() => res.status(200).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 }
 
-module.exports = handlerRetrieveNote
