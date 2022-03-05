@@ -2,12 +2,11 @@ import { validators } from 'commons'
 
 const { validateToken, validatePassword } = validators
 
-
 function deleteUser(token, password) {
     validateToken(token)
     validatePassword(password)
 
-    return fetch('https://localhost8080/api/users', {
+    return fetch('http://localhost:8080/api/users', {
 
         method: 'DELETE',
         headers: {

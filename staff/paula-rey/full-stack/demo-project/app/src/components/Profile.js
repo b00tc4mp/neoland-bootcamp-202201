@@ -36,7 +36,7 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
         }
     }
 
-    const goToProfilePassword = event => {
+    const goToUpdatePassword = event => {
         event.preventDefault()
 
         onUpdatePassword()
@@ -55,7 +55,7 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
 
             <button>Update profile</button>
 
-            <a className="profile__update-password-link" href="" onClick={goToProfilePassword}>update password</a>
+            <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
             <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
         </form>
 

@@ -3,9 +3,9 @@ import { Profile, UpdatePassword, DeleteAccount } from './index'
 import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
-function Home() {
+function Home({onLogOut}) {
+
     const [name, setName] = useState()
-    const [view, setview] = useState()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -36,7 +36,7 @@ function Home() {
         <Routes>
             <Route path='profile' element={<Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount}/>}/>
             <Route path='profile/update-password' element={<UpdatePassword onBack={showProfile}/>}/>
-            {/* <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile}/>}/> */}
+            <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile} onDeletedAccount={onLogOut}/>}/>
         </Routes>
     </div>
 }

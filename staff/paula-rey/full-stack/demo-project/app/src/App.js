@@ -15,15 +15,19 @@ function App() {
 
   const keepTokenNShowHome = token => { // and = N
     sessionStorage.token = token
-
     navigate('/')
+  }
+
+  const deleteTokenNShowLanding = () => {
+    delete sessionStorage.token
+    navigate('login')
   }
 
   return <div>
     <Routes>
-      <Route path="/*" element={<Home />} />
+      <Route path="/*" element={<Home onLogOut={deleteTokenNShowLanding}/>} />
       <Route path="register" element={<Register onRegistered={showLogin} />} />
-      <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome} />} />
+      <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome}/>} />
     </Routes>
   </div>
 }
