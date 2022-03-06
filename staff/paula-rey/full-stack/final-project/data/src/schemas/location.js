@@ -1,5 +1,4 @@
 const { Schema } = require('mongoose')
-const { Types: { ObjectId } } = Schema
 
 const location = new Schema({
     title: {
@@ -23,11 +22,13 @@ const location = new Schema({
         type: String,
     },
 
-    coords: {
-        type: [integer, integer],
-        required:true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    }
-
+    
 })
 
 module.exports = location
+
+
+// coords: {
+//     type: [integer, integer],
+//     required:true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+// }

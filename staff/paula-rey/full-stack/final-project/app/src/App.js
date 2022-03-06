@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Landing, Register, Login, Home } from './components'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { validators} from 'commons'
+const {validateToken } = validators
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let tokenValid = true
+
+  try {
+    validateToken(sessionStorage.token)
+  } catch (error) {
+    tokenValid = false
+  }
+
+  const navigate = useNavigate()
+
+  const showLogin = () => navigate('login')
+
+  const showRegister = () => navigate('register')
+
+  const keepTokenNShowHome = token => { // and = N
+    sessionStorage.token = token
+    navigate('/')
+  }
+
+  const deleteTokenNShowLanding = () => {
+    delete sessionStorage.token
+    navigate('/')
+  }
+
+
+  return <div>
+    <Routes>
+      <Route path="/*" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Landing onLogin={showLogin} onRegistered={showRegister} />} />
+      <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
+      <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
+      <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
+    </Routes>
+  </div>
+
 }
 
-export default App;
+export default App
+
+
+// return <div>
+//   <Routes>
+//     <Route path="/*" element={<Home onLogOut={deleteTokenNShowLanding}/>} />
+//     <Route path="register" element={<Register onRegistered={showLogin} />} />
+//     <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome}/>} />
+//   </Routes>
+// </div>

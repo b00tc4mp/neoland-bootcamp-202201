@@ -19,11 +19,10 @@ const comments = new Schema({
         default: Date.now
     },
 
-    location: {
-        type: Location,  ///??????
+    adress: {
+        type: String,
         required: true,
-        unique: true
-    }
+    },
 
 })
 
