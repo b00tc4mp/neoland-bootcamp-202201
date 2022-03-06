@@ -18,31 +18,33 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ##### Main Views
 
-![alt Main Views](./images/main-views.png)
+![alt Main Views](./images/main-views2.png)
 
 ## Technical Description
 
 ### Blocks
 
+![alt Flow Chart](./images/flow-chart.png)
+
 ### Data Model
 
 User
-- name (string, required, min length 20)
-- email (string, required, unique)
-- password (string, required, min length 8)
+- Name (string, required, min length 20)
+- Email (string, required, unique)
+- Password (string, required, min length 8)
 
 Location
-- title (string, required, min lenght 50)
-- description (string, required, minlength 300)
-- address (string, required)
-- coords ([integer, integer], required,)
-- image (string)
+- Title (string, required, min lenght 50)
+- Description (string, required, minlength 300)
+- Address (string, required)
+- Coords ([integer, integer], required)
+- Image (string)
 
 Comment
-- user (objectId, User, required)
-- text (string, required)
-- date (date, required, date.now)
-- location (location, required, unique)
+- User (objectId, User, required)
+- Text (string, required)
+- Date (date, required, date.now)
+- Adress (String, true)
 
 ## Tasks history
 
@@ -60,21 +62,21 @@ Comment
 
 #### Techincal Description
 
-- TODO create blocks diagram (.5h)
+- ~~TODO create blocks diagram (.5h)~~
 
 - ~~TODO create data model in paper (1h)~~
 
-- TODO create data model in diagrams.net (E/R) (1h)
+-   ~~TODO create data model in diagrams.net (E/R) (1h)~~
 
-- TODO create data model in README (images) (1h)
+- ~~TODO create data model in README (images) (1h)~~
 
 ### Data
 
-- TODO create mongoose schemas and models (2h)
+- ~~TODO create mongoose schemas and models (2h)~~
 
-- TODO create populate.js to test my models (1h)
+- ~~TODO create populate.js to test my models (1h)~~
 
 ### App
 
-- TODO create main views (components) (1h)
+- ~~TODO create main views (components) (1h)~~
 - TODO mechanize navigations (.5h)
