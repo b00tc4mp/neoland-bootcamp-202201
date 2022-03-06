@@ -51,12 +51,14 @@ User
 - password (string, required, min length 8)
 
 Racket
-- Name (string, required, ...)
+- Brand (ObjectId requiresd)
+- Model(string, required, ...)
 - Weigth (string, required, ...)
 - Type of racket: (string, required)
 - Type of play: (string, required)
 - Nivel: (string, required)
-- Description (string, required, ...)
+- Description: (string, required, ...)
+- image: (string, required)
 
 Comment
 - User: Object id 
