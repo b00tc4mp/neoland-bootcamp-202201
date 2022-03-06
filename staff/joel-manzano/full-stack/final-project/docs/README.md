@@ -5,13 +5,7 @@ Una app para crear un espacio en el que
 tanto "artistas", como "fans", sean capaces de 
 mapear y registrar piezas ;)
 
-Los "artistas" pueden fotografiar sus piezas,
-subir la foto a su perfil, e ir creando sus álbumes.
-La api constará de 2 modalidades para
-diferenciar entre "Arte-urbano" y "Vandalismo" con
-sus diferentes categorías 
-
- -Arte urbano: Murals , Blinds, Canvas, Mercha.
+-Arte urbano: Murals , Blinds, Canvas, Mercha.
 -Vandalismo: Trains, Metros, Vehicles, Walls. 
 
 -Adjuntar fotos y otros datos de interés como 
@@ -38,40 +32,53 @@ detalles a sus piezas.
 ## Functional Description
 TODO UML diagrams (use cases, flows, activities, etc)
 
+### Activities
+
+Encuentra, visita y comparte los graffitis de tu ciudad.
+Los usuarios podrán compartir los graffitis que mas les gusten así como los suyos propios. Podrán compartir imagenes, descripciones, ubicaciones y otro tipo de información. Actualizar la información modificando sus publicaciones.
+
 ### Use Cases
+![alt Use Cases](./images/use-cases.png)
+
+//### flows
+
+![alt flows](./images/flux-diagram.png)
 
 #### User Interface (UI)
 
 ##### Main Views
 
-![alt Main Views](./images/Graffiti-Maps.png)
+![alt Main Views](./images/  .png) <=// añadir imagen;
 
 ## Technical Description
 TODO UML diagrams (blocks, components, data model (entity diagram), etc)
 
 ### Blocks
-
+![alt blocks](./images/Blocks.png)
 ### Data Model
 
 User
 - name (string, required, min length 2)
 - email (string, required, unique)
 - password (string, required, min length 8)
+- is_artists (boolean, required)
 
-Location
-- title (string, required, ...)
-- description (string, required, ...)
-- address (string, required, ...)
-- postal code (string, required, ...)
-- coords ([integer, integer], required, ....)
-- ...
+Graffiti
+- artist_name(string, not required)
+- city(string, required)
+- street(string, required)
+- number(string, not required)
+- postal_code(string, not required)
+- location(string, required)
+- style(string, required, enum:['unkown', 'tags', '3d', 'bombing',   'bubbles', 'blockbuster', 'realism', 'icons', 'trash', 'abstract'],default:'unknown')
+- description(string, required, min/max_length 2/200)
+- image(file, required)
+- status(string, required, enum:['exists', 'trampled', 'cleaned up'], default:'exists') 
+- spray_brand(string, not required)
+- color(string, not required)
 
-Comment
-- text
-- date
-- user
-- location
-
+### Components
+![alt components](./ .png) <=// añadir imagen;
 ## Tasks history
 
 ### Docs
