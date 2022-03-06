@@ -1,5 +1,5 @@
 {
-  "name": "data",
+  "name": "commons",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mongoose": "^6.2.4"
-  }
+  "license": "ISC"
 }

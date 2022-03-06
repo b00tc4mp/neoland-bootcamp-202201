@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Dreams Factory is the web site for who wanna buy an artisan product, original, hand made :)
+Dreams Factory is the web site for who wanna buy an artisan product, original and hand made :)
 
 ![alt Dreams Factory](https://media.giphy.com/media/mCydWp2Slwt8KugwmX/giphy.gif)
 
@@ -39,4 +39,5 @@ User
 - surname (string, required, min length 2)
 - email (string, required, unique)
 - password (string, required, min length 8)
+- role (string, required)
 
