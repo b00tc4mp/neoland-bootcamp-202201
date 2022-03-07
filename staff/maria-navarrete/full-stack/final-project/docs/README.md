@@ -1,6 +1,6 @@
 # beHooman
 
-![alt Pyro Project](https://media.giphy.com/media/L4fB9di7ekn3F5PXaW/giphy.gif)
+![alt beHooman Project](https://media.giphy.com/media/L4fB9di7ekn3F5PXaW/giphy.gif)
 
 ## Intro
 ----
@@ -49,6 +49,7 @@ BeHooman es una aplicación que busca crear una comunidad para compartir, crear 
 
 ![alt Data Model](./images/ERDiagram.jpg)
 
+
 ### Technologies
 - Javascript
 - React
@@ -61,38 +62,104 @@ BeHooman es una aplicación que busca crear una comunidad para compartir, crear 
 ## User Interface (UI)
 ___
 
-### Main Views
+### Landing
+![alt Landing Interface](./images/user-interface/landing.jpg)
+
+### Register
+![alt Register Interface](./images/user-interface/register.jpg)
+
+### Home
+![alt Home Interface](./images/user-interface/home.jpg)
+
+### My Acts 
+#### My Acts - scheduled
+![alt My Scheduled Acts Interface](./images/user-interface/myActs-scheduled.jpg)
+
+#### My Acts - creations
+![alt My Created Acts Interface](./images/user-interface/myActs-creations.jpg)
+
+##### My Acts - creations - create
+![alt Create Act Interface](./images/user-interface/myActs-create.jpg)
+
+##### My Acts - creations - edit
+![alt Edit Act Interface](./images/user-interface/myActs-edit.jpg)
+
+##### My Acts - creations - delete
+![alt Delete Act Interface](./images/user-interface/myActs-delete.jpg)
+
+#### My Acts - favorites
+![alt My Favorites Acts Interface](./images/user-interface/myActs-favorites.jpg)
+
+### Community
+![alt Community Interface](./images/user-interface/community.jpg)
+
+#### Community - Search
+![alt Search Community Interface](./images/user-interface/community-search.jpg)
+
+#### Community - Other User Profile
+![alt Community Profile Interface](./images/user-interface/community-userProfile.jpg)
+
+### Profile
+![alt Profile Interface](./images/user-interface/profile.jpg)
+
+#### Profile- Update Profile
+![alt Update Profile Interface](./images/user-interface/profile-updateProfile.jpg)
+
+#### Profile- Update Password
+![alt Update Password Interface](./images/user-interface/profile-updatePassword.jpg)
+
+#### Profile- Activity
+![alt Activity Interface](./images/user-interface/profile-activity.jpg)
+
+
 
 ------------------------------------
 
 # TASK LIST
 
 ## Docs
-- ~~TODO introduce the project, describe it (.5h)~~
+- ~~DONE introduce the project, describe it (.5h)~~
 
 ### Functional Description
-- ~~TODO create use cases diagram (.25h)~~
+- ~~DONE create use cases diagram (.25h)~~
   
-- TODO create wireframes in paper (2h)
-- TODO create wireframes in figma (alt excalidraw) (3h)
-- TODO create wireframes in README (images) (1h)
+- ~~DONE create wireframes in figma (alt excalidraw) (3h)~~
+- ~~DONE create wireframes in README (images) (1h)~~
 
 ### Techincal Description
 
-- ~~TODO create blocks diagram (.5h)~~
+- ~~DONE create blocks diagram (.5h)~~
+- ~~DONE create data model in paper (1h)~~
+- ~~DONE create data model in diagrams.net (E/R) (1h)~~
+- ~~DONE create data model in README (images) (1h)~~
 
-- ~~TODO create data model in paper (1h)~~
-- ~~TODO create data model in diagrams.net (E/R) (1h)~~
-- ~~TODO create data model in README (images) (1h)~~
+## Server
 
 ### Data
 
-- TODO create mongoose schemas and models (2h)
-- TODO create populate.js to test my models (1h)
+- ~~DONE create mongoose schemas and models (2h)~~
+- DOING create populate.js to test my models (1h)
+
+### Logic
+- TODO create server methods
+
+### API
+
+- TODO ...
+
+## Client
 
 ### App
 
 - TODO create main views (components) (1h)
 - TODO mechanize navigations (.5h)
 
-- acts: contar las veces que ha sido favorita para mostrar por popularidad en el home
+### App Logic
+- TODO create App logics
+
+
+** TENER EN CUENTA
+revisar web push notifications 
+push api
+
+no puedo editar ni eliminar una nota si algun otro usuario la ha agendado. 

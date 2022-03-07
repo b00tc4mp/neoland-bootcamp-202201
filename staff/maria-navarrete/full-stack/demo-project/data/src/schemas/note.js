@@ -16,7 +16,7 @@ const note = new Schema({
     color: {
         type: String,
         required: true,
-        defaulta: 'yellow'
+        default: 'yellow'
     },
 
     public: {
