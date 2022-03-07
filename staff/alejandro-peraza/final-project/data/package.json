@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commons": "^0.0.1-pre",
+    "logic": "^0.0.3",
     "mongoose": "^6.2.4"
   }
 }

@@ -19,22 +19,38 @@ The CFD experience allows the user to create and save their favorites and add co
 
 ## Functional Description
 
-- Pantalla de Landing:
-    Permite acceder como usuario o registrarnos
+### Activities
 
-- Pantalla de CFD:
-    Podremos acceder al motor de busqueda de CFD, tanto en parámetros de nombre del coctail, como por el destilado básico que utiliza la receta.
+- Buscar cócteles en la app
+- Listar cócteles
+- Ver detalles de cócteles y su receta
+- Guardar mis cócteles favoritos
+- Añadir comentarios a los cócteles
 
-- Pantalla de Detalles:
-    No es fácil recordar las recetas de un amplio abanico como nos ofrece la coctelería, para ello dispondremos de un apartado de favoritos en CFD, donde encontraremos esas recetas que mejor cazan con nuestros gustos, un detallado listado de la receta y la posibilidad de añadir comentarios, para tener siempre a mano aquellos ajustes que tanto nos gustaron en el pasado.
 
 ### Use Cases
 
-![alt](./images/use-cases.png)
+![alt](./images/Use-cases2.png)
+
+<!-- rebuild use cases with handlers actions -->
+<!-- example (https://github.com/nsauram/neoland-bootcamp-202109/tree/feature/fullstack/staff/noelia-saura/fullstack/project/inmymind-doc) -->
+<!-- ![alt](./images/use-cases.png) -->
+
+#### Flows
+
+![alt](./images/Flow.png)
+
+<!-- TODO
+Ver vídeo (https://www.youtube.com/watch?v=cvYhuowazh0)
+link example (https://github.com/manuelbarzi/neoland-bootcamp-202201/blob/36c46f5cb15fe4209a8f6101813bf6c7d6941e4f/staff/maria-navarrete/full-stack/final-project/docs/images/createDiagram.jpg)
+Flow de ver un cóctel
+Flow de añadir un comentario -->
 
 #### User Interface (UI)
 
+
 ##### Main Views
+<!-- wireframes -->
 
 ![alt](./images/users-view.png)
 
@@ -47,6 +63,11 @@ The CFD experience allows the user to create and save their favorites and add co
 ![alt](./images/block.png)
 
 ### Data Model
+![alt](./images/ERD.png)
+
+<!-- TODO link er diagram -->
+<!-- example (https://github.com/manuelbarzi/neoland-bootcamp-202201/blob/36c46f5cb15fe4209a8f6101813bf6c7d6941e4f/staff/maria-navarrete/full-stack/final-project/docs/images/ERDiagram.jpg) -->
+
 
 User
 - name (string, required,unique, min length 8)
@@ -58,6 +79,7 @@ Coctail
 - description (string, required, ...)
 - recipe (string, required, ...)
 - note (string, required,...)
+- Photo (string, unique,...)
 
 Comment
 - text
@@ -65,35 +87,14 @@ Comment
 - user
 
 
-## Tasks history
-
-### Docs
-
- ~~TODO introduce the project, describe it (.5h)~~
-
-#### Functional Description
-
- ~~TODO create use cases diagram (.25h)~~
-  
- ~~TODO create wireframes in paper (2h)~~
- ~~TODO create wireframes in figma (alt excalidraw) (3h)~~
- ~~TODO create wireframes in README (images) (1h)~~
-
-#### Techincal Description
-
- ~~TODO create blocks diagram (.5h)~~
-
- ~~TODO create data model in paper (1h)~~
- ~~TODO create data model in diagrams.net (E/R) (1h)~~
- ~~TODO create data model in README (images) (1h)~~
-
-### Data
-~~TODO create mongoose schemas and models (2h)~~
-~~TODO create populate.js to test my models (1h)~~
-
-### App
-
-~~TODO create main views (components) (1h)~~
-- TODO mechanize navigations (.5h)
-
-
+<!-- TODO
+ER diagram
+Review with ventu
+Link this diagrams to docs
+Modify models and schemas
+rebuild uses cases
+----------------- for tomorrow -----------
+flows
+wireframes
+review with ux/ui student
+-->
