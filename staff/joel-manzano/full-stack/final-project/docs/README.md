@@ -1,62 +1,66 @@
 # Graffiti Maps
 
 ## Intro 
+
+![alt Graffiti Maps Project](https://media.giphy.com/media/FNsYe52dbYLS0/giphy.gif)
+
 Una app para crear un espacio en el que
 tanto "artistas", como "fans", sean capaces de 
 mapear y registrar piezas ;)
 
--Arte urbano: Murals , Blinds, Canvas, Mercha.
--Vandalismo: Trains, Metros, Vehicles, Walls. 
+- Arte urbano: Murals , Blinds, Canvas, Mercha.
+- Vandalismo: Trains, Metros, Vehicles, Walls. 
 
--Adjuntar fotos y otros datos de interés como 
+- Adjuntar fotos y otros datos de interés como 
 "estilos"=> (Tags, 3D, Wild, Bombing, Bubbles, 
 Realism, Blockbuster, Icons, Abstract, Trash)
 
--Añadir  ubicaciones a través de "google maps".
+- Descripciones: un espacio donde escribir info.
 
--Descripciones: un espacio donde escribir info.
-
--Los fans pueden escribir info de sus artistas, 
+- Los fans pueden escribir info de sus artistas, 
 piezas encontradas y otros datos de interés.
 
-//Los artistas pueden añadir info, precios u otros
-detalles a sus piezas.
+- Añadir ubicaciones a través de "leaftlet maps" (future versión).
 
+- Galería de arte urbano: Los artistas pueden añadir info, precios u otros
+detalles a sus piezas (future versión).
 
-
- 
-
-
-![alt Graffiti Maps Project](https://media.giphy.com/media/FNsYe52dbYLS0/giphy.gif)
 
 ## Functional Description
-TODO UML diagrams (use cases, flows, activities, etc)
 
 ### Activities
 
-Encuentra, visita y comparte los graffitis de tu ciudad.
-Los usuarios podrán compartir los graffitis que mas les gusten así como los suyos propios. Podrán compartir imagenes, descripciones, ubicaciones y otro tipo de información. Actualizar la información modificando sus publicaciones.
+- Añadir graffitis
+- Editar graffitis
+- Eliminar graffitis
+- Listar graffitis según filtros
+- Ver detalles de un graffiti
+- Añadir a favoritos un graffiti
+
+<!-- Encuentra, visita y comparte los graffitis de tu ciudad.
+Los usuarios podrán compartir los graffitis que mas les gusten así como los suyos propios. Podrán compartir imagenes, descripciones, ubicaciones y otro tipo de información. Actualizar la información modificando sus publicaciones. -->
 
 ### Use Cases
 ![alt Use Cases](./images/use-cases.png)
 
-//### flows
+### Flows
 
 ![alt flows](./images/flux-diagram.png)
+<!-- Revisar del tercero para abajo (no hacerlo mucho más complejo, solo más lógico) -->
 
 #### User Interface (UI)
 
 ##### Main Views
 
-![alt Main Views](./images/  .png) <=// añadir imagen;
+<!-- ![alt Main Views](./images/  .png) <=// añadir imagen; -->
+<!-- Para mañana -->
 
 ## Technical Description
-TODO UML diagrams (blocks, components, data model (entity diagram), etc)
 
 ### Blocks
 ![alt blocks](./images/Blocks.png)
 ### Data Model
-
+![alt Database](./images/er-diagram.png)
 User
 - name (string, required, min length 2)
 - email (string, required, unique)
@@ -77,36 +81,9 @@ Graffiti
 - spray_brand(string, not required)
 - color(string, not required)
 
-### Components
-![alt components](./ .png) <=// añadir imagen;
-## Tasks history
 
-### Docs
-
-- TODO introduce the project, describe it (.5h)
-
-#### Functional Description
-
-- TODO create use cases diagram (.25h)
-  
-- TODO create wireframes in paper (2h)
-- TODO create wireframes in figma (alt excalidraw) (3h)
-- TODO create wireframes in README (images) (1h)
-
-#### Techincal Description
-
-- TODO create blocks diagram (.5h)
-
-- ~~TODO create data model in paper (1h)~~
-- TODO create data model in diagrams.net (E/R) (1h)
-- TODO create data model in README (images) (1h)
-
-### Data
-
-- TODO create mongoose schemas and models (2h)
-- TODO create populate.js to test my models (1h)
-
-### App
-
-- TODO create main views (components) (1h)
-- TODO mechanize navigations (.5h)
+<!-- TODO:
+data
+wireframes
+Review flows with UX/UI student
+-->
