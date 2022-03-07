@@ -1,4 +1,6 @@
 const { Schema } = require('mongoose')
+const { Types: { ObjectId }} = Schema
+const comment = require('./comment')
 
 const racket = new Schema({
     brand: {
@@ -6,16 +8,18 @@ const racket = new Schema({
         ref:'Brand',
         required: true
     },
+    
     model: {
         type: String,
         required: true
     },
+
     weigth: {
         type: Number,
         required: true
     },
     
-    Type: {
+    type: {
         type: String,
         required: true, 
     },
@@ -30,7 +34,7 @@ const racket = new Schema({
         required: true
     },
 
-    Nivel:{
+    nivel:{
         type: String,
         required: true
     },
@@ -40,6 +44,8 @@ const racket = new Schema({
         required: true
     },
 
+    comments:[comment],
+    
     image: {
         type: String,
         required: true
