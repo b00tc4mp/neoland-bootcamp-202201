@@ -1,6 +1,9 @@
 const user = require('./user')
 
 module.exports = {
-    user
+    user,
+    product,
+    order,
+    stock
     
 }

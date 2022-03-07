@@ -1,43 +1,55 @@
 # Dreams Factory project
 
 ## Introduction
+![alt Dreams Factory](https://media.giphy.com/media/mCydWp2Slwt8KugwmX/giphy.gif)
+
 
 Dreams Factory is the web site for who wanna buy an artisan product, original and hand made :)
 
-![alt Dreams Factory](https://media.giphy.com/media/mCydWp2Slwt8KugwmX/giphy.gif)
 
 ## Functional Description
+
+### Activities 
 As User you can:
-- Register and login
+
 - Search a product
 - See product details (construction material, measures, etc...)
 - Add products to cart
 - Buy products
 
 And as Admin you can:
-- Register and login (as admin)
-- Register, edit and delete products
-- ...
+
+- Register product
+- edit product
+- delete product
+- view order list
+- search products
 
 ### Use cases
 
 ![alt use cases user and admin](./images/use-cases.png)
 
-### Flows / Activities
+### Flows
 
-![alt flow-activity](./images/flow-activities.jpeg)
+![alt flow-activity](./images/flux.jpeg)
+
+### User Interface (UI)
+
+![alt main views](./images/main-views.png)
 
 ## Technical Description
-- TODO UML diagrams (blocks, components, data model (entity diagram), etc)
 
 ### Blocks
-### Components
+
+![alt blocks diagram](./images/blocks.png)
+
 ### Data Model
 
-User
-- name (string, required, min length 2)
-- surname (string, required, min length 2)
-- email (string, required, unique)
-- password (string, required, min length 8)
-- role (string, required)
+#### ER Diagram
 
+![alt data-model ER diagram](./images/databaseERdiagram.png)
+
+<!-- TODO
+Review flows with ux/ui student
+Wireframes
+ -->

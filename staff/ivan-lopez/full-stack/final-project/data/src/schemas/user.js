@@ -2,6 +2,7 @@ const { Schema } = require('mongoose')
 
 const user = new Schema({
     name: {
+        id: ObjectId,
         type: String,
         required: true
     },
