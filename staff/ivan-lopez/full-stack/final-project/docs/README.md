@@ -24,8 +24,8 @@ And as Admin you can:
 ![alt use cases user and admin](./images/use-cases.png)
 
 ### Flows / Activities
-- TODO flows/activities
-- TODO
+
+![alt flow-activity](./images/flow-activities.jpeg)
 
 ## Technical Description
 - TODO UML diagrams (blocks, components, data model (entity diagram), etc)
