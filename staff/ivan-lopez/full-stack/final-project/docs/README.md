@@ -31,7 +31,7 @@ And as Admin you can:
 
 ### Flows
 
-![alt flow-activity](./images/flux.jpeg)
+![alt flow-activity](./images/flow-activity.png)
 
 ### User Interface (UI)
 
