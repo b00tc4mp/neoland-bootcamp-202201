@@ -4,22 +4,22 @@ const location = new Schema({
     title: {
         type: String,
         required: true,
-        minlength: 50
+        maxLength: 50
+    },
+
+    image: {
+        type: String,
     },
 
     description: {
         type: String,
         required: true,
-        minlength: 300
+        maxLength: 300
     },
 
     adress: {
         type: String,
         required: true,
-    },
-
-    image: {
-        type: String,
     },
 
     
@@ -30,5 +30,6 @@ module.exports = location
 
 // coords: {
 //     type: [integer, integer],
-//     required:true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+//     required: true,
+//     unique: true
 // }

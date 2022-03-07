@@ -10,9 +10,19 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ## Functional Description
 
+- Buscar localizaciones pet-friendly.
+- Crear nuevas localizaciones encontradas.
+- Comentar localizaciones de otros usuarios.
+- Guardar localizaciones favoritas.
+- Seguir a otros usuarios.
+
 ### Use Cases
 
 ![alt Use Cases](./images/use-cases.png)
+
+### Flow Chart
+
+![alt Flow Chart](./images/flow-chart.png)
 
 #### User Interface (UI)
 
@@ -22,39 +32,33 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ## Technical Description
 
+### Tecnologies
+
+- JavaScript
+- CSS
+- HTML
+- React
+- Node.JS
+- Express
+- MongoDB
+
 ### Blocks
 
-![alt Flow Chart](./images/flow-chart.png)
+![alt Blocks Diagram](./images/block-diagram.png)
 
 ### Data Model
 
-User
-- Name (string, required, min length 20)
-- Email (string, required, unique)
-- Password (string, required, min length 8)
-
-Location
-- Title (string, required, min lenght 50)
-- Description (string, required, minlength 300)
-- Address (string, required)
-- Coords ([integer, integer], required)
-- Image (string)
-
-Comment
-- User (objectId, User, required)
-- Text (string, required)
-- Date (date, required, date.now)
-- Adress (String, true)
+![alt Data Model](./images/data-model.png)
 
 ## Tasks history
 
 ### Docs
 
-- ~~TODO introduce the project, describe it (.5h)~~
+- ~~DONE introduce the project, describe it (.5h)~~
 
 #### Functional Description
 
-- ~~TODO create use cases diagram (.25h)~~
+- ~~DONE create use cases diagram (.25h)~~
   
 - ~~TODO create wireframes in paper (2h)~~
 - ~~TODO create wireframes in figma (alt excalidraw) (3h)~~
@@ -70,13 +74,29 @@ Comment
 
 - ~~TODO create data model in README (images) (1h)~~
 
-### Data
+#### Server
 
-- ~~TODO create mongoose schemas and models (2h)~~
+##### Data
+
+- DOING create mongoose schemas and models (2h)
 
 - ~~TODO create populate.js to test my models (1h)~~
 
-### App
+##### Logic
+
+- TODO ... ()
+
+##### API
+
+- TODO ... ()
+
+#### Client
+
+##### App
 
 - ~~TODO create main views (components) (1h)~~
-- TODO mechanize navigations (.5h)
+- ~~TODO mechanize navigations (.5h)~~
+
+##### Logic
+
+- TODO ... ()

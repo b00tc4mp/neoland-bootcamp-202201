@@ -30,6 +30,7 @@ function Home({onLogOut}) {
     return <div className="home">
         <nav className = "home__header">
             <a href="" onClick={goToProfile}>Profile</a>
+            <button href="" onClick={onLogOut}>Log out</button>
         </nav>
         <h1>welcome home, {name}!</h1>
 

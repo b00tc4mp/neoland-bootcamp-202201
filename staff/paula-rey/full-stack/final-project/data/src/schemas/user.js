@@ -1,10 +1,11 @@
 const { Schema } = require('mongoose')
+const location = require('./location')
 
 const user = new Schema({
     name: {
         type: String,
         required: true,
-        minlength: 2 
+        minLength: 2 
     },
 
     email: {
@@ -16,8 +17,10 @@ const user = new Schema({
     password: {
         type: String,
         required: true,
-        minlength: 8
+        minLength: 8
     },
+
+    locations : [location]
 
 })
 
