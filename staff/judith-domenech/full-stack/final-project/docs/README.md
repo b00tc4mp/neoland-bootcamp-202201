@@ -28,11 +28,11 @@
 
 ### Use Cases
 
-![alt Use Cases](./images/use-cases.png)
+![alt Use Cases](./images/use-cases.drawio.png)
 
 #### User Interface (UI)
 
-![alt Use Cases](./images/flowchart.png)
+![alt Use Cases](./images/flowchart.drawio.png)
 
 ##### Main Views
 
@@ -40,42 +40,33 @@
 
 ## Technical Description
 
+### Tecnologies
+
+- JavaScript
+- CSS
+- HTML
+- React
+- Node.JS
+- Express
+- MongoDB
+
 ### Blocks
 ![alt Main Views](./images/Blocks.png)
 
 ### Data Model
 
-User
-- name (string, required, min length 2)
-- email (string, required, unique)
-- password (string, required, min length 8)
-
-Racket
-- Brand (ObjectId requiresd)
-- Model(string, required, ...)
-- Weigth (string, required, ...)
-- Type of racket: (string, required)
-- Type of play: (string, required)
-- Nivel: (string, required)
-- Description: (string, required, ...)
-- image: (string, required)
-
-Comment
-- User: Object id 
-- Text: string, required 
-- Date: date, required
+![alt Data Model](./images/data-model.png)
 
 ## Tasks history
 
 ### Docs
 
-- TODO introduce the project, describe it (.5h)
-- all it's okey
+- ~~TODO introduce the project, describe it (.5h)~~
 
 #### Functional Description (weekend)
 
-- ~~TODO create use cases diagram (.25h)~~
-- ~~TODO create wireframes in paper (1h)~~
+- ~~TODO create use cases diagram (.5h)~~
+- ~~TODO create wireframes in paper (.5h)~~
 - ~~TODO create wireframes in figma (alt excalidraw) (2h)~~
 - ~~TODO create wireframes in README (images) (.25h)~~
 
@@ -84,13 +75,13 @@ Comment
 - ~~TODO create blocks diagram (.5h)~~
 
 - ~~TODO create data model in paper (1h)~~
-- TODO create data model in diagrams.net (E/R) (1h)
-- TODO create data model in README (images) (1h)
+- ~~TODO create data model in diagrams.net (E/R) (1h)~~
+- ~~TODO create data model in README (images) (1h)~~
 
-### Data (monday)
-- TODO create mongoose schemas and models (2h)
+### Data (weekend, monday)
+- ~~TODO create mongoose schemas and models (2h)~~
 - TODO create populate.js to test my models (1h)
 
-### App (monday)
+### App (weekend, monday)
 - TODO create main views (components) (1h)
 - TODO mechanize navigations (.5h)
