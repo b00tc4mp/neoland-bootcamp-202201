@@ -1,4 +1,4 @@
-# Dog·gether Project
+# Dogether Project
 
 ![alt Dog-gether Project](https://media0.giphy.com/media/5pYo6sWTaoHs7pnXaK/giphy.gif?cid=ecf05e475dzgtn4gqkcc849f32q63an7w4t49h06wpr0jpm4&rid=giphy.gif&ct=g)
 
@@ -32,6 +32,14 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ## Technical Description
 
+### Blocks
+
+![alt Blocks Diagram](./images/block-diagram.png)
+
+### Data Model
+
+![alt Data Model](./images/data-model.png)
+
 ### Tecnologies
 
 - JavaScript
@@ -42,45 +50,13 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 - Express
 - MongoDB
 
-### Blocks
 
-![alt Blocks Diagram](./images/block-diagram.png)
-
-### Data Model
-
-![alt Data Model](./images/data-model.png)
 
 ## Tasks history
 
-### Docs
-
-- ~~DONE introduce the project, describe it (.5h)~~
-
-#### Functional Description
-
-- ~~DONE create use cases diagram (.25h)~~
-  
-- ~~TODO create wireframes in paper (2h)~~
-- ~~TODO create wireframes in figma (alt excalidraw) (3h)~~
-- ~~TODO create wireframes in README (images) (1h)~~
-
-#### Techincal Description
-
-- ~~TODO create blocks diagram (.5h)~~
-
-- ~~TODO create data model in paper (1h)~~
-
--   ~~TODO create data model in diagrams.net (E/R) (1h)~~
-
-- ~~TODO create data model in README (images) (1h)~~
-
-#### Server
-
 ##### Data
 
-- DOING create mongoose schemas and models (2h)
-
-- ~~TODO create populate.js to test my models (1h)~~
+- DOING populate.js to test my models in populate.js
 
 ##### Logic
 
@@ -94,8 +70,8 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ##### App
 
-- ~~TODO create main views (components) (1h)~~
-- ~~TODO mechanize navigations (.5h)~~
+- TODO create main views (components) (1h)
+- TODO mechanize navigations (.5h)
 
 ##### Logic
 

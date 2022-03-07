@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose')
-const location = require('./location')
+const { Types: { ObjectId } } = Schema
+
 
 const user = new Schema({
     name: {
@@ -20,8 +21,17 @@ const user = new Schema({
         minLength: 8
     },
 
-    locations : [location]
+    favorite: [{
+        type: ObjectId,
+        ref: 'Location'
+    }],
+
+    follow: [{
+        type: ObjectId,
+        ref: 'User'
+    }]
 
 })
 
 module.exports = user
+

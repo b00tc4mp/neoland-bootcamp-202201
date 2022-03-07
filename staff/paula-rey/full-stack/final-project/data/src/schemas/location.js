@@ -1,6 +1,16 @@
 const { Schema } = require('mongoose')
+const { Types: { ObjectId } } = Schema
+const comment = require('./comment')
+
 
 const location = new Schema({
+    user: {
+        type: ObjectId,
+        ref: 'User',
+        required: true,
+        unique: true
+    },
+
     title: {
         type: String,
         required: true,
@@ -22,14 +32,14 @@ const location = new Schema({
         required: true,
     },
 
+    coord: {
+        type: [Number, Number],
+        unique: true
+    },
+
+    comments: [comment]
     
 })
 
 module.exports = location
 
-
-// coords: {
-//     type: [integer, integer],
-//     required: true,
-//     unique: true
-// }

@@ -1,15 +1,12 @@
 const { connect, disconnect } = require('mongoose')
-const { User } = require('./models')
+const { User, Comment, Location } = require('./models')
 
-connect('mongodb://localhost:27017/demo-db')
+connect('mongodb://localhost:27017/dogether-db')
 .then(() => console.log('connected'))
 //.then(() => Promise.all([User.deleteMany()]))
 
     
-    //crear usuario:
-    .then(() => User.create({name: '', email: 'siriusblack@mail.com', password: '123123123'}))
-
-    //Crear varios usuarios:
+    /*
     .then(() => {
         const agua = new User({ name: 'Agua Cate', email: 'aguacate@mail.com', password: '123123123' })
         const ora = new User({ name: 'Ora Culo', email: 'oraculo@mail.com', password: '123123123' })
@@ -18,31 +15,23 @@ connect('mongodb://localhost:27017/demo-db')
         const sirius = new User({ name: 'Sirius Black', email: 'siriusblack@mail.com', password: '123123123' })
         
         return Promise.all([agua.save(), ora.save(), wendy.save(), pepi.save(), sirius.save()])
+    }) 
+    */
+
+    .then(users => {
+        const [agua, ora, wendy, pepi, sirius] = users
+
+        const aguaCard = new CreditCard({ fullName: 'Agua Cate Quesis', number: '1234 1234 1234 1234', expiration: new Date })
+        agua.creditCards.push(aguaCard)
+
+        const aguaCard2 = new CreditCard({ fullName: 'Agua Cate Quesis', number: '3456 3456 3456 3456', expiration: new Date })
+        agua.creditCards.push(aguaCard2)
+
+        const oraCard = new CreditCard({ fullName: 'Ora Culo Quesis', number: '2345 2345 2345 2345', expiration: new Date })
+        ora.creditCards.push(oraCard)
+
+        return Promise.all([agua.save(), ora.save()])
     })
-    
-    //buscar usuario:
-    .then(() => User.findById('6224d48e23c8542ec0a62a53'))
-    
-    
- 
-     //modificar usuario:
-     .then(() => User.findById('6224d68e268cb9abf0da725a'))
-     .then(user => {
-         user.name = 'Agua Salada'
-         user.email = 'aguasalada@mail.com'
- 
-         return user.save()
-     })
-     
-     
-     //borrar usuario:
-     .then(user => User.deleteOne({ _id: user.id }))
-     .then(() => console.log('user deleted'))
- 
-    
-     //limpiar base de datos:
-     .then(() => Promise.all([User.deleteMany(), Property.deleteMany(), CreditCard.deleteMany()])) 
-     
 
     
 
