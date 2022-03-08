@@ -11,7 +11,6 @@ const {
     updateUserPassword,
     deleteUser,
     createNote,
-    retrieveNote,
     updateNote,
     deleteNote
 } = require('./handlers')
@@ -33,15 +32,11 @@ connect(MONGODB_URL)
 
         api.post('/users', jsonBodyParser, registerUser)
         api.post('/users/auth', jsonBodyParser, authenticateUser)
-        api.get('/users', retrieveUser)
+        api.get('/users', jsonBodyParser, retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
         api.post('/notes', jsonBodyParser, createNote)
-        api.get('/notes', jsonBodyParser, listNotes)
-        api.get('/notes/public', jsonBodyParser, listPublicNotes)
-        api.get('/users/:userId/notes/public', jsonBodyParser, listPublicNotesFromUser)
-        api.get('/notes/:noteId', jsonBodyParser, retrieveNote)
         api.patch('/notes/:noteId', jsonBodyParser, updateNote)
         api.delete('/notes/:noteId', jsonBodyParser, deleteNote)
 
