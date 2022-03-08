@@ -1,6 +1,7 @@
 const { Schema } = require('mongoose')
 
 const product = new Schema ({
+    
     name: {
         type: String,
         required: true

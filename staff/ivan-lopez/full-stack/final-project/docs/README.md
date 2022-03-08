@@ -37,6 +37,10 @@ And as Admin you can:
 
 ![alt main views](./images/main-views.png)
 
+#### Admin views
+
+TODO
+
 ## Technical Description
 
 ### Blocks
@@ -45,11 +49,51 @@ And as Admin you can:
 
 ### Data Model
 
+#### Schemas
+
+user
+- name (String, required, min length 2)
+- email (String, required, unique)
+- password (String, required)
+- role (
+    String,
+    required,
+    enum: ['default','admin']
+    default: 'default'
+    )
+- cart (cart)
+- orders ([order])
+
+product
+- name (String)
+- size (String)
+- color (String)
+- price (Number)
+- qty (Number)
+- description (String)
+
+cart
+- items ([item])
+
+item
+- product (ObjectId)
+- qty (Number)
+
+order
+- date (Date)
+- cart (cart)
+
+
 #### ER Diagram
 
 ![alt data-model ER diagram](./images/databaseERdiagram.png)
 
-<!-- TODO
-Review flows with ux/ui student
-Wireframes
- -->
+### Technologies
+
+- JavaScript
+- CSS
+- HTML
+- React
+- Node.JS
+- Express
+- MongoDB

@@ -1,15 +1,13 @@
 const { Schema } = require('mongoose')
+const order = require('./order')
+const cart = require('./cart')
 
 const user = new Schema({
-    name: {
-        id: ObjectId,
-        type: String,
-        required: true
-    },
 
-    surname: {
+    name: {
         type: String,
-        required: true
+        required: true,
+        minlength: 2
     },
 
     email: {
@@ -20,15 +18,20 @@ const user = new Schema({
 
     password: {
         type: String,
-        required: true
+        required: true,
+        minlength: 8
     },
 
     role: {
         type: String,
         required: true,
-        enum : ['default','admin'],
-        default: 'default'
-    }
+        enum : ['user','admin'],
+        default: 'user'
+    },
+
+    cart,
+    orders: [order]
+    
 
 })
 
