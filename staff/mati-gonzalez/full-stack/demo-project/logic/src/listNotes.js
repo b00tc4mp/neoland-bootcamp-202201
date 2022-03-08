@@ -6,7 +6,7 @@ function  listNotes(userId) {
 
     return Note.find({ user: userId })
         .then(notes => {
-            const doc = noets.map(note => {
+            const docs = notes.map(note => {
                 const doc = note._doc
 
                 //sanitize
@@ -17,7 +17,7 @@ function  listNotes(userId) {
                 return doc
             })
 
-            return docs
+            return docs 
         })
 }
 

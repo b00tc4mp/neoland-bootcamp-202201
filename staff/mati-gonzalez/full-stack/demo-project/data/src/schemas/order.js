@@ -5,10 +5,10 @@
 // - user (object id)
 // - quantity (number)
 
-const { schema } = require('mongoose')
-const {Types: { ObjectId } } = schema
+const { Schema } = require('mongoose')
+const {Types: { ObjectId } } = Schema
 
-const order = new schema({
+const order = new Schema({
     stock: {
         type: ObjectId,
         ref: 'Stock',

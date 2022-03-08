@@ -8,11 +8,10 @@ properties
 - quantity (number)
 */
 
-const { schemas } = require('mongoose')
-const { schema } = require('../models/CreditCard')
-const { Types: { ObjectId }} = schema
+const { Schema } = require('mongoose')
+const { Types: { ObjectId }} = Schema
 
-const stock = new schema({
+const stock = new Schema({
     product: {
         type: ObjectId,
         ref: 'Prodcut',

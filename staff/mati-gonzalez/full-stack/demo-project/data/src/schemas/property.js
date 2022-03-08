@@ -1,7 +1,7 @@
-const { schema } = require('mongoose')
-const { Types: { ObjectId } } = schema
+const { Schema } = require('mongoose')
+const { Types: { ObjectId } } = Schema
 
-const property = new schema({
+const property = new Schema({
     cadastral: {
         type: String,
         required: true,

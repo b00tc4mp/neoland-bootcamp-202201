@@ -3,10 +3,9 @@
 // properties
 // -name
 
-const { schemas } =  require ('mongoose')
-const { schema } = require('../models/Note')
+const { Schema } =  require ('mongoose')
 
-const brand = new schema({
+const brand = new Schema({
     name: {
         type: String,
         required: true,

@@ -1,7 +1,7 @@
-const { schema } = require('mongoose')
+const { Schema } = require('mongoose')
 const creditCard = require('./creditCard')
 
-const user = new schema({
+const user = new Schema({
     name: {
         type: String,
         required: true

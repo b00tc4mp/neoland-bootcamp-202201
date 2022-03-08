@@ -1,6 +1,6 @@
-const { schema } = require('mongoose')
+const { Schema } = require('mongoose')
 
-const creditCard = new schema({    
+const creditCard = new Schema({    
     fullName: {
         type: String,
         required: true
@@ -17,4 +17,4 @@ const creditCard = new schema({
     }
 })
 
-module.exports = user
+module.exports = creditCard
