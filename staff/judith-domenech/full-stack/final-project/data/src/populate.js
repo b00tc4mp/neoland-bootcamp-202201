@@ -14,10 +14,11 @@ connect('mongodb://localhost:27017/racketMatch-db')
     ]))
 
     .then(() => {
+        const anonymous = new User({ name: 'Anonymous', email: 'anonymous@gmail.com', password: '123123123' })
         const agua = new User({ name: 'Agua Cate', email: 'agua@cate.com', password: '123123123' })
         const ora = new User({ name: 'Ora Culo', email: 'ora@culo.com', password: '123123123' })
 
-        return Promise.all([agua.save(), ora.save()])
+        return Promise.all([agua.save(), ora.save(), anonymous.save()])
 
             
             .then(_users => {

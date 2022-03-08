@@ -16,7 +16,7 @@ function Login({ onLoggedIn, onRegister }) {
         }
     }
 
-    return <form onSubmit={login}>
+    return <form className='login' onSubmit={login}>
         <input type="email" name="email" placeholder="email" />
         <input type="password" name="password" placeholder="password" />
         <button>Login</button>

@@ -55,7 +55,41 @@
 
 ### Data Model
 
+#### Schemas
+
+user 
+- name : String
+- email: String
+- password : String
+- favorite: [objectId]
+
+brand
+- name: String
+
+racket
+- brand: objectId
+- model: String
+- type: String
+- weight : Number
+- player: String
+- price: Number
+- nivel: String
+- descripcion: String
+- image: String
+- comments: [ObjectId]
+
+comment
+- user: objectId
+- title: String
+- text: String
+- date: Date
+
+
+#### E/R Diagram
+
 ![alt Data Model](./images/data-model.png)
+
+
 
 ## Tasks history
 

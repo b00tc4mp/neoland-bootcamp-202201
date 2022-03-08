@@ -1,9 +1,11 @@
-const registerUser = require("./registerUser")
-const authenticateUser = require("./authenticateUser")
-const updateUser = require("./updateUser")
-const deleteUser = require("./deleteUser")
-const retrieveUser = require("./retrieveUser")
-const updateUserPassword = require("./updateUserPassword")
+const registerUser = require("./user/registerUser")
+const authenticateUser = require("./user/authenticateUser")
+const updateUser = require("./user/updateUser")
+const deleteUser = require("./user/deleteUser")
+const retrieveUser = require("./user/retrieveUser")
+const updateUserPassword = require("./user/updateUserPassword")
+const createComment = require("./racket/comment/createComment")
+const toggleFavorite = require("./user/toggleFavorite")
 
 module.exports = {
   registerUser,
@@ -12,4 +14,6 @@ module.exports = {
   deleteUser,
   retrieveUser,
   updateUserPassword,
+  createComment,
+  toggleFavorite
 }

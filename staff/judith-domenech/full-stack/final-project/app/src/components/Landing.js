@@ -16,6 +16,7 @@ function Landing({ onLogin, onRegister }) {
 
     return <div className="landing">
         <div className='landing__buttons'>
+        <img className="landing__logo" src="../assets/logo.png" alt="" />
             <button className="landing__buttons-login" href="" onClick={goTologin}>Login</button> 
             <button className="landing__buttons-register" href="" onClick={goToRegister}>Register</button>
         </div>
