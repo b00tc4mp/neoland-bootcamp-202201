@@ -168,14 +168,18 @@ ___
 ### Data
 
 - ~~DONE create mongoose schemas and models (2h)~~
-- DOING create populate.js to test my models (1h)
+- ~~DONE create populate.js to test my models (1h) ~~
 
 ### Logic
-- TODO create server methods
+- ~~DOING create logic methods (20h)~~
+- ~~DOING test logic methods in demo.js (4h)~~
 
 ### API
 
-- TODO ...
+- TODO create helpers (1h)
+- TODO create .env (0.5h)
+- TODO create handlers(30h)
+- TODO create index.js (8h)
 
 ## Client
 

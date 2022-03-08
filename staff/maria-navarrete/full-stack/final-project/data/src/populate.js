@@ -2,8 +2,6 @@ const { connect, disconnect } = require('mongoose')
 const { User, Action, Schedule } = require('./models')
 
 let users
-let actions
-let schedules
 
 connect('mongodb://localhost:27017/beHuman-db')
     .then(() => console.log('connected'))
@@ -13,13 +11,14 @@ connect('mongodb://localhost:27017/beHuman-db')
         Schedule.deleteMany()
     ]))
     .then(() => {
+        const anonymous = new User({ username: 'anonymous', email: 'anonymous@email.com', password:'123123123'})
         const gio = new User({ username: 'gio123', email: 'gio@mail.com', password: '123123123' })
         const pau = new User({ username: 'pau123', email: 'pau@mail.com', password: '123123123' })
         const ju = new User({ username: 'ju123', email: 'ju@mail.com', password: '123123123' })
         const arvi = new User({ username: 'arvi123', email: 'arvi@mail.com', password: '123123123' })
         const mati = new User({ username: 'mati123', email: 'mati@mail.com', password: '123123123' })
 
-        return Promise.all([gio.save(), pau.save(), ju.save(), arvi.save(), mati.save()])
+        return Promise.all([anonymous.save(), gio.save(), pau.save(), ju.save(), arvi.save(), mati.save()])
     })
     .then(_users => {
         users = _users
@@ -39,11 +38,22 @@ connect('mongodb://localhost:27017/beHuman-db')
         const date1 = new Date('March 10, 2020 14:00:00')
 
         const schedule1 = new Schedule({action: action1.id, date: date1, repeat:"weekly"})
-        debugger
         gio.schedules.push(schedule1)
+        gio.favs.push(action4.id, action5.id)
 
-        return Promise.all([gio.save()])
+        arvi.favs.push(action2.id, action3.id)
 
+        const schedule2 = new Schedule({action: action3.id, date: date1, repeat:"monthly"})
+        pau.schedules.push(schedule2)
+
+        const schedule3 = new Schedule({action: action5.id, date: date1})
+        ju.schedules.push(schedule3)
+
+        ju.friends.push(mati.id, pau.id)
+
+        mati.friends.push(gio.id, arvi.id)
+
+        return Promise.all([gio.save(), pau.save(), ju.save(), arvi.save(), mati.save()])
     })
     
     .then(() => disconnect())
