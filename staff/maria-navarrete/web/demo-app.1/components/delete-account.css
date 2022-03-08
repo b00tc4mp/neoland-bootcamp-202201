@@ -1,0 +1,63 @@
+.delete-account {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   height: 100%;
+}
+
+.delete-account__form {
+   display: flex;
+   flex-direction: column;
+   gap: .5rem;
+}
+
+.delete-account__password-area {
+   display: grid;
+   grid-template-columns: [one] 82% [two] 18% [three];
+   grid-template-rows: [first] 1fr [second];
+   width: fit-content;
+}
+
+.delete-account__password-input {
+   grid-column: one / three;
+   grid-row: first / second;
+}
+
+.delete-account__toggle-icon {
+   grid-column: two / three;
+   grid-row: first / second;
+   background-position: 0;
+   background-size: cover;
+   cursor: pointer;
+}
+
+.delete-account__toggle-icon--show {
+   background-image: url('../images/eye.png');
+}
+
+.delete-account__toggle-icon--hide {
+   background-image: url('../images/closed-eye.png');
+}
+
+.delete-account__password-caps-status{
+   color: gray;
+   font-size: 0.8rem;
+   text-align: right;
+}
+
+.delete-acount__submit {
+   width: 100%;
+   background-color: mistyrose;
+   border: none;
+   margin: 1rem 0;
+   padding: 0.4rem;
+   border-radius: 8px;
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+   cursor: pointer;
+   font-size: 12px;
+}
+
+.delete-account__back-link {
+   text-align: center;
+}

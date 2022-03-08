@@ -1,0 +1,67 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    gap: .5rem;
+}
+
+.login__input--error{
+    border: 1px solid tomato
+}
+
+.login__email-feedback, .login__password-feedback{
+    color: tomato;
+    font-size: 1rem;
+    text-align: right;
+
+}
+
+.login__feedback{
+    color: tomato;
+    text-align: center;
+}
+
+.login__register-link {
+    text-align: center;
+}
+
+.login__password-area {
+    display: grid;
+    grid-template-columns: [one] 82% [two] 18% [three];
+    grid-template-rows: [first] 1fr [second];
+    width: fit-content;
+}
+
+.login__password-input {
+    grid-column: one / three;
+    grid-row: first / second;
+}
+
+.login__toggle-icon {
+    grid-column: two / three;
+    grid-row: first / second;
+    background-position: 0;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.login__toggle-icon--show {
+    background-image: url('../images/eye.png');
+}
+
+.login__toggle-icon--hide {
+    background-image: url('../images/closed-eye.png');
+}
+
+.login__password-caps-status{
+    color: gray;
+    font-size: 0.8rem;
+    text-align: right;
+}

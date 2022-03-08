@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>María Paula Navarrete</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__block">
+            <h1 class="header__title">María Paula Navarrete</h1>
+            <a class="header__logo-link" href="./index.html"><img class="header__logo-img" src="./imagenes/logo.png"
+                    alt="Logo sitio Maria Paula Navarrete"></a>
+        </div>
+        <nav class="header__nav">
+            <ul class="nav__list">
+                <li class="nav__element"><a class="nav__link" href="./index.html">Quién Soy</a></li>
+                <li class="nav__element"><a class="nav__link" href="./experiencia.html">Experiencia</a></li>
+                <li class="nav__element"><a class="nav__link" href="./aficiones.html">Aficiones</a></li>
+                <li class="nav__element nav__current"><a class="nav__link" href="./contacto.html">Contáctame</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2 class="section__title-bold">CONTÁCTAME</h2>
+            <form class="contact-form" name=”ContactForm”>
+                <label for="contact-form__name-input">Nombre:</label>
+                <input type="text" name="Name" id="contact-form__name-input" class="contact-form__name-input" />
+                <label for="contact-form__email-input">E-mail:</label>
+                <input type="email" name="Email" id="contact-form__email-input" class="contact-form__email-input" />
+                <label for="contact-form__comment-text">Mensaje:</label>
+                <textarea name="Comment" id="contact-form__comment-text" class="contact-form__comment-text" cols="30" rows="10"></textarea>
+                <button class="contact-form__submit-button">Enviar</button>
+            </form>
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+        <img class="footer__img" src="./imagenes/logo.png" alt="Logo sitio Maria Paula Navarrete">
+        <div class="footer__block">
+            <span class="footer__copy">María P. Navarrete</span>
+            <span class="footer__copy">Máster Comunicación y Marketing Digital – UAB, 2022 </span>
+            <a class="footer__copy" href="./contacto.html">Contacto</a>
+        </div>
+    </footer>
+
+    <script src="contacto.js"></script>
+</body>
+
+</html>

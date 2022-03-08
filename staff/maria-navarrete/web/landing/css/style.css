@@ -1,0 +1,61 @@
+*{
+    color: #fff;
+    margin:0;
+    padding: 0;   
+}
+
+img{
+    max-width: 100%;
+}
+
+body{
+    background-image: url('../assets/background2.jpg');
+    background-size: contain;
+}
+
+.header__logo{
+    width: 8rem;
+}
+
+.header__container{
+    background-color: #00001999;
+}
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #002c55;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 1.2rem;
+    border: 0.2rem solid silver
+}
+
+.button:hover{
+    color:#fff;
+}
+
+.testimonios__img{
+    max-width:40vw;
+}
+
+input, select, option, textarea{
+    color: #000 !important;
+}
+
+.list{
+    list-style-type: none;
+}
+
+ul>li::before{
+    content: "· "
+}
+
+footer p{
+    font-size:6px;
+}
+
+.social img {
+    filter: brightness(0) invert(0.8);
+    max-width: 1.4rem;
+  }

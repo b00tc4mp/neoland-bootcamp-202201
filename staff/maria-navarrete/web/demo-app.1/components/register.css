@@ -1,0 +1,50 @@
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.register__login-link {
+    text-align: center;
+}
+
+.register__password-area {
+    display: grid;
+    grid-template-columns: [one] 82% [two] 18% [three];
+    grid-template-rows: [first] 1fr [second];
+    width: fit-content;
+}
+
+.register__password-input {
+    grid-column: one / three;
+    grid-row: first / second;
+}
+
+.register__toggle-icon {
+    grid-column: two / three;
+    grid-row: first / second;
+    background-position: 0;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.register__toggle-icon--show {
+    background-image: url('../images/eye.png');
+}
+
+.register__toggle-icon--hide {
+    background-image: url('../images/closed-eye.png');
+}
+
+.register__password-caps-status{
+    color: gray;
+    font-size: 0.8rem;
+    text-align: right;
+}
