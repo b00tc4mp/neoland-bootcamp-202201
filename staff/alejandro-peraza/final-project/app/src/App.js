@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Register, Login, Home } from './components'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const navigate = useNavigate()
+
+  const showLogIn = () => navigate('login')
+
+  const keepTokenNShowHome = token => {
+    sessionStorage.token = token
+
+    navigate('/')
+  }
+
+  return <div>
+    <Routes>
+      <Route path="/*" element={<Home />} />
+      <Route path="register" element={<Register onRegistered={showLogIn} />} />
+      <Route path="/login" element={<Login onLoggedIn={keepTokenNShowHome} />} />
+    </Routes>
+  </div>
 }
 
-export default App;
+export default App
