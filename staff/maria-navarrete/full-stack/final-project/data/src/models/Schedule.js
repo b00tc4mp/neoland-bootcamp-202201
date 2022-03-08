@@ -1,6 +1,6 @@
 const { model } = require('mongoose')
-const { action } = require('../schemas')
+const { schedule } = require('../schemas')
 
-const Action = model('Action', action)
+const Schedule = model('Schedule', schedule)
 
-module.exports = Action
+module.exports = Schedule

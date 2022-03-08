@@ -14,14 +14,15 @@ const schedule = new Schema({
     },
 
     repeat: {
-        type: Number,
+        type: String,
+        enum : ['once', 'daily', 'weekly', 'biweekly', 'monthly'],
+        default: 'once',
         required: true,
     },
 
     completed: [{
-        type: Number,
-        required: true,
-    }],   
+        type: Date,
+    }]
 })
 
 module.exports = schedule

@@ -47,6 +47,30 @@ BeHooman es una aplicación que busca crear una comunidad para compartir, crear 
 
 ### Data Model
 
+#### Schemas
+
+user
+- username (String, required, unique)
+- email (String, required, unique)
+- password (String, required, unique)
+- schedules([schedule])
+- favs ([ObjectId: Fav])
+- notifications (Boolean, required, default)
+- friends ([ObjectId: User])
+
+actions
+- description (String, required)
+- public (Boolean, required, default: false)
+- reqTime (Number, required)
+- reqBudget ( Number, required)
+- author (ObjectId: User, required)
+
+schedules
+- action (ObjectId: Action, required)
+- date (Date, required)
+- repeat (String ['once', 'daily', 'weekly', 'biweekly', 'monthly'], default: 'once', required)
+- completed ([Date])
+
 ![alt Data Model](./images/ERDiagram.jpg)
 
 
@@ -70,6 +94,9 @@ ___
 
 ### Home
 ![alt Home Interface](./images/user-interface/home.jpg)
+
+#### Home - Schedule
+![alt Schedule Interface](./images/user-interface/schedule.jpg)
 
 ### My Acts 
 #### My Acts - scheduled
@@ -107,6 +134,9 @@ ___
 
 #### Profile- Update Password
 ![alt Update Password Interface](./images/user-interface/profile-updatePassword.jpg)
+
+#### Profile- Delete Account
+![alt Delete Account Interface](./images/user-interface/profile-deleteAccount.jpg)
 
 #### Profile- Activity
 ![alt Activity Interface](./images/user-interface/profile-activity.jpg)
