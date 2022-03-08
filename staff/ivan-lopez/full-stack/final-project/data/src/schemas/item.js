@@ -4,12 +4,13 @@ const { Types: { ObjectId } } = Schema
 const item = new Schema({
     product: {
         type: ObjectId,
-        ref: 'Product'
+        ref: 'Product',
+        required: true
     
     },
     quantity: {
         type: Number,
-        
+        required: true
     },
 
 })

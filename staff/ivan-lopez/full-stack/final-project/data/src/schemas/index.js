@@ -3,6 +3,7 @@ const product = require('./product')
 const order = require('./order')
 const cart = require('./cart')
 const item = require('./item')
+const purchase = require('./purchase')
 
 
 module.exports = {
@@ -10,7 +11,6 @@ module.exports = {
     product,
     order,
     cart,
-    item
-    
-    
+    item,
+    purchase
 }

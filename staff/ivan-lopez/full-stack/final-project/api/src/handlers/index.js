@@ -13,5 +13,4 @@ module.exports = {
     updateUser,
     updateUserPassword,
     deleteUser,
-   
 }

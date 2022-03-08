@@ -2,7 +2,8 @@ require('dotenv').config()
 
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
-const { registerUser, 
+const {
+        registerUser, 
         retrieveUser,
         authenticateUser,
         updateUser,
@@ -35,6 +36,6 @@ connect(MONGODB_URL)
 
         server.use('/api', api)
 
-        server.listen(8080, () => console.log('server started'))
+        server.listen(PORT, () => console.log('server started'))
 
     })

@@ -1,6 +1,7 @@
 
 const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
+const purchase = require('./purchase')
 
 const order = new Schema ({
   
@@ -14,6 +15,12 @@ const order = new Schema ({
         type: Date,
         required: true
     },
+
+    purchase: {
+        type: purchase,
+        ref: 'Purchase',
+        required: true
+    }
 
     
 })
