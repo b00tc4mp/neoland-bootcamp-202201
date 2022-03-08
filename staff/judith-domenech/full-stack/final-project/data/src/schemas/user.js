@@ -19,7 +19,8 @@ const user = new Schema({
     },
 
     favorite:{
-        type: ObjectId
+        type: ObjectId,
+        require: false
     }
 })
 

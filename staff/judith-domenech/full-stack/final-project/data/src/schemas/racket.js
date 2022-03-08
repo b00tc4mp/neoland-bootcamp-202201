@@ -14,7 +14,7 @@ const racket = new Schema({
         required: true
     },
 
-    weigth: {
+    weight: {
         type: Number,
         required: true
     },

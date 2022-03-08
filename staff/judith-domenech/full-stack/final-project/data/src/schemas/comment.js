@@ -8,17 +8,12 @@ const comment = new Schema({
         required: true
     },
 
-    title: {
-        type: String,
-        required: true
-    },
-
     text: {
         type: String,
         required: true
     },
 
-    createdAt: {
+    date: {
         type: Date,
         required: true,
         default: Date.now
