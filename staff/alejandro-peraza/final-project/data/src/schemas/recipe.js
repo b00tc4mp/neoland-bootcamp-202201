@@ -15,7 +15,7 @@ const recipe = new Schema({
 
     destilled: {
         type: String,
-        enum: ['vodka', 'whisky', 'whiskey', 'rum', 'ron', 'rhum', 'gin', 'tequila', 'brandy', 'bourbon', 'vermouth']
+        enum: ['vodka', 'whisky', 'ron', 'gin', 'tequila', 'brandy', 'bourbon', 'vermouth']
     },
 
     description: {

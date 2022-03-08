@@ -12,25 +12,22 @@ connect('mongodb://localhost:27017/demo-db')
     ]))
 
     .then(() => {
-        const yeray = new User({ name: 'Yeray Monfor', email: 'yeray@monfor.com', password: '123123123' })
-        const abel = new User({ name: 'Abel Lopez', email: 'abel@lopez.com', password: '123123123' })
+        const yeray = new User({ name: 'Yeray', email: 'yeray@mail.com', password: '123123123' })
+        const abel = new User({ name: 'Abel', email: 'abel@mail.com', password: '123123123' })
 
         return Promise.all([yeray.save(), abel.save()])
     })
     
     .then(() => {
         const whisky = new Recipe({ name: 'Whisky' })
-        const whiskey = new Recipe({ name: 'Whiskey' })
         const bourbon = new Recipe({ name: 'Bourbon' })
         const brandy = new Recipe({ name: 'Brandy' })
         const ron = new Recipe({ name: 'Ron' })
-        const rum = new Recipe({ name: 'Rum' })
-        const rhum = new Recipe({ name: 'Rhum' })
         const vodka = new Recipe({ name: 'Vodka' })
         const tequila = new Recipe({ name: 'Tequila' })
         const vermouth = new Recipe({ name: 'Vermouth' })
 
-        return Promise.all([whisky.save(), whiskey.save(), bourbon.save(), brandy.save(), ron.save(), rum.save(), rhum.save(), vodka.save(), tequila.save(), vermouth.save()])
+        return Promise.all([whisky.save(), bourbon.save(), brandy.save(), ron.save(), vodka.save(), tequila.save(), vermouth.save()])
     })
 
     .then(() => {
@@ -38,11 +35,11 @@ connect('mongodb://localhost:27017/demo-db')
         const negroni = new Recipe({ name: "Negroni" })
         const americano = new Recipe({ name:"Americano" })
         const mojito = new Recipe({ name: 'Mojito' })
-        const margarita = new ModernRecipe({ name: 'Margarita' })
-        const cosmopolitan = new ModernRecipe({ name: 'Cosmopolitan' })
-        const sanFrancisco = new NonAlcoholicRecipe({ name: 'SanFrancisco'})
-        const shirleyTemple = new NonAlcoholicRecipe({ name: 'ShirleyTemple' })
-        const virginMary = new NonAlcoholicRecipe({ name: 'VirginMary' })
+        const margarita = new Recipe({ name: 'Margarita' })
+        const cosmopolitan = new Recipe({ name: 'Cosmopolitan' })
+        const sanFrancisco = new Recipe({ name: 'SanFrancisco'})
+        const shirleyTemple = new Recipe({ name: 'ShirleyTemple' })
+        const virginMary = new Recipe({ name: 'VirginMary' })
 
         return Promise.all([aviation.save(), negroni.save(), americano.save(), mojito.save(), margarita.save(), cosmopolitan.save(), sanFrancisco.save(), shirleyTemple.save(), virginMary.save()])
     })

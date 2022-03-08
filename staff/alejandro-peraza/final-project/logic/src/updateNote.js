@@ -2,14 +2,13 @@ const { models: { Note } } = require("data")
 const { validators: { validateId, validateString, validateBoolean } } = require('commons')
 
 
-function updateNote(userId, noteId, text, color, public = false) {
+function updateNote(userId, recipeId, text = false) {
     validateId(userId, 'user id')
-    validateId(noteId, 'note id')
+    validateId(recipeId, 'recipe id')
     validateString(text, 'text')
-    validateString(color, 'color')
-    validateBoolean(public, 'public')
+    
 
-    return Note.updateOne({ _id: noteId, user: userId }, { text, color, public, updatedAt: new Date })
+    return Note.updateOne({ _id: recipeId, user: userId }, { text, updatedAt: new Date })
         .then(result => {
             if (result.modifiedCount === 0) throw new Error(`note with id ${noteId} and userId ${userId} does not exist`)
         })

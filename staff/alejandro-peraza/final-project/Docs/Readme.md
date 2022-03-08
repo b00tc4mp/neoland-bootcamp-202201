@@ -20,17 +20,18 @@ The CFD experience allows the user to create and save their favorites and add co
 ## Functional Description
 
 ### Activities
+Como usuario podrás:
 
 - Buscar cócteles en la app
 - Listar cócteles
 - Ver detalles de cócteles y su receta
-- Guardar mis cócteles favoritos
+- Guardar cócteles favoritos
 - Añadir comentarios a los cócteles
 
 
 ### Use Cases
 
-![alt](./images/Use-cases2.png)
+![alt](./images/use-cases.png)
 
 <!-- rebuild use cases with handlers actions -->
 <!-- example (https://github.com/nsauram/neoland-bootcamp-202109/tree/feature/fullstack/staff/noelia-saura/fullstack/project/inmymind-doc) -->
@@ -52,7 +53,7 @@ Flow de añadir un comentario -->
 ##### Main Views
 <!-- wireframes -->
 
-![alt](./images/users-view.png)
+![alt](./images/user-view.png)
 
 ![alt](./images/profile-view.png)
 
@@ -75,8 +76,8 @@ User
 - password (string, required, min length 8)
 
 Coctail
-- title (string, required,...)
-- description (string, required, ...)
+- title (string, required, unique)
+- description (string, required)
 - recipe (string, required, ...)
 - note (string, required,...)
 - Photo (string, unique,...)

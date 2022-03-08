@@ -12,7 +12,6 @@ function retrieveUser(userId) {
             //sanitize
             delete doc.id
             delete doc.password
-            delete doc.creditCards
             delete doc.__v
 
             return doc
