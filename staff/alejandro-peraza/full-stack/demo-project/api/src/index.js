@@ -11,9 +11,6 @@ const {
     updateUserPassword,
     deleteUser,
     createNote,
-    listNotes,
-    listPublicNotesFromUser,
-    listPublicNotes,
     retrieveNote,
     updateNote,
     deleteNote
@@ -41,9 +38,6 @@ connect(MONGODB_URL)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
         api.post('/notes', jsonBodyParser, createNote)
-        api.get('/notes', jsonBodyParser, listNotes)
-        api.get('/notes/public', jsonBodyParser, listPublicNotes)
-        api.get('/users/:userId/notes/public', jsonBodyParser, listPublicNotesFromUser)
         api.get('/notes/:noteId', jsonBodyParser, retrieveNote)
         api.patch('/notes/:noteId', jsonBodyParser, updateNote)
         api.delete('/notes/:noteId', jsonBodyParser, deleteNote)
