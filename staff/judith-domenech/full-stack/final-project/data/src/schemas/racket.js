@@ -43,11 +43,6 @@ const racket = new Schema({
         type: String,
         required: true
     },
-
-    comments:[{
-        type: ObjectId,
-        ref:'Comment'
-    }],
     
     image: {
         type: String,

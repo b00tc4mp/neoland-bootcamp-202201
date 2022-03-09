@@ -17,8 +17,10 @@ function toggleFavorite(userId, racketId) {
 
             if (index === -1) user.favorites.push(racketId)
             else user.favorites.splice(index, 1)
-        
+
+            return user.save()
         })
+        .then(user => {})
     })
 }
 

@@ -18,10 +18,10 @@ const user = new Schema({
         required: true,
     },
 
-    favorite:{
+    favorites:[{
         type: ObjectId,
-        require: false
-    }
+        ref: 'Racket'
+    }]
 })
 
 module.exports = user

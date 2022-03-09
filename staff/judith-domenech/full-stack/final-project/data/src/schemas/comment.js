@@ -8,6 +8,12 @@ const comment = new Schema({
         required: true
     },
 
+    racket: {
+        type: ObjectId,
+        ref: 'Racket',
+        required: true
+    },
+
     text: {
         type: String,
         required: true
