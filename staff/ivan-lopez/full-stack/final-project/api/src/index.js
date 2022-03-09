@@ -9,6 +9,9 @@ const {
         updateUser,
         updateUserPassword,
         deleteUser,
+        addProduct,
+        listProducts,
+        deleteProduct
      } = require('./handlers')
 
 const cors = require('cors')
@@ -26,12 +29,15 @@ connect(MONGODB_URL)
 
         const api = express.Router()
 
-
+        
+        api.post('/users', jsonBodyParser, addProduct)
         api.post('/users', jsonBodyParser, registerUser) 
         api.post('/users/auth', jsonBodyParser, authenticateUser)
         api.get('/users', retrieveUser)
+        api.get('/users/products', listProducts)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
+        api.delete('/users/products', jsonBodyParser, deleteProduct)
         api.delete('/users', jsonBodyParser, deleteUser)
 
         server.use('/api', api)
