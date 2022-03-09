@@ -4,9 +4,10 @@ const retrieveUser = require('./retrieveUser')
 const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
 const deleteUser = require('./deleteUser')
-const createNote = require('./createNote')
-const updateNote = require('./updateNote')
-const deleteNote = require('./deleteNote')
+const createComment = require('./createComment')
+const updateComment = require('./updateComment')
+const deleteComment = require('./deleteComment')
+const createRecipe = require('./createRecipe')
 
 
 module.exports = {
@@ -16,7 +17,8 @@ module.exports = {
     updateUser,
     updateUserPassword,
     deleteUser,
-    createNote,
-    updateNote,
-    deleteNote
+    createComment,
+    updateComment,
+    deleteComment,
+    createRecipe
 }

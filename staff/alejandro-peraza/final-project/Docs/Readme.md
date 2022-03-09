@@ -70,25 +70,28 @@ Flow de añadir un comentario -->
 
 
 User
+- userId
 - name (string, required,unique, min length 8)
 - email (string, required, unique, without space)
 - password (string, required, min length 8)
-- userId
+- favs ([ObjectId], unique))
 
 
 Recipe
-- title (string, required, unique)
+- id
+- Name (string, required, unique)
 - description (string, required)
-- recipe (string, required, ...)
-- note (string, required,...)
-- photo (string, unique,...)
-- recipeId
+- recipe (string, required)
+- comments (string, required)
+- photo (string, unique)
 
-Note
+
+Comments
 - text
-- userId
+- id 
+- user
 
-![alt](./images/.png)
+![alt](./images/ERD.png)
 
 <!-- TODO
 change ER diagram

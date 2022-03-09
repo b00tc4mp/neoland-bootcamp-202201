@@ -1,13 +1,12 @@
 const { Schema } = require('mongoose')
 const { Types: { ObjectId }} = Schema
 
-const note = new Schema({
+const comment = new Schema({
     user: {
         type: ObjectId,
         ref: 'User',
         required: true
     },
-
     recipe: {
         type: ObjectId,
         ref: 'Recipe',
@@ -20,4 +19,4 @@ const note = new Schema({
     }
 })
 
-module.exports = note
+module.exports = comment

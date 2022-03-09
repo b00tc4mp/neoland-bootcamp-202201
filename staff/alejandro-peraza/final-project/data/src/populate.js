@@ -1,5 +1,5 @@
 const { connect, disconnect } = require('mongoose')
-const { User, Recipe, Note } = require('./models')
+const { User, Recipe, Comment } = require('./models')
 
 
 connect('mongodb://localhost:27017/cfd-db')
@@ -8,7 +8,7 @@ connect('mongodb://localhost:27017/cfd-db')
         
         User.deleteMany(),
         Recipe.deleteMany(),
-        Note.deleteMany()
+        Comment.deleteMany()
     ]))
 
     .then(() => {

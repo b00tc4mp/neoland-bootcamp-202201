@@ -1,9 +1,11 @@
 const { Schema } = require('mongoose')
+const { Types: { ObjectId }} = Schema
 
 const user = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
     email: {
@@ -16,6 +18,11 @@ const user = new Schema({
         type: String,
         required: true
 
+    },
+
+    favs: {
+        type: ObjectId,
+        unique: true
     },
 
 })

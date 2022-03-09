@@ -10,9 +10,13 @@ const {
     updateUser,
     updateUserPassword,
     deleteUser,
-    createNote,
-    updateNote,
-    deleteNote
+    createComment,
+    updateComment,
+    deleteComment,
+    createRecipe,
+    findRecipeByName,
+    findRecipeByType,
+    findRecipeByDestilled
 } = require('./handlers')
 
 const cors = require('cors')
@@ -45,9 +49,13 @@ connect(MONGODB_URL)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
-        api.post('/notes', jsonBodyParser, createNote)
-        api.patch('/notes/:noteId', jsonBodyParser, updateNote)
-        api.delete('/notes/:noteId', jsonBodyParser, deleteNote)
+        api.post('/notes', jsonBodyParser, createComment)
+        api.patch('/notes/:commentId', jsonBodyParser, updateComment)
+        api.delete('/notes/:commentId', jsonBodyParser, deleteComment)
+        api.post('/recipe', jsonBodyParser, createRecipe)
+        api.post('/recipe', jsonBodyParser, findRecipeByName)
+        api.post('/recipe', jsonBodyParser, findRecipeByType)
+        api.post('/recipe', jsonBodyParser, findRecipeByDestilled)
 
         server.use('/api', api)
 

@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose')
+const { Types: { ObjectId }} = Schema //review
 
 const recipe = new Schema({
     name: {
@@ -23,10 +24,15 @@ const recipe = new Schema({
         required: true
     },
 
-    image: {
+    comment: {
+        type: String,
+        required: true
+    },
+
+    /*image: {
         type: String,
         required: true,
-      },
+      }*/
 })
 
 module.exports = recipe

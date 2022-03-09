@@ -1,9 +1,9 @@
 const User = require('./User')
 const Recipe = require('./Recipe')
-const Note = require('./Note')
+const Comment = require('./Comment')
 
 module.exports = {
     User,
     Recipe,
-    Note
+    Comment
 }

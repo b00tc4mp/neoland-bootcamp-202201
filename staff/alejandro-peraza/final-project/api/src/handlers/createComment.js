@@ -1,14 +1,14 @@
 const { verifyTokenAndGetUserId } = require('../helpers')
-const { deleteNote } = require('logic')
+const { createComment } = require('logic')
 
 module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        const { params: { noteId } } = req
+        const { body: { text } } = req
 
-        deleteNote(userId, noteId)
-            .then(() => res.status(204).send())
+        createComment(userId, text)
+            .then(() => res.status(201).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })
