@@ -7,6 +7,7 @@ const deleteUser = require('./deleteUser')
 const addProduct = require('./addProduct')
 const listProducts = require('./listProducts')
 const deleteProduct = require('./deleteProduct')
+const retrieveProduct = require('./retrieveProduct')
 
 
 module.exports = {
@@ -18,5 +19,6 @@ module.exports = {
     deleteUser,
     addProduct,
     listProducts,
-    deleteProduct
+    deleteProduct,
+    retrieveProduct
 }
