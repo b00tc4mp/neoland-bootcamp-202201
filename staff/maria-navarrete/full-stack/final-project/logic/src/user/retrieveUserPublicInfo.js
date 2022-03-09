@@ -16,7 +16,6 @@ function retrieveUserPublicInfo(userId) {
             delete doc.favs
             delete doc.notifications
             delete doc.friends
-            delete doc.schedules
             delete doc.__v
 
             return doc

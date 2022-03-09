@@ -74,6 +74,11 @@ function validateUsername(username) {
     if (SPACE_REGEX.test(username)) throw new Error(`username has empty spaces`)
 }
 
+function validateNumber(number, explain = 'number') {
+    if (typeof number !== 'number') throw new TypeError(`${explain} is not a number`)
+    if (number === '') throw new Error(`empty ${explain}`)
+}
+
 module.exports = {
     validateEmail,
     validatePassword,
@@ -81,5 +86,6 @@ module.exports = {
     validateString,
     validateId,
     validateBoolean,
-    validateUsername
+    validateUsername,
+    validateNumber
 }

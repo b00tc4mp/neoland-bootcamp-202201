@@ -2,6 +2,12 @@ const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
 
 const schedule = new Schema({
+    user: {
+        type: ObjectId,
+        ref: 'User',
+        required: true
+    },  
+
     action: {
         type: ObjectId,
         ref: 'Action',
@@ -21,7 +27,7 @@ const schedule = new Schema({
     },
 
     completed: [{
-        type: Date,
+        type: Date
     }]
 })
 

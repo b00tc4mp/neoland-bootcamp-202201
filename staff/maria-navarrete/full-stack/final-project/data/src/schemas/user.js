@@ -19,12 +19,10 @@ const user = new Schema({
         type: String,
         required: true,
     },
-
-    schedules: [schedule],
-
+    
     favs: [{
         type: ObjectId,
-        ref: 'Fav'
+        ref: 'Action'
     }],
 
     notifications: {

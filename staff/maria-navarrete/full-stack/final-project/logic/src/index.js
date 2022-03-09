@@ -10,6 +10,8 @@ const toggleFavorite = require('./user/toggleFavorite')
 const toggleFriend = require('./user/toggleFriend')
 const updateUser = require('./user/updateUser')
 const updateUserPassword = require('./user/updateUserPassword')
+const createAction = require('./actions/createAction')
+const updateAction = require('./actions/createAction')
 
 module.exports={
     authenticateUser,
@@ -23,5 +25,7 @@ module.exports={
     toggleFavorite,
     toggleFriend,
     updateUser,
-    updateUserPassword
+    updateUserPassword,
+    createAction,
+    updateAction
 }

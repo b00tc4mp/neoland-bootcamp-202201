@@ -1,7 +1,7 @@
 const { models: { User } } = require("data")
 const { validators: { validateId, validatePassword } } = require('commons')
 
-function updateUserPassword(userId, {currPassword, newPassword}) {
+function updateUserPassword(userId, currPassword, newPassword) {
     validateId(userId, 'userId')
     validatePassword(currPassword, 'currPassword')
     validatePassword(newPassword, 'newPassword')

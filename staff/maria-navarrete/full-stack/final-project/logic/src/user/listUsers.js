@@ -3,10 +3,9 @@ const { validators: { validateString } } = require('commons')
 
 function listUsers(query) {
     validateString(query, 'query')
-
-    return User.find({username:query})
+    return User.find({ username: { $regex: `${query}` } })
         .then(users => {
-            const docs = users.map(user=>{
+            const docs = users.map(user => {
                 const doc = user._doc
 
                 doc.id = doc._id.toString()
@@ -14,7 +13,6 @@ function listUsers(query) {
                 delete doc.__v
                 delete doc.email
                 delete doc.password
-                delete doc.schedules
                 delete doc.friends
                 delete doc.notifications
                 delete doc.favs

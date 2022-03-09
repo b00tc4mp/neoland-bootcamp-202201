@@ -52,10 +52,9 @@ BeHooman es una aplicación que busca crear una comunidad para compartir, crear 
 user
 - username (String, required, unique)
 - email (String, required, unique)
-- password (String, required, unique)
-- schedules([schedule])
-- favs ([ObjectId: Fav])
-- notifications (Boolean, required, default)
+- password (String, required)
+- favs ([ObjectId: Action])
+- notifications (Boolean, required, default: false)
 - friends ([ObjectId: User])
 
 actions
@@ -66,6 +65,7 @@ actions
 - author (ObjectId: User, required)
 
 schedules
+- user (ObjectId: User, required)
 - action (ObjectId: Action, required)
 - date (Date, required)
 - repeat (String ['once', 'daily', 'weekly', 'biweekly', 'monthly'], default: 'once', required)

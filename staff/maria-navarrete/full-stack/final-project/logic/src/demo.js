@@ -11,14 +11,16 @@ const {
     toggleFavorite,
     toggleFriend,
     updateUser,
-    updateUserPassword
+    updateUserPassword,
+    createAction, 
+    updateAction
 } = require('./index')
 
-connect('mongodb://localhost:27017/beHuman-db')
+connect('mongodb://localhost:27017/beHooman-db')
     .then(() => Promise.all([
         User.deleteOne({ email: 'pepito@grillo.com' })
     ]))
-    
+
     .then(() => registerUser('pepitogrillo', 'pepito@grillo.com', '123123123'))
     .then(() => console.log('user registered'))
 
@@ -27,7 +29,7 @@ connect('mongodb://localhost:27017/beHuman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return updateUser(userId, { username: 'pepagrilla12', email: 'pepito@grillo.com', notifications: false })
+        return updateUser(userId, 'pepagrilla12', 'pepito@grillo.com', false)
             .then(() => console.log('user updated'))
     })
 
@@ -45,19 +47,19 @@ connect('mongodb://localhost:27017/beHuman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return updateUserPassword(userId, {currPassword:'123123123', newPassword:'234234234'})
+        return updateUserPassword(userId, '123123123', '234234234')
             .then(() => console.log('password updated'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '6227604c0ae5ef6e69789e6a' )
+        return toggleFavorite(userId, '622888b02edb8a6c907bda88')
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '6227604c0ae5ef6e69789e67' )
+        return toggleFavorite(userId, '622888b02edb8a6c907bda89')
             .then(() => console.log('favorite toggled'))
     })
 
@@ -69,13 +71,13 @@ connect('mongodb://localhost:27017/beHuman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '6227604c0ae5ef6e69789e5f' )
+        return toggleFriend(userId, '622888b02edb8a6c907bda7e')
             .then(() => console.log('friend toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '6227604c0ae5ef6e69789e5d' )
+        return toggleFriend(userId, '622888b02edb8a6c907bda7d')
             .then(() => console.log('friend toggled'))
     })
 
@@ -84,6 +86,9 @@ connect('mongodb://localhost:27017/beHuman-db')
         return listFriends(userId)
             .then(friends => console.log(friends))
     })
+
+    .then(() => listUsers('a'))
+    .then(users => console.log(users))
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
