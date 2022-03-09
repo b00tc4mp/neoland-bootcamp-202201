@@ -1,17 +1,15 @@
 const { Schema } = require('mongoose')
 const { Types: { ObjectId } } = Schema
-const comment = require('./comment')
 
 
 const location = new Schema({
     user: {
         type: ObjectId,
         ref: 'User',
-        required: true,
-        unique: true
+        required: true
     },
 
-    title: {
+    name: {
         type: String,
         required: true,
         maxLength: 50
@@ -21,25 +19,18 @@ const location = new Schema({
         type: String,
     },
 
-    description: {
-        type: String,
-        required: true,
-        maxLength: 300
-    },
-
-    adress: {
+    address: {
         type: String,
         required: true,
     },
 
-    coord: {
-        type: [Number, Number],
-        unique: true
-    },
-
-    comments: [comment]
-    
+    city: {
+        type: String,
+        required: true,
+        enum: ['Barcelona', 'Tarragona', 'Girona']
+    }
 })
 
 module.exports = location
+
 

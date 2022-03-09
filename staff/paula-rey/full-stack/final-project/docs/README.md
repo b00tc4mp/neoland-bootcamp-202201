@@ -38,6 +38,27 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ### Data Model
 
+#### Schemas
+user
+- name (String, required, minLength 2)
+- email String, required, unique)
+- password ( String, required, minLength 8)
+- favorites ( [ObjectId, Location] )  
+- follows ( [ObjectId, User] )
+
+location
+- user (ObjectId, User, required, unique)
+- name (String, required, maxLength 50)
+- image (String)
+- address (String, required)
+- city (String, required, enum)
+
+comment
+- user: (ObjectId, User, required)
+- location: (ObjectId, Location, required)
+- text: (String, required)
+- date: (Date, required, default: Date.now)
+   
 ![alt Data Model](./images/data-model.png)
 
 ### Tecnologies
@@ -56,11 +77,11 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ##### Data
 
-- DOING populate.js to test my models in populate.js
+- ~~DONE populate.js to test my models in populate.js~~
 
 ##### Logic
 
-- TODO ... ()
+- DOING create package logic (2 days)
 
 ##### API
 

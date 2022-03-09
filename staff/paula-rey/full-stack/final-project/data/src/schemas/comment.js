@@ -8,6 +8,12 @@ const comment = new Schema({
         required: true
     },
 
+    location: {
+        type: ObjectId,
+        ref: 'Location',
+        required: true
+    },
+
     text: {
         type: String,
         required: true,

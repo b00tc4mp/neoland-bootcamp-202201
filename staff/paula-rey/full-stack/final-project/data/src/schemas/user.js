@@ -6,7 +6,7 @@ const user = new Schema({
     name: {
         type: String,
         required: true,
-        minLength: 2 
+        minLength: 2,
     },
 
     email: {
@@ -21,12 +21,12 @@ const user = new Schema({
         minLength: 8
     },
 
-    favorite: [{
+    favorites: [{
         type: ObjectId,
         ref: 'Location'
     }],
 
-    follow: [{
+    follows: [{
         type: ObjectId,
         ref: 'User'
     }]
