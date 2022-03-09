@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=IBM+Plex+Mono&family=Patrick+Hand+SC&display=swap');
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.logo__text{
+    font-family:'Patrick Hand SC', cursive;
+    margin: 1rem;
+    font-size: 4rem;
+}
+
+.logo__icon{
+    width: 5rem;
+}

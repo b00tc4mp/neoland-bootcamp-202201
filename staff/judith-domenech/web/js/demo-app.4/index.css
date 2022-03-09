@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+* {
+    font-size: 1.2rem;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.off {
+    display: none !important;
+}
+
+
+.login__sewcurity-bar{
+    background-color: blue;
+}

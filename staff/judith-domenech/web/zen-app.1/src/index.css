@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+*{
+  font-family: 'Handlee', cursive;
+}
+html, body, #root{
+  height: 100%;
+  margin: 0;
+}

@@ -1,1 +1,1 @@
-My [Github](https://github.com/JudithDomenech). 
+My [Github](https://github.com/JudithDomenech)

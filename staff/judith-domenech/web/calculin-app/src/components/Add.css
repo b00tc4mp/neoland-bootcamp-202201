@@ -1,0 +1,19 @@
+.add {
+    background-color: coral;
+    padding: 1rem;
+    height: 5rem;
+    margin-top: 4rem;
+}
+
+.add__title {
+    margin: 0;
+}
+
+.add__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.add__input {
+    width: 6rem;
+}

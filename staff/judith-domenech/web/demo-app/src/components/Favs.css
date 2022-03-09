@@ -1,0 +1,23 @@
+.results__list-items{
+    margin-top: 2rem;
+    background-color: var(--card);
+    padding: 3.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 0px;
+}
+
+.favs__list {
+    list-style-type: none;
+}
+
+.favs__item {
+    cursor: pointer;
+}
+
+.favs__item-fav-button {
+    display: block;
+}
+
+.favs__item-image {
+    width: 50vw;
+}

@@ -1,0 +1,17 @@
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1rem;
+    border: 8px solid rgb(24, 189, 167); 
+    background-color: rgb(226, 247, 243);
+    box-shadow: 15px 15px 15px black;
+    border-radius: 10%;
+    margin: 2rem;
+    padding: 1.5rem;
+}
+
+.detail__image {
+    width: 70vw;
+    align-self: center;
+}

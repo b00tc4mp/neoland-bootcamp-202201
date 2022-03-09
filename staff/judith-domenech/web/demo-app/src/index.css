@@ -1,0 +1,23 @@
+#root{
+--color-link: black;
+--background: burlywood;
+--card: #F0F0F0;
+--button: #3E497A;
+--letter: #f0f0f0;
+--hover-button: #5b6591;
+--hover-letter: #f0f0f0;
+}
+
+* {
+    font-size: 1.2rem;
+  }
+  
+  html, body, #root {
+    margin: 0;
+    height: 100%;
+    background-color: var(--background);
+  }
+  
+  button {
+    cursor: pointer;
+  }

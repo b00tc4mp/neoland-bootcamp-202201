@@ -1,0 +1,19 @@
+.sub {
+    background-color: rgb(135, 2, 212);
+    padding: 1rem;
+    height: 5rem;
+
+}
+
+.sub__title {
+    margin: 0;
+}
+
+.sub__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.sub__input {
+    width: 6rem;
+}

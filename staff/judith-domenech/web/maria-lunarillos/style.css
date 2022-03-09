@@ -1,0 +1,551 @@
+*{
+    font-size: 12px;
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: black;
+    font-weight: 400px;
+    margin: 0px;
+    padding: 0px;
+    border:0px;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+.header__block-1{
+    background-color: rgb(247, 247, 247);
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    border: 1px solid black;
+    margin-bottom: 40px;
+}
+
+.header__block-2{
+    background-color: white;
+    width: 100%;
+    height: 600px;
+}
+
+ main {
+     background-color: rgb(255, 255, 255);
+     display: flex;
+     flex-direction: column;
+ }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+    background-color: rgb(247, 247, 247);
+    height: 1600px; 
+}
+
+.title{
+    font-size: 2.8rem;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin: 8px 0 40px 0;
+    padding: 15px 0;
+}
+
+.block-1{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+         height: 1800px;
+         flex-flow: row wrap;
+         gap: 7px;
+    }
+
+.block-1 > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#fork{
+    display: flex;
+    width: 100px;
+    height: 125px; 
+    margin: 35px;
+}
+
+.grid-1__box1{
+    grid-area: box1;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/moldesdereposteria.jpg);
+    background-size: cover;
+}
+
+.grid-1__box2{
+    grid-area: box2;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/utensiliosbasicos.jpg) ;
+    background-size: cover;
+}
+
+.grid-1__box3{
+    grid-area: box3;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/pequenoelectrodomestico2.jpg) ;
+    background-size: cover;
+}
+
+.grid-1__box4{
+    grid-area: box4;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/capsulas-cupcakes.jpg);
+    background-size: cover;
+}
+
+.grid-1__box5{
+    grid-area: box5;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/cortadoresgalletas2.jpg);
+    background-size: cover;
+}
+
+.grid-1__box6{
+    grid-area: box6;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/cajas3.jpg);
+    background-size: cover;
+}
+
+.grid-1__box7{
+    grid-area: box7;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/stands.jpg);
+    background-size: cover;
+}
+
+.grid-1__box8{
+    grid-area: box8;
+    background-image:  url(https://static3.marialunarillos.com/media/wysiwyg/banetones.jpg);
+    background-size: cover;
+}
+.grid-1__box9{
+    grid-area: box9;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/toppers3.jpg) ;
+    background-size: cover;
+}
+
+.block-1__item-preview {
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 55%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+    height: 1150px;
+    background-color: rgb(247, 247, 247);
+}
+
+.block-2{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+     height: 1200px;
+     flex-flow: row wrap;
+     gap: 7px;
+}
+
+.block-2 > * {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+width: 100%;
+}
+
+#muffins{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 120px; 
+    padding: 10px;
+    margin: 10px;
+}
+
+.grid-2__box1{
+    grid-area: box1;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/fondant2.jpg);
+    background-size: cover;
+}
+
+.grid-2__box2{
+    grid-area: box2;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/ingredientesreposteria.jpg) ;
+    background-size: cover;
+}
+
+.grid-2__box3{
+    grid-area: box3;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/impresionpersonalizada.jpg) ;
+    background-size: cover;
+}
+
+.grid-2__box4{
+    grid-area: box4;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/Colorantes-alimentarios.jpg);
+    background-size: cover;
+}
+
+.grid-2__box5{
+    grid-area: box5;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/sprinkles3.jpg);
+    background-size: cover;
+}
+
+.grid-2__box6{
+    grid-area: box6;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/papelcomestible.jpg);
+    background-size: cover;
+}
+
+.block-2__item-preview {
+
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+    height: 800px;
+    background-color: rgb(247, 247, 247);
+}
+
+.block-3{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+     height: 650px;
+     flex-flow: row wrap;
+     gap: 7px;
+}
+
+.block-3 > * {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+width: 100%;
+}
+
+#cake{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 120px; 
+    padding: 20px;
+    margin: 20px;
+}
+
+.grid-3__box1{
+    grid-area: box1;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/fiestastematicas.jpg);
+    background-size: cover;
+}
+
+.grid-3__box2{
+    grid-area: box2;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/pompones.jpg);
+    background-size: cover;
+}
+
+.grid-3__box3{
+    grid-area: box3;
+    background-image: url(https://static3.marialunarillos.com/media/wysiwyg/fiestaspersonajes.jpg);
+    background-size:cover
+}
+
+.block-3__item-preview {
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cointainer-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.button {
+    margin: 30px auto;
+    background-color: tomato;
+    width: 150px;
+    height: 50px;
+}
+
+.click{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    color: white;
+    font-size: medium;
+}
+.shipping{
+    background-color: rgb(223, 221, 221);
+    height: 250px;
+}
+
+.footer{
+    display:inline-flex;
+    justify-content: space-between;
+    background-color:rgb(247, 247, 247);
+    height: 250px;
+    width: 100%;
+}
+
+.logos{
+    margin-top: 25px;
+    border-right: 2px solid rgb(179, 179, 179);
+    height: 200px;
+    width: 438px;
+}
+
+.title-email{
+    color: grey;
+    margin: 40px 20px 25px 0px;
+    font-size: 15px;
+}
+
+.email{
+    border: 1px solid black;
+    font-size: medium;
+    height: 40px;
+    width: 300px;
+}
+
+.button-suscribe{
+    background-color: tomato;
+    padding: 10px;
+    color: white;
+    font-size: medium;
+    height: 40px;
+    width: 150px;
+}
+ .button-suscribe:hover{
+    opacity:0.6;
+ }
+
+.checkbox{
+    margin: 20px 0px 0px 0px;
+}
+
+.footer__contact{
+    margin-top: 25px;
+    border-left: 2px solid rgb(179, 179, 179);
+    height: 200px;
+    width: 33%;
+}
+
+.Copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: tomato;
+    color:white;
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+.block-1 {
+    display: grid;
+    grid-template-areas: 
+    "box1 box2 box2"
+    "box1 box3 box3"
+    "box4 box4 box5"
+    "box6 box6 box5"
+    "box7 box8 box8"
+    "box7 box9 box9";
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 620px;
+    height: 1200px;
+}
+.block-1 > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-1__box1{
+    grid-area: box1;
+}
+
+.grid-1__box2{
+    grid-area: box2;
+}
+
+.grid-1__cbox{
+    grid-area: box3;
+}
+
+.grid-1__box4{
+    grid-area: box4;  
+}
+
+.grid-1__box5{
+    grid-area: box5;
+}
+
+.grid-1__box6{
+    grid-area: box6; 
+}
+
+.grid-1__box7{
+    grid-area: box7;
+}
+
+.grid-1__box8{
+    grid-area: box8;  
+}
+
+.grid-1__box9{
+    grid-area: box9;
+}
+
+.block-1__item-preview{
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.block-2 {
+    display: grid;
+    grid-template-areas: 
+    "box1 box2 box2"
+    "box1 box3 box3"
+    "box4 box4 box5"
+    "box6 box6 box5";
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 620px;
+    height: 1200px;
+}
+
+.block-2 > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-2__box1{
+    grid-area: box1;
+}
+
+.grid-2__box2{
+    grid-area: box2;
+}
+
+.grid-2__box{
+    grid-area: box3;
+}
+
+.grid-2__box4{
+    grid-area: box4;
+}
+
+.grid-2__box5{
+    grid-area: box5;
+}
+
+.grid-2__box6{
+    grid-area: box6; 
+}
+
+.block-2__item-preview {
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.block-3 {
+    display: grid;
+    grid-template-areas: 
+    "box1 box1 box2"
+    "box3 box3 box2";
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    width: 620px;
+    height: 1200px;
+}
+
+.block-3 > * {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-3__box1{
+    grid-area: box1;
+    
+}
+
+.grid-3__box2{
+    grid-area: box2;
+}
+
+.grid-3__box{
+    grid-area: box3;
+}
+
+.block-3__item-preview {
+    background-color: white;
+    opacity: 0.7;
+    width: 200px;
+    height: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+}
+
+@media only screen and (min-width: 992px){
+
+.block-1__item-preview {
+    clip-path: polygon(0% 15%, 70% 15%, 100% 100%, 0% 100%);
+    height: 100px;
+}
+
+.block-2__item-preview {
+    clip-path: polygon(0% 15%, 70% 15%, 100% 100%, 0% 100%);
+    height: 100px;
+}
+
+.block-3__item-preview {
+    clip-path: polygon(0% 15%, 70% 15%, 100% 100%, 0% 100%);
+    height: 100px;
+}
+}

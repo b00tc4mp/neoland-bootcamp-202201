@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu Mono';
+    font-size: 24px;
+    /* font-family: 'Homemade Apple'; */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container--column {
+    flex-direction: column;
+}
+
+.table {
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.table thead {
+    background-color: aquamarine;
+}
+
+.table th {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.table td {
+    padding: 0 10px;
+}
+
+input{
+    border: none;
+    border-bottom: 3px solid aquamarine;
+    margin: 8px;
+    background-color: rgb(160, 160, 160);
+    font-style: italic;
+}
+
+::placeholder { color: white; }
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    background-color: #888;
+    padding: 20px;
+    border: 3px solid black;
+    color: white;
+}
+
+input:focus{
+    background: linear-gradient( to bottom, transparent, rgb(255, 255, 255));
+    background-color: #999;
+    outline: none;
+}
+
+.show-all{
+    background-color:aquamarine;
+    box-shadow: 2px 5px 5px black;
+    color: black;
+    font-size: 21px;
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+    border-bottom: none;
+    padding: 12px;
+}
+
+.button:hover {
+    background-color: #444;
+    color: white;
+    outline: none;
+    transform: scale(1.15);
+}

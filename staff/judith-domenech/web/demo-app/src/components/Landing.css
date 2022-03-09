@@ -1,0 +1,27 @@
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 2rem;   
+}
+
+.landing__links{
+    box-shadow: 0px 0px 20px 0px black;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: white;
+    
+}
+
+a{
+text-decoration:none;
+}
+
+
+.landing__login, .landing__register{
+padding: 5px;
+margin: 15px;
+font-size: 3rem;
+
+}

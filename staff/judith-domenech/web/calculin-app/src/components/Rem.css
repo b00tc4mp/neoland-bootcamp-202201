@@ -1,0 +1,18 @@
+.rem {
+    background-color: rgb(248, 60, 60);
+    padding: 1rem;
+    height: 5rem;
+}
+
+.rem__title {
+    margin: 0;
+}
+
+.rem__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.rem__input {
+    width: 6rem;
+}
