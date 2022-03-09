@@ -26,13 +26,22 @@ connect(MONGODB_URL)
         
         server.use(cors())
         
-        const jsonBodyParser = express.json()
+        const jsonBodyParser = express.json() // Sirve para capturar y convertir el body a objeto
         
         const api = express.Router()
+ 
+       // Review
+  // Review // Review
+   // Review // Review
+    // Review // Review
+     // Review // Review
+      // Review // Review
 
+
+      
         api.post('/users', jsonBodyParser, registerUser)
         api.post('/users/auth', jsonBodyParser, authenticateUser)
-        api.get('/users', jsonBodyParser, retrieveUser)
+        api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)

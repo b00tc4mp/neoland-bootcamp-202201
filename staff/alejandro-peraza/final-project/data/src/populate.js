@@ -2,7 +2,7 @@ const { connect, disconnect } = require('mongoose')
 const { User, Recipe, Note } = require('./models')
 
 
-connect('mongodb://localhost:27017/demo-db')
+connect('mongodb://localhost:27017/cfd-db')
     .then(() => console.log('connected'))
     .then(() => Promise.all([
         
@@ -17,6 +17,16 @@ connect('mongodb://localhost:27017/demo-db')
 
         return Promise.all([yeray.save(), abel.save()])
     })
+    
+    // Review
+     // Review
+      // Review
+       // Review
+        // Review
+         // Review
+          // Review
+          
+    
     
     .then(() => {
         const whisky = new Recipe({ name: 'Whisky' })

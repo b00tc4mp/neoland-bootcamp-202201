@@ -64,7 +64,6 @@ Flow de añadir un comentario -->
 ![alt](./images/block.png)
 
 ### Data Model
-![alt](./images/ERD.png)
 
 <!-- TODO link er diagram -->
 <!-- example (https://github.com/manuelbarzi/neoland-bootcamp-202201/blob/36c46f5cb15fe4209a8f6101813bf6c7d6941e4f/staff/maria-navarrete/full-stack/final-project/docs/images/ERDiagram.jpg) -->
@@ -74,28 +73,25 @@ User
 - name (string, required,unique, min length 8)
 - email (string, required, unique, without space)
 - password (string, required, min length 8)
+- userId
 
-Coctail
+
+Recipe
 - title (string, required, unique)
 - description (string, required)
 - recipe (string, required, ...)
 - note (string, required,...)
-- Photo (string, unique,...)
+- photo (string, unique,...)
+- recipeId
 
-Comment
+Note
 - text
-- date
-- user
+- userId
 
+![alt](./images/.png)
 
 <!-- TODO
-ER diagram
-Review with ventu
-Link this diagrams to docs
-Modify models and schemas
-rebuild uses cases
------------------ for tomorrow -----------
-flows
-wireframes
-review with ux/ui student
+change ER diagram
+finish wireframes
+review flow with a ux/ui student
 -->
