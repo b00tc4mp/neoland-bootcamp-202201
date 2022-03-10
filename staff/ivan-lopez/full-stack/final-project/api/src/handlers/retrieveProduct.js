@@ -1,18 +1,15 @@
 const { retrieveProduct } = require('logic')
-const jwt = require('jsonwebtoken')
+const { verifyTokenAndGetUserId } = require('../helpers')
 
 module.exports = (req, res) => {
     try {
-        const { headers: { authorization }, params: { productId } } = req
 
-        const [, token] = authorization.split(' ')
+        const userId = verifyTokenAndGetUserId(req)
+        const { params: { productId } } = req
 
-        const payload = jwt.verify(token, 'mi super secreto')
-
-        const { sub: userId } = payload
 
         retrieveProduct(userId, productId)
-            .then(user => res.json(user))
+            .then(product => res.json(product))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

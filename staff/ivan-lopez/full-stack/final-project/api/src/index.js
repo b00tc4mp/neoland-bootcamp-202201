@@ -12,7 +12,10 @@ const {
         addProduct,
         listProducts,
         deleteProduct,
-        retrieveProduct
+        retrieveProduct,
+        updateProduct
+
+
      } = require('./handlers')
 
 const cors = require('cors')
@@ -42,8 +45,8 @@ connect(MONGODB_URL)
         api.post('/products', jsonBodyParser, addProduct)
         api.get('/products', listProducts)
         api.get('/products/:productId', retrieveProduct)
-        // put
-        api.delete('/products', jsonBodyParser, deleteProduct)
+        api.patch('/products', jsonBodyParser, updateProduct)
+        api.delete('/products/:productId', jsonBodyParser, deleteProduct)
 
         server.use('/api', api)
 

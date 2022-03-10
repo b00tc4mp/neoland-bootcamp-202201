@@ -7,7 +7,8 @@ function retrieveProduct(userId, productId) {
 
         return Product.findById(productId)
             .then(product => {
-                const doc = note._doc
+                if(!product) throw new Error(`product with id ${productId} does not exist`)
+                const doc = product._doc
 
                     //sanitize
                     delete doc._id
@@ -15,6 +16,6 @@ function retrieveProduct(userId, productId) {
 
                     return doc
                 }
-    }
+    )}
 
 module.exports = retrieveProduct

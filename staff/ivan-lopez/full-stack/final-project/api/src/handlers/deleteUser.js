@@ -1,15 +1,10 @@
 const { deleteUser } = require('logic')
-const jwt = require('jsonwebtoken')
+const { verifyTokenAndGetUserId } = require('../helpers')
 
 module.exports = (req, res) => {
     try {
-        const { headers: { authorization }, body: { password } } = req
-
-        const [, token] = authorization.split(' ')
-
-        const payload = jwt.verify(token, 'mi super secreto')
-
-        const { sub: userId } = payload
+        const userId = verifyTokenAndGetUserId(req)
+        const { body: { password } } = req
 
         deleteUser(userId, password)
             .then(() => res.status(204).send())

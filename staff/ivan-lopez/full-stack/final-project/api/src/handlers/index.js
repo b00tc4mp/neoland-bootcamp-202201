@@ -8,17 +8,18 @@ const addProduct = require('./addProduct')
 const listProducts = require('./listProducts')
 const deleteProduct = require('./deleteProduct')
 const retrieveProduct = require('./retrieveProduct')
-
+const updateProduct = require('./updateProduct')
 
 module.exports = {
     registerUser,
     authenticateUser,
-    retrieveUser,
     updateUser,
+    retrieveUser,
     updateUserPassword,
     deleteUser,
     addProduct,
     listProducts,
     deleteProduct,
-    retrieveProduct
+    retrieveProduct,
+    updateProduct
 }

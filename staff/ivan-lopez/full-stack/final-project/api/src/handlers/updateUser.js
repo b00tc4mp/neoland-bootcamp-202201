@@ -1,7 +1,6 @@
 const { updateUser } = require('logic')
 const jwt = require('jsonwebtoken')
 
-
 module.exports = (req, res) => {
     try {
         const { headers: { authorization }, body: {name, email} } = req
