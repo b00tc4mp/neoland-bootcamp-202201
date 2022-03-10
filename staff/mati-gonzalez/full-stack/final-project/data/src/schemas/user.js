@@ -27,7 +27,6 @@ const user = new Schema({
 
     prestigePoint: {
         type: Number,
-        required: true
     }
 })
 

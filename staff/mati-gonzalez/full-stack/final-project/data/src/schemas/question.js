@@ -14,8 +14,10 @@ const question = new Schema({
         required: true
     },
 
-    date: {
-        type: Date
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now
     },
 
     categories: {

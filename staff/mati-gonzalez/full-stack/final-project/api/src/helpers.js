@@ -20,7 +20,20 @@ function verifyTokenAndGetUserId(req) {
     return userId
 }
 
+function verifyTokenAndGetQuestionId(req) {
+    const { headers: { authorization } } = req
+
+    const [, token] = authorization.split(' ')
+
+    const payload = jwt.verify(token, JWT_SECRET)
+
+    const { sub: questionId } = payload
+
+    return questionId
+}
+
 module.exports = {
     createTokenWithUserId,
-    verifyTokenAndGetUserId
+    verifyTokenAndGetUserId,
+    verifyTokenAndGetQuestionId
 }

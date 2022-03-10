@@ -23,13 +23,13 @@ In this app the user can post questions about philosophy, answer other users' qu
 ![alt Use Cases](./images/useCases.png)
 
 #### add question
-![alt Use Cases](./images/addQuestionFlowChart.png)
+![alt addQuestionFlowChart](./images/addQuestionFlowChart.png)
 
 #### add answer 
-![alt Use Cases](./images/answerQuestionFlowChart.png)
+![alt answerQuestionFlowChart](./images/answerQuestionFlowChart.png)
 
 #### add to favorites
-![alt Use Cases](./images/addToFavoritesFlowChart.png)
+![alt addToFavoritesFlowChart](./images/addToFavoritesFlowChart.png)
 
 #### User Interface (UI)
 <!-- TODO finish wireframes and link to docs -->
@@ -39,13 +39,13 @@ In this app the user can post questions about philosophy, answer other users' qu
 ## Technical Description
 
 ### Blocks
-![alt Use Cases](./images/blocks.jpg)
+<!-- ![alt ](./images/blocks.jpg) -->
 
 ### Sequences
 
 #### Register User
 
-![alt Use Cases](./images/register-sequence.jpg)
+<!-- ![alt Use Cases](./images/register-sequence.jpg) -->
 
 ### Data Model
 
@@ -81,13 +81,13 @@ comment
 
 ![alt ER diagram](./images/ERD.png)
 
-<!-- TODO
-ER diagram
-Review with Ventu
-Description
-Link blocks
-Link uses cases
-List of functional description
-Flows (post question, post comment, add favorites)
-Wireframes
-Review with ux/ui student -->
+
+- ~~DONE ER diagram~~
+- TODO Review with Ventu (20min)
+- ~~DONE Description~~
+- ~~DONE Link uses cases~~
+- ~~DONE List of functional description~~
+- ~~DONE Flows (post question, post comment, add favorites)~~
+- TODO Wireframes (5hrs, prolly on weeknd)
+- TODO Review with ux/ui student(1hr)
+- TODO api logics (2hrs)

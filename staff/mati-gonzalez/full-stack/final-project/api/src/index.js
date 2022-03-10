@@ -1,5 +1,4 @@
 require('dotenv').config()
-
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
 const {
@@ -8,7 +7,8 @@ const {
     retrieveUser,
     updateUser,
     updateUserPassword,
-    deleteUser
+    deleteUser,
+    addQuestion
 } = require('./handlers')
 
 const cors = require('cors')
@@ -19,11 +19,8 @@ connect(MONGODB_URL)
     .then(() => console.log('db connected'))
     .then(() => {
         const server = express()
-
         server.use(cors())
-
         const jsonBodyParser = express.json()
-
         const api = express.Router()
 
         api.post('/users', jsonBodyParser, registerUser)
@@ -32,6 +29,7 @@ connect(MONGODB_URL)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
+        api.post('/questions', jsonBodyParser, addQuestion)
 
         server.use('/api', api)
 
