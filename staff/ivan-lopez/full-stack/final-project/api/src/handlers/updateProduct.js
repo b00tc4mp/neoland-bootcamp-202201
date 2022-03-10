@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     try {
         
         const userId = verifyTokenAndGetUserId(req)
-        const { body: { name, size, color, price, description }, params: { productId} } = req
+        const { body: { name, size, color, price, description }, params: { productId } } = req
 
         updateProduct(userId, productId, name, size, color, price, description)
             .then(() => res.status(204).send())

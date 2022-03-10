@@ -9,7 +9,7 @@ module.exports = (req, res) => {
 
 
         retrieveProduct(userId, productId)
-            .then(product => res.json(product))
+            .then(product => res.status(200).json(product))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })
