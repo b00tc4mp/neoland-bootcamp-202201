@@ -23,7 +23,6 @@ function registerUser(name, email, password) {
                 return res.json()
                     .then(payload => {
                         const { error } = payload
-
                         throw new Error(error)
                     })
             } else if (status >= 500) {

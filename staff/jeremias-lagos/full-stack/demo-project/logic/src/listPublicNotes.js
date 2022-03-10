@@ -6,7 +6,6 @@ function listPublicNotes() {
             const docs = notes.map(note => {
                 const doc = note._doc
 
-                // sanitize
                 doc.id = doc._id.toString()
                 delete doc._id
                 delete doc.__v
@@ -18,7 +17,6 @@ function listPublicNotes() {
 
                 return doc
             })
-
             return docs
         })
 }

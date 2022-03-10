@@ -1,5 +1,6 @@
-const { validators: { validateId, validateString, validateBoolean }} = require('commons')
-const { models: { Note }} = require('data')
+const { models: { Note } } = require("data")
+const { validators: { validateId, validateString, validateBoolean } } = require('commons')
+
 
 function updateNote(userId, noteId, text, color, public = false) {
     validateId(userId, 'user id')
@@ -8,18 +9,10 @@ function updateNote(userId, noteId, text, color, public = false) {
     validateString(color, 'color')
     validateBoolean(public, 'public')
 
-    return Note.findOne({ _id: noteId, user: userId })
-        .then(note => {
-            if (!note) throw new Error(`note with id ${noteId} and user id ${userId} does not exist`)
-
-            note.text = text
-            note.color = color
-            note.public = public
-            note.updatedAt = new Date
-
-            return note.save()
+    return Note.updateOne({ _id: noteId, user: userId }, { text, color, public, updatedAt: new Date })
+        .then(result => {
+            if (result.modifiedCount === 0) throw new Error(`note with id ${noteId} and userId ${userId} does not exist`)
         })
-        .then(note => {})
 }
 
 module.exports = updateNote

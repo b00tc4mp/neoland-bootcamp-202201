@@ -19,7 +19,6 @@ function retrieveUser(token) {
                 return res.json()
                     .then(payload => {
                         const { error } = payload
-
                         throw new Error(error)
                     })
             } else if (status >= 500) {

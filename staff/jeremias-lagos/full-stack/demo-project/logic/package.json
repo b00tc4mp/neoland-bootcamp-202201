@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "commons": "file:../commons",
-    "data": "file: ../data"
+    "data": "file:../data"
   }
 }

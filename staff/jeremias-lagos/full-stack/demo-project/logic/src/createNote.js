@@ -2,7 +2,7 @@ const { validators: { validateId, validateString, validateBoolean } } = require(
 const { models: { Note } } = require('data')
 
 function createNote(userId, text, color, public = false) {
-    validateId(userId)
+    validateId(userId, 'userId')
     validateString(text, 'text')
     validateString(color, 'color')
     validateBoolean(public, 'public')

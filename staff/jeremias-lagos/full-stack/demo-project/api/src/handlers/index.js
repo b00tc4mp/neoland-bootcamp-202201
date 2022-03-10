@@ -1,29 +1,29 @@
 const registerUser = require('./registerUser')
 const authenticateUser = require('./authenticateUser')
 const retrieveUser = require('./retrieveUser')
-const createNote = require('./createNote')
-const listNotes = require('./listNotes')
-const updateNote = require('./updateNote')
-const listPublicNotes = require('./listPublicNotes')
-const listPublicNotesFromUser = require('./listPublicNotesFromUser')
-const deleteNote = require('./deleteNote')
-const deleteUser = require('./deleteUser')
-const retrieveNote = require('./retrieveNote')
 const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
+const deleteUser = require('./deleteUser')
+const createNote = require('./createNote')
+const listNotes = require('./listNotes')
+const listPublicNotes = require('./listPublicNotes')
+const listPublicFromUser = require('./listPublicNotesFromUser')
+const retrieveNote = require('./retrieveNote')
+const updateNote = require('./updateNote')
+const deleteNote = require('./deleteNote')
 
 module.exports = {
     registerUser,
     authenticateUser,
     retrieveUser,
+    updateUser,
+    updateUserPassword,
+    deleteUser,
     createNote,
     listNotes,
-    updateNote,
     listPublicNotes,
-    listPublicNotesFromUser,
-    deleteNote,
-    deleteUser,
+    listPublicFromUser,
     retrieveNote,
-    updateUser,
-    updateUserPassword
+    updateNote,
+    deleteNote
 }
