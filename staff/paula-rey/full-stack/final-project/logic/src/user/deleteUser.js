@@ -30,18 +30,3 @@ module.exports = deleteUser
 
 
 
-
-// function deleteUser(userId, password) {
-//     validateId(userId)
-//     validatePassword(password)
-//     return Racket.updateMany({ user: userId })
-//         .then(() => {
-//             return User.deleteOne({ _id: userId, password })
-//                 .then(result => {
-//                     if (result.deletedCount === 0) throw new Error(`wrong user ${userId} or password`)
-//                     else {
-//                         return
-//                     }
-//                 })
-//         })
-// }

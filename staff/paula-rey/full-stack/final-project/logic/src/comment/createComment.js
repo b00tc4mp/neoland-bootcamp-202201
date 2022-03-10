@@ -8,7 +8,7 @@ function createComment(userId, locationId, text) {
 
 
     return Comment.create({ user: userId, location: locationId, text })
-        //.then(comment => { })
+        //.then(comment => { }) temporal*
         .then(comment => comment.id)
 }
 

@@ -9,10 +9,15 @@ const location = new Schema({
         required: true
     },
 
+    type: {
+        type: String,
+        required: true,
+        enum: ['Restaurante', 'Bar', 'Playa', 'Hotel', 'Hostal']
+    },
+
     name: {
         type: String,
         required: true,
-        maxLength: 50
     },
 
     image: {
@@ -28,9 +33,18 @@ const location = new Schema({
         type: String,
         required: true,
         enum: ['Barcelona', 'Tarragona', 'Girona']
+    },
+
+    date: {
+        type: Date,
+        required: true,
+        default: Date.now
     }
+
+
 })
 
 module.exports = location
+
 
 

@@ -5,8 +5,7 @@ const { Types: { ObjectId } } = Schema
 const user = new Schema({
     name: {
         type: String,
-        required: true,
-        minLength: 2,
+        required: true
     },
 
     email: {
@@ -18,7 +17,6 @@ const user = new Schema({
     password: {
         type: String,
         required: true,
-        minLength: 8
     },
 
     favorites: [{

@@ -72,6 +72,12 @@ function validateBoolean(boolean, explain = 'boolean') {
     if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not a boolean`)
 }
 
+// function validateQuery(query) {
+//     if (typeof query !== 'string') throw new TypeError('query is not a string')
+//     if (query === '') throw new Error('empty query')
+//     if (BLANK_REGEX.test(query)) throw new Error('blank query')
+// }
+
 module.exports = {
     validateEmail,
     validatePassword,

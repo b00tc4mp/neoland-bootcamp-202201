@@ -35,8 +35,8 @@ connect('mongodb://localhost:27017/dogether-db')
 
         const [anonymous, agua, ora, wendy, pepi, sirius] = users
 
-        const location1 = new Location({ user: agua.id, name: 'Restaurante Rosita', image: 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', address: 'Calle Maria Cristina, 34', city: 'Barcelona' })
-        const location2 = new Location({ user: ora.id, name: 'Playa del Morro', image: 'https://photo620x400.mnstatic.com/69668718400a76b234407987c597487d/playa-del-morro.jpg', address: 'Avenida plunchimplera, 8', city: 'Tarragona' })
+        const location1 = new Location({ user: agua.id, type: 'restaurante', name: 'Restaurante Rosita', image: 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', address: 'Calle Maria Cristina, 34', city: 'Barcelona' })
+        const location2 = new Location({ user: ora.id, type: 'playa', name: 'Playa del Morro', image: 'https://photo620x400.mnstatic.com/69668718400a76b234407987c597487d/playa-del-morro.jpg', address: 'Avenida plunchimplera, 8', city: 'Tarragona' })
 
 
         return Promise.all([location1.save(), location2.save()])

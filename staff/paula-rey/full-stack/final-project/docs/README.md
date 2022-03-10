@@ -40,18 +40,20 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 #### Schemas
 user
-- name (String, required, minLength 2)
-- email String, required, unique)
-- password ( String, required, minLength 8)
-- favorites ( [ObjectId, Location] )  
-- follows ( [ObjectId, User] )
+- name: (String, required)
+- email: (String, required, unique)
+- password: (String, required)
+- favorites: ( [ObjectId, Location] )  
+- follows: ( [ObjectId, User] )
 
 location
-- user (ObjectId, User, required, unique)
-- name (String, required, maxLength 50)
-- image (String)
-- address (String, required)
-- city (String, required, enum)
+- user: (ObjectId, User, required, unique)
+- type: (String, required, enum)
+- name: (String, required)
+- image: (String)
+- address: (String, required)
+- city: (String, required, enum)
+- date: (Date, required, default: Date.now)
 
 comment
 - user: (ObjectId, User, required)

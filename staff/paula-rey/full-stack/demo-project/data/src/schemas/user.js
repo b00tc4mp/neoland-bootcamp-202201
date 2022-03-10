@@ -4,7 +4,7 @@ const creditCard = require('./creditCard')
 const user = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
 
     email: {
