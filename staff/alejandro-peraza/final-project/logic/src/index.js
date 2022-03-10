@@ -11,6 +11,8 @@ const createRecipe = require('./createRecipe')
 const findRecipeByName = require('./findRecipeByName')
 const findRecipeByType = require('./findRecipeByType')
 const findRecipeByDestilled = require('./findRecipeByDestilled')
+const listRecipe = require('./listRecipe')
+const deleteRecipe = require('./deleteRecipe')
 
 module.exports = {
     registerUser,
@@ -25,5 +27,7 @@ module.exports = {
     createRecipe,
     findRecipeByName,
     findRecipeByType,
-    findRecipeByDestilled
+    findRecipeByDestilled,
+    listRecipe,
+    deleteRecipe
 }
