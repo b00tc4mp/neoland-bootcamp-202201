@@ -1,16 +1,11 @@
 const { updateUserPassword } = require('logic')
-const jwt = require('jsonwebtoken')
+const { verifyTokenAndGetUserId } = require('../helpers')
 
 
 module.exports = (req, res) => {
     try {
-        const { headers: { authorization }, body: { currPassword, newPassword } } = req
-
-        const [, token] = authorization.split(' ')
-
-        const payload = jwt.verify(token, 'mi super secreto')
-
-        const { sub: userId } = payload
+        const userId = verifyTokenAndGetUserId(req)
+        const { body: { currPassword, newPassword } } = req
 
         updateUserPassword({ userId, currPassword, newPassword })
             .then(() => res.status(200).send())

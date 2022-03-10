@@ -9,7 +9,7 @@ function updateProduct(userId, productId, name, size, color, price, description 
     validateString(color, 'color')
     validateString(price, 'price')//REVIEW VALIDATENUMBER REQUIRED
     validateString(description, 'description')
-//TRAERME PARAMS: PRODUCT ID
+
 
     return Product.updateOne({ user: userId, _id: productId, name, size, color, price, description })
         .then(result => {
