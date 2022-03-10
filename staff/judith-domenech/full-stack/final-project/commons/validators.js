@@ -72,11 +72,18 @@ function validateBoolean(boolean, explain = 'boolean') {
     if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not a boolean`)
 }
 
+function validateNumber(number, explain = 'number') {
+    if (typeof number !== 'number') throw new TypeError(`${explain} is not a number`)
+    if (number === '') throw new Error(`empty ${explain}`)
+    if (BLANK_REGEX.test(string)) throw new Error(`blank ${explain}`)
+}
+
 module.exports = {
     validateEmail,
     validatePassword,
     validateToken,
     validateString,
     validateId,
-    validateBoolean
+    validateBoolean,
+    validateNumber
 }

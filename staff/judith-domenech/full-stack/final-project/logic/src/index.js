@@ -10,6 +10,9 @@ const deleteComment = require("./racket/comment/deleteComment")
 const retrieveComment = require('./racket/comment/retrieveComment')
 const listFavorites = require("./user/listFavorites")
 const listComments = require("./racket/comment/listComments")
+const retrieveRacket = require("./racket/retrieveRacket")
+const listRacket = require("./racket/listRackets")
+const searchRackets = require("./racket/searchRackets")
 
 module.exports = {
   registerUser,
@@ -23,6 +26,9 @@ module.exports = {
   deleteComment,
   retrieveComment,
   listFavorites,
-  listComments
+  listComments,
+  retrieveRacket,
+  listRacket, 
+  searchRackets
 
 }

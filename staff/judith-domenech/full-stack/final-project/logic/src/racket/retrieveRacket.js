@@ -4,12 +4,11 @@ const { validators: { validateId } } = require('commons')
 function retriveRackets(racketId){
     validateId(racketId)
 
-    return Racket.findById(noteId).populate('user')
-        .then(note =>{
-            if(!note) throw new Error(`note with id ${noteId} does not exist`)
-            if(!note.user._id.toString() === userId || note.public){
+    return Racket.findById(racketId)
+        .then(racket => {
+            if(!racket) throw new Error(`racket with id ${racketId} does not exist`)
 
-                   const doc = user._doc
+                   const doc = racket._doc
         
                     // sanitize
                     delete doc._id
@@ -21,7 +20,6 @@ function retriveRackets(racketId){
                     delete doc.user
         
                     return doc 
-            } else throw new Error(`note with id ${noteId} is not public`)
         })
 }
 

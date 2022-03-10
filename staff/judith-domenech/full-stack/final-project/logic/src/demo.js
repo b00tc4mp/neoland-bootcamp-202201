@@ -12,6 +12,8 @@ const {
     listFavorites,
     toggleFavorite,
     listComments,
+    retrieveRacket,
+    searchRackets
 
 } = require('./index')
 
@@ -77,6 +79,12 @@ connect('mongodb://localhost:27017/racketMatch-db')
                 console.log('created comment', comment)
             })
     })
+
+    .then(() =>  searchRackets('Alpha'))
+    .then(results => console.log(results))
+    
+
+
 /* 
     .then(() => {
         return retrieveComment(comment)
@@ -84,7 +92,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
     })
  */
 
-    .then(() => listComments('62288bf8d1170a4f727e5837'))
+/*     .then(() => listComments('62288bf8d1170a4f727e5837'))
     .then((list) => console.log(list))
 
 
@@ -92,7 +100,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
     .then((userId) => {
         return deleteComment(userId, comment)
             .then(() => console.log('deleted comment'))
-    }) 
+    })  */
 
     /* .then(() => authenticateUser('ora@culo.com', '123123123'))
     .then((userId) => {

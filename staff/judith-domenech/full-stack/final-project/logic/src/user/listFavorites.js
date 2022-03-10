@@ -15,6 +15,9 @@ function listFavorites(userId) {
                 doc.user = doc.brand.toString()
                 delete doc._id
                 delete doc.__v
+                delete doc.description
+                delete doc.nivel
+                delete doc.player
 
                 return doc
             })
