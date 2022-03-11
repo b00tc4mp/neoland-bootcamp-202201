@@ -1,21 +1,26 @@
 const { validators: { validateId } } = require('commons')
-const { models: { Tournament } } = require('data')
+const { models: { User, Tournament } } = require('data')
+
 
 function retrieveTournament(userId, tournamentId) {
     validateId(userId, 'userId')
     validateId(tournamentId, 'tournamentId')
 
-        return Tournament.findById(tournamentId)
-            .then(tournament => {
-                if(!tournament) throw new Error(`tournament with id ${tournamentId} does not exist`)
-                const doc = tournament._doc
+    return User.findById(userId)
+        .then(user => {
+            if (!user) throw new Error(`user with id ${userId} not found`)
 
-                    delete doc._id
-                    delete doc.__v
+            return Tournament.findById(tournamentId).lean()
+        })
+        .then(tournament => {
+            if (!tournament) throw new Error(`tournament with id ${tournamentId} does not exist`)
 
-                    return doc
-            }
+            delete tournament.user
+            delete tournament._id
+            delete tournament.__v
 
-    )}
-    
+            return tournament
+        })
+}
+
 module.exports = retrieveTournament

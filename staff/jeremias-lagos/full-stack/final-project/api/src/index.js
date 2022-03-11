@@ -12,7 +12,8 @@ const {
     updateTournament,
     deleteTournament,
     listTournament,
-    retrieveTournament
+    retrieveTournament,
+    registerAdmin
 
 } = require('./handlers')
 
@@ -30,6 +31,7 @@ connect(MONGODB_URL)
 
         const api = express.Router()
 
+        api.post('/users/admin', jsonBodyParser, registerAdmin)   
         api.post('/users', jsonBodyParser, registerUser)
         api.post('/users/auth', jsonBodyParser, authenticateUser)
         api.get('/users', retrieveUser)
@@ -41,7 +43,7 @@ connect(MONGODB_URL)
         api.get('/tournament', listTournament)
         api.patch('/tournament/:tournamentId', jsonBodyParser, updateTournament)
         api.delete('/tournament/:tournamentId', jsonBodyParser, deleteTournament)
-        api.get('/tourament/:tournamentId', retrieveTournament)
+        api.get('/tournament/:tournamentId', retrieveTournament)
         
 
         server.use('/api', api)

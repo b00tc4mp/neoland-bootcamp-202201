@@ -6,35 +6,24 @@ connect('mongodb://localhost:27017/tp-db')
     .then(() => Promise.all([User.deleteMany(), Tournament.deleteMany()]))
 
     .then(() => {
-        const jonathan = new User({
-            name: "Jonathan Segarra",
-            email: "jonathan@gmail.com",
-            password: "123123123",
-            role: "user"
-        }),
+        const jonathan = new User({ name: 'Jonathan', email: 'jonathan@mail.com', password: '123123123' })
+        const jose = new User({ name: 'Jose', email: 'jose@mail.com', password: '123123123' })
+        const john = new User({ name: 'John Snow', email: 'johnsnow@mail.com', password: '123123123' })
+        const pepi = new User({ name: 'Pepi Gri', email: 'pepigri@gmail.com', password: '123123123' })
 
-        const ivan = new User({
-            name: "Ivan Martinez",
-            email: "ivan@gmail.com",
-            password: "123123123",
-            role: "user"
-        }),
 
-        const jere = new User({
-            name: "Jere Lagos",
-            email: "jere@gmail.com",
-            password: "123123123",
-            role: "admin"
-        }),
-
-        return Promise.all([jonathan.save(), ivan.save(), jere.save()]);
+        return Promise.all([jonathan.save(), jose.save(), john.save(), pepi.save()])
     })
-    .then((users) => {
-        const [jonathan, ivan ] = users;
-        const tournament 
-    })
+
+    
+
+    
+    
+        
+
+        
+    
     
     // preguntar a ventu
 
 
-        

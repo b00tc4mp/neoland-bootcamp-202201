@@ -1,13 +1,21 @@
 const { validators: { validateId }} = require('commons')
-const { models: { Tournament } } = require('data')
+const { models: { User, Tournament } } = require('data')
 
 function deleteTournament(userId, tournamentId) {
     validateId(userId, 'user id')
     validateId(tournamentId, 'tournament id')
 
-    return Tournament.deleteOne( { user: userId, _id: tournamentId, })
+    // TODO check user exists and is admin
+
+    return User.findById(userId)
+        .then(user => {
+            if (!user) throw new Error(`user with id ${id} not found`)
+            if (user.role !== 'admin') throw new Error(`user with id ${id} is not an admin`)
+
+            return Tournament.deleteOne({ _id: tournamentId})
+        })
         .then(result => {
-            if (result.deletedCount === 0) throw new Error(`user id ${userId} does not exist`)
+            if (result.deleteCount === 0) throw new Error(`tournament with id ${id} not found`)
         })
 }
 

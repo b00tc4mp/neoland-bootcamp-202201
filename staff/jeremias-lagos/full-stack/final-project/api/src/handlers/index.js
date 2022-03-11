@@ -9,6 +9,7 @@ const updateTournament = require('./updateTournament')
 const deleteTournament = require('./deleteTournament')
 const listTournament = require('./listTournament')
 const retrieveTournament = require('./retrieveTournament')
+const registerAdmin = require('./registerAdmin')
 
 
 module.exports = {
@@ -22,5 +23,6 @@ module.exports = {
     updateTournament,
     deleteTournament,
     listTournament,
-    retrieveTournament
+    retrieveTournament,
+    registerAdmin
 }
