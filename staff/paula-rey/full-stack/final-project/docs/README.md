@@ -34,7 +34,7 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ### Blocks
 
-![alt Blocks Diagram](./images/block-diagram.png)
+![alt Blocks Diagram](./images/blocks-diagram.png)
 
 ### Data Model
 
@@ -49,7 +49,7 @@ user
 location
 - user: (ObjectId, User, required, unique)
 - type: (String, required, enum)
-- name: (String, required)
+- title: (String, required)
 - image: (String)
 - address: (String, required)
 - city: (String, required, enum)
@@ -99,3 +99,9 @@ comment
 ##### Logic
 
 - TODO ... ()
+
+
+
+<!-- TODO validaciones reales (minLength..., @, etc) en schemas -->
+<!-- lean()//poner findUserById en logicas de locations y comments//mejorar manejo errores -->
+
