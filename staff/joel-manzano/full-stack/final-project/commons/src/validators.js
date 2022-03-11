@@ -76,7 +76,7 @@ function validateBoolean(boolean, explain = 'boolean') {
 }
 
 function validateNumber(value, explain = 'number') {
-    console.log('validate number', value)
+    
     if(typeof value != 'number' || isNaN(value)) throw new TypeError('num is not number')
     
 }

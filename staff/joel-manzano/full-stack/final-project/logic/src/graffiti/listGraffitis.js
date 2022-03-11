@@ -1,23 +1,28 @@
 const { validators: { validateId } } = require('commons')
-const { models: { Graffiti } } = require('data')
+const { models: { User, Graffiti } } = require('data')
+const { User } = require('data/src/models')
 
 function listGraffitis(userId) {
     validateId(userId, 'userId')
 
-    return Graffiti.find({ user: userId })
-        .then(graffitis => {
-            const docs = graffitis.map(graffiti => {
-                const doc = graffiti._doc
+    return User.findById(userId)
+        .then(user => {
+            if (!user) throw new Error(`user with id ${userId} not found`)
 
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
-                delete doc.user
-
-                return doc
-            })
-
-            return docs
+            return Graffiti.find({ user: userId }).lean()
+                .then(graffitis => {
+                    graffitis.forEach(graffiti => {
+                        graffiti.id = graffiti._id.toString()
+        
+                        delete graffiti._id
+                        delete graffiti.__v
+                        delete graffiti.user
+        
+                        return graffiti
+                    })
+        
+                    return graffitis
+                })
         })
 }
 

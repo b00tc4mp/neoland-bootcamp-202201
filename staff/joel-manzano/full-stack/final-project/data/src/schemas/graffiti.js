@@ -2,9 +2,9 @@ const { Schema, Types: { ObjectId } } = require('mongoose')
 
 
 const graffiti = new Schema({
-
     user: {
         type: ObjectId,
+        ref: 'User',
         required: true
     },
 
@@ -13,38 +13,7 @@ const graffiti = new Schema({
         required: false
     },
 
-    city: {
-        type: String,
-        required: true
-    },
-
-    street: {
-        type: String,
-        required: true
-    },
-
-    number: {
-        type: Number,
-        required: false
-    },
-
-    postal_code: {
-        type: Number,
-        required: false
-    },
-
-    location: {
-        type: String,
-        required: true
-    },
-
-    style: {
-        type: String,
-        required: true,
-        enum: ['unknown', 'tags', '3d', 'bombing', 'bubbles', 'blockbuster', 'realism', 'icons', 'trash', 'abstract'],
-        default: 'unknown'
-    },
-
+    
     description: {
         type: String,
         required: true,
@@ -57,6 +26,30 @@ const graffiti = new Schema({
         required: true
     },
 
+    city: {
+        type: String,
+        required: true
+    },
+
+    address: {
+        type: String
+    },
+
+    postalCode: {
+        type: Number
+    },
+
+    location: {
+        type: String
+    },
+
+    style: {
+        type: String,
+        required: true,
+        enum: ['unknown', 'tags', '3d', 'bombing', 'bubbles', 'blockbuster', 'realism', 'icons', 'trash', 'abstract'],
+        default: 'unknown'
+    },
+
     status: {
         type: String,
         required: true,
@@ -65,15 +58,12 @@ const graffiti = new Schema({
     },
 
     spray: {
-        type: String,
-        required: false
+        type: String
     },
 
     color: {
-        type: String,
-        required: false
+        type: String
     }
-
 
 })
 
