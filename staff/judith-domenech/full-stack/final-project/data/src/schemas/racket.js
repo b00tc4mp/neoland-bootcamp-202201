@@ -34,7 +34,7 @@ const racket = new Schema({
         required: true
     },
 
-    nivel:{
+    level:{
         type: String,
         required: true
     },

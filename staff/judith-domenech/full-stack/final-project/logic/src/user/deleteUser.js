@@ -1,7 +1,6 @@
 const { models: { User, Comment } } = require('data')
 const { validators: { validateId, validatePassword } } = require('commons')
-const { user } = require('data/src/Schemas')
-const { comment } = require('data/src/schemas')
+
 
 
 function deleteUser(userId, password) {

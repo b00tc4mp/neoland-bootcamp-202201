@@ -8,6 +8,16 @@ const {
     updateUser,
     updatePassword,
     deleteUser,
+    createComment,
+    listComments,
+    retrieveComment,
+    deleteComment,
+    toggleFavorite,
+    listFavorites,
+    searchRackets,
+    listRackets,
+    retrieveRacket,
+    searchYourRacket
    
 } = require('./handlers')
 
@@ -31,6 +41,19 @@ connect(MONGODB_URL)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updatePassword)
         api.delete('/users', jsonBodyParser, deleteUser)
+
+        api.post('/racket?q=${query}', jsonBodyParser, searchRackets) ////??????????
+        api.get('/rackets/:racketId', retrieveRacket)
+        api.get('/rackets', listRackets)
+        api.post('/rackets', jsonBodyParser, toggleFavorite)
+        api.get('/rackets/favorites', listFavorites)
+        api.post('/rackets/:racketId', jsonBodyParser, searchYourRacket)
+
+        api.post('/comment', jsonBodyParser, createComment)
+        api.get('/comment/:commentId', retrieveComment)
+        api.get('/comment', listComments)
+        api.delete('/comment/:commentId', jsonBodyParser, deleteComment)
+             
 
         server.use('/api', api)
 

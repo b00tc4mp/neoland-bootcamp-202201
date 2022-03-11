@@ -4,6 +4,16 @@ const retrieveUser = require('./retrieveUser')
 const updateUser = require('./updateUser')
 const updatePassword = require('./updatePassword')
 const deleteUser = require('./deleteUser')
+const toggleFavorite = require('./toggleFavorites')
+const listFavorites = require('./listFavorites')
+const createComment = require('./createComment')
+const listComments = require('./listComments')
+const retrieveComment = require('./retrieveComment')
+const deleteComment = require('./deleteComment')
+const searchRackets = require('./searchRackets')
+const listRackets = require('./listRackets')
+const retrieveRacket = require('./retrieveRacket')
+const searchYourRacket = require('./searchYourRacket')
 
 module.exports = {
     registerUser,
@@ -12,4 +22,15 @@ module.exports = {
     updateUser,
     updatePassword,
     deleteUser,
+    createComment,
+    listComments,
+    retrieveComment,
+    deleteComment,
+    toggleFavorite,
+    listFavorites,
+    searchRackets,
+    listRackets,
+    retrieveRacket,
+    searchYourRacket
+
 }

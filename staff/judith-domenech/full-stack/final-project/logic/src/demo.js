@@ -13,7 +13,8 @@ const {
     toggleFavorite,
     listComments,
     retrieveRacket,
-    searchRackets
+    searchRackets,
+    searchYourRacket
 
 } = require('./index')
 
@@ -46,13 +47,13 @@ connect('mongodb://localhost:27017/racketMatch-db')
 
     .then(() => authenticateUser('pepitogrillo@gmail.com', '234234234'))
     .then(userId => {
-        return toggleFavorite (userId,'62288bf8d1170a4f727e5837')
+        return toggleFavorite (userId,'622a1dc649d42a4a1d1419a9')
         .then(() => console.log('favorite toggled'))
     }) 
 
     .then(() => authenticateUser('pepitogrillo@gmail.com', '234234234'))
     .then(userId => {
-        return toggleFavorite (userId,'62288bf8d1170a4f727e5836')
+        return toggleFavorite (userId,'622a1dc649d42a4a1d1419a8')
         .then(() => console.log('favorite toggled'))
     }) 
     
@@ -80,11 +81,13 @@ connect('mongodb://localhost:27017/racketMatch-db')
             })
     })
 
-    .then(() =>  searchRackets('Alpha'))
+    .then(() =>  searchRackets('ALPHA'))
     .then(results => console.log(results))
     
-
-
+    .then(() =>  searchYourRacket('control', 360, 'avanzado', 'tecnico' ))
+    .then(results => console.log(results, 'tu pala'))
+    
+   
 /* 
     .then(() => {
         return retrieveComment(comment)

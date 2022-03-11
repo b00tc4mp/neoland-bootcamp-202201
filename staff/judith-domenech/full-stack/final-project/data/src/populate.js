@@ -30,16 +30,18 @@ connect('mongodb://localhost:27017/racketMatch-db')
 
             .then(([ head, adidas ]) => {
                
-                const alpha = new Racket({ brand: head.id, model: 'alpha', type: 'control', weight: 360, player: 'aereo',  price: 218, nivel: 'avanzado ', description: 'Con un formato de lágrima y un balance centrado supone una opción ideal para aquellos jugadores de nivel avanzado que buscan una pala polivalente que tenga una gran relación entre potencia y control', image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21814-42210f7e-23406-NORMAL.jpg'})
-                const metalbone = new Racket({ brand: adidas.id, model: 'metalbone 3.1', type: 'potencia',  weight: 360, player: 'tecnico', price: 318, nivel: 'avanzado ', description: 'Con forma de diamante, esta raqueta descubre otra dimensión en el pádel gracias a la posibilidad de personalizar el peso y el balance según las exigencias de cada partido. Con esta raqueta podrás marcar la diferencia en los golpes de ataque gracias a la potencia. Perfil del jugador: Raqueta diseñada para jugadores de nivel profesional o avanzado que desarrollan un juego de ataque basado en la potencia.', image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25653-0faf6c8f-26849-NORMAL.jpg'})
+                const alpha = new Racket({ brand: head.id, model: 'alpha', type: 'control', weight: 360, player: 'aereo',  price: 218, level: 'avanzado ', description: 'Con un formato de lágrima y un balance centrado supone una opción ideal para aquellos jugadores de nivel avanzado que buscan una pala polivalente que tenga una gran relación entre potencia y control', image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21814-42210f7e-23406-NORMAL.jpg'})
+               
+                const adipower = new Racket({ brand: adidas.id, model: 'adipower light 3.0', type: 'control',  weight: 345, player: 'tecnico', price: 154, level: 'bajo, medio, avanzado', description: 'Para jugadores que buscan golpes controlados y precisos en todo momento. Su forma es redonda, con un balance bajo y un peso aproximado entre los 345-360 gramos, ideal para conseguir mayor manejabilidad y equilibrio. Cuenta con un amplio punto dulce al centro que favorece las salidas de la bola. Su perfil de 38 mm.', image:'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21767-e5332038-23356-NORMAL.jpg'})
+                const metalbone = new Racket({ brand: adidas.id, model: 'metalbone 3.1', type: 'potencia',  weight: 360, player: 'tecnico', price: 318, level: 'avanzado ', description: 'Con forma de diamante, esta raqueta descubre otra dimensión en el pádel gracias a la posibilidad de personalizar el peso y el balance según las exigencias de cada partido. Con esta raqueta podrás marcar la diferencia en los golpes de ataque gracias a la potencia. Perfil del jugador: Raqueta diseñada para jugadores de nivel profesional o avanzado que desarrollan un juego de ataque basado en la potencia.', image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25653-0faf6c8f-26849-NORMAL.jpg'})
 
-                return Promise.all([ alpha.save(), metalbone.save()])
+                return Promise.all([ alpha.save(), metalbone.save(), adipower.save()])
             })
 
             .then(rackets => {
 
-                const [alpha, metalbone] = rackets
-                const [ agua, ora, anonymous] = users
+                const [alpha, metalbone, ] = rackets
+                const [ agua, ora] = users
 
                 const alphaComment = new Comment({ user: agua.id, racket: alpha.id, text: 'increible pala, con mucho control, desde la primera vez que la use la he hecho mia!!'})
                 const metalboneComment = new Comment({ user: ora.id, racket: metalbone.id, text: 'una pala muy técnica, y muy rugosa, no esta hecha para todo el mundo '})
