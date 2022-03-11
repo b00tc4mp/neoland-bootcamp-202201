@@ -5,6 +5,10 @@ const deleteUser = require('./deleteUSer')
 const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
 const addQuestion = require('./addQuestion')
+const retrieveQuestion = require('./retrieveQuestion')
+const listQuestions = require('./listQuestions')
+const addAnswer = require('./addAnswer')
+const addComment = require('./addComment')
 
 module.exports = {
     registerUser,
@@ -13,5 +17,9 @@ module.exports = {
     deleteUser,
     updateUser,
     updateUserPassword,
-    addQuestion
+    addQuestion,
+    retrieveQuestion,
+    listQuestions,
+    addAnswer,
+    addComment
 }

@@ -8,10 +8,13 @@ const {
     updateUser,
     updateUserPassword,
     deleteUser,
-    addQuestion
+    addQuestion,
+    retrieveQuestion,
+    addAnswer
 } = require('./handlers')
 
 const cors = require('cors')
+const { listQuestions } = require('logic')
 
 const { env: { PORT, MONGODB_URL }} = process
 
@@ -30,6 +33,10 @@ connect(MONGODB_URL)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
         api.post('/questions', jsonBodyParser, addQuestion)
+        api.get('/questions', listQuestions)
+        api.get('/questions/:questionId', retrieveQuestion)
+        api.post('/questions/:questionId', jsonBodyParser, addAnswer)
+
 
         server.use('/api', api)
 
