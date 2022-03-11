@@ -1,20 +1,19 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function retrieveUser(id) {
-    validateId(id)
+function retrieveUser(userId) {
+    validateId(userId)
 
-    return User.findById(id)
+    return User.findById(userId).lean()
         .then((user) => {
 
             if (!user) throw new Error(`user with id ${userId} does not exist`)
-            const doc = user._doc
 
-            delete doc._id
-            delete doc.password
-            delete doc.__v
+            delete user._id
+            delete user.password
+            delete user.__v
 
-            return doc
+            return user
         })
 }
 

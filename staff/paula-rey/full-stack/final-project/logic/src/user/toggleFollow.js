@@ -2,6 +2,7 @@ const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function toggleFollow(userId, followId) {
+
     validateId(userId, 'userId')
     validateId(followId, 'followId')
 
@@ -11,6 +12,7 @@ function toggleFollow(userId, followId) {
         .then(_user => {
             if (!_user) throw new Error(`user with id ${userId} does not exist`)
             user = _user
+
             return User.findById(followId)
         })
         .then(follow => {
@@ -23,8 +25,6 @@ function toggleFollow(userId, followId) {
             return user.save()       
         })
         .then(user => { })
-
-    
 }
 
 module.exports = toggleFollow

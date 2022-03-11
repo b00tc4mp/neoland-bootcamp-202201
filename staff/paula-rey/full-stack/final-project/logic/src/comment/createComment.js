@@ -1,15 +1,21 @@
 const { validators: { validateId, validateString } } = require('commons')
-const { models: { Comment } } = require('data')
+const { models: { Comment, User } } = require('data')
 
 function createComment(userId, locationId, text) {
-    validateId(userId)
-    validateId(locationId)
+
+    validateId(userId, 'user id')
+    validateId(locationId, 'location id')
     validateString(text, 'text')
 
+    return User.findById(userId)
 
-    return Comment.create({ user: userId, location: locationId, text })
-        //.then(comment => { }) temporal*
-        .then(comment => comment.id)
+    .then(user => {
+
+        if(!user) throw Error(`user with id ${userId} not found`)
+
+        return Comment.create({ user: userId, location: locationId, text })
+    })
+    .then(comment => comment.id)
 }
 
 module.exports = createComment

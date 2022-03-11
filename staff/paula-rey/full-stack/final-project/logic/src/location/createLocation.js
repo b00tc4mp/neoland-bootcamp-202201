@@ -1,16 +1,16 @@
 const { validators: { validateId, validateString } } = require('commons')
 const { models: { Location } } = require('data')
 
-function createLocation(userId, type, name, image, address, city) {
+function createLocation(userId, type, title, image, address, city) {
     validateId(userId, 'userId')
     validateString(type, 'type')
-    validateString(name, 'name')
+    validateString(title, 'title')
     validateString(image, 'image')
     validateString(address, 'address')
     validateString(city, 'city')
 
-    return Location.create({ user: userId, type, name, image, address, city })
-        //.then(location => { })
+    return Location.create({ user: userId, type, title, image, address, city })
+        //.then(location => { }) temporal*
         .then(location => location.id)
 }
 

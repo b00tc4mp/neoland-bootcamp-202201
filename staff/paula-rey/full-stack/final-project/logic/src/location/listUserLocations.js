@@ -24,4 +24,3 @@ function listUserLocations(userId) {
 
 module.exports = listUserLocations
 
-//testear!!!

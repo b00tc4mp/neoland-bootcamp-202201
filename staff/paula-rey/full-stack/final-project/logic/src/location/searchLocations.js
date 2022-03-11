@@ -8,7 +8,7 @@ function searchLocations(query) {
     const QUERY_REGEX = new RegExp(`${query}`, "i")
 
 
-    return Location.find({$or:[{name: QUERY_REGEX},{type: QUERY_REGEX},{address: QUERY_REGEX},{city: QUERY_REGEX}]})
+    return Location.find({$or:[{title: QUERY_REGEX},{type: QUERY_REGEX},{address: QUERY_REGEX},{city: QUERY_REGEX}]})
         .then(results => {
            
             const docs = results.map(location => {

@@ -10,6 +10,7 @@ function listFollows(userId) {
             if(!user) throw new Error(`user with id ${userId} does not exist`)
 
             return user.follows
+            // Sanitize like favs
         })
 }
 
