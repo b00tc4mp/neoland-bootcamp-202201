@@ -1,25 +1,20 @@
-const { validators: { validateId } } = require('commons')
 const { models: { Product } } = require('data')
 
-function listProducts(userId) {
-    validateId(userId, 'userId')
-
-    return Product.find({ user: userId})
+function listProducts() {
+    return Product.find({}).lean()
         .then(products => {
-
-            const docs = products.map(product => {
-                const doc = product._doc
-
+            products.forEach(product => {
                 //sanitize
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.user
-                delete doc.__v
+                product.id = product._id.toString()
 
-                return doc
+                delete product._id
+                delete product.user
+                delete product.__v
+
+                return product
             })
 
-            return docs
+            return products
         })
 }
 
