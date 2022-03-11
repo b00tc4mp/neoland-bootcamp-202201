@@ -54,7 +54,7 @@ function validateString(string, explain = 'string') {
     if (typeof string !== 'string') throw new TypeError(`${explain} is not a string`)
     if (string === '') throw new Error(`empty ${explain}`)
     if (BLANK_REGEX.test(string)) throw new Error(`blank ${explain}`)
-    if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
+    return true
 }
 
 function validateId(id, explain = 'id') {
@@ -77,6 +77,13 @@ function validateUsername(username) {
 function validateNumber(number, explain = 'number') {
     if (typeof number !== 'number') throw new TypeError(`${explain} is not a number`)
     if (number === '') throw new Error(`empty ${explain}`)
+    return true
+}
+
+function validateDate(date, explain = 'date') {
+    if (!(date instanceof Date)) throw new TypeError(`${explain} is not a date`)
+    if (date === '') throw new Error(`empty ${explain}`)
+    return true
 }
 
 module.exports = {
@@ -87,5 +94,6 @@ module.exports = {
     validateId,
     validateBoolean,
     validateUsername,
-    validateNumber
+    validateNumber,
+    validateDate
 }

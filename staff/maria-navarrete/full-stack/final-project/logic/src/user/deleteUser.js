@@ -1,7 +1,6 @@
 const { models: { User, Action, Schedule } } = require('data')
 const { validators: { validateId, validatePassword } } = require('commons')
 
-
 function deleteUser(userId, password) {
     validateId(userId)
     validatePassword(password)
@@ -22,6 +21,5 @@ function deleteUser(userId, password) {
         })
 
 }
-
 
 module.exports = deleteUser

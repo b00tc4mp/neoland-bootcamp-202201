@@ -4,7 +4,7 @@ const {
     deleteUser,
     listFavorites,
     listFriends,
-    listUsers,
+    findUsers,
     registerUser,
     retrieveUser,
     retrieveUserPublicInfo,
@@ -12,9 +12,23 @@ const {
     toggleFriend,
     updateUser,
     updateUserPassword,
-    createAction, 
-    updateAction
+    createAction,
+    retrieveAction,
+    listUserPublicActions,
+    listUserActions,
+    updateAction,
+    deleteAction,
+    findActions,
+    createSchedule,
+    retrieveSchedule,
+    listSchedules,
+    updateSchedule,
+    deleteSchedule,
+    completeSchedule
 } = require('./index')
+
+let actionCreated
+let actionCreated2
 
 connect('mongodb://localhost:27017/beHooman-db')
     .then(() => Promise.all([
@@ -87,8 +101,68 @@ connect('mongodb://localhost:27017/beHooman-db')
             .then(friends => console.log(friends))
     })
 
-    .then(() => listUsers('a'))
+    .then(() => findUsers('123'))
     .then(users => console.log(users))
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return createAction(userId, 'Regala algo que no uses a una persona que lo necesite', true, 5, 0)
+            .then(actionId => {
+                actionCreated = actionId
+                console.log('action created', actionId)
+            })
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return createAction(userId, 'Invita a un desayuno a un necesitado', true, 10, 5)
+            .then(actionId => {
+                actionCreated2 = actionId
+                console.log('action created', actionId)
+            })
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveAction(userId, actionCreated)
+            .then(action => console.log(action))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return updateAction(userId, actionCreated, 'Regala ropa que no uses a un necesitado', false, 60, 0)
+            .then(() => console.log('action updated'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveAction(userId, actionCreated)
+            .then(action => console.log(action))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return listUserActions(userId)
+            .then(actions => console.log(actions))
+    })
+
+    .then(() => listUserPublicActions('622888b02edb8a6c907bda7c'))
+    .then(actions => console.log(actions))
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return deleteAction(userId, actionCreated)
+            .then(() => console.log('action deleted'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return deleteAction(userId, actionCreated2)
+            .then(() => console.log('action deleted'))
+    })
+
+    .then(() => findActions({ reqBudget: 0, query: 'RECOGER' }))
+    .then(result => console.log(result))
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {

@@ -1,7 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateString } } = require('commons')
 
-function listUsers(query) {
+function findUsers(query) {
     validateString(query, 'query')
     return User.find({ username: { $regex: `${query}` } })
         .then(users => {
@@ -24,4 +24,4 @@ function listUsers(query) {
         })
 }
 
-module.exports = listUsers
+module.exports = findUsers

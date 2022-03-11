@@ -1,7 +1,6 @@
 const { models: { User } } = require('data')
 const { validators: { validateEmail, validatePassword } } = require('commons')
 
-
 function authenticateUser(email, password) {
     validateEmail(email)
     validatePassword(password)

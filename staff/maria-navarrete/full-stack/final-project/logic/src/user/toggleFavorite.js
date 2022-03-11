@@ -3,7 +3,7 @@ const { validators: { validateId } } = require('commons')
 
 function toggleFavorite(userId, actionId) {
     validateId(userId, 'userId')
-    validateId(actionId, 'userId')
+    validateId(actionId, 'actionId')
 
     let action
 

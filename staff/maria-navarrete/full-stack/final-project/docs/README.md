@@ -1,11 +1,11 @@
-# beHooman
+# bHooman
 
-![alt beHooman Project](https://media.giphy.com/media/L4fB9di7ekn3F5PXaW/giphy.gif)
+![alt bHooman Project](https://media.giphy.com/media/L4fB9di7ekn3F5PXaW/giphy.gif)
 
 ## Intro
 ----
 
-BeHooman es una aplicación que busca crear una comunidad para compartir, crear e incentivar las buenas acciones que podemos hacer cada día por otros y por el planeta, de forma desinteresada y recordándonos ser más humanos cada día. 
+bHooman es una aplicación que busca crear una comunidad para compartir, crear e incentivar las buenas acciones que podemos hacer cada día por otros y por el planeta, de forma desinteresada y recordándonos ser más humanos cada día. 
 
 ## Functional Description
 ---
@@ -192,8 +192,15 @@ ___
 - TODO create App logics
 
 
+
+probar eliminar y modificar actions que alguien tenga agendadas
+
 ** TENER EN CUENTA
 revisar web push notifications 
 push api
 
+guardar el object id de anonymus en env
+
 no puedo editar ni eliminar una nota si algun otro usuario la ha agendado. 
+
+- todo fase 2 reglas de validación de repeticiones

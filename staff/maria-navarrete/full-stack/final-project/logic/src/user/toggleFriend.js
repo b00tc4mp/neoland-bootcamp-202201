@@ -3,7 +3,7 @@ const { validators: { validateId } } = require('commons')
 
 function toggleFriend(userId, friendId) {
     validateId(userId, 'userId')
-    validateId(friendId, 'userId')
+    validateId(friendId, 'friendId')
 
     let user
 
