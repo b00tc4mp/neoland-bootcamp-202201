@@ -22,7 +22,9 @@ function updateProduct(userId, productId, name, size, color, price, description)
 
             product.name = name
             product.size = size
-            // ...
+            product.color = color
+            product.price = price
+            product.description = description
 
             return product.save()
         })
