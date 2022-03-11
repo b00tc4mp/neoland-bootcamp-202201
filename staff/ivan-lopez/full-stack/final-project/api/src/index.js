@@ -13,7 +13,8 @@ const {
         listProducts,
         deleteProduct,
         retrieveProduct,
-        updateProduct
+        updateProduct,
+        registerAdmin
 
 
      } = require('./handlers')
@@ -35,7 +36,8 @@ connect(MONGODB_URL)
         const api = express.Router()
 
         
-        api.post('/users', jsonBodyParser, registerUser)
+        api.post('/users/admin', jsonBodyParser, registerAdmin)
+        api.post('/users/', jsonBodyParser, registerUser)
         api.post('/users/auth', jsonBodyParser, authenticateUser)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
@@ -43,8 +45,8 @@ connect(MONGODB_URL)
         api.delete('/users', jsonBodyParser, deleteUser)
 
         api.post('/products', jsonBodyParser, addProduct)
-        api.get('/products', listProducts)
         api.get('/products/:productId', retrieveProduct)
+        api.get('/products', listProducts)
         api.patch('/products/:productId', jsonBodyParser, updateProduct)
         api.delete('/products/:productId', jsonBodyParser, deleteProduct)
 

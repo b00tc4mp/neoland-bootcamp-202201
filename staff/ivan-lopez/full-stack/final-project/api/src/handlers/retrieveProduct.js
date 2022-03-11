@@ -1,14 +1,13 @@
 const { retrieveProduct } = require('logic')
-const { verifyTokenAndGetUserId } = require('../helpers')
+//const { verifyTokenAndGetUserId } = require('../helpers')
 
 module.exports = (req, res) => {
     try {
 
-        const userId = verifyTokenAndGetUserId(req)
+        //const userId = verifyTokenAndGetUserId(req)
         const { params: { productId } } = req
-
-
-        retrieveProduct(userId, productId)
+        
+        retrieveProduct(productId)
             .then(product => res.status(200).json(product))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

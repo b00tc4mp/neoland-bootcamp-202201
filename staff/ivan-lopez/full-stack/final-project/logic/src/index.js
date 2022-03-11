@@ -9,6 +9,7 @@ const listProducts = require ('./listProducts')
 const deleteProduct = require ('./deleteProduct')
 const retrieveProduct = require ('./retrieveProduct')
 const updateProduct = require ('./updateProduct')
+const registerAdmin = require('./registerAdmin')
 
 module.exports = {
     registerUser,
@@ -21,5 +22,6 @@ module.exports = {
     listProducts,
     deleteProduct,
     retrieveProduct,
-    updateProduct
+    updateProduct,
+    registerAdmin
 }
