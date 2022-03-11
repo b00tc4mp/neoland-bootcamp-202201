@@ -8,7 +8,7 @@ function retrieveSchedule(userId, scheduleId) {
     return Schedule.find({ _id: scheduleId, user: userId }).populate('action')
         .then(schedule => {
 
-            if (!schedule) throw new Error(`no schedule found with id ${scheduleId} and user ${userId}`)
+            if (!schedule) throw new Error(`schedule with id ${scheduleId} for user id ${userId} does not exist`)
 
             const doc = schedule._doc
 

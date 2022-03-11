@@ -21,7 +21,7 @@ const schedule = new Schema({
 
     repeat: {
         type: String,
-        enum : ['once', 'daily', 'weekly', 'biweekly', 'monthly'],
+        enum : ['once', 'daily', 'weekly', 'biweekly', 'monthly', 'none'],
         default: 'once',
         required: true,
     },

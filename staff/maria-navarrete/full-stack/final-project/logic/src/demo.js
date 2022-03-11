@@ -23,14 +23,14 @@ const {
     retrieveSchedule,
     listSchedules,
     updateSchedule,
-    deleteSchedule,
+    cancelSchedule,
     completeSchedule
 } = require('./index')
 
 let actionCreated
 let actionCreated2
 
-connect('mongodb://localhost:27017/beHooman-db')
+connect('mongodb://localhost:27017/bHooman-db')
     .then(() => Promise.all([
         User.deleteOne({ email: 'pepito@grillo.com' })
     ]))
@@ -67,13 +67,13 @@ connect('mongodb://localhost:27017/beHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '622888b02edb8a6c907bda88')
+        return toggleFavorite(userId, '622b3438889e5584929ab41b')
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '622888b02edb8a6c907bda89')
+        return toggleFavorite(userId, '622b3438889e5584929ab419')
             .then(() => console.log('favorite toggled'))
     })
 
@@ -85,13 +85,13 @@ connect('mongodb://localhost:27017/beHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '622888b02edb8a6c907bda7e')
+        return toggleFriend(userId, '622b3437889e5584929ab3ff')
             .then(() => console.log('friend toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '622888b02edb8a6c907bda7d')
+        return toggleFriend(userId, '622b3437889e5584929ab3fe')
             .then(() => console.log('friend toggled'))
     })
 
@@ -124,19 +124,19 @@ connect('mongodb://localhost:27017/beHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return retrieveAction(userId, actionCreated)
+        return retrieveAction(userId, actionCreated2)
             .then(action => console.log(action))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return updateAction(userId, actionCreated, 'Regala ropa que no uses a un necesitado', false, 60, 0)
+        return updateAction(userId, actionCreated2, 'Usa medios de transporte sostenibles hoy', false, 60, 0)
             .then(() => console.log('action updated'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return retrieveAction(userId, actionCreated)
+        return retrieveAction(userId, actionCreated2)
             .then(action => console.log(action))
     })
 
@@ -146,8 +146,11 @@ connect('mongodb://localhost:27017/beHooman-db')
             .then(actions => console.log(actions))
     })
 
-    .then(() => listUserPublicActions('622888b02edb8a6c907bda7c'))
-    .then(actions => console.log(actions))
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return listUserPublicActions(userId)
+            .then(actions => console.log(actions))
+    })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
@@ -161,7 +164,7 @@ connect('mongodb://localhost:27017/beHooman-db')
             .then(() => console.log('action deleted'))
     })
 
-    .then(() => findActions({ reqBudget: 0, query: 'RECOGER' }))
+    .then(() => findActions({ reqBudget: 0, query: 'RECOGE' }))
     .then(result => console.log(result))
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))

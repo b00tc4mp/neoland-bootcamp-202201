@@ -68,7 +68,7 @@ schedules
 - user (ObjectId: User, required)
 - action (ObjectId: Action, required)
 - date (Date, required)
-- repeat (String ['once', 'daily', 'weekly', 'biweekly', 'monthly'], default: 'once', required)
+- repeat (String ['once', 'daily', 'weekly', 'biweekly', 'monthly', 'none'], default: 'once', required)
 - completed ([Date])
 
 ![alt Data Model](./images/ERDiagram.jpg)
@@ -169,17 +169,18 @@ ___
 
 - ~~DONE create mongoose schemas and models (2h)~~
 - ~~DONE create populate.js to test my models (1h) ~~
+- ~~DONE populate database with actions~~
 
 ### Logic
-- ~~DOING create logic methods (20h)~~
-- ~~DOING test logic methods in demo.js (4h)~~
+- ~~DONE create logic methods (20h)~~
+- ~~DONE test logic methods in demo.js (4h)~~
 
 ### API
 
-- TODO create helpers (1h)
-- TODO create .env (0.5h)
-- TODO create handlers(30h)
-- TODO create index.js (8h)
+- DOING create helpers (1h)
+- DOING create .env (0.5h)
+- DOING create handlers(3h)
+- DOING create index.js (2h)
 
 ## Client
 
