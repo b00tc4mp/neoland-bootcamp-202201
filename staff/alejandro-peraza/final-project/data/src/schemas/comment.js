@@ -7,6 +7,7 @@ const comment = new Schema({
         ref: 'User',
         required: true
     },
+    
     recipe: {
         type: ObjectId,
         ref: 'Recipe',

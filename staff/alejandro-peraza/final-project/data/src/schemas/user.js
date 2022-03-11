@@ -17,14 +17,19 @@ const user = new Schema({
     password: {
         type: String,
         required: true
-
     },
 
-    favs: {
+    favs: [{
         type: ObjectId,
-        unique: true
-    },
+        ref: 'Recipe'
+    }],
 
+    role: {
+        type: String,
+        required: true,
+        enum: ['user', 'admin'],
+        default: 'user'
+    }
 })
 
 module.exports = user

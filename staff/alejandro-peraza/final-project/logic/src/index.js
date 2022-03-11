@@ -8,11 +8,10 @@ const createComment = require('./createComment')
 const updateComment = require('./updateComment')
 const deleteComment = require('./deleteComment')
 const createRecipe = require('./createRecipe')
-const findRecipeByName = require('./findRecipeByName')
-const findRecipeByType = require('./findRecipeByType')
-const findRecipeByDestilled = require('./findRecipeByDestilled')
-const listRecipe = require('./listRecipe')
+const updateRecipe = require('./updateRecipe')
+const retrieveFavRecipes = require('./retrieveFavRecipes')
 const deleteRecipe = require('./deleteRecipe')
+const retrieveRecipe = require('./retrieveRecipe')
 
 module.exports = {
     registerUser,
@@ -25,9 +24,8 @@ module.exports = {
     updateComment,
     deleteComment,
     createRecipe,
-    findRecipeByName,
-    findRecipeByType,
-    findRecipeByDestilled,
-    listRecipe,
-    deleteRecipe
+    updateRecipe,
+    retrieveFavRecipes,
+    deleteRecipe,
+    retrieveRecipe
 }

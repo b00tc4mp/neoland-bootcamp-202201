@@ -10,6 +10,8 @@ const deleteComment = require('./deleteComment')
 const createRecipe = require('./createRecipe')
 const listRecipe = require('./listRecipe')
 const deleteRecipe = require('./deleteRecipe')
+const updateRecipe = require('./updateRecipe')
+const retrieveRecipe = require('./retrieveRecipe')
 
 module.exports = {
     registerUser,
@@ -23,5 +25,7 @@ module.exports = {
     deleteComment,
     createRecipe,
     listRecipe,
-    deleteRecipe
+    deleteRecipe,
+    updateRecipe,
+    retrieveRecipe
 }

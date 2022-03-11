@@ -1,14 +1,13 @@
+const { updateRecipe } = require('logic')
 const { verifyTokenAndGetUserId } = require('../helpers')
-const { deleteRecipe } = require('logic')
 
 module.exports = (req, res) => {
     try {
-     
+        
         const userId = verifyTokenAndGetUserId(req)
+        const { body: { name, type, destilled, description, comment }, params: { recipeId } } = req
 
-        const { params: { recipeId } } = req
-
-        deleteRecipe(userId, recipeId)
+        updateRecipe(userId, recipeId, name, type, destilled, description, comment)
             .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

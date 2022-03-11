@@ -14,15 +14,15 @@ const {
     updateComment,
     deleteComment,
     createRecipe,
-    findRecipeByName,
-    findRecipeByType,
-    findRecipeByDestilled,
+    updateRecipe,
     listRecipe,
-    deleteRecipe
+    deleteRecipe,
+    retrieveRecipe
 
 } = require('./handlers')
 
 const cors = require('cors')
+
 
 const { env: { PORT, MONGODB_URL } } = process
 
@@ -56,11 +56,10 @@ connect(MONGODB_URL)
         api.patch('/notes/:commentId', jsonBodyParser, updateComment)
         api.delete('/notes/:commentId', jsonBodyParser, deleteComment)
         api.post('/recipe', jsonBodyParser, createRecipe)
-        /*api.post('/recipe', jsonBodyParser, findRecipeByName)
-        api.post('/recipe', jsonBodyParser, findRecipeByType)
-        api.post('/recipe', jsonBodyParser, findRecipeByDestilled)*/
+        api.patch('/recipe/:recipeId', jsonBodyParser, updateRecipe)
         api.get('/recipe',listRecipe)
         api.delete('/recipe/:recipeId', jsonBodyParser, deleteRecipe)
+        api.get('/recipe', retrieveRecipe)
 
         server.use('/api', api)
 
