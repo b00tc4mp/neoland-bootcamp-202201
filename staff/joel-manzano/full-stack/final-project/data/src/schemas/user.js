@@ -1,10 +1,7 @@
 const { Schema } = require('mongoose')
 
 const user = new Schema({
-    is_artist: {
-        type: Boolean,
-        required: true
-    },
+    
     
     name: {
         type: String,

@@ -1,8 +1,14 @@
-const { Schema } = require('mongoose')
+const { Schema, Types: { ObjectId } } = require('mongoose')
+
 
 const graffiti = new Schema({
-    
-    artist_name: {
+
+    user: {
+        type: ObjectId,
+        required: true
+    },
+
+    artist: {
         type: String,
         required: false
     },
@@ -47,7 +53,7 @@ const graffiti = new Schema({
     },
 
     image: {
-        type: File,
+        type: String,
         required: true
     },
 
@@ -58,7 +64,7 @@ const graffiti = new Schema({
         default: 'exists'
     },
 
-    spray_brand: {
+    spray: {
         type: String,
         required: false
     },

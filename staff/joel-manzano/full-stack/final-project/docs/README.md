@@ -60,30 +60,35 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 ### Blocks
 ![alt blocks](./images/Blocks.png)
 ### Data Model
-![alt Database](./images/er-diagram.png)
-User
+
+#### Schemas
+
+ user
 - name (string, required, min length 2)
 - email (string, required, unique)
 - password (string, required, min length 8)
-- is_artists (boolean, required)
 
-Graffiti
-- artist_name(string, not required)
-- city(string, required)
-- street(string, required)
-- number(string, not required)
-- postal_code(string, not required)
-- location(string, required)
-- style(string, required, enum:['unkown', 'tags', '3d', 'bombing',   'bubbles', 'blockbuster', 'realism', 'icons', 'trash', 'abstract'],default:'unknown')
-- description(string, required, min/max_length 2/200)
-- image(file, required)
-- status(string, required, enum:['exists', 'trampled', 'cleaned up'], default:'exists') 
-- spray_brand(string, not required)
-- color(string, not required)
+graffiti
+- user (object id)
+- artist (string, not required)
+- city (string, required)
+- street (string, required)
+- number (string, not required)
+- postalCode (string, not required)
+- location (string, required)
+- style (string, required, enum:['unkown', 'tags', '3d', 'bombing',   'bubbles', 'blockbuster', 'realism', 'icons', 'trash', 'abstract'],default:'unknown')
+- description (string, required, min/max_length 2/200)
+- image (string, required)
+- status (string, required, enum:['exists', 'trampled', 'cleaned up'], default:'exists') 
+- spray (string, not required)
+- colors ([string], not required)
 
+#### E/R Diagram
+
+![alt Database](./images/er-diagram.png)
 
 <!-- TODO:
 data
 wireframes
 Review flows with UX/UI student
--->
+--> 
