@@ -5,7 +5,7 @@ module.exports = (req, res) => {
         const { params: { commentId } } = req
 
         listComments(commentId)
-            .then(notes => res.json(notes))
+            .then(comments => res.json(comments))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

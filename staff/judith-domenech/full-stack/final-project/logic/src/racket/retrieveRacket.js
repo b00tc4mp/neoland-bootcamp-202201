@@ -1,25 +1,20 @@
 const { models: { Racket } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function retriveRackets(racketId){
+function retriveRackets(racketId) {
     validateId(racketId)
 
-    return Racket.findById(racketId)
+    return Racket.findById(racketId).lean().populate('brand')
         .then(racket => {
-            if(!racket) throw new Error(`racket with id ${racketId} does not exist`)
+            if (!racket) throw new Error(`racket with id ${racketId} does not exist`)
 
-                   const doc = racket._doc
-        
-                    // sanitize
-                    delete doc._id
-                    delete doc.__v
+            racket.id = racket._id.toString()
+            delete racket._id
+            delete racket.__v
 
-                    doc.userId = doc.user._id
-                    doc.userName = doc.user.name
+            racket.brand = racket.brand.name
 
-                    delete doc.user
-        
-                    return doc 
+            return racket
         })
 }
 

@@ -81,7 +81,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
             })
     })
 
-    .then(() =>  searchRackets('ALPHA'))
+    .then(() =>  searchRackets('heaD'))
     .then(results => console.log(results))
     
     .then(() =>  searchYourRacket('control', 360, 'avanzado', 'tecnico' ))

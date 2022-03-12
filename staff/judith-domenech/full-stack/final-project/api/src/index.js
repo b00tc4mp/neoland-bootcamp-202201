@@ -17,8 +17,7 @@ const {
     searchRackets,
     listRackets,
     retrieveRacket,
-    searchYourRacket
-   
+    searchYourRacket  
 } = require('./handlers')
 
 const cors = require('cors')
@@ -40,20 +39,20 @@ connect(MONGODB_URL)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updatePassword)
+        api.get('/users/favs', listFavorites)
+        api.patch('/users/favs', jsonBodyParser, toggleFavorite)
         api.delete('/users', jsonBodyParser, deleteUser)
 
-        api.post('/racket?q=${query}', jsonBodyParser, searchRackets) ////??????????
+        // api.get('/rackets', listRackets)
+        api.get('/rackets', searchRackets) 
         api.get('/rackets/:racketId', retrieveRacket)
-        api.get('/rackets', listRackets)
-        api.post('/rackets', jsonBodyParser, toggleFavorite)
-        api.get('/rackets/favorites', listFavorites)
-        api.post('/rackets/:racketId', jsonBodyParser, searchYourRacket)
+        api.post('/rackets/', jsonBodyParser, searchYourRacket)
 
-        api.post('/comment', jsonBodyParser, createComment)
-        api.get('/comment/:commentId', retrieveComment)
-        api.get('/comment', listComments)
-        api.delete('/comment/:commentId', jsonBodyParser, deleteComment)
-             
+       api.post('/comments/:racketId', jsonBodyParser, createComment)
+       api.get('/comments/:racketId', listComments)
+       api.get('/comment/:commentId', retrieveComment)
+       api.delete('/comment/:commentId', jsonBodyParser, deleteComment)
+              
 
         server.use('/api', api)
 

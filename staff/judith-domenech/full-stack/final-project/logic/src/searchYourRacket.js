@@ -4,7 +4,7 @@ const { validators: { validateString } } = require('commons')
 
 function searchYourRacket(type, weight, player, level) {
 
-    return Racket.find()
+    return Racket.find().lean().populate('brand')
         .then(rackets => {
             
            
@@ -13,3 +13,6 @@ function searchYourRacket(type, weight, player, level) {
 }
 
 module.exports = searchYourRacket
+
+// find por los campos que queiras buscar y siempre debe dar un resultado
+// ejemplo find({player, level, type, weight})

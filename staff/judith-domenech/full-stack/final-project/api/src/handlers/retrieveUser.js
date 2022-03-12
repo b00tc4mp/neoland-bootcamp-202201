@@ -6,7 +6,7 @@ module.exports = (req, res) => {
         const userId = verifyTokenAndGetUserId(req)
 
         retrieveUser(userId)
-            .then(user => res.json(user))
+            .then(user => res.status(200).json(user))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

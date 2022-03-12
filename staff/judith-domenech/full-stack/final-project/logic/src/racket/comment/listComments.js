@@ -1,25 +1,26 @@
 const { models: { Comment } } = require('data')
-const { validators: { validateId }} = require('commons')
+const { validators: { validateId } } = require('commons')
 
 function listComments(racketId) {
     validateId(racketId)
 
-    return Comment.find({ racket: racketId })
-        .then(comments => {
-            const docs = comments.map(comment => {
-                const doc = comment._doc
+    return Comment.find({ racket: racketId }).lean().populate('user')
+        .then(_comments => {
+            
+            if (!_comments) throw new Error(`comments with id ${_comments} does exist`)
 
-                // sanitize
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
+            const comments = _comments.map(comment => {
 
-                delete doc.racket
+                comment.id = comment._id.toString()
+                delete comment._id
+                delete comment.__v
+                delete comment.racket
+                comment.user = comment.user.name
 
-                return doc
+                return comment
             })
 
-            return docs
+            return comments
         })
 }
 
