@@ -36,6 +36,8 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => Promise.all([
         User.deleteOne({ email: 'pepito@grillo.com' }),
+        User.deleteOne({ email: 'agua@grillo.com' }),
+        User.deleteOne({ email: 'fire@grillo.com' }),
         Location.deleteMany(),
         Comment.deleteMany()
     ]))
@@ -91,12 +93,13 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return updateLocation(userId, locationId1, 'Hotel', 'Hostal Polaquera', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Rua las Polacas, 98', 'Barcelona')
+        return updateLocation(userId, locationId1, 'hotel', 'Hostal Polaquera', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Rua las Polacas, 98', 'barcelona')
             .then(() => console.log('location updated'))
     })
 
-    .then(() => {
-        return retrieveLocation(locationId1)
+    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
+    .then(userId => {
+        return retrieveLocation(userId, locationId1)
             .then(location => console.log(location))
     })
 
@@ -173,17 +176,21 @@ connect('mongodb://localhost:27017/dogether-db')
             return Promise.all([comment1, comment2])
     })
 
-    .then(() => listLocationsComments(locationId1))
-    .then((listComments) => console.log(listComments))
+    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
+    .then((userId) => {
+        return listLocationsComments(userId, locationId1)
+            .then((listComments) => console.log(listComments))
+    })
 
-    .then(() => {
-        return retrieveComment(commentId1)
+    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
+    .then((userId) => {
+        return retrieveComment(userId, locationId1, commentId1)
             .then(comment => console.log(comment))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then((userId) => {
-        return deleteComment(userId, commentId1)
+        return deleteComment(userId, locationId1, commentId1)
             .then(() => console.log('comment deleted'))
     })
 

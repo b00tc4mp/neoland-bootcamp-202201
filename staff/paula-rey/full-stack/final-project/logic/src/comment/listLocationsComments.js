@@ -1,26 +1,36 @@
-const { models: { Comment } } = require('data')     
-const { validators: { validateId }} = require('commons')
+const { validators: { validateId } } = require('commons')
+const { models: { User, Location, Comment } } = require('data')
 
-function listLocationsComments(locationId) {
+function listLocationsComments(userId, locationId) {
+    validateId(userId)
     validateId(locationId)
 
-    return Comment.find({ location: locationId })
-        .then(comments => {
+    return User.findById(userId)
+        .then(user => {
+            if (!user) throw new Error(`user with id ${userId} not found`)
 
-            const docs = comments.map(comment => {
-                const doc = comment._doc
-
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
-
-                delete doc.location
-
-                return doc
-            })
-
-            return docs
+            return Location.find({ user: userId })
         })
+        .then(location => {
+            if (!location) throw new Error(`location with id ${locationId} not found`)
+
+            return Comment.find({ location: locationId }).lean()
+                .then(comments => {
+                    comments.forEach(comment => {
+                        //comment.id = comment._id.toString()
+                        comment.user = comment.user.toString()
+
+                        delete comment._id
+                        delete comment.location
+                        delete comment.__v
+
+                        return comment
+                })
+                    return comments
+                        
+                })
+        })
+
 }
 
 module.exports = listLocationsComments

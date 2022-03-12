@@ -1,24 +1,27 @@
 const { validators: { validateId } } = require('commons')
-const { models: { Location } } = require('data')
+const { models: { User, Location } } = require('data')
 
 function listUserLocations(userId) {
     validateId(userId)
 
-    return Location.find({ user: userId })
-        .then(location => {
+    return User.findById(userId)
+        .then(user => {
+            if (!user) throw new Error(`user with id ${userId} not found`)
 
-            const docs = location.map(location => {
-                const doc = location._doc
+            return Location.find({ user: userId }).lean()
+                .then(locations => {
+                    locations.forEach(location => {
+                        location.id = location._id.toString()
 
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.user
-                delete doc.__v
+                        delete location._id
+                        delete location.user
+                        delete location.__v
 
-                return doc
-            })
+                        return location
+                    })
 
-            return docs
+                    return locations
+                })
         })
 }
 

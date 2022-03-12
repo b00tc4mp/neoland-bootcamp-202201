@@ -1,20 +1,26 @@
 const { validators: { validateId } } = require('commons')
-const { models: { Location } } = require('data')
+const { models: { Location, User } } = require('data')
 
-function retrievelocation(locationId) {
+function retrievelocation(userId, locationId) {
+    validateId(userId, 'user id')
     validateId(locationId, 'location id')
 
-    return Location.findById(locationId)
+    return User.findById(userId)
+        .then(user => {
+            if (!user) throw new Error(`user with id ${userId} not found`)
+
+            return Location.findById(locationId)
+        })
         .then(location => {
             if(!location) throw new Error(`location with id ${locationId} does not exist`)
 
-                const doc = location._doc
-
-                delete doc.user
-                delete doc._id
-                delete doc.__v
+            const doc = location._doc
+            
+            delete doc.user
+            delete doc._id
+            delete doc.__v
     
-                return doc
+            return doc
             
         })
 }
@@ -22,4 +28,3 @@ function retrievelocation(locationId) {
 
 module.exports = retrievelocation
 
-//testear
