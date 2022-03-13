@@ -1,17 +1,16 @@
-const { updateUserPassword } = require('logic')
 const { verifyTokenAndGetUserId } = require('../helpers')
+const { createComment } = require('logic')
 
-module.exports = (req, res) => {
+module.exports = (req,res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
-        
-        const { body: { currPassword, newPassword } } = req
 
-        updateUserPassword({ userId, currPassword, newPassword })
-            .then(() => res.status(200).send())
+        const { body: { text } } = req
+
+        createComment(userId, locationId, text )
+            .then(() => res.status(201).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
 }
-

@@ -1,11 +1,11 @@
-const { listUserLocations } = require('logic')
+const { listLocationComments } = require('logic')
 
 module.exports = (req, res) => {
     try {
-        const { params: { userId } } = req
+        const { params: { locationId } } = req
 
-        listUserLocations(userId)
-            .then(locations => res.json(locations))
+        listLocationComments(userId, locationId)
+            .then(comments => res.json(comments))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

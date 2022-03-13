@@ -7,6 +7,8 @@ const { registerUser,
         authenticateUser,
         updateUser,
         updateUserPassword,
+        listFavorites,
+        listFollows,
         deleteUser,
         createLocation,
         retrieveLocation,
@@ -38,19 +40,21 @@ connect(MONGODB_URL)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
+        api.get('/users/favorites', jsonBodyParser, listFavorites)
+        api.get('/users/follows', jsonBodyParser, listFollows)
         api.delete('/users', jsonBodyParser, deleteUser)
-
+        
         api.post('/locations', jsonBodyParser, createLocation)
-        api.get('/user/:userId/locations', jsonBodyParser, listUserLocations)
         api.patch('/locations/:locationId', jsonBodyParser, updateLocation)
         api.get('/locations/:locationId', jsonBodyParser, retrieveLocation)
+        api.get('/users/:userId/locations', jsonBodyParser, listUserLocations)
         api.delete('/locations/:locationId', jsonBodyParser, deleteLocation)
-        api.get('/locations/?q=', )
+        api.get('/locations/?q=', searchLocations)//jsonBodyParser?
         
         api.post('/comments', jsonBodyParser, createComment)
         api.get('/comments/:commentId', jsonBodyParser, retrieveComment)
-        api.get('/' listLocationsComments)
-        api.delete('/', deleteComment)
+        api.get('/locations/:locationId/comments', jsonBodyParser, listLocationComments)
+        api.delete('comments/:commentId', deleteComment)
 
 
 

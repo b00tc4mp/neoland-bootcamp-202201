@@ -4,13 +4,9 @@ const jwt = require('jsonwebtoken')
 
 module.exports = (req, res) => {
     try {
-        const { headers: { authorization }, body: {name, email} } = req
-
-        const [, token] = authorization.split(' ')
-
-        const payload = jwt.verify(token, 'mi super secreto')
-
-        const { sub: userId } = payload
+        const userId = verifyTokenAndGetUserId(req)
+        
+        const { body: {name, email} } = req
 
         updateUser( userId, {name, email} )
             .then(() => res.status(200).send())
