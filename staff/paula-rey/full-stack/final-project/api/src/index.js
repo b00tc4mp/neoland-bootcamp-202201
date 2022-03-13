@@ -7,15 +7,20 @@ const { registerUser,
         authenticateUser,
         updateUser,
         updateUserPassword,
+        listUserLocations,
         listFavorites,
         listFollows,
         deleteUser,
         createLocation,
         retrieveLocation,
         updateLocation,
-        listUserLocations,
         deleteLocation,
-        searchLocations
+        //searchLocations,
+        createComment,
+        retrieveComment,
+        listLocationComments,
+        deleteComment
+
 
      } = require('./handlers')
 
@@ -40,6 +45,7 @@ connect(MONGODB_URL)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
+        api.get('/users/:userId/locations', jsonBodyParser, listUserLocations)
         api.get('/users/favorites', jsonBodyParser, listFavorites)
         api.get('/users/follows', jsonBodyParser, listFollows)
         api.delete('/users', jsonBodyParser, deleteUser)
@@ -47,14 +53,13 @@ connect(MONGODB_URL)
         api.post('/locations', jsonBodyParser, createLocation)
         api.patch('/locations/:locationId', jsonBodyParser, updateLocation)
         api.get('/locations/:locationId', jsonBodyParser, retrieveLocation)
-        api.get('/users/:userId/locations', jsonBodyParser, listUserLocations)
         api.delete('/locations/:locationId', jsonBodyParser, deleteLocation)
-        api.get('/locations/?q=', searchLocations)//jsonBodyParser?
+        //api.get('/locations/?q=', searchLocations)//jsonBodyParser?
         
-        api.post('/comments', jsonBodyParser, createComment)
-        api.get('/comments/:commentId', jsonBodyParser, retrieveComment)
+        api.post('/:locationId/comments', jsonBodyParser, createComment)
+        api.get('/:locationId/:commentId', jsonBodyParser, retrieveComment)
         api.get('/locations/:locationId/comments', jsonBodyParser, listLocationComments)
-        api.delete('comments/:commentId', deleteComment)
+        api.delete('/:locationId/:commentId', deleteComment)
 
 
 

@@ -196,7 +196,7 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then((userId) => {
-        return deleteLocation(locationId1, userId)
+        return deleteLocation(userId, locationId1)
             .then(() => console.log('location deleted'))
     })
 

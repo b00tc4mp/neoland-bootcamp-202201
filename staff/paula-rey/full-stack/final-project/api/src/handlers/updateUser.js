@@ -1,5 +1,5 @@
 const { updateUser } = require('logic')
-const jwt = require('jsonwebtoken')
+const { verifyTokenAndGetUserId } = require('../helpers')
 
 
 module.exports = (req, res) => {
@@ -8,7 +8,7 @@ module.exports = (req, res) => {
         
         const { body: {name, email} } = req
 
-        updateUser( userId, {name, email} )
+        updateUser( userId, name, email )
             .then(() => res.status(200).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

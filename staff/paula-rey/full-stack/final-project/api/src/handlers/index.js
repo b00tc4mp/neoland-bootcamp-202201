@@ -8,8 +8,14 @@ const createLocation = require('./createLocation')
 const retrieveLocation = require('./retrieveLocation')
 const updateLocation = require('./updateLocation')
 const listUserLocations = require('./listUserLocations')
-const deleteLocation = require('.deleteLocation')
-const searchLocations = require('./searchLocations')
+const deleteLocation = require('./deleteLocation')
+//const searchLocations = require('./searchLocations')
+const listFavorites = require('./listFavorites')
+const listFollows = require('./listFollows')
+const createComment = require('./createComment')
+const retrieveComment = require('./retrieveComment')
+const listLocationComments = require('./listLocationComments')
+const deleteComment = require('./deleteComment')
 
 
 module.exports = {
@@ -18,12 +24,17 @@ module.exports = {
     retrieveUser,
     updateUser,
     updateUserPassword,
+    listUserLocations,
+    listFavorites,
+    listFollows,
     deleteUser,
     createLocation,
     retrieveLocation,
     updateLocation,
-    listUserLocations,
     deleteLocation,
-    searchLocations
-   
+    //searchLocations,
+    createComment,
+    retrieveComment,
+    listLocationComments,
+    deleteComment
 }

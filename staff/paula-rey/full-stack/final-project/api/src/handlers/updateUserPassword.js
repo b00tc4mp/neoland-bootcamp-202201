@@ -7,7 +7,7 @@ module.exports = (req, res) => {
         
         const { body: { currPassword, newPassword } } = req
 
-        updateUserPassword({ userId, currPassword, newPassword })
+        updateUserPassword( userId, currPassword, newPassword )
             .then(() => res.status(200).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

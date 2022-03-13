@@ -1,11 +1,11 @@
 const { validators: { validateId } } = require('commons')
 const { models: { Location, Comment } } = require('data')
 
-function deleteLocation(locationId, userId) {
-    validateId(locationId, 'location id')
+function deleteLocation(userId, locationId) {
     validateId(userId, 'user id')
+    validateId(locationId, 'location id')
 
-    return Location.findOne({ _id: locationId, userId })
+    return Location.findOne({ userId, _id: locationId })
         .then((location) => {
             if (!location) throw new Error(`location with id ${locationId} and user id ${userId} does not exist`)
             return Comment.deleteMany({ user: userId, location: locationId })
