@@ -1,7 +1,7 @@
 const { validators: { validateId } } = require('commons')
 const { models: { User, Location, Comment } } = require('data')
 
-function listLocationsComments(userId, locationId) {
+function listLocationComments(userId, locationId) {
     validateId(userId)
     validateId(locationId)
 
@@ -33,4 +33,4 @@ function listLocationsComments(userId, locationId) {
 
 }
 
-module.exports = listLocationsComments
+module.exports = listLocationComments

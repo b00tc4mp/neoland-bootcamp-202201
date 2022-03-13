@@ -12,16 +12,19 @@ const location = new Schema({
     type: {
         type: String,
         required: true,
-        enum: ['Restaurante', 'Bar', 'Playa', 'Hotel', 'Hostal']
+        enum: ['null', 'restaurante', 'bar', 'playa', 'hotel', 'hostal'],
+        default: 'null'
     },
 
-    name: {
+    title: {
         type: String,
         required: true,
     },
 
     image: {
         type: String,
+        required: true,
+        default: 'default'
     },
 
     address: {
@@ -32,7 +35,8 @@ const location = new Schema({
     city: {
         type: String,
         required: true,
-        enum: ['Barcelona', 'Tarragona', 'Girona']
+        enum: ['null', 'barcelona', 'tarragona', 'girona'],
+        default: 'null'
     },
 
     date: {

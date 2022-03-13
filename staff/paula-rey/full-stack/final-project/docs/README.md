@@ -83,11 +83,11 @@ comment
 
 ##### Logic
 
-- DOING create package logic (2 days)
+- ~~DONE create package logic (2 days)~~
 
 ##### API
 
-- TODO ... ()
+- DOING handlers (one day)
 
 #### Client
 

@@ -12,7 +12,7 @@ const {
     listFollows,
     createComment,
     retrieveComment,
-    listLocationsComments,
+    listLocationComments,
     deleteComment,
     searchLocations,
     createLocation,
@@ -178,7 +178,7 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then((userId) => {
-        return listLocationsComments(userId, locationId1)
+        return listLocationComments(userId, locationId1)
             .then((listComments) => console.log(listComments))
     })
 
