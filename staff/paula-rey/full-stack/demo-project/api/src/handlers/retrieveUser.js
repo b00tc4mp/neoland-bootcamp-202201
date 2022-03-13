@@ -1,15 +1,9 @@
+const { verifyTokenAndGetUserId } = require('../helpers')
 const { retrieveUser } = require('logic')
-const jwt = require('jsonwebtoken')
 
 module.exports = (req, res) => {
     try {
-        const { headers: { authorization } } = req
-
-        const [, token] = authorization.split(' ')
-
-        const payload = jwt.verify(token, 'mi super secreto')
-
-        const { sub: userId } = payload
+        const userId = verifyTokenAndGetUserId(req)
 
         retrieveUser(userId)
             .then(user => res.json(user))

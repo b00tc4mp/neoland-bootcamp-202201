@@ -11,4 +11,3 @@ module.exports = (req, res) => {
         res.status(400).json({ error: error.message })
     }
 }
-
