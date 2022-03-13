@@ -28,7 +28,7 @@ const recipe = new Schema({
     distilled: {
         type: String,
         required: true,
-        enum: ['none', 'vodka', 'whisky', 'ron', 'gin', 'tequila', 'brandy', 'bourbon', 'vermouth'],
+        enum: ['none', 'vodka', 'whisky', 'ron', 'gin', 'tequila', 'brandy'],
         default: 'none'
     }
 })

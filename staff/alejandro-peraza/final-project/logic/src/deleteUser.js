@@ -6,11 +6,8 @@ function deleteUser(userId, password) {
     validateId(userId)
     validatePassword(password)
 
-    return User.findById(userId)
-        .then(user => {
-            if (!user) throw new Error(`User with id ${userId} does not exist`)
 
-    return User.deleteOne({ id: userId, password, recipe, comment })
+    return User.deleteOne({ _id: userId, password })
         .then(result => {
             if (result.deletedCount === 0) throw new Error(`wrong user ${userId} or password`)
         })

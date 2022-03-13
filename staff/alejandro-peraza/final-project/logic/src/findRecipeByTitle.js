@@ -1,7 +1,7 @@
 const { models: { Recipe } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function recipeByName(recipeId) {
+function recipeByTitle(recipeId) {
     validateId(recipeId, 'recipeId')
     return Recipe.findById(recipeId)
         .then(recipe => {
@@ -12,4 +12,4 @@ function recipeByName(recipeId) {
         })
 }
 
-module.exports = recipeByName
+module.exports = recipeByTitle

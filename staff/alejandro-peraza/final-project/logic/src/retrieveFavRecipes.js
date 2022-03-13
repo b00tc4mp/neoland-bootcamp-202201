@@ -1,5 +1,5 @@
 const { validators: { validateId } } = require('commons')
-const { models: { Recipe } } = require('data')
+//const { models: { Recipe } } = require('data')
 const { User } = require('data/src/models')
 
 function retrieveFavRecipes(userId) {

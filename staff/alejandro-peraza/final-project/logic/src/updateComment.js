@@ -8,7 +8,7 @@ function updateComment(userId, recipeId, text) {
     validateString(text, 'text')
 
 
-    return User.findById(userId)
+return User.findById(userId)
         .then(user => {
             if (!user) throw new Error(`User with id ${userId} does not exist`)
 
@@ -16,6 +16,7 @@ function updateComment(userId, recipeId, text) {
         .then(result => {
             if (result.modifiedCount === 0) throw new Error(`note with id ${commentId} and userId ${userId} does not exist`)
         })
+})
 }
 
 module.exports = updateComment

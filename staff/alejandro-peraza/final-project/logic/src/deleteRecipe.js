@@ -2,7 +2,7 @@ const { models: { Recipe }} = require('data')
 const { validators: { validateId }} = require('commons')
 
 function deleteRecipe(userId, recipeId) {
-    debugger
+  
     validateId(userId, 'user id')
     validateId(recipeId, 'recipe id')
     

@@ -17,52 +17,236 @@ connect('mongodb://localhost:27017/cfd-db')
     })
     
     .then(() => {
-        const whisky = new Recipe({ 
-            title: 'Whisky', 
+        const oldFashioned = new Recipe({ 
+            title: 'Old-Fashioned', 
             description: 'blah blah', 
-            image: 'https://image.com', 
+            image: 'https://image.com',
+            type: 'classic',
             distilled: 'whisky' 
         })
-        const bourbon = new Recipe({ title: 'Bourbon', description: 'blah blah', image: 'https://image.com' })
-        const brandy = new Recipe({ title: 'Brandy', description: 'blah blah', image: 'https://image.com' })
-        const ron = new Recipe({ title: 'Ron', description: 'blah blah', image: 'https://image.com' })
-        const vodka = new Recipe({ title: 'Vodka', description: 'blah blah', image: 'https://image.com' })
-        const tequila = new Recipe({ title: 'Tequila', description: 'blah blah', image: 'https://image.com' })
-        const vermouth = new Recipe({ title: 'Vermouth', description: 'blah blah', image: 'https://image.com' })
-
-        const aviation = new Recipe({ title: 'Aviation', description: 'blah blah', image: 'https://image.com' })
-        const negroni = new Recipe({ title: "Negroni", description: 'blah blah', image: 'https://image.com' })
-        const americano = new Recipe({ title:"Americano", description: 'blah blah', image: 'https://image.com' })
-        const mojito = new Recipe({ title: 'Mojito', description: 'blah blah', image: 'https://image.com' })
-        const margarita = new Recipe({ title: 'Margarita', description: 'blah blah', image: 'https://image.com' })
-        const cosmopolitan = new Recipe({ title: 'Cosmopolitan', description: 'blah blah', image: 'https://image.com' })
-        const sanFrancisco = new Recipe({ title: 'SanFrancisco', description: 'blah blah', image: 'https://image.com'})
-        const shirleyTemple = new Recipe({ title: 'ShirleyTemple', description: 'blah blah', image: 'https://image.com' })
-        const virginMary = new Recipe({ title: 'VirginMary', description: 'blah blah', image: 'https://image.com' })
+        const manhattan = new Recipe({ 
+            title: 'Manhattan', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'whisky' 
+        })
+        
+        const negroni = new Recipe({ 
+            title: 'Americano', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'gin' 
+        })
+        const aviation = new Recipe({ 
+            title: 'Aviation', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'gin' 
+        })
+        const paradise = new Recipe({ 
+            title: 'Paradise', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'gin' 
+        })
+        const sidecar = new Recipe({ 
+            title: 'Sidecar', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'brandy' 
+        })
+        const sazerac = new Recipe({ 
+            title: 'Sazerac', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'brandy' 
+        })
+        const daiquiri = new Recipe({ 
+            title: 'Daiquiri', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'ron' 
+        })
+        const maitai = new Recipe({ 
+            title: 'Mai-Tai', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'ron' 
+        })
+        const moscowMule = new Recipe({ 
+            title: 'Moscow Mule', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'vodka' 
+        })
+        const margarita = new Recipe({ 
+            title: 'Margarita', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'tequila' 
+        })
+        const sunrise = new Recipe({ 
+            title: 'Sunrise', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'classic',
+            distilled: 'tequila' 
+        })
+        const tipperary = new Recipe({ 
+            title: 'Tipperary', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'whisky' 
+        })
+        const whiskySour = new Recipe({ 
+            title: 'Whisky Sour', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'whisky' 
+        })
+        const bramble = new Recipe({ 
+            title: 'Bramble', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'gin' 
+        })
+        const beeknees = new Recipe({ 
+            title: 'Bee Knees', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'gin' 
+        })
+        const mojito = new Recipe({ 
+            title: 'Mojito', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'ron' 
+        })
+        const piñaColada = new Recipe({ 
+            title: 'Piña Colada', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'ron' 
+        })
+        const caipiroska = new Recipe({ 
+            title: 'Caipiroska', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'vodka' 
+        })
+        const cosmopolitan = new Recipe({ 
+            title: 'Cosmopolitan', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'vodka' 
+        })
+        const paloma = new Recipe({ 
+            title: 'Paloma', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'tequila' 
+        })
+        const nakedAndFamous = new Recipe({ 
+            title: 'Naked and Famous', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'modern',
+            distilled: 'tequila' 
+        })
+        const virginMary = new Recipe({ 
+            title: 'Virgin Mary', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'non-alcoholic',
+            distilled: 'none' 
+        })
+        const sanFrancisco = new Recipe({ 
+            title: 'San Francisco', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'non-alcoholic',
+            distilled: 'none' 
+        })
+        const shirleyTemple = new Recipe({ 
+            title: 'Shirley Temple', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'non-alcoholic',
+            distilled: 'none' 
+        })
+        const mintTonic = new Recipe({ 
+            title: 'Mint Tonic', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'non-alcoholic',
+            distilled: 'none' 
+        })
+        const tropicalLove = new Recipe({ 
+            title: 'Tropical Love', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'non-alcoholic',
+            distilled: 'none' 
+        })
+        const freeFizz = new Recipe({ 
+            title: 'Free Fizz', 
+            description: 'blah blah', 
+            image: 'https://image.com',
+            type: 'non-alcoholic',
+            distilled: 'none' 
+        })
 
         return Promise.all([
-            whisky.save(), 
-            bourbon.save(), 
-            brandy.save(), 
-            ron.save(), 
-            vodka.save(), 
-            tequila.save(), 
-            vermouth.save(),
-            aviation.save(), negroni.save(), americano.save(), mojito.save(), margarita.save(), cosmopolitan.save(), sanFrancisco.save(), shirleyTemple.save(), virginMary.save()
+            oldFashioned.save(),
+            manhattan.save(),
+            negroni.save(), 
+            aviation.save(), 
+            paradise.save(),
+            sidecar.save(),
+            sazerac.save(),
+            daiquiri.save(),
+            maitai.save(),
+            moscowMule.save(),
+            margarita.save(), 
+            sunrise.save(),
+            tipperary.save(),
+            whiskySour.save(),
+            bramble.save(),
+            beeknees.save(),
+            mojito.save(), 
+            piñaColada.save(),
+            caipiroska.save(),
+            cosmopolitan.save(), 
+            paloma.save(),
+            nakedAndFamous.save(),
+            virginMary.save(),
+            sanFrancisco.save(), 
+            shirleyTemple.save(), 
+            mintTonic.save(),
+            tropicalLove.save(),
+            freeFizz.save()
+            
         ])
     })
-
-    /*.then(([nike, adidas, converse]) => {
-        const airMax = new Product({
-          brand: nike.id,
-          model: "Air Max",
-          cost: 100,
-          price: 120,
-          serial: "NIKE-SERIAL-123123123",
-          image:
-            "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/04f7ca5f-2412-4511-993c-2e08e542eb33/air-maxno-90-zapatillas-6SdNzK.png",
-        });*/
-    
 
     .then(() => disconnect())
     .then(() => console.log('disconnected'))

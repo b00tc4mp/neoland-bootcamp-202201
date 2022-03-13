@@ -10,14 +10,22 @@ const {
     updateUser,
     updateUserPassword,
     deleteUser,
+
+    createRecipe,
+    retrieveRecipe,
+    retrieveFavRecipes,
+    updateRecipe,
+    deleteRecipe,
+
     createComment,
     updateComment,
     deleteComment,
-    createRecipe,
-    updateRecipe,
-    listRecipe,
-    deleteRecipe,
-    retrieveRecipe
+    /*
+    findRecipeByTitle,
+    findRecipeByType,
+    findRecipeByDestilled
+    */
+
 
 } = require('./handlers')
 
@@ -37,29 +45,30 @@ connect(MONGODB_URL)
         
         const api = express.Router()
  
-       // Review
-  // Review // Review
-   // Review // Review
-    // Review // Review
-     // Review // Review
-      // Review // Review
-
 
       
-        api.post('/users', jsonBodyParser, registerUser)
         api.post('/users/auth', jsonBodyParser, authenticateUser)
+        api.post('/users', jsonBodyParser, registerUser)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
+
+        api.post('/recipe', jsonBodyParser, createRecipe)
+        api.get('/recipe', retrieveRecipe)
+        api.get('/recipe/fav',retrieveFavRecipes)
+        api.patch('/recipe/:recipeId', jsonBodyParser, updateRecipe)
+        api.delete('/recipe/:recipeId', jsonBodyParser, deleteRecipe)
+
         api.post('/notes', jsonBodyParser, createComment)
         api.patch('/notes/:commentId', jsonBodyParser, updateComment)
         api.delete('/notes/:commentId', jsonBodyParser, deleteComment)
-        api.post('/recipe', jsonBodyParser, createRecipe)
-        api.patch('/recipe/:recipeId', jsonBodyParser, updateRecipe)
-        api.get('/recipe',listRecipe)
-        api.delete('/recipe/:recipeId', jsonBodyParser, deleteRecipe)
-        api.get('/recipe', retrieveRecipe)
+
+        /*
+        api.get('/recipe/title', findRecipeByTitle)
+        api.get('/recipe/destilled', findRecipeByDestilled)
+        api.get('./recipe/', findRecipeByType)
+        */
 
         server.use('/api', api)
 

@@ -18,7 +18,7 @@ function createRecipe(userId, title, type, destilled, description, image) {
         .then(user => {
             if (!user) throw new Error(`User with id ${userId} does not exist`)
 
-            return Recipe.create({ title, destilled, description, image })
+            return Recipe.create({ title, description, image, type, destilled })
                 .then(recipe => { })
         })
 
