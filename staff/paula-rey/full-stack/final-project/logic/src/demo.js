@@ -34,6 +34,7 @@ connect('mongodb://localhost:27017/dogether-db')
     //     //User.deleteMany()
     // ]))
 
+    /*
     .then(() => Promise.all([
         User.deleteOne({ email: 'pepito@grillo.com' }),
         User.deleteOne({ email: 'agua@grillo.com' }),
@@ -41,7 +42,6 @@ connect('mongodb://localhost:27017/dogether-db')
         Location.deleteMany(),
         Comment.deleteMany()
     ]))
-
     .then(() => registerUser('Pepito Grillo', 'pepito@grillo.com', '123123123'))
     .then(() => console.log('user registered'))
 
@@ -199,10 +199,10 @@ connect('mongodb://localhost:27017/dogether-db')
         return deleteLocation(userId, locationId1)
             .then(() => console.log('location deleted'))
     })
-
-    // .then(() => searchLocations('Avenida'))
-    // .then((results) => console.log(results))
-
+    */
+   
+   .then(() => searchLocations('bar'))
+   .then((results) => console.log(results))
 
 
     .catch(error => console.error(error.message))

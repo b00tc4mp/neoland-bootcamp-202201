@@ -2,8 +2,8 @@ const { models: { User, Location } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function toggleFavorite(userId, locationId) {
-    validateId(userId, 'userId')
-    validateId(locationId, 'locationId')
+    validateId(userId, 'user id')
+    validateId(locationId, 'location id')
 
     let location
 

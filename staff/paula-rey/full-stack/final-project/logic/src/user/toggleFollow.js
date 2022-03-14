@@ -2,9 +2,8 @@ const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function toggleFollow(userId, followId) {
-
-    validateId(userId, 'userId')
-    validateId(followId, 'followId')
+    validateId(userId, 'user id')
+    validateId(followId, 'follow id')
 
     let user
     
