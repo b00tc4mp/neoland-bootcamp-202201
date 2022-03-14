@@ -5,9 +5,9 @@ module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        const { params: { locationId, commentId } } = req  //2 params?
+        const { params: { locationId, commentId } } = req  
 
-        retrieveComment(userId, locationId, commentId) //if only 1 param, remove here
+        retrieveComment(userId, locationId, commentId) 
             .then(location => res.json(location))
             .catch(error => res.status(400).json({ error: error.message }) )
     } catch (error) {

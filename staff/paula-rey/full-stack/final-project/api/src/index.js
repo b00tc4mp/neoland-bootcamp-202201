@@ -8,14 +8,16 @@ const { registerUser,
         updateUser,
         updateUserPassword,
         listUserLocations,
+        toggleFavorite,
         listFavorites,
+        toggleFollow,
         listFollows,
         deleteUser,
         createLocation,
         retrieveLocation,
         updateLocation,
         deleteLocation,
-        //searchLocations,
+        searchLocations,
         createComment,
         retrieveComment,
         listLocationComments,
@@ -45,8 +47,10 @@ connect(MONGODB_URL)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
-        api.get('/users/:userId/locations', jsonBodyParser, listUserLocations)
+        api.get('/users/locations', jsonBodyParser, listUserLocations)
+        api.patch('/users/toggle-favorite', jsonBodyParser, toggleFavorite)
         api.get('/users/favorites', jsonBodyParser, listFavorites)
+        api.patch('/users/toggle-follow', jsonBodyParser, toggleFollow)
         api.get('/users/follows', jsonBodyParser, listFollows)
         api.delete('/users', jsonBodyParser, deleteUser)
         
@@ -54,12 +58,12 @@ connect(MONGODB_URL)
         api.patch('/locations/:locationId', jsonBodyParser, updateLocation)
         api.get('/locations/:locationId', jsonBodyParser, retrieveLocation)
         api.delete('/locations/:locationId', jsonBodyParser, deleteLocation)
-        //api.get('/locations/?q=', searchLocations)//jsonBodyParser?
+        api.get('/locations', searchLocations)
         
-        api.post('/:locationId/comments', jsonBodyParser, createComment)
-        api.get('/:locationId/:commentId', jsonBodyParser, retrieveComment)
+        api.post('/locations/:locationId/comments', jsonBodyParser, createComment)
+        api.get('/locations/:locationId/comments/:commentId', jsonBodyParser, retrieveComment)
         api.get('/locations/:locationId/comments', jsonBodyParser, listLocationComments)
-        api.delete('/:locationId/:commentId', deleteComment)
+        api.delete('/locattions/:locationId/comments/:commentId', deleteComment)
 
 
 

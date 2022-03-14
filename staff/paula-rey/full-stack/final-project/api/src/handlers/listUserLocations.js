@@ -1,8 +1,9 @@
+const { verifyTokenAndGetUserId } = require('../helpers')
 const { listUserLocations } = require('logic')
 
 module.exports = (req, res) => {
     try {
-        const { params: { userId } } = req
+        const userId = verifyTokenAndGetUserId(req)
 
         listUserLocations(userId)
             .then(locations => res.json(locations))

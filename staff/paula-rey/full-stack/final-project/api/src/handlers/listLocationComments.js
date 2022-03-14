@@ -1,7 +1,10 @@
+const { verifyTokenAndGetUserId } = require('../helpers')
 const { listLocationComments } = require('logic')
 
 module.exports = (req, res) => {
     try {
+        const userId = verifyTokenAndGetUserId(req)
+        
         const { params: { locationId } } = req
 
         listLocationComments(userId, locationId)
