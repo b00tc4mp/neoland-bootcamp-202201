@@ -2,6 +2,7 @@ const { models: { User } } = require("data")
 const { validators: { validateId, validateString, validateEmail, validateBoolean } } = require('commons')
 
 function updateUser(userId, username, email, notifications) {
+    
     validateId(userId, 'userId')
     validateString(username, 'username')
     validateEmail(email)
@@ -9,7 +10,7 @@ function updateUser(userId, username, email, notifications) {
 
     return User.updateOne({ _id: userId }, { username, email, notifications })
         .then(result => {
-            if (result.matchedCount === 0) throw new Error(`user with id ${userId} does not exist`)
+            if (result.matchedCount === 0) throw Error(`user with id ${userId} does not exist`)
         })
 }
 

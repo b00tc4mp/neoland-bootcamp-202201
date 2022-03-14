@@ -1,15 +1,15 @@
-const registerUser = require('./user/registerUser')
 const authenticateUser = require('./user/authenticateUser')
-const retrieveUser = require('./user/retrieveUser')
-const retrieveUserPublicInfo = require('./user/retrieveUserPublicInfo')
+const deleteUser = require('./user/deleteUser')
 const listFavorites = require('./user/listFavorites')
 const listFriends = require('./user/listFriends')
 const findUsers = require('./user/findUsers')
+const registerUser = require('./user/registerUser')
+const retrieveUser = require('./user/retrieveUser')
+const retrieveUserPublicInfo = require('./user/retrieveUserPublicInfo')
 const toggleFavorite = require('./user/toggleFavorite')
 const toggleFriend = require('./user/toggleFriend')
 const updateUser = require('./user/updateUser')
 const updateUserPassword = require('./user/updateUserPassword')
-const deleteUser = require('./user/deleteUser')
 const createAction = require('./actions/createAction')
 const updateAction = require('./actions/updateAction')
 const retrieveAction = require('./actions/retrieveAction')
@@ -21,22 +21,21 @@ const createSchedule = require('./schedules/createSchedule')
 const retrieveSchedule = require('./schedules/retrieveSchedule')
 const listSchedules = require('./schedules/listSchedules')
 const updateSchedule = require('./schedules/updateSchedule')
-const completeSchedule = require('./schedules/completeSchedule')
 const cancelSchedule = require('./schedules/cancelSchedule')
 
 module.exports={
-    registerUser,
     authenticateUser,
-    retrieveUser,
-    retrieveUserPublicInfo,
+    deleteUser,
     listFavorites,
     listFriends,
     findUsers,
+    registerUser,
+    retrieveUser,
+    retrieveUserPublicInfo,
     toggleFavorite,
     toggleFriend,
     updateUser,
     updateUserPassword,
-    deleteUser,
     createAction,
     retrieveAction,
     listUserPublicActions,
@@ -49,5 +48,4 @@ module.exports={
     listSchedules,
     updateSchedule,
     cancelSchedule,
-    completeSchedule
 }

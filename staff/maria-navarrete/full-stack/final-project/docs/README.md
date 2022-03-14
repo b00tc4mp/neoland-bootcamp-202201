@@ -177,10 +177,11 @@ ___
 
 ### API
 
-- DOING create helpers (1h)
-- DOING create .env (0.5h)
-- DOING create handlers(3h)
-- DOING create index.js (2h)
+- ~~DONE create .env (0.1h)~~
+- ~~DONE create helpers (1h)~~
+- ~~DONE create index.js (1h)~~
+- ~~DONE create handlers(2h)~~
+- TODO test with Insomnia (1h)
 
 ## Client
 
@@ -205,3 +206,5 @@ guardar el object id de anonymus en env
 no puedo editar ni eliminar una nota si algun otro usuario la ha agendado. 
 
 - todo fase 2 reglas de validación de repeticiones
+- validaciones de datos en los esquemas
+- guardar descripcion de actions como un hash o con servidor externo de archivos

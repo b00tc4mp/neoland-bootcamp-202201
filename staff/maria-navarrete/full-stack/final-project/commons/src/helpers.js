@@ -1,14 +1,13 @@
 const sanitizeAction = (action) => {
-    const doc = action._doc
-    doc.id = doc._id.toString()
-    doc.authorId = doc.author.id
-    doc.authorUsername = doc.author.username
-    delete doc.author
-    delete doc._id
-    delete doc.__v
-    delete doc.public
+    action.id = action._id.toString()
+    action.authorId = action.author._id.toString()
+    action.authorUsername = action.author.username
+    delete action.author
+    delete action._id
+    delete action.__v
+    delete action.public
 
-    return doc
+    return action
 }
 
 module.exports = {

@@ -1,27 +1,31 @@
-const { models: { Schedule } } = require('data')
+const { models: { Schedule, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function retrieveSchedule(userId, scheduleId) {
+
     validateId(userId, 'userId')
     validateId(scheduleId, 'scheduleId')
 
-    return Schedule.find({ _id: scheduleId, user: userId }).populate('action')
+    return User.findById(userId).lean()
+        .then(user => {
+            if (!user) throw Error(`user with id ${userId} not found`)
+            return Schedule.findOne({ _id: scheduleId, user: userId }).lean().populate('action')
+        })
         .then(schedule => {
 
             if (!schedule) throw new Error(`schedule with id ${scheduleId} for user id ${userId} does not exist`)
 
-            const doc = schedule._doc
+            schedule.id = schedule._id.toString()
+            delete schedule._id
+            delete schedule.__v
+            schedule.user = schedule.user._id.toString()
+            schedule.actionId = schedule.action._id.toString()
+            schedule.actionDesc = schedule.action.description
+            schedule.actionReqTime = schedule.action.reqTime
+            schedule.actionReqBudget = schedule.action.reqBudget
+            delete schedule.action
 
-            doc.id = doc._id.toString()
-            delete doc._id
-            delete doc.__v
-            doc.actionId = doc.action.id
-            doc.actionDesc = doc.action.description
-            doc.actionReqTime = doc.action.reqTime
-            doc.actionReqBudget = doc.action.reqBudget
-            delete doc.action
-
-            return doc
+            return schedule
         })
 }
 

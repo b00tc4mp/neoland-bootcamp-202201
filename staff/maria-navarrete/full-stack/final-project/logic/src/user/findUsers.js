@@ -1,27 +1,28 @@
 const { models: { User } } = require('data')
 const { validators: { validateString } } = require('commons')
 
-function findUsers(query) {
+function findUsers(userId, query) {
+
     validateString(query, 'query')
-    return User.find({ username: { $regex: `${query}` } })
-        .then(users => {
-            const docs = users.map(user => {
-                const doc = user._doc
 
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
-                delete doc.email
-                delete doc.password
-                delete doc.friends
-                delete doc.notifications
-                delete doc.favs
-
-                return doc
-            })
-
-            return docs
+    return User.findById(userId).lean()
+        .then(user => {
+            if (!user) throw Error(`user with id ${userId} not found`)
+            return User.find({ username: { $regex: `${query}` } }).lean()
         })
+        .then(users => users.map(user => {
+
+            user.id = user._id.toString()
+            delete user._id
+            delete user.__v
+            delete user.email
+            delete user.password
+            delete user.friends
+            delete user.notifications
+            delete user.favs
+
+            return user
+        }))
 }
 
 module.exports = findUsers

@@ -27,8 +27,11 @@ const {
     completeSchedule
 } = require('./index')
 
-let actionCreated
-let actionCreated2
+let createdAction
+let createdAction2
+let createdSchedule
+let createdSchedule2
+let date = new Date('March 15, 2022 14:00:00')
 
 connect('mongodb://localhost:27017/bHooman-db')
     .then(() => Promise.all([
@@ -55,7 +58,7 @@ connect('mongodb://localhost:27017/bHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return retrieveUserPublicInfo(userId)
+        return retrieveUserPublicInfo(userId, userId)
             .then(user => console.log(user))
     })
 
@@ -63,6 +66,12 @@ connect('mongodb://localhost:27017/bHooman-db')
     .then(userId => {
         return updateUserPassword(userId, '123123123', '234234234')
             .then(() => console.log('password updated'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return toggleFavorite(userId, '622b3438889e5584929ab41b')
+            .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
@@ -101,14 +110,18 @@ connect('mongodb://localhost:27017/bHooman-db')
             .then(friends => console.log(friends))
     })
 
-    .then(() => findUsers('123'))
-    .then(users => console.log(users))
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return findUsers(userId, '123')
+            .then(users => console.log(users))
+    })
+
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
         return createAction(userId, 'Regala algo que no uses a una persona que lo necesite', true, 5, 0)
             .then(actionId => {
-                actionCreated = actionId
+                createdAction = actionId
                 console.log('action created', actionId)
             })
     })
@@ -117,26 +130,26 @@ connect('mongodb://localhost:27017/bHooman-db')
     .then(userId => {
         return createAction(userId, 'Invita a un desayuno a un necesitado', true, 10, 5)
             .then(actionId => {
-                actionCreated2 = actionId
+                createdAction2 = actionId
                 console.log('action created', actionId)
             })
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return retrieveAction(userId, actionCreated2)
+        return retrieveAction(userId, createdAction2)
             .then(action => console.log(action))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return updateAction(userId, actionCreated2, 'Usa medios de transporte sostenibles hoy', false, 60, 0)
+        return updateAction(userId, createdAction2, 'Usa medios de transporte sostenibles hoy', false, 60, 0)
             .then(() => console.log('action updated'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return retrieveAction(userId, actionCreated2)
+        return retrieveAction(userId, createdAction2)
             .then(action => console.log(action))
     })
 
@@ -148,24 +161,101 @@ connect('mongodb://localhost:27017/bHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return listUserPublicActions(userId)
+        return listUserPublicActions(userId, userId)
             .then(actions => console.log(actions))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => findActions(userId))
+    .then(result => console.log(result))
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return deleteAction(userId, actionCreated)
+        return createSchedule(userId, createdAction, date, 'monthly')
+            .then(scheduleId => {
+                createdSchedule = scheduleId
+                console.log('schedule created', scheduleId)
+            })
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        date = new Date('March 27, 2022 08:00:00')
+        return createSchedule(userId, createdAction2, date)
+            .then(scheduleId => {
+                createdSchedule2 = scheduleId
+                console.log('schedule created', scheduleId)
+            })
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveSchedule(userId, createdSchedule)
+            .then(schedule => console.log(schedule))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        date = new Date('March 25, 2022 10:00:00')
+        return updateSchedule(userId, createdSchedule, date, 'biweekly')
+            .then(() => console.log('schedule updated'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveSchedule(userId, createdSchedule)
+            .then(schedule => console.log(schedule))
+    })
+
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return completeSchedule(userId, createdSchedule)
+            .then(() => console.log('schedule completed'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveSchedule(userId, createdSchedule)
+            .then(schedule => console.log(schedule))
+    })
+
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return listSchedules(userId)
+            .then(schedules => console.log(schedules))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return cancelSchedule(userId, createdSchedule)
+            .then(() => console.log('schedule canceled'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveSchedule(userId, createdSchedule)
+            .then(schedule => console.log(schedule))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return cancelSchedule(userId, createdSchedule2)
+            .then(() => console.log('schedule canceled'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return deleteAction(userId, createdAction)
             .then(() => console.log('action deleted'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return deleteAction(userId, actionCreated2)
+        return deleteAction(userId, createdAction2)
             .then(() => console.log('action deleted'))
     })
-
-    .then(() => findActions({ reqBudget: 0, query: 'RECOGE' }))
-    .then(result => console.log(result))
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {

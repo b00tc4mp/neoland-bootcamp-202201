@@ -27,7 +27,7 @@ const user = new Schema({
 
     notifications: {
         type: Boolean,
-        required:true,
+        required: true,
         default: true
     },
 

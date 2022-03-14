@@ -1,29 +1,30 @@
-const { models: { Schedule } } = require('data')
+const { models: { Schedule, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function listSchedules(userId) {
     validateId(userId, 'userId')
 
-    return Schedule.find({ user: userId }).populate('action')
+    return User.findById(userId).lean()
+        .then(user => {
+            if (!user) throw Error(`user with id ${userId} not found`)
+            return Schedule.find({ user: userId }).lean().populate('action')
+        })
         .then(schedules => {
             if (!schedules) throw new Error(`no schedules found for user with id ${userId}`)
 
-            const docs = schedules.map(schedule => {
-                const doc = schedule._doc
+            return schedules.map(schedule => {
 
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
-                doc.actionId = doc.action.id
-                doc.actionDesc = doc.action.description
-                doc.actionReqTime = doc.action.reqTime
-                doc.actionReqBudget = doc.action.reqBudget
-                delete doc.action
+                schedule.id = schedule._id.toString()
+                delete schedule._id
+                delete schedule.__v
+                schedule.actionId = schedule.action._id.toString()
+                schedule.actionDesc = schedule.action.description
+                schedule.actionReqTime = schedule.action.reqTime
+                schedule.actionReqBudget = schedule.action.reqBudget
+                delete schedule.action
 
-                return doc
+                return schedule
             })
-
-            return docs
         })
 
 }

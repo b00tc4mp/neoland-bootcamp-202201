@@ -1,24 +1,23 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function retrieveUserPublicInfo(userId) {
+function retrieveUserPublicInfo(userId, consultedUserId) {
+
     validateId(userId, 'userId')
-    return User.findById(userId)
+
+    return User.findById(userId).lean()
         .then(user => {
+            if (!user) throw Error(`user with id ${userId} not found`)
+            return User.findById(consultedUserId).select('username').lean()
+        })
+        .then(consultedUserId => {
+            if (!consultedUserId) throw Error(`user with id ${consultedUserId} does not exist`)
 
-            if(!user) throw new Error(`user with id ${userId} does not exist`)
+            consultedUserId.id = consultedUserId._id.toString()
+            delete consultedUserId._id
+            delete consultedUserId.__v
 
-            const doc = user._doc
-
-            delete doc._id
-            delete doc.email
-            delete doc.password
-            delete doc.favs
-            delete doc.notifications
-            delete doc.friends
-            delete doc.__v
-
-            return doc
+            return consultedUserId
         })
 }
 

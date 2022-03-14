@@ -1,62 +1,59 @@
-const { models: { Action } } = require('data')
+const { models: { Action, User } } = require('data')
 const { helpers: { sanitizeAction }, validators: { validateString, validateNumber } } = require('commons')
 
-function findActions(_filters = {}) {
+function findActions(userId, _filters = {}) {
 
     const { query, reqTime, reqBudget } = _filters
-
     let filters
 
-    if (query) {
+    return User.findById(userId).lean()
+        .then(user => {
+            if (!user) throw Error(`user with id ${userId} not found`)
 
-        validateString(query)
+            if (query) {
+                validateString(query)
 
-        const queryReg = new RegExp(`${query}`, "i")
+                const queryReg = new RegExp(`${query}`, "i")
 
-        if ((reqTime || reqTime === 0) && (reqBudget || reqBudget === 0)) {
-            validateNumber(reqTime, 'reqTime')
-            validateNumber(reqBudget, 'reqBudget')
+                if ((reqTime || reqTime === 0) && (reqBudget || reqBudget === 0)) {
+                    validateNumber(reqTime, 'reqTime')
+                    validateNumber(reqBudget, 'reqBudget')
+                    filters = { description: queryReg, reqTime, reqBudget, public: true }
+                }
+                else if (reqTime || reqTime === 0) {
+                    validateNumber(reqTime, 'reqTime')
+                    filters = { description: queryReg, reqTime, public: true }
+                }
+                else if (reqBudget || reqBudget === 0) {
+                    validateNumber(reqBudget, 'reqBudget')
+                    filters = { description: queryReg, reqBudget, public: true }
+                }
+                else {
+                    filters = { description: queryReg, public: true }
+                }
+            }
+            else if (reqTime || reqTime === 0) {
+                validateNumber(reqTime, 'reqTime')
 
-            filters = { description: queryReg, reqTime, reqBudget, public: true }
-        }
-        if (reqTime || reqTime === 0) {
-            validateNumber(reqTime, 'reqTime')
-            filters = { description: queryReg, reqTime, public: true }
-        }
-        if (reqBudget || reqBudget === 0) {
-            validateNumber(reqBudget, 'reqBudget')
-            filters = { description: queryReg, reqBudget, public: true }
-        }
-        else {
-            filters = { description: queryReg, public: true }
-        }
-    }
-    else if (reqTime || reqTime === 0) {
-        validateNumber(reqTime, 'reqTime')
-        if (reqBudget || reqBudget === 0) {
-            validateNumber(reqBudget, 'reqBudget')
-            filters = { reqTime, reqBudget, public: true }
-        }
-        else {
-            filters = { reqTime, public: true }
-        }
-    }
+                if (reqBudget || reqBudget === 0) {
+                    validateNumber(reqBudget, 'reqBudget')
+                    filters = { reqTime, reqBudget, public: true }
+                }
+                else {
+                    filters = { reqTime, public: true }
+                }
+            }
+            else if (reqBudget || reqBudget === 0) {
+                validateNumber(reqBudget, 'reqBudget')
+                filters = { reqBudget, public: true }
+            }
+            else {
+                filters = { public: true }
+            }
 
-    else if (reqBudget || reqBudget === 0) {
-        validateNumber(reqBudget, 'reqBudget')
-        filters = { reqBudget, public: true }
-    }
-    else {
-        filters = { public: true }
-    }
-
-    return Action.find(filters).populate('author')
-        .then(actions => {
-            const docs = actions.map(action => {
-                return sanitizeAction(action)
-            })
-            return docs
+            return Action.find(filters).lean().populate('author')
         })
+        .then(actions => actions.map(action => sanitizeAction(action)))
 }
 
 module.exports = findActions

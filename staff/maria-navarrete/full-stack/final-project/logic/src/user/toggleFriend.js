@@ -2,23 +2,21 @@ const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function toggleFriend(userId, friendId) {
+
     validateId(userId, 'userId')
     validateId(friendId, 'friendId')
 
-    let user
-
-    return User.findById(userId)
-        .then(_user => {
-            if (!_user) throw new Error(`user with id ${userId} does not exist`)
-            user = _user
-            return User.findById(friendId)
-        })
+    return User.findById(friendId).lean()
         .then(friend => {
-            if (!friend) throw new Error(`friend with id ${userId} does not exist`)
+            if (!friend) throw Error(`friend with id ${userId} does not exist`)
+            return User.findById(userId)
+        })
+        .then(user => {
+            if (!user) throw Error(`user with id ${userId} does not exist`)
 
-            const index = user.friends.indexOf(friend.id)
+            const index = user.friends.indexOf(friendId)
 
-            if (index === -1) user.friends.push(friend.id)
+            if (index === -1) user.friends.push(friendId)
             else user.friends.splice(index, 1)
 
             return user.save()

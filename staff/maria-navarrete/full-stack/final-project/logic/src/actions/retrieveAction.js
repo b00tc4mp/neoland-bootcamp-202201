@@ -1,32 +1,36 @@
-const { models: { Action } } = require('data')
+const { models: { Action, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function retrieveAction(userId, actionId) {
+
     validateId(userId, 'userId')
     validateId(actionId, 'actionId')
 
-    return Action.findById(actionId).populate('author')
+    return User.findById(userId).lean()
+        .then(user => {
+            if (!user) throw Error(`user with id ${userId} not found`)
+            return Action.findById(actionId).lean().populate('author')
+        })
         .then(action => {
 
-            if(!action) throw new Error(`action with id ${actionId} does not exist`)
+            if (!action) throw new Error(`action with id ${actionId} does not exist`)
 
-            if(action.author.id === userId || action.public){
-                const doc = action._doc
+            if (!(action.author._id.toString() === userId) && !action.public) throw new Error(`action with id ${actionId} is not public`)
 
-                doc.id = doc._id.toString()
-    
-                delete doc._id
-                delete doc.__v
+            if (action.author._id.toString() === userId || action.public) {
 
-                doc.authorId = doc.author.id
-                doc.AuthorUsername = doc.author.username
+                action.id = action._id.toString()
 
-                delete doc.author
-    
-                return doc
+                delete action._id
+                delete action.__v
+
+                action.authorId = action.author._id.toString()
+                action.AuthorUsername = action.author.username
+
+                delete action.author
+
+                return action
             }
-            else throw new Error (`action with id ${actionId} is not public`)
-            
         })
 }
 
