@@ -4,7 +4,9 @@ const { verifyTokenAndGetUserId } = require('../../helpers')
 module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
-        const { body: { date, repeat }, params: { actionId } } = req
+        const { body: { date: _date, repeat }, params: { actionId } } = req
+
+        const date = new Date(_date)
 
         createSchedule(userId, actionId, date, repeat)
             .then(() => res.status(201).send())

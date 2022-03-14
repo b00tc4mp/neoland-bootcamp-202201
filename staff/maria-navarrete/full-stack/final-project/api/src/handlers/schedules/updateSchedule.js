@@ -6,8 +6,9 @@ module.exports = (req, res) => {
         const userId = verifyTokenAndGetUserId(req)
         const { body, params: { scheduleId } } = req
 
-        if (body) {
-            const { date, repeat } = body
+        if (Object.keys(body).length > 0) {
+            const { date: _date, repeat } = body
+            const date = new Date(_date)
             updateSchedule(userId, scheduleId, date, repeat)
                 .then(() => res.status(200).send())
                 .catch(error => res.status(400).json({ error: error.message }))

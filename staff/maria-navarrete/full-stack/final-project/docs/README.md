@@ -151,13 +151,11 @@ ___
 - ~~DONE introduce the project, describe it (.5h)~~
 
 ### Functional Description
-- ~~DONE create use cases diagram (.25h)~~
-  
+- ~~DONE create use cases diagram (.25h)~~ 
 - ~~DONE create wireframes in figma (alt excalidraw) (3h)~~
 - ~~DONE create wireframes in README (images) (1h)~~
 
 ### Techincal Description
-
 - ~~DONE create blocks diagram (.5h)~~
 - ~~DONE create data model in paper (1h)~~
 - ~~DONE create data model in diagrams.net (E/R) (1h)~~
@@ -166,7 +164,6 @@ ___
 ## Server
 
 ### Data
-
 - ~~DONE create mongoose schemas and models (2h)~~
 - ~~DONE create populate.js to test my models (1h) ~~
 - ~~DONE populate database with actions~~
@@ -176,22 +173,22 @@ ___
 - ~~DONE test logic methods in demo.js (4h)~~
 
 ### API
-
 - ~~DONE create .env (0.1h)~~
 - ~~DONE create helpers (1h)~~
 - ~~DONE create index.js (1h)~~
 - ~~DONE create handlers(2h)~~
-- TODO test with Insomnia (1h)
+- ~~DONE test with Insomnia (1h)~~
 
 ## Client
 
-### App
+### App Logic
+- DOING create App logics (3h)
+- TODO test with snippets(2h)
 
+### App
 - TODO create main views (components) (1h)
 - TODO mechanize navigations (.5h)
 
-### App Logic
-- TODO create App logics
 
 
 
@@ -206,5 +203,6 @@ guardar el object id de anonymus en env
 no puedo editar ni eliminar una nota si algun otro usuario la ha agendado. 
 
 - todo fase 2 reglas de validación de repeticiones
+- configurar zona horaria para que sea igual en base datos y api
 - validaciones de datos en los esquemas
 - guardar descripcion de actions como un hash o con servidor externo de archivos

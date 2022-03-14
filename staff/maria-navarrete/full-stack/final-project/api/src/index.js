@@ -58,13 +58,13 @@ connect(MONGODB_URL)
         api.get('/users/actions', listUserActions)
         api.get('/users/:consultedUserId/actions', listUserPublicActions)
         api.patch('/actions/:actionId', jsonBodyParser, updateAction)
-        api.delete('/action/:actionId', jsonBodyParser, deleteAction)
+        api.delete('/action/:actionId', deleteAction)
 
         api.post('/schedules/:actionId', jsonBodyParser, createSchedule)
         api.get('/schedules', listSchedules)
         api.get('/schedules/:scheduleId', retrieveSchedule)
         api.patch('/schedules/:scheduleId', jsonBodyParser, updateSchedule)
-        api.delete('/schedule/:scheduleId', jsonBodyParser, cancelSchedule)
+        api.delete('/schedules/:scheduleId', cancelSchedule)
 
         server.use('/api', api)
 

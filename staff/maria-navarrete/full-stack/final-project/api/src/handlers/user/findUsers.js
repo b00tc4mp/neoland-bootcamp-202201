@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        const { query: { record: query } } = req
+        const { query: { query } } = req
 
         findUsers(userId, query)
             .then(users => res.json(users))
