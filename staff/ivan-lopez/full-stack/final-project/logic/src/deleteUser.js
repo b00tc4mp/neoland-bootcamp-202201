@@ -6,7 +6,6 @@ function deleteUser(userId, password) {
     validateId(userId)
     validatePassword(password)
 
-
     return Product.deleteMany({ user: userId })
         .then(() => {
             return User.deleteOne({ _id: userId, password })

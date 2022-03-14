@@ -10,11 +10,11 @@ const {
         updateUserPassword,
         deleteUser,
         addProduct,
-        listProducts,
         deleteProduct,
         retrieveProduct,
         updateProduct,
-        registerAdmin
+        registerAdmin,
+        findProducts
 
 
      } = require('./handlers')
@@ -44,9 +44,10 @@ connect(MONGODB_URL)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
 
+
         api.post('/products', jsonBodyParser, addProduct)
         api.get('/products/:productId', retrieveProduct)
-        api.get('/products', listProducts)
+        api.get('/products/', findProducts)  // PONER BIEN LA RUTA
         api.patch('/products/:productId', jsonBodyParser, updateProduct)
         api.delete('/products/:productId', jsonBodyParser, deleteProduct)
 

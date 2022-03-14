@@ -5,11 +5,13 @@ const retrieveUser = require('./retrieveUser')
 const updateUserPassword = require('./updateUserPassword')
 const deleteUser = require ('./deleteUser')
 const addProduct = require ('./addProduct')
-const listProducts = require ('./listProducts')
 const deleteProduct = require ('./deleteProduct')
 const retrieveProduct = require ('./retrieveProduct')
 const updateProduct = require ('./updateProduct')
 const registerAdmin = require('./registerAdmin')
+const findProducts = require('./findProducts')
+
+
 
 module.exports = {
     registerUser,
@@ -19,9 +21,9 @@ module.exports = {
     updateUserPassword,
     deleteUser,
     addProduct,
-    listProducts,
     deleteProduct,
     retrieveProduct,
     updateProduct,
-    registerAdmin
+    registerAdmin,
+    findProducts
 }
