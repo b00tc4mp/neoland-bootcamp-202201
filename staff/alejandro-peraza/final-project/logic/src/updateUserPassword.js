@@ -1,21 +1,22 @@
 const { models: { User } } = require("data")
 const { validators: { validateId, validatePassword } } = require('commons')
 
-function updateUserPassword(userId, currPassword, newPassword) {
-    validateId(userId, 'userId')
-    validatePassword(currPassword)
-    validatePassword(newPassword)
+function updateUserPassword(userId, currPassword, newPassword ) {
 
-    return User.findById(userId)
-        .then(user => {
-            if (user.password === currPassword)
-                return User.updateOne({ _id: userId, password: newPassword })
-                    .then(result => {
-                        if (result.modifiedCount === 0) throw new Error(`user with id ${userId} does not exist`)
-                    })
-            else throw new Error('wrong credentials')
-        })
+  validateId(userId)
+  validatePassword(currPassword)
+  validatePassword(newPassword)
+
+  if (currPassword === newPassword) throw Error('old password and new password are the same')
+
+  return User.findById(userId).lean()
+    .then((user) => {
+      if(!user) throw Error(`user with id ${userId} does not exist`)
+      return User.updateOne({ _id: userId, password: currPassword }, {password: newPassword })
+    })
+    .then(result => {
+      if(result.matchedCount === 0) throw Error("Wrong credentials")
+    })
 }
 
 module.exports = updateUserPassword
-

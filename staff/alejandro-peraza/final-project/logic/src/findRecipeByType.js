@@ -8,7 +8,7 @@ function recipeByType(recipeId) {
 
             if(!recipe) throw new Error(`recipe with id ${recipeId} does not exist`)
             
-            return Recipe
+            return recipe
         })
 }
 

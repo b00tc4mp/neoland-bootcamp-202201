@@ -10,28 +10,22 @@ const {
     updateUser,
     updateUserPassword,
     deleteUser,
-
-    createRecipe,
+    createNote,
+    updateNote,
+    deleteNote,
+    retrieveNote,
+    findRecipes,
+    /*findRecipeByTitle,
+    findRecipeByType,
+    findRecipeByDestilled
+    /*createRecipe,
     retrieveRecipe,
     retrieveFavRecipes,
     updateRecipe,
-    deleteRecipe,
-
-    createComment,
-    updateComment,
-    deleteComment,
-    /*
-    findRecipeByTitle,
-    findRecipeByType,
-    findRecipeByDestilled
-    */
-
-
+    deleteRecipe,*/
 } = require('./handlers')
 
 const cors = require('cors')
-
-
 const { env: { PORT, MONGODB_URL } } = process
 
 connect(MONGODB_URL)
@@ -54,22 +48,23 @@ connect(MONGODB_URL)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
 
-        api.post('/recipe', jsonBodyParser, createRecipe)
-        api.get('/recipe', retrieveRecipe)
-        api.get('/recipe/fav',retrieveFavRecipes)
-        api.patch('/recipe/:recipeId', jsonBodyParser, updateRecipe)
-        api.delete('/recipe/:recipeId', jsonBodyParser, deleteRecipe)
-
-        api.post('/notes', jsonBodyParser, createComment)
-        api.patch('/notes/:commentId', jsonBodyParser, updateComment)
-        api.delete('/notes/:commentId', jsonBodyParser, deleteComment)
-
         /*
-        api.get('/recipe/title', findRecipeByTitle)
-        api.get('/recipe/destilled', findRecipeByDestilled)
-        api.get('./recipe/', findRecipeByType)
+        TODO later
+        api.post('/recipes', jsonBodyParser, createRecipe)
+        api.get('/recipes/:recipeId', retrieveRecipe)
+        api.patch('/recipes/:recipeId', jsonBodyParser, updateRecipe)
+        api.delete('/recipes/:recipeId', jsonBodyParser, deleteRecipe)
         */
+        // TODO later api.get('/recipes/favs', retrieveFavRecipes)
+        api.get('/recipes', findRecipes)
 
+
+
+        api.post('/recipes/:recipeId/notes', jsonBodyParser, createNote)
+        api.get('/recipes/:recipeId/notes/:noteId', jsonBodyParser, retrieveNote )
+        api.patch('/recipes/:recipeId/notes/:noteId', jsonBodyParser, updateNote)
+        api.delete('/recipes/:recipeId/notes/:noteId', deleteNote)
+        
         server.use('/api', api)
 
         server.listen(PORT, () => console.log('server started'))

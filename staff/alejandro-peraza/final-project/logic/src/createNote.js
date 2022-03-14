@@ -1,7 +1,7 @@
 const { validators: { validateId, validateString } } = require('commons')
-const { models: { Comment } } = require('data')
+const { models: { Note } } = require('data')
 
-function createComment(userId, text) {
+function createNote(userId, text) {
     validateId(userId, 'userId')
     validateString(text, 'text')
 
@@ -10,10 +10,10 @@ function createComment(userId, text) {
             if (!user) throw new Error(`User with id ${userId} does not exist`)
     
 
-    return Comment.create({ user: userId, text })
-        .then(Comment => { })
+    return Note.create({ user: userId, text })
+        .then(Note => { })
 })
 }
 
-module.exports = createComment
+module.exports = createNote
 

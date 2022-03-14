@@ -11,9 +11,9 @@ const updateRecipe = require('./updateRecipe')
 const retrieveFavRecipes = require('./retrieveFavRecipes')
 const deleteRecipe = require('./deleteRecipe')
 
-const createComment = require('./createComment')
-const updateComment = require('./updateComment')
-const deleteComment = require('./deleteComment')
+const createNote = require('./createNote')
+const updateNote = require('./updateNote')
+const deleteNote = require('./deleteNote')
 
 
 const findRecipeByTitle = require('./findRecipeByTitle')
@@ -35,9 +35,9 @@ module.exports = {
     retrieveFavRecipes,
     deleteRecipe,
 
-    createComment,
-    updateComment,
-    deleteComment,
+    createNote,
+    updateNote,
+    deleteNote,
     
     findRecipeByType,
     findRecipeByTitle,

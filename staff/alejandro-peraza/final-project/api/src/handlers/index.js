@@ -4,16 +4,16 @@ const retrieveUser = require('./retrieveUser')
 const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
 const deleteUser = require('./deleteUser')
-
-const createComment = require('./createComment')
-const updateComment = require('./updateComment')
-const deleteComment = require('./deleteComment')
-
+const createNote = require('./createNote')
+const updateNote = require('./updateNote')
+const deleteNote = require('./deleteNote')
+const retrieveNote = require('./retrieveNote')
 const createRecipe = require('./createRecipe')
 const deleteRecipe = require('./deleteRecipe')
 const updateRecipe = require('./updateRecipe')
 const retrieveRecipe = require('./retrieveRecipe')
 const retrieveFavRecipes = require('./retrieveFavRecipes')
+const findRecipes = require('./findRecipes')
 /*
 const findRecipeByTitle = require('./findRecipeByTitle')
 const findRecipeByDestilled = require('./findRecipeByDestilled')
@@ -27,16 +27,17 @@ module.exports = {
     updateUser,
     updateUserPassword,
     deleteUser,
-
-    createComment,
-    updateComment,
-    deleteComment,
-
+    createNote,
+    updateNote,
+    deleteNote,
+    retrieveNote,
     createRecipe,
+    findRecipes,
     retrieveFavRecipes,
     deleteRecipe,
     updateRecipe,
     retrieveRecipe,
+
     /*
     findRecipeByTitle,
     findRecipeByType,

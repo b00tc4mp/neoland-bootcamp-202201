@@ -1,10 +1,10 @@
 const user = require('./user')
 const recipe = require('./recipe')
-const comment = require('./comment')
+const note = require('./note')
 
 
 module.exports = {
     user,
     recipe,
-    comment
+    note
 }
