@@ -1,22 +1,36 @@
 const { models: { Racket } } = require('data')
-const { validators: { validateString } } = require('commons')
+const { validators: { validateString, validateId } } = require('commons')
 
 
-function searchYourRacket(type, weight, player, level) {
+function searchYourRacket(userId, { type, weight, player, level }) {
 
-    return Racket.find().lean().populate('racket')
-        .then(rackets => {
-            const founds = rackets.filter(racket =>
-            (QUERY_REGEX.test(racket.type) &&
-                QUERY_REGEX.test(racket.weight) &&
-                QUERY_REGEX.test(racket.player) &&
-                QUERY_REGEX.test(racket.level)))
+    validateId(userId)
+    validateString(type, 'type')
+    validateString(weight, 'weigth')
+    validateString(player, 'player')
+    validateString(level, 'level')
 
-            const docs = founds.map(racket => {
+    const TYPE_REGEX = new RegExp(type, "i")
+    const WEIGHT_REGEX = new RegExp(weight, 'i')
+    const PLAYER_REGEX = new RegExp(player, "i")
+    const LEVEL_REGEX = new RegExp(level, "i")
+
+    return Racket.find({
+        // condicional en objeto ( un if dentro de un Objeto)
+        ...(type && { type: TYPE_REGEX }),
+        ...(weight && { weight: WEIGHT_REGEX }),
+        ...(player && { player: PLAYER_REGEX }),
+        ...(level && { level: LEVEL_REGEX })
+    }).lean().populate('brand')
+        .then(results => {
+
+            const docs = results.map(racket => {
 
                 racket.id = racket._id.toString()
+                delete racket.user
                 delete racket._id
                 delete racket.__v
+
                 racket.brand = racket.brand.name
 
 

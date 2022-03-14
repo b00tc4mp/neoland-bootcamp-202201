@@ -1,16 +1,16 @@
-const { searchRackets } = require('../helpers')
+const { searchRackets } = require('logic')
 
 module.exports = (req, res) => {
 
     try {
-
-        const { params: { query } } = req
+        const { query: { query } } = req
 
        searchRackets(query)
-            .then(comments => res.json(comments))
-            .catch(({ message }) => res.status(400).json({ error: message }))
-    } catch ({ message }) {
-        res.status(400).json({ error: message })
-    }
+        .then(results => res.json(results))
+        .catch(error => res.status(400).json({ error: error.message }))
+} catch (error) {
+    res.status(400).json({ error: error.message })
+}
 
 }
+

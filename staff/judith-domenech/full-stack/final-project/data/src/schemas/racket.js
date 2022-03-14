@@ -15,18 +15,21 @@ const racket = new Schema({
     },
 
     weight: {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
+        enum: ['345-350', '350-360', '360-370']
     },
     
     type: {
         type: String,
         required: true, 
+        enum: ['Control', 'Potencia', 'Hybrida']
     },
 
     player: {
         type: String,
-        required: true,     
+        required: true,
+        enum: ['Aereo', 'Agresivo', 'Potencia', 'Tecnico', 'Control']
     },
 
     price: {
@@ -36,7 +39,8 @@ const racket = new Schema({
 
     level:{
         type: String,
-        required: true
+        required: true,
+        enum: ['Principiante', 'Medio', 'Avanzado']
     },
 
     description: {

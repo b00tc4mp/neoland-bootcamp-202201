@@ -16,11 +16,11 @@ const {
     listFavorites,
     searchRackets,
     retrieveRacket,
-    searchYourRacket  
+    searchYourRacket
 } = require('./handlers')
 
 const cors = require('cors')
-const { env: { PORT, MONGODB_URL }} = process
+const { env: { PORT, MONGODB_URL } } = process
 
 connect(MONGODB_URL)
     .then(() => console.log('db connected'))
@@ -42,15 +42,15 @@ connect(MONGODB_URL)
         api.patch('/users/favs', jsonBodyParser, toggleFavorite)
         api.delete('/users', jsonBodyParser, deleteUser)
 
-        api.get('/rackets', searchRackets) 
+        api.get('/rackets', searchRackets)
+        api.get('/rackets/search/', searchYourRacket)
         api.get('/rackets/:racketId', retrieveRacket)
-        api.post('/rackets/', jsonBodyParser, searchYourRacket)
 
-       api.post('/comments/:racketId', jsonBodyParser, createComment)
-       api.get('/comments/:racketId', listComments)
-       api.get('/comments/:commentId', retrieveComment)
-       api.delete('/comments/:commentId', jsonBodyParser, deleteComment)
-              
+        api.post('/comments/:racketId', jsonBodyParser, createComment)
+        api.get('/comments/:racketId', listComments)
+        api.get('/comments/:commentId', retrieveComment)
+        api.delete('/comments/:commentId', jsonBodyParser, deleteComment)
+
 
         server.use('/api', api)
 
