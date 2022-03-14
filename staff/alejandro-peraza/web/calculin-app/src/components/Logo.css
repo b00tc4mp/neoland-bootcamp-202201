@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.logo {
+    display: flex;
+}
+
+.logo__text {
+    font-family: 'Lobster', cursive;
+}
+
+.logo__icon {
+    width: 4rem;
+    height: 4rem;
+}

@@ -1,0 +1,17 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.details__image {
+    width: 90vw;
+    align-self: center;
+}
+
+.details__fav {
+    cursor: pointer;
+    user-select: none;
+}
+
