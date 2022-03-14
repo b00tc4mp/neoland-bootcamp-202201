@@ -1,4 +1,4 @@
-const { verifyTokenAndGetUserId }= require('../helpers')
+const { verifyTokenAndGetUserId } = require('../helpers')
 const { listFavorites } = require('logic')
 
 module.exports = (req, res) => {

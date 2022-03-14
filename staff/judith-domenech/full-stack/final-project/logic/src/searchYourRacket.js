@@ -4,12 +4,27 @@ const { validators: { validateString } } = require('commons')
 
 function searchYourRacket(type, weight, player, level) {
 
-    return Racket.find().lean().populate('brand')
+    return Racket.find().lean().populate('racket')
         .then(rackets => {
-            
-           
+            const founds = rackets.filter(racket =>
+            (QUERY_REGEX.test(racket.type) &&
+                QUERY_REGEX.test(racket.weight) &&
+                QUERY_REGEX.test(racket.player) &&
+                QUERY_REGEX.test(racket.level)))
 
-})
+            const docs = founds.map(racket => {
+
+                racket.id = racket._id.toString()
+                delete racket._id
+                delete racket.__v
+                racket.brand = racket.brand.name
+
+
+                return racket
+            })
+
+            return docs
+        })
 }
 
 module.exports = searchYourRacket

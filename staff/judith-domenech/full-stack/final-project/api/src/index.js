@@ -15,7 +15,6 @@ const {
     toggleFavorite,
     listFavorites,
     searchRackets,
-    listRackets,
     retrieveRacket,
     searchYourRacket  
 } = require('./handlers')
@@ -43,15 +42,14 @@ connect(MONGODB_URL)
         api.patch('/users/favs', jsonBodyParser, toggleFavorite)
         api.delete('/users', jsonBodyParser, deleteUser)
 
-        // api.get('/rackets', listRackets)
         api.get('/rackets', searchRackets) 
         api.get('/rackets/:racketId', retrieveRacket)
         api.post('/rackets/', jsonBodyParser, searchYourRacket)
 
        api.post('/comments/:racketId', jsonBodyParser, createComment)
        api.get('/comments/:racketId', listComments)
-       api.get('/comment/:commentId', retrieveComment)
-       api.delete('/comment/:commentId', jsonBodyParser, deleteComment)
+       api.get('/comments/:commentId', retrieveComment)
+       api.delete('/comments/:commentId', jsonBodyParser, deleteComment)
               
 
         server.use('/api', api)

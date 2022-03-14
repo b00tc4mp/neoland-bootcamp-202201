@@ -4,7 +4,7 @@ const { verifyTokenAndGetUserId } = require('../helpers')
 module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
-        const { body: { text} , params:{ racketId } } = req
+        const { body: { text }, params: { racketId } } = req
 
         createComment(userId, racketId, text)
             .then(() => res.status(201).send())

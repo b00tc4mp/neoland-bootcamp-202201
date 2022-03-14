@@ -7,7 +7,7 @@ function searchRackets(query) {
 
     const QUERY_REGEX = new RegExp(`${query}`, 'i' )
 
-    return Racket.find().populate('brand')
+    return Racket.find().lean().populate('brand')
         .then(rackets => {
             const founds = rackets.filter(racket =>
             (QUERY_REGEX.test(racket._doc.brand.name) ||
@@ -18,16 +18,15 @@ function searchRackets(query) {
 
             const docs = founds.map(racket => {
 
-                const doc = racket._doc
 
-                doc.id = doc._id.toString()
-                delete doc._id
-                delete doc.__v
+                racket.id = racket._id.toString()
+                delete racket._id
+                delete racket.__v
 
-                doc.brand = doc.brand.name
+                racket.brand = racket.brand.name
                 
 
-                return doc
+                return racket
             })
 
             return docs

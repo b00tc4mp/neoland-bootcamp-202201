@@ -11,7 +11,6 @@ const listComments = require('./listComments')
 const retrieveComment = require('./retrieveComment')
 const deleteComment = require('./deleteComment')
 const searchRackets = require('./searchRackets')
-const listRackets = require('./listRackets')
 const retrieveRacket = require('./retrieveRacket')
 const searchYourRacket = require('./searchYourRacket')
 
@@ -29,7 +28,6 @@ module.exports = {
     toggleFavorite,
     listFavorites,
     searchRackets,
-    listRackets,
     retrieveRacket,
     searchYourRacket
 
