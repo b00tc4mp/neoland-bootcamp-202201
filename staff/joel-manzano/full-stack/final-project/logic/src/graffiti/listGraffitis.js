@@ -1,6 +1,6 @@
 const { validators: { validateId } } = require('commons')
 const { models: { User, Graffiti } } = require('data')
-const { User } = require('data/src/models')
+
 
 function listGraffitis(userId) {
     validateId(userId, 'userId')

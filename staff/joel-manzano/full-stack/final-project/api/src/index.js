@@ -13,7 +13,8 @@ const {
     modifyGraffiti,
     deleteGraffiti,
     listGraffitis,
-    retrieveGraffiti
+    retrieveGraffiti,
+    searchGraffiti
 
 } = require('./handlers')
 
@@ -29,7 +30,7 @@ connect(MONGODB_URL)
         const jsonBodyParser = express.json()
         const api = express.Router()
 
-        api.post('/users', jsonBodyParser, registerUser) //ojo! no ejecutar funcion: handlerRegisterUser()
+        api.post('/users', jsonBodyParser, registerUser) 
         api.post('/users/auth', jsonBodyParser, authenticateUser)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
@@ -40,6 +41,8 @@ connect(MONGODB_URL)
         api.delete('/graffiti/:graffitiId', jsonBodyParser, deleteGraffiti)
         api.get('/graffiti', jsonBodyParser, listGraffitis)
         api.get('/graffiti', jsonBodyParser, retrieveGraffiti)
+        api.get('/graffitis', jsonBodyParser, searchGraffiti)
+
 
         server.use('/api', api)
 

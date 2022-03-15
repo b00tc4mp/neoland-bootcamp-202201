@@ -36,7 +36,7 @@ const graffiti = new Schema({
     },
 
     postalCode: {
-        type: Number
+        type: String
     },
 
     location: {

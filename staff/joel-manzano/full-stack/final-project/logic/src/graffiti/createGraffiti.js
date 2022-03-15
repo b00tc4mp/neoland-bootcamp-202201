@@ -1,18 +1,17 @@
-const { validators: { validateId, validateString, validateNumber } } = require('commons')
+const { validators: { validateId, validateString } } = require('commons')
 const { models: { User, Graffiti } } = require('data')
-const { User } = require('data/src/models')
 
-function createGraffiti(userId, artist, city, street, number, postalCode, location, style, description, image, status, spray, color  ) {
+
+function createGraffiti(userId, artist, description, image, city, address, postalCode, location, style, status, spray, color  ) {
     validateId(userId, 'userId')
     validateString(artist, 'artist')
-    validateString(city, 'city')
-    validateString(street, 'street')
-    validateNumber(number, 'number') // <= revisar validate string o number?
-    validateNumber(postalCode, 'postal code') // <= revisar validate string o number?
-    validateString(location, 'location')
-    validateString(style, 'style')
     validateString(description, 'description')
     validateString(image, 'image')
+    validateString(city, 'city')
+    validateString(address, 'address')
+    validateString(postalCode, 'postal code') 
+    validateString(location, 'location')
+    validateString(style, 'style')
     validateString(status, 'status')
     validateString(spray, 'spray')
     validateString(color, 'color')
@@ -21,7 +20,7 @@ function createGraffiti(userId, artist, city, street, number, postalCode, locati
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
 
-            return Graffiti.create({ user: userId, artist, city, street, number, postalCode, location, style, description, image, status, spray, color })
+            return Graffiti.create({ user: userId, artist, description, image, city, address, postalCode, location, style, status, spray, color })
         })
         .then(graffiti => { })
 }
