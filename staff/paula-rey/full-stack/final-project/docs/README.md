@@ -87,7 +87,7 @@ comment
 
 ##### API
 
-- DOING handlers (one day)
+- ~~DONE handlers (one day)~~
 
 #### Client
 
@@ -98,10 +98,12 @@ comment
 
 ##### Logic
 
-- TODO ... ()
+- DOING logics of app(2 days)
 
 
 
 <!-- TODO validaciones reales (minLength..., @, etc) en schemas -->
 <!-- lean()//poner findUserById en logicas de locations y comments//mejorar manejo errores -->
+<!-- follows¿? -->
+<!--  -->
 

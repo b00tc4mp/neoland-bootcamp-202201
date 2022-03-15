@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     try {
 
         const userId = verifyTokenAndGetUserId(req)
-        const { body: { followId } } = req
+        const { params: { followId } } = req
 
         toggleFollow(userId, followId)
         .then(follows => res.json(follows))

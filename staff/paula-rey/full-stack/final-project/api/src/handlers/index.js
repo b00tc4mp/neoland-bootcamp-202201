@@ -13,7 +13,6 @@ const searchLocations = require('./searchLocations')
 const listFavorites = require('./listFavorites')
 const listFollows = require('./listFollows')
 const createComment = require('./createComment')
-const retrieveComment = require('./retrieveComment')
 const listLocationComments = require('./listLocationComments')
 const deleteComment = require('./deleteComment')
 const toggleFavorite = require('./toggleFavorite')
@@ -38,7 +37,6 @@ module.exports = {
     deleteLocation,
     searchLocations,
     createComment,
-    retrieveComment,
     listLocationComments,
     deleteComment
 }

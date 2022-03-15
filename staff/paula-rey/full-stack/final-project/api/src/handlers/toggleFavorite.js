@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     try {
 
         const userId = verifyTokenAndGetUserId(req)
-        const { body: { locationId } } = req
+        const { params: { locationId } } = req
 
         toggleFavorite(userId, locationId)
         .then(favorites => res.json(favorites))
