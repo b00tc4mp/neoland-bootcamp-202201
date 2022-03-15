@@ -14,12 +14,15 @@ function listLocationComments(userId, locationId) {
         .then(location => {
             if (!location) throw new Error(`location with id ${locationId} not found`)
 
-            return Comment.find({ location: locationId }).lean()
+            return Comment.find({ location: locationId }).lean().populate('user')
                 .then(comments => {
                     comments.forEach(comment => {
                         //comment.id = comment._id.toString()
-                        comment.user = comment.user.toString()
+                        comment.userId = comment.user._id.toString()
+                        comment.userName = comment.user.name
 
+                        delete comment.user
+                        delete comment.location
                         delete comment._id
                         delete comment.location
                         delete comment.__v

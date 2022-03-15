@@ -14,6 +14,7 @@ function listFavorites(userId) {
             
             favorite.id = favorite._id.toString()
             favorite.user = favorite.user.toString()
+
             delete favorite._id
             delete favorite.__v
             delete favorite.address
