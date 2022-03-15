@@ -8,7 +8,7 @@ function findUsers(userId, query) {
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw Error(`user with id ${userId} not found`)
-            return User.find({ username: { $regex: `${query}` } }).lean()
+            return User.find({ username: { $regex: `.*${_query}*.`, $options: 'i' } }).lean()
         })
         .then(users => users.map(user => {
 

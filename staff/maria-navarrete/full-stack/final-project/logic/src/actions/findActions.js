@@ -5,27 +5,26 @@ function findActions(userId, _filters = {}) {
 
     const { query, reqTime, reqBudget } = _filters
     let filters
+    if (query) validateString(query)
+    if (reqTime) validateNumber(reqTime, 'reqTime')
+    if (reqBudget) validateNumber(reqBudget, 'reqBudget')
+
 
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw Error(`user with id ${userId} not found`)
 
             if (query) {
-                validateString(query)
-
                 const queryReg = new RegExp(`${query}`, "i")
 
                 if ((reqTime || reqTime === 0) && (reqBudget || reqBudget === 0)) {
-                    validateNumber(reqTime, 'reqTime')
-                    validateNumber(reqBudget, 'reqBudget')
+
                     filters = { description: queryReg, reqTime, reqBudget, public: true }
                 }
                 else if (reqTime || reqTime === 0) {
-                    validateNumber(reqTime, 'reqTime')
                     filters = { description: queryReg, reqTime, public: true }
                 }
                 else if (reqBudget || reqBudget === 0) {
-                    validateNumber(reqBudget, 'reqBudget')
                     filters = { description: queryReg, reqBudget, public: true }
                 }
                 else {
@@ -33,10 +32,8 @@ function findActions(userId, _filters = {}) {
                 }
             }
             else if (reqTime || reqTime === 0) {
-                validateNumber(reqTime, 'reqTime')
 
                 if (reqBudget || reqBudget === 0) {
-                    validateNumber(reqBudget, 'reqBudget')
                     filters = { reqTime, reqBudget, public: true }
                 }
                 else {
@@ -44,7 +41,6 @@ function findActions(userId, _filters = {}) {
                 }
             }
             else if (reqBudget || reqBudget === 0) {
-                validateNumber(reqBudget, 'reqBudget')
                 filters = { reqBudget, public: true }
             }
             else {
