@@ -1,5 +1,5 @@
 const { validators: { validateId } } = require('commons')
-const { models: { Comment, User, Racket } } = require('data')
+const { models: { Comment, User } } = require('data')
 const { racket } = require('data/src/schemas')
 
 function deleteComment(userId, commentId) {
@@ -9,6 +9,7 @@ function deleteComment(userId, commentId) {
     return User.findById(userId).lean()
     .then(user => {
         if (!user) throw new Error(`user with id ${userId} does not exist`)
+        
         return Comment.deleteOne({ _id: commentId, user: userId })
     })
     .then(result => {

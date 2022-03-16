@@ -1,11 +1,10 @@
 const { models: { Racket } } = require('data')
 const { validators: { validateString, validateId } } = require('commons')
 
-
-function searchYourRacket(userId, { type, weight, player, level }) {
-
-    validateId(userId)
-    validateString(type, 'type')
+function searchUserRackets(userId, type, weight, player, level) {
+    
+    validateId(userId, 'user id') 
+    validateString(type, 'type')   
     validateString(weight, 'weigth')
     validateString(player, 'player')
     validateString(level, 'level')
@@ -16,32 +15,32 @@ function searchYourRacket(userId, { type, weight, player, level }) {
     const LEVEL_REGEX = new RegExp(level, "i")
 
     return Racket.find({
-        // condicional en objeto ( un if dentro de un Objeto)
+        // ...guarda los objetos creando un objeto más grande y creando de ellos una propiedad en función de si existe o no existe.
         ...(type && { type: TYPE_REGEX }),
         ...(weight && { weight: WEIGHT_REGEX }),
         ...(player && { player: PLAYER_REGEX }),
         ...(level && { level: LEVEL_REGEX })
     }).lean().populate('brand')
-        .then(results => {
-
-            const docs = results.map(racket => {
-
+        .then(rackets => {
+            rackets.forEach(racket => {
                 racket.id = racket._id.toString()
+
                 delete racket.user
                 delete racket._id
                 delete racket.__v
 
                 racket.brand = racket.brand.name
+                /* racket.brand.id = racket.brand._id.toString() */
 
-
-                return racket
+                delete racket.brand._id
+                delete racket.brand.__v
             })
 
-            return docs
+            return rackets
         })
 }
 
-module.exports = searchYourRacket
+module.exports = searchUserRackets
 
 // find por los campos que queiras buscar y siempre debe dar un resultado
 // ejemplo find({player, level, type, weight})

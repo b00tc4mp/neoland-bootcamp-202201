@@ -4,31 +4,35 @@ const { validators: { validateString } } = require('commons')
 function searchRackets(query) {
     validateString(query, 'query')
 
-    const QUERY_REGEX = new RegExp(query, 'i' )
+    const QUERY_REGEX = new RegExp(query, 'i')
 
     return Racket.find().lean().populate('brand')
         .then(rackets => {
-            const founds = rackets.filter(racket =>
-            (QUERY_REGEX.test(racket.brand.name) ||
+            rackets = rackets.filter(racket =>
+                QUERY_REGEX.test(racket.brand.name) ||
                 QUERY_REGEX.test(racket.model) ||
                 QUERY_REGEX.test(racket.type) ||
                 QUERY_REGEX.test(racket.player) ||
-                QUERY_REGEX.test(racket.level)))
+                QUERY_REGEX.test(racket.level)
+            )
 
-            const docs = founds.map(_racket => {
+            rackets.forEach(racket => {
+                racket.id = racket._id.toString()
 
-                _racket.id = _racket._id.toString()
-                delete _racket._id
-                delete _racket.__v
+                delete racket._id
+                delete racket.__v
 
-                _racket.brand = _racket.brand.name
-                
+                racket.brand = racket.brand.name
 
-                return _racket
+                /* racket.brand.id = racket.brand._id.toString() */
+
+                delete racket.brand._id
+                delete racket.brand.__v
+
             })
 
-            return docs
+            return rackets
         })
-            }
+}
 
 module.exports = searchRackets

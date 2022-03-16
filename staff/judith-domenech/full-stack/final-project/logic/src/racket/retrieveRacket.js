@@ -9,6 +9,7 @@ function retriveRackets(racketId) {
             if (!racket) throw new Error(`racket with id ${racketId} does not exist`)
 
             racket.id = racket._id.toString()
+            
             delete racket._id
             delete racket.__v
 

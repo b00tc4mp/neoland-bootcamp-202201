@@ -14,7 +14,7 @@ const {
     listComments,
     retrieveRacket,
     searchRackets,
-    searchYourRacket
+    searchUserRackets
 
 } = require('./index')
 
@@ -84,7 +84,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
     .then(() => searchRackets('heaD'))
     .then(results => console.log(results, 'las palas')) 
 
-    .then(() => searchYourRacket('622f2c553eb2530082ebb020' ,{type: "control", weight: "360", player: "aereo", level: "avanzado"}))
+    .then(() => searchUserRackets('62310f4dc411a67ebfab5119','Potencia', '360-370g', 'Ofensivo', 'Avanzado'))
     .then(results => console.log(results, 'tu pala'))
 
     /* 

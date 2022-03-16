@@ -11,14 +11,14 @@ function createCommnent(userId, racketId, text) {
         User.findById(userId).lean(),
         Racket.findById(racketId).lean()
     ])
+        .then(([user, racket]) => {
+            if (!user) throw new Error(`user with id ${userId} does not exist`)
+            if (!racket) throw new Error(`racket with id ${racketId} does not exist`)
+            
+            return Comment.create({ user: userId, racket: racketId, text })
+        })
 
-    .then(([user, racket]) => {
-        if(!user) throw new Error(`user with id ${userId} does not exist`)
-        if(!racket) throw new Error(`racket with id ${racketId} does not exist`)
-        return Comment.create({ user: userId, racket: racketId, text })
-    })
-
-    .then(comment => comment.id)
+        .then(comment => comment.id)
 }
 
 module.exports = createCommnent

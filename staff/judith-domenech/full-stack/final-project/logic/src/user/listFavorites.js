@@ -2,28 +2,28 @@ const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function listFavorites(userId) {
+    validateId(userId, 'user Id')
 
-    validateId (userId, 'userId')
+    return User.findById(userId).lean().populate('favorites').populate('favorites.brand')
+        .then(user => {
+            if (!user) throw new Error(`user with id ${userId} does not exist`)
 
-    return User.findById(userId).lean().populate('favorites')
-    .then(user => {
+            const { favorites } = user
 
-            if(!user) throw new Error(`user with id ${userId} does not exist`)
-
-            const docs = user.favorites.map(favorite => {
-                
+            favorites.forEach(favorite => {
                 favorite.id = favorite._id.toString()
-                favorite.user = favorite.brand.toString()
+
+                favorite.brand.id = favorite.brand._id.toString()
+
                 delete favorite._id
+                delete favorite.brand._id
                 delete favorite.__v
                 delete favorite.description
                 delete favorite.nivel
                 delete favorite.player
-
-                return favorite
             })
 
-            return docs
+            return favorites
         })
 }
 
