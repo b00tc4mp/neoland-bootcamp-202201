@@ -6,13 +6,15 @@ function deleteUser(userId, password) {
     validateId(userId)
     validatePassword(password)
 
-    // TODO delete all tournaments created by user first (HINT deleteMany with a filter)
+
+    // First check is user exists and if password is correct
+    // if (result.deletedCount === 0) throw new Error(`wrong user ${userId} or password`)
 
     return Tournament.deleteMany({ user: userId })
     .then(() => {
         return User.deleteOne({ _id: userId, password })
             .then(result => {
-                if (result.deletedCount === 0) throw new Error(`wrong user ${userId} or password`)
+                if (result.deletedCount === 0) throw new Error(`user can't be deleted`)
             })
 
     

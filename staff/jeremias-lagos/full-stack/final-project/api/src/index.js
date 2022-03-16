@@ -13,7 +13,8 @@ const {
     deleteTournament,
     listTournament,
     retrieveTournament,
-    registerAdmin
+    registerAdmin,
+    searchTournaments
 
 } = require('./handlers')
 
@@ -39,12 +40,12 @@ connect(MONGODB_URL)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
         
-        api.post('/tournament', jsonBodyParser, createTournament)
-        api.get('/tournament', listTournament)
-        api.patch('/tournament/:tournamentId', jsonBodyParser, updateTournament)
-        api.delete('/tournament/:tournamentId', jsonBodyParser, deleteTournament)
-        api.get('/tournament/:tournamentId', retrieveTournament)
-        
+        api.post('/tournaments', jsonBodyParser, createTournament)
+        api.get('/tournaments', jsonBodyParser, searchTournaments)
+        api.patch('/tournaments/:tournamentId', jsonBodyParser, updateTournament)
+        api.delete('/tournaments/:tournamentId', jsonBodyParser, deleteTournament)
+        api.get('/tournaments/:tournamentId', retrieveTournament)
+
 
         server.use('/api', api)
 

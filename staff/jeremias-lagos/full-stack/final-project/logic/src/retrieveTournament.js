@@ -6,7 +6,7 @@ function retrieveTournament(userId, tournamentId) {
     validateId(userId, 'userId')
     validateId(tournamentId, 'tournamentId')
 
-    return User.findById(userId)
+    return User.findById(userId).lean()
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
 

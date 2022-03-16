@@ -6,7 +6,7 @@ module.exports = (req, res) => {
         const userId = verifyTokenAndGetUserId(req)
         const { body: { title, description, location, image, date }, params: { tournamentId } } = req
 
-        updateTournament(userId, tournamentId, title, description, location, image, date)
+        updateTournament(userId, tournamentId, title, description, location, image, new Date(date))
             .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

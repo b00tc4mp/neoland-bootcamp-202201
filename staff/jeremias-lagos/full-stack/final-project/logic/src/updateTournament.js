@@ -1,22 +1,18 @@
 const { models: { User, Tournament } } = require('data')
-const { validators: { validateId, validateString } } = require('commons')
+const { validators: { validateId, validateString, validateDate } } = require('commons')
 
 
 
-function updateTournament(userId, tournamentId, title, description, location, image, _date) {
+function updateTournament(userId, tournamentId, title, description, location, image, date) {
     validateId(userId, 'userId')
     validateId(tournamentId, 'tournament id')
     validateString(title, 'title')
     validateString(description, 'description')
     validateString(location, 'location')
     validateString(image, 'image')
-    validateString(_date, 'date')
+    validateDate(date, 'date')
 
-    const date = new Date(_date)
-
-    // TODO check user exists and is admin
-
-    return User.findById(userId)
+    return User.findById(userId).lean()
         .then(user => {
             if(!user) throw new Error(`user with ${userId} not found`)
             if (user.role !== 'admin') throw new Error(`user with id ${id} is not an admin`)
@@ -30,7 +26,7 @@ function updateTournament(userId, tournamentId, title, description, location, im
             tournament.description = description
             tournament.location = location
             tournament.image = image
-            tournament.date = _date
+            tournament.date = date
 
             return tournament.save()
         })

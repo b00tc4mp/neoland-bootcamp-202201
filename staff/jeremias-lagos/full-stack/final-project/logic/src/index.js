@@ -10,6 +10,7 @@ const deleteTournament = require("./deleteTournament")
 const listTournament = require("./listTournament")
 const retrieveTournament = require("./retrieveTournament")
 const registerAdmin = require("./registerAdmin")
+const searchTournaments = require("./searchTournaments")
 
 module.exports = {
   registerUser,
@@ -23,5 +24,6 @@ module.exports = {
   deleteTournament,
   listTournament,
   retrieveTournament,
-  registerAdmin
+  registerAdmin,
+  searchTournaments
 }

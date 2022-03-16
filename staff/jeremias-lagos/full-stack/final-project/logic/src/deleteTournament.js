@@ -5,9 +5,8 @@ function deleteTournament(userId, tournamentId) {
     validateId(userId, 'user id')
     validateId(tournamentId, 'tournament id')
 
-    // TODO check user exists and is admin
 
-    return User.findById(userId)
+    return User.findById(userId).lean()
         .then(user => {
             if (!user) throw new Error(`user with id ${id} not found`)
             if (user.role !== 'admin') throw new Error(`user with id ${id} is not an admin`)
