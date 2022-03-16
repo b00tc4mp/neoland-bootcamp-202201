@@ -3,8 +3,8 @@ const { models: { Schedule, Action, User } } = require('data')
 
 function createSchedule(userId, actionId, date, repeat = 'once') {
 
-    validateId(userId, 'userId')
-    validateId(actionId, 'actionId')
+    validateId(userId, 'user id')
+    validateId(actionId, 'action id')
     validateDate(date)
     validateString(repeat)
 

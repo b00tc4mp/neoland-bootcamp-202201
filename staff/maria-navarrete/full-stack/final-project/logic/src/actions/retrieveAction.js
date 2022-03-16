@@ -3,8 +3,8 @@ const { validators: { validateId } } = require('commons')
 
 function retrieveAction(userId, actionId) {
 
-    validateId(userId, 'userId')
-    validateId(actionId, 'actionId')
+    validateId(userId, 'user id')
+    validateId(actionId, 'action id')
 
     return User.findById(userId).lean()
         .then(user => {
@@ -25,7 +25,7 @@ function retrieveAction(userId, actionId) {
                 delete action.__v
 
                 action.authorId = action.author._id.toString()
-                action.AuthorUsername = action.author.username
+                action.authorUsername = action.author.username
 
                 delete action.author
 

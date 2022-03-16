@@ -3,8 +3,8 @@ const { validators: { validateId } } = require('commons')
 
 function retrieveSchedule(userId, scheduleId) {
 
-    validateId(userId, 'userId')
-    validateId(scheduleId, 'scheduleId')
+    validateId(userId, 'user id')
+    validateId(scheduleId, 'schedule id')
 
     return User.findById(userId).lean()
         .then(user => {
@@ -20,9 +20,9 @@ function retrieveSchedule(userId, scheduleId) {
             delete schedule.__v
             schedule.user = schedule.user._id.toString()
             schedule.actionId = schedule.action._id.toString()
-            schedule.actionDesc = schedule.action.description
-            schedule.actionReqTime = schedule.action.reqTime
-            schedule.actionReqBudget = schedule.action.reqBudget
+            schedule.actionDescription = schedule.action.description
+            schedule.actionRequiredTime = schedule.action.requiredTime
+            schedule.actionRequiredBudget = schedule.action.requiredBudget
             delete schedule.action
 
             return schedule

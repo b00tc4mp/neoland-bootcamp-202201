@@ -1,25 +1,22 @@
 import { validators } from 'commons'
-const { validateToken, validateString, validateEmail, validateBoolean } = validators
 
-function updateUser(token, username, email, notifications) {
+const { validateToken, validateId } = validators
+
+function toggleFriend(token, friendId) {
     validateToken(token)
-    validateString(username, 'username')
-    validateEmail(email)
-    validateBoolean(notifications, 'notifications')
+    validateId(friendId, 'friend id')
 
-    return fetch('http://localhost:8080/api/users', {
+    return fetch(`http://localhost:8080/api/users/friends/${friendId}`, {
         method: 'PATCH',
         headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, email, notifications })
-
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(res => {
             const { status } = res
+
             if (status === 200) {
-                return
+                return 
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -34,4 +31,4 @@ function updateUser(token, username, email, notifications) {
         })
 }
 
-export default updateUser
+export default toggleFriend

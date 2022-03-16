@@ -1,25 +1,21 @@
 import { validators } from 'commons'
-const { validateToken, validateString, validateEmail, validateBoolean } = validators
 
-function updateUser(token, username, email, notifications) {
+const { validateToken, validateId } = validators
+
+function listUserPublicActions(token, consultedUserId) {
     validateToken(token)
-    validateString(username, 'username')
-    validateEmail(email)
-    validateBoolean(notifications, 'notifications')
+    validateId(consultedUserId, 'consulted user id')
 
-    return fetch('http://localhost:8080/api/users', {
-        method: 'PATCH',
+    return fetch(`http://localhost:8080/api/users/${consultedUserId}/actions`, {
         headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, email, notifications })
-
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(res => {
             const { status } = res
+
             if (status === 200) {
-                return
+                return res.json()
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -34,4 +30,4 @@ function updateUser(token, username, email, notifications) {
         })
 }
 
-export default updateUser
+export default listUserPublicActions

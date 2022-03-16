@@ -5,9 +5,9 @@ module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        const { body: { currPassword, newPassword } } = req
+        const { body: { currentPassword, newPassword } } = req
 
-        updateUserPassword(userId, currPassword, newPassword)
+        updateUserPassword(userId, currentPassword, newPassword)
             .then(() => res.status(200).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

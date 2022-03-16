@@ -9,7 +9,7 @@ module.exports = (req, res) => {
         const date = new Date(_date)
 
         createSchedule(userId, actionId, date, repeat)
-            .then(() => res.status(201).send())
+            .then(scheduleId => res.json(scheduleId))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

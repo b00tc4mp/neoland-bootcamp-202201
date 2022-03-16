@@ -70,19 +70,19 @@ connect('mongodb://localhost:27017/bHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '622b3438889e5584929ab41b')
+        return toggleFavorite(userId, '6231c6f6711b50101d8d12e3')
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '622b3438889e5584929ab41b')
+        return toggleFavorite(userId, '6231c6f6711b50101d8d12e1')
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '622b3438889e5584929ab419')
+        return toggleFavorite(userId, '6231c6f6711b50101d8d12e1')
             .then(() => console.log('favorite toggled'))
     })
 
@@ -94,13 +94,13 @@ connect('mongodb://localhost:27017/bHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '622b3437889e5584929ab3ff')
+        return toggleFriend(userId, '6231c6f5711b50101d8d12c7')
             .then(() => console.log('friend toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '622b3437889e5584929ab3fe')
+        return toggleFriend(userId, '6231c6f5711b50101d8d12c6')
             .then(() => console.log('friend toggled'))
     })
 
@@ -166,7 +166,7 @@ connect('mongodb://localhost:27017/bHooman-db')
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
-    .then(userId => findActions(userId))
+    .then(userId => findActions(userId, 'regala', null, null))
     .then(result => console.log(result))
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))

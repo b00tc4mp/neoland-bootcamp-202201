@@ -5,11 +5,12 @@ module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        const { query: { query = null, reqBudget = null, reqTime = null } } = req
+        let { query: { query = null, requiredBudget = null, requiredTime = null } } = req
 
-        const filters = { query, reqBudget: reqBudget && Number(reqBudget), reqTime: reqTime && Number(reqTime) }
+        requiredBudget = requiredBudget && Number(requiredBudget)
+        requiredTime = requiredTime && Number(requiredTime)
 
-        findActions(userId, filters)
+        findActions(userId, query, requiredTime, requiredBudget)
             .then(actions => res.json(actions))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

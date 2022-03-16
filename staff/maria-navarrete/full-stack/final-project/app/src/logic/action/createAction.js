@@ -1,27 +1,27 @@
 import { validators } from 'commons'
-const { validateToken, validatePassword } = validators
 
-function updateUserPassword(token, currentPassword, newPassword, confirmPassword) {
-    validateToken(token)
-    validatePassword(currentPassword, 'old password')
-    validatePassword(newPassword, 'new password')
-    validatePassword(confirmPassword, 'confirmed password')
+const { validateString, validateNumber, validateBoolean, valdiateToken } = validators
 
-    if (newPassword !== confirmPassword) throw new Error('retyped password doesn\'t match password')
+function createAction(token, description, public, requiredTime, requiredBudget) {
+    valdiateToken(token)
+    validateString(description, 'description')
+    validateBoolean(public, 'public')
+    validateNumber(requiredTime, 'required time')
+    validateNumber(requiredBudget, 'required budget')
 
-    return fetch('http://localhost:8080/api/users/change-password', {
-        method: 'PATCH',
+    return fetch('http://localhost:8080/api/actions', {
+        method: 'POST',
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ currentPassword, newPassword })
-
+        body: JSON.stringify({ description, public, requiredTime, requiredBudget })
     })
         .then(res => {
             const { status } = res
+
             if (status === 200) {
-                return
+                return res.json()
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -36,4 +36,4 @@ function updateUserPassword(token, currentPassword, newPassword, confirmPassword
         })
 }
 
-export default updateUserPassword
+export default createAction

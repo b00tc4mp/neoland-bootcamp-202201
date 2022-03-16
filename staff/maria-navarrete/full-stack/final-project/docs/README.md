@@ -60,8 +60,8 @@ user
 actions
 - description (String, required)
 - public (Boolean, required, default: false)
-- reqTime (Number, required)
-- reqBudget ( Number, required)
+- requiredTime (Number, required)
+- requiredBudget ( Number, required)
 - author (ObjectId: User, required)
 
 schedules
@@ -203,6 +203,7 @@ guardar el object id de anonymus en env
 no puedo editar ni eliminar una nota si algun otro usuario la ha agendado. 
 
 - todo fase 2 reglas de validación de repeticiones
+- revisar cuadno elimino un usuario y otro lo tiene en amigos
 - configurar zona horaria para que sea igual en base datos y api
 - validaciones de datos en los esquemas
 - guardar descripcion de actions como un hash o con servidor externo de archivos

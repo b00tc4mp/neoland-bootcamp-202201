@@ -13,12 +13,12 @@ const action = new Schema({
         default: false,
     },
 
-    reqTime: {
+    requiredTime: {
         type: Number,
         required: true,
     },
 
-    reqBudget: {
+    requiredBudget: {
         type: Number,
         required: true,
     },

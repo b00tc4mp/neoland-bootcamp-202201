@@ -3,8 +3,8 @@ const { validators: { validateId, validateString, validateDate } } = require('co
 
 function updateSchedule(userId, scheduleId, date, repeat) {
 
-    validateId(userId, 'userId')
-    validateId(scheduleId, 'scheduleId')
+    validateId(userId, 'user id')
+    validateId(scheduleId, 'schedule id')
     validateDate(date, 'date')
     validateString(repeat, 'repeat')
 

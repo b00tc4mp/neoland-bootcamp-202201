@@ -3,21 +3,23 @@ const { validators: { validateId } } = require('commons')
 
 function listUserActions(userId) {
 
-    validateId(userId, 'userId')
+    validateId(userId, 'user id')
 
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw Error(`user with id ${userId} not found`)
             return Action.find({ author: userId }).lean()
         })
-        .then(actions => actions.map(action => {
-            action.id = action._id.toString()
-            delete action.author
-            delete action._id
-            delete action.__v
-
-            return action
-        }))
+        .then(actions => {
+            actions.forEach(action => {
+                action.id = action._id.toString()
+                delete action.author
+                delete action._id
+                delete action.__v
+            })
+            return actions
+        }
+        )
 }
 
 module.exports = listUserActions

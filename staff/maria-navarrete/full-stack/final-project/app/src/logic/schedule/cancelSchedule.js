@@ -1,20 +1,22 @@
 import { validators } from 'commons'
 
-const { validateToken } = validators
+const { validateToken, validateId } = validators
 
-function listNotes(token) {
+function cancelSchedule(token, scheduleId) {
     validateToken(token)
+    validateId(scheduleId, 'schedule id')
 
-    return fetch('http://localhost:8080/api/notes', {
+    return fetch(`http://localhost:8080/api/schedules/${scheduleId}`, {
+        method: 'DELETE',
         headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
         }
     })
         .then(res => {
             const { status } = res
-
-            if (status === 200) {
-                return res.json()
+            if (status === 204) {
+                return
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -29,4 +31,4 @@ function listNotes(token) {
         })
 }
 
-export default listNotes
+export default cancelSchedule

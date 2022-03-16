@@ -3,8 +3,8 @@ const { validators: { validateId } } = require('commons')
 
 function deleteAction(userId, actionId) {
 
-    validateId(userId, 'userId')
-    validateId(actionId, 'actionId')
+    validateId(userId, 'user id')
+    validateId(actionId, 'action id')
 
     let anonymous
 

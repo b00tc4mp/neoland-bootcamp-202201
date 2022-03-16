@@ -2,14 +2,14 @@ const { models: { User, Action, Schedule } } = require("data")
 const { validators: { validateId, validateString, validateBoolean, validateNumber } } = require('commons')
 
 
-function updateAction(userId, actionId, description, public, reqTime, reqBudget) {
+function updateAction(userId, actionId, description, public, requiredTime, requiredBudget) {
 
-    validateId(userId, 'userId')
-    validateId(actionId, 'actionId')
+    validateId(userId, 'user id')
+    validateId(actionId, 'action id')
     validateString(description, 'description')
     validateBoolean(public, 'public')
-    validateNumber(reqTime, 'reqTime')
-    validateNumber(reqBudget, 'reqBudget')
+    validateNumber(requiredTime, 'required time')
+    validateNumber(requiredBudget, 'required budget')
 
     let anonymous
 
@@ -25,7 +25,7 @@ function updateAction(userId, actionId, description, public, reqTime, reqBudget)
         })
         .then(schedules => {
             if (schedules.length === 0) {
-                return Action.updateOne({ _id: actionId, author: userId }, { description, public, reqTime, reqBudget })
+                return Action.updateOne({ _id: actionId, author: userId }, { description, public, requiredTime, requiredBudget })
                     .then(result => {
                         if (result.matchedCount === 0) throw new Error(`action with id ${actionId} and userId ${userId} does not exist`)
                     })
@@ -34,7 +34,7 @@ function updateAction(userId, actionId, description, public, reqTime, reqBudget)
                 return Action.updateOne({ _id: actionId, author: userId }, { author: anonymous._id })
                     .then(result => {
                         if (result.matchedCount === 0) throw new Error(`action with id ${actionId} and userId ${userId} does not exist`)
-                        return Action.create({ author: userId, description, public, reqTime, reqBudget })
+                        return Action.create({ author: userId, description, public, requiredTime, requiredBudget })
                     })
                     .then(action => { })
             }

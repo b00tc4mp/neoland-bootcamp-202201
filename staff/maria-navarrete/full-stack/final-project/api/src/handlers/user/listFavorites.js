@@ -6,7 +6,7 @@ module.exports = (req, res) => {
         const userId = verifyTokenAndGetUserId(req)
 
         listFavorites(userId)
-            .then(favs => res.json(favs))
+            .then(favorites => res.json(favorites))
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

@@ -32,176 +32,176 @@ connect('mongodb://localhost:27017/bHooman-db')
         const action1 = new Action({
             description: 'Recoge la basura que veas en la calle hoy',
             public: true,
-            reqTime: 10,
-            reqBudget: 0,
+            requiredTime: 10,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action2 = new Action({
             description: 'Haz las compras a un anciano',
             public: true,
-            reqTime: 90,
-            reqBudget: 0,
+            requiredTime: 90,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action3 = new Action({
             description: 'Dale algo de comer a una persona que lo necesite',
             public: true,
-            reqTime: 15,
-            reqBudget: 5,
+            requiredTime: 15,
+            requiredBudget: 5,
             author: bHooman.id
         })
 
         const action4 = new Action({
             description: 'Dona sangre',
             public: true,
-            reqTime: 120,
-            reqBudget: 0,
+            requiredTime: 120,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action5 = new Action({
             description: 'Da un buen abrazo a alguien que lo necesite',
             public: true,
-            reqTime: 1,
-            reqBudget: 0,
+            requiredTime: 1,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action6 = new Action({
             description: 'Regala ropa que no uses a alguien que lo necesite',
             public: true,
-            reqTime: 10,
-            reqBudget: 0,
+            requiredTime: 10,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action7 = new Action({
             description: 'Llama a alguien que extrañes y déjaselo saber',
             public: true,
-            reqTime: 5,
-            reqBudget: 0,
+            requiredTime: 5,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action8 = new Action({
             description: 'Sonríele a las personas que se crucen en tu camino hoy',
             public: true,
-            reqTime: 0,
-            reqBudget: 0,
+            requiredTime: 0,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action9 = new Action({
             description: 'Haz una jornada de limpieza de una playa',
             public: true,
-            reqTime: 60,
-            reqBudget: 0,
+            requiredTime: 60,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action10 = new Action({
             description: 'Visita un ancianato y comparte tiempo con los abuelos',
             public: true,
-            reqTime: 180,
-            reqBudget: 0,
+            requiredTime: 180,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action11 = new Action({
             description: 'Haz una donación a una fundación que te inspire',
             public: true,
-            reqTime: 5,
-            reqBudget: 20,
+            requiredTime: 5,
+            requiredBudget: 20,
             author: bHooman.id
         })
 
         const action12 = new Action({
             description: 'Ten una conversación con un habitante de la calle',
             public: true,
-            reqTime: 5,
-            reqBudget: 0,
+            requiredTime: 5,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action13 = new Action({
             description: 'Escríbele una carta a alguien que quieras mucho y entregársela',
             public: true,
-            reqTime: 30,
-            reqBudget: 0,
+            requiredTime: 30,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action14 = new Action({
             description: 'Dile te quiero a alguien que no se lo hayas dicho hace mucho tiempo',
             public: true,
-            reqTime: 1,
-            reqBudget: 0,
+            requiredTime: 1,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action15 = new Action({
             description: 'Adopta una mascota',
             public: true,
-            reqTime: 120,
-            reqBudget: 200,
+            requiredTime: 120,
+            requiredBudget: 200,
             author: bHooman.id
         })
 
         const action16 = new Action({
             description: 'Participa en un voluntariado',
             public: true,
-            reqTime: 180,
-            reqBudget: 0,
+            requiredTime: 180,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action17 = new Action({
             description: 'No comas alimentos de origen animal por hoy',
             public: true,
-            reqTime: 0,
-            reqBudget: 0,
+            requiredTime: 0,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action18 = new Action({
             description: 'Dale las gracias a alguien importante en tu vida',
             public: true,
-            reqTime: 10,
-            reqBudget: 0,
+            requiredTime: 10,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action19 = new Action({
             description: 'Visita a alguien que lo necesite',
             public: true,
-            reqTime: 90,
-            reqBudget: 0,
+            requiredTime: 90,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action20 = new Action({
             description: 'Pide disculpas por algo que hayas hecho en el pasado',
             public: true,
-            reqTime: 20,
-            reqBudget: 0,
+            requiredTime: 20,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
         const action21 = new Action({
             description: 'Regala flores de manera anónima',
             public: true,
-            reqTime: 15,
-            reqBudget: 10,
+            requiredTime: 15,
+            requiredBudget: 10,
             author: bHooman.id
         })
 
         const action22 = new Action({
             description: 'Dona tiempo a una caridad',
             public: true,
-            reqTime: 120,
-            reqBudget: 0,
+            requiredTime: 120,
+            requiredBudget: 0,
             author: bHooman.id
         })
 
@@ -247,8 +247,8 @@ connect('mongodb://localhost:27017/bHooman-db')
         const [action1, action2, action3, action4, action5] = actions
         const [anonymous, bHooman, gio, pau, ju, arvi, mati] = users
 
-        gio.favs.push(action4.id, action3.id)
-        arvi.favs.push(action2.id, action3.id)
+        gio.favorites.push(action4.id, action3.id)
+        arvi.favorites.push(action2.id, action3.id)
 
         return Promise.all([gio.save(), arvi.save()])
     })

@@ -3,9 +3,9 @@ const { validators: { validateId, validatePassword } } = require('commons')
 
 function updateUserPassword(userId, currPassword, newPassword) {
 
-    validateId(userId, 'userId')
-    validatePassword(currPassword, 'currPassword')
-    validatePassword(newPassword, 'newPassword')
+    validateId(userId, 'user id')
+    validatePassword(currPassword, 'current password')
+    validatePassword(newPassword, 'new password')
 
     return User.findById(userId).lean()
         .then(user => {

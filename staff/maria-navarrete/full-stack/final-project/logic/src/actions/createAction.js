@@ -1,21 +1,20 @@
 const { validators: { validateId, validateString, validateBoolean, validateNumber } } = require('commons')
 const { models: { Action, User } } = require('data')
 
-function createAction(userId, description, public = "false", reqTime, reqBudget) {
+function createAction(userId, description, public, requiredTime, requiredBudget) {
 
-    validateId(userId, 'userId')
+    validateId(userId, 'user id')
     validateString(description, 'description')
     validateBoolean(public, 'public')
-    validateNumber(reqTime, 'reqTime')
-    validateNumber(reqBudget, 'reqBudget')
+    validateNumber(requiredTime, 'required time')
+    validateNumber(requiredBudget, 'required budget')
 
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw Error(`user with id ${userId} not found`)
-            return Action.create({ author: userId, description, public, reqTime, reqBudget })
+            return Action.create({ author: userId, description, public, requiredTime, requiredBudget })
         })
         .then(({ id }) => id)
-
 }
 
 module.exports = createAction

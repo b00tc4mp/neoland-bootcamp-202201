@@ -2,7 +2,7 @@ const { models: { Schedule, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
 function listSchedules(userId) {
-    validateId(userId, 'userId')
+    validateId(userId, 'user id')
 
     return User.findById(userId).lean()
         .then(user => {
@@ -12,19 +12,18 @@ function listSchedules(userId) {
         .then(schedules => {
             if (!schedules) throw new Error(`no schedules found for user with id ${userId}`)
 
-            return schedules.map(schedule => {
-
+            schedules.forEach(schedule => {
                 schedule.id = schedule._id.toString()
                 delete schedule._id
                 delete schedule.__v
                 schedule.actionId = schedule.action._id.toString()
-                schedule.actionDesc = schedule.action.description
-                schedule.actionReqTime = schedule.action.reqTime
-                schedule.actionReqBudget = schedule.action.reqBudget
+                schedule.actionDescription = schedule.action.description
+                schedule.actionRequiredTime = schedule.action.requiredTime
+                schedule.actionRequiredBudget = schedule.action.requiredBudget
                 delete schedule.action
-
-                return schedule
+                delete schedule.user
             })
+            return schedules
         })
 
 }

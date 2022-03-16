@@ -3,15 +3,18 @@ const { validators: { validateId }, helpers: { sanitizeAction } } = require('com
 
 function listUserPublicActions(userId, consultedUserId) {
 
-    validateId(userId, 'userId')
-    validateId(consultedUserId, 'consultedUserId')
+    validateId(userId, 'user id')
+    validateId(consultedUserId, 'consulted user id')
 
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw Error(`user with id ${userId} not found`)
             return Action.find({ author: consultedUserId, public: true }).lean().populate('author')
         })
-        .then(action => action.map(action => sanitizeAction(action)))
+        .then(actions => {
+            actions.forEach(action => sanitizeAction(action))
+            return actions
+        })
 }
 
 module.exports = listUserPublicActions

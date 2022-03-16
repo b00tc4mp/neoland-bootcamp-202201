@@ -3,8 +3,8 @@ const { validators: { validateId } } = require('commons')
 
 function completeSchedule(userId, scheduleId) {
 
-    validateId(userId, 'userId')
-    validateId(scheduleId, 'scheduleId')
+    validateId(userId, 'user id')
+    validateId(scheduleId, 'schedule id')
 
     return User.findById(userId).lean()
         .then(user => {

@@ -1,27 +1,26 @@
 import { validators } from 'commons'
-const { validateToken, validatePassword } = validators
 
-function updateUserPassword(token, currentPassword, newPassword, confirmPassword) {
-    validateToken(token)
-    validatePassword(currentPassword, 'old password')
-    validatePassword(newPassword, 'new password')
-    validatePassword(confirmPassword, 'confirmed password')
+const { validateString, validateDate, valdiateToken, validateId } = validators
 
-    if (newPassword !== confirmPassword) throw new Error('retyped password doesn\'t match password')
+function createSchedule(token, actionId, date, repeat) {
+    valdiateToken(token)
+    validateId(actionId, 'action id')
+    validateDate(date, 'date')
+    validateString(repeat, 'repeat')
 
-    return fetch('http://localhost:8080/api/users/change-password', {
-        method: 'PATCH',
+    return fetch(`http://localhost:8080/api/schedules/${actionId}`, {
+        method: 'POST',
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ currentPassword, newPassword })
-
+        body: JSON.stringify({ date, repeat })
     })
         .then(res => {
             const { status } = res
+
             if (status === 200) {
-                return
+                return res.json()
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -36,4 +35,4 @@ function updateUserPassword(token, currentPassword, newPassword, confirmPassword
         })
 }
 
-export default updateUserPassword
+export default createSchedule

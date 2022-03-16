@@ -3,7 +3,7 @@ const { validators: { validateId, validateString, validateEmail, validateBoolean
 
 function updateUser(userId, username, email, notifications) {
     
-    validateId(userId, 'userId')
+    validateId(userId, 'user id')
     validateString(username, 'username')
     validateEmail(email)
     validateBoolean(notifications)

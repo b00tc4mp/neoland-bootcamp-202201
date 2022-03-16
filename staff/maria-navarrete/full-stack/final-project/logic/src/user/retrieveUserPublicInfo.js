@@ -3,7 +3,7 @@ const { validators: { validateId } } = require('commons')
 
 function retrieveUserPublicInfo(userId, consultedUserId) {
 
-    validateId(userId, 'userId')
+    validateId(userId, 'user id')
 
     return User.findById(userId).lean()
         .then(user => {

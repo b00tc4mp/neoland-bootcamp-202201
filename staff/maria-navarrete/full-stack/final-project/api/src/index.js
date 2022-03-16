@@ -58,7 +58,7 @@ connect(MONGODB_URL)
         api.get('/users/actions', listUserActions)
         api.get('/users/:consultedUserId/actions', listUserPublicActions)
         api.patch('/actions/:actionId', jsonBodyParser, updateAction)
-        api.delete('/action/:actionId', deleteAction)
+        api.delete('/actions/:actionId', deleteAction)
 
         api.post('/schedules/:actionId', jsonBodyParser, createSchedule)
         api.get('/schedules', listSchedules)

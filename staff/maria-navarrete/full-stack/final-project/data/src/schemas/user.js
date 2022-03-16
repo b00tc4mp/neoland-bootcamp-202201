@@ -20,7 +20,7 @@ const user = new Schema({
         required: true,
     },
     
-    favs: [{
+    favorites: [{
         type: ObjectId,
         ref: 'Action'
     }],

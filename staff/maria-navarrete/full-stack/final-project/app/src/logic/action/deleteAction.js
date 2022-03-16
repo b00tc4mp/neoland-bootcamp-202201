@@ -1,26 +1,21 @@
 import { validators } from 'commons'
-const { validateToken, validatePassword } = validators
 
-function updateUserPassword(token, currentPassword, newPassword, confirmPassword) {
+const { validateToken, validateId } = validators
+
+function deleteAction(token, actionId) {
     validateToken(token)
-    validatePassword(currentPassword, 'old password')
-    validatePassword(newPassword, 'new password')
-    validatePassword(confirmPassword, 'confirmed password')
+    validateId(actionId, 'action id')
 
-    if (newPassword !== confirmPassword) throw new Error('retyped password doesn\'t match password')
-
-    return fetch('http://localhost:8080/api/users/change-password', {
-        method: 'PATCH',
+    return fetch(`http://localhost:8080/api/actions/${actionId}`, {
+        method: 'DELETE',
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ currentPassword, newPassword })
-
+        }
     })
         .then(res => {
             const { status } = res
-            if (status === 200) {
+            if (status === 204) {
                 return
             } else if (status >= 400 && status < 500) {
                 return res.json()
@@ -36,4 +31,4 @@ function updateUserPassword(token, currentPassword, newPassword, confirmPassword
         })
 }
 
-export default updateUserPassword
+export default deleteAction

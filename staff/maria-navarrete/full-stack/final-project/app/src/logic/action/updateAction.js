@@ -1,21 +1,21 @@
 import { validators } from 'commons'
-const { validateToken, validatePassword } = validators
+const { validateToken, validateId, validateString, validateBoolean, validateNumber } = validators
 
-function updateUserPassword(token, currentPassword, newPassword, confirmPassword) {
+function updateAction(token, actionId, description, public, requiredTime, requiredBudget) {
     validateToken(token)
-    validatePassword(currentPassword, 'old password')
-    validatePassword(newPassword, 'new password')
-    validatePassword(confirmPassword, 'confirmed password')
+    validateId(actionId, 'action id')
+    validateString(description, 'description')
+    validateBoolean(public, 'public')
+    validateNumber(requiredTime, 'required time')
+    validateNumber(requiredBudget, 'required budget')
 
-    if (newPassword !== confirmPassword) throw new Error('retyped password doesn\'t match password')
-
-    return fetch('http://localhost:8080/api/users/change-password', {
+    return fetch(`http://localhost:8080/api/actions/${actionId}`, {
         method: 'PATCH',
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ currentPassword, newPassword })
+        body: JSON.stringify({ description, public, requiredTime, requiredBudget })
 
     })
         .then(res => {
@@ -36,4 +36,4 @@ function updateUserPassword(token, currentPassword, newPassword, confirmPassword
         })
 }
 
-export default updateUserPassword
+export default updateAction

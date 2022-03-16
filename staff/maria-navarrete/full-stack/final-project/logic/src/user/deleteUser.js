@@ -22,7 +22,7 @@ function deleteUser(userId, password) {
         })
         .then(() => Schedule.find().lean().populate('action'))
         .then(schedules => {
-            const userAsAuthorScheduledActions = schedules.filter(schedule => schedule.action.author._id === userId).map(schedule => schedule.action._id)
+            const userAsAuthorScheduledActions = schedules.filter(schedule => schedule.action.author._id === userId).forEach(schedule => schedule.action._id)
             //aqui tengo las acciones que deben pasar a anonymous
 
             return Action.updateMany({ _id: { $in: userAsAuthorScheduledActions } }, { author: anonymous })
