@@ -14,11 +14,12 @@ const deleteRecipe = require('./deleteRecipe')
 const createNote = require('./createNote')
 const updateNote = require('./updateNote')
 const deleteNote = require('./deleteNote')
+const retrieveNote = require('./retrieveNote')
 
 
-const findRecipeByTitle = require('./findRecipeByTitle')
-const findRecipeByDestilled = require('./findRecipeByDestilled')
-const findRecipeByType = require('./findRecipeByType')
+const findRecipesByTitle = require('./findRecipesByTitle')
+const findRecipesByDestilled = require('./findRecipesByDestilled')
+const findRecipesByType = require('./findRecipesByType')
 
 
 module.exports = {
@@ -38,9 +39,9 @@ module.exports = {
     createNote,
     updateNote,
     deleteNote,
+    retrieveNote,
     
-    findRecipeByType,
-    findRecipeByTitle,
-    findRecipeByDestilled
-
+    findRecipesByType,
+    findRecipesByTitle,
+    findRecipesByDestilled
 }

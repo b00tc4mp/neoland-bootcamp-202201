@@ -1,12 +1,12 @@
 const { connect, disconnect } = require('mongoose')
-const { User, Recipe, Comment } = require('./models')
+const { User, Recipe, Note } = require('./models')
 
 connect('mongodb://localhost:27017/cfd-db')
     .then(() => console.log('connected'))
     .then(() => Promise.all([    
         User.deleteMany(),
         Recipe.deleteMany(),
-        Comment.deleteMany()
+        Note.deleteMany()
     ]))
 
     .then(() => {

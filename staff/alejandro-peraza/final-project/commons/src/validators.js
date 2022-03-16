@@ -55,6 +55,18 @@ function validateString(string, explain = 'string') {
     if (string === '') throw new Error(`empty ${explain}`)
     if (BLANK_REGEX.test(string)) throw new Error(`blank ${explain}`)
     if (SPACES_AROUND_REGEX.test(string)) throw new Error(`${explain} has spaces around`)
+
+}
+
+function validateQuery(query, explain = 'query') {
+    if (typeof query !== 'string') throw TypeError(`${explain} is not a string`)
+    if (query === '') throw Error(`empty ${explain}`)
+    if (BLANK_REGEX.test(string)) throw Error(`blank ${explain}`)
+    if (SPACES_AROUND_REGEX.test(string)) throw Error(`${explain} has spaces around`)
+    if (query.length < 3) throw Error(`${explain} is shorter than 3 characters`)
+    return true
+
+
 }
 
 function validateId(id, explain = 'id') {
@@ -72,5 +84,6 @@ module.exports = {
     validateToken,
     validateString,
     validateId,
-    validateBoolean
+    validateBoolean,
+    validateQuery
 }

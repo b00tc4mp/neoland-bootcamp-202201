@@ -3,15 +3,14 @@ const { retrieveNote } = require("logic");
 
 module.exports = (req, res) => {
   try {
-    const userId = verifyTokenAndGetUserId(req);
-    const {
-      params: { noteId },
-    } = req;
+    
+    const userId = verifyTokenAndGetUserId(req)
+    const { params: { recipeId, noteId } } = req
 
-    retrieveNote(userId, noteId)
-      .then((note) => res.json(note))
-      .catch((error) => res.status(400).json({ error: error.message }));
+    retrieveNote(userId, recipeId, noteId)
+      .then((note) => res.status(200).json(note))
+      .catch((error) => res.status(400).json({ error: error.message }))
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message })
   }
 };

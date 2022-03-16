@@ -14,15 +14,7 @@ const {
     updateNote,
     deleteNote,
     retrieveNote,
-    findRecipes,
-    /*findRecipeByTitle,
-    findRecipeByType,
-    findRecipeByDestilled
-    /*createRecipe,
-    retrieveRecipe,
-    retrieveFavRecipes,
-    updateRecipe,
-    deleteRecipe,*/
+    findRecipes
 } = require('./handlers')
 
 const cors = require('cors')
@@ -61,9 +53,9 @@ connect(MONGODB_URL)
 
 
         api.post('/recipes/:recipeId/notes', jsonBodyParser, createNote)
-        api.get('/recipes/:recipeId/notes/:noteId', jsonBodyParser, retrieveNote )
+        api.get('/recipes/:recipeId/notes/:noteId', retrieveNote)
         api.patch('/recipes/:recipeId/notes/:noteId', jsonBodyParser, updateNote)
-        api.delete('/recipes/:recipeId/notes/:noteId', deleteNote)
+        api.delete('/recipes/:recipeId/notes/:noteId',jsonBodyParser, deleteNote)
         
         server.use('/api', api)
 
