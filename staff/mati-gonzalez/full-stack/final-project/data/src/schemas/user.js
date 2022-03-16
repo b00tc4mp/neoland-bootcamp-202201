@@ -3,10 +3,10 @@ const { Types: { ObjectId } } = Schema
 
 
 const user = new Schema({
-    name: {
+    username: {
         type: String,
         required: true,
-        minlength: 2
+        unique: true
     },
 
     email: {
@@ -25,9 +25,9 @@ const user = new Schema({
         type: [ObjectId]
     },
 
-    prestigePoint: {
-        type: Number,
-    }
+    // prestigePoint: {
+    //     type: Number,
+    // }
 })
 
 module.exports = user

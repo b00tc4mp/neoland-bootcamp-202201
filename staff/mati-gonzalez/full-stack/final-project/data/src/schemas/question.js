@@ -23,9 +23,10 @@ const question = new Schema({
         type: [String],
     },
 
-    like: {
-        type: Number
-    }
+    // like: {
+    //     type: Number,
+    //     default: 0
+    // }
 
 })
 

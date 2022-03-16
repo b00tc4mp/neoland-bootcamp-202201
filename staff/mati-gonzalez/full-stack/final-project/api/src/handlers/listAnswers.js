@@ -1,10 +1,10 @@
-const { listQuestions } = require('logic')
+const { listAnswers } = require('logic')
 // const { verifyTokenAndGetUserId } = require('../helpers')
 
-module.exports = (req, res) => {
+module.exports = ( req, res) => {
         try{
-            listQuestions()
-            .then(questions => res.json(questions))
+            listAnswers()
+            .then(answers => res.json(answers))
             .catch(error => res.status(400).json({ error: error.message }))
         } catch (error) {
             res.status(400).json({ error: error.message})

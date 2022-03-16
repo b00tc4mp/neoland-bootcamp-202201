@@ -5,15 +5,13 @@ const comment = new Schema({
     user: {
         type: ObjectId,
         ref: 'User',
-        required: true,
-        unique: true
+        required: true
     },
     
     answer: {
         type: ObjectId,
         ref: 'Answer',
-        required: true,
-        unique: true
+        required: true
     },
 
     text: {
@@ -21,12 +19,14 @@ const comment = new Schema({
     },
 
     date: {
-        type: Date
+        type: Date,
+        required: true,
+        default: Date.now
     },
 
-    likes: {
-        type: Number
-    }
+    // likes: {
+    //     type: Number
+    // }
 })
 
 module.exports = comment

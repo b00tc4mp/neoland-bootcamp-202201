@@ -5,23 +5,22 @@ function retrieveQuestion(userId, questionId) {
     validateId(userId, 'userId')
     validateId(questionId, 'questionId')
 
-    return Question.findById(questionId).populate('user')
+    return Question.findById(questionId).lean().populate('user')
         .then(question => {
 
-            if(!question) throw new Error(`question with id ${noteId} does not exist`)
+            if(!question) throw new Error(`question with id ${questionId} does not exist`)
 
-            if(question.user.id === userId ){
-                const doc = question._doc
+                question.id = question._id.toString()
 
-                doc.id = doc._id.toString()
+                question.userId = question.user._id.toString()
+                question.userName = question.user.username
 
-                doc.userId = doc.user.id
-                doc.userName = doc.user.name
+                delete question.__v
+                delete question._id
+                delete question.user
 
     
-                return doc
-            }
-            else throw new Error (`question with id ${noteId} is not public`)
+                return question
             
         })
 }

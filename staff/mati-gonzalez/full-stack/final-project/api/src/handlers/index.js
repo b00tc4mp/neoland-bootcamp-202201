@@ -9,6 +9,7 @@ const retrieveQuestion = require('./retrieveQuestion')
 const listQuestions = require('./listQuestions')
 const addAnswer = require('./addAnswer')
 const addComment = require('./addComment')
+const listAnswers = require('./listAnswers')
 
 module.exports = {
     registerUser,
@@ -21,5 +22,6 @@ module.exports = {
     retrieveQuestion,
     listQuestions,
     addAnswer,
-    addComment
+    addComment,
+    listAnswers
 }

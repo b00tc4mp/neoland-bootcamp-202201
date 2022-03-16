@@ -8,13 +8,12 @@ function updateUserPassword(userId, currPassword, newPassword) {
 
     return User.findById(userId)
         .then(user => {
-            if(!user) throw new Error(`user with id ${userId} does not exist`)
-            if (user.password === currPassword)
-                return User.updateOne({ _id: userId }, { password: newPassword })
-                    .then(result => {
-                        if (result.modifiedCount === 0) throw new Error(`user with id ${userId} does not exist`)
-                    })
-            else throw new Error('wrong credentials')
+            if(!user) throw Error(`user with id ${userId} does not exist`)
+            return User.updateOne({ _id: userId, password: currPassword }, { password: newPassword })
+        })
+        .then(result => {
+            // debugger
+            if (result.modifiedCount === 0) throw Error('wrong credentials')
         })
 }
 

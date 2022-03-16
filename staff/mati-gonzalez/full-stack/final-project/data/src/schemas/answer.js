@@ -25,9 +25,9 @@ const answer = new Schema({
         default: Date.now
     },
 
-    likes: {
-        type: Number
-    }
+    // likes: {
+    //     type: Number
+    // }
 })
 
 module.exports = answer

@@ -1,139 +1,85 @@
 const { connect, disconnect } = require('mongoose')
-const { User, Comment, Question } = require('./models')
+const { User, Question } = require('./models')
+
+let users 
 
 connect('mongodb://localhost:27017/thylemma-db')
     .then(() => console.log('connected'))
     .then(() => Promise.all([
-        User.deleteMany()
+        User.deleteMany(),
+        Question.deleteMany(),
     ]))
     .then(() => {
-        const agua = new User({ name: 'Agua Cate', email: 'agua@cate.com', password: '123123123', prestigePoint: 15 })
-        const ora = new User({ name: 'Ora Culo', email: 'ora@culo.com', password: '123123123', prestigePoint: 20 })
+        const godFather = new User({ username: 'godFather', email: 'gonzalezmatias199930@gmail.com', password:'dogFight21'})
+        const mPau = new User({ username: 'mPau', email: 'mp.navarrete13@gmail.com', password: 'matiEsElMejor'})
+        const gonPer21 = new User({ username: 'gonPer21', email: 'mn.gonper@gmail.com', password: 'matiEsElMejor'})
+        const flimsyGrub4 = new User({ username: 'flimsyGrub4', email: 'flimsygrub4@gmail.com', password: 'matiEsElMejor'})
+        const elVenturilla = new User({ username: 'elVenturilla', email: 'elVentu@gmail.com', password: 'matiEsElMejor'})
+        const elVenturillaPeroTranki = new User({ username: 'elVenturillaPeroTranki', email: 'elVentuTranki@gmail.com', password: 'matiEsElMejor'})
+        const juds69 = new User({ username: 'juds69', email: 'juds@gmail.com', password: 'matiEsElMejor'})
+        const manuXulo69 = new User({ username: 'manuXulo69', email: 'elManuXulo@gmail.com', password: 'matiEsElMejor'})
 
-        return Promise.all([agua.save(), ora.save()])
+        return Promise.all([godFather.save(), mPau.save(), gonPer21.save(), flimsyGrub4.save(), elVenturilla.save(), elVenturillaPeroTranki.save(), juds69.save(), manuXulo69.save()])
     })
-    // .then(users => {
-    //     const [agua, ora] = users
-    //     const aguaCard = new CreditCard({ fullName: 'Agua Cate Quesis', number: '1234 1234 1234 1234', expiration: new Date })
-    //     agua.creditCards.push(aguaCard)
+    .then(_users => {
+        users = _users
+        const [godFather, mPau, gonPer21, flimsyGrub4, elVenturilla, elVenturillaPeroTranki, juds69, manuXulo69] = users
+        const question1 = new Question({text: 'Is happiness just chemicals flowing through your brain or something more?', categories: ['happiness', 'self-fullfilment'], user: godFather})
+        const question2 = new Question({text: 'Can we really know everything?', categories: ['knowledge', 'self-fullfilment'], user: godFather})
+        const question3 = new Question({text: 'Is there a God? and what could be considered as one if it exists?', categories: ['existence', 'divine'], user: godFather})
+        const question4 = new Question({text: 'What is consciousness', categories: ['self-fullfilemnt', 'awareness'], user: godFather})
 
-    //     const aguaCard2 = new CreditCard({ fullName: 'Agua Cate Quesis', number: '3456 3456 3456 3456', expiration: new Date })
-    //     agua.creditCards.push(aguaCard2)
+        const question5 = new Question({text: 'Is there an alternative to capitalism?', categories: ['politics', 'order'], user:mPau})
+        const question6 = new Question({text: 'Are humans obligated to better themseleves?', categories: ['ethics', 'self-fullfilment'], user: mPau})
+        const question7 = new Question({text: 'Is it more important to be respected or liked?', categories: ['choices'], user: mPau})
+        const question8 = new Question({text: 'Is there a meaning of life?', categories: ['meaning', 'existence', 'self-fullfilment'], user: mPau})
 
-    //     const oraCard = new CreditCard({ fullName: 'Ora Culo Quesis', number: '2345 2345 2345 2345', expiration: new Date })
-    //     ora.creditCards.push(oraCard)
+        const question9 = new Question({text: 'Would you kill 10 people to save 100?', categories: ['ethics', 'choices'], user: gonPer21})
+        const question10 = new Question({text: 'Do we have free will?', categories: ['awareness', 'choices'], user: gonPer21})
+        const question11 = new Question({text: 'What is time?', categories: ['existence'], user: gonPer21})
+        const question12 = new Question({text: 'Do acts of kindness have a motive?', categories: [''], user: gonPer21})
 
-    //     return Promise.all([agua.save(), ora.save()])
-    // })
-    // .then(() => {
-    //     const nike = new Brand({ name: 'Nike' })
-    //     const adidas = new Brand({ name: 'Adidas' })
-    //     const converse = new Brand({ name: 'Converse' })
+        const question13 = new Question({text: 'What is happiness?', categories: [''], user: flimsyGrub4})
+        const question14 = new Question({text: 'Is mind or matter more real?', categories: [''], user: flimsyGrub4})
+        const question15 = new Question({text: 'Is love simply physical desire or something more?', categories: [''], user: flimsyGrub4})
+        const question16 = new Question({text: 'Where do thoughts come from?', categories: [''], user: flimsyGrub4})
 
-    //     return Promise.all([nike.save(), adidas.save(), converse.save()])
-    // })
-    // .then(([nike, adidas, converse]) => {
-    //     const airMax = new Product({ brand: nike.id, model: 'Air Max', cost: 100, price: 120, serial: 'NIKE-SERIAL-123123123', image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/04f7ca5f-2412-4511-993c-2e08e542eb33/air-max-90-zapatillas-6SdNzK.png' })
-    //     const airMax2 = new Product({ brand: nike.id, model: 'Air Max 2', cost: 110, price: 135, serial: 'NIKE-SERIAL-234234234', image: 'https://m.media-amazon.com/images/I/61S9rdrwGsL._AC_UY395_.jpg' })
-    //     const vaporMax = new Product({ brand: nike.id, model: 'Vapor Max', cost: 105, price: 125, serial: 'NIKE-SERIAL-345345345', image: 'https://cdn.shopify.com/s/files/1/0933/1060/products/nike-air-vapormax-flyknit-3-black-white-metallic-silver-aj6900-002_1800x1800.jpg?v=1556750119' })
+        const question17 = new Question({text: 'Does evil come from within? And if so, why?', categories: [''], user: elVenturilla})
+        const question18 = new Question({text: 'What is beauty?', categories: [''], user: elVenturilla})
+        const question19 = new Question({text: 'Where were people before they were born?', categories: [''], user: elVenturilla})
+        const question20 = new Question({text: 'If everyone spoke their mind would this world be a better place?', categories: [''], user: elVenturilla})
 
-    //     const nikes = [airMax, airMax2, vaporMax]
+        const question21 = new Question({text: 'Where does the universe end?', categories: [''], user: elVenturillaPeroTranki})
+        const question22 = new Question({text: 'What is infinity?', categories: [''], user: elVenturillaPeroTranki})
+        const question23 = new Question({text: 'Is there a reason for Life?', categories: [''], user: elVenturillaPeroTranki})
+        const question24 = new Question({text: 'Is there a beginning of the Universe?', categories: [''], user: elVenturillaPeroTranki})
 
-    //     const nizza = new Product({ brand: adidas.id, model: 'Nizza', cost: 80, price: 100, serial: 'ADIDAS-SERIAL-123123123', image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/eec160da7d2f41d1bd6aabeb0009028d_9366/Zapatilla_Nizza_Platform_Negro_FV5321_01_standard.jpg' })
-    //     const stanSmith = new Product({ brand: adidas.id, model: 'Stan Smith', cost: 90, price: 110, serial: 'ADIDAS-SERIAL-234234234', image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/68ae7ea7849b43eca70aac1e00f5146d_9366/Zapatilla_Stan_Smith_Blanco_FX5502_01_standard.jpg' })
+        const question25 = new Question({text: 'Are highly intelligent people less happy than individuals with average intelligence?', categories: [''], user: juds69})
+        const question26 = new Question({text: 'Does living our life for others give our life a meaning?', categories: [''], user: juds69})
+        const question27 = new Question({text: 'What are numbers?', categories: [''], user: juds69})
+        const question28 = new Question({text: 'Does fate exist?', categories: [''], user: juds69})
 
-    //     const adidass = [nizza, stanSmith]
+        const question29 = new Question({text: 'Are there limitations on free speech?', categories: [''], user: manuXulo69})
+        const question30 = new Question({text: 'Are humans alone in the universe?', categories: [''], user: manuXulo69})
+        const question31 = new Question({text: 'Is trust more important than love?', categories: [''], user: manuXulo69})
+        const question32 = new Question({text: 'Why do we things we do not like to do?', categories: [''], user: manuXulo69})
 
-    //     const allStar = new Product({ brand: converse.id, model: 'AllStar', cost: 60, price: 80, serial: 'CONVERSE-SERIAL-123123123', image: 'https://www.converse.com/dw/image/v2/AALW_PRD/on/demandware.static/-/Sites-ConverseMaster/default/dw2752aa8f/images/a_107/M9160_A_107X1.jpg?sw=2000' })
-    //     const chuck70 = new Product({ brand: converse.id, model: 'Chuck 70', cost: 65, price: 95, serial: 'CONVERSE-SERIAL-234234234', image: 'https://www.converse.com/dw/image/v2/AALW_PRD/on/demandware.static/-/Sites-ConverseMaster/default/dw4aeb88f6/images/a_107/173121C_A_107X1.jpg?sw=2000' })
-
-    //     const converses = [allStar, chuck70]
-
-    //     return Promise.all([
-    //         Promise.all(nikes.map(nike => nike.save())),
-    //         Promise.all(adidass.map(adidas => adidas.save())),
-    //         Promise.all(converses.map(converse => converse.save()))
-    //     ])
-    // })
-
-    // .then(([[airMax, airMax2, vaporMax], [nizza, stanSmith], [allStar, chuck70]]) => {
-    //     const airMaxBlack42 = new Stock({ product: airMax.id, quantity: 150, color: 'black', size: 42 })
-    //     const airMaxWhite42 = new Stock({ product: airMax.id, quantity: 100, color: 'white', size: 42 })
-    //     const airMaxBlack43 = new Stock({ product: airMax.id, quantity: 100, color: 'black', size: 43 })
-    //     const airMaxWhite43 = new Stock({ product: airMax.id, quantity: 75, color: 'white', size: 43 })
-
-
-    //     const airMaxStocks = [airMaxBlack42, airMaxWhite42, airMaxBlack43, airMaxWhite43]
-
-    //     const nizzaBlack42 = new Stock({ product: nizza.id, quantity: 40, color: 'black', size: 42 })
-    //     const nizzaWhite42 = new Stock({ product: nizza.id, quantity: 50, color: 'white', size: 42 })
-    //     const nizzaBlack43 = new Stock({ product: nizza.id, quantity: 30, color: 'black', size: 43 })
-    //     const nizzaWhite43 = new Stock({ product: nizza.id, quantity: 40, color: 'white', size: 43 })
-
-    //     const nizzaStocks = [nizzaBlack42, nizzaWhite42, nizzaBlack43, nizzaWhite43]
-
-    //     return Promise.all([
-    //         Promise.all(airMaxStocks.map(stock => stock.save())),
-    //         Promise.all(nizzaStocks.map(stock => stock.save()))
-    //     ])
-    // })
-    // .then(([[airMaxBlack42, airMaxWhite42, airMaxBlack43, airMaxWhite43], [nizzaBlack42, nizzaWhite42, nizzaBlack43, nizzaWhite43]]) => {
-    //     return User.findOne({ name: 'Agua Cate' })
-    //         .then(user => {
-    //             const airMaxBlack42Order = new Order({ stock: airMaxBlack42.id, user: user.id, quantity: 1, date: new Date })
-    //             airMaxBlack42.quantity--
-
-    //             return Promise.all([airMaxBlack42.save(), airMaxBlack42Order.save()])
-    //         })
-    //         .then(([airMaxBlack42, airMaxBlack42Order]) => {
-    //             return airMaxBlack42Order.id
-    //         })
-    // })
-    // .then(orderId => {
-    //     return Order.findById(orderId)
-    //         .then(order => {
-    //             console.log('order', order._doc)
-    //             return Stock.findById(order.stock)
-    //         })
-    //         .then(stock => {
-    //             console.log('stock', stock._doc)
-    //             return Product.findById(stock.product)
-    //         })
-    //         .then(product => {
-    //             console.log('product', product._doc)
-    //             return Brand.findById(product.brand)
-    //         })
-    //         .then(brand => console.log('brand', brand))
-    // })
-
-
-    // .then(()=> User.create({name: 'Agua Cate', email: 'agua@cate.com', password: '123123123'}))
-    // .then(() => User.create({ name: 'Ora Culo', email: 'ora@culo.com', password: '123123123'}))
-    // .then(()=> User.findById('621622d8eff2ecffb5d7cc5d'))
-    // .then(user=>{
-    //     user.name= 'Maria Paula Pan'
-    //     user.email = 'mariapaula@pan.com'
-
-    //     return user.save()
-    // })
-    // // .then(()=> User.findById('62162084eff2ecffb5d7cc59'))
-    // // .then(user=> User.deleteOne({_id: user.id}))
-    // .then(() => console.log('user deleted'))
-    // .then(([agua, ora]) => {
-    //     const talent = new Property({
-    //         cadastral: 'ES-CA-123123123',
-    //         date: new Date,
-    //         address: 'Ramon Turro 169',
-    //         area: 3000,
-    //         owners: [agua.id, ora.id]
-    //     })
-
-    //     return talent.save()
-    // })
-    // .then(talent => User.find({ _id: { $in: talent.owners } }))
-    // .then(users => {
-    //     const [agua, ora] = users
-    // })
+        const question33 = new Question({text: 'Do we have a soul?', categories: [''], user: godFather})
+        const question34 = new Question({text: 'What is intelligence?', categories: [''], user: godFather})
+        const question35 = new Question({text: 'Can religious beliefs affect scientific thinking?', categories: [''], user: godFather})
+        const question36 = new Question({text: 'Does belief make God exist?', categories: [''], user: godFather})
+        const question37 = new Question({text: 'What happens after we die?', categories: [''], user: godFather})
+        const question38 = new Question({text: 'How much control do we have over our life?', categories: [''], user: godFather})
+        const question39 = new Question({text: 'How do we know our perceptions are real?', categories: [''], user: godFather})
+        const question40 = new Question({text: 'Are we the biggest threat to humanity?', categories: [''], user: godFather})
+        
+        return Promise.all([ question1.save(), question2.save(), question3.save(), question4.save(), question5.save(),
+        question6.save(), question7.save(), question8.save(), question9.save(), question10.save(), question11.save(), question12.save(), question13.save(),
+        question14.save(), question15.save(), question16.save(), question17.save(), question18.save(), question19.save(), question20.save(), question21.save(),
+        question22.save(), question23.save(), question24.save(), question25.save(), question26.save(), question27.save(), question28.save(), question29.save(),
+        question30.save(), question31.save(), question32.save(), question33.save(), question34.save(), question35.save(), question36.save(),
+        question37.save(), question38.save(), question39.save(), question40.save()])
+    })
 
     .then(() => disconnect())
 
