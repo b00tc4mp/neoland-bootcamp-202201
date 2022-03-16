@@ -2,50 +2,83 @@ const { models: { Location, User } } = require('data')
 const { validators: { validateString, validateId } } = require('commons')
 
 
-function searchLocations(userId, query, type, city) {
+function searchLocations(userId, {query, type, city}={}) {
     validateId(userId, 'user id')
-    
     if (query) validateString(query, 'query')
     if (type) validateString(type, 'type') 
     if (city) validateString(city, 'city')
 
-    
-    return User.findById(userId).lean()
+    const QUERY_REGEX = new RegExp(query, 'i')
+    const EXACT_REGEX = new RegExp(`^${query}$`, "i");
+
+    let filters
+
+    return User.findById(userId)
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
-            
-            const filters = { }
-            
-            if (query) {
-                const QUERY_REGEX = new RegExp(query, 'i')
-                const EXACT_REGEX = new RegExp(`^${query}$`, 'i');
 
-                filters.$or = [{title: QUERY_REGEX},{address: QUERY_REGEX},{city: EXACT_REGEX}, {type: EXACT_REGEX}]
+            if (query) {
+                if (type && city) { 
+                    filters = { $or:[{title: QUERY_REGEX},{address: QUERY_REGEX},{city: EXACT_REGEX}, {type: EXACT_REGEX}], type, city}
+                }
+                else if (type) {
+                    filters = { $or:[{title: QUERY_REGEX},{address: QUERY_REGEX},{city: EXACT_REGEX}, {type: EXACT_REGEX}], type}
+                }
+                else if (city) {
+                    filters = { $or:[{title: QUERY_REGEX},{address: QUERY_REGEX},{city: EXACT_REGEX}, {type: EXACT_REGEX}], city}
+                }
+                else {
+                    filters = { $or:[{title: QUERY_REGEX},{address: QUERY_REGEX},{city: EXACT_REGEX}, {type: EXACT_REGEX}]}
+                }
             }
-            if (type) filters.type = type   
-                
-            if (city) filters.city = city
+
+            else if (type) {
+                if (city) {
+                    filters = {type, city}
+                }
+                else {
+                    filters = {type}
+                }
+            }
+
+            else if (city) {
+                filters = {city}
+            }
+            else {
+                filters = { }
+             }
+
 
             return Location.find(filters).lean().populate('user')
         })
-        .then(locations => {
-            locations.forEach(location => {
-                    
+        .then(results => {
+           
+            const locations = results.map(location => {
+                
                 location.id = location._id.toString()
                 location.userId = location.user._id.toString()
                 location.userName = location.user.name
                 delete location._id
                 delete location.__v
                 delete location.user
+
+
+                return location
             })
 
-        return locations
-    })
+            return locations
+        })
 }
 
 module.exports = searchLocations
 
-
+//query
+//query city type
+//query city
+//query type
+//city type
+//city
+//type
 
 
 

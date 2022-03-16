@@ -4,7 +4,7 @@ const { models: { User, Location } } = require('data')
 function listUserLocations(userId) {
     validateId(userId)
 
-    return User.findById(userId)
+    return User.findById(userId).lean()
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
 

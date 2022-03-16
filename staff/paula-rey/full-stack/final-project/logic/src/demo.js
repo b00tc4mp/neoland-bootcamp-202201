@@ -11,7 +11,6 @@ const {
     toggleFollow,
     listFollows,
     createComment,
-    retrieveComment,
     listLocationComments,
     deleteComment,
     searchLocations,
@@ -70,13 +69,13 @@ connect('mongodb://localhost:27017/dogether-db')
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
 
-        const location1 = createLocation(userId, 'hotel', 'Hotel Polaquera', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Rua la Polaca, 98', 'barcelona')
+        const location1 = createLocation(userId, 'Hotel', 'Hotel Polaquera', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Rua la Polaca, 98', 'Barcelona')
             .then(locationId => {
                 locationId1 = locationId
                 console.log('location created', locationId)
             })
 
-        const location2 = createLocation(userId, 'playa', 'Playa de la Concha', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Calle la conchita, 67', 'tarragona')
+        const location2 = createLocation(userId, 'Playa', 'Playa de la Concha', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Calle la conchita, 67', 'Tarragona')
         .then(locationId => {
             locationId2 = locationId
             console.log('location created', locationId)
@@ -93,7 +92,7 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return updateLocation(userId, locationId1, 'hotel', 'Hostal Polaquera', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Rua las Polacas, 98', 'barcelona')
+        return updateLocation(userId, locationId1, 'Hotel', 'Hostal Polaquera', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Rua las Polacas, 98', 'Barcelona')
             .then(() => console.log('location updated'))
     })
 
@@ -193,10 +192,10 @@ connect('mongodb://localhost:27017/dogether-db')
         return deleteLocation(userId, locationId1)
             .then(() => console.log('location deleted'))
     })
-    
+
    
-//    .then(() => searchLocations('622f7b08a6b1909ae2ed84a2', { query: 'bar'}))
-//    .then((results) => console.log(results))
+//   .then(() => searchLocations('6231feb0c2d80f1fc73a8d35', '', 'Playa', null))
+//   .then((results) => console.log(results))
 
 
     .catch(error => console.error(error.message))

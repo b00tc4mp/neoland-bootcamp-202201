@@ -24,7 +24,6 @@ function listLocationComments(userId, locationId) {
                         delete comment.user
                         delete comment.location
                         delete comment._id
-                        delete comment.location
                         delete comment.__v
 
                         return comment

@@ -58,11 +58,11 @@ connect(MONGODB_URL)
         api.get('/locations', searchLocations)
         api.patch('/locations/:locationId', jsonBodyParser, updateLocation)
         api.get('/locations/:locationId', jsonBodyParser, retrieveLocation)
-        api.delete('/locations/:locationId', jsonBodyParser, deleteLocation)
+        api.delete('/locations/:locationId', deleteLocation)
         
         api.post('/locations/:locationId/comments', jsonBodyParser, createComment)
         api.get('/locations/:locationId/comments', jsonBodyParser, listLocationComments)
-        api.delete('/locattions/:locationId/comments/:commentId', deleteComment)
+        api.delete('/locations/:locationId/comments/:commentId', deleteComment)
 
 
 
