@@ -18,7 +18,6 @@ const note = new Schema({
         required: true,
         default: Date.now
     }
-
 })
 
 module.exports = note

@@ -11,7 +11,7 @@ const {
     createNote,
     retrieveNote,
     updateNote,
-    retrieveNoteByData
+    retrieveMoods
 } = require ('./handlers')
 
 const cors = require('cors')
@@ -42,17 +42,12 @@ connect(MONGODB_URL)
 
         api.post('/notes', jsonBodyParser, createNote)
 
-        api.get('/notes/:noteId', retrieveNote)
+        api.get('/user/retrieve', retrieveNote)
 
-        // api.get('/notes', retrieveNoteByData)
-
-        // api.get('/notes/public', listPublicNotes)
+        api.get('/user/notes/moods', retrieveMoods)
 
        
-
-       
-
-         server.use('/api', api)
+        server.use('/api', api)
 
         server.listen(PORT, () => console.log('server started'))
     })

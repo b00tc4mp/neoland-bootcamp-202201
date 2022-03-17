@@ -5,8 +5,8 @@ const updateUser = require ('./updateUser')
 const deleteUser = require ('./deleteUser')
 const createNote = require ('./createNote')
 const updateUserPassword = require ('./updateUserPassword')
-const retrieveNoteByDate = require ('./retrieveNoteByDate')
 const retrieveNote = require ('./retrieveNote')
+const retrieveMoods = require ('./retrieveMoods')
 
 
 module.exports =  {
@@ -17,7 +17,6 @@ module.exports =  {
     deleteUser, 
     createNote,
     updateUserPassword,
-    retrieveNoteByDate,
-    retrieveNote
-    
+    retrieveNote,
+    retrieveMoods
 }

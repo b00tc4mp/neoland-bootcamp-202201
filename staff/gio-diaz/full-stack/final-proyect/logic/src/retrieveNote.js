@@ -1,22 +1,19 @@
-const { validators: { validateId }} = require('commons')
-const { models: { User, Note }} = require('data')
+const { helpers: { millisToDays } } = require('commons')
+const { validators: { validateId } } = require('commons')
+const { models: { User, Note } } = require('data')
 
 
-function retrieveNote(userId, noteId) {
+function retrieveNote(userId) {
     validateId(userId)
-    validateId(noteId)
-    
-    // return User.findById(userId).populate({ path: 'notes', mood: { $gte: 1 } }) // Suposición y si no me llamas
+
     return User.findById(userId)
-        .populate('notes') // Suposición y si no me llamas
         .then(user => {
-           
-            return Note.findById(noteId)
-            
-            // lo que tengas que hacer.......... user.nostes.....findOne.... 
+            if (!user) throw new Error(`user with id ${userId} not found`)
         
-        .then(noteId => noteId)
-    })
+            const found = user.notes.find(note => millisToDays(Date.now()) - millisToDays(note.createdAt.getTime()) < 90) || null
+
+            return found
+        })
 }
 
 module.exports = retrieveNote

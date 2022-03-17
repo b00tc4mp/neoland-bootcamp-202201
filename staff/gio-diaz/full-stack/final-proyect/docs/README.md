@@ -1,6 +1,8 @@
 # Mind +
 
-![alt Pyro Project](https://media4.giphy.com/media/fsbKeqwwkmE6LodM3T/giphy.gif?cid=ecf05e47swya8ihdvhllhj95v40x4oduqf9fopovvyd0r7dg&rid=giphy.gif&ct=g)
+![alt Mind +](https://media4.giphy.com/media/fsbKeqwwkmE6LodM3T/giphy.gif?cid=ecf05e47swya8ihdvhllhj95v40x4oduqf9fopovvyd0r7dg&rid=giphy.gif&ct=g)
+
+
 
 ## 
 Esta aplicacion esta enfocada en darle una visión realista al usuario acerca de su avance psicologico cuando esta inmerso en un momento de la vida en el cual su inteligencia emocional se ve deteriorada o inestable por diversas causas, permitira que de manera individual y en respuesta a sus experiencias en el dia a dia, pueda contrastar los cambios que se presentan en el mediano plazo, de esta manera atenderemos un proceso que en la gran mayoria de los pacientes se pasa alto, el hecho de que el avance para la mejora emocional si se esta llevando a cabo, pero no se logra percibir.

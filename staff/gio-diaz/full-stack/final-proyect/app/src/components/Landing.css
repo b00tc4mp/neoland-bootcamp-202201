@@ -1,0 +1,9 @@
+.landing__logo{
+    margin: 50px auto;
+    width: 150px;
+    height: 150px;
+    border-top: 10px solid #e495cc;
+    border-bottom: 10px solid #e495cc;
+    border-radius: 50%; 
+   
+  }
