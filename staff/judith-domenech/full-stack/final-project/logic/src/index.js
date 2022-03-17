@@ -7,7 +7,7 @@ const updateUserPassword = require("./user/updateUserPassword")
 const createComment = require("./racket/comment/createComment")
 const toggleFavoriteRacket = require("./user/toggleFavoriteRacket")
 const deleteComment = require("./racket/comment/deleteComment")
-const listFavorites = require("./user/listFavorites")
+const listFavoritesRackets = require("./user/listFavoritesRackets")
 const listComments = require("./racket/comment/listComments")
 const retrieveRacket = require("./racket/retrieveRacket")
 const searchRackets = require("./racket/searchRackets")
@@ -23,7 +23,7 @@ module.exports = {
   createComment,
   toggleFavoriteRacket,
   deleteComment,
-  listFavorites,
+  listFavoritesRackets,
   listComments,
   retrieveRacket,
   searchRackets,

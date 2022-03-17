@@ -14,7 +14,8 @@ const {
     listComments,
     retrieveRacket,
     searchRackets,
-    searchUserRackets
+    searchUserRackets,
+    listFavoritesRackets
 
 } = require('./index')
 
@@ -47,11 +48,11 @@ connect('mongodb://localhost:27017/racketMatch-db')
     
         .then(() => authenticateUser('pepitogrillo@gmail.com', '234234234'))
         .then(userId => {
-            return toggleFavoriteRacket (userId,'622a1dc649d42a4a1d1419a9')
+            return toggleFavoriteRacket (userId,'6232266e2b6b26aac836b9a2')
             .then(() => console.log('favorite toggled'))
         }) 
     
-        .then(() => authenticateUser('pepitogrillo@gmail.com', '234234234'))
+       .then(() => authenticateUser('pepitogrillo@gmail.com', '234234234'))
         .then(userId => {
             return toggleFavoriteRacket (userId,'622a1dc649d42a4a1d1419a8')
             .then(() => console.log('favorite toggled'))
@@ -59,7 +60,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
         
         .then(() => authenticateUser('pepitogrillo@gmail.com', '234234234'))
         .then(userId => {
-            return listFavorites(userId)
+            return listFavoritesRackets(userId)
                 .then(favorites => console.log(favorites))
         })
     
