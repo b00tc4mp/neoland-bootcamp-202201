@@ -8,7 +8,10 @@ function updateUserPassword({ userId, currPassword, newPassword }) {
 
     return User.findById(userId)
         .then(user => {
+            if(!user) throw new Error(`user with id ${userId} does not exist`)
+            
             if(user.password === currPassword ) 
+
                 return User.updateOne({_id: userId}, {password: newPassword})
                 .then(() => {}) // return undefined
             else throw new Error ('wrong credentials')})    

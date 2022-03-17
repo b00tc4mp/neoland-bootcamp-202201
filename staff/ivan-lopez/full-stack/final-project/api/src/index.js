@@ -47,7 +47,7 @@ connect(MONGODB_URL)
 
         api.post('/products', jsonBodyParser, addProduct)
         api.get('/products/:productId', retrieveProduct)
-        api.get('/products/', findProducts)  // PONER BIEN LA RUTA
+        api.get('/products/', findProducts)
         api.patch('/products/:productId', jsonBodyParser, updateProduct)
         api.delete('/products/:productId', jsonBodyParser, deleteProduct)
 

@@ -3,7 +3,7 @@ const { validators: { validateString, validateId } } = require('commons')
 
 
 function addProduct(userId, name, size, color, price, description) {
-    validateId(userId, 'user')    // TODO validate user id
+    validateId(userId, 'user')
     validateString(name, 'name')
     validateString(size, 'size')
     validateString(color, 'color')

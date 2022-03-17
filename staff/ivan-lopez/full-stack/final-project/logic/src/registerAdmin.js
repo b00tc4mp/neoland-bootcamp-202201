@@ -6,7 +6,7 @@ function registerAdmin(name, email, password) {
     validateEmail(email)
     validatePassword(password)
 
-    const role = "admin";
+    const role = 'admin';
     return User.create({ name, email, password, role })
         .then(user => {})
 }

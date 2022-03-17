@@ -11,7 +11,6 @@ function retrieveProduct(productId) {
     
                 //sanitize
                 delete product.user
-                delete product._id
                 delete product.__v
 
                 return product
