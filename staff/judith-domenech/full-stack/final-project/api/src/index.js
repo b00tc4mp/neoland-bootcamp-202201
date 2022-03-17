@@ -12,7 +12,7 @@ const {
     listComments,
     deleteComment,
     toggleFavoriteRacket,
-    listFavorites,
+    listFavoritesRackets,
     searchRackets,
     retrieveRacket,
     searchUserRackets
@@ -39,7 +39,7 @@ connect(MONGODB_URL)
         api.patch('/users/change-password', jsonBodyParser, updatePassword)
         api.delete('/users', jsonBodyParser, deleteUser)
 
-        api.get('/rackets/favorites', listFavorites)
+        api.get('/rackets/favorites', listFavoritesRackets)
         api.patch('/rackets/:racketId/favorites', jsonBodyParser, toggleFavoriteRacket)
         api.get('/rackets', searchRackets)
         api.get('/rackets/search', searchUserRackets)

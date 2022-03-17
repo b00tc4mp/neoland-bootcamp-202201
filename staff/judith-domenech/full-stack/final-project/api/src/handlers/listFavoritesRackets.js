@@ -1,11 +1,11 @@
 const { verifyTokenAndGetUserId } = require('../helpers')
-const { listFavorites } = require('logic')
+const { listFavoritesRackets } = require('logic')
 
 module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        listFavorites(userId)
+        listFavoritesRackets(userId)
             .then(favorites => res.json(favorites))
             .catch(({ message }) => res.status(400).json({ error: message }))
     } catch ({ message }) {
