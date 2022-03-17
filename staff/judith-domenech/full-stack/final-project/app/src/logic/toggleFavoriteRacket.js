@@ -6,7 +6,7 @@ function toggleFavorite(token, racketId) {
     validateToken(token)
     validateId(racketId, 'racketId')
 
-    return fetch(`http://localhost:8080/api/users/favorites/${racketId}`, {
+    return fetch(`http://localhost:8080/api/${racketId}/favorites`, {
         method: 'PATCH',
         headers: {
             Authorization: `Bearer ${token}`,

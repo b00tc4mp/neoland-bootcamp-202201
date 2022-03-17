@@ -5,7 +5,7 @@ import deleteUser from './deleteUser'
 import updateUser from './updateUser'
 import updateUserPassword from './updateUserPassword'
 import listFavorites from './listFavorites'
-import toggleFavorite from './toggleFavorite'
+import toggleFavoriteRacket from './toggleFavoriteRacket'
 import searchRackets from './searchRackets'
 import searchUserRackets from './searchUserRackets'
 
@@ -17,7 +17,7 @@ export {
     updateUser,
     updateUserPassword,
     listFavorites,
-    toggleFavorite,
+    toggleFavoriteRacket,
     searchRackets,
     searchUserRackets
 

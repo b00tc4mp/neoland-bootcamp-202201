@@ -5,7 +5,7 @@ const { validateToken } = validators
 function listFavorites(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/users/favorites', {
+    return fetch('http://localhost:8080/api/rackets/favorites', {
         headers: {
             Authorization: `Bearer ${token}`
         }
