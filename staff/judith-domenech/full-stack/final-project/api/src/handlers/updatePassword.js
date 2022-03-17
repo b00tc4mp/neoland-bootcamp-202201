@@ -8,7 +8,7 @@ module.exports= (req, res) => {
 
 
         updateUserPassword(userId, currPassword, newPassword)
-            .then(() => res.status(201).send())
+            .then(() => res.status(200).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {
         res.status(400).json({ error: error.message })

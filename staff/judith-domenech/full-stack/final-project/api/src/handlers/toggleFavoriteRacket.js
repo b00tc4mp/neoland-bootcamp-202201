@@ -1,13 +1,13 @@
-const { toggleFavorite } = require("logic")
+const { toggleFavoriteRacket } = require("logic")
 const { verifyTokenAndGetUserId } = require('../helpers')
 
 module.exports = (req, res) => {
     try {
 
         const userId = verifyTokenAndGetUserId(req)
-        const { body: { racketId } } = req
+        const { params: { racketId } } = req
 
-        toggleFavorite(userId, racketId)
+        toggleFavoriteRacket(userId, racketId)
             .then(comments => res.json(comments))
             .catch(({ message }) => res.status(400).json({ error: message }))
     } catch ({ message }) {
