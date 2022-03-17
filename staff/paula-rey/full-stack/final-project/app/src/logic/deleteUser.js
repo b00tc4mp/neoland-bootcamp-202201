@@ -3,8 +3,8 @@ import { validators } from 'commons'
 const { validateToken, validatePassword } = validators
 
 function deleteUser(token, password) {
-    validateToken(token)
-    validatePassword(password)
+    validateToken(token, 'token')
+    validatePassword(password, 'password')
 
     return fetch('http://localhost:8080/api/users', {
 

@@ -4,14 +4,15 @@ const updateUser = require('./user/updateUser')
 const retrieveUser = require('./user/retrieveUser')
 const updateUserPassword = require('./user/updateUserPassword')
 const deleteUser = require ('./user/deleteUser')
-const toggleFavorite = require ('./user/toggleFavorite')
-const listFavorites = require ('./user/listFavorites')
-const toggleFollow = require ('./user/toggleFollow')
-const listFollows = require ('./user/listFollows')
+const toggleFavoriteLocation = require ('./user/toggleFavoriteLocation')
+const listFavoritesLocations = require ('./user/listFavoritesLocations')
+const toggleFollowUser = require ('./user/toggleFollowUser')
+const listFollowsUsers = require ('./user/listFollowsUsers')
 const createComment = require ('./comment/createComment')
 const listLocationComments = require ('./comment/listLocationComments')
 const deleteComment = require ('./comment/deleteComment')
 const createLocation = require ('./location/createLocation')
+const listLocations = require ('./location/listLocations')
 const listUserLocations = require ('./location/listUserLocations')
 const retrieveLocation = require ('./location/retrieveLocation')
 const updateLocation = require ('./location/updateLocation')
@@ -26,14 +27,15 @@ module.exports = {
     retrieveUser,
     updateUserPassword,
     deleteUser,
-    toggleFavorite,
-    listFavorites,
-    toggleFollow,
-    listFollows,
+    toggleFavoriteLocation,
+    listFavoritesLocations,
+    toggleFollowUser,
+    listFollowsUsers,
     createComment,
     listLocationComments,
     deleteComment,
     createLocation,
+    listLocations,
     listUserLocations,
     retrieveLocation,
     updateLocation,

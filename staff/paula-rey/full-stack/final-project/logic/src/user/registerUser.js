@@ -3,8 +3,8 @@ const { validators: { validateString, validateEmail, validatePassword } } = requ
 
 function registerUser(name, email, password) {
     validateString(name, 'name')
-    validateEmail(email)
-    validatePassword(password)
+    validateEmail(email, 'email')
+    validatePassword(password, 'password')
 
     return User.create({ name, email, password })
         .then(user => {})

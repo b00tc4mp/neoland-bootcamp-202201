@@ -1,4 +1,4 @@
-const { toggleFollow } = require("logic")
+const { toggleFollowUser } = require("logic")
 const { verifyTokenAndGetUserId } = require('../helpers')
 
 module.exports = (req, res) => {
@@ -7,7 +7,7 @@ module.exports = (req, res) => {
         const userId = verifyTokenAndGetUserId(req)
         const { params: { followId } } = req
 
-        toggleFollow(userId, followId)
+        toggleFollowUser(userId, followId)
         .then(follows => res.json(follows))
         .catch(error => res.status(400).json({ error: error.message }))
 } catch (error) {

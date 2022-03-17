@@ -2,8 +2,8 @@ const { validators: { validateId } } = require('commons')
 const { models: { User, Location, Comment } } = require('data')
 
 function listLocationComments(userId, locationId) {
-    validateId(userId)
-    validateId(locationId)
+    validateId(userId, 'user id')
+    validateId(locationId, 'location id')
 
     return User.findById(userId)
         .then(user => {

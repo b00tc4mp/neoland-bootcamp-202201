@@ -2,10 +2,9 @@ const { models: { User } } = require('data')
 const { validators: { validateId, validatePassword } }  = require('commons')
 
 function updateUserPassword(userId, currPassword, newPassword) {
-    
     validateId(userId, 'user id')
-    validatePassword(currPassword, 'currPassword')
-    validatePassword(newPassword, 'newPassword')
+    validatePassword(currPassword, 'current password')
+    validatePassword(newPassword, 'new password')
 
     return User.findById(userId)
     .then(user => {

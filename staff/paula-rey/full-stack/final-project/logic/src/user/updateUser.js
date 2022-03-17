@@ -3,7 +3,7 @@ const { validators: { validateId, validateString, validateEmail } } = require('c
 
 
 function updateUser(userId, name, email) {
-    validateId(userId, 'userId')
+    validateId(userId, 'user id')
     validateString(name, 'name')
     validateEmail(email, 'email')
 

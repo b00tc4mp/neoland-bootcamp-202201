@@ -1,28 +1,23 @@
 import { validators } from 'commons'
+import { validateId } from 'commons/src/validators'
 
-const { validateEmail, validatePassword } = validators
+const { validateToken } = validators
 
-function authenticateUser(email, password) {
-    validateEmail(email, 'email')
-    validatePassword(password, 'password')
+function toggleFavoriteLocation(token, locationId) {
+    validateToken(token)
+    validateId(locationId, 'locationId')
 
-    return fetch('http://localhost:8080/api/users/auth', {
-        method: 'POST',
+    return fetch(`http://localhost:8080/api/locations/${locationId}/favorites`, {
+        method: 'PATCH',  
         headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(res => {
             const { status } = res
 
             if (status === 200) {
-                return res.json()
-                    .then(payload => {
-                        const { token } = payload
-
-                        return token
-                    })
+                return 
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -38,4 +33,4 @@ function authenticateUser(email, password) {
         })
 }
 
-export default authenticateUser
+export default toggleFavoriteLocation

@@ -1,11 +1,12 @@
 import { validators } from 'commons'
 
-const { validateToken } = validators
+const { validateToken, validateId } = validators
 
-function listUserLocations(token) {
-    validateToken(token)
+function listUserLocations(token, ownerId) {
+    validateToken(token, 'token')
+    validateId(ownerId, 'owner id')
 
-    return fetch('http://localhost:8080/api/users/locations', {
+    return fetch(`http://localhost:8080/api/users/${ownerId}/locations`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

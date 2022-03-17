@@ -1,7 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function toggleFollow(userId, followId) {
+function toggleFollowUser(userId, followId) {
     validateId(userId, 'user id')
     validateId(followId, 'follow id')
 
@@ -26,4 +26,4 @@ function toggleFollow(userId, followId) {
         .then(user => { })
 }
 
-module.exports = toggleFollow
+module.exports = toggleFollowUser

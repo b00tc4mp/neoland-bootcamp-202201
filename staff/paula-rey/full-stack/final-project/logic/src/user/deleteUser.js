@@ -1,12 +1,12 @@
 const { models: { User, Location, Comment } } = require('data')
 const { validators: { validateId, validatePassword } } = require('commons')
 
-const anonymousId = '622b2a43756cff2b6efbe6dd'
+const anonymousId = '6231feb0c2d80f1fc73a8d34'
 // Esto se podría guardar en un env... como en api
 
 function deleteUser(userId, password) {
-        validateId(userId)
-        validatePassword(password)
+        validateId(userId, 'user id')
+        validatePassword(password, 'password')
 
         return User.findOne({_id: userId, password})
         
@@ -29,6 +29,10 @@ function deleteUser(userId, password) {
 }
 
 module.exports = deleteUser
+
+//primero buscar en los usuarios 
+//ir borrando de cada array (de cada usuario que te sigue) tu id
+//luego ir salvando uno a uno 
 
 
 

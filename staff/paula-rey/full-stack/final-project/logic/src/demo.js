@@ -1,4 +1,5 @@
 const { mongoose: { connect, disconnect }, models: { User, Location, Comment } } = require('data')
+const { mainModule } = require('process')
 const {
     registerUser,
     authenticateUser,
@@ -6,16 +7,17 @@ const {
     retrieveUser,
     updateUserPassword,
     deleteUser,
-    toggleFavorite,
-    listFavorites,
-    toggleFollow,
-    listFollows,
+    toggleFavoriteLocation,
+    listFavoritesLocations,
+    toggleFollowUser,
+    listFollowsUsers,
     createComment,
     listLocationComments,
     deleteComment,
     searchLocations,
     createLocation,
     retrieveLocation,
+    listLocations,
     listUserLocations,
     updateLocation,
     deleteLocation
@@ -27,6 +29,8 @@ let locationId1
 let locationId2
 let aguaGrilloId
 let fireGrilloId
+let pepitoId
+let pirulinId
 
 connect('mongodb://localhost:27017/dogether-db')
     // .then(() => Promise.all([
@@ -35,6 +39,7 @@ connect('mongodb://localhost:27017/dogether-db')
 
     
     .then(() => Promise.all([
+        User.deleteOne({ email: 'pirulin@mail.com' }),
         User.deleteOne({ email: 'pepito@grillo.com' }),
         User.deleteOne({ email: 'agua@grillo.com' }),
         User.deleteOne({ email: 'fire@grillo.com' }),
@@ -86,8 +91,19 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return listUserLocations(userId)
+        pepitoId = userId
+        return listLocations(userId)
             .then((listLocations) => console.log(listLocations))
+    })
+
+    .then(() => registerUser('Pirulin', 'pirulin@mail.com', '123123123'))
+    .then(() => console.log('pirulin registered'))
+
+    .then(() => authenticateUser('pirulin@mail.com', '123123123'))
+    .then(userId => {
+        ownerId = pepitoId
+        return listUserLocations(userId, ownerId)
+            .then((listUserLocations) => console.log(listUserLocations))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
@@ -104,19 +120,19 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return toggleFavorite(userId, locationId1)
+        return toggleFavoriteLocation(userId, locationId1)
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return toggleFavorite(userId, locationId2)
+        return toggleFavoriteLocation(userId, locationId2)
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return listFavorites(userId)
+        return listFavoritesLocations(userId)
             .then(favorites => console.log(favorites))
     })
 
@@ -135,19 +151,19 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return toggleFollow(userId, aguaGrilloId)
+        return toggleFollowUser(userId, aguaGrilloId)
             .then(() => console.log('follow toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return toggleFollow(userId, fireGrilloId)
+        return toggleFollowUser(userId, fireGrilloId)
             .then(() => console.log('follow toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
-        return listFollows(userId)
+        return listFollowsUsers(userId)
             .then(follows => console.log(follows))
     })
 

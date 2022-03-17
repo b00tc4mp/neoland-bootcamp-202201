@@ -1,14 +1,11 @@
 import { validators } from 'commons'
-import { validateId } from 'commons/src/validators'
 
 const { validateToken } = validators
 
-function toggleFavorite(token, locationId) {
-    validateToken(token)
-    validateId(locationId, 'locationId')
+function listFollowsUsers(token) {
+    validateToken(token, 'token')
 
-    return fetch(`http://localhost:8080/api/users/favorites/${locationId}`, {
-        method: 'PATCH',  
+    return fetch('http://localhost:8080/api/users/follows', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -17,7 +14,7 @@ function toggleFavorite(token, locationId) {
             const { status } = res
 
             if (status === 200) {
-                return 
+                return res.json()
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -33,4 +30,4 @@ function toggleFavorite(token, locationId) {
         })
 }
 
-export default toggleFavorite
+export default listFollowsUsers

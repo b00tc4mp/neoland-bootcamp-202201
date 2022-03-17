@@ -8,7 +8,7 @@ function searchLocations(token, query, type, city) {
     validateString(type, 'type')
     validateString(city, 'city')
 
-    return fetch(`http://localhost:8080/api/locations?${query ? `query=${query}` : ''}&${type ? `type=${type}` : ''}&${city ? `city=${city}` : ''}`, {
+    return fetch(`http://localhost:8080/api/locations/search?${query ? `query=${query}` : ''}&${type ? `type=${type}` : ''}&${city ? `city=${city}` : ''}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
