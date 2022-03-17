@@ -17,7 +17,7 @@ const racket = new Schema({
     weight: {
         type: String,
         required: true,
-        enum: ['345-350', '350-360', '360-370']
+        enum: ['345-350g', '350-360g', '360-370g']
     },
     
     type: {
@@ -29,7 +29,7 @@ const racket = new Schema({
     player: {
         type: String,
         required: true,
-        enum: ['Aereo', 'Agresivo', 'Potencia', 'Tecnico', 'Control']
+        enum: ['Ofensivo', 'Defensivo']
     },
 
     price: {
@@ -40,7 +40,7 @@ const racket = new Schema({
     level:{
         type: String,
         required: true,
-        enum: ['Principiante', 'Medio', 'Avanzado']
+        enum: ['Principiante', 'Intermedio', 'Avanzado']
     },
 
     description: {
