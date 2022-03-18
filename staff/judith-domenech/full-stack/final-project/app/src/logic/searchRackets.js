@@ -26,4 +26,5 @@ function searchRackets(query) {
         })
 }
 
+
 export default searchRackets

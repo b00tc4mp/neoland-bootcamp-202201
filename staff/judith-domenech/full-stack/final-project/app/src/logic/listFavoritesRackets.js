@@ -1,8 +1,7 @@
 import { validators } from 'commons'
-
 const { validateToken } = validators
 
-function listFavorites(token) {
+function listFavoritesRackets(token) {
     validateToken(token)
 
     return fetch('http://localhost:8080/api/rackets/favorites', {
@@ -30,4 +29,4 @@ function listFavorites(token) {
         })
 }
 
-export default listFavorites
+export default listFavoritesRackets
