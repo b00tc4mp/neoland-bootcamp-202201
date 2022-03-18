@@ -89,8 +89,6 @@ comment
 
 ![alt Data Model](./images/data-model.png)
 
-
-
 ## Tasks history
 
 ### Docs
@@ -117,10 +115,10 @@ comment
 - TODO validaciones schemasmas + reales
 
 ### API (weekend)
-- DOING handlers 
-- DOING test Insomnia
+- ~~TODO handlers ~~
+- ~~ TODO test Insomnia~~
 
 ### App 
-- TODO logic
-- TODO create main views (components) (1h)
+- ~~ TODO logic ~~
+- DOING create main views (components) (1h)
 - TODO mechanize navigations (.5h)
