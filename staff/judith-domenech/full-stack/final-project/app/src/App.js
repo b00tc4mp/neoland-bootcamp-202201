@@ -1,8 +1,8 @@
 import './App.css'
-import { Landing, Register, Login, Home } from './components'
+import { Register, Login, Home } from './components'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import { validators} from 'commons'
-const {validateToken } = validators
+import { validators } from 'commons'
+const { validateToken } = validators
 
 function App() {
   let tokenValid = true
@@ -19,7 +19,7 @@ function App() {
 
   const showRegister = () => navigate('register')
 
-  const keepTokenNShowHome = token => { // and = N
+  const keepTokenNShowHome = token => { 
     sessionStorage.token = token
     navigate('/')
   }
@@ -32,7 +32,7 @@ function App() {
 
   return <div>
     <Routes>
-      <Route path="/*" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Landing onLogin={showLogin} onRegister={showRegister} />} />
+      <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
       <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
       <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
       <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />

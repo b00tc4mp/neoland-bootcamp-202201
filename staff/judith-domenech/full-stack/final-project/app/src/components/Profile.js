@@ -1,9 +1,9 @@
-import './Profile.css'
+import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-function Profile({onUpdatePassword, onDeleteAccount}) {
-    debugger
+function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
+    
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
@@ -54,6 +54,7 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
             <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} />
             <input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email} />
             <button>Update profile</button>
+            <button href="" onClick={onLogOut}>Log out</button>
        
             <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
             <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
