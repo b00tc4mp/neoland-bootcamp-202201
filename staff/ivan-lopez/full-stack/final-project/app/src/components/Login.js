@@ -2,11 +2,11 @@
 import { authenticateUser } from '../logic'
 
 
-function Login({ onLogged, onRegister }) {
+function Login({ onLogged, onRegistered }) {
 
     const goToRegister = event => {
         event.preventDefault() // Lógica propia del compo
-        onRegister() // esto es una prop que deja la responsabilidad sobre esta accion al componente padre
+        onRegistered() // esto es una prop que deja la responsabilidad sobre esta accion al componente padre
     }
 
     const login = event => {
@@ -16,8 +16,8 @@ function Login({ onLogged, onRegister }) {
 
         try {
             authenticateUser(email, password)
-                .then(payload => {
-                    // guardaremos el token (lógica propia de este compo)
+                .then(token => {
+                    sessionStorage.token = token
                     onLogged() // dirigir al usuario al sitio correspondiente
                 })
                 .catch(error => alert(error.message))
@@ -32,7 +32,7 @@ function Login({ onLogged, onRegister }) {
             <input type='email' name='email' placeholder='email' />
             <input type='password' name='password' placeholder='password' />
             <button type="submit">Login</button>
-            <a onClick={goToRegister}>goToRegister</a>
+            <a href='' onClick={goToRegister}>Register</a>
         </form>
     </div>
 }

@@ -1,30 +1,38 @@
 import './App.css';
-import { Home, Login } from './components'
+import { Home, Login, Register, Profile } from './components'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-
+import { validators} from 'commons'
+import { useEffect } from 'react';
+const { validateToken } = validators
 
 
 function App() {
 
-    const navigate = useNavigate()
-
-    const showLogin = () => navigate('login')
-    const showRegister = () => navigate('register')
-
-    const keepTokenNShowHome = token => {
-      sessionStorage.token = token
-      
-      navigate('/')
+  useEffect(() => {
+    try {
+      if(sessionStorage.token) validateToken(sessionStorage.token)
+    } catch (error) {
+      delete sessionStorage.token
+      alert('La sesión ha caducado')
     }
-    
+  }, [])
 
-    return <div>
+  const navigate = useNavigate()
 
-      <Routes>
-        <Route path='/*' element={<Home />} />
-        <Route path='/login' element={<Login onLogged={() => {}} onRegister={showRegister}/>} />
-      </Routes>
+  const showHome = () => navigate('/')
+  const showLogin = () => navigate('iniciar-sesion')
+  const showRegister = () => navigate('registro')
+  const showProfile = () => navigate('cuenta')
 
-    </div>
-  }
+  return <div>
+
+    <Routes>
+      <Route path='/*' element={<Home onProfile={showProfile}/>} />
+      <Route path='/iniciar-sesion' element={<Login onLogged={showHome} onRegistered={showRegister} />} />
+      <Route path='/registro' element={<Register onRegistered={showLogin} onLogin={showLogin} />} />
+      <Route path='/cuenta' element={sessionStorage.token ? <Profile onProfile={showProfile} /> : <Navigate replace to='/iniciar-sesion'/>} />
+    </Routes>
+
+  </div>
+}
 export default App;

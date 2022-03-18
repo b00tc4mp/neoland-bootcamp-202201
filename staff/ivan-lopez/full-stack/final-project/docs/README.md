@@ -58,8 +58,8 @@ user
 - role (
     String,
     required,
-    enum: ['default','admin']
-    default: 'default'
+    enum: ['user','admin']
+    default: 'user'
     )
 - cart (cart)
 - orders ([order])
