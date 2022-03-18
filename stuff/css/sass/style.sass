@@ -1,0 +1,13 @@
+@use 'utils' as *
+@use 'config' as *
+
+@import url('https://fonts.googleapis.com/css2?family=Palette+Mosaic&display=swap')
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+
+.panel
+  @include round-border(.5rem, $primary-color, 5px, solid)
+  padding: $padding
+

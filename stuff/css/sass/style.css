@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Palette+Mosaic&display=swap");
+body {
+  font: 100% Palette Mosaic, Helvetica, sans-serif;
+  color: gold;
+}
+
+.panel {
+  border-radius: 0.5rem;
+  border-color: gold;
+  border-width: 5px;
+  border-style: solid;
+  padding: 2rem;
+}
+
+/*# sourceMappingURL=style.css.map */
