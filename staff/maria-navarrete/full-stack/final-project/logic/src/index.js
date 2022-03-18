@@ -1,53 +1,55 @@
-const registerUser = require('./user/registerUser')
 const authenticateUser = require('./user/authenticateUser')
+const deleteUser = require('./user/deleteUser')
+const findUsers = require('./user/findUsers')
+const listFollowerUsers = require('./user/listFollowerUsers')
+const listFollowingUsers = require('./user/listFollowingUsers')
+const registerUser = require('./user/registerUser')
 const retrieveUser = require('./user/retrieveUser')
 const retrieveUserPublicInfo = require('./user/retrieveUserPublicInfo')
-const listFavorites = require('./user/listFavorites')
-const listFriends = require('./user/listFriends')
-const findUsers = require('./user/findUsers')
-const toggleFavorite = require('./user/toggleFavorite')
-const toggleFriend = require('./user/toggleFriend')
+const toggleFollowingUser = require('./user/toggleFollowingUser')
 const updateUser = require('./user/updateUser')
 const updateUserPassword = require('./user/updateUserPassword')
-const deleteUser = require('./user/deleteUser')
-const createAction = require('./actions/createAction')
-const updateAction = require('./actions/updateAction')
-const retrieveAction = require('./actions/retrieveAction')
-const listUserPublicActions = require('./actions/listUserPublicActions')
-const listUserActions = require('./actions/listUserActions')
-const findActions = require('./actions/findActions')
-const deleteAction = require('./actions/deleteAction')
-const createSchedule = require('./schedules/createSchedule')
-const retrieveSchedule = require('./schedules/retrieveSchedule')
-const listSchedules = require('./schedules/listSchedules')
-const updateSchedule = require('./schedules/updateSchedule')
-const completeSchedule = require('./schedules/completeSchedule')
-const cancelSchedule = require('./schedules/cancelSchedule')
+const createAction = require('./action/createAction')
+const deleteAction = require('./action/deleteAction')
+const findActions = require('./action/findActions')
+const listActions = require('./action/listActions')
+const listFavoriteActions = require('./action/listFavoriteActions')
+const listUserPublicActions = require('./action/listUserPublicActions')
+const retrieveAction = require('./action/retrieveAction')
+const toggleFavoriteAction = require('./action/toggleFavoriteAction')
+const updateAction = require('./action/updateAction')
+const cancelSchedule = require('./schedule/cancelSchedule')
+const completeSchedule = require('./schedule/completeSchedule')
+const createSchedule = require('./schedule/createSchedule')
+const listSchedules = require('./schedule/listSchedules')
+const retrieveSchedule = require('./schedule/retrieveSchedule')
+const updateSchedule = require('./schedule/updateSchedule')
 
-module.exports={
-    registerUser,
+module.exports = {
     authenticateUser,
+    deleteUser,
+    findUsers,
+    listFollowerUsers,
+    listFollowingUsers,
+    registerUser,
     retrieveUser,
     retrieveUserPublicInfo,
-    listFavorites,
-    listFriends,
-    findUsers,
-    toggleFavorite,
-    toggleFriend,
+    toggleFollowingUser,
     updateUser,
     updateUserPassword,
-    deleteUser,
     createAction,
-    retrieveAction,
-    listUserPublicActions,
-    listUserActions,
-    updateAction, 
+    deleteAction,
     findActions,
-    deleteAction, 
-    createSchedule,
-    retrieveSchedule,
-    listSchedules,
-    updateSchedule,
+    listActions,
+    listFavoriteActions,
+    listUserPublicActions,
+    retrieveAction,
+    toggleFavoriteAction,
+    updateAction,
     cancelSchedule,
-    completeSchedule
+    completeSchedule,
+    createSchedule,
+    listSchedules,
+    retrieveSchedule,
+    updateSchedule,
 }

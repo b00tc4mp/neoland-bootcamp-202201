@@ -5,7 +5,7 @@ const { validateToken } = validators
 function listFriends(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/users/friends', {
+    return fetch('http://localhost:8080/api/users/followers', {
         headers: {
             Authorization: `Bearer ${token}`
         }

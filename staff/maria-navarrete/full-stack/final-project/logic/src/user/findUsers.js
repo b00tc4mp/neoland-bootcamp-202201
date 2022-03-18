@@ -19,7 +19,6 @@ function findUsers(userId, query) {
                 delete user._id
                 delete user.__v
             })
-
             return users
         })
 }

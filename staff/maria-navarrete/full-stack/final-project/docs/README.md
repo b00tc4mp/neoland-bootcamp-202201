@@ -55,7 +55,8 @@ user
 - password (String, required)
 - favs ([ObjectId: Action])
 - notifications (Boolean, required, default: false)
-- friends ([ObjectId: User])
+- following ([ObjectId: User])
+- follower ([ObjectId: User])
 
 actions
 - description (String, required)

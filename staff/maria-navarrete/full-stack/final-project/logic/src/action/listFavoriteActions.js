@@ -1,7 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function listFavorites(userId) {
+function listFavoriteActions(userId) {
     validateId(userId, 'user id')
 
     return User.findById(userId).populate('favorites')
@@ -26,4 +26,4 @@ function listFavorites(userId) {
         )
 }
 
-module.exports = listFavorites
+module.exports = listFavoriteActions

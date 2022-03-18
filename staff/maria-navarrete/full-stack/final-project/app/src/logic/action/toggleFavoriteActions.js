@@ -2,11 +2,11 @@ import { validators } from 'commons'
 
 const { validateToken, validateId } = validators
 
-function toggleFriend(token, friendId) {
+function toggleFavorite(token, actionId) {
     validateToken(token)
-    validateId(friendId, 'friend id')
+    validateId(actionId, 'action id')
 
-    return fetch(`http://localhost:8080/api/users/friends/${friendId}`, {
+    return fetch(`http://localhost:8080/api/actions/${actionId}/favorites`, {
         method: 'PATCH',
         headers: {
             Authorization: `Bearer ${token}`
@@ -31,4 +31,4 @@ function toggleFriend(token, friendId) {
         })
 }
 
-export default toggleFriend
+export default toggleFavorite

@@ -1,14 +1,11 @@
 import { validators } from 'commons'
 
-const { validateToken, validateString, validateNumber } = validators
+const { validateToken } = validators
 
-function findActions(token, query, requiredTime, requiredBudget) {
+function listActions(token) {
     validateToken(token)
-    if (query) validateString(query, 'query')
-    if (requiredTime) validateNumber(requiredTime, 'required time')
-    if (requiredBudget) validateNumber(requiredBudget, 'required budget')
 
-    return fetch(`http://localhost:8080/api/actions/search/?${query !== null ? `query=${query}` : ''}&${requiredTime !== null ? `requiredTime=${requiredTime}` : ''}&${requiredBudget !== null ? `requiredBudget=${requiredBudget}` : ''}`, {
+    return fetch('http://localhost:8080/api/users/actions', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -32,4 +29,4 @@ function findActions(token, query, requiredTime, requiredBudget) {
         })
 }
 
-export default findActions
+export default listActions

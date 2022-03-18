@@ -2,10 +2,10 @@ import { validators } from 'commons'
 
 const { validateToken } = validators
 
-function listUserActions(token) {
+function listFavoriteActions(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/users/actions', {
+    return fetch('http://localhost:8080/api/actions/favorites', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -29,4 +29,4 @@ function listUserActions(token) {
         })
 }
 
-export default listUserActions
+export default listFavoriteActions

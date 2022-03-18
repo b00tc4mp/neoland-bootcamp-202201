@@ -1,7 +1,7 @@
 const { models: { Action, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-function listUserActions(userId) {
+function listActions(userId) {
 
     validateId(userId, 'user id')
 
@@ -22,4 +22,4 @@ function listUserActions(userId) {
         )
 }
 
-module.exports = listUserActions
+module.exports = listActions

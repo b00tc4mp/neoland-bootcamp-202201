@@ -2,29 +2,30 @@ const { mongoose: { connect, disconnect }, models: { User, Action, Schedule } } 
 const {
     authenticateUser,
     deleteUser,
-    listFavorites,
-    listFriends,
     findUsers,
+    listFollowerUsers,
+    listFollowingUsers,
     registerUser,
     retrieveUser,
     retrieveUserPublicInfo,
-    toggleFavorite,
-    toggleFriend,
+    toggleFollowingUser,
     updateUser,
     updateUserPassword,
     createAction,
-    retrieveAction,
-    listUserPublicActions,
-    listUserActions,
-    updateAction,
     deleteAction,
     findActions,
-    createSchedule,
-    retrieveSchedule,
-    listSchedules,
-    updateSchedule,
+    listActions,
+    listFavoriteActions,
+    listUserPublicActions,
+    retrieveAction,
+    toggleFavoriteAction,
+    updateAction,
     cancelSchedule,
-    completeSchedule
+    completeSchedule,
+    createSchedule,
+    listSchedules,
+    retrieveSchedule,
+    updateSchedule
 } = require('./index')
 
 let createdAction
@@ -32,13 +33,31 @@ let createdAction2
 let createdSchedule
 let createdSchedule2
 let date = new Date('March 15, 2022 14:00:00')
+let pau
+let gio
+let action1
+let action2
+let action3
 
 connect('mongodb://localhost:27017/bHooman-db')
     .then(() => Promise.all([
-        User.deleteOne({ email: 'pepito@grillo.com' })
+        User.deleteOne({ email: 'pepito@grillo.com' }),
+        User.findOne({ username: 'pau123' }),
+        User.findOne({ username: 'gio123' }),
+        Action.findOne({ description: "Participa en un voluntariado" }),
+        Action.findOne({ description: "Adopta una mascota" }),
+        Action.findOne({ description: "No comas alimentos de origen animal por hoy" })
     ]))
 
-    .then(() => registerUser('pepitogrillo', 'pepito@grillo.com', '123123123'))
+    .then(([result, _pau, _gio, _action1, _action2, _action3]) => {
+        pau = _pau.id
+        gio = _gio.id
+        action1 = _action1.id
+        action2 = _action2.id
+        action3 = _action3.id
+
+        return registerUser('pepitogrillo', 'pepito@grillo.com', '123123123')
+    })
     .then(() => console.log('user registered'))
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
@@ -70,44 +89,56 @@ connect('mongodb://localhost:27017/bHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '6231c6f6711b50101d8d12e3')
+        return toggleFavoriteAction(userId, action1)
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '6231c6f6711b50101d8d12e1')
+        return toggleFavoriteAction(userId, action2)
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFavorite(userId, '6231c6f6711b50101d8d12e1')
+        return toggleFavoriteAction(userId, action3)
             .then(() => console.log('favorite toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return listFavorites(userId)
+        return toggleFavoriteAction(userId, action3)
+            .then(() => console.log('favorite toggled'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return listFavoriteActions(userId)
             .then(favorites => console.log(favorites))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '6231c6f5711b50101d8d12c7')
+        return toggleFollowingUser(userId, pau)
             .then(() => console.log('friend toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return toggleFriend(userId, '6231c6f5711b50101d8d12c6')
+        return toggleFollowingUser(userId, gio)
             .then(() => console.log('friend toggled'))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return listFriends(userId)
-            .then(friends => console.log(friends))
+        return listFollowingUsers(userId)
+            .then(follows => console.log('following:', follows))
+    })
+
+    .then(() => authenticateUser('pau@mail.com', '123123123'))
+    .then(userId => {
+        return listFollowerUsers(userId)
+            .then(followers => console.log('followers', followers))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
@@ -115,7 +146,6 @@ connect('mongodb://localhost:27017/bHooman-db')
         return findUsers(userId, '123')
             .then(users => console.log(users))
     })
-
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
@@ -155,7 +185,7 @@ connect('mongodb://localhost:27017/bHooman-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return listUserActions(userId)
+        return listActions(userId)
             .then(actions => console.log(actions))
     })
 
@@ -207,7 +237,6 @@ connect('mongodb://localhost:27017/bHooman-db')
             .then(schedule => console.log(schedule))
     })
 
-
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
         return completeSchedule(userId, createdSchedule)
@@ -219,7 +248,6 @@ connect('mongodb://localhost:27017/bHooman-db')
         return retrieveSchedule(userId, createdSchedule)
             .then(schedule => console.log(schedule))
     })
-
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {

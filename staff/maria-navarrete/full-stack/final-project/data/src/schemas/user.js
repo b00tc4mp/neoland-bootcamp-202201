@@ -31,7 +31,12 @@ const user = new Schema({
         default: true
     },
 
-    friends: [{
+    following: [{
+        type: ObjectId,
+        ref: 'User'
+    }],
+    
+    followers: [{
         type: ObjectId,
         ref: 'User'
     }]  

@@ -2,30 +2,31 @@ require('dotenv').config()
 const { mongoose: { connect, disconnect } } = require('data')
 const express = require('express')
 const {
-    registerUser,
     authenticateUser,
+    deleteUser,
+    findUsers,
+    listFollowerUsers,
+    listFollowingUsers,
+    registerUser,
     retrieveUser,
     retrieveUserPublicInfo,
-    listFavorites,
-    listFriends,
-    findUsers,
-    toggleFavorite,
-    toggleFriend,
+    toggleFollowingUser,
     updateUser,
     updateUserPassword,
-    deleteUser,
     createAction,
-    retrieveAction,
-    listUserPublicActions,
-    listUserActions,
-    updateAction,
-    findActions,
     deleteAction,
-    createSchedule,
-    retrieveSchedule,
-    listSchedules,
-    updateSchedule,
+    findActions,
+    listActions,
+    listFavoriteActions,
+    listUserPublicActions,
+    retrieveAction,
+    toggleFavoriteAction,
+    updateAction,
     cancelSchedule,
+    createSchedule,
+    listSchedules,
+    retrieveSchedule,
+    updateSchedule
 } = require('./handlers')
 const cors = require('cors')
 
@@ -42,21 +43,22 @@ connect(MONGODB_URL)
         api.post('/users', jsonBodyParser, registerUser)
         api.post('/users/auth', jsonBodyParser, authenticateUser)
         api.get('/users', retrieveUser)
-        api.get('/users/public/:consultedUserId', retrieveUserPublicInfo)
-        api.get('/users/favorites', listFavorites)
-        api.get('/users/friends', listFriends)
+        api.get('/users/followers', listFollowerUsers)
+        api.get('/users/following', listFollowingUsers)
         api.get('/users/search', findUsers)
+        api.get('/users/:consultedUserId/actions', listUserPublicActions)
+        api.get('/users/:consultedUserId', retrieveUserPublicInfo)
         api.patch('/users', jsonBodyParser, updateUser)
-        api.patch('/users/favorites/:actionId', toggleFavorite)
-        api.patch('/users/friends/:friendId', toggleFriend)
+        api.patch('/users/:followId/following', toggleFollowingUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
-
+        
         api.post('/actions', jsonBodyParser, createAction)
-        api.get('/actions', findActions)
+        api.get('/actions', listActions)
+        api.get('/actions/search', findActions)
+        api.get('/actions/favorites', listFavoriteActions)
         api.get('/actions/:actionId', retrieveAction)
-        api.get('/users/actions', listUserActions)
-        api.get('/users/:consultedUserId/actions', listUserPublicActions)
+        api.patch('/actions/:actionId/favorites', jsonBodyParser, toggleFavoriteAction)
         api.patch('/actions/:actionId', jsonBodyParser, updateAction)
         api.delete('/actions/:actionId', deleteAction)
 

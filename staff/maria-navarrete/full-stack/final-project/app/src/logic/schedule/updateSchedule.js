@@ -7,29 +7,19 @@ function updateSchedule(token, scheduleId, date = null, repeat = null) {
     if (date) validateDate(date, 'date')
     if (repeat) validateString(repeat, 'repeat')
 
-    let input = {}
-
-    if (date && repeat) {
-        input = {
-            method: 'PATCH',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ date, repeat })
-        }
-    } else {
-        input = {
-            method: 'PATCH',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ })
+    let init = {
+        method: 'PATCH',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
         }
     }
 
-    return fetch(`http://localhost:8080/api/schedules/${scheduleId}`, input)
+    if (date && repeat) init.body = JSON.stringify({ date, repeat })
+        
+    else init.body = JSON.stringify({}) 
+
+    return fetch(`http://localhost:8080/api/schedules/${scheduleId}`, init)
         .then(res => {
             const { status } = res
             if (status === 200) {
