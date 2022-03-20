@@ -1,5 +1,5 @@
 import './App.css'
-import { Register, Login, Home } from './components'
+import { Register, Login, Home, Profile } from './components'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators } from 'commons'
 const { validateToken } = validators
@@ -33,8 +33,9 @@ function App() {
   return <div>
     <Routes>
       <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
-      <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
-      <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
+      <Route path="register" element={ <Register onRegistered={showLogin} onLogin={showLogin} /> } />
+      <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> } /> 
+      <Route path="profile" element={<Profile />}></Route>
       <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
     </Routes>
   </div>

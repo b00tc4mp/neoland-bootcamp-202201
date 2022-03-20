@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 function Search({ onItem, onQuery, query }) {
     const [view, setView] = useState(query && 'results')
+    const icon = '🔍'
 
     const search = event => {
         event.preventDefault()
@@ -19,8 +20,11 @@ function Search({ onItem, onQuery, query }) {
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
-            <input className="search__query-input" type="text" name="query" placeholder="query" defaultValue={query} />
-            <button>Search</button>
+            
+                <input className="search__query-input" type="text" name="query" placeholder="Query" defaultValue={query} />
+                <span className="search__icon">🔍</span>
+            
+            <button className="search__button">Search</button>
         </form>
 
         {/* {view === 'results' && <Results token={token} query={query} onItem={onItem} />} */}

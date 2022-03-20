@@ -6,6 +6,7 @@ import DeleteAccount from './DeleteAccount'
 import UpdatePassword from './UpdatePassword'
 import Search from './Search'
 
+
 export {
     Register,
     Login,
@@ -13,5 +14,5 @@ export {
     Profile,
     DeleteAccount,
     UpdatePassword,
-    Search
+    Search,
 }
