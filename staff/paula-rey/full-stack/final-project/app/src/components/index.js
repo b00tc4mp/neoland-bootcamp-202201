@@ -5,6 +5,11 @@ import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import Landing from './Landing'
+import Search from './Search'
+import Results from './Results'
+import Logo from './elements/Logo'
+import Details from './Details'
+import AddLocation from './AddLocation'
 
 export {
     Register,
@@ -13,5 +18,10 @@ export {
     Profile,
     UpdatePassword,
     DeleteAccount,
-    Landing
+    Landing,
+    Search,
+    Results,
+    Logo,
+    Details,
+    AddLocation
 }

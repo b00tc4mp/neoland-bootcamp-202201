@@ -28,7 +28,7 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 
 ##### Main Views
 
-![alt Main Views](./images/main-views2.png)
+![alt Main Views](./images/main-views3.png)
 
 ## Technical Description
 
@@ -72,6 +72,7 @@ comment
 - Node.JS
 - Express
 - MongoDB
+- Sass
 
 
 
@@ -93,17 +94,17 @@ comment
 
 ##### App
 
-- TODO create main views (components) (1h)
-- TODO mechanize navigations (.5h)
+- TODO create main views (components) (3d)
+- TODO mechanize navigations (3d)
 
 ##### Logic
 
-- DOING logics of app(2 days)
+- ~~DONE logics of app(2 days)~~
 
 
 
 <!-- TODO validaciones reales (minLength..., @, etc) en schemas -->
-<!-- lean()//poner findUserById en logicas de locations y comments//mejorar manejo errores -->
-<!-- follows¿? -->
+<!-- mejorar manejo errores en logicas-->
+<!-- follows¿? delete -->
 <!--  -->
 

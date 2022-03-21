@@ -1,7 +1,7 @@
 const { validators: { validateId, validateString } } = require('commons')
 const { models: { Location, User } } = require('data')
 
-function createLocation(userId, type, title, image, address, city) {
+function createLocation(userId, type, title, image="https://cdn-icons-png.flaticon.com/512/35/35145.png", address, city) {
     validateId(userId, 'userId')
     validateString(type, 'type')
     validateString(title, 'title')

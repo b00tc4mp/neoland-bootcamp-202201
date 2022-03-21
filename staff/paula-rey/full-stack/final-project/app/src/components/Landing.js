@@ -1,4 +1,4 @@
-//import './Landing.css'
+import './Landing.sass'
 
 function Landing({ onLogin, onRegistered }) {
     const goToLogIn = event => {

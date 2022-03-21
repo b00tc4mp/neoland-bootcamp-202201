@@ -1,4 +1,4 @@
-import './Profile.css'
+import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
