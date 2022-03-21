@@ -8,8 +8,7 @@ import listFavoritesRackets from './listFavoritesRackets'
 import toggleFavoriteRacket from './toggleFavoriteRacket'
 import searchRackets from './searchRackets'
 import searchUserRackets from './searchUserRackets'
-
-
+import retrieveRacket from './retrieveRacket'
 
 export {
     registerUser,
@@ -21,5 +20,6 @@ export {
     listFavoritesRackets,
     toggleFavoriteRacket,
     searchRackets,
-    searchUserRackets
+    searchUserRackets,
+    retrieveRacket
 }

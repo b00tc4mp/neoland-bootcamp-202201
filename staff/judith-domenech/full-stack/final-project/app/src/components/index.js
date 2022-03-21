@@ -5,6 +5,8 @@ import Profile from './Profile'
 import DeleteAccount from './DeleteAccount'
 import UpdatePassword from './UpdatePassword'
 import Search from './Search'
+import RacketDetails from './RacketDetails'
+import CreateComment from './CreateComment'
 
 
 export {
@@ -15,4 +17,7 @@ export {
     DeleteAccount,
     UpdatePassword,
     Search,
+    RacketDetails,
+    CreateComment
+   
 }

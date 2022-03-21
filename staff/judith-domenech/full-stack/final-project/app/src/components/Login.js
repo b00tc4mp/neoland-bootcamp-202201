@@ -1,35 +1,41 @@
 import './Login.sass'
 import { authenticateUser } from '../logic'
-import logo from '../assets/racketMatch.png'
+import { Input } from './form-elements'
+import { Button, Logo } from './elements'
 
-function Login({ onLoggedIn, onRegister }) {
-    const login = event => {
-        event.preventDefault()
+function Login({ onLogged, onRegister }) {
 
-        const { target: { email: { value: email }, password: { value: password } } } = event
-
+    const login = async event => {
         try {
-            authenticateUser(email, password)
-                .then(onLoggedIn)
-                .catch(error => alert(error.message))
+            const { target: { email: { value: email }, password: { value: password } } } = event
+            
+            const token = await authenticateUser(email, password)
+            sessionStorage.token = token
+            onLogged && onLogged()
         } catch (error) {
             alert(error.message)
         }
     }
 
-    return <form className='login' onSubmit={login}>
-        <div className='login__container'>
-            <img className='login__logo' src={logo} alt='Logo racketMatch' width='' height=''></img>
-            <div className='login__wrapper'>
-                <input className='login__input' type="email" name="email" placeholder="Email" />
-                <input className='login__input' type="password" name="password" placeholder="Password" />
-                <button className='login__button'>Login</button>
-            </div>
-            <a className="login__register-link" href="" onClick={event => {
-                event.preventDefault()
+    const onSubmit = event => {
+        event.preventDefault()
+        login(event)
+    }
 
-                onRegister()
-            }}>Register</a>
+    const goToRegister = event => {
+        event.preventDefault()
+        onRegister && onRegister()
+    }
+
+    return <form className='login' onSubmit={onSubmit}>
+        <div className='login__container'>
+            <Logo />
+            <div className='login__wrapper'>
+                <Input type='email' name='email' placeholder='Email' required={true}/>
+                <Input type='password' name='password' placeholder='Contraseña' required={true} />
+                <Button type='submit' innertext='Login' />
+            </div>
+            <a className="login__register-link" href="" onClick={goToRegister}>Register</a>
         </div>
     </form>
 }

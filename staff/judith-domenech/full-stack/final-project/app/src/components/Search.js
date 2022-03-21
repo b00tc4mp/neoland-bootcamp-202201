@@ -1,6 +1,6 @@
 import './Search.sass'
 import { useState } from 'react'
-/* import Results from './Results' */
+import Results from './Results' 
 
 function Search({ onItem, onQuery, query }) {
     const [view, setView] = useState(query && 'results')
@@ -27,7 +27,7 @@ function Search({ onItem, onQuery, query }) {
             <button className="search__button">Search</button>
         </form>
 
-        {/* {view === 'results' && <Results token={token} query={query} onItem={onItem} />} */}
+      {view === 'results' && <Results query={query} /* onItem={onItem} */ />} 
     </div>
 }
 

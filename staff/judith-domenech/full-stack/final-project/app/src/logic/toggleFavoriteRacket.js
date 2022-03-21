@@ -2,11 +2,11 @@ import { validators } from 'commons'
 
 const { validateToken, validateId } = validators
 
-function toggleFavorite(token, racketId) {
+function toggleFavoriteRacket(token, racketId) {
     validateToken(token)
     validateId(racketId, 'racketId')
 
-    return fetch(`http://localhost:8080/api/${racketId}/favorites`, {
+    return fetch(`http://localhost:8080/api/rackets/${racketId}/favorites`, {
         method: 'PATCH',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -33,4 +33,4 @@ function toggleFavorite(token, racketId) {
         })
 }
 
-export default toggleFavorite
+export default toggleFavoriteRacket

@@ -6,7 +6,9 @@ import { Routes, Route, useNavigate, useSearchParams, Navigate } from 'react-rou
 import logo from '../assets/racketMatch.png'
 
 function Home() {
-
+    const [search, setSearch] = useSearchParams()
+    const q = search.get('q')
+    const [query, setQuery] = useState(q)
     // setamos la constante al metdodo?? use navigate qu enos facilta la navegacion entre vista similar al setView
     const navigate = useNavigate()
 
@@ -41,6 +43,12 @@ function Home() {
 
     const showFavorites = () => navigate('favorites')
 
+    const doSearch = query => {
+        setQuery(query)
+
+        navigate(`search?q=${query}`)
+    }
+
     const goToSearchUserRacket = event => {
         event.preventDefault()
         showGoToSearchUserRacket()
@@ -55,9 +63,7 @@ function Home() {
             <a className="" href="" onClick={goToRegister}>Register</a>
             <a className="" href="" onClick={goToLogin}>Login</a>
         </nav>
-    
-            <Search></Search>
-        
+
 
         {/*  si hay token se muestre si no hay token no se muestra */}
         <nav className="home__footer">
@@ -67,11 +73,12 @@ function Home() {
         </nav>
 
         <Routes>
+            <Route index element={<Search /* onItem={goToDetails} */ onQuery={doSearch} query={query} />} />
             <Route path='/register' element={<Register />} />
             <Route path='/profile' element={<Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} />
             <Route path='profile/update-password' element={<UpdatePassword onBack={showProfile} />} />
             <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile} /* onDeletedAccount={onLogOut} onLogout={onLogOut} */ />} />
-           
+
         </Routes>
     </div>
 }

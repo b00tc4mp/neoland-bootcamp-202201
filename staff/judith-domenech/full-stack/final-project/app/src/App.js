@@ -1,7 +1,8 @@
-import './App.css'
-import { Register, Login, Home, Profile } from './components'
+import './App.sass'
+import { Register, Login, Home, Profile, RacketDetails, CreateComment } from './components'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators } from 'commons'
+import { IconFavorite } from './components/icons'
 const { validateToken } = validators
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
 
   const showRegister = () => navigate('register')
 
-  const keepTokenNShowHome = token => { 
+  const keepTokenNShowHome = token => {
     sessionStorage.token = token
     navigate('/')
   }
@@ -29,14 +30,19 @@ function App() {
     navigate('/')
   }
 
-
   return <div>
+    {/* <IconFavorite racketId={"6232266e2b6b26aac836b9a2"} isFavorite={false} /> */}
+    {/*  <Register />  */}
+    {/* <Login />  */}
+    <CreateComment racketId={"6232266e2b6b26aac836b9a2"}/>
+
+    {/*  <RacketDetails racketId="6232266e2b6b26aac836b9a2" /> */}
     <Routes>
-      <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
+      {/* <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
       <Route path="register" element={ <Register onRegistered={showLogin} onLogin={showLogin} /> } />
       <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> } /> 
       <Route path="profile" element={<Profile />}></Route>
-      <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
+      <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} /> */}
     </Routes>
   </div>
 

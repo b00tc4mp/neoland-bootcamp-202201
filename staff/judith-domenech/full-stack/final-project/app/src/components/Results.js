@@ -1,8 +1,8 @@
-import './Results.css'
+import './Results.sass'
 import { useEffect, useState } from 'react'
 import { searchRackets, toggleFavoriteRacket} from '../logic'
 
-function Results ({ token, query, onItem }) {
+function Results ({ query, onItem }) {
     const[rackets, setRackets] = useState([])
 
     useEffect(() => {
@@ -18,12 +18,31 @@ function Results ({ token, query, onItem }) {
     const goToItem = id => {
         onItem(id)
     } 
+    
+    return <div className="results">
+      {!!rackets.length && <div className='results__list-items'>
+         <ul className="results__list">
+            {rackets.map(racket => <li key={racket.id} className="results__item" onClick={() => goToItem(racket.id)}>
+                <h2>{racket.brand}</h2>
+
+                <img src={racket.image} />
+                <span>{racket.model} $</span>
+                <span>{racket.price} $</span>
+                
+            </li>)}
+        </ul>
+        </div>}
+    </div>
+}
+
+export default Results
 
 /*     const toggleFavRackets = racketId => {
         try {
             toggleFavoriteRackets(token, racketId)
                 .then(() =>
-                searchRackets(token, query)
+
+                searchRackets(query)
                         .then(rackets => {
                             debugger
                             setRackets(rackets)
@@ -35,27 +54,11 @@ function Results ({ token, query, onItem }) {
         }
     } */
 
-    return <div className="results">
-      {!!rackets.length && <div className='results__list-items'>
-         <ul className="results__list">
-            {rackets.map(racket => <li key={racket.id} className="results__item" onClick={() => goToItem(racket.id)}>
-                <h2>{racket.brand}</h2>
-{/* 
-                <div>
-                    <span className="results__item-fav-button" onClick={event => {
-                        event.stopPropagation()
-
-                        toggleFavRackets(racket.id)
-                    }}>{racket.favorite ? '❤️' : '💛'}</span>
-                </div> */}
-
-                <img src={racket.model} />
-                <span>{racket.price} $</span>
-                
-            </li>)}
-        </ul>
-        </div>}
-    </div>
-}
-
-export default Results
+/* 
+    <div>
+    <span className="results__item-fav-button" onClick={event => {
+        event.stopPropagation()
+        
+        toggleFavRackets(racket.id)
+    }}>{racket.favorite ? '❤️' : '💛'}</span>
+                </div> */
