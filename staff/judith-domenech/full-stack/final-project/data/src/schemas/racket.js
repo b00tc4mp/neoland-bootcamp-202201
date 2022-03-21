@@ -1,14 +1,13 @@
 const { Schema } = require('mongoose')
-const { Types: { ObjectId }} = Schema
-const comment = require('./comment')
+const { Types: { ObjectId } } = Schema
 
 const racket = new Schema({
     brand: {
         type: ObjectId,
-        ref:'Brand',
+        ref: 'Brand',
         required: true
     },
-    
+
     model: {
         type: String,
         required: true
@@ -19,10 +18,10 @@ const racket = new Schema({
         required: true,
         enum: ['345-350g', '350-360g', '360-370g']
     },
-    
+
     type: {
         type: String,
-        required: true, 
+        required: true,
         enum: ['Control', 'Potencia', 'Hybrida']
     },
 
@@ -37,7 +36,7 @@ const racket = new Schema({
         required: true
     },
 
-    level:{
+    level: {
         type: String,
         required: true,
         enum: ['Principiante', 'Intermedio', 'Avanzado']
@@ -47,7 +46,7 @@ const racket = new Schema({
         type: String,
         required: true
     },
-    
+
     image: {
         type: String,
         required: true

@@ -9,6 +9,8 @@ import toggleFavoriteRacket from './toggleFavoriteRacket'
 import searchRackets from './searchRackets'
 import searchUserRackets from './searchUserRackets'
 import retrieveRacket from './retrieveRacket'
+import createComment from './createComment'
+import deleteComment from './deleteComment'
 
 export {
     registerUser,
@@ -21,5 +23,7 @@ export {
     toggleFavoriteRacket,
     searchRackets,
     searchUserRackets,
-    retrieveRacket
+    retrieveRacket,
+    createComment,
+    deleteComment
 }

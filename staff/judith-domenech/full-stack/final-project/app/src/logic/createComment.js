@@ -1,9 +1,9 @@
 import { validators } from 'commons'
 
-const { validateString, validateId } = validators
+const { validateString, validateId, validateToken } = validators
 
-function createComment(userId, racketId, text) {
-    validateId(userId, 'userId')
+function createComment(token, racketId, text) {
+    validateToken(token, 'token')
     validateId(racketId, 'racketId')
     validateString(text, 'text')
 

@@ -1,10 +1,11 @@
 import './CreateComment.sass'
+import { createComment }  from '../logic'
 import { Button } from './elements'
 import { Input } from './form-elements'
 
 function CreateComment({ racketId, onCreated }) {
 
-    const createComment = async event => {
+    const addComment = async event => {
         try {
             const { target: { description: { value: description } } } = event
             await createComment(sessionStorage.token, racketId, description)
@@ -16,7 +17,7 @@ function CreateComment({ racketId, onCreated }) {
 
     const onSubmit = event => {
         event.preventDefault()
-        CreateComment(event)
+        addComment(event)
     }
 
     return <>
