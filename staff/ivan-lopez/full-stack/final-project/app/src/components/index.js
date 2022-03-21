@@ -4,7 +4,7 @@ import Register from './Register'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
-
+import ProductDetails from './ProductDetails'
 
 export {
     Home,
@@ -12,5 +12,6 @@ export {
     Register,
     Profile,
     UpdatePassword,
-    DeleteAccount
+    DeleteAccount,
+    ProductDetails
 }

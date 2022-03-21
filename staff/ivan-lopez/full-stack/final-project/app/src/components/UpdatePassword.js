@@ -24,7 +24,7 @@ function UpdatePassword({ onBack }) {
     }
 
     return <div className='update-password'>
-        <form className='update-password__form' onSubmit={updatePassword}>
+        <form className='update-password__form' onSubmit={updatePassword} method='post'>
 
             <div className="update-password__field">
                 <label className='currPassword'>Current password</label>
