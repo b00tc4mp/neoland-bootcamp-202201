@@ -52,8 +52,8 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 
 ##### Main Views
 
-<!-- ![alt Main Views](./images/  .png) <=// añadir imagen; -->
-<!-- Para mañana -->
+![alt Main Views](./images/  .png) <=// añadir imagen; -->
+<!-- Para mañana
 
 ## Technical Description
 

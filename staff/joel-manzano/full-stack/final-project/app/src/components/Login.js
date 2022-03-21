@@ -5,7 +5,8 @@ function Login({ onLogged, onRegister }) {
 
     const goToRegister = event => {
         event.preventDefault()
-        onRegister()
+        debugger
+        if(onRegister) onRegister()
     }
 
     const login = event => {
@@ -17,7 +18,7 @@ function Login({ onLogged, onRegister }) {
             authenticateUser(email, password)
                 .then(token => {
                     sessionStorage.token = token
-                    onLogged()
+                    if(onLogged) onLogged()
                 })
                 .catch(error => alert(error.message))
         } catch (error) {

@@ -3,6 +3,7 @@ import Home from './Home'
 import Register from './Register'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
+import DeleteAccount from './DeleteAccount'
 import Header from './Header'
 
 export {
@@ -11,6 +12,7 @@ export {
     Register,
     Profile,
     UpdatePassword,
+    DeleteAccount,
     Header
     
 }
