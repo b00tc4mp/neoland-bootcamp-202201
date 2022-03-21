@@ -1,11 +1,11 @@
 import { validators } from 'commons'
-
 const { validateToken } = validators
+
 
 function retrieveUserPublicInfo(token, consultedUserId) {
     validateToken(token)
 
-    return fetch(`http://localhost:8080/api/users/public/${consultedUserId}`, {
+    return fetch(`http://localhost:8080/api/users/${consultedUserId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -28,5 +28,6 @@ function retrieveUserPublicInfo(token, consultedUserId) {
             }
         })
 }
+
 
 export default retrieveUserPublicInfo

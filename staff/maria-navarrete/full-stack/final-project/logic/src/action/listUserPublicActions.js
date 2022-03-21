@@ -1,6 +1,7 @@
 const { models: { Action, User } } = require('data')
 const { validators: { validateId }, helpers: { sanitizeAction } } = require('commons')
 
+
 function listUserPublicActions(userId, consultedUserId) {
 
     validateId(userId, 'user id')
@@ -17,5 +18,6 @@ function listUserPublicActions(userId, consultedUserId) {
             return actions
         })
 }
+
 
 module.exports = listUserPublicActions

@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateString, validateNumber } = validators
+
 
 function findActions(token, query, requiredTime, requiredBudget) {
     validateToken(token)
@@ -31,5 +31,6 @@ function findActions(token, query, requiredTime, requiredBudget) {
             }
         })
 }
+
 
 export default findActions

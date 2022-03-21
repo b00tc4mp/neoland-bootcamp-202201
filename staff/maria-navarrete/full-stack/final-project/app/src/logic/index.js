@@ -1,52 +1,54 @@
-const authenticateUser = require('./user/authenticateUser')
-const deleteUser = require('./user/deleteUser')
-const findUsers = require('./user/findUsers')
-const listFollowerUsers = require('./user/listFollowerUsers')
-const listFollowingUsers = require('./user/listFollowingUsers')
-const registerUser = require('./user/registerUser')
-const retrieveUser = require('./user/retrieveUser')
-const retrieveUserPublicInfo = require('./user/retrieveUserPublicInfo')
-const toggleFolloingUser = require('./user/toggleFolloingUser')
-const updateUser = require('./user/updateUser')
-const updateUserPassword = require('./user/updateUserPassword')
-const createAction = require('./action/createAction')
-const deleteAction = require('./action/deleteAction')
-const findActions = require('./action/findActions')
-const listActions = require('./action/listActions')
-const listFavoriteActions = require('./action/listFavoriteActions')
-const listUserPublicActions = require('./action/listUserPublicActions')
-const retrieveAction = require('./action/retrieveAction')
-const toggleFavoriteAction = require('./action/toggleFavoriteAction')
-const updateAction = require('./action/updateAction')
-const cancelSchedule = require('./schedule/cancelSchedule')
-const createSchedule = require('./schedule/createSchedule')
-const retrieveSchedule = require('./schedule/retrieveSchedule')
-const listSchedules = require('./schedule/listSchedules')
-const updateSchedule = require('./schedule/updateSchedule')
+import authenticateUser from './user/authenticateUser'
+import deleteUser from './user/deleteUser'
+import findUsers from './user/findUsers'
+import listFollowerUsers from './user/listFollowerUsers'
+import listFollowingUsers from './user/listFollowingUsers'
+import registerUser from './user/registerUser'
+import retrieveUser from './user/retrieveUser'
+import retrieveUserPublicInfo from './user/retrieveUserPublicInfo'
+import toggleFollowingUser from './user/toggleFollowingUser'
+import updateUser from './user/updateUser'
+import updateUserPassword from './user/updateUserPassword'
+import createAction from './action/createAction'
+import deleteAction from './action/deleteAction'
+import findActions from './action/findActions'
+import listActions from './action/listActions'
+import listFavoriteActions from './action/listFavoriteActions'
+import listUserPublicActions from './action/listUserPublicActions'
+import retrieveAction from './action/retrieveAction'
+import toggleFavoriteAction from './action/toggleFavoriteAction'
+import updateAction from './action/updateAction'
+import cancelSchedule from './schedule/cancelSchedule'
+import createSchedule from './schedule/createSchedule'
+import retrieveSchedule from './schedule/retrieveSchedule'
+import listSchedules from './schedule/listSchedules'
+import updateSchedule from './schedule/updateSchedule'
 
-module.exports={
-    registerUser,
+
+export {
     authenticateUser,
+    deleteUser,
+    findUsers,
+    listFollowerUsers,
+    listFollowingUsers,
+    registerUser,
     retrieveUser,
     retrieveUserPublicInfo,
-    listFavoriteActions,
-    listFollowerUsers,
-    findUsers,
-    toggleFavoriteAction,
-    toggleFolloingUser,
+    toggleFollowingUser,
     updateUser,
     updateUserPassword,
-    deleteUser,
     createAction,
-    retrieveAction,
-    listUserPublicActions,
-    listUserActions,
-    updateAction, 
+    deleteAction,
     findActions,
-    deleteAction, 
-    createSchedule,
-    retrieveSchedule,
-    listSchedules,
-    updateSchedule,
+    listActions,
+    listFavoriteActions,
+    listUserPublicActions,
+    retrieveAction,
+    toggleFavoriteAction,
+    updateAction,
     cancelSchedule,
+    createSchedule,
+    listSchedules,
+    retrieveSchedule,
+    updateSchedule,
 }

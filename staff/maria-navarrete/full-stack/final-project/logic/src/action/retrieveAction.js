@@ -1,6 +1,7 @@
 const { models: { Action, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function retrieveAction(userId, actionId) {
 
     validateId(userId, 'user id')
@@ -33,5 +34,6 @@ function retrieveAction(userId, actionId) {
             }
         })
 }
+
 
 module.exports = retrieveAction

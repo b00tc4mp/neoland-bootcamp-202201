@@ -1,6 +1,7 @@
 import { validators } from 'commons'
 const { validateToken, validatePassword } = validators
 
+
 function updateUserPassword(token, currentPassword, newPassword, confirmPassword) {
     validateToken(token)
     validatePassword(currentPassword, 'old password')
@@ -35,5 +36,6 @@ function updateUserPassword(token, currentPassword, newPassword, confirmPassword
             }
         })
 }
+
 
 export default updateUserPassword

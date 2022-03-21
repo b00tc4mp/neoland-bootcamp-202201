@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateId } = validators
+
 
 function retrieveSchedule(token, scheduleId) {
     validateToken(token)
@@ -29,5 +29,6 @@ function retrieveSchedule(token, scheduleId) {
             }
         })
 }
+
 
 export default retrieveSchedule

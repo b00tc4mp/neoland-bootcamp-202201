@@ -39,6 +39,7 @@ let action1
 let action2
 let action3
 
+
 connect('mongodb://localhost:27017/bHooman-db')
     .then(() => Promise.all([
         User.deleteOne({ email: 'pepito@grillo.com' }),

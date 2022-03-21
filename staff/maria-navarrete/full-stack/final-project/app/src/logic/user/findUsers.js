@@ -1,8 +1,8 @@
 import { validators } from 'commons'
-
 const { validateToken, validateString } = validators
 
-function findUsers(token, query = "") {
+
+function findUsers(token, query = '') {
     validateToken(token)
     validateString(query, 'query')
 
@@ -29,5 +29,6 @@ function findUsers(token, query = "") {
             }
         })
 }
+
 
 export default findUsers

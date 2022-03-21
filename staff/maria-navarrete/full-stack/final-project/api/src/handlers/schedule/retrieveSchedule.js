@@ -1,6 +1,7 @@
 const { retrieveSchedule } = require('logic')
 const { verifyTokenAndGetUserId } = require('../../helpers')
 
+
 module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)

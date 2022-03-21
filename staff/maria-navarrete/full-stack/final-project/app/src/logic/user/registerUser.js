@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateString, validateEmail, validatePassword } = validators
+
 
 function registerUser(username, email, password) {
     validateString(username, 'username')
@@ -32,5 +32,6 @@ function registerUser(username, email, password) {
             }
         })
 }
+
 
 export default registerUser

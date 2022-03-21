@@ -1,11 +1,11 @@
 import { validators } from 'commons'
-
 const { validateString, validateNumber, validateBoolean, valdiateToken } = validators
 
-function createAction(token, description, public, requiredTime, requiredBudget) {
+
+function createAction(token, description, isPublic, requiredTime, requiredBudget) {
     valdiateToken(token)
     validateString(description, 'description')
-    validateBoolean(public, 'public')
+    validateBoolean(isPublic, 'is public')
     validateNumber(requiredTime, 'required time')
     validateNumber(requiredBudget, 'required budget')
 
@@ -15,7 +15,7 @@ function createAction(token, description, public, requiredTime, requiredBudget) 
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ description, public, requiredTime, requiredBudget })
+        body: JSON.stringify({ description, public: isPublic, requiredTime, requiredBudget })
     })
         .then(res => {
             const { status } = res
@@ -35,5 +35,6 @@ function createAction(token, description, public, requiredTime, requiredBudget) 
             }
         })
 }
+
 
 export default createAction

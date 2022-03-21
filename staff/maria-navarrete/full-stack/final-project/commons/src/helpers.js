@@ -10,6 +10,7 @@ const sanitizeAction = (action) => {
     return action
 }
 
+
 module.exports = {
     sanitizeAction
 }

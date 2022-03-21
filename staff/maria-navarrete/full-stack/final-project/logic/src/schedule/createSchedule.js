@@ -1,6 +1,7 @@
 const { validators: { validateId, validateString, validateNumber, validateDate } } = require('commons')
 const { models: { Schedule, Action, User } } = require('data')
 
+
 function createSchedule(userId, actionId, date, repeat = 'once') {
 
     validateId(userId, 'user id')
@@ -22,5 +23,6 @@ function createSchedule(userId, actionId, date, repeat = 'once') {
             else throw new Error(`action with id ${actionId} is not public`)
         })
 }
+
 
 module.exports = createSchedule

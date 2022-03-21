@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateId } = validators
+
 
 function cancelSchedule(token, scheduleId) {
     validateToken(token)
@@ -30,5 +30,6 @@ function cancelSchedule(token, scheduleId) {
             }
         })
 }
+
 
 export default cancelSchedule

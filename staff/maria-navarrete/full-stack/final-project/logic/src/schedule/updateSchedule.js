@@ -1,6 +1,7 @@
 const { models: { Schedule, User } } = require("data")
 const { validators: { validateId, validateString, validateDate } } = require('commons')
 
+
 function updateSchedule(userId, scheduleId, date, repeat) {
 
     validateId(userId, 'user id')
@@ -17,5 +18,6 @@ function updateSchedule(userId, scheduleId, date, repeat) {
             if (result.matchedCount === 0) throw new Error(`schedule with id ${scheduleId} for user id ${userId} does not exist`)
         })
 }
+
 
 module.exports = updateSchedule

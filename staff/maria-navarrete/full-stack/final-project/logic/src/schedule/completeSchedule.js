@@ -1,6 +1,7 @@
 const { models: { Schedule, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function completeSchedule(userId, scheduleId) {
 
     validateId(userId, 'user id')
@@ -19,5 +20,6 @@ function completeSchedule(userId, scheduleId) {
         })
         .then(() => { })
 }
+
 
 module.exports = completeSchedule

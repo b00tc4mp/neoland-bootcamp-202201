@@ -1,6 +1,7 @@
 const { models: { User, Action, Schedule } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function deleteAction(userId, actionId) {
 
     validateId(userId, 'user id')
@@ -33,5 +34,6 @@ function deleteAction(userId, actionId) {
             }
         })
 }
+
 
 module.exports = deleteAction

@@ -1,11 +1,11 @@
 import { validators } from 'commons'
-
 const { validateToken } = validators
+
 
 function listActions(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/users/actions', {
+    return fetch('http://localhost:8080/api/actions', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -28,5 +28,6 @@ function listActions(token) {
             }
         })
 }
+
 
 export default listActions

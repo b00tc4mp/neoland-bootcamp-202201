@@ -1,23 +1,22 @@
 import { validators } from 'commons'
+const { validateToken, validateId } = validators
 
-const { validateToken, validatePassword } = validators
 
-function deleteUser(token, password) {
+function toggleFavorite(token, actionId) {
     validateToken(token)
-    validatePassword(password)
+    validateId(actionId, 'action id')
 
-    return fetch('http://localhost:8080/api/users', {
-        method: 'DELETE',
+    return fetch(`http://localhost:8080/api/actions/${actionId}/favorites`, {
+        method: 'PATCH',
         headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ password })
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(res => {
             const { status } = res
-            if (status === 204) {
-                return
+
+            if (status === 200) {
+                return 
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -32,4 +31,5 @@ function deleteUser(token, password) {
         })
 }
 
-export default deleteUser
+
+export default toggleFavorite

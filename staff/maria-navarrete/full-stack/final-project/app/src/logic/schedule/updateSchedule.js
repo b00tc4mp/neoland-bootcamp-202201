@@ -1,6 +1,7 @@
 import { validators } from 'commons'
 const { validateToken, validateId, validateString, validateDate } = validators
 
+
 function updateSchedule(token, scheduleId, date = null, repeat = null) {
     validateToken(token)
     validateId(scheduleId)
@@ -37,5 +38,6 @@ function updateSchedule(token, scheduleId, date = null, repeat = null) {
             }
         })
 }
+
 
 export default updateSchedule

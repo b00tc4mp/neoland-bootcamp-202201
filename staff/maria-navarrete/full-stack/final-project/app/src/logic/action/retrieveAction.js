@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateId } = validators
+
 
 function retrieveAction(token, actionId) {
     validateToken(token)
@@ -29,5 +29,6 @@ function retrieveAction(token, actionId) {
             }
         })
 }
+
 
 export default retrieveAction

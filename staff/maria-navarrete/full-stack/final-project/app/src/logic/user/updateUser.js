@@ -1,6 +1,7 @@
 import { validators } from 'commons'
 const { validateToken, validateString, validateEmail, validateBoolean } = validators
 
+
 function updateUser(token, username, email, notifications) {
     validateToken(token)
     validateString(username, 'username')
@@ -33,5 +34,6 @@ function updateUser(token, username, email, notifications) {
             }
         })
 }
+
 
 export default updateUser

@@ -32,6 +32,7 @@ const cors = require('cors')
 
 const { env: { PORT, MONGODB_URL } } = process
 
+
 connect(MONGODB_URL)
     .then(() => console.log('db connected'))
     .then(() => {

@@ -41,4 +41,5 @@ function updateAction(userId, actionId, description, public, requiredTime, requi
         })
 }
 
+
 module.exports = updateAction

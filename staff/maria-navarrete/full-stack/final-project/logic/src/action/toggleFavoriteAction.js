@@ -1,6 +1,7 @@
 const { models: { User, Action } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function toggleFavoriteAction(userId, actionId) {
 
     validateId(userId, 'user id')
@@ -25,5 +26,6 @@ function toggleFavoriteAction(userId, actionId) {
         })
         .then(() => { })
 }
+
 
 module.exports = toggleFavoriteAction

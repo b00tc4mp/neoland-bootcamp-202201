@@ -1,6 +1,7 @@
 const { models: { Schedule, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function listSchedules(userId) {
     validateId(userId, 'user id')
 
@@ -27,5 +28,6 @@ function listSchedules(userId) {
         })
 
 }
+
 
 module.exports = listSchedules

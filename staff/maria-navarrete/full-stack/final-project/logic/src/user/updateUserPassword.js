@@ -1,6 +1,7 @@
 const { models: { User } } = require("data")
 const { validators: { validateId, validatePassword } } = require('commons')
 
+
 function updateUserPassword(userId, currPassword, newPassword) {
 
     validateId(userId, 'user id')
@@ -16,5 +17,6 @@ function updateUserPassword(userId, currPassword, newPassword) {
             if (result.matchedCount === 0) throw Error('wrong credentials')
         })
 }
+
 
 module.exports = updateUserPassword

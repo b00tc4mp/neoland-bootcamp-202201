@@ -1,6 +1,7 @@
 const { models: { Action, User } } = require('data')
 const { helpers: { sanitizeAction }, validators: { validateString, validateNumber, validateId } } = require('commons')
 
+
 function findActions(userId, query, requiredTime, requiredBudget) {
     validateId(userId, 'user id')
 
@@ -31,12 +32,5 @@ function findActions(userId, query, requiredTime, requiredBudget) {
         })
 }
 
+
 module.exports = findActions
-
-
-
-
-// city type
-// type
-
-// city

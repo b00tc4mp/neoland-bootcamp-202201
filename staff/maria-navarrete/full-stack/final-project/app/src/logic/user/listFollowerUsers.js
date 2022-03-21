@@ -1,8 +1,8 @@
 import { validators } from 'commons'
-
 const { validateToken } = validators
 
-function listFriends(token) {
+
+function listFollowerUsers(token) {
     validateToken(token)
 
     return fetch('http://localhost:8080/api/users/followers', {
@@ -29,4 +29,5 @@ function listFriends(token) {
         })
 }
 
-export default listFriends
+
+export default listFollowerUsers

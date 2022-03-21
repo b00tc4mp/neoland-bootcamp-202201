@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateId } = validators
+
 
 function listUserPublicActions(token, consultedUserId) {
     validateToken(token)
@@ -29,5 +29,6 @@ function listUserPublicActions(token, consultedUserId) {
             }
         })
 }
+
 
 export default listUserPublicActions

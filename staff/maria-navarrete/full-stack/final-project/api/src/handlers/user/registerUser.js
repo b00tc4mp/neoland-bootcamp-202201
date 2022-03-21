@@ -1,5 +1,6 @@
 const { registerUser } = require('logic')
 
+
 module.exports = (req, res) => {
     try {
         const { body: { username, email, password } } = req

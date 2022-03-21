@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateId } = validators
+
 
 function toggleFollowingUser(token, followId) {
     validateToken(token)
@@ -30,5 +30,6 @@ function toggleFollowingUser(token, followId) {
             }
         })
 }
+
 
 export default toggleFollowingUser

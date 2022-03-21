@@ -1,6 +1,7 @@
 const { models: { Schedule, User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function cancelSchedule(userId, scheduleId) {
 
     validateId(userId, 'user id')
@@ -29,5 +30,6 @@ function cancelSchedule(userId, scheduleId) {
         })
 
 }
+
 
 module.exports = cancelSchedule

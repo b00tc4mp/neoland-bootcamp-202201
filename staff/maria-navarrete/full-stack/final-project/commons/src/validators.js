@@ -3,6 +3,7 @@ const BLANK_REGEX = /^\s+$/
 const SPACE_REGEX = /\s/
 const SPACES_AROUND_REGEX = /^\s[aA-zZ]\s?[aA-zZ]|[aA-zZ]\s?[aA-zZ]\s$/
 
+
 function validateEmail(email) {
     if (typeof email !== 'string') throw new TypeError('email is not a string')
     if (email === '') throw new Error('empty email')
@@ -85,6 +86,7 @@ function validateDate(date, explain = 'date') {
     if (date === '') throw new Error(`empty ${explain}`)
     return true
 }
+
 
 module.exports = {
     validateEmail,

@@ -1,6 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateEmail, validatePassword } } = require('commons')
 
+
 function authenticateUser(email, password) {
 
     validateEmail(email)
@@ -13,5 +14,6 @@ function authenticateUser(email, password) {
             return user._id.toString()
         })
 }
+
 
 module.exports = authenticateUser

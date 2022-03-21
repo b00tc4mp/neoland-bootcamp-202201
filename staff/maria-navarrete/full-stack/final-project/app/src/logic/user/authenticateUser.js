@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateEmail, validatePassword } = validators
+
 
 function authenticateUser(email, password) {
     validateEmail(email)
@@ -36,5 +36,6 @@ function authenticateUser(email, password) {
             }
         })
 }
+
 
 export default authenticateUser

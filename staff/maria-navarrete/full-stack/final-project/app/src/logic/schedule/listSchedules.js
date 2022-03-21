@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken } = validators
+
 
 function listSchedules(token) {
     validateToken(token)
@@ -28,5 +28,6 @@ function listSchedules(token) {
             }
         })
 }
+
 
 export default listSchedules

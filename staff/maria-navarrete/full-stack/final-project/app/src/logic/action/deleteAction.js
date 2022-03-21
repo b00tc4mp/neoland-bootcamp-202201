@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken, validateId } = validators
+
 
 function deleteAction(token, actionId) {
     validateToken(token)
@@ -30,5 +30,6 @@ function deleteAction(token, actionId) {
             }
         })
 }
+
 
 export default deleteAction

@@ -1,6 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateString } } = require('commons')
 
+
 function findUsers(userId, query) {
     let filter = {}
     if (query) {
@@ -22,5 +23,6 @@ function findUsers(userId, query) {
             return users
         })
 }
+
 
 module.exports = findUsers

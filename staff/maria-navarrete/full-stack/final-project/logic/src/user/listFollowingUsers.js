@@ -1,6 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function listFollowingUsers(userId) {
 
     validateId(userId, 'user id')
@@ -27,5 +28,6 @@ function listFollowingUsers(userId) {
             return user.following
         })
 }
+
 
 module.exports = listFollowingUsers

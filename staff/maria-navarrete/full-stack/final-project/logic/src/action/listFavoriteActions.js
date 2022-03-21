@@ -1,6 +1,7 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
+
 function listFavoriteActions(userId) {
     validateId(userId, 'user id')
 
@@ -25,5 +26,6 @@ function listFavoriteActions(userId) {
             })
         )
 }
+
 
 module.exports = listFavoriteActions

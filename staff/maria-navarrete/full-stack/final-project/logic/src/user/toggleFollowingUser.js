@@ -2,6 +2,7 @@ const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 const { user } = require('data/src/schemas')
 
+
 function toggleFollowingUser(userId, followId) {
 
     validateId(userId, 'user id')
@@ -26,5 +27,6 @@ function toggleFollowingUser(userId, followId) {
         })
         .then(() => { })
 }
+
 
 module.exports = toggleFollowingUser

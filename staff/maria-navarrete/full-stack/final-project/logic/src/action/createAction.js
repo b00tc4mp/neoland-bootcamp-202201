@@ -1,6 +1,7 @@
 const { validators: { validateId, validateString, validateBoolean, validateNumber } } = require('commons')
 const { models: { Action, User } } = require('data')
 
+
 function createAction(userId, description, public, requiredTime, requiredBudget) {
 
     validateId(userId, 'user id')
@@ -16,6 +17,7 @@ function createAction(userId, description, public, requiredTime, requiredBudget)
         })
         .then(({ id }) => id)
 }
+
 
 module.exports = createAction
 

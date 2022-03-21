@@ -25,6 +25,7 @@ const listSchedules = require('./schedule/listSchedules')
 const retrieveSchedule = require('./schedule/retrieveSchedule')
 const updateSchedule = require('./schedule/updateSchedule')
 
+
 module.exports = {
     authenticateUser,
     deleteUser,
@@ -51,5 +52,5 @@ module.exports = {
     createSchedule,
     listSchedules,
     retrieveSchedule,
-    updateSchedule,
+    updateSchedule
 }

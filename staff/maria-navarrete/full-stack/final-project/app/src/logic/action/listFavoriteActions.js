@@ -1,6 +1,6 @@
 import { validators } from 'commons'
-
 const { validateToken } = validators
+
 
 function listFavoriteActions(token) {
     validateToken(token)
@@ -28,5 +28,6 @@ function listFavoriteActions(token) {
             }
         })
 }
+
 
 export default listFavoriteActions
