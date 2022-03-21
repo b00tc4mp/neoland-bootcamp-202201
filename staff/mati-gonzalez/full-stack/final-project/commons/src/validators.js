@@ -72,11 +72,16 @@ function validateBoolean(boolean, explain = 'boolean') {
     if (typeof boolean !== 'boolean') throw new TypeError(`${explain} is not a boolean`)
 }
 
+function validateArray(array, explain = 'array'){
+    if (!(Array.isArray(array))) throw new TypeError(`${explain} is not an array`)
+}
+
 module.exports = {
     validateEmail,
     validatePassword,
     validateToken,
     validateString,
     validateId,
-    validateBoolean
+    validateBoolean,
+    validateArray
 }

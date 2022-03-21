@@ -1,7 +1,7 @@
 const registerUser = require('./registerUser')
 const authenticateUser = require('./authenticateUser')
 const retrieveUser = require('./retrieveUser')
-// const deleteUser = require('./deleteUSer')
+const deleteUser = require('./deleteUSer')
 const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
 const addQuestion = require('./addQuestion')
@@ -12,15 +12,17 @@ const listAnswers = require('./listAnswers')
 const retrieveAnswer = require('./retrieveAnswer')
 const addComment = require('./addComment')
 const listComments = require('./listComments')
-const retrieveComment = require('./retrieveComment')
 const updateComment = require('./updateComment')
+const deleteComment = require('./deleteComment')
 const toggleFavorite = require('./toggleFavorites')
+const listFavorites = require('./listFavorites')
+const findQuestions = require('./findQuestions')
 
 module.exports = {
     registerUser,
     authenticateUser,
     retrieveUser,
-    // deleteUser,
+    deleteUser,
     updateUser,
     updateUserPassword,
     addQuestion,
@@ -31,7 +33,10 @@ module.exports = {
     retrieveAnswer,
     addComment,
     listComments,
-    retrieveComment,
     updateComment,
-    toggleFavorite
+    deleteComment,
+    toggleFavorite,
+    listFavorites,
+    findQuestions,
+    deleteComment
 }

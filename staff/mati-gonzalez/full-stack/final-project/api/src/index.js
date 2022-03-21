@@ -7,13 +7,20 @@ const {
     retrieveUser,
     updateUser,
     updateUserPassword,
-    // deleteUser,
+    deleteUser,
     addQuestion,
     retrieveQuestion,
     addAnswer,
-    addComment,
     listQuestions,
-    listAnswers
+    listAnswers,
+    retrieveAnswer,
+    addComment,
+    listComments,
+    updateComment,
+    toggleFavorite,
+    listFavorites,
+    findQuestions,
+    deleteComment
 } = require('./handlers')
 
 const cors = require('cors')
@@ -33,21 +40,23 @@ connect(MONGODB_URL)
         api.get('/users', retrieveUser)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
-        api.patch('/users/favs', jsonBodyParser) // toggleFavorites
-        // api.delete('/users', jsonBodyParser, deleteUser)
-
+        api.delete('/users', jsonBodyParser, deleteUser)
+        
         api.post('/questions', jsonBodyParser, addQuestion)
         api.get('/questions', listQuestions)
+        api.get('/questions/favs', listFavorites)
+        api.get('/questions/search', findQuestions) //findQuestions
         api.get('/questions/:questionId', jsonBodyParser, retrieveQuestion)
+        api.patch('/questions/:questionId/favs', toggleFavorite) // toggleFavorites
 
         api.post('/answers/:questionId', jsonBodyParser, addAnswer) 
         api.get('/answers/:questionId', listAnswers) // listAnswers
-        api.get('/answers/:answerId') // retrieveAnswer
+        api.get('/answers/details/:answerId', retrieveAnswer) // retrieveAnswer
         
-        api.get('/comments/:answerId') // listComments
         api.post('/comments/:answerId', jsonBodyParser, addComment)
-        api.patch('/comments/:commentId', jsonBodyParser) // updateComment
-        api.delete('/comments/:commentId', jsonBodyParser) // deleteComment
+        api.get('/comments/:answerId', listComments) // listComments
+        api.patch('/comments/:commentId', jsonBodyParser, updateComment) // updateComment
+        api.delete('/comments/:commentId', jsonBodyParser, deleteComment) // deleteComment
 
 
         server.use('/api', api)

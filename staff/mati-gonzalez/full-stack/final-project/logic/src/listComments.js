@@ -1,7 +1,7 @@
 const { models: { Comment } } = require('data')
 
 function listComments(answerId) {
-    return Comment.find({ answer: answerId }).lean().populate('user', 'answer')
+    return Comment.find({ answer: answerId }).lean().populate('user').populate('answer')
         .then(_comments => {
             const comments = _comments.map(comment => {
                 // debugger
@@ -19,10 +19,11 @@ function listComments(answerId) {
 
                 delete comment.answer.id
                 delete comment.answer.date
+
                 return comment
 
             })
-            
+
             return comments
         })
 }

@@ -62,7 +62,7 @@ connect('mongodb://localhost:27017/thylemma-db')
         const question29 = new Question({text: 'Are there limitations on free speech?', categories: [''], user: manuXulo69})
         const question30 = new Question({text: 'Are humans alone in the universe?', categories: [''], user: manuXulo69})
         const question31 = new Question({text: 'Is trust more important than love?', categories: [''], user: manuXulo69})
-        const question32 = new Question({text: 'Why do we things we do not like to do?', categories: [''], user: manuXulo69})
+        const question32 = new Question({text: 'Why do we do things we do not like to do?', categories: [''], user: manuXulo69})
 
         const question33 = new Question({text: 'Do we have a soul?', categories: [''], user: godFather})
         const question34 = new Question({text: 'What is intelligence?', categories: [''], user: godFather})

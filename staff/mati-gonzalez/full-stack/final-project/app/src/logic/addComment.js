@@ -1,14 +1,18 @@
 import { validators } from 'commons'
 
-const { validateToken } = validators
+const { validateString, valdiateToken } = validators
 
-function retrieveUser(token) {
-    validateToken(token)
-
-    return fetch('http://localhost:8080/api/users', {
+function addComment(token, text) {
+    valdiateToken(token)
+    validateString(text, 'text')
+    
+    return fetch(`http://localhost:8080/api/comments/${AnswerId}`, {
+        method: 'POST',
         headers: {
-            Authorization: `Bearer ${token}`
-        }
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text, categories })
     })
         .then(res => {
             const { status } = res
@@ -29,4 +33,4 @@ function retrieveUser(token) {
         })
 }
 
-export default retrieveUser
+export default addComment

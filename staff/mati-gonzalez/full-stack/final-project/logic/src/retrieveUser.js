@@ -12,6 +12,7 @@ function retrieveUser(userId) {
             delete user._id
             delete user.password
             delete user.__v
+            delete user.favQuestions
  
             return user
         })

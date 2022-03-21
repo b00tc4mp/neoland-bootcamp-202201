@@ -1,11 +1,5 @@
-import { validators } from 'commons'
-
-const { validateToken } = validators
-
-function retrieveUser(token) {
-    validateToken(token)
-
-    return fetch('http://localhost:8080/api/users', {
+function listQuestions() {
+    return fetch('http://localhost:8080/api/questions', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -29,4 +23,4 @@ function retrieveUser(token) {
         })
 }
 
-export default retrieveUser
+export default listQuestions

@@ -21,9 +21,10 @@ const user = new Schema({
         minlength: 8
     },
 
-    favQuestions: {
-        type: [ObjectId]
-    },
+    favQuestions: [{
+        type: ObjectId,
+        ref: 'Question'
+    }],
 
     // prestigePoint: {
     //     type: Number,

@@ -1,11 +1,13 @@
 import { validators } from 'commons'
 
-const { validateToken } = validators
+const { validateToken, validateId } = validators
 
-function retrieveUser(token) {
+function toggleFavQuestion(token, questionId) {
     validateToken(token)
+    validateId(questionId, 'question id')
 
-    return fetch('http://localhost:8080/api/users', {
+    return fetch(`http://localhost:8080/api/actions/${questionId}/favs`, {
+        method: 'PATCH',
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -14,7 +16,7 @@ function retrieveUser(token) {
             const { status } = res
 
             if (status === 200) {
-                return res.json()
+                return 
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -29,4 +31,4 @@ function retrieveUser(token) {
         })
 }
 
-export default retrieveUser
+export default toggleFavQuestion

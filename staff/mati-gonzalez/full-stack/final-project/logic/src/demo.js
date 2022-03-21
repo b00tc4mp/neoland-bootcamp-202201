@@ -14,10 +14,12 @@ const {
     retrieveAnswer,
     addComment,
     listComments,
-    retrieveComment,
-    toggleFavorite
+    updateComment,
+    deleteComment,
+    toggleFavorite,
+    listFavorites,
+    findQuestions
 } = require('./index')
-const updateComment = require('./updateComment')
 
 let questionId
 let questionId2
@@ -51,6 +53,7 @@ connect('mongodb://localhost:27017/thylemma-db')
             .then(() => console.log('user updated'))
     })
 
+
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
         return retrieveUser(userId)
@@ -81,14 +84,24 @@ connect('mongodb://localhost:27017/thylemma-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
-        return retrieveQuestion(userId, questionId)
-            .then(question => console.log(question))
+        return addQuestion(userId, 'Just call me whenever you need me', ['love', 'family'])
+            .then(_questionId =>{
+                questionId2 = _questionId
+                console.log('question created')})
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
-    .then(() => {
-        return listQuestions()
-        .then(questions => console.log(questions))
+    .then(userId => {
+        return addQuestion(userId, 'You gota be strong, hold it down for your mamma', ['love', 'fam', 'granjitechno'])
+            .then(_questionId =>{
+                questionId2 = _questionId
+                console.log('question created')})
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return retrieveQuestion(userId, questionId)
+            .then(question => console.log(question))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
@@ -117,17 +130,17 @@ connect('mongodb://localhost:27017/thylemma-db')
                 console.log('answer created', )})
     })
 
-    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
-    .then(() => {
-        return listAnswers(questionId)
-        .then(answers => console.log(answers))
-    })
+    // .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    // .then(() => {
+    //     return listAnswers(questionId)
+    //     .then(answers => console.log(answers))
+    // })
 
-    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
-    .then(() => {
-        return listAnswers(questionId2)
-        .then(answers => console.log(answers))
-    })
+    // .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    // .then(() => {
+    //     return listAnswers(questionId2)
+    //     .then(answers => console.log(answers))
+    // })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
     .then(userId => {
@@ -187,9 +200,9 @@ connect('mongodb://localhost:27017/thylemma-db')
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
-    .then(userId => {
-        return retrieveComment(userId, commentId)
-            .then(comment => console.log(comment))
+    .then(() => {
+        return listComments(answerId)
+        .then(comments => console.log(comments))
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '234234234'))
@@ -198,9 +211,42 @@ connect('mongodb://localhost:27017/thylemma-db')
             .then(() => console.log('favorite toggled'))
     })
 
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return toggleFavorite(userId, questionId2)
+            .then(() => console.log('favorite toggled'))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(() => {
+        return findQuestions(['granjitechno'])
+        .then(questions => console.log(questions))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(() => {
+        return listQuestions()
+        .then(questions => console.log(questions))
+    })
+
+    // .then(authenticateUser('pepito@grillo.com', '234234234'))
+    // .then(() => {
+    //     return deleteComment(userId, commentId3)
+    // }) 
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(() => {
+        return listComments(answerId2)
+        .then(comments => console.log(comments))
+    })
+
+    .then(() => authenticateUser('pepito@grillo.com', '234234234'))
+    .then(userId => {
+        return listFavorites(userId)
+        .then(favQuestions => console.log(favQuestions))
+    })
+
     
-
-
 
     .catch(error => console.error(error.message))
     .then(disconnect)

@@ -5,11 +5,18 @@ const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
 const deleteUser = require('./deleteUser')
 const addQuestion = require('./addQuestion')
-const retrieveQuestion = require('./retrieveQuestion')
 const listQuestions = require('./listQuestions')
+const retrieveQuestion = require('./retrieveQuestion')
 const addAnswer = require('./addAnswer')
-const addComment = require('./addComment')
 const listAnswers = require('./listAnswers')
+const retrieveAnswer = require('./retrieveAnswer')
+const addComment = require('./addComment')
+const listComments = require('./listComments')
+const updateComment = require('./updateComment')
+const deleteComment = require('./deleteComment')
+const toggleFavorite = require('./toggleFavorite')
+const listFavorites = require('./listFavorites')
+const findQuestions = require('./findQuestions')
 
 module.exports = {
     registerUser,
@@ -23,5 +30,13 @@ module.exports = {
     listQuestions,
     addAnswer,
     addComment,
-    listAnswers
+    listAnswers,
+    retrieveAnswer,
+    addComment,
+    listComments,
+    updateComment,
+    deleteComment,
+    toggleFavorite,
+    listFavorites,
+    findQuestions
 }

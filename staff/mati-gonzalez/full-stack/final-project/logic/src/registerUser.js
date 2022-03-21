@@ -7,7 +7,7 @@ function registerUser(username, email, password) {
     validatePassword(password)
 
     return User.create({ username, email, password })
-        .then(user => {})
+        .then(user => { })
 }
 
 module.exports = registerUser
