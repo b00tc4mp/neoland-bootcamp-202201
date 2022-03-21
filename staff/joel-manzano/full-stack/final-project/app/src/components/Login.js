@@ -5,7 +5,6 @@ function Login({ onLogged, onRegister }) {
 
     const goToRegister = event => {
         event.preventDefault()
-        debugger
         if(onRegister) onRegister()
     }
 

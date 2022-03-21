@@ -10,13 +10,16 @@ function retrieveGraffiti(userId, graffitiId) {
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
 
-            return Graffiti.findById(graffitiId)
+            return Graffiti.findById(graffitiId).lean()
         })
         .then(graffiti => {
             if (!graffiti) throw new Error(`graffiti with id ${graffitiId} does not exist`)
 
 
-            delete doc.__v 
+            graffiti.id = graffiti._id.toString()
+
+            delete graffiti._id 
+            delete graffiti.__v 
             return graffiti
         })
 }

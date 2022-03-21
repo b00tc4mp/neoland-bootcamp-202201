@@ -4,7 +4,8 @@ import Register from './Register'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
-import Header from './Header'
+import GraffitiDetails from './GraffitiDetails'
+
 
 export {
     Login,
@@ -13,6 +14,5 @@ export {
     Profile,
     UpdatePassword,
     DeleteAccount,
-    Header
-    
+    GraffitiDetails
 }

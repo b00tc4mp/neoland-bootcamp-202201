@@ -1,6 +1,7 @@
 import './App.css';
-import { Home, Register, Login, Profile, UpdatePassword, Header, DeleteAccount} from './components'
-import { LogoIcon, ProfileIcon } from './components/icons'
+import { Home, Register, Login, Profile, UpdatePassword, DeleteAccount, GraffitiDetails} from './components'
+import { IconLogo, IconProfile, IconHamburger } from './components/icons'
+import { Header } from './components/elements';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { validators} from 'commons'
@@ -28,10 +29,13 @@ function App() {
   return <div>
   
   	{/* <Login /> */}
-  	{/* <LogoIcon /> */}
-    <ProfileIcon />
+  	{/* <IconLogo /> */}
+    {/* <IconProfile /> */}
+    {/* <IconHamburger /> */}
+    {/* <Header onHamburger={() => alert('click hamburger')} onProfile={() => alert('click profile')} onLogo={() => alert('click logo')} /> */}
+    <GraffitiDetails graffitiId='622f56311e78c0e46fce4532'/>
 
-    {/* <Header onProfile={showProfile} onHome={showHome}/> */}
+
 
   {/* <Routes>
       <Route path='/*' element={<Home onProfile={showProfile} onLogin={showLogin}/>} />

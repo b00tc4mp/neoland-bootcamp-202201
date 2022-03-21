@@ -6,7 +6,7 @@ function retrieveGraffiti(token, graffitiId) {
     validateToken(token)
     validateId(graffitiId)
 
-    return fetch(`http://localhost:8080/api/graffiti/${graffitiId}`, {
+    return fetch(`http://localhost:8080/api/graffitis/${graffitiId}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }

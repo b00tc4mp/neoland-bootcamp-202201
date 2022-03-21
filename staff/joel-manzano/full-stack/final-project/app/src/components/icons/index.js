@@ -1,7 +1,9 @@
-import LogoIcon from './LogoIcon'
-import ProfileIcon from './ProfileIcon'
+import IconLogo from './IconLogo'
+import IconProfile from './IconProfile'
+import IconHamburger from './IconHamburger'
 
 export {
-    LogoIcon,
-    ProfileIcon
+    IconLogo,
+    IconProfile,
+    IconHamburger
 }
