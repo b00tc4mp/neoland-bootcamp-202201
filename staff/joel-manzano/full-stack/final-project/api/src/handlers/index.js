@@ -9,7 +9,9 @@ const modifyGraffiti = require('./graffiti/modifyGraffiti')
 const deleteGraffiti = require('./graffiti/deleteGraffiti')
 const listGraffitis = require('./graffiti/listGraffitis')
 const retrieveGraffiti = require('./graffiti/retrieveGraffiti')
-const searchGraffiti = require('./graffiti/searchGraffiti')
+const searchGraffiti = require('./graffiti/searchGraffitis')
+const toggleFavorite = require('./graffiti/toggleFavorite')
+const listFavorites = require('./graffiti/listFavorites')
 
 module.exports = {
     registerUser,
@@ -23,5 +25,7 @@ module.exports = {
     deleteGraffiti,
     listGraffitis,
     retrieveGraffiti,
-    searchGraffiti
+    searchGraffiti,
+    toggleFavorite,
+    listFavorites
 }

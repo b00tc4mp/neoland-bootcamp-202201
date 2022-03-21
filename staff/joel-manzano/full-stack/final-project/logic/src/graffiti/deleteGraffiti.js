@@ -4,6 +4,7 @@ const { User } = require('data/src/models')
 const { graffiti } = require('data/src/schemas')
 
 function deleteGraffiti (userId, graffitiId) {
+    
     validateId(userId, 'user id')
     validateId(graffitiId, 'graffiti id')
 

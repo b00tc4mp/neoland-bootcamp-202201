@@ -2,7 +2,7 @@ import './Profile.css'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-function Profile({onUpdatePassword, onDeleteAccount}) {
+function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
 
@@ -18,6 +18,8 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
             alert(message)
         }
     }, [])
+
+
 
     const updateProfile = event => {
         event.preventDefault()
@@ -44,6 +46,14 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
         onDeleteAccount()
     }
 
+    const logOut = event => {
+        event.preventDefault()
+        delete sessionStorage.token
+        onLogOut()
+    }
+
+    
+
     return <div className="profile">
         <form className="profile__form" onSubmit={updateProfile} method="post">
             <div className="profile__field">
@@ -55,7 +65,7 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
                 <input className="profile__email-input" id="profile__email-input" type="email" name="email" placeholder="E-mail" defaultValue={email} />
             </div>
             <button className="profile__submit">Update Profile</button>
-
+             <button onClick={logOut}> logOut</button>
             <a href="" onClick={goToUpdatePassword}>Update Password</a>
             <a href="" onClick={goToDeleteAccount}>Delete Account</a>
         </form>

@@ -1,41 +1,30 @@
-import { Profile, UpdatePassword, DeleteAccount, Notes } from './index'
-import { useState } from 'react'
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { Login, Register, Profile } from './index'
+import { useEffect, useState } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import UpdatePassword from './UpdatePassword'
 
-function Home({ onLogOut }) {
-    
-    const [previousView, setPreviousView] = useState()
-    const location = useLocation()
+function Home({onLogin, onProfile, onRegister}) {
+    const [name, setName] = useState()
+    const [view, setView] = useState()
+
     const navigate = useNavigate()
+    // const showUpdatePassword = () => navigate('profile/update-password')
+    // const showDeleteAccount = () => navigate('profile/delete-account')
 
-    const goToProfile = event => {
-        event.preventDefault()
-        showProfile()
-    }
-    const showProfile = () => navigate('profile')
-    const showUpdatePassword = () => navigate('profile/update-password')
-    const showDeleteAccount = () => navigate('profile/delete-account')
-
-    const goToNotes = event => {
-        event.preventDefault()
-        showNotes()
-    }
-
-    const showNotes=()=> navigate('/')
-
-    return <div className="home">
-        <nav className="home__header">
-            <a href="" onClick={goToNotes}>Home</a>
+    return <div className='home'>
+        {/* <nav className='home__header'>
+            <button className='login__buttom' onClick={goToLogin}>Login</button>
+            <button className='register__buttom' onClick={goToRegister}>Register</button>
             <a href="" onClick={goToProfile}>Profile</a>
-            <button href="" onClick={onLogOut}>Log out</button>
-        </nav>
-        
+        </nav> */}
+        <h1>HOME</h1>
 
         <Routes>
-            <Route index element={<Notes/>}/>
-            <Route path="profile" element={<Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} />
-            <Route path="profile/update-password" element={<UpdatePassword onBack={showProfile} />} />
-            <Route path="profile/delete-account" element={<DeleteAccount onBack={showProfile} onDeletedAccount={onLogOut} />} />
+            {/* <Route path='login' element={<Login onLogged={showLogin} />} />
+            <Route path='register' element={< Register onRegister={showLogin} />} />
+            <Route path='profile/update-password' element={< UpdatePassword onBack={showProfile} />} />
+            <Route path='profile/delete-account' element={< Profile onDeleteAccount={showDeleteAccount} />} />
+            <Route path='profile' element={< Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} /> */}
         </Routes>
     </div>
 }

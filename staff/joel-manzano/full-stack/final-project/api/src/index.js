@@ -14,7 +14,9 @@ const {
     deleteGraffiti,
     listGraffitis,
     retrieveGraffiti,
-    searchGraffiti
+    searchGraffiti,
+    toggleFavorite,
+    listFavorites
 
 } = require('./handlers')
 
@@ -36,13 +38,15 @@ connect(MONGODB_URL)
         api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
         api.delete('/users', jsonBodyParser, deleteUser)
-        api.post('/graffiti', jsonBodyParser, createGraffiti)
-        api.patch('/graffiti/:graffitiId', jsonBodyParser, modifyGraffiti)
-        api.delete('/graffiti/:graffitiId', jsonBodyParser, deleteGraffiti)
-        api.get('/graffiti', jsonBodyParser, listGraffitis)
-        api.get('/graffiti', jsonBodyParser, retrieveGraffiti)
-        api.get('/graffitis', jsonBodyParser, searchGraffiti)
 
+        api.post('/graffitis', jsonBodyParser, createGraffiti)
+        api.patch('/graffitis/:graffitiId', jsonBodyParser, modifyGraffiti)
+        api.delete('/graffitis/:graffitiId', deleteGraffiti)
+        api.get('/graffitis/all', listGraffitis)
+        api.get('/graffitis/favs', listFavorites)
+        api.get('/graffitis/:graffitiId', retrieveGraffiti)
+        api.get('/graffitis', searchGraffiti)
+        api.patch('/graffitis/:graffitiId/favs', toggleFavorite)
 
         server.use('/api', api)
 

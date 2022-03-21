@@ -3,6 +3,7 @@ const { models: { User, Graffiti } } = require('data')
 
 
 function listGraffitis(userId) {
+    
     validateId(userId, 'userId')
 
     return User.findById(userId)

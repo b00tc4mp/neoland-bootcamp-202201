@@ -1,7 +1,13 @@
 import './Login.css'
 import { authenticateUser } from '../logic'
 
-function Login({ onLoggedIn, onRegister }) {
+function Login({ onLogged, onRegister }) {
+
+    const goToRegister = event => {
+        event.preventDefault()
+        onRegister()
+    }
+
     const login = event => {
         event.preventDefault()
 
@@ -9,24 +15,22 @@ function Login({ onLoggedIn, onRegister }) {
 
         try {
             authenticateUser(email, password)
-                .then(onLoggedIn)
+                .then(token => {
+                    sessionStorage.token = token
+                    onLogged()
+                })
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
     }
-
-    const goToRegister = event => {
-        event.preventDefault()
-        onRegister()
-    }
-
-    return <div className="login">
+    return <div className='login'>
         <form onSubmit={login}>
-            <input type="email" name="email" placeholder="email" />
-            <input type="password" name="password" placeholder="password" />
-            <button>Login</button>
-            <a href="" onClick={goToRegister}>Register</a>
+            <h1>LOGIN</h1>
+            <input type='email' name='email' placeholder='email' />
+            <input type='password' name='password' placeholder='password' />
+            <button type='submit'>Login</button>
+            <a onClick={goToRegister}>goToRegister</a>
         </form>
     </div>
 }

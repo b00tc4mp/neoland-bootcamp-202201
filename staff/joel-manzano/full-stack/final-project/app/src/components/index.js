@@ -1,19 +1,16 @@
-import Register from './Register'
 import Login from './Login'
 import Home from './Home'
+import Register from './Register'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
-import DeleteAccount from './DeleteAccount'
-import Landing from './Landing'
-import Notes from './Notes'
+import Header from './Header'
 
 export {
-    Register,
     Login,
-    Home, 
+    Home,
+    Register,
     Profile,
     UpdatePassword,
-    DeleteAccount,
-    Landing,
-    Notes
+    Header
+    
 }

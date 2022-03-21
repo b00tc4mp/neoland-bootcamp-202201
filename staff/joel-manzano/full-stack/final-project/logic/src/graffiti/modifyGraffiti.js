@@ -5,7 +5,7 @@ const { validators: { validateId, validateString } } = require('commons')
 
 
 function modifyGraffiti(userId, graffitiId, artist, description, image, city, address, postalCode, location, style, status, spray, color ) {
-    validateId(userId, 'user id')
+  validateId(userId, 'user id')
     validateId(graffitiId, 'graffiti id')
     validateString(artist, 'artist')
     validateString(description, 'description')
