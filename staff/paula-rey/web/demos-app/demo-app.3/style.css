@@ -1,0 +1,135 @@
+* {
+    font-size: 1.2rem;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.off {
+    display: none !important;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.register__login-link {
+    text-align: center;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.login__register-link {
+    text-align: center;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 2rem;
+}
+
+.home__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home__logo {
+    /* filter: invert(1); */
+    width: 8rem;
+}
+
+.home__logout-button {
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.profile__update-password-link, .profile__delete-account-link {
+    text-align: center;
+}
+
+.update-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.update-password__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.update-password__back-link {
+    text-align: center;
+}
+
+.delete-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.delete-account__form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.delete-account__back-link {
+    text-align: center;
+}
+
+.home__delete-profile {
+    background-color: red;
+}

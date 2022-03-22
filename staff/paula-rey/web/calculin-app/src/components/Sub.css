@@ -1,0 +1,17 @@
+.sub {
+    background-color:orange;
+    padding: 1rem;
+}
+
+.sub___title {
+    margin: 0;
+}
+
+.sub__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.sub__input {
+    width: 4rem;
+}

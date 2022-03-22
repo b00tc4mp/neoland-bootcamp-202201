@@ -1,0 +1,19 @@
+.details {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    gap: 1rem;
+    background-color: cadetblue;
+    border: 10px solid transparent;
+    border-image: linear-gradient;
+
+}
+
+.details__image {
+    max-width: 700px;
+}
+
+.details__info {
+    max-width: 700px;
+}

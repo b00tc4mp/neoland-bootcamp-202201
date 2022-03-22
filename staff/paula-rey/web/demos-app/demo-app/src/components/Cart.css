@@ -1,0 +1,22 @@
+.cart__list {
+    list-style-type: none;
+}
+
+.cart__item {
+    cursor: pointer;
+}
+
+.cart__item-fav-button {
+    display: block;
+}
+
+.cart__item-image {
+    width: 50vw;
+}
+
+.cart__total {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    
+}

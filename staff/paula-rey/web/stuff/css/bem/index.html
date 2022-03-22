@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM</title>
+    <!-- Block__Element--Modifier -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="grid">
+        <div class="panel grid__one">One</div>
+        <div class="panel grid__two">Two</div>
+        <div class="panel grid__three">Three</div>
+        <div class="panel grid__four">Four</div>
+        <div class="panel grid__five">Five</div>
+        <div class="panel grid__six">Six</div>
+    </div>
+
+
+    <div class="panel feedback feedback--warning">
+        <p class="feedback__title">Cuidado con el perro!</p>
+        <button class="panel__button feedback__button">Accept</button>
+    </div>
+
+    <div class="panel container container--center container--column">
+        <!-- <h2>Google</h2> -->
+        <img class="panel__title" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="">
+        
+        <form action="https://www.google.com/search">
+            <input class="panel__input" type="text" name="q">
+            <button class="panel__button">Search</button>
+        </form>
+    </div>
+
+    <div class="panel">
+        <h2 class="panel__title">Ecosia</h2>
+        <form action="https://www.ecosia.org/search">
+            <input class="panel__input" type="text" name="q">
+            <button class="panel__button">Search</button>
+        </form>
+    </div>
+
+    <div class="panel">
+        <h2>Bing</h2>
+        <form action="https://www.bing.com/search">
+            <input type="text" name="q">
+            <button>Search</button>
+        </form>
+    </div>
+
+    <section class="panel panel--dark">
+        <h2>Yahoo</h2>
+        <form action="https://search.yahoo.com/search">
+            <input type="text" name="q">
+            <button>Search</button>
+        </form>
+    </section>
+
+    <div class="panel">
+        <h1>Hola, Mundo!</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis inventore aliquam vel quas et amet voluptates minima adipisci? Eum quidem, et pariatur doloribus dolores ducimus minima quod dolorem recusandae eveniet!</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto tenetur laboriosam neque similique, corrupti voluptates. Eum, ipsa nemo maxime impedit molestiae nulla quis rem voluptate dignissimos dolore odio alias fugiat.</p>
+    </div>
+</body>
+
+</html>

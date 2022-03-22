@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+.panel {
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.panel--dark {
+    background-color: dimgray;
+    color: floralwhite;
+}
+
+.panel__title {
+    margin: 10px;
+}
+
+.panel__button {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    /* padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px; */
+    padding: 3px 10px;
+}
+
+.panel__input {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 3px 10px;
+}
+
+.container {
+    display: flex;
+}
+
+.container--center {
+    justify-content: center;
+    align-items: center;
+}
+
+.container--column {
+    flex-direction: column;
+}
+
+.feedback {
+    font-family: Creepster;
+}
+
+.feedback__title {
+    font-size: 2rem;
+}
+
+.feedback--warning {
+    background-color: yellow;
+    color: orange;
+}
+
+.feedback__button {
+    background-color: yellow;
+    border-color: orange;
+    color: orange;
+    padding: 10px;
+    border-style: solid;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.feedback__button:hover {
+    transform: scale(1.1);
+}
+
+.grid {
+    display: grid;
+    grid-template-areas: 
+        "one two two two"
+        "one three three four"
+        "five six six four"
+        "five six six four";
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr .5fr 1fr 1fr;
+}
+
+.grid__one {
+    grid-area: one;
+}
+
+.grid__two {
+    grid-area: two;
+}
+
+.grid__three {
+    grid-area: three;
+}
+
+.grid__four {
+    grid-area: four;
+}
+
+.grid__five {
+    grid-area: five;
+}
+
+.grid__six {
+    grid-area: six;
+}

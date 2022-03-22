@@ -1,0 +1,17 @@
+.add {
+    background-color:aquamarine;
+    padding: 1rem;
+}
+
+.add___title {
+    margin: 0;
+}
+
+.add__form {
+    display: flex;
+    gap: .2rem;
+}
+
+.add__input {
+    width: 4rem;
+}

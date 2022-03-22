@@ -1,0 +1,309 @@
+*{
+    font-family: 'Poppins';
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: 0;
+    font-style: normal;
+    list-style: none;
+    tab-size: 0;
+    border-radius: 0;
+    box-sizing : border-box;
+}
+
+html, body {
+    width: 100%;
+    height: auto;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+}
+
+.block-1 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 1800px;
+    flex-flow: row wrap;
+    gap: 7px;
+}
+
+.block-1 * {
+    outline: 1px solid black;
+}
+
+.block-1 > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.block-1__item-1 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/las-mejores-fotos-de-paisajes-NUBES-FOTOS-nubes-monta%C3%B1as-istock.jpg);
+    background-size: cover;
+}   
+
+.block-1__item-2 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/las-mejores-fotos-de-paisajes-NUBES-foto-nubes-rayo-campo.jpg);
+    background-size: cover;
+}
+
+.block-1__item-3 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/las-mejores-fotos-de-paisajes-NUBES-FOTOS-nubes-cielo-inmenso-istock.jpg);
+    background-size: cover;
+}
+
+.block-1__item-4 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/las-mejores-fotos-de-paisajes-NUBES-FOTOS-nubes-rayo-istock.jpg);
+    background-size: cover;
+}
+
+.block-1__item-5 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/las-mejores-fotos-de-paisajes-NUBES-foto-nubes-mar-istock.jpg);
+    background-size: cover;
+}
+
+.block-1__item-6 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/mejores-fotos-mar-banco-peces-istock.jpg);
+    background-size: cover;
+}
+
+.block-1__item-7 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/mejores-fotos-mar-tormentas-istock.jpg);
+    background-size: cover;
+}
+
+.block-1__item-8 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/mejores-fotos-mar-tormenta-istock.jpg);
+    background-size: cover;
+}
+
+.block-1__item-9 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/mejores-fotos-del-mar-2019-mar-y-tormenta-nubes.jpg);
+    background-size: cover;
+}
+
+
+.block-1__item-preview {
+    background-color: rgb(146, 171, 179);
+    opacity: 0.7;
+    width: 200px;
+    height: 60%;
+}
+
+.block-2 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 1200px;
+    flex-flow: row wrap;
+    gap: 7px;
+}
+
+.block-2 * {
+    outline: 1px solid black;
+}
+
+.block-2 > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.block-2__item-1 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisajes-istock-1.jpg);
+    background-size: cover;
+}
+
+.block-2__item-2 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisajes-istock-.jpg);
+    background-size: cover;
+}
+
+.block-2__item-3 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/paisaje-rio-rocas-rojas.png);
+    background-size: cover;
+}
+
+.block-2__item-4 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/paisaje-montana-lago.png);
+    background-size: cover;
+}
+
+.block-2__item-5 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisaje-verano-pixabay-piedra.jpg);
+    background-size: cover;
+}
+
+.block-2__item-6 {
+    background-image: url(https://haciendofotos.com/wp-content/uploads/fotos-paisajes-naturales-acantilados-moher-locuraviajes.jpg);
+    background-size: cover;
+}
+
+
+.block-2__item-preview {
+    background-color: rgb(146, 171, 179);
+    opacity: 0.7;
+    width: 200px;
+    height: 60%;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    .block-1 {
+        display: grid;
+        grid-template-areas:
+        "a b b"
+        "a c c"
+        "d d e"
+        "f f e"
+        "g h h"
+        "g i i";
+        gap: 8px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat (6, 1fr); 
+        width: 610px;
+        height: 1200px;
+    }
+
+    .block-1 * {
+        outline: 1px solid black;
+    }
+
+    .block-1 > * {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .block-1__item-1 {
+        grid-area: a;
+    }
+
+    .block-1__item-2 {
+        grid-area: b;
+        
+    }
+
+    .block-1__item-3 {
+        grid-area: c;
+        align-items: flex-end;
+    }
+
+    .block-1__item-4 {
+        grid-area: d;
+        align-items: flex-end;
+    }
+
+    .block-1__item-5 {
+        grid-area: e;
+    }
+
+    .block-1__item-6 {
+        grid-area: f;
+    }
+
+    .block-1__item-7 {
+        grid-area: g;
+    }
+
+    .block-1__item-8 {
+        grid-area: h;
+    }
+
+    .block-1__item-9 {
+        grid-area: i;
+        align-items: flex-end;
+    }
+
+    .block-1__item-preview {
+        background-color: rgb(146, 171, 179);
+        width: 200px;
+        height: 200px;
+    }
+
+    .block-2 {
+        display: grid;
+        grid-template-areas: 
+        "one two two"
+        "one three three"
+        "four four five"
+        "six six five";
+        gap: 8px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat (3, 1fr);
+        width: 610px;
+        height: 800px;
+    }
+
+    .block-2 * {
+        outline: 1px solid black;
+    }
+
+    .block-2 > * {
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .block-2__item-1 {
+        grid-area: one;
+    }
+
+    .block-2__item-2 {
+        grid-area: two;
+    }
+
+    .block-2__item-3 {
+        grid-area: three;
+        align-items: flex-end;
+    }
+
+    .block-2__item-4 {
+        grid-area: four;
+        align-items: flex-end;
+    }
+
+    .block-2__item-5 {
+        grid-area: five;
+    }
+
+    .block-2__item-6 {
+        grid-area: six;
+    }
+
+    .block-2__item-preview {
+        background-color: rgb(146, 171, 179);
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+
+    .block-1__item-preview {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+        height: 100px;
+    }
+
+    .block-2__item-preview {
+        clip-path: polygon(0% 0%, 70% 0%, 100% 100%, 0% 100%);
+        height: 100px;
+    }
+}
+    

@@ -1,0 +1,21 @@
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.detail__image {
+    width: 90vW;
+    align-self: center;
+}
+
+.detail__fav {
+    cursor: pointer;
+    user-select: none;
+}
+
+.detail__button-cart {
+    width: 5vw;
+}
+
