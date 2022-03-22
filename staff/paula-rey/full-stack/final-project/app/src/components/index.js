@@ -10,6 +10,10 @@ import Results from './Results'
 import Logo from './elements/Logo'
 import Details from './Details'
 import AddLocation from './AddLocation'
+import UpdateLocation from './UpdateLocation'
+import AddComment from './AddComment'
+import Favorites from './Favorites'
+
 
 export {
     Register,
@@ -23,5 +27,8 @@ export {
     Results,
     Logo,
     Details,
-    AddLocation
+    AddLocation,
+    UpdateLocation,
+    AddComment,
+    Favorites
 }

@@ -9,6 +9,9 @@ import retrieveLocation from './retrieveLocation'
 import toggleFavoriteLocation from './toggleFavoriteLocation'
 import toggleFollowUser from './toggleFollowUser'
 import createLocation from './createLocation'
+import updateLocation from './updateLocation'
+import createComment from './createComment'
+import listFavoritesLocations from './listFavoritesLocations'
 
 export {
     registerUser,
@@ -21,5 +24,8 @@ export {
     retrieveLocation,
     toggleFavoriteLocation,
     toggleFollowUser,
-    createLocation
+    createLocation,
+    updateLocation,
+    createComment,
+    listFavoritesLocations
 }

@@ -3,7 +3,7 @@ import { createLocation } from '../logic'
 import { Input, Select } from './form-elements'
 import { Button } from './elements'
 import { data } from 'commons'
-const { locationTypes, locationCities } = data
+const { locationTypes, locationCities, defaultImage } = data
 
 function AddLocation({ onCreated }) {
 
@@ -11,7 +11,9 @@ function AddLocation({ onCreated }) {
         try {
             const { target: { type: { value: type }, title: { value: title }, image: { value: image }, address: { value: address }, city: { value: city } } } = event
 
-            await createLocation(sessionStorage.token, type, title, image, address, city)
+            const urlImage = image === ''? defaultImage : image
+
+            await createLocation(sessionStorage.token, type, title, urlImage, address, city)
             onCreated && onCreated()
 
         } catch (error) {
@@ -28,13 +30,13 @@ function AddLocation({ onCreated }) {
 
 
     return <>
+        <h2>¡Añade tu localización!</h2>
         <form onSubmit={onSubmit}>
             <Select name="type" placeholder="type"options={locationTypes} required={true}/>
             <Select name="city" placeholder="city"options={locationCities} required={true}/>
             <Input type="text" name="title" placeholder="Título" />
-            <Input type="text" name="image" placeholder="url"/>
+            <Input type="text" name="image" placeholder="url(opcional)"/>
             <Input type="text" name="address" placeholder="Dirección" />
-            <Input type="text" name="description" placeholder="Descripción" />
             <Button type="submit" inner="Crear"/>
         </form>
         

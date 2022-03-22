@@ -2,7 +2,7 @@ const { validators: { validateId, validateString } } = require('commons')
 const { models: { User, Location } } = require('data')
 
 
-function updateLocation(userId, locationId, type, title, image, address, city) {
+function updateLocation(userId, locationId, type, title, image, address, city, description) {
   validateId(userId, 'user id')
   validateId(locationId, 'location id')
   validateString(type, 'type')
@@ -10,6 +10,7 @@ function updateLocation(userId, locationId, type, title, image, address, city) {
   validateString(image, 'image')
   validateString(address, 'address')
   validateString(city, 'city')
+  validateString(description, 'description')
 
   return User.findById(userId)
     .then(user => {
@@ -27,6 +28,7 @@ function updateLocation(userId, locationId, type, title, image, address, city) {
       location.image = image
       location.address = address
       location.city = city
+      location.description
 
       return location.save()
     })

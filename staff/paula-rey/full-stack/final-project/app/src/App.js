@@ -1,10 +1,11 @@
 import './App.sass'
-import { Landing, Register, Login, Home, Details, AddLocation } from './components'
-import { IconFavorite, IconFollow } from './components/icons'
+import { Landing, Register, Login, Home, Details, AddLocation, UpdateLocation, AddComment, Favorites } from './components'
+import { List } from './components/elements'
+import { FavoriteIcon, FollowIcon, CommentIcon } from './components/icons'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators } from 'commons'
 
-const {validateToken } = validators
+const { validateToken } = validators
 
 function App() {
   let tokenValid = true
@@ -33,7 +34,13 @@ function App() {
 
 
   return <div>
-    <AddLocation/>
+    <Routes>
+      <Route path="/*" element={<CommentIcon onClick={showLogin} />} />
+      <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
+      <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
+      <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
+    </Routes>
+    {/* <FavoriteIcon locationId="6239ba8129f1ce5763d55672" /> */}
     {/* <Details locationId="62336941e973046272784a55"/> */}
     {/* <IconFavorite locationId={"62336941e973046272784a55"} isFavorite={false}/> */}
     {/* <IconFollow userId={"62336941e973046272784a49"} isFollow={false}/> */}
@@ -44,9 +51,10 @@ function App() {
 export default App
 
 
-{/* <Routes>
-  <Route path="/*" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Landing onLogin={showLogin} onRegistered={showRegister} />} />
-  <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
-  <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
-  <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
-</Routes> */}
+// <Routes>
+// <Route path="/*" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Landing onLogin={showLogin} onRegistered={showRegister} />} />
+// <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
+// <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
+// <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
+// </Routes>
+

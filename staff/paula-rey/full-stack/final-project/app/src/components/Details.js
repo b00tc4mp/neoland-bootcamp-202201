@@ -20,7 +20,8 @@ function Details({locationId}) {
 
     return <div className='detail'>
         <h1>{location.title}</h1>
-        <img src={location.image}/>
+        <p>{location.date}</p>
+        <img src={location.urlImage}/>
         <h2>{location.type}</h2>
         <p>{location.adress}</p>
         <p>{location.city}</p>

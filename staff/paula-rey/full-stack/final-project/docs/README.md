@@ -94,7 +94,7 @@ comment
 
 ##### App
 
-- TODO create main views (components) (3d)
+- DOING create main views (components) (3d)
 - TODO mechanize navigations (3d)
 
 ##### Logic
@@ -106,5 +106,6 @@ comment
 <!-- TODO validaciones reales (minLength..., @, etc) en schemas -->
 <!-- mejorar manejo errores en logicas-->
 <!-- follows¿? delete -->
-<!--  -->
+<!-- create location me exige url aunq le he puesto una predeterminada -->
+<!-- el select deja seleccionar (selecciona una opcion) -->
 
