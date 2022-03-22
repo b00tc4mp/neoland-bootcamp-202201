@@ -1,9 +1,9 @@
 import { validators } from 'commons'
-const { validateString, validateDate, valdiateToken, validateId } = validators
+const { validateString, validateDate, validateToken, validateId } = validators
 
 
 function createSchedule(token, actionId, date, repeat) {
-    valdiateToken(token)
+    validateToken(token)
     validateId(actionId, 'action id')
     validateDate(date, 'date')
     validateString(repeat, 'repeat')

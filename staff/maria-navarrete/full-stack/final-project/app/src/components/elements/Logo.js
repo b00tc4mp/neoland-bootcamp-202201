@@ -3,13 +3,10 @@ import logoBrand from '../../assets/images/logoBrand.png'
 import logo from '../../assets/images/logo.png'
 
 
-const Logo = ({ alt = 'logo bHooman', className = '', type = 'small' }) => {
+export const Logo = ({ alt = 'logo bHooman', className = '', type = 'small' }) => {
     return <>
-    <figure className={className}>
-        <img src={type === 'small' ? logo : type === 'main' ? logoBrand : logo} alt={alt} />
-    </figure>
+        <figure className={className}>
+            <img src={type === 'small' ? logo : type === 'main' ? logoBrand : logo} alt={alt} />
+        </figure>
     </>
 }
-
-
-export default Logo

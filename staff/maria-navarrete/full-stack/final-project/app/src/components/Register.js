@@ -1,10 +1,9 @@
 import './Register.sass'
-import { Input } from './form-elements'
-import { Button, Logo } from './elements'
+import { Input, Button, Logo, GoIcon } from '.'
 import { registerUser } from '../logic'
 
 
-const Register = ({ onRegistered }) => {
+export const Register = ({ onRegistered }) => {
 
     const register = async event => {
         try {
@@ -12,8 +11,7 @@ const Register = ({ onRegistered }) => {
 
             await registerUser(username, email, password)
             onRegistered && onRegistered()
-        }
-        catch (error) {
+        } catch (error) {
             alert(error.message)
         }
     }
@@ -28,15 +26,14 @@ const Register = ({ onRegistered }) => {
         <form onSubmit={onSubmit}>
             <fieldset>
                 <legend>Registrarse</legend>
-                <Input type='text' name='username' placeholder='Usuario' />
-                <Input type='email' name='email' placeholder='Email' />
-                <Input type='password' name='password' placeholder='Contraseña' />
+                <Input type='text' name='username' placeholder='Usuario' required />
+                <Input type='email' name='email' placeholder='Email' required />
+                <Input type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button type='submit' innerText='>' />
+            <Button type='submit'>
+                <GoIcon />
+            </Button>
         </form>
         <a href=''>Ya tengo una cuenta</a>
     </>
 }
-
-
-export default Register

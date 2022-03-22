@@ -1,8 +1,3 @@
-import Button from './Button'
-import Logo from './Logo'
-
-
-export {
-    Button, 
-    Logo
-}
+export * from './buttons'
+export * from './links'
+export { Logo } from './Logo'

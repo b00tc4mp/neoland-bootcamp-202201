@@ -183,14 +183,17 @@ ___
 ## Client
 
 ### App Logic
-- DOING create App logics (3h)
-- TODO test with snippets(2h)
+- ~~DONE create App logics (3h)~~
+- ~~DONE test with snippets(2h)~~
 
 ### App
 - TODO create main views (components) (1h)
 - TODO mechanize navigations (.5h)
 
 
+
+SELECT REQUIRED NO SIRVE
+CHECKED STATUS INICIAL NO SIRVE
 
 
 probar eliminar y modificar actions que alguien tenga agendadas

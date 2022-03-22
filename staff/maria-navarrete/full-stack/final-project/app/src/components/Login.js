@@ -1,10 +1,9 @@
 import './Login.sass'
-import { Input } from './form-elements'
-import { Button, Logo } from './elements'
+import { Input, Button, Logo, GoIcon } from '.'
 import { authenticateUser } from '../logic'
 
 
-const Login = ({ onLogged }) => {
+export const Login = ({ onLogged }) => {
 
     const login = async event => {
         try {
@@ -29,14 +28,13 @@ const Login = ({ onLogged }) => {
         <form onSubmit={onSubmit}>
             <fieldset>
                 <legend>Ingresar</legend>
-                <Input type='email' name='email' placeholder='Email' />
-                <Input type='password' name='password' placeholder='Contraseña' />
+                <Input type='email' name='email' placeholder='Email' required />
+                <Input type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button type='submit' innerText='>' />
+            <Button type='submit'>
+                <GoIcon />
+            </Button>
         </form>
         <a href=''>No tengo una cuenta todavía</a>
     </>
 }
-
-
-export default Login

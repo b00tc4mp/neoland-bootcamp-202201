@@ -1,9 +1,9 @@
 import { validators } from 'commons'
-const { validateString, validateNumber, validateBoolean, valdiateToken } = validators
+const { validateString, validateNumber, validateBoolean, validateToken } = validators
 
 
 function createAction(token, description, isPublic, requiredTime, requiredBudget) {
-    valdiateToken(token)
+    validateToken(token)
     validateString(description, 'description')
     validateBoolean(isPublic, 'is public')
     validateNumber(requiredTime, 'required time')
