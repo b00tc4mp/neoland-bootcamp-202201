@@ -10,26 +10,24 @@ function ProductDetails ({productId}) {
     useEffect(() => {
         try {
             retrieveProduct(sessionStorage.token, productId)
-                .then(product => {
-                    setProduct(product)
-                    
-                })
-                .catch(error => alert(error.message))
+            .then(product => {
+                setProduct(product)
+            })
+            .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
     }, [])
 
 
-    return <> {product && 
-        <ul>
+    return <>
+        {product && <ul>
             <li>{product.name}</li>
             <li>{product.size}</li>
             <li>{product.color}</li>
             <li>{product.price}</li>
             <li>{product.description}</li>
         </ul>}
-    
     </>
 }
 

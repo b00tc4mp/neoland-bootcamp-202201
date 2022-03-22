@@ -5,6 +5,10 @@ import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import ProductDetails from './ProductDetails'
+import Search from './Search'
+import Button from './Button'
+import ProductResults from './ProductResults'
+
 
 export {
     Home,
@@ -13,5 +17,8 @@ export {
     Profile,
     UpdatePassword,
     DeleteAccount,
-    ProductDetails
+    ProductDetails,
+    Search,
+    Button,
+    ProductResults
 }

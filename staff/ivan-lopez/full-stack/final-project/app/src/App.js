@@ -1,7 +1,8 @@
 import './App.css';
-import { Home, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
+import { Home, ProductResults, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
 import { IconLogo, IconProfile, IconCheeseburger } from './components/icons'
-import { Header } from './components/elements';
+import { Header } from './components/elements'
+import { Input } from './components/form-elements'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators} from 'commons'
 import { useEffect } from 'react';
@@ -10,14 +11,14 @@ const { validateToken } = validators
 
 function App() {
 
-  useEffect(() => {
-    try {
-      if(sessionStorage.token) validateToken(sessionStorage.token)
-    } catch (error) {
-      delete sessionStorage.token
-      alert('La sesión ha caducado')
-    }
-  }, [])
+  // useEffect(() => {
+  //   try {
+  //     if(sessionStorage.token) validateToken(sessionStorage.token)
+  //   } catch (error) {
+  //     delete sessionStorage.token
+  //     alert('La sesión ha caducado')
+  //   }
+  // }, [])
 
   const navigate = useNavigate()
 
@@ -34,19 +35,21 @@ function App() {
     {/* <IconLogo /> */}
     {/* <IconProfile/> */}
     {/* <IconCheeseburger /> */}
-    <ProductDetails productId='6230bf2238c46a26fbfb31aa'/>
+    {/* <ProductDetails productId='6230bf4238c46a26fbfb31ad'/> */}
+    {/* <Input type='password' name='password' placeholder='password' /> */}
 
-{/* 
+    <ProductResults query='pulsera' description='cuero'/>
+
+
+    {/* <Header onLogo={showHome} onProfile={showProfile}/>
     <Routes>
-      <Route path='/*' element={<Home onProfile={showProfile}/>} />
-      <Route path='/iniciar-sesion' element={<Login onLogged={showHome} onRegistered={showRegister} />} />
+      <Route path='/' element={<Home />} />
+      <Route path='/iniciar-sesion' element={<Login onLogged={showHome} onRegister={showRegister} />} />
       <Route path='/registro' element={<Register onRegistered={showLogin} onLogin={showLogin} />} />
-      <Route path='/cuenta' element={sessionStorage.token ? <Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} /> : <Navigate replace to='/iniciar-sesion'/>} />
+      <Route path='/cuenta' element={sessionStorage.token ? <Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogout={showLogin}/> : <Navigate replace to='/iniciar-sesion'/>} />
       <Route path='/cuenta/actualizar-contrasena' element={<UpdatePassword onBack={showProfile}/>} />
-      <Route path='/cuenta/eliminar-cuenta' element={<DeleteAccount onBack={showProfile}/>} />
-
-
-
+      <Route path='/cuenta/eliminar-cuenta' element={<DeleteAccount onDeletedAccount={showLogin} onBack={showProfile}/>} />
+      <Route path='/*' element={<Navigate replace to='/'/>} />
     </Routes> */}
   </div>
 

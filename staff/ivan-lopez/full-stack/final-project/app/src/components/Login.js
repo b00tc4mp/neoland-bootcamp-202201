@@ -1,16 +1,18 @@
 //import './Login.css'
+import './Login.sass'
 import { authenticateUser } from '../logic'
+import { Button } from "../components"
+import { Input } from './form-elements'
 
 
-function Login({ onLogged, onRegistered }) {
+function Login({ onLogged, onRegister }) {
 
     const goToRegister = event => {
         event.preventDefault() // Lógica propia del compo
-        onRegistered() // esto es una prop que deja la responsabilidad sobre esta accion al componente padre
+        onRegister && onRegister() // esto es una prop que deja la responsabilidad sobre esta accion al componente padre
     }
 
     const login = event => {
-        event.preventDefault()
 
         const { target: { email: { value: email }, password: { value: password } } } = event
 
@@ -18,7 +20,7 @@ function Login({ onLogged, onRegistered }) {
             authenticateUser(email, password)
                 .then(token => {
                     sessionStorage.token = token
-                    onLogged() // dirigir al usuario al sitio correspondiente
+                    onLogged && onLogged()
                 })
                 .catch(error => alert(error.message))
         } catch (error) {
@@ -26,12 +28,17 @@ function Login({ onLogged, onRegistered }) {
         }
     }
 
+    const onSubmit = event => {
+        event.preventDefault()
+        login(event)
+    }
+
     return <div className='login'>
-        <form onSubmit={login}>
+        <form onSubmit={onSubmit}>
             <h1>LOGIN</h1>
-            <input type='email' name='email' placeholder='email' />
-            <input type='password' name='password' placeholder='password' />
-            <button type="submit">Login</button>
+            <Input type='email' name='email' placeholder='email' />
+            <Input type='password' name='password' placeholder='password' />
+            <Button type="submit">Login</Button>
             <a href='' onClick={goToRegister}>Register</a>
         </form>
     </div>
