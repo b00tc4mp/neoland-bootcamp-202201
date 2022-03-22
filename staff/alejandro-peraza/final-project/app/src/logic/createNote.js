@@ -1,10 +1,10 @@
 import { validators } from 'commons'
 
 
-const { validateString, validatetoken } = validators
+const { validateString, validateToken } = validators
 
 function createNote(token, recipeId, text) {
-    validatetoken(token)
+    validateToken(token)
     validateId(recipeId)
     validateString(text)
 
