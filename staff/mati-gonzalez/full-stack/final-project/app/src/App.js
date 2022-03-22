@@ -1,4 +1,8 @@
 import './App.css'
+import { Details } from './components'
+import { Header } from './components/elements'
+import { IconLogo } from './components/icons'
+import { IconProfile } from './components/icons'
 import { Register, Login, Home } from './components'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
@@ -14,11 +18,16 @@ function App() {
   }
 
   return <div>
-    <Routes>
+    {/* <Header/> */}
+    <Details/>
+    {/* <IconHambelgue/> */}
+    {/* <IconProfile/> */}
+    {/* <IconLogo/> */}
+    {/* <Routes>
       <Route path="/*" element={<Home />} />
       <Route path="register" element={<Register onRegistered={showLogin} />} />
       <Route path="login" element={<Login onLoggedIn={keepTokenNShowHome} />} />
-    </Routes>
+    </Routes> */}
   </div>
 }
 
