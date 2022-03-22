@@ -1,9 +1,10 @@
 import './Input.sass'
 
 
-function Input({ type = 'text', name, placeholder = '', required = false }) {
+function Input({ type = 'text', name, placeholder = '', required = false, defaultValue= null, label, disabled}) {
     return <>
-        <input type={type} name={name} placeholder={placeholder}  required={required}/>
+        {label && <label htmlFor={name}>{label}</label>}
+        <input type={type} name={name} placeholder={placeholder} required={required} defaultValue={defaultValue} disabled={disabled}/>
     </>
 }
 

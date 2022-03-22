@@ -1,13 +1,14 @@
 import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
+import { Button } from './elements'
+import { Input } from './form-elements'
 
 function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
-    
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
-    useEffect(() => {
+    useEffect( () => {
         try {
             retrieveUser(sessionStorage.token)
                 .then(({ name, email }) => {
@@ -20,18 +21,15 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
         }
     }, [])
 
-    const updateProfile = event => {
+    const updateProfile = async event => {
         event.preventDefault()
         const { target: { name: { value: name }, email: { value: email } } } = event
         
         try {
             
-            updateUser(sessionStorage.token, name, email)
-                .then(() => {
+           await updateUser(sessionStorage.token, name, email)
                     setName(name)
                     setEmail(email)
-                })
-                .catch(error => { throw error })
         } catch ({ message }) {
             alert({ message })
         }
@@ -51,10 +49,10 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
 
     return <div className='profile'>
         <form className='profile__form' onSubmit={updateProfile} method='post'>
-            <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} />
-            <input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email} />
-            <button>Update profile</button>
-            <button href="" onClick={onLogOut}>Log out</button>
+            <Input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} label="Nombre"/>
+            <Input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email} label="E-mail" />
+            <Button type ='submit' innertext='Editar'/>
+            <Button type= 'button' onClick={onLogOut} innertext='Log out' /> 
        
             <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
             <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>

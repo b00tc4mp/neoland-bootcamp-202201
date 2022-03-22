@@ -22,15 +22,14 @@ function RacketDetails({ racketId }) {
     return <div>
         <h1>{racket.brand}</h1>
         <img src={racket.image}/>
-        <span>{racket.price}</span>
-
-        <span>{racket.model}</span>
-        <span>{racket.level}</span>
-        <span>{racket.type}</span>
-        <span>{racket.player}</span>
-        <span>{racket.weight}</span>
+        <p>{racket.model}</p>
+        <p>{racket.price}</p>
         <p>{racket.description}</p>
-
+        <p>{racket.level}</p>
+        <p>{racket.type}</p>
+        <p>{racket.player}</p>
+        <p>{racket.weight}</p>
+    
 
     </div>
 }

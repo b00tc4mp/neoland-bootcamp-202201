@@ -1,6 +1,8 @@
 import './IconFavorite.sass'
 import { useState } from 'react'
 import { toggleFavoriteRacket } from '../../logic'
+import heartOn from '../../assets/heart-on.png'
+import heartOff from '../../assets/heart-off.png'
 
 function IconFavorite({ racketId = '', isFavorite = false }) {
 

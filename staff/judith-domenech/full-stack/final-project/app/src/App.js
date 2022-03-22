@@ -1,8 +1,10 @@
 import './App.sass'
-import { Register, Login, Home, Profile, RacketDetails, CreateComment } from './components'
+import { Register, Login, Home, Profile, RacketDetails, CreateComment, UpdatePassword } from './components'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators } from 'commons'
 import { IconFavorite } from './components/icons'
+import Favorites from './components/Favorites'
+import { RacketsCard } from './components/elements'
 const { validateToken } = validators
 
 function App() {
@@ -34,9 +36,10 @@ function App() {
     {/* <IconFavorite racketId={"6232266e2b6b26aac836b9a2"} isFavorite={false} /> */}
     {/*  <Register />  */}
     {/* <Login />  */}
-    <CreateComment racketId={"6232266e2b6b26aac836b9a2"}/>
-
-    {/*  <RacketDetails racketId="6232266e2b6b26aac836b9a2" /> */}
+    {/*  <CreateComment racketId={"6232266e2b6b26aac836b9a2"}/> */}
+    {/* <RacketDetails racketId="6232266e2b6b26aac836b9a2" /> */}
+    {/* <Favorites></Favorites> */}
+ 
     <Routes>
       {/* <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
       <Route path="register" element={ <Register onRegistered={showLogin} onLogin={showLogin} /> } />
