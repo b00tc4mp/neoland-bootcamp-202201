@@ -1,9 +1,8 @@
 import './Register.sass'
 import { registerUser } from '../logic'
-import { Logo, Button, Link } from './elements'
-import { Input } from './form-elements'
+import { Logo, Button, Link, Input } from '.'
 
-function Register({ onLogin, onRegister }) {
+export function Register({ onLogin, onRegister }) {
 
 
     const register = async event => {
@@ -36,13 +35,11 @@ function Register({ onLogin, onRegister }) {
                 <Input type='text' name='name' placeholder='Name' required={true}/>
                 <Input type='email' name='email' placeholder='Email' required={true}/>
                 <Input type='password' name='password' placeholder='Password' required={true}/>
-                <Button type='submit' innertext='Register' />
+                <Button type='submit'> Register</Button>
             </div>
 
-            <Link href="" onClick={goToLogin} children={"Login"} />
+            <Link href="" onClick={goToLogin}> Login </Link> 
         </div>
 
     </form>
 }
-
-export default Register

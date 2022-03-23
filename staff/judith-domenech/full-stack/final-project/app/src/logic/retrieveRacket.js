@@ -5,6 +5,7 @@ const { validateId } = validators
 function retrieveRacket(racketId) {
     validateId(racketId)
 
+    
     return fetch(`http://localhost:8080/api/rackets/${racketId}`, {
         headers: {
             'Content-Type': 'application/json'

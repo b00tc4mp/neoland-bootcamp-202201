@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { listFavoritesRackets } from '../logic'
 
 
-function Favorites() {
+export function Favorites() {
 
     useEffect(async () => {
         try {
@@ -11,7 +11,7 @@ function Favorites() {
         } catch (error) {
             alert(error.message)
         }
-    }, []);
+    }, [])
 
     return <> {/* {rackets.length < 0 ?
             <div className='results__list-items'>
@@ -32,5 +32,3 @@ function Favorites() {
         </div> : <p className='favs__empty'>No favs yet</p>
     } */}</>
 }
-
-export default Favorites

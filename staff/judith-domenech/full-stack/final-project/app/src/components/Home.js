@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, useSearchParams, Navigate } from 'react-router-dom'
 import logo from '../assets/racketMatch.png'
 
-function Home() {
+export function Home() {
     const [search, setSearch] = useSearchParams()
     const q = search.get('q')
     const [query, setQuery] = useState(q)
@@ -83,7 +83,6 @@ function Home() {
     </div>
 }
 
-export default Home
 /* 
         <Routes>
             <Route index element={<Search onItem={goToDetails} onQuery={doSearch} query={query} />} />

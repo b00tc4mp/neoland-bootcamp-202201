@@ -1,8 +1,8 @@
 import { updateUserPassword } from '../logic'
-import { Input } from './form-elements'
-import { Button, Link } from './elements'
 
-function UpdatePassword({ onBack }) {
+import { Button, Link, Input } from '.'
+
+export function UpdatePassword({ onBack }) {
 
         const updatePassword = async event => {
             event.preventDefault()
@@ -36,4 +36,3 @@ function UpdatePassword({ onBack }) {
 
     }
 
-export default UpdatePassword

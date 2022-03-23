@@ -1,10 +1,11 @@
-import './IconFavorite.sass'
+import './ToggleFavoriteRackets.sass'
 import { useState } from 'react'
-import { toggleFavoriteRacket } from '../../logic'
-import heartOn from '../../assets/heart-on.png'
-import heartOff from '../../assets/heart-off.png'
+import { toggleFavoriteRacket } from '../../../logic'
+import { FavoriteIcon } from '../../icons'
+import { Button } from '.'
 
-function IconFavorite({ racketId = '', isFavorite = false }) {
+
+export function ToggleFavoriteRackets({ racketId = '', isFavorite = false }) {
 
     const [favorite, setFavorite] = useState(isFavorite)
 
@@ -23,11 +24,13 @@ function IconFavorite({ racketId = '', isFavorite = false }) {
     }
 
     return <>
-        <button type='button' onClick={onToggle}> {favorite ? '✧' : '✦'}</button>
+        <Button type='button' onClick={onToggle}>
+            <FavoriteIcon className={`${favorite ? 'favorite-on' : 'favorite-off'}`}/>
+        </Button>
     </>
 }
 
-export default IconFavorite
+
 
 
 /* const foo = async () => {

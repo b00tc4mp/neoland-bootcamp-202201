@@ -1,6 +1,6 @@
 import './Link.sass'
 
-function Link({ children, className = '', onClick }) {
+export function Link({ children, className = '', onClick }) {
 
      const onClicked = (event) => {
          event.preventDefault()
@@ -13,5 +13,3 @@ function Link({ children, className = '', onClick }) {
     </>
 
 }
-
-export default Link

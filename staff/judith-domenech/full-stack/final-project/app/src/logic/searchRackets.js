@@ -1,7 +1,9 @@
+import { validateString } from "commons/validators"
 
 function searchRackets(query) {
+    if(query)validateString(query, query)
 
-    return fetch(`http://localhost:8080/api/rackets?query=${query}`, {
+    return fetch(`http://localhost:8080/api/rackets?${query ? `query=${query}` : ''}`, {
         headers: {
             'Content-Type': 'application/json'
         }

@@ -1,23 +1,15 @@
-import Register from './Register'
-import Login from './Login'
-import Home from './Home'
-import Profile from './Profile'
-import DeleteAccount from './DeleteAccount'
-import UpdatePassword from './UpdatePassword'
-import Search from './Search'
-import RacketDetails from './RacketDetails'
-import CreateComment from './CreateComment'
-
-
-export {
-    Register,
-    Login,
-    Home,
-    Profile,
-    DeleteAccount,
-    UpdatePassword,
-    Search,
-    RacketDetails,
-    CreateComment
-   
-}
+export { Register } from './Register'
+export { Login } from './Login'
+export { Home } from './Home'
+export { Profile } from './Profile'
+export { DeleteAccount } from './DeleteAccount'
+export { UpdatePassword } from './UpdatePassword'
+export { Search } from './Search'
+export { RacketDetails } from './RacketDetails'
+export { CreateComment } from './CreateComment'
+export { RacketsCard } from './RacketsCard'
+export { ListFavoritesRackets } from './ListFavoritesRackets'
+export { ListSearchRackets } from './ListSearchRackets'
+export * from './icons'
+export * from './elements'
+export * from './form-elements'

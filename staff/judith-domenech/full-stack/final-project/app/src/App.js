@@ -1,11 +1,17 @@
 import './App.sass'
-import { Register, Login, Home, Profile, RacketDetails, CreateComment, UpdatePassword } from './components'
+import { Register, Login, Home, Profile, RacketDetails, CreateComment, UpdatePassword, Favorites, ListSearchRackets } from './components'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators } from 'commons'
-import { IconFavorite } from './components/icons'
-import Favorites from './components/Favorites'
-import { RacketsCard } from './components/elements'
+import {
+  FavoriteIcon,
+  TrashIcon,
+  CommentIcon,
+  ProfileIcon,
+  ToggleFavorite,
+  RacketsCard
+} from './components'
 import Link from './components/elements/Link'
+import { ListFavoritesRackets } from './components/ListFavoritesRackets'
 const { validateToken } = validators
 
 function App() {
@@ -34,13 +40,20 @@ function App() {
   }
 
   return <div>
-    {/* <IconFavorite racketId={"6232266e2b6b26aac836b9a2"} isFavorite={false} /> */}
+    {/* <ToggleFavorite racketId={"6232266e2b6b26aac836b9a2"} isFavorite={false} /> */}
     {/* <Register />  */}
     {/* <Login />  */}
     {/*  <CreateComment racketId={"6232266e2b6b26aac836b9a2"}/> */}
     {/* <RacketDetails racketId="6232266e2b6b26aac836b9a2" /> */}
-    {/* <Favorites></Favorites> */}
+    {/* <Favorites></Favorites>  */}
     {/* <Profile /> */}
+    {/*   < FavoriteIcon />
+    < TrashIcon />
+    < CommentIcon />
+    < ProfileIcon />  */}
+    {/* <RacketsCard racket={{brand:'adidas', model: 'metalbone', price: 123}} isFavorite={true}></RacketsCard> */}
+    {/* <ListFavoritesRackets isFavorite={true}></ListFavoritesRackets> */}
+    <ListSearchRackets ></ListSearchRackets>
     <Routes>
       {/* <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
       <Route path="register" element={ <Register onRegistered={showLogin} onLogin={showLogin} /> } />

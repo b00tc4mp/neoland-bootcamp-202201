@@ -1,8 +1,9 @@
 import './RacketDetails.sass'
 import {retrieveRacket} from '../logic'
+import { ToggleFavorite, CommentIcon } from '.'
 import {useEffect, useState} from 'react'
 
-function RacketDetails({ racketId }) {
+export function RacketDetails({ racketId }) {
     const [racket, setRacket] = useState({})
 
     useEffect(() => {
@@ -17,20 +18,19 @@ function RacketDetails({ racketId }) {
         }
     }, [])
 
-
-
     return <div>
         <h1>{racket.brand}</h1>
         <img src={racket.image}/>
         <p>{racket.model}</p>
-        <p>{racket.price}</p>
+        <p>{racket.price}€</p>
         <p>{racket.description}</p>
         <p>{racket.level}</p>
         <p>{racket.type}</p>
         <p>{racket.player}</p>
         <p>{racket.weight}</p>
+        <CommentIcon>
+            
+        </CommentIcon>
 
     </div>
 }
-
-export default RacketDetails

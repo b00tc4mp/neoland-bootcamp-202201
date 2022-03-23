@@ -1,10 +1,9 @@
 import './CreateComment.sass'
 import { createComment, retrieveRacket } from '../logic'
 import { useEffect, useState } from 'react'
-import { Button } from './elements'
-import { Input } from './form-elements'
+import { Input,Button } from '.'
 
-function CreateComment({ onCreated, racketId }) {
+export function CreateComment({ onCreated, racketId }) {
     const [model, setModel] = useState('')
 
     useEffect(async () => {
@@ -41,4 +40,3 @@ function CreateComment({ onCreated, racketId }) {
     </>
 }
 
-export default CreateComment

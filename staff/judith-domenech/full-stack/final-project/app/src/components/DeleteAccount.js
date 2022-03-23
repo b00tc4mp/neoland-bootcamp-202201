@@ -1,7 +1,7 @@
 //import './DeleteAccount.css'
 import { deleteUser } from '../logic'
 
-function DeleteAccount ({onBack, onDeletedAccount}) {
+export function DeleteAccount ({onBack, onDeletedAccount}) {
 
     const goBack = event => {
         event.preventDefault()
@@ -34,5 +34,3 @@ function DeleteAccount ({onBack, onDeletedAccount}) {
     </div>
 
 }
-
-export default DeleteAccount

@@ -1,9 +1,8 @@
 import './Login.sass'
 import { authenticateUser } from '../logic'
-import { Input } from './form-elements'
-import { Button, Logo, Link } from './elements'
+import { Button, Logo, Link, Input } from '.'
 
-function Login({ onLogged, onRegister }) {
+export function Login({ onLogged, onRegister }) {
 
     const login = async event => {
         try {
@@ -33,11 +32,10 @@ function Login({ onLogged, onRegister }) {
             <div className='login__wrapper'>
                 <Input type='email' name='email' placeholder='Email' required={true}/>
                 <Input type='password' name='password' placeholder='Contraseña' required={true} />
-                <Button type='submit' innertext='Login' />
+                <Button type='submit'> Login </Button>
             </div>
-            <Link href="" onClick={goToRegister} children={"Register"}/>
+            <Link href="" onClick={goToRegister} > Register</Link> 
         </div>
     </form>
 }
 
-export default Login

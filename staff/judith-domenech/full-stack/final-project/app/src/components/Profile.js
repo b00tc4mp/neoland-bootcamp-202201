@@ -1,10 +1,9 @@
 import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
-import { Button, Link } from './elements'
-import { Input } from './form-elements'
+import { Button, Link, Input } from '.'
 
-function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
+export function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
