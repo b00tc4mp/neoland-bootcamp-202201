@@ -1,26 +1,65 @@
 import './App.sass'
 import {
+  //Icons
+  HeartIcon,
+  CalendarIcon,
+  CheckIcon,
+  CommunityIcon,
+  DeleteIcon,
+  EditIcon,
+  FavoriteIcon,
+  GoIcon,
+  HomeIcon,
+  PlusIcon,
+  XIcon,
+
+  //Buttons
+  ToggleFavoriteButton,
+  ToggleFollowButton,
+
+  //Views
   Login,
   Register,
+
+
+
   CreateAction,
   UpdateAction,
   CreateSchedule,
-  FavoriteIcon,
-  FollowIcon,
-  CalendarIcon
+  ActionCard,
+  OwnerActionCard,
+  ListFavoriteActions,
+  ListActions,
+  ListSearchActionsResults
 } from './components'
+
 
 const App = () => {
 
   return <>
-    {/* <UpdateAction actionId="6239cddc1fea1b6db3523829"/> */}
-    {/* <CreateSchedule actionId="623988d11fea1b6db352373d"/> */}
-    {/* <CreateAction /> */}
-    {/* <FavoriteIcon actionId='62336a0f5da2be05a8fa0c7e' isFavorite={false} /> */}
-    {/* <FollowIcon followId='62336a0e5da2be05a8fa0c62' isFollow={false} /> */}
-    <Login />
+    {/* <Login /> */}
     {/* <Register /> */}
-    {/* <CalendarIcon /> */}
+    {/* <CreateAction /> */}
+    {/* <UpdateAction actionId="623b0dc91fea1b6db3523b09"/> */}
+    {/* <OwnerActionCard action={{ description: 'hola', authorUsername: 'lolo', requiredBudget: '10', requiredTime: '0', public: true }} isFavorite={true} /> */}
+    {/* <CreateSchedule actionId="623988d11fea1b6db352373d"/> */}
+    <ListFavoriteActions />
+    {/* <ListSearchActionsResults /> */}
+
+    {/* <ToggleFavoriteButton actionId='62336a0f5da2be05a8fa0c7e' isFavorite={false} />
+    <ToggleFollowButton followId='62336a0e5da2be05a8fa0c62' isFollow={false} /> */}
+
+    {/* <HeartIcon />
+    <CalendarIcon />
+    <CheckIcon />
+    <CommunityIcon />
+    <DeleteIcon />
+    <EditIcon />
+    <FavoriteIcon />
+    <GoIcon />
+    <HomeIcon />
+    <PlusIcon />
+    <XIcon /> */}
 
   </>
 

@@ -1,7 +1,6 @@
 const { models: { User } } = require('data')
 const { validators: { validateId } } = require('commons')
 
-
 function listFavoriteActions(userId) {
     validateId(userId, 'user id')
 
@@ -15,7 +14,7 @@ function listFavoriteActions(userId) {
                 const favorite = _favorite._doc
                 favorite.id = favorite._id.toString()
                 favorite.authorId = favorite.author._id.toString()
-                favorite.authorUserame = favorite.author.username
+                favorite.authorUsername = favorite.author.username
 
                 delete favorite.author
                 delete favorite._id
@@ -26,6 +25,5 @@ function listFavoriteActions(userId) {
             })
         )
 }
-
 
 module.exports = listFavoriteActions

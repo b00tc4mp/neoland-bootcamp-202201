@@ -5,13 +5,13 @@ import { FavoriteIcon } from '../../icons'
 import { Button } from '.'
 
 
-export const ToggleFavoriteButton = ({ actionId, isFavorite = false }) => {
+export const ToggleFavoriteButton = ({ action }) => {
 
-    const [favorite, setFavorite] = useState(isFavorite)
+    const [favorite, setFavorite] = useState(action.isFav)
 
     const toggleFavorite = async () => {
         try {
-            await toggleFavoriteAction(sessionStorage.token, actionId)
+            await toggleFavoriteAction(sessionStorage.token, action.id)
             setFavorite(!favorite)
         } catch (error) {
             alert(error.message)

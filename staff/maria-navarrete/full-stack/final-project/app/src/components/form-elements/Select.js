@@ -1,5 +1,6 @@
 import './Select.sass'
 
+
 export const Select = ({ name = '', id = '', options = [], placeholder = 'Selecciona una opción', required = false, appendText, selected, label }) => {
     return <>
         {label && <label htmlFor={name}>{label}</label>}

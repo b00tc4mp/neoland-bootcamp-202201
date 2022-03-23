@@ -1,7 +1,7 @@
 import './ToggleFollowButton.sass'
 import { useState } from 'react'
 import { toggleFollowingUser } from '../../../logic'
-import { FollowIcon } from '../../icons'
+import { HeartIcon } from '../../icons'
 import { Button } from '.'
 
 
@@ -25,7 +25,7 @@ export const ToggleFollowButton = ({ followId, isFollow = false }) => {
 
     return <>
         <Button type="button" onClick={onToggle}>
-            <FollowIcon className={`follow-icon ${following ? 'follow-on' : 'follow-off'}`} />
+            <HeartIcon className={`follow-icon ${following ? 'follow-on' : 'follow-off'}`} />
         </Button></>
 }
 
