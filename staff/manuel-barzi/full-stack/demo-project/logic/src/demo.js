@@ -2,7 +2,7 @@ const { mongoose: { connect, disconnect }, models: { User } } = require('data')
 const registerUser = require('./registerUser')
 const authenticateUser = require('./authenticateUser')
 
-connect('mongodb://localhost:27017/demo-db')
+connect('mongodb://localhost:27017/demo-db-test')
     .then(() => Promise.all([
         User.deleteMany()
     ]))

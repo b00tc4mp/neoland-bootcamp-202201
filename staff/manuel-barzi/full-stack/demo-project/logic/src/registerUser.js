@@ -8,6 +8,12 @@ function registerUser(name, email, password) {
 
     return User.create({ name, email, password })
         .then(user => { })
+        .catch(error => {
+            if (error.message.startsWith('E11000'))
+                throw new Error('user already exists')
+            
+            throw error
+        })
 }
 
 module.exports = registerUser
