@@ -5,12 +5,13 @@ import { RacketsCard } from '.'
 
 
 
-export function ListFavoritesRackets({ }) {
+export function ListFavoritesRackets() {
     const [favorites, setFavorites] = useState([])
 
     useEffect(async () => {
         try {
             const favorites = await listFavoritesRackets(sessionStorage.token)
+            favorites.forEach(favorite => favorite.isFavorite = true)
             setFavorites(favorites)
         } catch (error) {
             alert(error.message)
@@ -20,10 +21,10 @@ export function ListFavoritesRackets({ }) {
     return <>
         {!!favorites.length &&
             <ul>
-                {favorites.map(racket => 
-                <li key={racket.id}>
-                    <RacketsCard racket={racket} isFavorite={true} />
-                </li>)}
+                {favorites.map(favorite =>
+                    <li key={favorite.id}>
+                        <RacketsCard racket={favorite}  />
+                    </li>)}
             </ul>
         }
     </>

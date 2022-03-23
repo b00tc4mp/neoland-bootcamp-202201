@@ -3,16 +3,19 @@ import { useEffect, useState } from 'react'
 import { RacketsCard } from '.'
 import { searchRackets, listFavoritesRackets } from '../logic'
 
-export function ListSearchRackets({ query = ''}) {
+export function ListSearchRackets({ query = '' }) {
     const [rackets, setRackets] = useState([])
-    const [favorites, setFavorites] = useState([])
+
 
     useEffect(async () => {
         try {
             const rackets = await searchRackets(query)
             const favorites = await listFavoritesRackets(sessionStorage.token)
+            rackets.forEach(racket => {
+                racket.isFavorite = favorites.some(favorite => favorite.id === racket.id)
+            })
             setRackets(rackets)
-            setFavorites(favorites)
+
         } catch (error) {
             alert(error.message)
         }
@@ -23,7 +26,7 @@ export function ListSearchRackets({ query = ''}) {
             <ul>
                 {rackets.map(racket =>
                     <li key={racket.id}>
-                        <RacketsCard racket={racket} isFavorite={favorites.some(({id}) => id === racket.id)} />
+                        <RacketsCard racket={racket} />
                     </li>)}
             </ul>
         }
