@@ -5,6 +5,7 @@ import { validators } from 'commons'
 import { IconFavorite } from './components/icons'
 import Favorites from './components/Favorites'
 import { RacketsCard } from './components/elements'
+import Link from './components/elements/Link'
 const { validateToken } = validators
 
 function App() {
@@ -34,12 +35,12 @@ function App() {
 
   return <div>
     {/* <IconFavorite racketId={"6232266e2b6b26aac836b9a2"} isFavorite={false} /> */}
-    {/*  <Register />  */}
+    {/* <Register />  */}
     {/* <Login />  */}
     {/*  <CreateComment racketId={"6232266e2b6b26aac836b9a2"}/> */}
     {/* <RacketDetails racketId="6232266e2b6b26aac836b9a2" /> */}
     {/* <Favorites></Favorites> */}
- 
+    {/* <Profile /> */}
     <Routes>
       {/* <Route path="/*" element={ <Home onLogOut={deleteTokenNShowLanding} onRegister={showLogin} onLogin={showLogin}/> } />
       <Route path="register" element={ <Register onRegistered={showLogin} onLogin={showLogin} /> } />

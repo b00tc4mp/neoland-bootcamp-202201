@@ -1,6 +1,6 @@
 import { updateUserPassword } from '../logic'
 import { Input } from './form-elements'
-import { Button } from './elements'
+import { Button, Link } from './elements'
 
 function UpdatePassword({ onBack }) {
 
@@ -30,7 +30,7 @@ function UpdatePassword({ onBack }) {
 
                 <Button type='submit' innertext='Editar' />
 
-                <a className="update-password__back-link" href="" onClick={goBack}>back</a>
+                <Link href="" onClick={goBack} children={"back"}/>
             </form>
         </div>
 

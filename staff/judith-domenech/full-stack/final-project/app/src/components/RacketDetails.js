@@ -29,7 +29,6 @@ function RacketDetails({ racketId }) {
         <p>{racket.type}</p>
         <p>{racket.player}</p>
         <p>{racket.weight}</p>
-    
 
     </div>
 }

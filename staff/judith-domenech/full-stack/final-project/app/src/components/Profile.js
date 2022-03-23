@@ -1,7 +1,7 @@
 import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
-import { Button } from './elements'
+import { Button, Link } from './elements'
 import { Input } from './form-elements'
 
 function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
@@ -54,8 +54,8 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
             <Button type ='submit' innertext='Editar'/>
             <Button type= 'button' onClick={onLogOut} innertext='Log out' /> 
        
-            <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
-            <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
+            <Link  href="" onClick={goToUpdatePassword} children={"Cambiar Contraseña"}/> 
+            <Link  href="" onClick={goToDeleteAccount} children={"Borrar Cuenta"}></Link>
         </form>
 
     </div>

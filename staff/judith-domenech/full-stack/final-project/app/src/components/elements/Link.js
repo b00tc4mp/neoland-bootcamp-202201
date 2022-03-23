@@ -1,7 +1,5 @@
 import './Link.sass'
 
-//children???
-
 function Link({ children, className = '', onClick }) {
 
      const onClicked = (event) => {

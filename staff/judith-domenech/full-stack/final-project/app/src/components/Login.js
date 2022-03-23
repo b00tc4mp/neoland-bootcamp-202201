@@ -1,7 +1,7 @@
 import './Login.sass'
 import { authenticateUser } from '../logic'
 import { Input } from './form-elements'
-import { Button, Logo } from './elements'
+import { Button, Logo, Link } from './elements'
 
 function Login({ onLogged, onRegister }) {
 
@@ -35,7 +35,7 @@ function Login({ onLogged, onRegister }) {
                 <Input type='password' name='password' placeholder='Contraseña' required={true} />
                 <Button type='submit' innertext='Login' />
             </div>
-            <a className="login__register-link" href="" onClick={goToRegister}>Register</a>
+            <Link href="" onClick={goToRegister} children={"Register"}/>
         </div>
     </form>
 }

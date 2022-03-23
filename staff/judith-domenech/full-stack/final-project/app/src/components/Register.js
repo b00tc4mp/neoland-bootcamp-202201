@@ -1,6 +1,6 @@
 import './Register.sass'
 import { registerUser } from '../logic'
-import { Logo, Button } from './elements'
+import { Logo, Button, Link } from './elements'
 import { Input } from './form-elements'
 
 function Register({ onLogin, onRegister }) {
@@ -39,7 +39,7 @@ function Register({ onLogin, onRegister }) {
                 <Button type='submit' innertext='Register' />
             </div>
 
-            <a className="register__login-link" href="" onClick={goToLogin}>Login</a>
+            <Link href="" onClick={goToLogin} children={"Login"} />
         </div>
 
     </form>
