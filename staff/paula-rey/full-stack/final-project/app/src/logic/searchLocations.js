@@ -4,9 +4,9 @@ const { validateToken, validateString } = validators
 
 function searchLocations(token, query, type, city) {
     validateToken(token)
-    validateString(query, 'query')
-    validateString(type, 'type')
-    validateString(city, 'city')
+    if (query) validateString(query, 'query')
+    if (type) validateString(type, 'type')
+    if (city) validateString(city, 'city')
 
     return fetch(`http://localhost:8080/api/locations/search?${query ? `query=${query}` : ''}&${type ? `type=${type}` : ''}&${city ? `city=${city}` : ''}`, {
         headers: {

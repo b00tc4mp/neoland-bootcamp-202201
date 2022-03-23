@@ -6,7 +6,7 @@ import { data } from 'commons'
 import { useState, useEffect } from 'react'
 const { locationTypes, locationCities } = data
 
-function UpdateLocation({ onModify, locationId }) {
+export function UpdateLocation({ onModify, locationId }) {
     const [type, setType] = useState('')
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
@@ -65,4 +65,3 @@ function UpdateLocation({ onModify, locationId }) {
 
 }
 
-export default UpdateLocation

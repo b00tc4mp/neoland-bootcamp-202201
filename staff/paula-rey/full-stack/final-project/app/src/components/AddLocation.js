@@ -5,7 +5,7 @@ import { Button } from './elements'
 import { data } from 'commons'
 const { locationTypes, locationCities, defaultImage } = data
 
-function AddLocation({ onCreated }) {
+export function AddLocation({ onCreated }) {
 
     const addLocation = async event => {
         try {
@@ -45,4 +45,3 @@ function AddLocation({ onCreated }) {
 
 }
 
-export default AddLocation

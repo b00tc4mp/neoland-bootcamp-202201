@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Input } from './form-elements'
 import { Button } from './elements'
 
-function AddComment({ onCreated, locationId }) {
+export function AddComment({ onCreated, locationId }) {
     const [title, setTitle] = useState('')
 
     useEffect(async () => {
@@ -49,4 +49,3 @@ function AddComment({ onCreated, locationId }) {
 
 }
 
-export default AddComment

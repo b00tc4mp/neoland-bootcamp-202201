@@ -1,10 +1,11 @@
 import './Home.sass'
 import { retrieveUser } from '../logic'
-import { Profile, UpdatePassword, DeleteAccount, Logo, Search } from './index'
+import { Profile, UpdatePassword, DeleteAccount, Search } from './index'
+//import { logo } from './elements'
 import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
-function Home({onLogOut}) {
+export function Home({onLogOut}) {
     const [view, setView] = useState()
     const [name, setName] = useState('name')
     const [locationId, setLocationId] = useState()
@@ -71,7 +72,7 @@ function Home({onLogOut}) {
 
     return <div className="home">
         <nav className = "home__header">
-            <a className="home__logo-link" href="" onClick={goToSearch} title="search"><Logo /></a>
+            {/* <a className="home__logo-link" href="" onClick={goToSearch} title="search"><Logo /></a> */}
             <h2 className="home__name-project">Dogether</h2>
             <button href="" onClick={onLogOut}>Log out</button>
         </nav>
@@ -91,4 +92,3 @@ function Home({onLogOut}) {
     </div>
 }
 
-export default Home

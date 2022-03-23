@@ -1,7 +1,7 @@
 //import './UpdatePassword.css'
 import { updateUserPassword } from '../logic'
 
-function UpdatePassword({ onBack }) {
+export function UpdatePassword({ onBack }) {
 
     const updatePassword = event => {
         event.preventDefault()
@@ -42,4 +42,3 @@ function UpdatePassword({ onBack }) {
     </div>
 }
 
-export default UpdatePassword

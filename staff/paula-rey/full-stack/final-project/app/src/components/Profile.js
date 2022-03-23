@@ -2,7 +2,7 @@ import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-function Profile({onUpdatePassword, onDeleteAccount}) {
+export function Profile({onUpdatePassword, onDeleteAccount}) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
 
@@ -63,4 +63,3 @@ function Profile({onUpdatePassword, onDeleteAccount}) {
 
 }
 
-export default Profile

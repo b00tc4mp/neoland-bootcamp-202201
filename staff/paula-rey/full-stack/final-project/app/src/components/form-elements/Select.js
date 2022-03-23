@@ -1,6 +1,6 @@
 import './Select.sass'
 
-function Select ({type = '', name= '', options = [], placeholder = 'Selecciona una opción', required= false, selected, label}) {
+export function Select ({type = '', name= '', options = [], placeholder = 'Selecciona una opción', required= false, selected, label}) {
 
     return <>
         {label && <label htmlFor={name}>{label}</label>}    
@@ -12,5 +12,3 @@ function Select ({type = '', name= '', options = [], placeholder = 'Selecciona u
     </>
 }
 
-
-export default Select

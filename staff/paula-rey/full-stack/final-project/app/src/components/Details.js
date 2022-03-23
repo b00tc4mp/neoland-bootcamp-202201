@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { retrieveUser, retrieveLocation } from '../logic'
 import { useParams } from 'react-router-dom'
 
-function Details({locationId}) {
+export function Details({locationId}) {
     const [location, setLocation] = useState({})
 
     useEffect(() => {
@@ -30,4 +30,3 @@ function Details({locationId}) {
     </div>
 }
 
-export default Details

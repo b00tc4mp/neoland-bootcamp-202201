@@ -1,15 +1,14 @@
 import './Button.sass'
 
-function Button({type="button", children="Enviar", onClick}) {
+export function Button({type="button", children="Enviar", onClick, className=''}) {
 
     const onClicked = (event) => {
-        event.preventDefault()
-        onClick && onClick()
+        onClick && event.preventDefault()
+        onClick && onClick(event)
     }
 
     return <>
-        <button onClick={onClicked} type={type}>{children}</button>
+        <button onClick={onClicked} className={className} type={type}>{children}</button>
     </>
 }
 
-export default Button

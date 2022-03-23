@@ -1,7 +1,7 @@
 import './Logo.sass'
 import logo from '../../assets/logo.png'
 
-function Logo({className=''}) {
+export function Logo({className=''}) {
     
     return <>
     <figure className = {`logo ${className}`}>
@@ -11,4 +11,3 @@ function Logo({className=''}) {
 
 }
 
-export default Logo

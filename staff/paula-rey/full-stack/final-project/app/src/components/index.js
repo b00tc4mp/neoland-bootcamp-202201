@@ -1,34 +1,24 @@
-import Register from './Register'
-import Login from './Login'
-import Home from './Home'
-import Profile from './Profile'
-import UpdatePassword from './UpdatePassword'
-import DeleteAccount from './DeleteAccount'
-import Landing from './Landing'
-import Search from './Search'
-import Results from './Results'
-import Logo from './elements/Logo'
-import Details from './Details'
-import AddLocation from './AddLocation'
-import UpdateLocation from './UpdateLocation'
-import AddComment from './AddComment'
-import Favorites from './Favorites'
+export { Register } from './Register'
+export { Login } from './Login'
+export { Home } from './Home'
+export { Profile } from './Profile'
+export { UpdatePassword } from './UpdatePassword'
+export { DeleteAccount } from './DeleteAccount'
+export { Landing } from './Landing'
+export { Search } from './Search'
+export { Details } from './Details'
+export { AddLocation } from './AddLocation'
+export { UpdateLocation } from './UpdateLocation'
+export { AddComment } from './AddComment'
+export { Favorites } from './Favorites'
+export { LocationCard } from './LocationCard'
+export { OwnerLocationCard } from './OwnerLocationCard'
+export { ListFavorites } from './ListFavorites'
+export { ListLocations } from './ListLocations'
+export { ListSearchResults } from './ListSearchResults'
+
+export * from './icons'
+export * from './elements'
+export * from './form-elements'
 
 
-export {
-    Register,
-    Login,
-    Home,
-    Profile,
-    UpdatePassword,
-    DeleteAccount,
-    Landing,
-    Search,
-    Results,
-    Logo,
-    Details,
-    AddLocation,
-    UpdateLocation,
-    AddComment,
-    Favorites
-}

@@ -1,9 +1,9 @@
 import './Search.sass'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../logic'
-import Results from './Results'
+import Results from './ListSearchResults'
 
-function Search(onFilter, filter, onItem) {
+export function Search(onFilter, filter, onItem) {
     // const [view, setView] = useState(filter && 'results')
     // const [name, setName] = useState('name')
 
@@ -59,5 +59,5 @@ function Search(onFilter, filter, onItem) {
 
 }
 
-export default Search
+
 

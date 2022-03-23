@@ -3,7 +3,7 @@ import { listFavoritesLocations } from '../logic'
 import { useEffect } from 'react'
 
 
-function Favorites() {
+export function Favorites() {
 
     useEffect(async() => {
         try {
@@ -20,4 +20,4 @@ function Favorites() {
 
 }
 
-export default Favorites
+

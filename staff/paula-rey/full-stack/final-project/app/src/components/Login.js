@@ -1,10 +1,9 @@
 import './Login.sass'
 import { authenticateUser } from '../logic'
-import { Input } from './form-elements'
-import { Logo } from './elements'
+import { Input, Logo, Button } from '.'
 
 
-function Login({ onLogged, onRegister }) {
+export function Login({ onLogged, onRegister }) {
 
     const login = async event => {
         
@@ -35,10 +34,9 @@ function Login({ onLogged, onRegister }) {
         <form className="login__form" onSubmit={onSubmit}>
             <Input type="email" name="email" placeholder="email"/>
             <Input type="password" name="password" placeholder="password" />
-            <button type="submit">Login</button>
+            <Button type="submit">Login</Button>
             <a href="" onClick={goToRegister}>Register</a>
         </form>
     </div>
 }
 
-export default Login

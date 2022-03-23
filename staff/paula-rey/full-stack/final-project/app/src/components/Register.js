@@ -2,7 +2,7 @@ import './Register.sass'
 import { registerUser } from '../logic'
 import { Input } from './form-elements'
 
-function Register({ onLogin, onRegistered }) {
+export function Register({ onLogin, onRegistered }) {
     
     const register = async event => {
 
@@ -38,4 +38,3 @@ function Register({ onLogin, onRegistered }) {
     </div>
 }
 
-export default Register
