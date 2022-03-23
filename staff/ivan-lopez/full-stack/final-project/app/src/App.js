@@ -1,13 +1,13 @@
 import './App.css';
-import { Home, ProductResults, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
-import { IconLogo, IconProfile, IconCheeseburger } from './components/icons'
+import { Home, Results, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
 import { Header } from './components/elements'
-import { Input } from './components/form-elements'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators} from 'commons'
 import { useEffect } from 'react';
-const { validateToken } = validators
+// import { IconLogo, IconProfile, IconCheeseburger } from './components/icons'
+// import { Input } from './components/form-elements'
 
+const { validateToken } = validators
 
 function App() {
 
@@ -35,13 +35,13 @@ function App() {
     {/* <IconLogo /> */}
     {/* <IconProfile/> */}
     {/* <IconCheeseburger /> */}
-    {/* <ProductDetails productId='6230bf4238c46a26fbfb31ad'/> */}
     {/* <Input type='password' name='password' placeholder='password' /> */}
+    {/* <ProductDetails productId='6230bf4238c46a26fbfb31ad'/> */}
+    {/* <Results /> */}
 
-    <ProductResults query='pulsera' description='cuero'/>
 
 
-    {/* <Header onLogo={showHome} onProfile={showProfile}/>
+    <Header onLogo={showHome} onProfile={showProfile}/>
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/iniciar-sesion' element={<Login onLogged={showHome} onRegister={showRegister} />} />
@@ -50,7 +50,7 @@ function App() {
       <Route path='/cuenta/actualizar-contrasena' element={<UpdatePassword onBack={showProfile}/>} />
       <Route path='/cuenta/eliminar-cuenta' element={<DeleteAccount onDeletedAccount={showLogin} onBack={showProfile}/>} />
       <Route path='/*' element={<Navigate replace to='/'/>} />
-    </Routes> */}
+    </Routes>
   </div>
 
 }

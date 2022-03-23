@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { retrieveUser, updateUser } from '../logic'
+import { Button } from '../components'
+import { Input } from '../components/form-elements'
 
 
 function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
@@ -55,28 +57,31 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
         onLogout()
     }
 
+    const onSubmit = event => {
+        event.preventDefault()
+        updateProfile(event)
+    }
+
 
     return <> {
         <div>
             Bienvenido a tu perfil, {name} !
 
-            <form className='profile__form' onSubmit={updateProfile} method='post'>
+            <form className='profile__form' onSubmit={onSubmit} method='post'>
 
-                <div className="profile__field">
-                    <label className="profile__name-label">Name</label>
-                    <input className='profile__name-input' type='text' name='name' placeholder='name' defaultValue={name} />
+                <div className="profile__field">                
+                    <Input className='profile__name-input' type='text' name='name' placeholder='Nombre' defaultValue={name} />
                 </div>
 
                 <div className="profile__field">
-                    <label className="email-label">E-mail</label>
-                    <input className='profile__email-input' type='email' name='email' placeholder='email' defaultValue={email} />
+                    <Input className='profile__email-input' type='email' name='email' placeholder='E-mail' defaultValue={email} />
                 </div>
 
-                <button className='profile__submit'>Update profile</button>
+                <Button type='submit' className='profile__submit'>Actualizar perfil</Button>
 
-                <a href='' className='profile__update-password-link' onClick={goToUpdatePassword}>update password</a>
-                <a href='' className='profile__delete-account-link' onClick={goToDeleteAccount}>delete account</a>
-                <button type='submit' onClick={logOut}>Cerrar sesión</button>
+                <a href='' className='profile__update-password-link' onClick={goToUpdatePassword}>Actualizar contraseña</a>
+                <a href='' className='profile__delete-account-link' onClick={goToDeleteAccount}>Eliminar mi cuenta</a>
+                <Button type='submit' onClick={logOut}>Cerrar sesión</Button>
             </form>
         </div>
 

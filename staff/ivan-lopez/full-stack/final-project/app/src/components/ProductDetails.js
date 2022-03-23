@@ -4,7 +4,7 @@ import { retrieveProduct } from '../logic'
 
 
 function ProductDetails ({productId}) {
-
+    
     const [product, setProduct] = useState()
 
     useEffect(() => {

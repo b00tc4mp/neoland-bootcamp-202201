@@ -1,11 +1,19 @@
-import './ProductResults.sass'
+import './Results.sass'
 import { useEffect, useState } from 'react'
 import { findProducts } from '../logic'
+import { useSearchParams } from 'react-router-dom'
 
+// http://localhost:3000/?query=pulsera&description=cuero
 
-function ProductResults ({query, description}) {
-
+function Results () {
+// function ProductResults (/*{query, description}*/) {
+    
     const [products, setProducts] = useState([])
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const query = searchParams.get('query')
+    const description = searchParams.get('description')
+
 
     useEffect(() => {
         try {
@@ -17,7 +25,7 @@ function ProductResults ({query, description}) {
         } catch (error) {
             alert(error.message)
         }
-    }, [])
+    }, [query, description])
 
 
     return <>
@@ -30,11 +38,11 @@ function ProductResults ({query, description}) {
                 <li>{product.size}</li>
                 <li>{product.color}</li>
                 <li>{product.price}</li>
-
+                <li>{product.description}</li>
             </ul>)}
         </ul>}
     </>
 }
 
 
-export default ProductResults
+export default Results

@@ -7,7 +7,8 @@ import DeleteAccount from './DeleteAccount'
 import ProductDetails from './ProductDetails'
 import Search from './Search'
 import Button from './Button'
-import ProductResults from './ProductResults'
+import Results from './Results'
+
 
 
 export {
@@ -20,5 +21,5 @@ export {
     ProductDetails,
     Search,
     Button,
-    ProductResults
+    Results
 }

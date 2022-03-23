@@ -16,7 +16,6 @@ function Header({ onLogo, onProfile, onCheeseburger}) {
         if(onCheeseburger) onCheeseburger()
     }
 
-
     return <>
         <header className='header'>
             <a href='' onClick={goToLogo}> <IconLogo /> </a>
