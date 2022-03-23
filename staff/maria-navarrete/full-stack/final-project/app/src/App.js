@@ -18,9 +18,9 @@ const App = () => {
     {/* <CreateAction /> */}
     {/* <FavoriteIcon actionId='62336a0f5da2be05a8fa0c7e' isFavorite={false} /> */}
     {/* <FollowIcon followId='62336a0e5da2be05a8fa0c62' isFollow={false} /> */}
-    {/* <Login/> */}
+    <Login />
     {/* <Register /> */}
-    <CalendarIcon />
+    {/* <CalendarIcon /> */}
 
   </>
 
