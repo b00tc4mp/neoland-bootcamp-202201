@@ -26,7 +26,7 @@ function Header({ onProfile, onHome }) {
             </div>
 
             <div className='header__input-wrapper'>
-                <input type='text' placeholder='Buscar graffitis...'/>
+                <input type='text' placeholder='Search graffitis...'/>
             </div>
            
             <div className="header__user-wrapper" onMouseEnter={showUserOptions} onMouseLeave={showUserOptions}>
@@ -35,8 +35,8 @@ function Header({ onProfile, onHome }) {
                 <div className="header__user-wrapper_options_wrapper">
                     <ul>
                         <li onClick={goToProfile}>Profile</li>
-                        <li onClick={goToProfile}>Favoritos</li>
-                        <li onClick={goToProfile}>Mis graffitis</li>
+                        <li onClick={goToProfile}>Favorites</li>
+                        <li onClick={goToProfile}>My graffitis</li>
                     </ul>
                 </div>): null}
             </div>

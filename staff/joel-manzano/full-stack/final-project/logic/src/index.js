@@ -9,7 +9,7 @@ const modifyGraffiti = require('./graffiti/modifyGraffiti')
 const deleteGraffiti = require('./graffiti/deleteGraffiti')
 const listGraffitis = require('./graffiti/listGraffitis')
 const retrieveGraffiti = require('./graffiti/retrieveGraffiti')
-const searchGraffitis = require('./graffiti/searchGraffiti')
+const searchGraffitis = require('./graffiti/searchGraffitis')
 const toggleFavorite = require('./graffiti/toggleFavorite')
 const listFavorites = require('./graffiti/listFavorites')
 

@@ -5,6 +5,7 @@ import deleteUser from './deleteUser'
 import updateUser from './updateUser'
 import updateUserPassword from './updateUserPassword'
 import retrieveGraffiti from './retrieveGraffiti'
+import searchGraffitis from './searchGraffitis'
 
 export {
     registerUser,
@@ -13,5 +14,7 @@ export {
     updateUser,
     updateUserPassword,
     deleteUser,
-    retrieveGraffiti
+    retrieveGraffiti,
+    searchGraffitis
+
 }

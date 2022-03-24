@@ -18,15 +18,19 @@ function Header({onLogo, onProfile, onHamburger}) {
 
     return <>
         <header className='header'>
-            <a href='' onClick={goToLogo}>
-                <IconLogo />
-            </a>
-            <a href='' onClick={goToProfile}>
-                <IconProfile />
-            </a>
-            <a  href='' onClick={goToHamburger}>
-                <IconHamburger />
-            </a>
+            <div className='header__all-wrapper'>
+                <a href='' onClick={goToLogo}>
+                    <IconLogo />
+                </a>
+                <div className='header__user-hamburguer-wrapper'>
+                    <a href='' onClick={goToProfile}>
+                        <IconProfile />
+                    </a>
+                    <a  href='' onClick={goToHamburger}>
+                        <IconHamburger />
+                    </a>
+                </div>
+            </div>
         </header>
     </>
 

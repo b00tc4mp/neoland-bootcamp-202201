@@ -1,6 +1,6 @@
 import './GraffitiDetails.sass'
 import { useEffect, useState } from 'react'
-import { retrieveGraffiti } from '../logic'
+import { retrieveGraffiti, searchGraffitis } from '../logic'
 
 
 function GraffitiDetails ({graffitiId}) {
@@ -10,7 +10,7 @@ function GraffitiDetails ({graffitiId}) {
     useEffect(() => {
 
         try {
-            retrieveGraffiti(sessionStorage.token, graffitiId)
+            searchGraffitis(sessionStorage.token, graffitiId)
             .then(graffiti => {
                 
                 setGraffiti(graffiti)
@@ -28,8 +28,16 @@ function GraffitiDetails ({graffitiId}) {
     return <> {graffiti &&
         <ul>
             <li>{graffiti.artist}</li>
-            <li>{graffiti.location}</li>
+            <li>{graffiti.description}</li>
+            <li>{graffiti.image}</li>
             <li>{graffiti.city}</li>
+            <li>{graffiti.address}</li>
+            <li>{graffiti.postalCode}</li>
+            <li>{graffiti.location}</li>
+            <li>{graffiti.style}</li>
+            <li>{graffiti.status}</li>
+            <li>{graffiti.spray}</li>
+            <li>{graffiti.colors}</li>
         </ul>}
     </>
 

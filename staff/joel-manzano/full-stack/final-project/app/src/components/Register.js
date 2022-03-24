@@ -1,16 +1,20 @@
 import './Register.css'
 import { registerUser } from '../logic'
+import { Input} from './form-elements'
+import { Button } from '../components'
 
-function Register({ onRegister, onLogged }) {
+function Register({ onRegistered, onLogin }) {
 
     const register = event => {
-        event.preventDefault()
-
+        
         const { target: { name: { value: name }, email: { value: email }, password: { value: password } } } = event
 
         try {
             registerUser(name, email, password)
-                .then(onRegister)
+                .then(() => {
+                    alert('User registered ;)')
+                    onRegistered && onRegistered()
+                })
                 .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
@@ -19,15 +23,20 @@ function Register({ onRegister, onLogged }) {
 
     const goToLogin = event => {
         event.preventDefault()
-        onLogged()
+        onLogin && onLogin()
+    }
+    
+    const onSubmit = event => {
+        event.preventDefault()
+            register(event)
     }
 
     return <div className='register'>
-        <form onSubmit={register}>
-            <input type='text' name='name' placeholder='name' />
-            <input type='email' name='email' placeholder='email' />
-            <input type='password' name='password' placeholder='password' />
-            <button>Register</button>
+        <form onSubmit={onSubmit}>
+            <Input type='text' name='name' placeholder='name' />
+            <Input type='email' name='email' placeholder='email' />
+            <Input type='password' name='password' placeholder='password' />
+            <Button type='submit'>Register</Button>
             <a href="" onClick={goToLogin}>Login</a>
         </form>
     </div>

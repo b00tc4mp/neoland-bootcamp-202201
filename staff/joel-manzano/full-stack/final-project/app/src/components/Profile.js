@@ -1,4 +1,3 @@
-import './Profile.css'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
@@ -51,8 +50,6 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
         delete sessionStorage.token
         onLogOut()
     }
-
-    
 
     return <div className="profile">
         <form className="profile__form" onSubmit={updateProfile} method="post">

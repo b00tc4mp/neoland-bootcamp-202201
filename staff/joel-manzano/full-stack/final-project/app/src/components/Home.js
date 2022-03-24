@@ -1,30 +1,33 @@
-import { Login, Register, Profile } from './index'
+import './Home.sass'
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import UpdatePassword from './UpdatePassword'
+import Search  from './Search'
+import Results from './Results'
+import { Routes, Route, useNavigate, Navigate, useSearchParams } from 'react-router-dom'
 
-function Home({onLogin, onProfile, onRegister}) {
-    const [name, setName] = useState()
-    const [view, setView] = useState()
-
+function Home() {
+    
     const navigate = useNavigate()
-    // const showUpdatePassword = () => navigate('profile/update-password')
-    // const showDeleteAccount = () => navigate('profile/delete-account')
+
+    useEffect(() => {
+    }, [])
+
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const search = (query) => {
+        navigate(`search?query=${query}`)
+    }
 
     return <div className='home'>
-        {/* <nav className='home__header'>
-            <button className='login__buttom' onClick={goToLogin}>Login</button>
-            <button className='register__buttom' onClick={goToRegister}>Register</button>
-            <a href="" onClick={goToProfile}>Profile</a>
-        </nav> */}
-        <h1>HOME</h1>
+        <nav className='home__header'>
+           
+            <h1>HOME</h1>
+        </nav>
 
+        <Search className='home__search' onSearch={search} />
+        <Results />
         <Routes>
-            {/* <Route path='login' element={<Login onLogged={showLogin} />} />
-            <Route path='register' element={< Register onRegister={showLogin} />} />
-            <Route path='profile/update-password' element={< UpdatePassword onBack={showProfile} />} />
-            <Route path='profile/delete-account' element={< Profile onDeleteAccount={showDeleteAccount} />} />
-            <Route path='profile' element={< Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} /> */}
+        <Route path='search' element={<Results />} />
+
         </Routes>
     </div>
 }

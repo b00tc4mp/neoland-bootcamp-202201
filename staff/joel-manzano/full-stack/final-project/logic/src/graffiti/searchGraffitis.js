@@ -2,10 +2,8 @@ const { models: { Graffiti } } = require('data')
 const { validators: { validateString } } = require('commons')
 
 function searchGraffitis(query) {
-    //validateString(query, 'query')
-    debugger
-
-    query !== null && validateString(query)
+   
+    query !== null || query!=='' && validateString(query)
 
     const QUERY_REGEX = new RegExp(query, 'i')
 
