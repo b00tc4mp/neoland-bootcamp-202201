@@ -1,19 +1,21 @@
 import './Results.sass'
 import { useEffect, useState } from 'react'
 import { searchGraffitis } from '../logic'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 
 function Results () {
 
     const [searchParams, setSearchParams]= useSearchParams()
     const [graffitis, setGraffitis] = useState([])
 
-    const query = searchParams.get('query')
+    const query = searchParams.get('q')
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         try {
             searchGraffitis(query)
-            // searchGraffitis(query, artist, city, postalCode, style, status, spray, colors)
+            
             .then(graffitis => {
                 setGraffitis(graffitis)
             })
@@ -23,11 +25,12 @@ function Results () {
         }
     }, [query])
 
-
     return <>
         {graffitis.length > 0 && <ul>
-            <h1>hello results of graffitis</h1>
-            {graffitis.map(graffiti => <ul key={graffiti.id}>
+            <h1>results of graffitis</h1>
+            {graffitis.map(graffiti => <ul key={graffiti.id} onClick={() => {
+                navigate(`/search/${graffiti.id}`)
+            }}>
                 
                 <li>{graffiti.id}</li>
                 <li>{graffiti.artist}</li>

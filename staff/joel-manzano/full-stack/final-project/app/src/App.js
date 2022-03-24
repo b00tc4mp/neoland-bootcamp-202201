@@ -41,7 +41,7 @@ function App() {
     {/* <GraffitiDetails graffitiId='622f56311e78c0e46fce4532'/> */}
     {/* <Input type='password' name='password' placeholder='password' />
     <Button type='button'>yup</Button>   */}
-    <Results querry='artist' />
+    
     
 
 
@@ -52,7 +52,7 @@ function App() {
       <Route path='profile' element={sessionStorage.token ? < Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogOut={showLogin} /> : <Navigate replace to='/login' />} />
       <Route path='profile/update-password' element={< UpdatePassword onBack={showProfile} />} />
       <Route path='profile/delete-account' element={< DeleteAccount onDeletedAccount={showLogin} onBack={showProfile} />} />
-      <Route path='/*' element={<Navigate replace to='/'/>} />
+      {/* <Route path='/*' element={<Navigate replace to='/'/>} /> */}
     </Routes>
   </div>
 }

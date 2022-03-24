@@ -1,14 +1,12 @@
 import { validators } from 'commons'
 const { validateString } = validators
 
-function searchGraffiti(query) {
+function searchGraffitis(query) {
 
     query !== null && validateString(query)
     
 
-    return fetch(`http://localhost:8080/api/graffitis?${query !== null? `query=${query}` : ''}`, {
-        headers: {  }
-    })
+    return fetch(`http://localhost:8080/api/graffitis?q=${query}`)
         .then(res => {
             const { status } = res
 
@@ -28,4 +26,4 @@ function searchGraffiti(query) {
         })
 }
 
-export default searchGraffiti
+export default searchGraffitis

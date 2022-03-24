@@ -1,20 +1,19 @@
 import './GraffitiDetails.sass'
 import { useEffect, useState } from 'react'
-import { retrieveGraffiti, searchGraffitis } from '../logic'
+import { retrieveGraffiti } from '../logic'
+import { useParams } from 'react-router-dom'
 
-
-function GraffitiDetails ({graffitiId}) {
-
-    const [graffiti, setGraffiti] = useState()
+function GraffitiDetails () {
+    //const [searchParams, setSearchParams]= useSearchParams()
+    const [graffiti, setGraffiti] = useState({})
+    const {graffitiId} = useParams()
 
     useEffect(() => {
 
         try {
-            searchGraffitis(sessionStorage.token, graffitiId)
+            retrieveGraffiti( graffitiId )
             .then(graffiti => {
-                
                 setGraffiti(graffiti)
-
             })
             .catch(error => {
                 alert(error.message)
@@ -23,29 +22,29 @@ function GraffitiDetails ({graffitiId}) {
             alert(error.message)
         }
 
-    }, [])    
+    }, [graffitiId])    
 
-    return <> {graffiti &&
+    return <> 
+            {graffiti &&
+        
         <ul>
-            <li>{graffiti.artist}</li>
+            <h2>{graffiti.artist}</h2>
             <li>{graffiti.description}</li>
-            <li>{graffiti.image}</li>
-            <li>{graffiti.city}</li>
-            <li>{graffiti.address}</li>
-            <li>{graffiti.postalCode}</li>
-            <li>{graffiti.location}</li>
-            <li>{graffiti.style}</li>
-            <li>{graffiti.status}</li>
-            <li>{graffiti.spray}</li>
-            <li>{graffiti.colors}</li>
+            <img src={graffiti.urlImage}/>
+            <p>{graffiti.city}</p>
+            <p>{graffiti.address}</p>
+            <p>{graffiti.postalCode}</p>
+            <p>{graffiti.location}</p>
+            <p>{graffiti.style}</p>
+            <p>{graffiti.status}</p>
+            <p>{graffiti.spray}</p>
+            <p>{graffiti.colors}</p>
         </ul>}
     </>
 
 }
 
-
 export default GraffitiDetails
-
 
 // Compos importantes
 // create Graffiti

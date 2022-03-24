@@ -1,14 +1,14 @@
 import { validators } from 'commons'
 
-const { validateToken, validateId } = validators
+const { validateId } = validators
 
-function retrieveGraffiti(token, graffitiId) {
-    validateToken(token)
+function retrieveGraffiti( graffitiId ) {
+    // validateToken(token)
     validateId(graffitiId)
 
     return fetch(`http://localhost:8080/api/graffitis/${graffitiId}`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            // Authorization: `Bearer ${token}`
         }
     })
         .then(res => {

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Search  from './Search'
 import Results from './Results'
 import { Routes, Route, useNavigate, Navigate, useSearchParams } from 'react-router-dom'
+import GraffitiDetails from './GraffitiDetails'
 
 function Home() {
     
@@ -13,9 +14,10 @@ function Home() {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const search = (query) => {
-        navigate(`search?query=${query}`)
+    const search = (query, city, postalCode, style, status, spray, colors) => {
+        navigate(`search?query=${query}&city=${city}&postalCode=${postalCode}&style=${style}&status=${status}&spray=${spray}&colors=${colors}`)
     }
+
 
     return <div className='home'>
         <nav className='home__header'>
@@ -24,9 +26,9 @@ function Home() {
         </nav>
 
         <Search className='home__search' onSearch={search} />
-        <Results />
         <Routes>
         <Route path='search' element={<Results />} />
+        <Route path='/search/:graffitiId' element={< GraffitiDetails />} />
 
         </Routes>
     </div>
