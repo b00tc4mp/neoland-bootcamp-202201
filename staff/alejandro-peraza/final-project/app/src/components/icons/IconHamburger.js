@@ -1,10 +1,10 @@
 import './IconHamburger.sass'
 
-function IconHamburger({onClick}) {
+function IconHamburger({ onClick }) {
 
     const onBurguer = event => {
         event.preventDefault()
-        if(onClick) onClick()
+        if (onClick) onClick()
     }
 
     return <>

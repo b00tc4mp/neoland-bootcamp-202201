@@ -1,5 +1,5 @@
 import './App.css';
-import { Landing, Home, Register, Login, Profile, UpdatePassword, DeleteAccount, Search } from './components'
+import { Landing, Home, Register, Login, Profile, UpdatePassword, DeleteAccount, Search, Results } from './components'
 import { IconLogo, IconProfile, IconHamburger } from './components/icons'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { Header } from './components/elements';
@@ -46,6 +46,7 @@ function App() {
     {/* {<IconProfile /> } */}
     {/* <IconHamburger /> */}
 
+    {/* <Results /> */}
 
 
 
@@ -55,12 +56,12 @@ function App() {
       <Route path="/*" element={<Landing onLogin={showLogin} onRegister={showRegister} />} />
       <Route path="/register" element={<Register onRegistered={showLogin} onLogin={showLogin} />} />
       <Route path="/login" element={<Login onLogged={showHome} onRegister={showRegister} />} />
-      <Route path="/home" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Navigate replace to='/login' />} />
+      <Route path="/home/*" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Navigate replace to='/login' />} />
       <Route path='/profile' element={sessionStorage.token ? < Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogOut={showLanding} /> : <Navigate replace to='/login' />} />
       <Route path='/profile/update-password' element={< UpdatePassword onBack={showProfile} />} />
       <Route path='/profile/delete-account' element={< DeleteAccount onDeletedAccount={showLogin} onBack={showProfile} />} />
       </Routes>
-}
+} 
   </div>
 }
  

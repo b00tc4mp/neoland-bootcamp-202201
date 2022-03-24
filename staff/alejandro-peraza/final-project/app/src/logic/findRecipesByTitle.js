@@ -13,7 +13,7 @@ function findRecipesByTitle(title) {
         .then(res => {
             const { status } = res
 
-            if (status === 201) {
+            if (status === 200) {
                 return res.json()
             } else if (status >= 400 && status < 500) {
                 return res.json()

@@ -7,6 +7,9 @@ import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import Header from './Header'
 import Search from './Search'
+import RecipeDetails from './RecipeDetails'
+import Button from './Button'
+import Results from './Results'
 
 
 export {
@@ -18,6 +21,9 @@ export {
     UpdatePassword,
     DeleteAccount,
     Header,
-    Search
+    Search,
+    RecipeDetails,
+    Button,
+    Results
     
 }

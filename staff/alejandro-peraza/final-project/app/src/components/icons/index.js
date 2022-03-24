@@ -1,6 +1,6 @@
 import IconLogo from './IconLogo'
-import IconProfile from './IconProfile'
-import IconHamburger from './IconHamburger'
+import IconProfile from './IconProfile.js'
+import IconHamburger from './IconHamburger.js'
 
 export {
     IconLogo,
