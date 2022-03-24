@@ -1,6 +1,6 @@
 import './OwnerActionCard.sass'
 import { useState } from 'react'
-import { Link, CalendarIcon, Button, DeleteIcon, EditIcon } from '.'
+import { Link, CalendarIcon, DeleteActionButton, EditIcon } from '.'
 
 export const OwnerActionCard = ({ action: _action }) => {
 
@@ -12,15 +12,9 @@ export const OwnerActionCard = ({ action: _action }) => {
             <p>Tiempo requerido: {action.requiredTime} min</p>
             <p>Dinero requerido: {action.requiredBudget} €</p>
             <p>Estado: {action.public ? 'Pública' : 'Privada'}</p>
-            <Link>
-                <CalendarIcon />
-            </Link>
-            <Link>
-                <EditIcon />
-            </Link>
-            <Button>
-                <DeleteIcon />
-            </Button>
+            <Link><CalendarIcon /></Link>
+            <Link><EditIcon /></Link>
+            <DeleteActionButton actionId={action.id} />
         </div>
     </>
 }

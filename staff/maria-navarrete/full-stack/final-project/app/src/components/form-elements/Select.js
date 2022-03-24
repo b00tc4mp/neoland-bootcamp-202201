@@ -5,7 +5,7 @@ export const Select = ({ name = '', id = '', options = [], placeholder = 'Selecc
     return <>
         {label && <label htmlFor={name}>{label}</label>}
         <select name={name} id={id} required={required}>
-            <option disabled hidden selected={selected ? true : false} value=''>{placeholder}</option>
+            <option selected={selected ? false : true} value=''>{placeholder}</option>
             {options.map(option => <option key={option} value={option} selected={selected === option ? true : false}>{`${option}${appendText ? ' ' + appendText : ''}`}</option>
             )}
         </select>

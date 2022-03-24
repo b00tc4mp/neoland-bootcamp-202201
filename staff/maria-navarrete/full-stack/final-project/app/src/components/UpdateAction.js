@@ -1,6 +1,6 @@
 import './UpdateAction.sass'
 import { useState, useEffect } from 'react'
-import { Input, Select, Checkbox, Button } from '.'
+import { Input, Select, Checkbox, Button, Link, StopwatchIcon, MoneyIcon, CheckIcon, XIcon } from '.'
 import { data } from 'commons'
 import { retrieveAction, updateAction } from '../logic'
 const { requiredTimeOptions, requiredBudgetOptions } = data
@@ -55,12 +55,16 @@ export const UpdateAction = ({ actionId, onUpdate }) => {
     }
 
     return <>
+        <h2>Editar Acción</h2>
         <form onSubmit={onSubmit}>
-            <Input type='text' name='description' defaultValue={description} label='Descripción:' required />
-            <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} required={true} appendText={'min'} selected={requiredTime} label='Tiempo requerido:' required />
-            <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} required={true} appendText={'€'} selected={requiredBudget} label='Dinero requerido' required />
+            <Input type='text' name='description' defaultValue={description} placeholder='Descripción:' required />
+            <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} required={true} appendText={'min'} selected={requiredTime} placeholder='Tiempo requerido:' label={<StopwatchIcon />} required />
+            <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} required={true} appendText={'€'} selected={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
             <Checkbox id='isPublic' name='isPublic' label='Hacer Pública' checked={isPublic} />
-            <Button type='submit'>Modificar</Button>
+            <div>
+                <Button type='submit'> <CheckIcon /> </Button>
+                <Link><XIcon /></Link>
+            </div>
         </form>
     </>
 }

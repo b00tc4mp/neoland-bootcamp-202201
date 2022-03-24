@@ -11,11 +11,9 @@ export const ActionCard = ({ action: _action }) => {
             <h3>{action.description}</h3>
             <p>Tiempo requerido: {action.requiredTime} min</p>
             <p>Dinero requerido: {action.requiredBudget} €</p>
-            <Link>
-                <CalendarIcon />
-            </Link>
+            <Link><CalendarIcon /></Link>
             <ToggleFavoriteButton action={action} />
-            <span>By: {action.authorUsername}</span>
+            <Link>By: {action.authorUsername}</Link>
         </div>
     </>
 }

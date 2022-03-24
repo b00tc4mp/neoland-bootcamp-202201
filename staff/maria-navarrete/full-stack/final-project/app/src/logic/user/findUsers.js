@@ -4,7 +4,7 @@ const { validateToken, validateString } = validators
 
 function findUsers(token, query = '') {
     validateToken(token)
-    validateString(query, 'query')
+    if (query) validateString(query, 'query')
 
     return fetch(`http://localhost:8080/api/users/search?query=${query}`, {
         headers: {

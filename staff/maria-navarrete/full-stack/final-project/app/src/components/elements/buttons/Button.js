@@ -9,7 +9,7 @@ export const Button = ({ type = 'button', children = 'Enviar', onClick: _onClick
     }
 
     return <>
-        <button onClick={onClick} type={type} className={className}>{children}</button>
+        <button onClick={onClick} type={type} className={`button ${className}`}>{children}</button>
     </>
 }
 

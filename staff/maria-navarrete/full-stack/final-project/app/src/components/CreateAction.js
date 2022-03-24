@@ -1,5 +1,5 @@
 import './CreateAction.sass'
-import { Input, Select, Checkbox, Button } from '.'
+import { Input, Select, Checkbox, Button, Link, CheckIcon, XIcon, StopwatchIcon, MoneyIcon } from '.'
 import { data } from 'commons'
 import { createAction } from '../logic'
 const { requiredTimeOptions, requiredBudgetOptions } = data
@@ -28,13 +28,16 @@ export const CreateAction = ({ onCreated }) => {
     }
 
     return <>
-        <h2>Crea una nueva acción</h2>
+        <h2>Crear Acción</h2>
         <form onSubmit={onSubmit}>
-            <Input type='text' name='description' label='Descripción' required />
-            <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} required appendText={'min'} label='Tiempo Requerido' />
-            <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Dinero Requerido' required appendText={'€'} label='Dinero Requerido' />
+            <Input type='text' name='description' placeholder='Descripción' required />
+            <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} placeholder='Tiempo Requerido' required appendText={'min'} label={<StopwatchIcon />} />
+            <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Dinero Requerido' required appendText={'€'} label={<MoneyIcon />} />
             <Checkbox id='isPublic' name='isPublic' label='Hacer Pública' />
-            <Button type='submit'>Crear</Button>
+            <div>
+                <Button type='submit'> <CheckIcon /> </Button>
+                <Link><XIcon /></Link>
+            </div>
         </form>
     </>
 }

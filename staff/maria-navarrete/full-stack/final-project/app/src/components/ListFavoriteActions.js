@@ -11,17 +11,17 @@ export const ListFavoriteActions = () => {
         try {
             const favorites = await listFavoriteActions(sessionStorage.token)
             favorites.forEach(favorite => favorite.isFav = true)
-            
+
             setFavorites(favorites)
         } catch (error) {
             alert(error.message)
         }
-
     }, [])
 
 
     return <>
         <div>
+            <h2>Mis Favoritas</h2>
             {!!favorites.length &&
                 <ul> {favorites.map(favorite =>
                     <li key={favorite.id}>
@@ -31,5 +31,4 @@ export const ListFavoriteActions = () => {
                 </ul>}
         </div>
     </>
-
 }

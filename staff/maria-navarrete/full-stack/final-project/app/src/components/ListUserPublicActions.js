@@ -1,27 +1,27 @@
-import './ListSearchActionsResults.sass'
-import { findActions, listFavoriteActions } from '../logic'
-import { ActionCard } from '.'
+import './ListUserPublicActions.sass'
 import { useState, useEffect } from 'react'
+import { listUserPublicActions, listFavoriteActions } from '../logic'
+import { ActionCard } from '.'
 
-export const ListSearchActionsResults = ({ query = '', requiredTime = '', requiredBudget = '' }) => {
+export const ListUserPublicActions = ({ userId = '' }) => {
 
     const [actions, setActions] = useState([])
 
     useEffect(async () => {
         try {
-            const actions = await findActions(sessionStorage.token, query, requiredTime, requiredBudget)
+            const actions = await listUserPublicActions(sessionStorage.token, userId)
             const favorites = await listFavoriteActions(sessionStorage.token)
 
             actions.forEach(action => {
                 action.isFav = favorites.some(favorite => favorite.id === action.id)
             })
-
+            
             setActions(actions)
-
         } catch (error) {
             alert(error.message)
         }
-    }, [query, requiredTime, requiredBudget])
+    }, [])
+
 
     return <>
         <div>
@@ -34,6 +34,5 @@ export const ListSearchActionsResults = ({ query = '', requiredTime = '', requir
                 </ul>}
         </div>
     </>
-
 
 }
