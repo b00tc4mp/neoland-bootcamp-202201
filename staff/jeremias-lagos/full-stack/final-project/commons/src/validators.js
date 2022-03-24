@@ -80,7 +80,7 @@ function validateBoolean(boolean, explain = 'boolean') {
 
 function validateDate(date, explain = 'date') {
   if (!(date instanceof Date)) throw new TypeError(`${explain} is not date`)
-}
+} 
 
 module.exports = {
   validateEmail,
@@ -90,4 +90,4 @@ module.exports = {
   validateId,
   validateBoolean,
   validateDate
-};
+}

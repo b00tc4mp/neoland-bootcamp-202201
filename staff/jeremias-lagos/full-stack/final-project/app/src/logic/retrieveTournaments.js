@@ -2,6 +2,7 @@ import { validators } from 'commons'
 const { validateToken, validateId } = validators
 
 function retrieveTournaments(token, tournamentId) {
+    debugger
     validateToken(token)
     validateId(tournamentId)
 

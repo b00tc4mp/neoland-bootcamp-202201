@@ -4,9 +4,10 @@ const { validateString, validateDate } = validators
 function searchTournament(query, location, date) {
     query !== null && validateString(query)
     location !== null && validateString(location)
-    date !== null && validateDate(date)
+    // date !== null && validateDate(date)
+    date !== null && validateString(date, 'date')
 
-    return fetch(`http://localhost:8080/api/tournaments?${query !== null? `query=${query}` : ''}&${location !== null? `query=${location}` : ''}&${date !== null? `query=${date}` : ''}`, {
+    return fetch(`http://localhost:8080/api/tournaments?${query !== null? `query=${query}` : ''}&${location !== null? `location=${location}` : ''}&${date !== null? `date=${date}` : ''}`, {
         headers: { }
     })
         .then(res => {
@@ -29,3 +30,4 @@ function searchTournament(query, location, date) {
 }
 
 export default searchTournament
+

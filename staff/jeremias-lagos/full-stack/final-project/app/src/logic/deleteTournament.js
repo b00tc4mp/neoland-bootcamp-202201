@@ -1,18 +1,19 @@
 import { validators } from 'commons'
 
-const { validateToken, validatePassword } = validators
+const { validateToken, validateId } = validators
 
-function deleteTournament(token, password) {
+function deleteTournament(token, tournamentId) {
     validateToken(token)
-    validatePassword(password)
+    validateId(tournamentId)
+    
 
     return fetch(`http://localhost:8080/api/tournaments/${tournamentId}`, {
         method: 'DELETE',
         headers: {
+            
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            
         },
-        body: JSON.stringify({ password })
     })
         .then(res => {
             const { status } = res
