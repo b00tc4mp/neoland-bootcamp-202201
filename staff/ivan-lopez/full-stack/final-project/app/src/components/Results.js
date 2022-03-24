@@ -1,7 +1,8 @@
 import './Results.sass'
 import { useEffect, useState } from 'react'
 import { findProducts } from '../logic'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
+
 
 // http://localhost:3000/?query=pulsera&description=cuero
 
@@ -13,6 +14,7 @@ function Results () {
 
     const query = searchParams.get('q')
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         try {
@@ -27,20 +29,16 @@ function Results () {
     }, [query])
 
 
-    return <>
-        {products.length > 0 && <ul>
-            <h1>hello products results</h1>
-            {products.map(product => <ul key={product.id}>
-                
-                <li>{product.id}</li>
-                <li>{product.name}</li>
-                <li>{product.size}</li>
-                <li>{product.color}</li>
-                <li>{product.price}</li>
-                <li>{product.description}</li>
+    return <div>
+        {products.length > 0 && <div>
+            {products.map(product => <ul key={product.id} onClick={() => {
+                navigate(`/search/${product.id}`)
+            }}>
+                <p>{product.name}</p>
+                <p>{product.price}</p>
             </ul>)}
-        </ul>}
-    </>
+        </div>}
+    </div>
 }
 
 

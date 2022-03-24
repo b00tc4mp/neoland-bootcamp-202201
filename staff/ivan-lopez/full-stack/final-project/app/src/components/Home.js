@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Search from './Search'
 import Results from './Results'
 import { Routes, Route, useNavigate, Navigate, useSearchParams } from 'react-router-dom'
+import ProductDetails from './ProductDetails'
 
 
 function Home() {
@@ -24,11 +25,20 @@ function Home() {
             <h1>Bienvenido a Dreams Factory</h1>
         </nav>
 
+
         <Search className='home__search' onSearch={search} />
-        
+        {/* <Results /> */}
+
+        {/* <Modal /> */}
+
         <Routes>
             <Route path='search' element={<Results />} />
+            <Route path='/search/:productId' element={<ProductDetails />} />
+
+
         </Routes>
+
+
     </div>
 }
 

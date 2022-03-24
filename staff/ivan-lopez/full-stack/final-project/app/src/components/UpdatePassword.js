@@ -1,5 +1,7 @@
 //import './UpdatePassword.css'
 import { updateUserPassword } from '../logic'
+import { Button } from "../components"
+import { Input } from "../components/form-elements"
 
 function UpdatePassword({ onBack }) {
 
@@ -26,21 +28,23 @@ function UpdatePassword({ onBack }) {
     return <div className='update-password'>
         <form className='update-password__form' onSubmit={updatePassword} method='post'>
 
-            <div className="update-password__field">
-                <label className='currPassword'>Current password</label>
-                <input id='currPassword' className='update-password__curr-password-input' type='password' name='currPassword' />
-            </div>
-            <div className="update-password__field">
-                <label className='password'>New password</label>
-                <input id='password' className='update-password__password-input' type='password' name='newPassword' />
-            </div>
-            <div className="update-password__field">
-                <label className='confirmPassword'>Confirm new password</label>
-                <input id='confirmPassword' className='update-password__re-password-input' type='password' name='confirmPassword' />
-            </div>
-                <button type='submit'>Update password</button>
+            <h1>Actualizar contraseña</h1>
 
-                <a className='update-password__back-link' href='' onClick={goBack}>back</a>
+            <div className="update-password__field">
+                
+                <Input id='currPassword' className='update-password__curr-password-input' type='password' name='currPassword' placeholder='Actual contraseña' />
+            </div>
+            <div className="update-password__field">
+                
+                <Input id='password' className='update-password__password-input' type='password' name='newPassword' placeholder='Nueva contraseña' />
+            </div>
+            <div className="update-password__field">
+                
+                <Input id='confirmPassword' className='update-password__re-password-input' type='password' name='confirmPassword' placeholder='Confirmar contraseña' />
+            </div>
+                <Button type='submit'>Cambiar contraseña</Button>
+
+                <a className='update-password__back-link' href='' onClick={goBack}>Atrás</a>
         </form>
     </div>
 }

@@ -1,15 +1,16 @@
 import './ProductDetails.sass'
 import { useEffect, useState } from 'react'
 import { retrieveProduct } from '../logic'
+import { useParams } from 'react-router-dom'
 
 
-function ProductDetails ({productId}) {
+function ProductDetails () {
+    const [product, setProduct] = useState({})
+    const { productId } = useParams()
     
-    const [product, setProduct] = useState()
-
     useEffect(() => {
         try {
-            retrieveProduct(sessionStorage.token, productId)
+            retrieveProduct(productId)
             .then(product => {
                 setProduct(product)
             })
@@ -17,18 +18,18 @@ function ProductDetails ({productId}) {
         } catch (error) {
             alert(error.message)
         }
-    }, [])
+    }, [productId])
 
-
-    return <>
-        {product && <ul>
-            <li>{product.name}</li>
-            <li>{product.size}</li>
-            <li>{product.color}</li>
-            <li>{product.price}</li>
-            <li>{product.description}</li>
+    return <div className='detail'>
+        {!!product && <ul>
+            <h1>{product.name}</h1>
+            <p>{product.id}</p>
+            <p>{product.size}</p>
+            <p>{product.color}</p>
+            <p>{product.price}</p>
+            <p>{product.description}</p>
         </ul>}
-    </>
+    </div>
 }
 
 export default ProductDetails

@@ -2,13 +2,21 @@ import { useState, useEffect } from 'react'
 import { retrieveUser, updateUser } from '../logic'
 import { Button } from '../components'
 import { Input } from '../components/form-elements'
+import ModalCreateProduct from './elements/ModalCreateProduct'
 
 
 function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
-    //let user = null esto será un estado y con el useEffect luego le llegarán los datos, cuando lleguen los datos pintamos el compo
-    // t tendrás que traer los datos del usuario..... retrieveUser..... useEffect
+    const [isShowModal, setIsShowModal] = useState()
+
+    const toggleModal = () => {
+        setIsShowModal(true)
+    }
+
+    const closeModal = () => {
+        setIsShowModal(false)
+    }
 
     useEffect(() => {
         try {
@@ -63,7 +71,7 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
     }
 
 
-    return <> {
+    return <div> {
         <div>
             Bienvenido a tu perfil, {name} !
 
@@ -84,8 +92,8 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
                 <Button type='submit' onClick={logOut}>Cerrar sesión</Button>
             </form>
         </div>
-
-    }</>
+        
+    }</div>
 }
 
 export default Profile

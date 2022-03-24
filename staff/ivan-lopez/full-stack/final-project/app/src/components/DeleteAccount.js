@@ -1,5 +1,6 @@
 //import './DeleteAccount.css'
 import { deleteUser } from '../logic'
+import { Button } from "../components"
 
 function DeleteAccount ({onBack, onDeletedAccount}) {
 
@@ -27,9 +28,9 @@ function DeleteAccount ({onBack, onDeletedAccount}) {
 
     return <div className="delete-account">
         <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
-            <input className="delete-account__password-input" type="password" name="password" placeholder="Password" />
-            <button className="delete-acount__submit">Delete Account</button>
-            <a className="delete-account__back-link" href="" onClick={goBack}>back</a>
+            <input className="delete-account__password-input" type="password" name="password" placeholder="Contraseña" />
+            <Button className="delete-acount__submit">Eliminar cuenta</Button>
+            <a className="delete-account__back-link" href="" onClick={goBack}>Atrás</a>
         </form>
     </div>
 
