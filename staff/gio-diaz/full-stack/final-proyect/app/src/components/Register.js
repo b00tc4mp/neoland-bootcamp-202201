@@ -1,3 +1,4 @@
+import {Input} from './elements'
 import registerUser from "../logic/registerUser"
 function Register({ onLogin, onRegistered}) {
    
@@ -25,9 +26,9 @@ function Register({ onLogin, onRegistered}) {
     return <div>
         <h1>REGISTER</h1>
         <form onSubmit={register} className="register__form" >
-            <input type="name" name="name" placeholder="Name" />
-            <input type="email" name="email" placeholder="E-mail" />
-            <input type="password" name="password"placeholder="Password" />
+            <Input type="name" name="name" placeholder="Name" />
+            <Input type="email" name="email" placeholder="E-mail" />
+            <Input type="password" name="password"placeholder="Password" />
         <button className="register__button">Register</button>
         </form>
         <a className="register__login-link" onClick={goToLogin}>Login</a>

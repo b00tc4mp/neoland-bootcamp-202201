@@ -6,7 +6,7 @@ function updateUser(token, name, email) {
     validateString(name)
     validateEmail(email)
 
-    return fetch('http://localhost:8080/api/user', {
+    return fetch('http://localhost:8080/api/users', {
         method: 'PATCH',
         headers: {
             Authorization: `Bearer ${token}`,

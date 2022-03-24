@@ -10,11 +10,13 @@ const {
     deleteUser,
     createNote,
     retrieveNote,
-    updateNote,
-    retrieveMoods
+    retrieveMoods,
+    retrieveRandomQuote,
+    retrieveDaily
 } = require ('./handlers')
 
 const cors = require('cors')
+
 const { env: { PORT, MONGODB_URL }} = process
 
 
@@ -28,23 +30,31 @@ connect(MONGODB_URL)
         const api = express.Router()
 
 
-        api.post('/user', jsonBodyParser, registerUser)
+        api.post('/users', jsonBodyParser, registerUser)
 
         api.post('/users/auth', jsonBodyParser, authenticateUser)
 
-        api.get('/user', retrieveUser)
+        api.get('/users', retrieveUser)
 
-        api.patch('/user', jsonBodyParser, updateUser)
+        api.patch('/users', jsonBodyParser, updateUser)
 
-        api.patch('/user/change-password', jsonBodyParser, updateUserPassword)
+        api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
 
-        api.delete('/user', jsonBodyParser, deleteUser)
+        api.delete('/users', jsonBodyParser, deleteUser)
 
         api.post('/notes', jsonBodyParser, createNote)
 
-        api.get('/user/retrieve', retrieveNote)
+        api.get('/notes', retrieveNote)
 
-        api.get('/user/notes/moods', retrieveMoods)
+        api.get('/moods', retrieveMoods)
+
+        api.get('/quotes', retrieveRandomQuote)
+
+        api.get('/daily', retrieveDaily)
+
+
+
+
 
        
         server.use('/api', api)

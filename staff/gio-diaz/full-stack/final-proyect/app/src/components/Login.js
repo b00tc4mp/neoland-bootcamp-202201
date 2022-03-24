@@ -1,6 +1,7 @@
 import authenticateUser from "../logic/authenticateUser"
+import {Input} from './elements'
 
-function Login({ onLoggedIn, onRegister }) {
+function Login({onHome, onRegister }) {
     
     const goToRegister = event => {
         event.preventDefault()
@@ -13,7 +14,10 @@ function Login({ onLoggedIn, onRegister }) {
 
     try {
         authenticateUser(email, password)
-            .then(() => onLoggedIn())
+            .then((token) => {
+                sessionStorage.token = token
+                onHome()
+            })
             .catch(error => alert(error.message))
     } catch (error) {
         alert(error.message)
@@ -22,8 +26,8 @@ function Login({ onLoggedIn, onRegister }) {
     return <div>
         <h1>LOGIN</h1>
         <form onSubmit={login} className="login__form" >
-            <input type="email" name="email" placeholder="E-mail" />
-            <input type="password" name="password" placeholder="Password" />
+            <Input type="email" name="email" placeholder="E-mail"/>
+            <Input type="password" name="password" placeholder="Password" />
             <button className="login__goHome">Login</button>
         </form>
             <a className="register__link" onClick={goToRegister}>Register</a>

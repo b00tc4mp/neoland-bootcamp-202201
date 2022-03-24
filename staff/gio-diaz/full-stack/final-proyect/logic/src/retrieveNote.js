@@ -10,7 +10,7 @@ function retrieveNote(userId) {
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
         
-            const found = user.notes.find(note => millisToDays(Date.now()) - millisToDays(note.createdAt.getTime()) < 90) || null
+            const found = user.notes.find(note => millisToDays(Date.now()) - millisToDays(note.createdAt.getTime()) === 90) || null
 
             return found
         })

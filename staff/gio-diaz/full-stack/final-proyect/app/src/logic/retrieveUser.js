@@ -5,7 +5,7 @@ const { validateToken } = validators
 function retrieveUser(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/user', {
+    return fetch('http://localhost:8080/api/users', {
         headers: {
             Authorization: `Bearer ${token}`
         }

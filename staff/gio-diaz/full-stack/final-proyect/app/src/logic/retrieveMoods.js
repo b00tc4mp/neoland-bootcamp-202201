@@ -5,7 +5,7 @@ const { validateToken } = validators
 function retrieveMoods(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/user/notes/moods', {
+    return fetch('http://localhost:8080/api/moods', {
         headers: {
             Authorization: `Bearer ${token}`
         }

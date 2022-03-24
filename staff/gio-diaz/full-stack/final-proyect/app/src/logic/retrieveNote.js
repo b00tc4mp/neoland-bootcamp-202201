@@ -1,11 +1,11 @@
 import { validators } from 'commons'
-const { validateToken, validateId } = validators
+const { validateToken } = validators
  
 function retrieveNote(token) {
     validateToken(token)
-    validateId(userId)
+   
 
-    return fetch('http://localhost:8080/api/user/retrieve', {
+    return fetch('http://localhost:8080/api/notes', {
         headers: {
             Authorization: `Bearer ${token}`,
       

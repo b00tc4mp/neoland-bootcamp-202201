@@ -12,7 +12,7 @@ function retrieveMoods(userId) {
 
             const daysNow = millisToDays(Date.now())
 
-            const notes = user.notes.filter(note => {
+            const moods = user.notes.filter(note => {
                 if (daysNow - millisToDays(note.createdAt.getTime()) <= 90)  {
                     const doc = note._doc
 
@@ -26,7 +26,7 @@ function retrieveMoods(userId) {
                 return false
             })
             
-            return notes
+            return moods
         })
 }
 

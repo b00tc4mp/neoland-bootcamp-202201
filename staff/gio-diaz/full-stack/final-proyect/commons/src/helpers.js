@@ -1,16 +1,10 @@
 function millisToDays(millis) {
     return Math.round(millis / 86400000)
 }
-
-
-function existNote(form) {
-    
-    
-}
-
+const randomInteger = (min, max) => min + Math.round((max - min) * Math.random())
 
 
 module.exports = {
     millisToDays,
-    existNote
+    randomInteger
 }

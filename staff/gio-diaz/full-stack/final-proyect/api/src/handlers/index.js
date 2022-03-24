@@ -7,6 +7,8 @@ const deleteUser = require ('./DeleteUser')
 const createNote = require ('./CreateNote')
 const retrieveNote = require ('./retrieveNote')
 const retrieveMoods = require ('./RetrieveMoods')
+const retrieveRandomQuote = require ('./RetrieveRandomQuote')
+const retrieveDaily = require ('./RetrieveDaily')
 
 
 
@@ -19,5 +21,7 @@ module.exports = {
     deleteUser,
     createNote,
     retrieveNote,
-    retrieveMoods
+    retrieveMoods,
+    retrieveRandomQuote,
+    retrieveDaily
 }
