@@ -1,0 +1,16 @@
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.detail__image {
+    width: 90vw;
+    align-self: center;
+}
+
+.detail__fav {
+    cursor: pointer;
+    user-select: none;
+}
