@@ -2,18 +2,20 @@ const { models: { Racket } } = require('data')
 const { validators: { validateString } } = require('commons')
 
 function searchRackets(query) {
-    validateString(query, 'query')
+    if( query) validateString(query, 'query')
 
     const QUERY_REGEX = new RegExp(query, 'i')
 
     return Racket.find().lean().populate('brand')
         .then(rackets => {
+
             rackets = rackets.filter(racket =>
                 QUERY_REGEX.test(racket.brand.name) ||
                 QUERY_REGEX.test(racket.model) ||
                 QUERY_REGEX.test(racket.type) ||
                 QUERY_REGEX.test(racket.player) ||
                 QUERY_REGEX.test(racket.level)
+                
             )
 
             rackets.forEach(racket => {

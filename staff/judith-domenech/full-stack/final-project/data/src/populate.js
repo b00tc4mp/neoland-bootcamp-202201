@@ -255,10 +255,10 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     type: 'Potencia',
                     weight: '345-350g',
                     player: 'Ofensivo',
-                    price: 294,
+                    price: 117,
                     level: 'Principiante',
                     description: 'Creada para las jugadoras de pádel de nivel intermedio que buscan una pala cómoda, estable y duradera que proporcione excelentes salidas de la bola con gran potencia y parte de control. Construida en un molde de lágrima y con un balance medio, compuesta con materiales y tecnologías únicas de babolat, esta pala destaca por su manejabilidad, destaca por su diseño y altas prestaciones en el juego. Además es una pala indicada a los jugadores que tengan problemas de codo.',
-                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25918-fd7be8b3-26813-NORMAL.jpg'
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25927-6cfe7cc4-28333-NORMAL.jpg'
                 })
 
                 const babolatCounterVertuo = new Racket({
@@ -270,7 +270,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     price: 114,
                     level: 'Intermedio',
                     description: 'Esta pala ha sido creada para aguantar los golpes adversarios. Posee el mejor equilibrio entre control, gracias a su molde en forma de lágrima destinada a jugadores de nivel principiante hasta intermedio. Es una pala dedicada al control y al jugador más táctico, te ayudara a tener un juego muy equilibrado y polivalente. Además es una pala indicada a los jugadores que tengan problemas de codo.',
-                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25918-fd7be8b3-26813-NORMAL.jpg'
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21198-fd158bd2-22634-NORMAL.jpg'
                 })
 
                 const babolats = [babolatTechnicalViper, babolatRevenge, babolatCounterVertuo]

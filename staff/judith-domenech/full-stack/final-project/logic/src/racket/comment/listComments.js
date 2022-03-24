@@ -15,6 +15,7 @@ function listComments(racketId) {
                 delete comment.__v
                 delete comment.racket
 
+                comment.userId = comment.user._id.toString()
                 comment.user = comment.user.name
             })
 
