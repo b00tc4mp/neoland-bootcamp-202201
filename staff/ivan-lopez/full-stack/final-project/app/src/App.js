@@ -1,4 +1,4 @@
-import './App.css';
+import './App.sass';
 import { Home, Results, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
 import { Header } from './components/elements'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
@@ -43,13 +43,13 @@ function App() {
 
     <Header onLogo={showHome} onProfile={showProfile}/>
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/*' element={<Home />} />
       <Route path='/iniciar-sesion' element={<Login onLogged={showHome} onRegister={showRegister} />} />
       <Route path='/registro' element={<Register onRegistered={showLogin} onLogin={showLogin} />} />
       <Route path='/cuenta' element={sessionStorage.token ? <Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogout={showLogin}/> : <Navigate replace to='/iniciar-sesion'/>} />
       <Route path='/cuenta/actualizar-contrasena' element={<UpdatePassword onBack={showProfile}/>} />
       <Route path='/cuenta/eliminar-cuenta' element={<DeleteAccount onDeletedAccount={showLogin} onBack={showProfile}/>} />
-      <Route path='/*' element={<Navigate replace to='/'/>} />
+      {/* <Route path='/*' element={<Navigate replace to='/'/>} /> */}
     </Routes>
   </div>
 

@@ -18,6 +18,8 @@ function Header({ onLogo, onProfile, onCheeseburger}) {
 
     return <>
         <header className='header'>
+
+            <h1 className='header-title'>Dreams Factory</h1>
             <a href='' onClick={goToLogo}> <IconLogo /> </a>
             <a href='' onClick={goToProfile}> <IconProfile /> </a>
             <a href='' onClick={goToCheeseburger}> <IconCheeseburger /> </a>

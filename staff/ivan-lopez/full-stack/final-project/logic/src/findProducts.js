@@ -2,10 +2,9 @@ const { models: { Product } } = require('data')
 const { validators: { validateString } } = require('commons')
 
 
-function findProducts(query, description) {
-    if (query !== null) validateString(query, 'name')
-    if (description !== null) validateString(description, 'description')
-   
+function findProducts(query) {
+    if (query !== null) validateString(query, 'query')
+
     const criteria = {}
 
     if (query) {
@@ -13,19 +12,18 @@ function findProducts(query, description) {
 
         criteria.$or = [
             { name: QUERY_REGEX },
-            { description: QUERY_REGEX }
+            { description: QUERY_REGEX },
+            { color: QUERY_REGEX },
+            { size: QUERY_REGEX }
         ]
     }
 
-    if (description) criteria.description = new RegExp(description, 'i')
-
-
     return Product.find(criteria).lean()
         .then(products => products.map(product => {
-                product.id = product._id.toString()
+            product.id = product._id.toString()
 
-                delete product._id
-                delete product.__v
+            delete product._id
+            delete product.__v
 
             return product
         }))

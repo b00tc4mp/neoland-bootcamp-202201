@@ -25,10 +25,9 @@ function Home() {
         </nav>
 
         <Search className='home__search' onSearch={search} />
-        <Results />
+        
         <Routes>
             <Route path='search' element={<Results />} />
-
         </Routes>
     </div>
 }

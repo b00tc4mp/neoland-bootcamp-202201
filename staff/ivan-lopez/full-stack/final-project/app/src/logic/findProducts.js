@@ -1,14 +1,10 @@
 import { validators } from 'commons'
 const { validateString } = validators
 
-function findProducts(query, description) {
-    query !== null && validateString(query)
-    description !== null && validateString(description)
+function findProducts(query) {
+    validateString(query)
 
-    return fetch(`http://localhost:8080/api/products?${query !== null? `query=${query}` : ''}&${description !== null? `description=${description}` : ''}`,{
-        headers: { }
-    
-    })
+    return fetch(`http://localhost:8080/api/products?q=${query}`)
         .then(res => {
             const { status } = res
 

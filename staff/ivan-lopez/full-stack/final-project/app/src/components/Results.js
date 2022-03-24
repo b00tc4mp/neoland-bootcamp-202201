@@ -11,13 +11,12 @@ function Results () {
     const [products, setProducts] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const query = searchParams.get('query')
-    const description = searchParams.get('description')
+    const query = searchParams.get('q')
 
 
     useEffect(() => {
         try {
-            findProducts(query, description)
+            findProducts(query)
             .then(products => {
                 setProducts(products)
             })
@@ -25,7 +24,7 @@ function Results () {
         } catch (error) {
             alert(error.message)
         }
-    }, [query, description])
+    }, [query])
 
 
     return <>
