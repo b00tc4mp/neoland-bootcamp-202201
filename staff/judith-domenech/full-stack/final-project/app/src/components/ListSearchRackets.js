@@ -6,7 +6,6 @@ import { searchRackets, listFavoritesRackets } from '../logic'
 export function ListSearchRackets({ query = '' }) {
     const [rackets, setRackets] = useState([])
 
-
     useEffect(async () => {
         try {
             const rackets = await searchRackets(query)

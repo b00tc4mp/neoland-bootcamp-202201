@@ -1,16 +1,25 @@
-import { Button, TrashIcon } from '.'
+import { Button, CancelIcon } from '.'
+import { useState, useEffect } from 'react'
+import { retrieveUser } from '../logic'
 import './CommentCard'
 
-export function CommentCard({ user, isFavorite }) {
+export function CommentCard({ comment }) {
+    const [owned, setOwned] = useState(false)
+    
+    useEffect( async() => {
+        try {
+         const user = await retrieveUser(sessionStorage.token)
+         setOwned(user.id === comment.userId )
+        } catch (error) {
+            alert(error.message)
+        }
+    }, [])
 
     return <>
-    <Button>
-        <TrashIcon></TrashIcon>
-    </Button>
-        <h3>{user.name}</h3>
-        <p>{racket.model}</p>
-        <img src={racket.image} />
-        <p>{racket.price}€</p>
+        {owned && <Button><CancelIcon /> </Button>}
+        <h3>{comment.user}</h3>
+        <p>{comment.text}</p>
+        <p>{new Date(comment.date).toLocaleDateString()}</p>
 
     </>
 }

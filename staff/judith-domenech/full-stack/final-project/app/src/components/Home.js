@@ -4,9 +4,22 @@ import { Profile, UpdatePassword, DeleteAccount, Register, Search } from './inde
 import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate, useSearchParams, Navigate } from 'react-router-dom'
 import logo from '../assets/racketMatch.png'
+import { HeaderBar } from './HeaderBar'
+import { MenuBar } from './MenuBar'
 
 export function Home() {
-    const [search, setSearch] = useSearchParams()
+    const [query, setQuery] = useState('')
+   
+   return <div>
+       <HeaderBar />
+       <Search />
+       <MenuBar />
+
+    </div>
+}
+
+
+/*     const [search, setSearch] = useSearchParams()
     const q = search.get('q')
     const [query, setQuery] = useState(q)
     // setamos la constante al metdodo?? use navigate qu enos facilta la navegacion entre vista similar al setView
@@ -55,40 +68,4 @@ export function Home() {
     }
 
     const showGoToSearchUserRacket = () => navigate('searchYourRacket')
-
-
-    return <div className="home">
-        <nav className="home__header" >
-            <img className='home__logo' src={logo} alt='Logo racketMatch' width='' height=''></img>
-            <a className="" href="" onClick={goToRegister}>Register</a>
-            <a className="" href="" onClick={goToLogin}>Login</a>
-        </nav>
-
-
-        {/*  si hay token se muestre si no hay token no se muestra */}
-        <nav className="home__footer">
-            <a href="" onClick={goToProfile}>Profile </a>
-            <a href="" onClick={goToFavorites}> Favoritos</a>
-            <a href="" onClick={goToSearchUserRacket}> Tu Pala</a>
-        </nav>
-
-        <Routes>
-            <Route index element={<Search /* onItem={goToDetails} */ onQuery={doSearch} query={query} />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/profile' element={<Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} />
-            <Route path='profile/update-password' element={<UpdatePassword onBack={showProfile} />} />
-            <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile} /* onDeletedAccount={onLogOut} onLogout={onLogOut} */ />} />
-
-        </Routes>
-    </div>
-}
-
-/* 
-        <Routes>
-            <Route index element={<Search onItem={goToDetails} onQuery={doSearch} query={query} />} />
-            <Route path='search' element={<Search onItem={goToDetails} onQuery={doSearch} query={query} />} /> 
-            <Route path='profile' element={<Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} />} />
-            <Route path='profile/update-password' element={<UpdatePassword onBack={showProfile} />} />
-            <Route path='profile/delete-account' element={<DeleteAccount onBack={showProfile} onDeletedAccount={onLogOut} onLogout={onLogOut} />} />
-        </Routes>
      */

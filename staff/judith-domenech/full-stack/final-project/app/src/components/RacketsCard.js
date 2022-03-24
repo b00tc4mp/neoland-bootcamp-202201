@@ -6,7 +6,7 @@ export function RacketsCard({ racket: _racket}) {
 
     const [racket, setRacket] = useState(_racket || {})
     return <>
-        < ToggleFavoriteRackets racket={racket} />
+        {sessionStorage.token && <ToggleFavoriteRackets racket={racket} />}
         <h3>{racket.brand}</h3>
         <p>{racket.model}</p>
         <img src={racket.image} />

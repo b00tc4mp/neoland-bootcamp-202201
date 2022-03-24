@@ -1,9 +1,7 @@
-import './ListFavoritesRackets'
+import './ListFavoritesRackets.sass'
 import { useState, useEffect } from 'react'
 import { listFavoritesRackets } from '../logic'
 import { RacketsCard } from '.'
-
-
 
 export function ListFavoritesRackets() {
     const [favorites, setFavorites] = useState([])

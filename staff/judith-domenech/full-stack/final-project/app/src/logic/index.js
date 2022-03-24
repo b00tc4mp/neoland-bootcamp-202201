@@ -10,6 +10,7 @@ import searchRackets from './searchRackets'
 import searchUserRackets from './searchUserRackets'
 import retrieveRacket from './retrieveRacket'
 import createComment from './createComment'
+import listComments from './listComments'
 import deleteComment from './deleteComment'
 
 export {
@@ -25,5 +26,6 @@ export {
     searchUserRackets,
     retrieveRacket,
     createComment,
+    listComments,
     deleteComment
 }

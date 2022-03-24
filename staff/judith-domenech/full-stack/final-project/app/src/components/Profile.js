@@ -50,11 +50,11 @@ export function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
         <form className='profile__form' onSubmit={updateProfile} method='post'>
             <Input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name} label="Nombre"/>
             <Input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email} label="E-mail" />
-            <Button type ='submit' innertext='Editar'/>
-            <Button type= 'button' onClick={onLogOut} innertext='Log out' /> 
-       
-            <Link  href="" onClick={goToUpdatePassword} children={"Cambiar Contraseña"}/> 
-            <Link  href="" onClick={goToDeleteAccount} children={"Borrar Cuenta"}></Link>
+            <Button type ='submit'>Editar</Button>
+            <Button type= 'button' onClick={onLogOut}>Cerrar sessión</Button> 
+
+            <Link  href="" onClick={goToUpdatePassword}>Cambiar Contraseña</Link> 
+            <Link  href="" onClick={goToDeleteAccount}>Borrar Cuenta</Link>
         </form>
 
     </div>

@@ -1,6 +1,6 @@
 import './RacketDetails.sass'
 import {retrieveRacket} from '../logic'
-import { ToggleFavorite, CommentIcon } from '.'
+import { ToggleFavoriteRackets, CommentIcon, ListComments } from '.'
 import {useEffect, useState} from 'react'
 
 export function RacketDetails({ racketId }) {
@@ -19,6 +19,7 @@ export function RacketDetails({ racketId }) {
     }, [])
 
     return <div>
+        {sessionStorage.token && <ToggleFavoriteRackets racket={racket} />}
         <h1>{racket.brand}</h1>
         <img src={racket.image}/>
         <p>{racket.model}</p>
@@ -28,9 +29,8 @@ export function RacketDetails({ racketId }) {
         <p>{racket.type}</p>
         <p>{racket.player}</p>
         <p>{racket.weight}</p>
-        <CommentIcon>
-            
-        </CommentIcon>
+        {sessionStorage.token &&<CommentIcon />}
+        <ListComments racketId={racketId}/>
 
     </div>
 }
