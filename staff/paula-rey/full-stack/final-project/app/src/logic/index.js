@@ -13,6 +13,7 @@ import updateLocation from './updateLocation'
 import createComment from './createComment'
 import listFavoritesLocations from './listFavoritesLocations'
 import listLocations from './listLocations'
+import listLocationComments from './listLocationComments'
 
 export {
     registerUser,
@@ -29,5 +30,6 @@ export {
     updateLocation,
     createComment,
     listFavoritesLocations,
-    listLocations
+    listLocations,
+    listLocationComments
 }

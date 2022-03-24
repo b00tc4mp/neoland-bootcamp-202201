@@ -10,7 +10,10 @@ export function ListFavorites() {
     useEffect(async() => {
         try {
             const favorites = await listFavoritesLocations(sessionStorage.token)
-            setFavorites (favorites)
+
+            favorites.forEach(favorite => favorite.isFavorite = true)
+            
+            setFavorites(favorites)
 
         } catch (error) {
             alert(error.message)
@@ -21,7 +24,7 @@ export function ListFavorites() {
          {!!favorites.length && <ul>
             {favorites.map(favorite => 
             <li key={favorite.id} /*onClick={() => goToLocation(location.id)}*/>
-                <LocationCard location={favorite} isFavorite={true}/> 
+                <LocationCard location={favorite} /> 
             </li>)}
             </ul>}
     </div>

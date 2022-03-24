@@ -28,6 +28,12 @@ import {
   OwnerLocationCard,
   ListLocations,
   ListSearchResults,
+  Search,
+  NavigationMenu,
+  Header,
+  CommentCard,
+  ListComments,
+  Profile,
 
   FollowButton,
   FavoriteButton
@@ -63,23 +69,12 @@ function App() {
 
 
   return <div>
-    <ListSearchResults />
-    {/* <ListFavorites/> */}
-    {/* <LocationCard location={{title:'Prueba', type:'Bar', city:'León'}} isFavorite={true}/> */}
-    {/* <OwnerLocationCard location={{title:'Prueba', type:'Bar', city:'León'}} /> */}
-    {/* <Login/> */}
-    {/* <CommentIcon/>
-    <DeleteIcon/>
-    <EditIcon/>
-    <FavoriteIcon/>
-    <FollowIcon/>
-    <LocationIcon/>
-    <PlusIcon/>
-    <ProfileIcon/> */}
-    {/* <FavoriteIcon locationId="6239ba8129f1ce5763d55672" /> */}
-    {/* <Details locationId="62336941e973046272784a55"/> */}
-    {/* <FavoriteButton locationId={"62336941e973046272784a55"} isFavorite={false}/> */}
-    {/* <FollowButton userId={"62336941e973046272784a49"} isFollow={false}/> */}
+    <Profile/>
+    {/* <FavoriteButton location={"62336941e973046272784a53"}/> */}
+    {/* <Details locationId="62336941e973046272784a53"/> */}
+    {/* <Home/> */}
+    {/* <Search/> */}
+    {/* <ListSearchResults /> */}
   </div>
 
 }

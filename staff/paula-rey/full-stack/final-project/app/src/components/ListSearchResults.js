@@ -5,15 +5,20 @@ import { LocationCard } from './'
 
 export function ListSearchResults({ query='', type='', city='' }) {
     const [locations, setLocations] = useState([])
-    const [favorites, setFavorites] = useState([])
-
+   
 
     useEffect(async() => {
         try {
             const locations = await searchLocations(sessionStorage.token, query, type, city)
             const favorites = await listFavoritesLocations(sessionStorage.token)
-            setLocations (locations)
-            setFavorites (favorites)
+            
+            locations.forEach(location => {
+                location.isFavorite = favorites.some(({id}) => id === location.id)
+                // location.isFavorite = favorites.some(favorite => favorite.id === location.id)
+            })
+            
+            setLocations(locations)
+            
 
         } catch (error) {
             alert(error.message)
@@ -24,7 +29,7 @@ export function ListSearchResults({ query='', type='', city='' }) {
          {!!locations.length && <ul>
             {locations.map(location => 
             <li key={location.id} /*onClick={() => goToLocation(location.id)}*/>
-                <LocationCard location={location} isFavorite={favorites.some(({id}) => id === location.id)}/> 
+                <LocationCard location={location} /> 
             </li>)}
             </ul>}
     </div>

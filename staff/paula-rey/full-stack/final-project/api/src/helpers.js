@@ -21,7 +21,9 @@ function verifyTokenAndGetUserId(req) {
 }
 
 
+
+
 module.exports = {
     createTokenWithUserId,
-    verifyTokenAndGetUserId
+    verifyTokenAndGetUserId,
 }

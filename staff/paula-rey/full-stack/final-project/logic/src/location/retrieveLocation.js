@@ -14,6 +14,7 @@ function retrievelocation(userId, locationId) {
         .then(location => {
             if(!location) throw new Error(`location with id ${locationId} does not exist`)
             
+            location.id = location._id.toString()
             location.userId = location.user._id.toString()
             location.userName = location.user.name 
             

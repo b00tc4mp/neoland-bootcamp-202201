@@ -15,9 +15,9 @@ export function OwnerLocationCard({ location: _location }) {
         <Link>
             <EditIcon />
         </Link>
-        <Link>
+        <Button>
             <DeleteIcon />
-        </Link>
+        </Button>
 
     </div>
 }

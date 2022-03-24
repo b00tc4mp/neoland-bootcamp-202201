@@ -3,15 +3,15 @@ import { FavoriteButton } from '.'
 import { useState } from'react'
 
 
-export function LocationCard({location: _location, isFavorite}) {
+export function LocationCard({location: _location}) {
 
     const[location, setLocation] = useState(_location || {})
     
     return <div className='location-card'>
-        <FavoriteButton locationId={location.id} isFavorite={isFavorite}/>
+        <FavoriteButton location={location}/>
         <h1>{location.title}</h1>
         <h2>{location.type}</h2>
-        <img src={location.urlImage}/>
+        <img src={location.image}/>
         <p>{location.city}</p>
         
     </div>

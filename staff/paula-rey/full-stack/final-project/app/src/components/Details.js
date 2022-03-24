@@ -1,32 +1,34 @@
 import './Details.sass'
 import { useState, useEffect } from 'react'
-import { retrieveUser, retrieveLocation } from '../logic'
-import { useParams } from 'react-router-dom'
+import { retrieveLocation, listFavoritesLocations} from '../logic'
+import { ListComments } from './ListComments'
+import { FavoriteButton } from './'
 
 export function Details({locationId}) {
     const [location, setLocation] = useState({})
 
-    useEffect(() => {
+    useEffect(async() => {
         try {
-            retrieveLocation(sessionStorage.token, locationId)
-                .then(location => {
-                    setLocation(location)
-                })
-                .catch(error => alert(error.message))
+            const location = await retrieveLocation(sessionStorage.token, locationId)
+            const favorites = await listFavoritesLocations(sessionStorage.token)
+
+            location.isFavorite = favorites.some(({id}) => id === location.id)
+            setLocation(location)
+            
         } catch (error) {
             alert (error.message)
         }
     }, [])
 
-    return <div className='detail'>
+    return <div className='details'>
+        <FavoriteButton location={location}/>
         <h1>{location.title}</h1>
-        <p>{location.date}</p>
-        <img src={location.urlImage}/>
+        <p>{new Date(location.date).toLocaleDateString()}</p>
+        <img src={location.image}/>
         <h2>{location.type}</h2>
-        <p>{location.adress}</p>
+        <p>{location.address}</p>
         <p>{location.city}</p>
-        <p>{location.description}</p>
-        
+        <ListComments locationId={locationId}/>
     </div>
 }
 

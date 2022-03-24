@@ -1,16 +1,16 @@
 import './FavoriteButton.sass'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { toggleFavoriteLocation } from '../../../logic'
 import { FavoriteIcon } from '../../icons'
 import { Button } from '.'
 
-export function FavoriteButton({ locationId, isFavorite = false }) {
-    const [favorite, setFavorite] = useState(isFavorite)
+export function FavoriteButton({ location }) {
+    const [favorite, setFavorite] = useState(location.isFavorite)
 
     const toggleFavorite = async () => {
         try {
-            await toggleFavoriteLocation(sessionStorage.token, locationId)
-
+            
+            await toggleFavoriteLocation(sessionStorage.token, location.id)
             setFavorite(!favorite)
 
         } catch (error) {
@@ -25,27 +25,8 @@ export function FavoriteButton({ locationId, isFavorite = false }) {
 
     return <>
         <Button type="button" onClick={onToggle}>
-            <FavoriteIcon className={`favorite-icon ${favorite ? 'favorite-full' : 'favorite-empty'}`} />
+            <FavoriteIcon className={`${favorite ? 'favorite-full' : 'favorite-empty'}`} />
         </Button>
     </>
 }
 
-
-
-
-
-
-    // const toggleFavorite = event =>{
-    //     try{
-    //         toggleFavoriteLocation(sessionStorage.token, locationId)
-    //             .then(()=>{
-    //                 setFavorite(!favorite)
-    //             })
-
-    //     } catch (error) {
-    //         alert(error.message)
-    //     }
-    // }
-
-    //     async function foo(){}
-    //     const foo = async () => {}

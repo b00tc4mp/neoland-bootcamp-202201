@@ -1,60 +1,46 @@
 import './Search.sass'
-import { useState, useEffect } from 'react'
-import { retrieveUser } from '../logic'
-import Results from './ListSearchResults'
+import { useState } from 'react'
+import { ListSearchResults } from './ListSearchResults'
+import { SearchIcon, CleanSearchIcon, Input, Select, Button } from '.'
+import { data } from 'commons'
+const { locationTypes, locationCities } = data
 
-export function Search(onFilter, filter, onItem) {
-    // const [view, setView] = useState(filter && 'results')
-    // const [name, setName] = useState('name')
+export function Search() {
+    const [query, setQuery] = useState('')
+    const [type, setType] = useState('')
+    const [city, setCity] = useState('')
 
-    // const {query,type,city} = filter
-    
+
     const search = event => {
         event.preventDefault()
-        debugger
 
         const query = event.target.query.value
-        const type = event.target.query.value
+        const type = event.target.type.value
         const city = event.target.city.value
-        
-        onFilter(query, type, city)
-        // showResults()
+
+        setQuery(query)
+        setType(type)
+        setCity(city)
     }
 
-    // const showResults = () => setView('results')
+    const cleanSearch = (event) => {
+        event.preventDefault()
 
-    useEffect(() => {
-        // try {
-        //     retrieveUser(sessionStorage.token)
-        //         .then(user => setName(user.name))
-        //         .catch(error => alert(error.message))
-        // } catch (error) {
-        //     alert(error.message)
-        // }
-    })
+        setQuery('')
+        setType('')
+        setCity('')
+    } 
 
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
-            <input className="search__query-input" type="text" name="query" placeholder="query"/>
-            <select className="search__type-input" type="text" name="type" placeholder="type">
-                <option value="null">type</option>
-                <option value="Bar">Bar</option>
-                <option value="Restaurante">Restaurante</option>
-                <option value="Playa">Playa</option>
-                <option value="Hotel">Hotel</option>
-            </select>
-            <select className="search__city-input" type="text" name="city" placeholder="city"> 
-                <option value="null">city</option>
-                <option value="Barcelona">Barcelona</option>
-                <option value="Girona">Girona</option>
-                <option value="Tarragona">Tarragona</option>
-            </select>
-
-            <button>Search</button>
+            <Input className="search__query-input" type="text" name="query" placeholder="Busca" defaultValue={query} />
+            <Select className="search__type-input" options={locationTypes} selected={type} name="type" placeholder="Todos" label= "Tipo" />
+            <Select className="search__city-input" options={locationCities} selected={city} name="city" placeholder="Todas" label= "Ciudad" />
+            <Button type="Reset" onClick={cleanSearch}><CleanSearchIcon/></Button>
+            <Button type="submit"><SearchIcon/></Button>
         </form>
-
-        {/* {view === 'resuts' && <Results filter={filter} onItem={onItem}/>}  */}
+            <ListSearchResults query={query} type={type} city={city}/>
     </div>
 
 }
