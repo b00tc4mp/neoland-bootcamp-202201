@@ -31,7 +31,7 @@ import {
   ListFollowingUsers,
   ListSearchUsersResults,
   ListUserPublicActions,
-  Search,
+  SearchActions,
   NavigationBar,
   ActsNavigationBar,
   CreatedActions,
@@ -40,7 +40,12 @@ import {
   Schedules,
   Header,
   Home,
-  Modal
+  Modal,
+  Community,
+  SearchUsers,
+  UserProfile,
+  Profile,
+  UpdateProfile
 } from './components'
 
 
@@ -49,21 +54,23 @@ const App = () => {
   return <>
     {/* <Login /> */}
     {/* <Register /> */}
-    {/* <Search /> */}
+    {/* <SearchActions /> */}
     {/* <NavigationBar/> */}
     {/* <ActsNavigationBar /> */}
+    {/* <Community /> */}
+    {/* <SearchUsers /> */}
     {/* <Header /> */}
     {/* <Home /> */}
     {/* <CreateAction /> */}
-    <UpdateAction actionId="623d95304b270f1ae13b4a67"/>
+    {/* <UpdateAction actionId="623d95304b270f1ae13b4a67"/> */}
     {/* <OwnerActionCard action={{ description: 'hola', authorUsername: 'lolo', requiredBudget: '10', requiredTime: '0', public: true }} isFavorite={true} /> */}
-    {/* <CreateSchedule actionId="623988d11fea1b6db352373d"/> */}
+    {/* <CreateSchedule actionId="623d95304b270f1ae13b4a67"/> */}
     {/* <ListFavoriteActions /> */}
     {/* <Modal text='helloWorld' success={() => console.log('succes')} closeModal={() => console.log('close')} /> */}
     {/* <ListSearchActionsResults /> */}
     {/* <ListFollowingUsers/> */}
     {/* <ListSearchUsersResults query='' /> */}
-    {/* <ListUserPublicActions userId='62336a0e5da2be05a8fa0c5e' /> */}
+    {/* <ListUserPublicActions userId='623dc52b567bfdbbb4394957' /> */}
     {/* <ScheduleCard schedule={
       {
         date: "2020-03-10T13:00:00.000Z",
@@ -77,8 +84,13 @@ const App = () => {
       }}/> */}
     {/* <ListSchedules /> */}
     {/* <Schedules /> */}
-    {/* <CreatedActions/> */}
+    <UpdateProfile />
 
+    {/* AQUII */}
+    {/* <UserProfile userId='623dc52b567bfdbbb4394957'/> */}
+    {/* <CreatedActions/> */}
+    {/* <ListActions/> */}
+    {/* <Profile/> */}
     {/* <ToggleFavoriteButton actionId='62336a0f5da2be05a8fa0c7e' isFavorite={false} />
     <ToggleFollowButton followId='62336a0e5da2be05a8fa0c62' isFollow={false} /> */}
 

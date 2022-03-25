@@ -25,6 +25,7 @@ export const ListSearchUsersResults = ({ query = '' }) => {
 
     return <>
         <div>
+            <h2>Resultados</h2>
             {!!users.length &&
                 <ul> {users.map(user =>
                     <li key={user.id}>

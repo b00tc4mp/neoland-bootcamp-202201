@@ -1,11 +1,16 @@
 import './Schedules.sass'
-import { ListSchedules } from '.'
+import { ListSchedules, Header, ActsNavigationBar, NavigationBar } from '.'
 
 export const Schedules = () => {
 
     return <>
-        <h2>Agendadas</h2>
-        {/* <p>calendario?</p> */}
-        <ListSchedules />
+        <Header />
+        <ActsNavigationBar />
+        <div>
+            <h2>Agendadas</h2>
+            {/* <p>calendario?</p> */}
+            <ListSchedules />
+        </div>
+        <NavigationBar />
     </>
 }

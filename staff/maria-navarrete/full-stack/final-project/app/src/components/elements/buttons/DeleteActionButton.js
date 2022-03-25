@@ -13,12 +13,10 @@ export const DeleteActionButton = ({ actionId }) => {
     }
 
     const showDeleteModal = event => {
-
         setShowModal(true)
     }
 
     const closeDeleteModal = event => {
-
         setShowModal(false)
     }
 

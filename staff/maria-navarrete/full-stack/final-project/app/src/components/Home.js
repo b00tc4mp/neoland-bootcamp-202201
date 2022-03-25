@@ -1,11 +1,11 @@
 import './Home.sass'
-import { Header, Search, NavigationBar } from '.'
+import { Header, SearchActions, NavigationBar } from '.'
 
 export const Home = () => {
 
     return <>
         <Header />
-        <Search />
+        <SearchActions />
         <NavigationBar />
     </>
 }

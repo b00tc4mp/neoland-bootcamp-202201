@@ -1,6 +1,6 @@
 import './CreateSchedule.sass'
 import { useState, useEffect } from 'react'
-import { Input, Select, Button, Link, CheckIcon, XIcon, MoneyIcon, StopwatchIcon, CalendarIcon, RepeatIcon } from '.'
+import { Input, Select, Button, Link, CheckIcon, XIcon, MoneyIcon, StopwatchIcon, CalendarIcon, RepeatIcon, Header, NavigationBar } from '.'
 import { data } from 'commons'
 import { retrieveAction, createSchedule } from '../logic'
 const { repeatOptions } = data
@@ -41,18 +41,21 @@ export const CreateSchedule = ({ actionId, onCreated }) => {
     }
 
     return <>
-        <h2>Agendar Acción</h2>
-        <form onSubmit={onSubmit}>
-            <Input type='text' name='description' defaultValue={description} disabled placeholder='Descripción' />
-            <Input type='text' name='requiredTime' defaultValue={requiredTime} disabled label={<StopwatchIcon />} />
-            <Input type='text' name='requiredBudget' defaultValue={requiredBudget} disabled label={<MoneyIcon />} />
-            <Input type='date' name='date' placeholder='Fecha' label={<CalendarIcon />} required />
-            <Select name='repeat' id='repeat' options={repeatOptions} required placeholder='Repetición' label={<RepeatIcon />} />
-            <div>
-                <Button type='submit'> <CheckIcon /> </Button>
-                <Link><XIcon /></Link>
-            </div>
-
-        </form>
+        <Header />
+        <div>
+            <h2>Agendar Acción</h2>
+            <form onSubmit={onSubmit}>
+                <Input type='text' name='description' defaultValue={description} disabled placeholder='Descripción' />
+                <Input type='text' name='requiredTime' defaultValue={requiredTime} disabled label={<StopwatchIcon />} />
+                <Input type='text' name='requiredBudget' defaultValue={requiredBudget} disabled label={<MoneyIcon />} />
+                <Input type='date' name='date' placeholder='Fecha' label={<CalendarIcon />} required />
+                <Select name='repeat' id='repeat' options={repeatOptions} required placeholder='Repetición' label={<RepeatIcon />} />
+                <div>
+                    <Button type='submit'> <CheckIcon /> </Button>
+                    <Link><XIcon /></Link>
+                </div>
+            </form>
+        </div>
+        <NavigationBar />
     </>
 }

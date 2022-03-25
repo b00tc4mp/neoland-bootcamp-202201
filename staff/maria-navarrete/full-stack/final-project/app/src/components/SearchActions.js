@@ -1,10 +1,10 @@
-import './Search.sass'
-import { useState, UseEffect } from 'react'
+import './SearchActions.sass'
+import { useState } from 'react'
 import { Input, Select, Button, MoneyIcon, StopwatchIcon, FilterIcon, RemoveFilterIcon, ListSearchActionsResults } from '.'
 import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
-export const Search = () => {
+export const SearchActions = () => {
     const [query, setQuery] = useState('')
     const [requiredBudget, setRequiredBudget] = useState('')
     const [requiredTime, setRequiredTime] = useState('')
@@ -28,14 +28,16 @@ export const Search = () => {
     }
 
     return <>
-        <form onSubmit={search} >
-            <Input type='text' name='query' placeholder='Busca acciones' defaultValue={query && query} />
-            <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} selected={requiredTime} placeholder='Todos' label={<StopwatchIcon />} />
-            <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} selected={requiredBudget} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
-            <Button type='submit'><FilterIcon /></Button>
-            <Button type='reset' onClick={cleanSearch}><RemoveFilterIcon /></Button>
-        </form>
-        <ListSearchActionsResults query={query} requiredTime={requiredTime} requiredBudget={requiredBudget} />
+        <div>
+            <form onSubmit={search} >
+                <Input type='text' name='query' placeholder='Busca acciones' defaultValue={query && query} />
+                <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} selected={requiredTime} placeholder='Todos' label={<StopwatchIcon />} />
+                <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} selected={requiredBudget} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
+                <Button type='submit'><FilterIcon /></Button>
+                <Button type='reset' onClick={cleanSearch}><RemoveFilterIcon /></Button>
+            </form>
+            <ListSearchActionsResults query={query} requiredTime={requiredTime} requiredBudget={requiredBudget} />
+        </div>
     </>
 
 

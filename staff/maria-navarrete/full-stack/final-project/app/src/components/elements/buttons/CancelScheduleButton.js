@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Modal, Button, xMarkIcon } from '../../'
+import { Modal, Button, XMarkIcon } from '../../'
 import { cancelSchedule } from '../../../logic'
 
 
@@ -22,7 +22,7 @@ export const CancelScheduleButton = ({ scheduleId }) => {
     }
 
     return <>
-        <Button onClick={showCancelModal}></Button>
+        <Button onClick={showCancelModal}><XMarkIcon /></Button>
         {showModal && <Modal text='' success={cancelSched} closeModal={closeCancelModal} />}
     </>
 }

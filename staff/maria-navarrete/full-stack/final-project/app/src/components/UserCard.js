@@ -10,7 +10,7 @@ export const UserCard = ({ user: _user }) => {
         <div >
             <UserIcon />
             <span>{user.username}</span>
-            <ToggleFollowButton user={user}/>
+            <ToggleFollowButton userId={user.id} isFollow={user.isFollow} />
         </div>
     </>
 }

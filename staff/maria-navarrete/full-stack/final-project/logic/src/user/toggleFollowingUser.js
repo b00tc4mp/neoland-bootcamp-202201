@@ -14,7 +14,7 @@ function toggleFollowingUser(userId, followId) {
             if (!follow) throw Error(`user with id ${followId} does not exist`)
 
             const index1 = user.following.indexOf(followId)
-            const index2 = follow.followers.indexOf(followId)
+            const index2 = follow.followers.indexOf(userId)
 
             if (index1 === -1) {
                 user.following.push(followId)
@@ -23,7 +23,7 @@ function toggleFollowingUser(userId, followId) {
                 user.following.splice(index1, 1)
                 follow.followers.splice(index2, 1)
             }
-            return Promise.all([user.save(), follow.save()]) 
+            return Promise.all([user.save(), follow.save()])
         })
         .then(() => { })
 }

@@ -1,9 +1,10 @@
 import { validators } from 'commons'
-const { validateToken } = validators
+const { validateToken, validateId } = validators
 
 
 function retrieveUserPublicInfo(token, consultedUserId) {
     validateToken(token)
+    validateId(consultedUserId, 'consulted user id')
 
     return fetch(`http://localhost:8080/api/users/${consultedUserId}`, {
         headers: {

@@ -15,6 +15,7 @@ export const ScheduleCard = ({ schedule: _schedule }) => {
             <CancelScheduleButton />
             <p>Fecha: {new Date(schedule.date).toLocaleString()}</p>
             <CompleteScheduleButton schedule={schedule} />
+            <p>{schedule.completed.length} cumplidas</p>
         </div>
     </>
 }
