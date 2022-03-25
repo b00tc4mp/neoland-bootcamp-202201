@@ -1,91 +1,59 @@
 import './App.sass'
-import {
-  Routes,
-  Route, useNavigate, Navigate
-} from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Home, Login, Register } from './pages'
 import { validators } from 'commons'
-
-import {
-  Landing,
-  Register,
-  Login,
-  Home,
-  Details,
-  AddLocation,
-  UpdateLocation,
-  AddComment,
-  Favorites,
-  ListFavorites,
-  CommentIcon,
-  DeleteIcon,
-  EditIcon,
-  FavoriteIcon,
-  FollowIcon,
-  LocationIcon,
-  PlusIcon,
-  ProfileIcon,
-  LocationCard,
-  OwnerLocationCard,
-  ListLocations,
-  ListSearchResults,
-  Search,
-  NavigationMenu,
-  Header,
-  CommentCard,
-  ListComments,
-  Profile,
-
-  FollowButton,
-  FavoriteButton
-
-} from './components'
-
+import { Header, NavigationMenu } from './components'
 const { validateToken } = validators
 
 function App() {
-  let tokenValid = true
 
-  try {
-    validateToken(sessionStorage.token)
-  } catch (error) {
-    tokenValid = false
+  const isValidToken = () => {
+    try {
+      validateToken(sessionStorage.token)
+      return true
+    }
+    catch (error) {
+      alert(error.message)
+      return false
+    }
   }
 
   const navigate = useNavigate()
 
-  const showLogin = () => navigate('login')
-
-  const showRegister = () => navigate('register')
-
-  const keepTokenNShowHome = token => { // and = N
-    sessionStorage.token = token
-    navigate('/')
-  }
-
-  const deleteTokenNShowLanding = () => {
-    delete sessionStorage.token
-    navigate('/')
-  }
-
+  // views
+  const showHome = () => navigate('/')
+  const showLogin = () => navigate('/iniciar-sesion')
+  const showRegister = () => navigate('/registro')
+  // const showFavorites = () => navigate('/favorites')
+  // const showProfile = () => navigate('/profile')
 
   return <div>
-    <Profile/>
-    {/* <FavoriteButton location={"62336941e973046272784a53"}/> */}
-    {/* <Details locationId="62336941e973046272784a53"/> */}
-    {/* <Home/> */}
-    {/* <Search/> */}
-    {/* <ListSearchResults /> */}
+    {
+      sessionStorage.token && isValidToken() &&
+      <Header />
+    }
+
+    <Routes>
+      <Route path="/" element={
+        sessionStorage.token && isValidToken() ? <Home /> : <Navigate replace to='/iniciar-sesion' />
+      } />
+      <Route path="/iniciar-sesion" element={
+        !sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to='/' />
+      } />
+      <Route path="/registro" element={
+        !sessionStorage.token ? <Register onLogin={showLogin} onRegistered={showLogin} /> : <Navigate replace to='/' />
+      } />
+      <Route path="/404" element={<h1>Page not found</h1>} />
+      <Route path="/*" element={<Navigate replace to='/404' />} />
+    </Routes>
+    
+    {
+      sessionStorage.token && isValidToken() &&
+      <NavigationMenu />
+    }
   </div>
 
 }
 
 export default App
-
-
-// <Routes>
-// <Route path="/*" element={sessionStorage.token ? <Home onLogOut={deleteTokenNShowLanding} /> : <Landing onLogin={showLogin} onRegistered={showRegister} />} />
-// <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
-// <Route path="/login" element={!sessionStorage.token ? <Login onLoggedIn={keepTokenNShowHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
-// <Route path="*" element={!sessionStorage.token ? <h1>Sorry, this path does not exist :/</h1> : <Navigate replace to="/" />} />
-// </Routes>
 

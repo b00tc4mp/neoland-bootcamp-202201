@@ -4,7 +4,7 @@ const { validators: { validateId } } = require('commons')
 function listFollowsUsers(userId) {
     validateId(userId, 'user id')
 
-    return User.findById(userId).lean().populate('follows').select('name email')
+    return User.findById(userId).lean().populate('follows')
     .then(user => {
 
         if (!user) throw new Error(`user with id ${userId} does not exist`)

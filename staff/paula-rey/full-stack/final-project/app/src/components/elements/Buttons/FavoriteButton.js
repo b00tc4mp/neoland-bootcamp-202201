@@ -9,7 +9,6 @@ export function FavoriteButton({ location }) {
 
     const toggleFavorite = async () => {
         try {
-            
             await toggleFavoriteLocation(sessionStorage.token, location.id)
             setFavorite(!favorite)
 

@@ -1,8 +1,8 @@
-import './Profile.sass'
+import './ProfileData.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-export function Profile({onUpdatePassword, onDeleteAccount}) {
+export function ProfileData({onUpdatePassword, onDeleteAccount}) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
 

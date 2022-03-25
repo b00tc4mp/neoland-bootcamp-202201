@@ -1,5 +1,5 @@
 import './CommentCard.sass'
-import { Button, DeleteIcon } from '.'
+import { Button, DeleteIcon } from './'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../logic'
 

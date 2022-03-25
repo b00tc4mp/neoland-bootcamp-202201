@@ -7,9 +7,15 @@ export function NavigationMenu() {
     return <>
         <nav>
             <ul>
-                <li><Link><LocationIcon/></Link>Buscador</li>
-                <li><Link><FavoriteIcon/></Link>Favoritas</li>
-                <li><Link><ProfileIcon/></Link>Perfil</li>
+                <li>
+                    <Link><LocationIcon/>Buscador</Link>
+                </li>
+                <li>
+                    <Link><FavoriteIcon/>Favoritas</Link>
+                </li>
+                <li>
+                    <Link><ProfileIcon/>Perfil</Link>
+                </li>
             </ul>
         </nav>
     

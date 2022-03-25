@@ -4,12 +4,12 @@ import { toggleFollowUser } from '../../../logic'
 import { FollowIcon } from '../../icons'
 import { Button } from '.'
 
-export function FollowButton({ userId, isFollow = false }) {
-    const [follow, setFollow] = useState(isFollow)
+export function FollowButton({ user }) {
+    const [follow, setFollow] = useState(user.isFollow)
 
     const toggleFollow = async () => {
         try {
-            await toggleFollowUser(sessionStorage.token, userId)
+            await toggleFollowUser(sessionStorage.token, user.id)
 
             setFollow(!follow)
 
