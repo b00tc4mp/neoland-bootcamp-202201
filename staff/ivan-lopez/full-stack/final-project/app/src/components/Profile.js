@@ -10,13 +10,6 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
     const [email, setEmail] = useState()
     const [isShowModal, setIsShowModal] = useState()
 
-    const toggleModal = () => {
-        setIsShowModal(true)
-    }
-
-    const closeModal = () => {
-        setIsShowModal(false)
-    }
 
     useEffect(() => {
         try {
@@ -70,14 +63,23 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
         updateProfile(event)
     }
 
+    const toggleModal = () => {
+        setIsShowModal(true)
+    }
 
-    return <div> {
+    const closeModal = () => {
+        setIsShowModal(false)
+    }
+
+    return <div className='profile'> 
+        {isShowModal && <ModalCreateProduct onClose={closeModal}/> }
         <div>
-            Bienvenido a tu perfil, {name} !
+            <h1>PERFIL</h1>
+            Bienvenid@ a tu perfil, {name} !
 
             <form className='profile__form' onSubmit={onSubmit} method='post'>
 
-                <div className="profile__field">                
+                <div className="profile__field">
                     <Input className='profile__name-input' type='text' name='name' placeholder='Nombre' defaultValue={name} />
                 </div>
 
@@ -91,9 +93,11 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
                 <a href='' className='profile__delete-account-link' onClick={goToDeleteAccount}>Eliminar mi cuenta</a>
                 <Button type='submit' onClick={logOut}>Cerrar sesión</Button>
             </form>
+                <div>
+                <Button onClick={toggleModal}>Añadir Producto</Button>
+                </div> 
         </div>
-        
-    }</div>
+        </div>
 }
 
 export default Profile
