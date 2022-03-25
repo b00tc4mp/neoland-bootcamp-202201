@@ -1,9 +1,9 @@
 import './SearchUserRacket.sass'
 import { data } from 'commons'
 import { useState } from 'react'
-import { Button, Select } from '.'
+import { Button, Select, ListSearchUserRacket } from '.'
 
-const { RacketType, RacketWeight, RacketPlayer, RacketLevel } = data
+const { RacketType, RacketWeight, RacketPlayer, PlayerLevel } = data
 
 export function SearchUserRacket() {
     const [type, setType] = useState('')
@@ -15,7 +15,7 @@ export function SearchUserRacket() {
         event.preventDefault()
 
         const type = event.target.type.value
-        const weight = event.target.weihgt.value
+        const weight = event.target.weight.value
         const player = event.target.player.value
         const level = event.target.level.value
 
@@ -35,18 +35,15 @@ export function SearchUserRacket() {
     }
 
     return <>
-        <form>
-            <label>¿Que tipo de pala quieres?</label>
-            <Select options={RacketType} selected={type}></Select>
-            <label>¿Que peso ha de tener?</label>
-            <Select options={RacketWeight} selected={weight}></Select>
-            <label>¿Que tipo de jugadores eres?</label>
-            <Select options={RacketPlayer} selected={player}></Select>
-            <label>¿Que nivel tienes? </label>
-            <Select options={RacketLevel} selected={level}></Select>
-            <Button type='submit' />
-            <ListSearchUserRacket type={type} />
-
+        <form onSubmit={search}>
+            <ul>
+              <li> <Select options={RacketType} selected={type} name="type" placeholder="Todos" label="¿Que tipo de pala quieres?"></Select> </li> 
+              <li> <Select options={RacketWeight} selected={weight} name="weight" placeholder="Todos" label="¿Que peso ha de tener?"></Select> </li>
+              <li> <Select options={RacketPlayer} selected={player} name="player" placeholder="Todos" label="¿Que tipo de jugadores eres?"></Select> </li>
+              <li> <Select options={PlayerLevel} selected={level} name="level" placeholder="Todos" label="¿Que nivel tienes?"></Select> </li>
+              <li> <Button type='submit' /></li>
+            </ul>
         </form>
+        <ListSearchUserRacket type={type} weight={weight} player={player} level={level} />
     </>
 }

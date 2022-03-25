@@ -6,7 +6,7 @@ export function HeaderBar(){
         <nav>
             <ul>
                 <li><Link><Logo /></Link></li>
-               {sessionStorage.token && <li><Link>login</Link></li>}
+               {sessionStorage.token && <li><Link>Iniciar Sesión</Link></li>}
             </ul>
         </nav>
     

@@ -1,8 +1,8 @@
-import './Login.sass'
+import './LoginForm.sass'
 import { authenticateUser } from '../logic'
-import { Button, Logo, Link, Input } from '.'
+import { Button, Link, Input } from '.'
 
-export function Login({ onLogged, onRegister }) {
+export function Login({ onLoggedIn, onRegister }) {
 
     const login = async event => {
         try {
@@ -10,11 +10,11 @@ export function Login({ onLogged, onRegister }) {
             
             const token = await authenticateUser(email, password)
             sessionStorage.token = token
-            onLogged && onLogged()
+            onLoggedIn && onLoggedIn(event)
         } catch (error) {
             alert(error.message)
         }
-    }
+    } 
 
     const onSubmit = event => {
         event.preventDefault()
@@ -23,18 +23,17 @@ export function Login({ onLogged, onRegister }) {
 
     const goToRegister = event => {
         event.preventDefault()
-        onRegister && onRegister()
+        onRegister && onRegister(event)
     }
 
     return <form className='login' onSubmit={onSubmit}>
         <div className='login__container'>
-            <Logo />
             <div className='login__wrapper'>
                 <Input type='email' name='email' placeholder='Email' required={true}/>
                 <Input type='password' name='password' placeholder='Contraseña' required={true} />
                 <Button type='submit'> Login </Button>
             </div>
-            <Link href="" onClick={goToRegister} > Register</Link> 
+            <Link href="" onClick={goToRegister}> Registrarse</Link> 
         </div>
     </form>
 }

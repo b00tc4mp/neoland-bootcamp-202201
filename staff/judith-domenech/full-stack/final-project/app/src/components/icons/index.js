@@ -46,9 +46,7 @@ export function CancelIcon({ className = '' }) {
 
 export function RacketIcon({ className = '' }) {
     return <Icon className={className}>
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 595.3 595.3" enable-background="new 0 0 595.3 595.3" >
-            <g>
-            </g>
+        <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.3 595.3">
             <path d="M294.6,27.2c0,0-183-13.6-137,166.4c0,0,22.2,65.9,71.9,126.7c0,0,41.4,64.7,42.7,67.9c0,0,8,8.5,4.5,62.8l-3.4,67
 	c0,0-9,27.2-1.1,30.3c0,0,12.4,5.2,22.5,5.2s22.5-5.2,22.5-5.2c7.9-3.1-1.1-30.3-1.1-30.3l-3.4-67c-2.1-55.9,4.5-62.8,4.5-62.8
 	c2.2-5,42.7-67.9,42.7-67.9c50.3-60.5,71.9-126.7,71.9-126.7C477.6,13.6,294.6,27.2,294.6,27.2z M206.7,134.4

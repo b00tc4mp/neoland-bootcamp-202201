@@ -1,8 +1,8 @@
-import './Register.sass'
+import './RegisterForm.sass'
 import { registerUser } from '../logic'
-import { Logo, Button, Link, Input } from '.'
+import { Button, Link, Input } from '.'
 
-export function Register({ onLogin, onRegister }) {
+export function Register({ onLogin, onRegister, onRegistered }) {
 
 
     const register = async event => {
@@ -12,7 +12,7 @@ export function Register({ onLogin, onRegister }) {
 
         try {
             await registerUser(name, email, password)
-            onRegister && onRegister()
+            onRegistered && onRegistered(event)
         } catch (error) {
             alert(error.message)
         }
@@ -25,12 +25,11 @@ export function Register({ onLogin, onRegister }) {
 
     const goToLogin = event => {
         event.preventDefault()
-        onLogin && onLogin()
+        onLogin && onLogin(event)
     }
 
     return <form className='register' onSubmit={onSubmit}>
         <div className='register__container'>
-            <Logo />
             <div className="register__wrapper">
                 <Input type='text' name='name' placeholder='Name' required={true}/>
                 <Input type='email' name='email' placeholder='Email' required={true}/>
