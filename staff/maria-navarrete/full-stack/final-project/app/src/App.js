@@ -55,7 +55,7 @@ const App = () => {
     {/* <Header /> */}
     {/* <Home /> */}
     {/* <CreateAction /> */}
-    {/* <UpdateAction actionId="623b0dc91fea1b6db3523b09"/> */}
+    <UpdateAction actionId="623d95304b270f1ae13b4a67"/>
     {/* <OwnerActionCard action={{ description: 'hola', authorUsername: 'lolo', requiredBudget: '10', requiredTime: '0', public: true }} isFavorite={true} /> */}
     {/* <CreateSchedule actionId="623988d11fea1b6db352373d"/> */}
     {/* <ListFavoriteActions /> */}
@@ -77,7 +77,7 @@ const App = () => {
       }}/> */}
     {/* <ListSchedules /> */}
     {/* <Schedules /> */}
-    <CreatedActions/>
+    {/* <CreatedActions/> */}
 
     {/* <ToggleFavoriteButton actionId='62336a0f5da2be05a8fa0c7e' isFavorite={false} />
     <ToggleFollowButton followId='62336a0e5da2be05a8fa0c62' isFollow={false} /> */}
