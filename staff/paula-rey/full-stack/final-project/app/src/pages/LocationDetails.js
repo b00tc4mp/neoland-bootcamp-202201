@@ -1,10 +1,10 @@
-import './Details.sass'
+import './LocationDetails.sass'
 import { useState, useEffect } from 'react'
 import { retrieveLocation, listFavoritesLocations} from '../logic'
-import { ListComments } from './ListComments'
-import { FavoriteButton } from './'
+import { ListComments } from '../components/ListComments'
+import { FavoriteButton, CommentIcon, Link } from '../components'
 
-export function Details({locationId}) {
+export function LocationDetails({locationId}) {
     const [location, setLocation] = useState({})
 
     useEffect(async() => {
@@ -20,6 +20,7 @@ export function Details({locationId}) {
         }
     }, [])
 
+
     return <div className='details'>
         <FavoriteButton location={location}/>
         <h1>{location.title}</h1>
@@ -28,6 +29,7 @@ export function Details({locationId}) {
         <h2>{location.type}</h2>
         <p>{location.address}</p>
         <p>{location.city}</p>
+        <Link><CommentIcon/></Link>
         <ListComments locationId={locationId}/>
     </div>
 }

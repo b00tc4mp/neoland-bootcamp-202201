@@ -1,7 +1,7 @@
 import './AddLocation.sass'
 import { createLocation } from '../logic'
-import { Input, Select } from './form-elements'
-import { Button } from './elements'
+import { Input, Select } from '../components'
+import { Button } from '../components'
 import { data } from 'commons'
 const { locationTypes, locationCities, defaultImage } = data
 

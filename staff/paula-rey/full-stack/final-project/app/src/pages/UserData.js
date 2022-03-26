@@ -1,8 +1,9 @@
-import './ProfileData.sass'
+import './UserData.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
+import { Button } from '../components'
 
-export function ProfileData({onUpdatePassword, onDeleteAccount}) {
+export function UserData({onUpdatePassword, onDeleteAccount}) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
 
@@ -48,15 +49,15 @@ export function ProfileData({onUpdatePassword, onDeleteAccount}) {
         onDeleteAccount()
     }
 
-    return <div className="profile">
-        <form className="profile__form" onSubmit={updateProfile} method="post">  
-            <input className="profile__name-input" type="text" name="name" placeholder="name" defaultValue={name}/>
-            <input className="profile__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email}/>
+    return <div className="data">
+        <form className="data__form" onSubmit={updateProfile} method="post">  
+            <input className="data__name-input" type="text" name="name" placeholder="name" defaultValue={name}/>
+            <input className="data__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email}/>
 
-            <button>Update profile</button>
+            <Button>Update profile</Button>
 
-            <a className="profile__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
-            <a className="profile__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
+            <a className="data__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
+            <a className="data__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
         </form>
 
     </div>

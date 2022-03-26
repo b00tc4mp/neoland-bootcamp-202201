@@ -15,6 +15,7 @@ import listFavoritesLocations from './listFavoritesLocations'
 import listLocations from './listLocations'
 import listLocationComments from './listLocationComments'
 import listFollowsUsers from './listFollowsUsers'
+import deleteLocation from './deleteLocation'
 
 export {
     registerUser,
@@ -33,5 +34,6 @@ export {
     listFavoritesLocations,
     listLocations,
     listLocationComments,
-    listFollowsUsers
+    listFollowsUsers,
+    deleteLocation
 }

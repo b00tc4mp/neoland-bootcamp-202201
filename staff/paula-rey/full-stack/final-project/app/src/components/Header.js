@@ -1,16 +1,19 @@
 import './Header.sass'
-import { Link, Logo, LogoutIcon } from '.'
+import { Link, Logo, Button, LogoutIcon } from './'
 
 
-export function Header() {
+export function Header({onLogo, onLogOut}) {
+
+    const goToHome = event => {
+        //event.preventDefault()
+        onLogo && onLogo(event)
+    }
 
     return <>
        <header>
-           <Logo/>
-           <h1>Dogether</h1>
-            <Link>
-                <LogoutIcon/>
-            </Link>
+            <Link onClick={goToHome} ><Logo/></Link>
+            <h1>Dogether</h1>
+            <Button ><LogoutIcon/></Button>
        </header>
     
     </>

@@ -1,10 +1,10 @@
 import './Home.sass'
-import { Header, Search } from '../components'
+import { Search } from '../components/Search'
 
-export const Home = () => {
+export const Home = ({onLocationCard}) => {
 
     return <>
-        <Search/>
+        <Search onLocationCard={onLocationCard}/>
     </>
 
 }

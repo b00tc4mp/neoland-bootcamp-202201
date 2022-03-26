@@ -1,7 +1,7 @@
 import './ListFollows.sass'
 import { useState, useEffect } from 'react'
 import { listFollowsUsers } from '../logic'
-import { FollowCard } from '.'
+import { FollowCard } from '../components'
 
 export function ListFollows() {
     const [follows, setFollows] = useState([])
@@ -11,8 +11,11 @@ export function ListFollows() {
         try {
             const follows = await listFollowsUsers(sessionStorage.token)
 
-            follows.forEach(follow => follow.isFollow = true)
-            
+            //follows.forEach(follow => follow.isFollow = true)
+            follows.forEach(follow => {
+                follow.isFollow = follows.some(({id}) => id === follow.id)
+            })  //si no funciona mirar ListSearchResults
+
             setFollows(follows)
 
         } catch (error) {

@@ -1,7 +1,7 @@
 import './ListLocations.sass'
 import { useState, useEffect } from 'react'
 import { listLocations } from '../logic'
-import { OwnerLocationCard } from '.'
+import { OwnerLocationCard } from '../components/'
 
 export function ListLocations() {
     const [locations, setLocations] = useState([])

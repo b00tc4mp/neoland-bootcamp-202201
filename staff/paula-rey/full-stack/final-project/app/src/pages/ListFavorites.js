@@ -1,7 +1,7 @@
 import './ListFavorites.sass'
 import { useState, useEffect } from 'react'
 import { listFavoritesLocations } from '../logic'
-import { LocationCard } from './'
+import { LocationCard } from '../components'
 
 export function ListFavorites() {
     const [favorites, setFavorites] = useState([])

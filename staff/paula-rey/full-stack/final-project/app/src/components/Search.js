@@ -1,11 +1,11 @@
 import './Search.sass'
 import { useState } from 'react'
-import { ListSearchResults } from './ListSearchResults'
+import { ListSearchResults } from '.'
 import { SearchIcon, CleanSearchIcon, Input, Select, Button } from '.'
 import { data } from 'commons'
 const { locationTypes, locationCities } = data
 
-export function Search() {
+export function Search({onLocationCard}) {
     const [query, setQuery] = useState('')
     const [type, setType] = useState('')
     const [city, setCity] = useState('')
@@ -40,7 +40,7 @@ export function Search() {
             <Button type="Reset" onClick={cleanSearch}><CleanSearchIcon/></Button>
             <Button type="submit"><SearchIcon/></Button>
         </form>
-            <ListSearchResults query={query} type={type} city={city}/>
+            <ListSearchResults query={query} type={type} city={city} onLocationCard={onLocationCard} />
     </div>
 
 }
