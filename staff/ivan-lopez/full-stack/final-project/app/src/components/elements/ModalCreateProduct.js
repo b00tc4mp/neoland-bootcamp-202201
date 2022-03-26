@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { addProduct } from '../../logic'
 import React from 'react'
 import Button from '../Button'
@@ -7,13 +6,7 @@ import Modal from './Modal'
 
 
   const ModalCreateProduct = ({ onClose }) => {
-    const [name, setName] = useState()
-    const [size, setSize] = useState()
-    const [color, setColor] = useState()
-    const [price, setPrice] = useState()
-    const [description, setDescription] = useState()
-
-
+    
     const createProduct = event => {
       event.preventDefault()
 
@@ -27,11 +20,7 @@ import Modal from './Modal'
       try {
         addProduct(sessionStorage.token, name, size, color, price, description)
           .then(() => {
-            setName(name)
-            setSize(size)
-            setColor(color)
-            setPrice(price)
-            setDescription(description)
+              alert('¡Producto creado correctamente!')
           })
           .catch(error => { throw error })
       } catch ({ message }) {

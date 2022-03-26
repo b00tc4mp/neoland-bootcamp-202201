@@ -2,7 +2,7 @@ import { validators } from 'commons'
 const { validateId } = validators
 
 
-function retrieveProduct( productId) {
+function retrieveProduct(productId) {
     validateId(productId, 'productId')
 
     return fetch(`http://localhost:8080/api/products/${productId}`, {

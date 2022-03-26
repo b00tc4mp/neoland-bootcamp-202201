@@ -5,6 +5,8 @@ import Search from './Search'
 import Results from './Results'
 import { Routes, Route, useNavigate, Navigate, useSearchParams } from 'react-router-dom'
 import ProductDetails from './ProductDetails'
+import ModalCreateProduct from './elements/ModalCreateProduct'
+import ModalUpdateProduct from './elements/ModalUpdateProduct'
 
 
 function Home() {
@@ -26,7 +28,7 @@ function Home() {
         </nav>
 
 
-        <Search className='home__search' onSearch={search} />
+        <Search onSearch={search} />
         {/* <Results /> */}
 
         {/* <Modal /> */}
@@ -34,7 +36,8 @@ function Home() {
         <Routes>
             <Route path='search' element={<Results />} />
             <Route path='/search/:productId' element={<ProductDetails />} />
-
+            <Route path='/cuenta' element={<ModalCreateProduct />} />
+            <Route path='/cuenta/update-product' element={<ModalUpdateProduct />} />
 
         </Routes>
 

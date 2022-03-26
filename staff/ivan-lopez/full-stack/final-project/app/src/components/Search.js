@@ -1,5 +1,6 @@
 import './Search.sass'
 import { Button } from '../components'
+import { Input } from '../components/form-elements'
 import { useNavigate } from 'react-router-dom'
 
 function Search({ className, onSearch, query }) {
@@ -10,14 +11,14 @@ function Search({ className, onSearch, query }) {
 
         const { target: { query: { value: query } } } = event
 
-        navigate(`search?q=${query}`)   
+        navigate('search')   
     }
 
     return <>
         <div className={`search ${className}`}>
-            <form className='search__form' onSubmit={search}>
-                <input className='search__input' name="query" />
-                <Button type="submit">Buscar</Button>
+            <form onSubmit={search}>
+                <Input className='search__input' name='query' />
+                <Button className='search__button' type='submit'>Buscar</Button>
             </form>
         </div>
     </>

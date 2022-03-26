@@ -3,6 +3,7 @@ import { retrieveUser, updateUser } from '../logic'
 import { Button } from '../components'
 import { Input } from '../components/form-elements'
 import ModalCreateProduct from './elements/ModalCreateProduct'
+import ModalUpdateProduct from './elements/ModalUpdateProduct'
 
 
 function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
@@ -73,6 +74,7 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
 
     return <div className='profile'> 
         {isShowModal && <ModalCreateProduct onClose={closeModal}/> }
+        {/* {isShowModal && <ModalUpdateProduct onClose={closeModal}/> } */}
         <div>
             <h1>PERFIL</h1>
             Bienvenid@ a tu perfil, {name} !
@@ -95,6 +97,7 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
             </form>
                 <div>
                 <Button onClick={toggleModal}>Añadir Producto</Button>
+                {/* <Button onClick={toggleModal}>Actualizar Producto</Button> */}
                 </div> 
         </div>
         </div>

@@ -2,7 +2,7 @@ const { models: { Product } } = require('data')
 const { validators: { validateString } } = require('commons')
 
 
-function findProducts(query) {
+function findProducts(query=null) {
     if (query !== null) validateString(query, 'query')
 
     const criteria = {}
