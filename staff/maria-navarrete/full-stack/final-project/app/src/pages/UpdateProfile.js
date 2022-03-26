@@ -1,6 +1,6 @@
 import './UpdateProfile.sass'
 import { useState, useEffect } from 'react'
-import { Input, Checkbox, Button, Link, RightArrowIcon, Header, NavigationBar, UserIcon, GoIcon } from '.'
+import { Input, Checkbox, Button, Link, RightArrowIcon, UserIcon } from '../components'
 import { retrieveUser, updateUser } from '../logic'
 
 
@@ -39,7 +39,6 @@ export const UpdateProfile = ({ onUpdate }) => {
     }
 
     return <>
-        <Header />
         <div>
             <UserIcon />
             <span>{user.doneActs} Acts cumplidas</span>
@@ -48,11 +47,10 @@ export const UpdateProfile = ({ onUpdate }) => {
                 <Input type='text' name='username' defaultValue={user.username} placeholder='Usuario' required />
                 <Input type='text' name='email' defaultValue={user.email} placeholder='Email' required />
                 <Checkbox id='notifications' name='notifications' label='Notificaciones' checked={user.notifications} />
-                <Button type='submit'> <GoIcon /> </Button>
+                <Button type='submit'> Actualizar </Button>
             </form>
             <Link>Cambiar contraseña <RightArrowIcon /></Link>
             <Link>Eliminar cuenta <RightArrowIcon /></Link>
         </div>
-        <NavigationBar />
     </>
 }

@@ -24,10 +24,7 @@ export const ListFollowingUsers = () => {
             <h2>Comunidad Hoomans </h2>
             {!!following.length &&
                 <ul> {following.map(follow =>
-                    <li key={follow.id}>
-                        <UserCard user={follow} />
-                    </li>
-                )}
+                    <li key={follow.id}><UserCard user={follow} /></li>)}
                 </ul>}
         </div>
     </>

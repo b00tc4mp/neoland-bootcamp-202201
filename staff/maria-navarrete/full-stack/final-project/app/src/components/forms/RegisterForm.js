@@ -1,9 +1,9 @@
-import './Register.sass'
-import { Input, Button, Logo, GoIcon } from '.'
-import { registerUser } from '../logic'
+import './RegisterForm.sass'
+import { Input, Button, GoIcon } from '../../components'
+import { registerUser } from '../../logic'
 
 
-export const Register = ({ onRegistered }) => {
+export const RegisterForm = ({ className = '', onRegistered }) => {
 
     const register = async event => {
         try {
@@ -16,24 +16,20 @@ export const Register = ({ onRegistered }) => {
         }
     }
 
-    const onSubmit = event => {
+    const onSubmit = (event) => {
         event.preventDefault()
         register(event)
     }
 
     return <>
-        <Logo type='main' alt='bHoomanLogo' className='logo-principal' />
-        <form onSubmit={onSubmit}>
+        <form className={className} onSubmit={onSubmit}>
             <fieldset>
                 <legend>Registrarse</legend>
                 <Input type='text' name='username' placeholder='Usuario' required />
                 <Input type='email' name='email' placeholder='Email' required />
                 <Input type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button type='submit'>
-                <GoIcon />
-            </Button>
+            <Button type='submit'><GoIcon /></Button>
         </form>
-        <a href=''>Ya tengo una cuenta</a>
     </>
 }

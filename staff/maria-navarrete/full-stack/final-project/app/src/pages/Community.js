@@ -1,12 +1,10 @@
 import './Community.js'
-import { Header, ListFollowingUsers, SearchIcon, NavigationBar, Link } from '.'
+import { ListFollowingUsers, SearchIcon, Link } from '../components'
 
 export const Community = () => {
 
     return <>
-        <Header />
         <ListFollowingUsers />
         <Link><SearchIcon /></Link>
-        <NavigationBar />
     </>
 }

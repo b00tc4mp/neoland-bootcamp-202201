@@ -1,16 +1,32 @@
 import './NavigationBar.sass'
-import {Link, HappyIcon, HeartIcon, CommunityIcon, ProfileIcon} from '.'
+import { Link, HappyIcon, HeartIcon, CommunityIcon, ProfileIcon } from '.'
 
-export const NavigationBar = () => {
+export const NavigationBar = ({ onHome, onActs, onCommunity, onProfile }) => {
 
-    return<>
-    <nav>
-        <ul>
-            <li><Link><HappyIcon/></Link>Inicio</li>
-            <li><Link><HeartIcon/></Link>Acts</li>
-            <li><Link><CommunityIcon/></Link>Comunidad</li>
-            <li><Link><ProfileIcon/></Link>Perfil</li>
-        </ul>
-    </nav>
+    const goToHome = event => {
+        onHome && onHome(event)
+    }
+
+    const goToActs = event => {
+        onActs && onActs(event)
+    }
+
+    const goToCommunity = event => {
+        onCommunity && onCommunity(event)
+    }
+
+    const goToProfile = event => {
+        onProfile && onProfile(event)
+    }
+
+    return <>
+        <nav>
+            <ul>
+                <li><Link href='' onClick={goToHome}><HappyIcon /></Link>Inicio</li>
+                <li><Link href='' onClick={goToActs}><HeartIcon /></Link>Acts</li>
+                <li><Link href='' onClick={goToCommunity}><CommunityIcon /></Link>Comunidad</li>
+                <li><Link href='' onClick={goToProfile}><ProfileIcon /></Link>Perfil</li>
+            </ul>
+        </nav>
     </>
 }

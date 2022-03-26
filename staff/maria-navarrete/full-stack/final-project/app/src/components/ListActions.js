@@ -22,10 +22,7 @@ export const ListActions = () => {
         <div>
             {!!actions.length &&
                 <ul> {actions.map(action =>
-                    <li key={action.id}>
-                        <OwnerActionCard action={action} />
-                    </li>
-                )}
+                    <li key={action.id}><OwnerActionCard action={action} /></li>)}
                 </ul>}
         </div>
     </>

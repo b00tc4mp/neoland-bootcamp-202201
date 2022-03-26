@@ -1,6 +1,6 @@
 import './CreateSchedule.sass'
 import { useState, useEffect } from 'react'
-import { Input, Select, Button, Link, CheckIcon, XIcon, MoneyIcon, StopwatchIcon, CalendarIcon, RepeatIcon, Header, NavigationBar } from '.'
+import { Input, Select, Button, Link, CheckIcon, XIcon, MoneyIcon, StopwatchIcon, CalendarIcon, RepeatIcon } from '../components'
 import { data } from 'commons'
 import { retrieveAction, createSchedule } from '../logic'
 const { repeatOptions } = data
@@ -41,7 +41,6 @@ export const CreateSchedule = ({ actionId, onCreated }) => {
     }
 
     return <>
-        <Header />
         <div>
             <h2>Agendar Acción</h2>
             <form onSubmit={onSubmit}>
@@ -56,6 +55,5 @@ export const CreateSchedule = ({ actionId, onCreated }) => {
                 </div>
             </form>
         </div>
-        <NavigationBar />
     </>
 }

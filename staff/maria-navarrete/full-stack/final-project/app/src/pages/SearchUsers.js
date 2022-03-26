@@ -1,6 +1,6 @@
 import './SearchUsers.sass'
 import { useState } from 'react'
-import { Input, Button, ListSearchUsersResults, NavigationBar, Header, XMarkIcon } from '.'
+import { Input, Button, ListSearchUsersResults, XMarkIcon } from '../components'
 
 export const SearchUsers = () => {
     const [query, setQuery] = useState('')
@@ -17,7 +17,6 @@ export const SearchUsers = () => {
     }
 
     return <>
-        <Header />
         <div>
             <form onSubmit={search} >
                 <Input type='text' name='query' placeholder='Busca Hoomans' defaultValue={query && query} />
@@ -25,6 +24,5 @@ export const SearchUsers = () => {
             </form>
             <ListSearchUsersResults query={query} />
         </div>
-        <NavigationBar />
     </>
 }

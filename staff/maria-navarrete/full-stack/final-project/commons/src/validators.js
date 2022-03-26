@@ -48,6 +48,7 @@ function validateToken(token) {
     const expired = Date.now() > expStamp
 
     if (expired) throw new Error('token expired')
+    return true
 }
 
 

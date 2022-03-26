@@ -30,9 +30,11 @@ export const SearchActions = () => {
     return <>
         <div>
             <form onSubmit={search} >
-                <Input type='text' name='query' placeholder='Busca acciones' defaultValue={query && query} />
-                <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} selected={requiredTime} placeholder='Todos' label={<StopwatchIcon />} />
-                <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} selected={requiredBudget} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
+                <fieldset>
+                    <Input type='text' name='query' placeholder='Busca acciones' defaultValue={query && query} />
+                    <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} selected={requiredTime} placeholder='Todos' label={<StopwatchIcon />} />
+                    <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} selected={requiredBudget} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
+                </fieldset>
                 <Button type='submit'><FilterIcon /></Button>
                 <Button type='reset' onClick={cleanSearch}><RemoveFilterIcon /></Button>
             </form>

@@ -1,7 +1,7 @@
 import './ListFavoriteActions.sass'
 import { useState, useEffect } from 'react'
 import { listFavoriteActions } from '../logic'
-import { ActionCard, NavigationBar, Header, ActsNavigationBar } from '.'
+import { ActionCard, ActsNavigationBar } from '../components'
 
 export const ListFavoriteActions = () => {
 
@@ -20,7 +20,6 @@ export const ListFavoriteActions = () => {
 
 
     return <>
-        <Header />
         <ActsNavigationBar />
         <div>
             <h2>Mis Favoritas</h2>
@@ -32,6 +31,5 @@ export const ListFavoriteActions = () => {
                 )}
                 </ul>}
         </div>
-        <NavigationBar />
     </>
 }

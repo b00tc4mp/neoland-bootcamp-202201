@@ -27,10 +27,7 @@ export const ListSearchActionsResults = ({ query = '', requiredTime = '', requir
         <div>
             {!!actions.length &&
                 <ul> {actions.map(action =>
-                    <li key={action.id}>
-                        <ActionCard action={action} />
-                    </li>
-                )}
+                    <li key={action.id}><ActionCard action={action} /></li>)}
                 </ul>}
         </div>
     </>

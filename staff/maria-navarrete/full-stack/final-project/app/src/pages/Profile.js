@@ -1,5 +1,5 @@
 import './Profile.sass'
-import { UserIcon, Header, NavigationBar, Link, RightArrowIcon, Button } from '.'
+import { UserIcon, Link, RightArrowIcon, Button } from '../components'
 import { retrieveUser } from '../logic'
 import { useState, useEffect } from 'react'
 
@@ -17,7 +17,6 @@ export const Profile = ({}) => {
     }, [])
 
     return <>
-        <Header />
         <div >
             <UserIcon />
             <span>{user.username}</span>
@@ -26,6 +25,5 @@ export const Profile = ({}) => {
             <Link>Actividad <RightArrowIcon /></Link>
             <Button>Cerrar sesión</Button>
         </div>
-        <NavigationBar />
     </>
 }

@@ -21,10 +21,7 @@ export const ListSchedules = () => {
         <div>
             {!!schedules.length &&
                 <ul> {schedules.map(schedule =>
-                    <li key={schedule.id}>
-                        <ScheduleCard schedule={schedule} />
-                    </li>
-                )}
+                    <li key={schedule.id}><ScheduleCard schedule={schedule} /></li>)}
                 </ul>}
         </div>
     </>

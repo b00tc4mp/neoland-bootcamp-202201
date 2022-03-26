@@ -1,5 +1,5 @@
 import './UserProfile.sass'
-import { UserIcon, ToggleFollowButton, ListUserPublicActions, Header, NavigationBar } from '.'
+import { UserIcon, ToggleFollowButton, ListUserPublicActions } from '../components'
 import { retrieveUserPublicInfo, listFollowingUsers } from '../logic'
 import { useState, useEffect } from 'react'
 
@@ -19,7 +19,6 @@ export const UserProfile = ({ userId }) => {
     }, [])
 
     return <>
-        <Header />
         {!!user.id &&
             <div >
                 <UserIcon />
@@ -29,6 +28,5 @@ export const UserProfile = ({ userId }) => {
                 <h3>Acciones creadas</h3>
                 <ListUserPublicActions userId={user.id} />
             </div>}
-        <NavigationBar />
     </>
 }

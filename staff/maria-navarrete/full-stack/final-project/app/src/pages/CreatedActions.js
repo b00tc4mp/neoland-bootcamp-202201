@@ -1,16 +1,14 @@
 import './CreatedActions.sass'
-import { Link, PlusIcon, ListActions, ActsNavigationBar, NavigationBar, Header } from '.'
+import { Link, PlusIcon, ListActions, ActsNavigationBar } from '../components'
 
 export const CreatedActions = () => {
 
     return <>
-        <Header />
         <ActsNavigationBar />
         <div>
             <h2>Mis Acciones</h2>
             <Link><PlusIcon /></Link>
             <ListActions />
         </div>
-        <NavigationBar />
     </>
 }

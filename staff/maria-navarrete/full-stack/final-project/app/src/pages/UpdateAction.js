@@ -1,6 +1,6 @@
 import './UpdateAction.sass'
 import { useState, useEffect } from 'react'
-import { Input, Select, Checkbox, Button, Link, StopwatchIcon, MoneyIcon, CheckIcon, XIcon, Header, NavigationBar, ActsNavigationBar } from '.'
+import { Input, Select, Checkbox, Button, Link, StopwatchIcon, MoneyIcon, CheckIcon, XIcon, ActsNavigationBar } from '../components'
 import { data } from 'commons'
 import { retrieveAction, updateAction } from '../logic'
 const { requiredTimeOptions, requiredBudgetOptions } = data
@@ -55,7 +55,6 @@ export const UpdateAction = ({ actionId, onUpdate }) => {
     }
 
     return <>
-        <Header />
         <ActsNavigationBar />
         <div>
             <h2>Editar Acción</h2>
@@ -70,6 +69,5 @@ export const UpdateAction = ({ actionId, onUpdate }) => {
                 </div>
             </form>
         </div>
-        <NavigationBar />
     </>
 }
