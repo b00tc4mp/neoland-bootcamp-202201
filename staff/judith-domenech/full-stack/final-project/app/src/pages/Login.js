@@ -1,6 +1,7 @@
-import {Logo ,Login} from '../components'
+import './Login.sass'
+import { Logo, LoginForm } from '../components'
 
-export const LoginView = ({onRegister, onLoggedIn})=>{
+export const Login = ({ onRegister, onLoggedIn }) => {
 
     const goToRegister = event => {
         onRegister && onRegister(event)
@@ -10,9 +11,10 @@ export const LoginView = ({onRegister, onLoggedIn})=>{
         onLoggedIn && onLoggedIn(event)
     }
 
-    return <>
-        <Logo />
-        <Login onRegister={goToRegister} onLoggedIn={goToHome} />
-    
-    </>
+    return <div className='login'>
+        <div className='login__container'>
+                <Logo />
+                <LoginForm onRegister={goToRegister} onLoggedIn={goToHome} />
+        </div>
+    </div>
 }

@@ -1,10 +1,13 @@
 import './Logo.sass';
-import icon from '../../assets/racketMatch.png'
+import logo from '../../assets/racketMatch.png'
 
 
-export function Logo({className = '' }) {
-    return <figure className={`logo ${className}`} >
-        <img  src={icon} alt="logo racketMatch"></img>
-    </figure>
+export function Logo({ className = '' }) {
+    return <>
+        <figure className={`${className}`} >
+            <img src={logo} alt="logo racketMatch"></img>
+        </figure>
+
+    </>
 }
 

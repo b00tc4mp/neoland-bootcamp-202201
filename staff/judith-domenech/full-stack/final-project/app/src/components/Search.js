@@ -20,8 +20,8 @@ export function Search() {
     return <div className="search">
         <form onSubmit={search}>
             <Input className="search__query-input" type="text" name="query" placeholder="Busca..." defaultValue={query} />
-            <Button type='submit'><SearchIcon />Enviar</Button>
-            <Button type='reset' onClick={cleanQuery}><CancelIcon />Limpiar</Button>
+            <Button className="search__button" type='submit'><SearchIcon />Enviar</Button>
+            <Button className="search__button" type='reset' onClick={cleanQuery}><CancelIcon />Limpiar</Button>
             <ListSearchRackets query={query} />
         </form>
 
