@@ -1,36 +1,20 @@
 import './DeleteAccount.sass'
-import { Input, Button, UserIcon } from '../components'
-import { deleteUser } from '../logic'
+import { DeleteAccountForm, UserIcon } from '../components'
 
 
-export const DeleteAccount = () => {
+export const DeleteAccount = ({ goToLogin: _goToLogin }) => {
 
-    const onDeleteAccount = async event => {
-        try {
-            const { target: { password: { value: password } } } = event
-
-            await deleteUser(sessionStorage.token, password)
-            alert('Cuenta eliminada :(')
-
-        } catch (error) {
-            alert(error.message)
-        }
+    const goToLogin = event => {
+        _goToLogin && _goToLogin(event)
 
     }
 
-    const onSubmit = event => {
-        event.preventDefault()
-        onDeleteAccount(event)
-    }
 
     return <>
         <div>
             <UserIcon />
             <h2>Eliminar cuenta</h2>
-            <form onSubmit={onSubmit}>
-                <Input type='password' name='password' placeholder='Contraseña' required />
-                <Button type='submit'> Eliminar </Button>
-            </form>
+            <DeleteAccountForm onDeleted={goToLogin} />
         </div>
     </>
 }

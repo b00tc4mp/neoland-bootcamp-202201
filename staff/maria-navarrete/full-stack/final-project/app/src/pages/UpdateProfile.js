@@ -1,10 +1,9 @@
 import './UpdateProfile.sass'
+import { Link, RightArrowIcon, UserIcon, UpdateProfileForm } from '../components'
+import { retrieveUser } from '../logic'
 import { useState, useEffect } from 'react'
-import { Input, Checkbox, Button, Link, RightArrowIcon, UserIcon } from '../components'
-import { retrieveUser, updateUser } from '../logic'
 
-
-export const UpdateProfile = ({ onUpdate }) => {
+export const UpdateProfile = ({ goToProfile: _goToProfile, onUpdatePassword: _onUpdatePassword, onDeleteAccount: _onDeleteAccount }) => {
 
     const [user, setUser] = useState({})
 
@@ -17,25 +16,16 @@ export const UpdateProfile = ({ onUpdate }) => {
         }
     }, [])
 
-    const onUpdateUser = async event => {
-        try {
-            const { target: { username: { value: username }, email: { value: email }, notifications: { checked: notifications } } } = event
-
-            await updateUser(sessionStorage.token, username, email, notifications)
-            onUpdate && onUpdate()
-
-            const user = await retrieveUser(sessionStorage.token)
-            setUser(user)
-
-        } catch (error) {
-            alert(error.message)
-        }
-
+    const onUpdatePassword = event => {
+        _onUpdatePassword && _onUpdatePassword(event)
     }
 
-    const onSubmit = event => {
-        event.preventDefault()
-        onUpdateUser(event)
+    const onDeleteAccount = event => {
+        _onDeleteAccount && _onDeleteAccount(event)
+    }
+
+    const goToProfile = event => {
+        _goToProfile && _goToProfile(event)
     }
 
     return <>
@@ -43,14 +33,9 @@ export const UpdateProfile = ({ onUpdate }) => {
             <UserIcon />
             <span>{user.doneActs} Acts cumplidas</span>
             <h2>Modificar Perfil</h2>
-            <form onSubmit={onSubmit}>
-                <Input type='text' name='username' defaultValue={user.username} placeholder='Usuario' required />
-                <Input type='text' name='email' defaultValue={user.email} placeholder='Email' required />
-                <Checkbox id='notifications' name='notifications' label='Notificaciones' checked={user.notifications} />
-                <Button type='submit'> Actualizar </Button>
-            </form>
-            <Link>Cambiar contraseña <RightArrowIcon /></Link>
-            <Link>Eliminar cuenta <RightArrowIcon /></Link>
+            <UpdateProfileForm onUpdated={goToProfile} />
+            <Link onClick={onUpdatePassword}>Cambiar contraseña <RightArrowIcon /></Link>
+            <Link onClick={onDeleteAccount}>Eliminar cuenta <RightArrowIcon /></Link>
         </div>
     </>
 }

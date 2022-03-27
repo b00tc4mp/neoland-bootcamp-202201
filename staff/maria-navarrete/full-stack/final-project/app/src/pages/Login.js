@@ -3,10 +3,10 @@ import { Logo, Link, LoginForm } from '../components'
 
 
 
-export const Login = ({ goToHome: _goToHome, goToRegister: _goToRegister }) => {
+export const Login = ({ goToHome: _goToHome, onRegister: _onRegister }) => {
 
-    const goToRegister = event => {
-        _goToRegister && _goToRegister(event)
+    const onRegister = event => {
+        _onRegister && _onRegister(event)
     }
 
     const goToHome = event => {
@@ -16,6 +16,6 @@ export const Login = ({ goToHome: _goToHome, goToRegister: _goToRegister }) => {
     return <>
         <Logo type='main' alt='bHoomanLogo' className='logo-principal' />
         <LoginForm onLogged={goToHome} />
-        <Link href='' onClick={goToRegister}>No tengo una cuenta todavía</Link>
+        <Link onClick={onRegister}>No tengo una cuenta todavía</Link>
     </>
 }

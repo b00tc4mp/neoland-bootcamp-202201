@@ -1,44 +1,35 @@
 import './SearchActions.sass'
-import { useState } from 'react'
 import { Input, Select, Button, MoneyIcon, StopwatchIcon, FilterIcon, RemoveFilterIcon, ListSearchActionsResults } from '.'
 import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
-export const SearchActions = () => {
-    const [query, setQuery] = useState('')
-    const [requiredBudget, setRequiredBudget] = useState('')
-    const [requiredTime, setRequiredTime] = useState('')
+export const SearchActions = ({ onSearchActions }) => {
 
     const search = event => {
-        event.preventDefault()
         const { target: { query: { value: query }, requiredBudget: { value: _requiredBudget }, requiredTime: { value: _requiredTime } } } = event
 
         const requiredTime = _requiredTime ? Number(_requiredTime) : ''
         const requiredBudget = _requiredBudget ? Number(_requiredBudget) : ''
 
-        setQuery(query)
-        setRequiredBudget(requiredBudget)
-        setRequiredTime(requiredTime)
+        onSearchActions && onSearchActions({ query, requiredTime, requiredBudget })
     }
 
-    const cleanSearch = event => {
-        setQuery('')
-        setRequiredBudget('')
-        setRequiredTime('')
+    const onSubmit = event => {
+        event.preventDefault()
+        search(event)
     }
 
     return <>
         <div>
-            <form onSubmit={search} >
+            <form onSubmit={onSubmit} >
                 <fieldset>
-                    <Input type='text' name='query' placeholder='Busca acciones' defaultValue={query && query} />
-                    <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} selected={requiredTime} placeholder='Todos' label={<StopwatchIcon />} />
-                    <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} selected={requiredBudget} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
+                    <Input type='text' name='query' placeholder='Busca acciones' />
+                    <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} placeholder='Todos' label={<StopwatchIcon />} />
+                    <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
                 </fieldset>
                 <Button type='submit'><FilterIcon /></Button>
-                <Button type='reset' onClick={cleanSearch}><RemoveFilterIcon /></Button>
+                <Button type='reset'><RemoveFilterIcon /></Button>
             </form>
-            <ListSearchActionsResults query={query} requiredTime={requiredTime} requiredBudget={requiredBudget} />
         </div>
     </>
 

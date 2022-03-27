@@ -12,6 +12,6 @@ export { UserProfile } from './UserProfile'
 export { UpdateProfile } from './UpdateProfile'
 export { UpdatePassword } from './UpdatePassword'
 export { DeleteAccount } from './DeleteAccount'
-export { SearchUsers } from './SearchUsers'
+export { Users } from './Users'
 export { CreateSchedule } from './CreateSchedule'
 

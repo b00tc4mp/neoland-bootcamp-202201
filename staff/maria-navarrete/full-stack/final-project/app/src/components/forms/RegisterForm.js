@@ -10,13 +10,13 @@ export const RegisterForm = ({ className = '', onRegistered }) => {
             const { target: { username: { value: username }, email: { value: email }, password: { value: password } } } = event
 
             await registerUser(username, email, password)
-            onRegistered && onRegistered()
+            onRegistered && onRegistered(event)
         } catch (error) {
             alert(error.message)
         }
     }
 
-    const onSubmit = (event) => {
+    const onSubmit = event => {
         event.preventDefault()
         register(event)
     }

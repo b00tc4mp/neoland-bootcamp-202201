@@ -2,13 +2,23 @@ import './ListSearchActionsResults.sass'
 import { findActions, listFavoriteActions } from '../logic'
 import { ActionCard } from '.'
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-export const ListSearchActionsResults = ({ query = '', requiredTime = '', requiredBudget = '' }) => {
+export const ListSearchActionsResults = ({ goToCreateSchedule: _goToCreateSchedule, goToUserProfile: _goToUserProfile }) => {
 
     const [actions, setActions] = useState([])
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const query = searchParams.get('query')
+    const _requiredTime = searchParams.get('requiredTime')
+    const _requiredBudget = searchParams.get('requiredBudget')
 
     useEffect(async () => {
         try {
+
+            const requiredTime = _requiredTime ? Number(_requiredTime) : ''
+            const requiredBudget = _requiredBudget ? Number(_requiredBudget) : ''
+
             const actions = await findActions(sessionStorage.token, query, requiredTime, requiredBudget)
             const favorites = await listFavoriteActions(sessionStorage.token)
 
@@ -21,13 +31,21 @@ export const ListSearchActionsResults = ({ query = '', requiredTime = '', requir
         } catch (error) {
             alert(error.message)
         }
-    }, [query, requiredTime, requiredBudget])
+    }, [query, _requiredTime, _requiredBudget])
+
+    const goToCreateSchedule = actionId => {
+        _goToCreateSchedule && _goToCreateSchedule(actionId)
+    }
+
+    const goToUserProfile = userId => {
+        _goToUserProfile && _goToUserProfile(userId)
+    }
 
     return <>
         <div>
             {!!actions.length &&
                 <ul> {actions.map(action =>
-                    <li key={action.id}><ActionCard action={action} /></li>)}
+                    <li key={action.id}><ActionCard action={action} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} /></li>)}
                 </ul>}
         </div>
     </>

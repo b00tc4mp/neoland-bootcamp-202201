@@ -17,10 +17,10 @@ import {
   UpdateProfile,
   UpdatePassword,
   DeleteAccount,
-  SearchUsers,
+  Users,
   CreateSchedule
 } from './pages'
-import { updateUserPassword } from './logic'
+
 const { validateToken } = validators
 
 
@@ -31,7 +31,8 @@ const App = () => {
       return sessionStorage.token && validateToken(sessionStorage.token)
     }
     catch (error) {
-      alert(error.message)
+      alert('La sesión ha caducado')
+      delete sessionStorage.token
       return false
     }
   }
@@ -41,51 +42,50 @@ const App = () => {
   const navigate = useNavigate()
 
   const showHome = () => navigate('/')
+  const showSearchActions = ({ query, requiredTime, requiredBudget }) => { navigate(`/search?${query !== null ? `query=${query}` : ''}&${requiredTime !== null ? `requiredTime=${requiredTime}` : ''}&${requiredBudget !== null ? `requiredBudget=${requiredBudget}` : ''}`) }
   const showLogin = () => navigate('/ingresar')
   const showRegister = () => navigate('/registrar')
-
-  const showNewSchedule = () => navigate('/agendar-accion')
+  const showCreateSchedule = actionId => navigate(`/agendar-accion/${actionId}`)
   const showSchedules = () => navigate('/agenda')
-  const showActs = () => navigate('/acciones')
-  const showNewAct = () => navigate('/crear-accion')
-  const showEditAct = () => navigate('/editar-accion')
+  const showActions = () => navigate('/acciones')
+  const showCreateAction = () => navigate('/crear-accion')
+  const showEditAction = actionId => navigate(`/editar-accion/${actionId}`)
   const showFavorites = () => navigate('/favoritas')
   const showCommunity = () => navigate('/communidad')
-  const showFindUsers = () => navigate('/buscar-hoomans')
-  const showUserProfile = () => navigate('/hooman')
+  const showUsers = () => navigate('/hoomans')
+  const showSearchUsers = query => { navigate(`/hoomans/search?query=${query}`) }
+  const showUserProfile = userId => navigate(`/hooman/${userId}`)
   const showProfile = () => navigate('/perfil')
   const showUpdateProfile = () => navigate('/actualizar-perfil')
   const showUpdatePassword = () => navigate('/modificar-contraseña')
   const showDeleteAccount = () => navigate('/eliminar-cuenta')
 
 
+
   return <div>
     {isTokenValid() && <Header />}
     <Routes>
-      <Route path='/' element={isTokenValid() ? <Home /> : <Navigate replace to='/ingresar' />} />
-      <Route path='/ingresar' element={!isTokenValid() ? <Login goToHome={showHome} goToRegister={showRegister} /> : <Navigate replace to='/' />} />
-      <Route path='/registrar' element={!isTokenValid() ? <Register goToLogin={showLogin} /> : <Navigate replace to='/' />} />
-
-
-      <Route path='/agendar-accion' element={isTokenValid() ? <CreateSchedule /> : <Navigate replace to='/' />} />
-      <Route path='/agenda' element={isTokenValid() ? <Schedules /> : <Navigate replace to='/' />} />
-      <Route path='/acciones' element={isTokenValid() ? <CreatedActions /> : <Navigate replace to='/' />} />
-      <Route path='/crear-accion' element={isTokenValid() ? <CreateAction /> : <Navigate replace to='/' />} />
-      <Route path='/editar-accion' element={isTokenValid() ? <UpdateAction /> : <Navigate replace to='/' />} />
-      <Route path='/favoritas' element={isTokenValid() ? <ListFavoriteActions /> : <Navigate replace to='/' />} />
-      <Route path='/communidad' element={isTokenValid() ? <Community /> : <Navigate replace to='/' />} />
-      <Route path='/buscar-hoomans' element={isTokenValid() ? <SearchUsers /> : <Navigate replace to='/' />} />
-      <Route path='/hooman' element={isTokenValid() ? <UserProfile /> : <Navigate replace to='/' />} />
-      <Route path='/perfil' element={isTokenValid() ? <Profile /> : <Navigate replace to='/' />} />
-      <Route path='/actualizar-perfil' element={isTokenValid() ? <UpdateProfile /> : <Navigate replace to='/' />} />
-      <Route path='/modificar-contraseña' element={isTokenValid() ? <UpdatePassword /> : <Navigate replace to='/' />} />
-      <Route path='/eliminar-cuenta' element={isTokenValid() ? <DeleteAccount /> : <Navigate replace to='/' />} />
-
+      <Route path='/*' element={isTokenValid() ? <Home onSearchActions={showSearchActions} goToCreateSchedule={showCreateSchedule} goToUserProfile={showUserProfile} /> : <Navigate replace to='/ingresar' />} />
+      <Route path='/ingresar' element={!isTokenValid() ? <Login goToHome={showHome} onRegister={showRegister} /> : <Navigate replace to='/' />} />
+      <Route path='/registrar' element={!isTokenValid() ? <Register goToLogin={showLogin} onLogin={showLogin} /> : <Navigate replace to='/' />} />
+      <Route path='/crear-accion' element={isTokenValid() ? <CreateAction goBack={goBack} onSchedules={showSchedules} onCreatedActions={showActions} onFavorites={showFavorites} /> : <Navigate replace to='/' />} />
+      <Route path='/agendar-accion/:actionId' element={isTokenValid() ? <CreateSchedule goBack={goBack} /> : <Navigate replace to='/' />} />
+      <Route path='/eliminar-cuenta' element={isTokenValid() ? <DeleteAccount goToLogin={showLogin} /> : <Navigate replace to='/' />} />
+      <Route path='/acciones' element={isTokenValid() ? <CreatedActions onSchedules={showSchedules} onCreatedActions={showActions} onFavorites={showFavorites} onCreateAction={showCreateAction} goToCreateSchedule={showCreateSchedule} goToEditAction={showEditAction} /> : <Navigate replace to='/' />} />
+      <Route path='/communidad' element={isTokenValid() ? <Community goToUserProfile={showUserProfile} onUsers={showUsers} /> : <Navigate replace to='/' />} />
+      <Route path='/favoritas' element={isTokenValid() ? <ListFavoriteActions onSchedules={showSchedules} onCreatedActions={showActions} onFavorites={showFavorites} goToCreateSchedule={showCreateSchedule} goToUserProfile={showUserProfile} /> : <Navigate replace to='/' />} />
+      <Route path='/agenda' element={isTokenValid() ? <Schedules onSchedules={showSchedules} onCreatedActions={showActions} onFavorites={showFavorites} /> : <Navigate replace to='/' />} />
+      <Route path='/editar-accion/:actionId' element={isTokenValid() ? <UpdateAction onSchedules={showSchedules} onCreatedActions={showActions} onFavorites={showFavorites} /> : <Navigate replace to='/' />} />
+      <Route path='/perfil' element={isTokenValid() ? <Profile onUpdateProfile={showUpdateProfile} onLogout={showLogin} /> : <Navigate replace to='/' />} />
+      <Route path='/modificar-contraseña' element={isTokenValid() ? <UpdatePassword goToProfile={showProfile} /> : <Navigate replace to='/' />} />
+      <Route path='/actualizar-perfil' element={isTokenValid() ? <UpdateProfile goToProfile={showProfile} onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} /> : <Navigate replace to='/' />} />
+      <Route path='/hooman/:userId' element={isTokenValid() ? <UserProfile goToCreateSchedule={showCreateSchedule} goToUserProfile={showUserProfile} /> : <Navigate replace to='/' />} />
+      <Route path='/hoomans*' element={isTokenValid() ? <Users onSearchUsers={showSearchUsers} goToUserProfile={showUserProfile} /> : <Navigate replace to='/' />} />
 
       <Route path="/404" element={<h1>Página no encontrada :(</h1>} />
-      <Route path="/*" element={<Navigate replace to='/404' />} />
+      <Route path="*" element={<Navigate replace to='/404' />} />
     </Routes>
-    {isTokenValid() && <NavigationBar onHome={showHome} onActs={showSchedules} onCommunity={showCommunity} onProfile={showProfile} />}
+    {isTokenValid() && <NavigationBar onHome={showHome} onSchedules={showSchedules} onCommunity={showCommunity} onProfile={showProfile} />}
 
 
 

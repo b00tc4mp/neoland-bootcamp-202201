@@ -2,9 +2,8 @@ import './ScheduleCard.sass'
 import { CancelScheduleButton, CompleteScheduleButton } from '.'
 import { useState } from 'react'
 
-export const ScheduleCard = ({ schedule: _schedule }) => {
+export const ScheduleCard = ({ schedule = {} }) => {
 
-    const [schedule, setSchedule] = useState(_schedule || {})
 
     return <>
         <div >

@@ -3,8 +3,7 @@ import './Button.sass'
 
 export const Button = ({ type = 'button', children = 'Enviar', onClick: _onClick, className = '' }) => {
 
-    const onClick = (event) => {
-        _onClick && event.preventDefault()
+    const onClick = event => {
         _onClick && _onClick(event)
     }
 

@@ -23,13 +23,13 @@ export const SearchActionsForm = ({ className = '' }) => {
         setRequiredTime(requiredTime)
     }
 
-    const cleanSearch = event => {
+    const cleanSearch = () => {
         setQuery('')
         setRequiredBudget('')
         setRequiredTime('')
     }
 
-    const onSubmit = (event) => {
+    const onSubmit = event => {
         event.preventDefault()
         search()
     }

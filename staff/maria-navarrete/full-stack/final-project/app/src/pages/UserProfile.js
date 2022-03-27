@@ -2,9 +2,11 @@ import './UserProfile.sass'
 import { UserIcon, ToggleFollowButton, ListUserPublicActions } from '../components'
 import { retrieveUserPublicInfo, listFollowingUsers } from '../logic'
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-export const UserProfile = ({ userId }) => {
+export const UserProfile = ({ goToCreateSchedule: _goToCreateSchedule, goToUserProfile: _goToUserProfile }) => {
 
+    const { userId } = useParams()
     const [user, setUser] = useState({})
 
     useEffect(async () => {
@@ -18,6 +20,14 @@ export const UserProfile = ({ userId }) => {
         }
     }, [])
 
+    const goToCreateSchedule = actionId => {
+        _goToCreateSchedule && _goToCreateSchedule(actionId)
+    }
+
+    const goToUserProfile = userId => {
+        _goToUserProfile && _goToUserProfile(userId)
+    }
+
     return <>
         {!!user.id &&
             <div >
@@ -26,7 +36,7 @@ export const UserProfile = ({ userId }) => {
                 <ToggleFollowButton userId={user.id} isFollow={user.isFollow} />
                 <span>{user.doneActs} Acts cumplidas</span>
                 <h3>Acciones creadas</h3>
-                <ListUserPublicActions userId={user.id} />
+                <ListUserPublicActions userId={user.id} goToCreateSchedule={goToCreateSchedule} goToUserProfile={goToUserProfile} />
             </div>}
     </>
 }

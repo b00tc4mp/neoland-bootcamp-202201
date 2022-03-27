@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listFollowingUsers } from '../logic'
 import { UserCard } from '.'
 
-export const ListFollowingUsers = () => {
+export const ListFollowingUsers = ({ goToUserProfile: _goToUserProfile }) => {
 
     const [following, setFollowing] = useState([])
 
@@ -18,13 +18,17 @@ export const ListFollowingUsers = () => {
         }
     }, [])
 
+    const goToUserProfile = userId => {
+        _goToUserProfile && _goToUserProfile(userId)
+    }
+
 
     return <>
         <div>
             <h2>Comunidad Hoomans </h2>
             {!!following.length &&
                 <ul> {following.map(follow =>
-                    <li key={follow.id}><UserCard user={follow} /></li>)}
+                    <li key={follow.id}><UserCard user={follow} onUserProfile={goToUserProfile} /></li>)}
                 </ul>}
         </div>
     </>

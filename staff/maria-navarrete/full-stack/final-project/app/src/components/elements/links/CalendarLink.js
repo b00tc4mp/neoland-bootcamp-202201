@@ -5,8 +5,7 @@ import { CalendarIcon } from '../../icons'
 
 export const CalendarLink = ({ onClick: _onClick }) => {
 
-    const onClick = (event) => {
-        // event.preventDefault()
+    const onClick = event => {
         _onClick && _onClick(event)
     }
 

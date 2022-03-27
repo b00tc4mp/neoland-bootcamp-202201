@@ -1,10 +1,9 @@
-
 import './ListActions.sass'
 import { useState, useEffect } from 'react'
 import { listActions } from '../logic'
 import { OwnerActionCard } from '.'
 
-export const ListActions = () => {
+export const ListActions = ({ goToCreateSchedule: _goToCreateSchedule, goToEditAction: _goToEditAction }) => {
 
     const [actions, setActions] = useState([])
 
@@ -17,12 +16,19 @@ export const ListActions = () => {
         }
     }, [])
 
+    const goToCreateSchedule = actionId => {
+        _goToCreateSchedule && _goToCreateSchedule(actionId)
+    }
+
+    const goToEditAction = actionId => {
+        _goToEditAction && _goToEditAction(actionId)
+    }
 
     return <>
         <div>
             {!!actions.length &&
                 <ul> {actions.map(action =>
-                    <li key={action.id}><OwnerActionCard action={action} /></li>)}
+                    <li key={action.id}><OwnerActionCard action={action} onCreateSchedule={goToCreateSchedule} onEditAction={goToEditAction} /></li>)}
                 </ul>}
         </div>
     </>

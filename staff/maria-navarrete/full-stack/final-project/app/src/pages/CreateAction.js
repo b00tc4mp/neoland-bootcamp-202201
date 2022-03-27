@@ -1,36 +1,30 @@
 import './CreateAction.sass'
-import { CreateActionForm, ActsNavigationBar } from '../components'
-import { createAction } from '../logic'
+import { CreateActionForm, ActionsNavigationBar } from '../components'
 
 
-export const CreateAction = ({ onCreated }) => {
+export const CreateAction = ({ onSchedules: _onSchedules, onCreatedActions: _onCreatedActions, onFavorites: _onFavorites, goBack: _goBack }) => {
 
-    const createNewAction = async event => {
-        try {
-            const { target: { description: { value: description }, requiredTime: { value: _requiredTime }, requiredBudget: { value: _requiredBudget }, isPublic: { checked: isPublic } } } = event
-
-            const requiredTime = Number(_requiredTime)
-            const requiredBudget = Number(_requiredBudget)
-
-            await createAction(sessionStorage.token, description, isPublic, requiredTime, requiredBudget)
-            onCreated && onCreated()
-        } catch (error) {
-            alert(error.message)
-        }
-
+    const goBack = event => {
+        _goBack && _goBack(event)
     }
 
-    const onSubmit = event => {
-        event.preventDefault()
-        createNewAction(event)
+    const onSchedules = event => {
+        _onSchedules && _onSchedules(event)
+    }
+
+    const onCreatedActions = event => {
+        _onCreatedActions && _onCreatedActions(event)
+    }
+
+    const onFavorites = event => {
+        _onFavorites && _onFavorites(event)
     }
 
     return <>
-        <ActsNavigationBar />
+        <ActionsNavigationBar onSchedules={onSchedules} onCreatedActions={onCreatedActions} onFavorites={onFavorites} />
         <div>
             <h2>Crear Acción</h2>
-            <CreateActionForm onSubmit={onSubmit} />
-
+            <CreateActionForm onCreated={goBack} onCancel={goBack} />
         </div>
     </>
 }

@@ -4,7 +4,7 @@ import { Button, CheckIcon, XIcon } from '../../components'
 export const Modal = ({ text, success, closeModal }) => {
 
 
-    const onOutsideClick = event => {
+    const onOutsideClick = () => {
         closeModal && closeModal()
     }
 

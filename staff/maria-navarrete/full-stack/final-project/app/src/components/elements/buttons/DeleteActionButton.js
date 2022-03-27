@@ -12,11 +12,11 @@ export const DeleteActionButton = ({ actionId }) => {
         setShowModal(false)
     }
 
-    const showDeleteModal = event => {
+    const showDeleteModal = () => {
         setShowModal(true)
     }
 
-    const closeDeleteModal = event => {
+    const closeDeleteModal = () => {
         setShowModal(false)
     }
 

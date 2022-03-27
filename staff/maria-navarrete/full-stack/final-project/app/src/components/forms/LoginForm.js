@@ -11,14 +11,14 @@ export const LoginForm = ({ className = '', onLogged }) => {
 
             const token = await authenticateUser(email, password)
             sessionStorage.token = token
-            onLogged && onLogged()
+            onLogged && onLogged(event)
 
         } catch (error) {
             alert(error.message)
         }
     }
 
-    const onSubmit = (event) => {
+    const onSubmit = event => {
         event.preventDefault()
         login(event)
     }

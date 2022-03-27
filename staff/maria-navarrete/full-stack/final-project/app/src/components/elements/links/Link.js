@@ -3,7 +3,7 @@ import './Link.sass'
 
 export const Link = ({ children, className = '', onClick: _onClick }) => {
 
-    const onClick = (event) => {
+    const onClick = event => {
         event.preventDefault()
         _onClick && _onClick(event)
     }

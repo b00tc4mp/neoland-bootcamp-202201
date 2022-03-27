@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listUserPublicActions, listFavoriteActions } from '../logic'
 import { ActionCard } from '.'
 
-export const ListUserPublicActions = ({ userId = '' }) => {
+export const ListUserPublicActions = ({ userId = '', goToCreateSchedule: _goToCreateSchedule, goToUserProfile: _goToUserProfile }) => {
 
     const [actions, setActions] = useState([])
 
@@ -22,12 +22,20 @@ export const ListUserPublicActions = ({ userId = '' }) => {
         }
     }, [])
 
+    const goToCreateSchedule = actionId => {
+        _goToCreateSchedule && _goToCreateSchedule(actionId)
+    }
+
+    const goToUserProfile = userId => {
+        _goToUserProfile && _goToUserProfile(userId)
+    }
+
 
     return <>
         <div>
             {!!actions.length &&
                 <ul> {actions.map(action =>
-                    <li key={action.id}><ActionCard action={action} /></li>)}
+                    <li key={action.id}><ActionCard action={action} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} /></li>)}
                 </ul>}
         </div>
     </>

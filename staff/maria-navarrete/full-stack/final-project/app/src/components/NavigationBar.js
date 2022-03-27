@@ -1,31 +1,31 @@
 import './NavigationBar.sass'
 import { Link, HappyIcon, HeartIcon, CommunityIcon, ProfileIcon } from '.'
 
-export const NavigationBar = ({ onHome, onActs, onCommunity, onProfile }) => {
+export const NavigationBar = ({ onHome: _onHome, onSchedules: _onSchedules, onCommunity: _onCommunity, onProfile: _onProfile }) => {
 
-    const goToHome = event => {
-        onHome && onHome(event)
+    const onHome = event => {
+        _onHome && _onHome(event)
     }
 
-    const goToActs = event => {
-        onActs && onActs(event)
+    const onSchedules = event => {
+        _onSchedules && _onSchedules(event)
     }
 
-    const goToCommunity = event => {
-        onCommunity && onCommunity(event)
+    const onCommunity = event => {
+        _onCommunity && _onCommunity(event)
     }
 
-    const goToProfile = event => {
-        onProfile && onProfile(event)
+    const onProfile = event => {
+        _onProfile && _onProfile(event)
     }
 
     return <>
         <nav>
             <ul>
-                <li><Link href='' onClick={goToHome}><HappyIcon /></Link>Inicio</li>
-                <li><Link href='' onClick={goToActs}><HeartIcon /></Link>Acts</li>
-                <li><Link href='' onClick={goToCommunity}><CommunityIcon /></Link>Comunidad</li>
-                <li><Link href='' onClick={goToProfile}><ProfileIcon /></Link>Perfil</li>
+                <li><Link onClick={onHome}><HappyIcon /></Link>Inicio</li>
+                <li><Link onClick={onSchedules}><HeartIcon /></Link>Acts</li>
+                <li><Link onClick={onCommunity}><CommunityIcon /></Link>Comunidad</li>
+                <li><Link onClick={onProfile}><ProfileIcon /></Link>Perfil</li>
             </ul>
         </nav>
     </>
