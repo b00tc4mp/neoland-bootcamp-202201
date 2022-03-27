@@ -24,7 +24,7 @@ export function ListSearchRackets({ query = '' }) {
         {!!rackets.length &&
             <ul>
                 {rackets.map(racket =>
-                    <li key={racket.id}>
+                    <li key={racket.id} /* className="results__item" onClick={() => goToItem(vehicle.id)} */>
                         <RacketsCard racket={racket} />
                     </li>)}
             </ul>
