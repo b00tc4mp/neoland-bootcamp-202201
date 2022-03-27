@@ -4,25 +4,30 @@ import React from 'react'
 import Button from '../Button'
 import { Input } from '../form-elements'
 import Modal from './Modal'
+import { useParams } from 'react-router-dom'
 
 
 
-function ModalUpdateProduct({ onClose }) {
+function ModalUpdateProduct({ onClose, saveProduct }) {
   const [name, setName] = useState()
   const [size, setSize] = useState()
   const [color, setColor] = useState()
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
+  const [product, setProduct] = useState({})
+  const { productId } = useParams()
 
   useEffect(() => {
     try {
-      retrieveProduct('623de084ea7e02d5ec83912c') // productId
-        .then(({ name, size, color, price, description }) => {
+      retrieveProduct(productId)
+        .then(( product ) => {
+          const { name, size, color, price, description} = product
           setName(name)
-          setName(size)
-          setName(color)
-          setName(price)
-          setName(description)
+          setSize(size)
+          setColor(color)
+          setPrice(price)
+          setDescription(description)
+          setProduct(product)
         })
         .catch(error => alert(error.message))
     } catch (error) {
@@ -42,13 +47,14 @@ function ModalUpdateProduct({ onClose }) {
       description: { value: description } } } = event
 
     try {
-      updateProduct(sessionStorage.token, '623de084ea7e02d5ec83912c', name, size, color, price, description)
+      updateProduct(sessionStorage.token, productId, name, size, color, price, description)
         .then(() => {
           setName(name)
           setSize(size)
           setColor(color)
           setPrice(price)
           setDescription(description)
+          saveProduct(product)
         })
         .catch(error => { throw error })
     } catch ({ message }) {
@@ -63,10 +69,10 @@ function ModalUpdateProduct({ onClose }) {
       <form onSubmit={modifyProduct}>
         <h1>Actualizar producto</h1>
         <Input type='text' name='name' placeholder='Nombre del producto' defaultValue={name}/>
-        <Input type='text' name='size' placeholder='Talla' />
-        <Input type='text' name='color' placeholder='Color' />
-        <Input type='text' name='price' placeholder='Precio' />
-        <Input type='text' name='description' placeholder='Descripción' />
+        <Input type='text' name='size' placeholder='Talla' defaultValue={size}/>
+        <Input type='text' name='color' placeholder='Color' defaultValue={color}/>
+        <Input type='text' name='price' placeholder='Precio' defaultValue={price}/>
+        <Input type='text' name='description' placeholder='Descripción' defaultValue={description}/>
         <img src='https://cdn.7tv.app/emote/60bd749e4829db9d4dd99464/4x' />
         {/* https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2016/09/28082346/CtY9h13WAAEsNfz.jpg' alt="pepo" */}
         <Button type='submit' >Actualizar</Button>

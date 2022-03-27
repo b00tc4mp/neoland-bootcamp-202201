@@ -3,13 +3,14 @@ import { retrieveUser, updateUser } from '../logic'
 import { Button } from '../components'
 import { Input } from '../components/form-elements'
 import ModalCreateProduct from './elements/ModalCreateProduct'
-import ModalUpdateProduct from './elements/ModalUpdateProduct'
+import ProductList from './ProductList'
 
 
-function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
+function Profile({ onUpdatePassword, onDeleteAccount, onLogout}) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [isShowModal, setIsShowModal] = useState()
+    const [showProductList, setShowProductList] = useState(false)
 
 
     useEffect(() => {
@@ -72,12 +73,23 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
         setIsShowModal(false)
     }
 
+    const goToProductList = event => {
+        event.preventDefault()
+        // onProductList()
+        setShowProductList(!showProductList)
+    }
+
+
+
     return <div className='profile'> 
         {isShowModal && <ModalCreateProduct onClose={closeModal}/> }
-        {/* {isShowModal && <ModalUpdateProduct onClose={closeModal}/> } */}
+       
+
+        {/* <ProductList /> */}
+        {showProductList ? <ProductList /> : null }
         <div>
             <h1>PERFIL</h1>
-            Bienvenid@ a tu perfil, {name} !
+            <h2>Bienvenid@ a tu perfil, {name} !</h2>
 
             <form className='profile__form' onSubmit={onSubmit} method='post'>
 
@@ -96,8 +108,9 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
                 <Button type='submit' onClick={logOut}>Cerrar sesión</Button>
             </form>
                 <div>
+                <Button onClick={goToProductList}>Listar Productos</Button>    
                 <Button onClick={toggleModal}>Añadir Producto</Button>
-                {/* <Button onClick={toggleModal}>Actualizar Producto</Button> */}
+                
                 </div> 
         </div>
         </div>

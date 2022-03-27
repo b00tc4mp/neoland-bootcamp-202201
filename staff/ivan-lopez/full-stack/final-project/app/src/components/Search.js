@@ -11,7 +11,7 @@ function Search({ className, onSearch, query }) {
 
         const { target: { query: { value: query } } } = event
 
-        navigate('search')   
+        navigate('search')
     }
 
     return <>

@@ -8,6 +8,7 @@ import ProductDetails from './ProductDetails'
 import Search from './Search'
 import Button from './Button'
 import Results from './Results'
+import ProductList from './ProductList'
 
 
 
@@ -21,5 +22,6 @@ export {
     ProductDetails,
     Search,
     Button,
-    Results
+    Results,
+    ProductList
 }
