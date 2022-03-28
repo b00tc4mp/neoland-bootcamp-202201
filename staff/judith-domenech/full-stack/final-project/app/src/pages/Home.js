@@ -1,14 +1,13 @@
 import './Home.sass'
-import { Search, HeaderBar, NavigateMenu } from '../components'
-import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate, useSearchParams, Navigate } from 'react-router-dom'
+import { ListSearchRackets, Search } from '../components'
 
+export function Home({ onSearch, goToDetails }) {
 
-export function Home() {
     return <div className='home'>
         
         <div className='home__search'>
-            <Search />
+            <Search onSearch={onSearch}/>
+            <ListSearchRackets goToDetails={goToDetails} />
         </div>
         
     </div>

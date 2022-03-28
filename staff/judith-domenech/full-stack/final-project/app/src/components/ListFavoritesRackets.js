@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listFavoritesRackets } from '../logic'
 import { RacketsCard } from '.'
 
-export function ListFavoritesRackets() {
+export function ListFavoritesRackets({ goToDetails}) {
     const [favorites, setFavorites] = useState([])
 
     useEffect(async () => {
@@ -16,12 +16,19 @@ export function ListFavoritesRackets() {
         }
     }, [])
 
+    const updateFavoritesList = async () => {
+        const favorites = await listFavoritesRackets(sessionStorage.token)
+        favorites.forEach(favorite => favorite.isFav = true)
+
+        setFavorites(favorites)
+    }
+
     return <>
         {!!favorites.length &&
             <ul>
                 {favorites.map(favorite =>
                     <li key={favorite.id}>
-                        <RacketsCard racket={favorite}  />
+                        <RacketsCard racket={favorite} onRacket={goToDetails} onToggled={updateFavoritesList} />
                     </li>)}
             </ul>
         }

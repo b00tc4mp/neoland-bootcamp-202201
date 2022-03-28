@@ -1,5 +1,5 @@
 import './SearchUserRacket.sass'
-import { ListFavoritesRackets, SearchUserRacketForm } from '../components'
+import { SearchUserRacketForm } from '../components'
 
 export function SearchUserRacket() {
     return <div className='search-user-racket'>

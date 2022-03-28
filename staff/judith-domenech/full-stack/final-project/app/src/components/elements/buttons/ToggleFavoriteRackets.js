@@ -1,17 +1,20 @@
 import './ToggleFavoriteRackets.sass'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toggleFavoriteRacket } from '../../../logic'
 import { FavoriteIcon } from '../../icons'
 import { Button } from '.'
 
 
-export function ToggleFavoriteRackets({ racket }) {
-    const [favorite, setFavorite] = useState(racket.isFavorite)
+export function ToggleFavoriteRackets({ racketId, isFavorite = false, onToggled }) {
+
+    const [favorite, setFavorite] = useState(isFavorite)
 
     const toggleFavorite = async () => {
+      
         try {
-            await toggleFavoriteRacket(sessionStorage.token, racket.id)
+            await toggleFavoriteRacket(sessionStorage.token, racketId)
             setFavorite(!favorite)
+            onToggled && onToggled()
         } catch (error) {
             alert(error.message)
         }

@@ -3,7 +3,8 @@ import {
   ListFavoritesRackets,
   SearchUserRacket,
   HeaderBar,
-  NavigateMenu
+  NavigateMenu,
+
 } from './components'
 
 import {
@@ -11,8 +12,11 @@ import {
   Login,
   Home,
   Profile,
-  Favorites
+  Favorites,
+  UpdatePassword,
+  RacketDetails,
 } from './pages'
+
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators } from 'commons'
 
@@ -32,11 +36,15 @@ function App() {
   }
 
   const navigate = useNavigate()
-  const showLogin = () => navigate('login')
-  const showRegister = () => navigate('register')
-  const showProfile = () => navigate('profile')
-  const showFavorites = () => navigate('favorites')
-  const showSearchUserRacket = () =>navigate('search-your-racket')
+  const goBack = () => navigate(-1)
+  const showLogin = () => navigate('acceder')
+  const showRegister = () => navigate('registrar')
+  const showSearch = query => { navigate(`search?query=${query}`) }
+  const showRacketDetails = racketId => navigate(`pala/${racketId}`)
+  const showProfile = () => navigate('perfil')
+  const showFavorites = () => navigate('favoritos')
+  const showSearchUserRacket = () => navigate('busca-tu-pala')
+  const showUpdatePassword = () => navigate('cambiar-contrasena')
   const showHome = () => navigate('/')
 
   const goToProfile = event => {
@@ -44,43 +52,49 @@ function App() {
     showProfile()
   }
 
-  
   const goToFavorites = event => {
     event.preventDefault()
     showFavorites()
   }
-  
+
   const goToHome = event => {
     event.preventDefault()
     showHome()
   }
 
-    const goToLogin = event => {
-      event.preventDefault()
-      showLogin()
+  const goToLogin = event => {
+    event.preventDefault()
+    showLogin()
   }
+
+  const goUpdatePassword = event => {
+    showUpdatePassword()
+  }
+
+
   return <div>
 
     <div className='home__header-bar'>
       {sessionStorage.token && <HeaderBar onHome={goToHome} onLogin={goToLogin} />}
     </div>
     <Routes>
-      <Route path="/" element={<Home onRegistered={showLogin} onLogin={showLogin} onProfile={showProfile} />} />
-      <Route path="register" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
-      <Route path="login" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
-      <Route path="profile" element={sessionStorage.token && <Profile />} />
-      <Route path="favorites" element={sessionStorage.token && <Favorites />} />
-      <Route path="search-your-racket" element={sessionStorage.token && <SearchUserRacket  />} />
-      <Route path="page-not-found" element={!sessionStorage.token ? <h1>Sorry, esta pag no existe :P</h1> : <Navigate replace to="/" />} />
+      <Route path="/*" element={<Home onRegistered={showLogin} onLogin={showLogin} onProfile={showProfile} goToDetails={showRacketDetails} onSearch={showSearch}/> } />
+      <Route path="registrar" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
+      <Route path="acceder" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
+      <Route path="perfil" element={sessionStorage.token && <Profile onUpdatePassword={goUpdatePassword} onLogOut={showHome}/>} />
+      <Route path="cambiar-contrasena" element={sessionStorage.token && <UpdatePassword onBack={goBack} />} />
+      <Route path="pala/:racketId" element={sessionStorage.token && <RacketDetails />} />
+      <Route path="favoritos" element={sessionStorage.token && <Favorites goToDetails={showRacketDetails} />} />
+      <Route path="busca-tu-pala" element={sessionStorage.token && <SearchUserRacket />} />
+     
+      <Route path="page-not-found" element={!sessionStorage.token ? <h1>Sorry, esta página no existe :P</h1> : <Navigate replace to="/" />} />
       <Route path="/*" element={<Navigate replace to='page-not-found' />} />
-      {/* <Route path='profile' element={<Profile />} />
-      <Route path='favorites' element={<ListFavoritesRackets />} />
-      <Route path='tu-pala' element={<SearchUserRacket />} />  */}
+
     </Routes>
 
 
     <div className='home__navigate-menu'>
-      {sessionStorage.token && <NavigateMenu onProfile={goToProfile} onFavorites={goToFavorites} onSearchUserRacket={showSearchUserRacket} onHome={goToHome}/>}
+      {sessionStorage.token && <NavigateMenu onProfile={goToProfile} onFavorites={goToFavorites} onSearchUserRacket={showSearchUserRacket} onHome={goToHome} />}
     </div>
 
   </div>
