@@ -1,21 +1,9 @@
 import './ActionsNavigationBar.sass'
 import { Link, CalendarIcon, EditIcon, FavoriteIcon } from '.'
 
-export const ActionsNavigationBar = ({ onSchedules: _onSchedules, onCreatedActions: _onCreatedActions, onFavorites: _onFavorites }) => {
+export const ActionsNavigationBar = ({ onSchedules, onCreatedActions, onFavorites }) => {
 
-    const onSchedules = event => {
-        _onSchedules && _onSchedules(event)
-    }
-
-    const onCreatedActions = event => {
-        _onCreatedActions && _onCreatedActions(event)
-    }
-
-    const onFavorites = event => {
-        _onFavorites && _onFavorites(event)
-    }
-
-
+    
     return <>
         <nav>
             <ul>

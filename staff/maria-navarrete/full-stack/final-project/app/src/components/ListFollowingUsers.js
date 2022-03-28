@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listFollowingUsers } from '../logic'
 import { UserCard } from '.'
 
-export const ListFollowingUsers = ({ goToUserProfile: _goToUserProfile }) => {
+export const ListFollowingUsers = ({ goToUserProfile }) => {
 
     const [following, setFollowing] = useState([])
 
@@ -18,8 +18,11 @@ export const ListFollowingUsers = ({ goToUserProfile: _goToUserProfile }) => {
         }
     }, [])
 
-    const goToUserProfile = userId => {
-        _goToUserProfile && _goToUserProfile(userId)
+    const updateFollowingUsers = async() => {
+        const following = await listFollowingUsers(sessionStorage.token)
+        following.forEach(follow => follow.isFollow = true)
+
+        setFollowing(following)
     }
 
 
@@ -28,7 +31,7 @@ export const ListFollowingUsers = ({ goToUserProfile: _goToUserProfile }) => {
             <h2>Comunidad Hoomans </h2>
             {!!following.length &&
                 <ul> {following.map(follow =>
-                    <li key={follow.id}><UserCard user={follow} onUserProfile={goToUserProfile} /></li>)}
+                    <li key={follow.id}><UserCard user={follow} onUserProfile={goToUserProfile} onToggled={updateFollowingUsers} /></li>)}
                 </ul>}
         </div>
     </>

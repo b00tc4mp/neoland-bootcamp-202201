@@ -1,5 +1,6 @@
 import './App.sass'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import styled, { ThemeProvider } from 'styled-components'
 import { Header, NavigationBar } from './components'
 import { validators } from 'commons'
 import {
@@ -63,7 +64,7 @@ const App = () => {
 
 
   return <div>
-    {isTokenValid() && <Header />}
+    {isTokenValid() && <Header onLogo={showHome} />}
     <Routes>
       <Route path='/*' element={isTokenValid() ? <Home onSearchActions={showSearchActions} goToCreateSchedule={showCreateSchedule} goToUserProfile={showUserProfile} /> : <Navigate replace to='/ingresar' />} />
       <Route path='/ingresar' element={!isTokenValid() ? <Login goToHome={showHome} onRegister={showRegister} /> : <Navigate replace to='/' />} />

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { data } from 'commons'
 const { repeatOptions } = data
 
-export const CreateScheduleForm = ({ actionId, className = '', onCreated, onCancel: _onCancel }) => {
+export const CreateScheduleForm = ({ actionId, className = '', onCreated, onCancel }) => {
     const [description, setDescription] = useState('')
     const [requiredTime, setRequiredTime] = useState('')
     const [requiredBudget, setRequiredBudget] = useState('')
@@ -38,9 +38,6 @@ export const CreateScheduleForm = ({ actionId, className = '', onCreated, onCanc
         createNewSchedule(event)
     }
 
-    const onCancel = event => {
-        _onCancel && _onCancel(event)
-    }
 
     return <>
         <form className={className} onSubmit={onSubmit}>

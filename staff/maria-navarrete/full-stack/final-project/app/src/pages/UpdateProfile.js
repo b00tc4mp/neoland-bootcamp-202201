@@ -3,7 +3,7 @@ import { Link, RightArrowIcon, UserIcon, UpdateProfileForm } from '../components
 import { retrieveUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-export const UpdateProfile = ({ goToProfile: _goToProfile, onUpdatePassword: _onUpdatePassword, onDeleteAccount: _onDeleteAccount }) => {
+export const UpdateProfile = ({ goToProfile, onUpdatePassword, onDeleteAccount }) => {
 
     const [user, setUser] = useState({})
 
@@ -16,17 +16,6 @@ export const UpdateProfile = ({ goToProfile: _goToProfile, onUpdatePassword: _on
         }
     }, [])
 
-    const onUpdatePassword = event => {
-        _onUpdatePassword && _onUpdatePassword(event)
-    }
-
-    const onDeleteAccount = event => {
-        _onDeleteAccount && _onDeleteAccount(event)
-    }
-
-    const goToProfile = event => {
-        _goToProfile && _goToProfile(event)
-    }
 
     return <>
         <div>

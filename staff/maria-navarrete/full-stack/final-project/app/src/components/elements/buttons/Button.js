@@ -1,12 +1,9 @@
 import './Button.sass'
 
 
-export const Button = ({ type = 'button', children = 'Enviar', onClick: _onClick, className = '' }) => {
+export const Button = ({ type = 'button', children = 'Enviar', onClick, className = '' }) => {
 
-    const onClick = event => {
-        _onClick && _onClick(event)
-    }
-
+    
     return <>
         <button onClick={onClick} type={type} className={`button ${className}`}>{children}</button>
     </>

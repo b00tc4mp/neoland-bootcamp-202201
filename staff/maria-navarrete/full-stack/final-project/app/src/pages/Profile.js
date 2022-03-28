@@ -3,7 +3,7 @@ import { UserIcon, Link, RightArrowIcon, Button } from '../components'
 import { retrieveUser } from '../logic'
 import { useState, useEffect } from 'react'
 
-export const Profile = ({ onUpdateProfile: _onUpdateProfile, onActivity: _onActivity, onLogout: _onLogout }) => {
+export const Profile = ({ onUpdateProfile, onActivity, onLogout }) => {
 
     const [user, setUser] = useState({})
 
@@ -16,18 +16,6 @@ export const Profile = ({ onUpdateProfile: _onUpdateProfile, onActivity: _onActi
         }
     }, [])
 
-    const onUpdateProfile = event => {
-        _onUpdateProfile && _onUpdateProfile(event)
-    }
-
-    const onActivity = event => {
-        _onActivity && _onActivity(event)
-    }
-
-    const onLogout = event => {
-        delete sessionStorage.token
-        _onLogout && _onLogout(event)
-    }
 
     return <>
         <div >

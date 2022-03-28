@@ -2,16 +2,14 @@ import './UserCard.sass'
 import { UserIcon, ToggleFollowButton, Link } from '.'
 import { useState } from 'react'
 
-export const UserCard = ({ user = {}, onUserProfile: _onUserProfile }) => {
+export const UserCard = ({ user = {}, onUserProfile, onToggled }) => {
 
-    const onUserProfile = userId => {
-        _onUserProfile && _onUserProfile(userId)
-    }
+
     return <>
         <div >
             <UserIcon />
             <Link onClick={() => onUserProfile(user.id)}>{user.username}</Link>
-            <ToggleFollowButton userId={user.id} isFollow={user.isFollow} />
+            <ToggleFollowButton userId={user.id} isFollow={user.isFollow} onToggled={onToggled} />
         </div>
     </>
 }

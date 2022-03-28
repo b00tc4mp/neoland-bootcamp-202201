@@ -5,7 +5,7 @@ import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
 
-export const CreateActionForm = ({ className = '', onCreated, onCancel: _onCancel }) => {
+export const CreateActionForm = ({ className = '', onCreated, onCancel }) => {
 
     const createNewAction = async event => {
         try {
@@ -27,9 +27,6 @@ export const CreateActionForm = ({ className = '', onCreated, onCancel: _onCance
         createNewAction(event)
     }
 
-    const onCancel = event => {
-        _onCancel && _onCancel(event)
-    }
 
     return <>
         <form className={className} onSubmit={onSubmit}>

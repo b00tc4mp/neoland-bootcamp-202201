@@ -2,14 +2,9 @@ import './CreateSchedule.sass'
 import { CreateScheduleForm } from '../components'
 import { useParams } from 'react-router-dom'
 
-export const CreateSchedule = ({ goBack: _goBack }) => {
-    
-    const { actionId } = useParams()
+export const CreateSchedule = ({ goBack }) => {
 
-    const goBack = event => {
-        event.preventDefault()
-        _goBack && _goBack(event)
-    }
+    const { actionId } = useParams()
 
     return <>
         <div>

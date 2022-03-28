@@ -2,12 +2,7 @@ import './DeleteAccount.sass'
 import { DeleteAccountForm, UserIcon } from '../components'
 
 
-export const DeleteAccount = ({ goToLogin: _goToLogin }) => {
-
-    const goToLogin = event => {
-        _goToLogin && _goToLogin(event)
-
-    }
+export const DeleteAccount = ({ goToLogin }) => {
 
 
     return <>

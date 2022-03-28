@@ -5,7 +5,7 @@ import { HeartIcon } from '../../icons'
 import { Button } from '.'
 
 
-export const ToggleFollowButton = ({ userId, isFollow }) => {
+export const ToggleFollowButton = ({ userId, isFollow, onToggled }) => {
 
     const [following, setFollowing] = useState(isFollow)
 
@@ -13,6 +13,7 @@ export const ToggleFollowButton = ({ userId, isFollow }) => {
         try {
             await toggleFollowingUser(sessionStorage.token, userId)
             setFollowing(!following)
+            onToggled && onToggled()
         } catch (error) {
             alert(error.message)
         }

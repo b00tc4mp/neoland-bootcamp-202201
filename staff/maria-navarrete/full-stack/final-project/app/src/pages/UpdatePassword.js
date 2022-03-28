@@ -2,11 +2,7 @@ import './UpdatePassword.sass'
 import { UserIcon, UpdatePasswordForm } from '../components'
 
 
-export const UpdatePassword = ({ goToProfile: _goToProfile }) => {
-
-    const goToProfile = event => {
-        _goToProfile && _goToProfile(event)
-    }
+export const UpdatePassword = ({ goToProfile }) => {
 
 
     return <>

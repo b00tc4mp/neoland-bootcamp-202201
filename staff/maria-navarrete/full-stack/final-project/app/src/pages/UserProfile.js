@@ -4,7 +4,7 @@ import { retrieveUserPublicInfo, listFollowingUsers } from '../logic'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-export const UserProfile = ({ goToCreateSchedule: _goToCreateSchedule, goToUserProfile: _goToUserProfile }) => {
+export const UserProfile = ({ goToCreateSchedule, goToUserProfile }) => {
 
     const { userId } = useParams()
     const [user, setUser] = useState({})
@@ -20,13 +20,6 @@ export const UserProfile = ({ goToCreateSchedule: _goToCreateSchedule, goToUserP
         }
     }, [])
 
-    const goToCreateSchedule = actionId => {
-        _goToCreateSchedule && _goToCreateSchedule(actionId)
-    }
-
-    const goToUserProfile = userId => {
-        _goToUserProfile && _goToUserProfile(userId)
-    }
 
     return <>
         {!!user.id &&

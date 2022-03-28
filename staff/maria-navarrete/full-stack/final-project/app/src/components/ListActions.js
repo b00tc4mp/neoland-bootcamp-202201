@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listActions } from '../logic'
 import { OwnerActionCard } from '.'
 
-export const ListActions = ({ goToCreateSchedule: _goToCreateSchedule, goToEditAction: _goToEditAction }) => {
+export const ListActions = ({ goToCreateSchedule, goToEditAction }) => {
 
     const [actions, setActions] = useState([])
 
@@ -16,19 +16,17 @@ export const ListActions = ({ goToCreateSchedule: _goToCreateSchedule, goToEditA
         }
     }, [])
 
-    const goToCreateSchedule = actionId => {
-        _goToCreateSchedule && _goToCreateSchedule(actionId)
+    const updateActionsList = async () => {
+        const actions = await listActions(sessionStorage.token)
+        setActions(actions)
     }
 
-    const goToEditAction = actionId => {
-        _goToEditAction && _goToEditAction(actionId)
-    }
 
     return <>
         <div>
             {!!actions.length &&
                 <ul> {actions.map(action =>
-                    <li key={action.id}><OwnerActionCard action={action} onCreateSchedule={goToCreateSchedule} onEditAction={goToEditAction} /></li>)}
+                    <li key={action.id}><OwnerActionCard action={action} onCreateSchedule={goToCreateSchedule} onEditAction={goToEditAction} onDeleted={updateActionsList} /></li>)}
                 </ul>}
         </div>
     </>

@@ -6,7 +6,7 @@ import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
 
-export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel: _onCancel }) => {
+export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel }) => {
 
     const [description, setDescription] = useState('')
     const [isPublic, setIsPublic] = useState(false)
@@ -47,9 +47,6 @@ export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel
         updateUserAction(event)
     }
 
-    const onCancel = event => {
-        _onCancel && _onCancel(event)
-    }
 
     return <>
         <form className={className} onSubmit={onSubmit}>

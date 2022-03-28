@@ -1,19 +1,7 @@
 import './Schedules.sass'
 import { ListSchedules, ActionsNavigationBar } from '../components'
 
-export const Schedules = ({ onSchedules: _onSchedules, onCreatedActions: _onCreatedActions, onFavorites: _onFavorites }) => {
-
-    const onSchedules = event => {
-        _onSchedules && _onSchedules(event)
-    }
-
-    const onCreatedActions = event => {
-        _onCreatedActions && _onCreatedActions(event)
-    }
-
-    const onFavorites = event => {
-        _onFavorites && _onFavorites(event)
-    }
+export const Schedules = ({ onSchedules, onCreatedActions, onFavorites }) => {
 
 
     return <>

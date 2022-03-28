@@ -4,7 +4,7 @@ import { ActionCard } from '.'
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-export const ListSearchActionsResults = ({ goToCreateSchedule: _goToCreateSchedule, goToUserProfile: _goToUserProfile }) => {
+export const ListSearchActionsResults = ({ goToCreateSchedule, goToUserProfile }) => {
 
     const [actions, setActions] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
@@ -33,13 +33,6 @@ export const ListSearchActionsResults = ({ goToCreateSchedule: _goToCreateSchedu
         }
     }, [query, _requiredTime, _requiredBudget])
 
-    const goToCreateSchedule = actionId => {
-        _goToCreateSchedule && _goToCreateSchedule(actionId)
-    }
-
-    const goToUserProfile = userId => {
-        _goToUserProfile && _goToUserProfile(userId)
-    }
 
     return <>
         <div>

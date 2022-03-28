@@ -4,7 +4,7 @@ import { UserCard } from '.'
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-export const ListSearchUsersResults = ({ goToUserProfile: _goToUserProfile }) => {
+export const ListSearchUsersResults = ({ goToUserProfile }) => {
 
     const [users, setUsers] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
@@ -27,9 +27,6 @@ export const ListSearchUsersResults = ({ goToUserProfile: _goToUserProfile }) =>
         }
     }, [query])
 
-    const goToUserProfile = userId => {
-        _goToUserProfile && _goToUserProfile(userId)
-    }
 
     return <>
         <div>

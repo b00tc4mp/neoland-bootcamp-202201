@@ -4,12 +4,13 @@ import { Modal, Button, DeleteIcon } from '../../'
 import { deleteAction } from '../../../logic'
 
 
-export const DeleteActionButton = ({ actionId }) => {
+export const DeleteActionButton = ({ actionId, onDeleted }) => {
     const [showModal, setShowModal] = useState(false)
 
     const deleteAct = async () => {
         await deleteAction(sessionStorage.token, actionId)
         setShowModal(false)
+        onDeleted && onDeleted()
     }
 
     const showDeleteModal = () => {

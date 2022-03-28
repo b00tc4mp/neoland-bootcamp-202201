@@ -1,11 +1,8 @@
 import './Header.sass'
 import { Link, Logo } from '.'
 
-export const Header = ({ onLogo: _onLogo }) => {
+export const Header = ({ onLogo }) => {
 
-    const onLogo = event => {
-        _onLogo && _onLogo(event)
-    }
 
     return <>
         <header>

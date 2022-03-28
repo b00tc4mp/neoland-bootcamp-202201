@@ -4,8 +4,7 @@ import { updateSchedule } from '../../../logic'
 import { CalendarCheckIcon } from '../../icons'
 import { Button } from '.'
 
-export const CompleteScheduleButton = ({ schedule: _schedule }) => {
-    const [schedule, setSchedule] = useState(_schedule)
+export const CompleteScheduleButton = ({ schedule = {} }) => {
 
     const complete = async () => {
         try {

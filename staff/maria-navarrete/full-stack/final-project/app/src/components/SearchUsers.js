@@ -6,7 +6,6 @@ export const SearchUsers = ({ onSearchUsers }) => {
 
     const search = event => {
         const { target: { query: { value: query } } } = event
-        debugger
         onSearchUsers && onSearchUsers(query)
     }
 
