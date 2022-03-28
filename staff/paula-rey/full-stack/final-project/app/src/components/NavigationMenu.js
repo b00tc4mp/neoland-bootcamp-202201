@@ -1,8 +1,9 @@
 import './NavigationMenu.sass'
 import { Link, ProfileIcon, FavoriteIcon, SearchLocationIcon } from '.'
+import { CreateIcon } from './icons'
 
 
-export function NavigationMenu({ onSearchLocationIcon, onFavoritesIcon, onProfileIcon }) {
+export function NavigationMenu({ onSearchLocationIcon, onAddLocationIcon, onFavoritesIcon, onProfileIcon }) {
 
     const goToHome = event => {
         //event.preventDefault()
@@ -19,10 +20,16 @@ export function NavigationMenu({ onSearchLocationIcon, onFavoritesIcon, onProfil
         onProfileIcon && onProfileIcon(event)
     }
 
+    const goToAddLocation = event => {
+        //event.preventDefault()
+        onAddLocationIcon && onAddLocationIcon(event)
+    }
+
     return <>
         <nav>
             <ul>
                 <li><Link onClick={goToHome}><SearchLocationIcon/>Buscador</Link></li>
+                <li><Link onClick={goToAddLocation}><CreateIcon/>Crear localizacion</Link></li>
                 <li><Link onClick={goToListFavorites}><FavoriteIcon/>Favoritas</Link></li>
                 <li><Link onClick={goToProfile}><ProfileIcon/>Perfil</Link></li>
             </ul>

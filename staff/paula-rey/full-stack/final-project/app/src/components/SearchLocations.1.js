@@ -1,11 +1,11 @@
-import './Search.sass'
+import './SearchLocations.sass'
 import { useState } from 'react'
 import { ListSearchResults } from '.'
 import { SearchIcon, CleanSearchIcon, Input, Select, Button } from '.'
 import { data } from 'commons'
 const { locationTypes, locationCities } = data
 
-export function Search({onLocationCard}) {
+export function SearchLocations({onLocationCard}) {
     const [query, setQuery] = useState('')
     const [type, setType] = useState('')
     const [city, setCity] = useState('')

@@ -1,9 +1,9 @@
 import './UserData.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
-import { Button } from '../components'
+import { Button, Input, Link } from '../components'
 
-export function UserData({onUpdatePassword, onDeleteAccount}) {
+export function UserData({onUpdatePassword}) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
 
@@ -20,7 +20,7 @@ export function UserData({onUpdatePassword, onDeleteAccount}) {
         }
     }, [])
 
-    const updateProfile = event => {
+    const updateData = event => {
         event.preventDefault()
 
         const { target:{ name: {value: name}, email: {value: email} } }  = event
@@ -43,21 +43,13 @@ export function UserData({onUpdatePassword, onDeleteAccount}) {
         onUpdatePassword()
     }
 
-    const goToDeleteAccount = event => {
-        event.preventDefault()
-
-        onDeleteAccount()
-    }
 
     return <div className="data">
-        <form className="data__form" onSubmit={updateProfile} method="post">  
-            <input className="data__name-input" type="text" name="name" placeholder="name" defaultValue={name}/>
-            <input className="data__email-input" type="email" name="email" placeholder="e-mail" defaultValue={email}/>
-
-            <Button>Update profile</Button>
-
-            <a className="data__update-password-link" href="" onClick={goToUpdatePassword}>update password</a>
-            <a className="data__delete-account-link" href="" onClick={goToDeleteAccount}>delete account</a>
+        <form className="data__form" onSubmit={updateData} method="post">  
+            <Input className="data__name-input" type="text" name="name" placeholder="Nombre" required={true} defaultValue={name}/>
+            <Input className="data__email-input" type="email" name="email" placeholder="e-mail" required={true} defaultValue={email}/>
+            <Button type="submit">Guardar cambios</Button>
+            <Link className="data__update-password-link" href="" onClick={goToUpdatePassword}>Editar contraseña</Link>
         </form>
 
     </div>

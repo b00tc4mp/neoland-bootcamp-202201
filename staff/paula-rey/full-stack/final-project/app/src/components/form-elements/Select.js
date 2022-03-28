@@ -1,6 +1,10 @@
 import './Select.sass'
+import { useEffect } from 'react'
 
 export function Select({ type = '', name = '', options = [], placeholder = 'Selecciona una opción', required = false, selected, label }) {
+
+    useEffect(() => {
+    }, [type, name, options, placeholder, required, selected, label])
 
     return <>
         {label && <label htmlFor={name}>{label}</label>}

@@ -18,13 +18,15 @@ export function CommentCard({ comment: _comment }) {
         }
     }, [])
 
-    return <div className='comment-card'>
-        <h1>{comment.userName}</h1>
-        <h2>{new Date(comment.date).toLocaleDateString()}</h2>
-        <p>{comment.text}</p>
-        {owned && <Button><DeleteIcon /></Button>}
+    return <>
+        <div className='comment-card'>
+            <h1>{comment.userName}</h1>
+            <h2>{new Date(comment.date).toLocaleDateString()}</h2>
+            <p>{comment.text}</p>
+            {owned && <Button><DeleteIcon /></Button>}
 
-    </div>
+        </div>
+    </>
 }
 
 

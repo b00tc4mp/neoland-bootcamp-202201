@@ -2,8 +2,11 @@ import './ListComments.sass'
 import { useState, useEffect } from 'react'
 import { listLocationComments } from '../logic'
 import { CommentCard } from '.'
+import { useParams } from 'react-router-dom'
 
-export function ListComments({locationId}) {
+export function ListComments() {
+    const { locationId } = useParams()
+
     const [comments, setComments] = useState([])
 
 

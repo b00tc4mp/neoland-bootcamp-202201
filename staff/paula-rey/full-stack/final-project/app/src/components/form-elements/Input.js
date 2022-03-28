@@ -1,7 +1,7 @@
 import './Input.sass'
 
 
-export function Input({type='text', name, placeholder = 'Escribe aquí', required = false, defaultValue= null, label, disabled }) {
+export function Input({type='text', name= '', placeholder = 'Escribe aquí', required = false, defaultValue= null, label, disabled }) {
 
     return <>
         {label && <label htmlFor={name}>{label}</label>}

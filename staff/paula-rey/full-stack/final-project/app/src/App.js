@@ -4,8 +4,7 @@ import { Logo } from './components/elements'
 import {
    Home, 
    Login, 
-   Register, 
-   Search, 
+   Register,  
    Profile, 
    ListFavorites,  
    UserData, 
@@ -13,7 +12,10 @@ import {
    ListFollows, 
    DeleteAccount, 
    LocationDetails, 
-   AddLocation 
+   AddLocation, 
+   UpdateLocation,
+   AddComment,
+   UpdatePassword
 } from './pages'
 import { validators } from 'commons'
 import { Header, ListSearchResults, LocationCard, NavigationMenu } from './components'
@@ -32,39 +34,55 @@ function App() {
     }
   }
 
+  const goBack = () => navigate(-1)
+
   const navigate = useNavigate()
 
   // views
   const showHome = () => navigate('/')
-  const showSearch = () => navigate('/')
+  const showSearchLocations =  ({ query, type, city }) => { navigate(`/search?${query !== null ? `query=${query}` : ''}&${type !== null ? `type=${type}` : ''}&${city !== null ? `city=${city}` : ''}`) }
   const showLogin = () => navigate('/iniciar-sesion')
   const showRegister = () => navigate('/registro')
-  const showProfile = () => navigate('/perfil')
+  const showLocationDetails = locationId => navigate(`/detalles-localizacion/${locationId}`)
+  const showAddComment = locationId => navigate(`/anadir-comentario/${locationId}`)
+  const showAddLocation = () => navigate('/anadir-localizacion')
+  const showUpdateLocation = locationId => navigate(`/editar-localizacion/${locationId}`)
   const showListFavorites = () => navigate('/localizaciones-favoritas')
+  const showProfile = () => navigate('/perfil')
+
   const showUserData = () => navigate('/datos-usuario')
-  const showListLocations = () => navigate('/localizaciones-usuario')
+  const showUpdatePassword = () => navigate('/cambiar-contrasena')
+  const showListLocations = () => navigate('/localizaciones-propias')
   const showListFollows = () => navigate('/lista-seguidos')
   const showDeleteAccount = () => navigate('/borrar-cuenta')
-  const showLocationDetails = () => navigate('/detalles-localizacion')
+
+
 
   return <div>
-    
+    {/* <Routes>
+      <Route path="/detalles-localizacion/:locationId" element={ <LocationDetails locationId={"62336941e973046272784a56"} onAddComment={showAddComment}/>} />
+      <Route path="/anadir-comentario/:locationId" element={ <AddComment locationId={"62336941e973046272784a56"} onCreatedComment={showAddComment}/>} />
+      <Route path="/editar-localizacion/:locationId" element={ <UpdateLocation locationId={"62336941e973046272784a56"} /> }/>
+    </Routes> */}
+         
     {sessionStorage.token && isValidToken() && <Header onLogo={showHome} />}
 
     <Routes>
-      <Route path="/" element={sessionStorage.token && isValidToken() ? <Home onLocationCard={showLocationDetails} /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/" element={sessionStorage.token && isValidToken() ? <Logo onLogo={showHome}/> : <Navigate replace to='/iniciar-sesion' /> }/>  
+      <Route path="/*" element={sessionStorage.token && isValidToken() ? <Home onSearchLocations={showSearchLocations} goToLocationDetails={showLocationDetails} /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/iniciar-sesion" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to='/' /> }/>
       <Route path="/registro" element={!sessionStorage.token ? <Register onLogin={showLogin} onRegistered={showLogin} /> : <Navigate replace to='/' /> }/>
-      
-      <Route path="/resultado-busqueda" element={sessionStorage.token && isValidToken() ? <ListSearchResults onLocationCard={showLocationDetails}/> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/detalles-localizacion" element={sessionStorage.token && isValidToken() ? <LocationDetails /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/crear-localizacion" element={sessionStorage.token && isValidToken() ? <AddLocation /> : <Navigate replace to='/iniciar-sesion' /> }/>
+
+      <Route path="/detalles-localizacion/:locationId" element={sessionStorage.token && isValidToken() ? <LocationDetails onAddComment={showAddComment}  /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/anadir-localizacion" element={sessionStorage.token && isValidToken() ? <AddLocation  /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/localizaciones-favoritas" element={sessionStorage.token && isValidToken() ? <ListFavorites goToLocationDetails={showLocationDetails}/> : <Navigate replace to='/iniciar-sesion' /> }/>
  
       <Route path="/perfil" element={sessionStorage.token && isValidToken() ? <Profile onUserData={showUserData} onListLocations={showListLocations} onListFollows={showListFollows} onDeleteAccount={showDeleteAccount} /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/datos-usuario" element={sessionStorage.token && isValidToken() ? <UserData  /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/localizaciones-usuario" element={sessionStorage.token && isValidToken() ? <ListLocations /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/localizaciones-favoritas" element={sessionStorage.token && isValidToken() ? <ListFavorites onFavorites={showListFavorites}/> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/datos-usuario" element={sessionStorage.token && isValidToken() ? <UserData onUpdatePassword={showUpdatePassword}  /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/cambiar-contrasena" element={sessionStorage.token && isValidToken() ? <UpdatePassword onBack={goBack}  /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/localizaciones-propias" element={sessionStorage.token && isValidToken() ? <ListLocations goToLocationDetails={showLocationDetails} goToUpdateLocation={showUpdateLocation} onAddComment={showAddComment}/> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/editar-localizacion/:locationId" element={sessionStorage.token && isValidToken() ? <UpdateLocation onModify={showListLocations}/> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/anadir-comentario/:locationId" element={sessionStorage.token && isValidToken() ? <AddComment onCreatedComment={showAddComment} /> : <Navigate replace to='/iniciar-sesion' /> }/>
+
       <Route path="/lista-seguidos" element={sessionStorage.token && isValidToken() ? <ListFollows /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/borrar-cuenta" element={sessionStorage.token && isValidToken() ? <DeleteAccount /> : <Navigate replace to='/iniciar-sesion' /> }/> 
       
@@ -72,7 +90,7 @@ function App() {
       <Route path="/*" element={<Navigate replace to='/404' />} />
     </Routes>
     
-    {sessionStorage.token && isValidToken() && <NavigationMenu onProfileIcon={showProfile} onFavoritesIcon={showListFavorites} onSearchLocationIcon={showHome}/>} 
+    {sessionStorage.token && isValidToken() && <NavigationMenu onSearchLocationIcon={showHome} onAddLocationIcon={showAddLocation}  onFavoritesIcon={showListFavorites} onProfileIcon={showProfile}/>}  
 
   </div>
 

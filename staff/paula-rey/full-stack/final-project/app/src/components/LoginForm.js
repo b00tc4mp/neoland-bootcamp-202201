@@ -29,10 +29,13 @@ export function LoginForm({ onLoggedIn, onRegister }) {
         onRegister && onRegister(event)
     }
 
-    return <form className="login__form" onSubmit={onSubmit}>
+    return <div>
+        <form className="login__form" onSubmit={onSubmit}>
             <Input type="email" name="email" placeholder="email" required={true}/>
             <Input type="password" name="password" placeholder="password" required={true}/>
             <Button type="submit">Login</Button>
             <Link href="" onClick={goToRegister}>Register</Link>
         </form>
+    </div>
+    
     }

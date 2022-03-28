@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listFavoritesLocations } from '../logic'
 import { LocationCard } from '../components'
 
-export function ListFavorites() {
+export function ListFavorites({ goToLocationDetails: _goToLocationDetails}) {
     const [favorites, setFavorites] = useState([])
 
 
@@ -20,11 +20,15 @@ export function ListFavorites() {
         }
     }, [])
 
+    const goToLocationDetails = locationId => {
+        _goToLocationDetails && _goToLocationDetails(locationId)
+    }
+
     return <div>
          {!!favorites.length && <ul>
             {favorites.map(favorite => 
             <li key={favorite.id} /*onClick={() => goToLocation(location.id)}*/>
-                <LocationCard location={favorite} /> 
+                <LocationCard location={favorite} onLocationCard={goToLocationDetails} /> 
             </li>)}
             </ul>}
     </div>

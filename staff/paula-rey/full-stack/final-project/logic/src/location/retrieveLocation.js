@@ -15,11 +15,13 @@ function retrievelocation(userId, locationId) {
             if(!location) throw new Error(`location with id ${locationId} does not exist`)
             
             location.id = location._id.toString()
-            location.userId = location.user._id.toString()
-            location.userName = location.user.name 
             
             delete location._id
             delete location.__v
+            
+            location.userId = location.user._id.toString()
+            location.userName = location.user.name 
+            
             delete location.user
     
             return location

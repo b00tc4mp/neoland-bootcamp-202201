@@ -1,26 +1,23 @@
 import './LocationCard.sass'
-import { FavoriteButton, Link } from './'
-import { useState } from'react'
+import { FavoriteButton, Link, GoIcon } from '.'
 
 
-export function LocationCard({location: _location, onLocationCard}) {
+export function LocationCard({ location = {}, onLocationCard: _onLocationCard }) {
 
-    const[location, setLocation] = useState(_location || {})
-
-    const goToLocationDetails = event => {
-        //event.preventDefault()
-        onLocationCard && onLocationCard(event)
+    const onLocationCard = locationId => {
+        _onLocationCard && _onLocationCard(locationId)
     }
 
-    return <div className='location-card'>
-        <FavoriteButton location={location}/>
-        <h1>{location.title}</h1>
-        <h2>{location.type}</h2>
-        <img src={location.image}/>
-        <Link onClick={goToLocationDetails}>
+    return <>
+        <div className='location-card'>
+            <FavoriteButton location={location} />
+            <h1>{location.title}</h1>
+            <h2>{location.type}</h2>
+            <img src={location.image} />
             <p>{location.city}</p>
-        </Link>
-    </div>
+            <Link onClick={() => onLocationCard(location.id)} ><GoIcon /></Link>
+        </div>
+    </>
 }
 
 

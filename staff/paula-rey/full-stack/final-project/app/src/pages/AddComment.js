@@ -1,10 +1,12 @@
 import './AddComment.sass'
 import { retrieveLocation, createComment } from '../logic'
 import { useState, useEffect } from 'react'
-import { Input } from './form-elements'
-import { Button } from './elements'
+import { Input, Button } from '../components'
+import { useParams } from 'react-router-dom'
 
-export function AddComment({ onCreated, locationId }) {
+export function AddComment({ onCreatedComment }) {
+    const { locationId } = useParams()
+
     const [title, setTitle] = useState('')
 
     useEffect(async () => {
@@ -25,7 +27,7 @@ export function AddComment({ onCreated, locationId }) {
             const { target: { text: { value: text } } } = event
 
             await createComment(sessionStorage.token, locationId, text)
-            onCreated && onCreated()
+            onCreatedComment && onCreatedComment()
 
         } catch (error) {
             alert(error.message)
