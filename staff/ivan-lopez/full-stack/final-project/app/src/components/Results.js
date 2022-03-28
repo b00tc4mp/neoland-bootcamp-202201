@@ -7,7 +7,6 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 // http://localhost:3000/?query=pulsera&description=cuero
 
 function Results () {
-// function ProductResults (/*{query, description}*/) {
     
     const [products, setProducts] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
@@ -30,7 +29,7 @@ function Results () {
 
 
     return <div>
-        {products.length > 0 && <div>
+        {products.length && <div>
             {products.map(product => <ul key={product.id} onClick={() => {
                 navigate(`/search/${product.id}`)
             }}>

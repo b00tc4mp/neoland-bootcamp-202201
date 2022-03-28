@@ -23,5 +23,6 @@ export {
     Search,
     Button,
     Results,
-    ProductList
+    ProductList,
+    
 }

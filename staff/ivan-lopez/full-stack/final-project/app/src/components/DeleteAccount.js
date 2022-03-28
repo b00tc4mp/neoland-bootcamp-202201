@@ -3,9 +3,9 @@ import { deleteUser } from '../logic'
 import { Button } from "../components"
 import { Input } from '../components/form-elements'
 
-function DeleteAccount ({onBack, onDeletedAccount}) {
+const DeleteAccount = ({onBack, onDeletedAccount}) => {
 
-    const goBack = event => {
+     const goBack = event => {
         event.preventDefault()
         onBack()
     }
@@ -25,13 +25,13 @@ function DeleteAccount ({onBack, onDeletedAccount}) {
         } catch (error) {
             alert(error.message)
         }
-    }
+    } 
 
     return <div className="delete-account">
         <h1>ELIMINAR MI CUENTA</h1>
         <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
             <Input className="delete-account__password-input" type="password" name="password" placeholder="Contraseña" />
-            <Button className="delete-acount__submit">Eliminar</Button>
+            <Button type='submit' className="delete-acount__submit">Eliminar</Button>
             <a className="delete-account__back-link" href="" onClick={goBack}>Atrás</a>
         </form>
     </div>

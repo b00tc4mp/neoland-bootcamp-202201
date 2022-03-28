@@ -7,8 +7,7 @@ import Modal from './Modal'
 import { useParams } from 'react-router-dom'
 
 
-
-function ModalUpdateProduct({ onClose, saveProduct }) {
+function ModalUpdateProduct({ onClose, onProductUpdated }) {
   const [name, setName] = useState()
   const [size, setSize] = useState()
   const [color, setColor] = useState()
@@ -20,8 +19,8 @@ function ModalUpdateProduct({ onClose, saveProduct }) {
   useEffect(() => {
     try {
       retrieveProduct(productId)
-        .then(( product ) => {
-          const { name, size, color, price, description} = product
+        .then((product) => {
+          const { name, size, color, price, description } = product
           setName(name)
           setSize(size)
           setColor(color)
@@ -54,7 +53,15 @@ function ModalUpdateProduct({ onClose, saveProduct }) {
           setColor(color)
           setPrice(price)
           setDescription(description)
-          saveProduct(product)
+
+          onProductUpdated({
+            id: productId,
+            name: name,
+            size: size,
+            color: color,
+            price: price,
+            description: description
+          })
         })
         .catch(error => { throw error })
     } catch ({ message }) {
@@ -68,11 +75,11 @@ function ModalUpdateProduct({ onClose, saveProduct }) {
     <Modal onClose={onClose}>
       <form onSubmit={modifyProduct}>
         <h1>Actualizar producto</h1>
-        <Input type='text' name='name' placeholder='Nombre del producto' defaultValue={name}/>
-        <Input type='text' name='size' placeholder='Talla' defaultValue={size}/>
-        <Input type='text' name='color' placeholder='Color' defaultValue={color}/>
-        <Input type='text' name='price' placeholder='Precio' defaultValue={price}/>
-        <Input type='text' name='description' placeholder='Descripción' defaultValue={description}/>
+        <Input type='text' name='name' placeholder='Nombre del producto' defaultValue={name} />
+        <Input type='text' name='size' placeholder='Talla' defaultValue={size} />
+        <Input type='text' name='color' placeholder='Color' defaultValue={color} />
+        <Input type='text' name='price' placeholder='Precio' defaultValue={price} />
+        <Input type='text' name='description' placeholder='Descripción' defaultValue={description} />
         <img src='https://cdn.7tv.app/emote/60bd749e4829db9d4dd99464/4x' />
         {/* https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2016/09/28082346/CtY9h13WAAEsNfz.jpg' alt="pepo" */}
         <Button type='submit' >Actualizar</Button>

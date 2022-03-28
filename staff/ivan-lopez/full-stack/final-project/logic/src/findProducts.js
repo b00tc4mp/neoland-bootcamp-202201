@@ -1,9 +1,11 @@
 const { models: { Product } } = require('data')
 const { validators: { validateString } } = require('commons')
 
-
-function findProducts(query=null) {
+function findProducts(query, description, color) {
     if (query !== null) validateString(query, 'query')
+    if (description !== null) validateString(description, 'description')
+    if (color !== null) validateString(color, 'color')
+    
 
     const criteria = {}
 

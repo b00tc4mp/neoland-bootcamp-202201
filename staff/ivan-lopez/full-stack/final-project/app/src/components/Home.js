@@ -9,7 +9,7 @@ import ModalCreateProduct from './elements/ModalCreateProduct'
 import ModalUpdateProduct from './elements/ModalUpdateProduct'
 
 
-function Home() {
+function Home({onBack}) {
 
     const navigate = useNavigate()
 
@@ -18,8 +18,8 @@ function Home() {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const search = (query, description) => {
-        navigate(`search?query=${query}&description=${description}`)
+    const search = (query) => {
+        navigate(`search?q=${query}`)
     }
     
     return <div className='home'>
@@ -27,18 +27,15 @@ function Home() {
             <h1>Bienvenido a Dreams Factory</h1>
         </nav>
 
-
         <Search onSearch={search} />
-        {/* <Results /> */}
 
         {/* <Modal /> */}
 
         <Routes>
-            <Route path='search' element={<Results />} />
-            <Route path='/search/:productId' element={<ProductDetails />} />
+            <Route path='/search' element={<Results />} />
+            <Route path='/search/:productId' element={<ProductDetails onBack={onBack} />} />
             <Route path='/cuenta' element={<ModalCreateProduct />} />
             <Route path='/cuenta/update-product' element={<ModalUpdateProduct />} />
-
         </Routes>
 
 

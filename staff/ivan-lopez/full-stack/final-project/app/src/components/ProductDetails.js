@@ -1,12 +1,12 @@
 import './ProductDetails.sass'
 import { useEffect, useState } from 'react'
-import { retrieveProduct } from '../logic'
+import { deleteProduct, retrieveProduct } from '../logic'
 import { useParams } from 'react-router-dom'
 import { Button } from '../components'
 import ModalUpdateProduct from './elements/ModalUpdateProduct'
 
 
-function ProductDetails (onClose, saveProduct) {
+function ProductDetails ({onBack}) {
     const [product, setProduct] = useState({})
     const { productId } = useParams()
     const [isShowModal, setIsShowModal] = useState()
@@ -32,16 +32,29 @@ function ProductDetails (onClose, saveProduct) {
         setIsShowModal(false)
     }
 
-    const updatedProduct = (_product) => {
-        if(product !== _product){
-            window.location.reload(true)
-        }
-        // setProduct(_product)
+    const refreshProduct = (product) => {
         closeModal()
+
+        setProduct(product)
     }
 
+    const onDeleteProduct = event => {
+        event.preventDefault()
+
+        try {
+            deleteProduct(sessionStorage.token, productId)
+                .then(() => onBack())
+                .catch(error => {
+                    alert(error.message)
+                })
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+
     return <div className='detail'>
-         {isShowModal && <ModalUpdateProduct onClose={closeModal} saveProduct={updatedProduct} /> }
+         {isShowModal && <ModalUpdateProduct onClose={closeModal} onProductUpdated={refreshProduct} /> }
         {!!product && <ul>
             <h1>{product.name}</h1>
             <p>{product.id}</p>
@@ -50,7 +63,8 @@ function ProductDetails (onClose, saveProduct) {
             <p>{product.price}</p>
             <p>{product.description}</p>
         </ul>}
-        <Button onClick={toggleModal}>Actualizar Producto</Button>
+        <Button className="update-product__button" onClick={toggleModal}>Actualizar Producto</Button>
+        <Button className="delete-product__button" onClick={onDeleteProduct}>Eliminar</Button>
     </div>
 }
 

@@ -75,17 +75,14 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout}) {
 
     const goToProductList = event => {
         event.preventDefault()
-        // onProductList()
         setShowProductList(!showProductList)
     }
-
 
 
     return <div className='profile'> 
         {isShowModal && <ModalCreateProduct onClose={closeModal}/> }
        
 
-        {/* <ProductList /> */}
         {showProductList ? <ProductList /> : null }
         <div>
             <h1>PERFIL</h1>
