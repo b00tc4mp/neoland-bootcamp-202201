@@ -1,6 +1,5 @@
 import './App.sass'
 import {
-  ListFavoritesRackets,
   SearchUserRacket,
   HeaderBar,
   NavigateMenu,
@@ -81,7 +80,7 @@ function App() {
       <Route path="/*" element={<Home onRegistered={showLogin} onLogin={showLogin} onProfile={showProfile} goToDetails={showRacketDetails} onSearch={showSearch}/> } />
       <Route path="registrar" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
       <Route path="acceder" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
-      <Route path="perfil" element={sessionStorage.token && <Profile onUpdatePassword={goUpdatePassword} onLogOut={showHome}/>} />
+      <Route path="perfil" element={sessionStorage.token && <Profile onUpdatePassword={goUpdatePassword} onLogout={showLogin}/>} />
       <Route path="cambiar-contrasena" element={sessionStorage.token && <UpdatePassword onBack={goBack} />} />
       <Route path="pala/:racketId" element={sessionStorage.token && <RacketDetails />} />
       <Route path="favoritos" element={sessionStorage.token && <Favorites goToDetails={showRacketDetails} />} />
