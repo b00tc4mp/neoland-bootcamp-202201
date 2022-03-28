@@ -12,7 +12,7 @@ export function LoginForm({ onLoggedIn, onRegister }) {
 
             const token = await authenticateUser(email, password)
                 sessionStorage.token = token
-                onLoggedIn && onLoggedIn(event)
+                onLoggedIn(event)
                 
         } catch (error) {
             alert(error.message)
@@ -25,16 +25,16 @@ export function LoginForm({ onLoggedIn, onRegister }) {
     }
 
     const goToRegister = event => {
-        // event.preventDefault()
-        onRegister && onRegister(event)
+        event.preventDefault()
+        onRegister(event)
     }
 
     return <div>
         <form className="login__form" onSubmit={onSubmit}>
             <Input type="email" name="email" placeholder="email" required={true}/>
-            <Input type="password" name="password" placeholder="password" required={true}/>
-            <Button type="submit">Login</Button>
-            <Link href="" onClick={goToRegister}>Register</Link>
+            <Input type="password" name="password" placeholder="contraseña" required={true}/>
+            <Button className="button" type="submit">Iniciar sesión</Button>
+            <Link className="login__register-link" href="" onClick={goToRegister}>Registrarse</Link>
         </form>
     </div>
     

@@ -1,18 +1,16 @@
 import './Register.sass'
-import { RegisterForm, Logo } from '../components'
+import { RegisterForm } from '../components'
 
 export const Register = ({onLogin, onRegistered }) => {
 
 
     const goToLogin = event => {
-        onLogin && onLogin(event)
-        onRegistered && onRegistered(event)
+        onLogin(event)
+        onRegistered(event)
     }
 
-    return <>
-        <h1>Hello Register</h1>
-            <Logo/>
+    return <div className="register">
             <RegisterForm onLogin={goToLogin} onRegistered={goToLogin}/>
-    </>
+    </div>
 
 }

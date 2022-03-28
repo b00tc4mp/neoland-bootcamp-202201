@@ -23,16 +23,16 @@ export function RegisterForm({ onLogin, onRegistered }) {
     }
 
     const goToLogin = event => {
-        // event.preventDefault()
-        onLogin && onLogin(event)
+        event.preventDefault()
+        onLogin(event)
     }
 
     return <form className="register__form" onSubmit={onSubmit}>
-            <Input type="text" name="name" placeholder="name" required={true} />
+            <Input type="text" name="name" placeholder="Nombre" required={true} />
             <Input type="email" name="email" placeholder="email" required={true}/>
-            <Input type="password" name="password" placeholder="password" required={true} />
-            <Button type="submit">Register</Button>
-            <Link href="" onClick={goToLogin}>Login</Link>
+            <Input type="password" name="password" placeholder="contraseña" required={true} />
+            <Button className="button" type="submit">Registrarse</Button>
+            <Link className="register__login-link" href="" onClick={goToLogin}>Iniciar sesión</Link>
         </form>
 }
 

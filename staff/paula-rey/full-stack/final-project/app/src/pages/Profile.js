@@ -5,22 +5,22 @@ import { Link } from '../components'
 export function Profile({ onUserData, onListLocations, onListFollows, onDeleteAccount }) {
 
     const goToUserData = event => {
-        //event.preventDefault()
-        onUserData && onUserData(event)
+        event.preventDefault()
+        onUserData(event)
     }
 
     const goToListLocations = event => {
-        //event.preventDefault()
-        onListLocations && onListLocations(event)
+        event.preventDefault()
+        onListLocations(event)
     }
     const goToListFollows = event => {
-        //event.preventDefault()
-        onListFollows && onListFollows(event)
+        event.preventDefault()
+        onListFollows(event)
     }
 
     const goToDeleteAccount = event => {
-        //event.preventDefault()
-        onDeleteAccount && onDeleteAccount(event)
+        event.preventDefault()
+        onDeleteAccount(event)
     }
 
     return <>

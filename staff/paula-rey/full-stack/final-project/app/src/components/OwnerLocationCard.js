@@ -5,11 +5,11 @@ import { EditIcon, GoIcon, DeleteIcon, Link, Button } from '.'
 export function OwnerLocationCard({ location = {}, onUpdateLocation: _onUpdateLocation, onOwnerLocationCard: _onOwnerLocationCard }) {
 
     const onUpdateLocation = locationId => {
-        _onUpdateLocation && _onUpdateLocation(locationId)
+        _onUpdateLocation(locationId)
     }
 
     const onOwnerLocationCard = locationId => {
-        _onOwnerLocationCard && _onOwnerLocationCard(locationId)
+        _onOwnerLocationCard(locationId)
     }
     
 

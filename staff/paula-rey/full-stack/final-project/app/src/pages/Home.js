@@ -1,20 +1,14 @@
 import './Home.sass'
-import { SearchLocations, ListSearchResults } from '../components'
+import { NavigationMenu, SearchLocations, Header } from '../components'
 
-export const Home = ({onSarchLocations: _onSearchLocations, goToLocationDetails: _goToLocationDetails }) => {
+export const Home = ({onSearchLocations, onLogo, onLogOut, onSearchLocationIcon, onAddLocationIcon, onFavoritesIcon, onProfileIcon }) => {
 
-    const onSearchLocations = params => {
-        _onSearchLocations && _onSearchLocations(params)
-    }
+    return <div className="home">
 
-
-    const goToLocationDetails = locationId => {
-        _goToLocationDetails && _goToLocationDetails(locationId)
-    }
-
-    return <>
+        <Header onLogo={onLogo} onLogOut={onLogOut}/>
         <SearchLocations onSearchLocations={onSearchLocations} />
-        <ListSearchResults goToLocationDetails={goToLocationDetails}/>
-    </>
+        <NavigationMenu onSearchLocationIcon={onSearchLocationIcon} onAddLocationIcon={onAddLocationIcon} onFavoritesIcon={onFavoritesIcon} onProfileIcon={onProfileIcon}/>
+
+    </div>
 
 }

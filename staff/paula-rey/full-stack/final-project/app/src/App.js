@@ -18,7 +18,7 @@ import {
    UpdatePassword
 } from './pages'
 import { validators } from 'commons'
-import { Header, ListSearchResults, LocationCard, NavigationMenu } from './components'
+import { Header, NavigationMenu, SearchLocations } from './components'
 const { validateToken } = validators
 
 function App() {
@@ -59,21 +59,17 @@ function App() {
 
 
   return <div>
-    {/* <Routes>
-      <Route path="/detalles-localizacion/:locationId" element={ <LocationDetails locationId={"62336941e973046272784a56"} onAddComment={showAddComment}/>} />
-      <Route path="/anadir-comentario/:locationId" element={ <AddComment locationId={"62336941e973046272784a56"} onCreatedComment={showAddComment}/>} />
-      <Route path="/editar-localizacion/:locationId" element={ <UpdateLocation locationId={"62336941e973046272784a56"} /> }/>
-    </Routes> */}
          
     {sessionStorage.token && isValidToken() && <Header onLogo={showHome} />}
 
     <Routes>
       <Route path="/*" element={sessionStorage.token && isValidToken() ? <Home onSearchLocations={showSearchLocations} goToLocationDetails={showLocationDetails} /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/search?" element={sessionStorage.token && isValidToken() ? <SearchLocations  goToLocationDetails={showLocationDetails} /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/iniciar-sesion" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to='/' /> }/>
       <Route path="/registro" element={!sessionStorage.token ? <Register onLogin={showLogin} onRegistered={showLogin} /> : <Navigate replace to='/' /> }/>
 
       <Route path="/detalles-localizacion/:locationId" element={sessionStorage.token && isValidToken() ? <LocationDetails onAddComment={showAddComment}  /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/anadir-localizacion" element={sessionStorage.token && isValidToken() ? <AddLocation  /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/anadir-localizacion" element={sessionStorage.token && isValidToken() ? <AddLocation /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/localizaciones-favoritas" element={sessionStorage.token && isValidToken() ? <ListFavorites goToLocationDetails={showLocationDetails}/> : <Navigate replace to='/iniciar-sesion' /> }/>
  
       <Route path="/perfil" element={sessionStorage.token && isValidToken() ? <Profile onUserData={showUserData} onListLocations={showListLocations} onListFollows={showListFollows} onDeleteAccount={showDeleteAccount} /> : <Navigate replace to='/iniciar-sesion' /> }/>
@@ -90,7 +86,7 @@ function App() {
       <Route path="/*" element={<Navigate replace to='/404' />} />
     </Routes>
     
-    {sessionStorage.token && isValidToken() && <NavigationMenu onSearchLocationIcon={showHome} onAddLocationIcon={showAddLocation}  onFavoritesIcon={showListFavorites} onProfileIcon={showProfile}/>}  
+    {sessionStorage.token && isValidToken() && <NavigationMenu onSearchLocationIcon={showSearchLocations} onAddLocationIcon={showAddLocation}  onFavoritesIcon={showListFavorites} onProfileIcon={showProfile}/>}  
 
   </div>
 

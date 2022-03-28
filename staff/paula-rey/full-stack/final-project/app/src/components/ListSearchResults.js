@@ -38,13 +38,13 @@ export function ListSearchResults({ goToLocationDetails: _goToLocationDetails })
 
 
     const goToLocationDetails = locationId => {
-        _goToLocationDetails && _goToLocationDetails(locationId)
+        _goToLocationDetails(locationId)
     }
 
 
     return <>
         <div>
-            {!!locations.length && <ul>
+            {!!locations.length && <ul className="search-results">
                 {locations.map(location =>
                     <li key={location.id} >
                         <LocationCard location={location} onLocationCard={goToLocationDetails} />

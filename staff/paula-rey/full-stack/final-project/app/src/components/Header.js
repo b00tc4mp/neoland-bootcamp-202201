@@ -5,13 +5,13 @@ import { Link, Logo, Button, LogoutIcon } from './'
 export function Header({onLogo, onLogOut}) {
 
     const goToHome = event => {
-        //event.preventDefault()
-        onLogo && onLogo(event)
+        event.preventDefault()
+        onLogo(event)
     }
 
     return <>
-       <header>
-            <Link onClick={goToHome} ><Logo/></Link>
+       <header className="header">
+            <Link onClick={goToHome} ><Logo className="logo"/></Link>
             <h1>Dogether</h1>
             <Button ><LogoutIcon/></Button>
        </header>

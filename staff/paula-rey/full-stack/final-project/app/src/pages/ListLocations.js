@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listLocations } from '../logic'
 import { OwnerLocationCard } from '../components/'
 
-export function ListLocations({ goToLocationDetails: _goToLocationDetails, goToUpdateLocation: _goToUpdateLocation }) {
+export function ListLocations({ goToLocationDetails, goToUpdateLocation }) {
     const [locations, setLocations] = useState([])
 
 
@@ -17,13 +17,6 @@ export function ListLocations({ goToLocationDetails: _goToLocationDetails, goToU
         }
     }, [])
 
-    const goToLocationDetails = locationId => {
-        _goToLocationDetails && _goToLocationDetails(locationId)
-    }
-
-    const goToUpdateLocation = locationId => {
-        _goToUpdateLocation && _goToUpdateLocation(locationId)
-    }
 
     return <div>
         {!!locations.length && <ul>

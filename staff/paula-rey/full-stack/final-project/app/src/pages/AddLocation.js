@@ -32,12 +32,12 @@ export function AddLocation({ onCreated }) {
     return <>
         <h2>¡Añade tu localización!</h2>
         <form onSubmit={onSubmit}>
-            <Select name="type" placeholder="type"options={locationTypes} required={true}/>
-            <Select name="city" placeholder="city"options={locationCities} required={true}/>
+            <Select name="type" placeholder="type" options={locationTypes} required={true}/>
+            <Select name="city" placeholder="city" options={locationCities} required={true}/>
             <Input type="text" name="title" placeholder="Título" />
             <Input type="text" name="image" placeholder="url(opcional)"/>
             <Input type="text" name="address" placeholder="Dirección" />
-            <Button type="submit" inner="Crear"/>
+            <Button type="submit" innerText="Crear"/>
         </form>
         
 

@@ -1,25 +1,21 @@
 import './SearchLocations.sass'
 import { SearchIcon, CleanSearchIcon, Input, Select, Button } from '.'
+import { ListSearchResults } from '../components'
 import { data } from 'commons'
 const { locationTypes, locationCities } = data
 
-export function SearchLocations({onSearchLocations}) {
+export function SearchLocations({onSearchLocations, goToLocationDetails}) {
 
     const search = event => {
+        event.preventDefault()
 
         const { target: { query: { value: query }, type: { value: _type }, city: { value: _city } } } = event
 
         const type = _type ? _type : ''
         const city = _city ? _city : ''
 
-        onSearchLocations && onSearchLocations({query, type, city})
+        onSearchLocations({query, type, city})
     }
-
-    // const onSubmit = event => {
-    //     event.preventDefault()
-    //     search(event)
-    // }
-
 
 
     return <div className="search">
@@ -29,6 +25,7 @@ export function SearchLocations({onSearchLocations}) {
             <Select className="search__city-input" options={locationCities} name="city" placeholder="Todas" label= "Ciudad" />
             <Button type="submit"><SearchIcon/></Button>
             <Button type="reset"><CleanSearchIcon/></Button>
+            <ListSearchResults goToLocationDetails={goToLocationDetails}/> 
         </form>
     </div>
 

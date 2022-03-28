@@ -4,13 +4,15 @@ import { toggleFavoriteLocation } from '../../../logic'
 import { FavoriteIcon } from '../../icons'
 import { Button } from '.'
 
-export function FavoriteButton({ location }) {
-    const [favorite, setFavorite] = useState(location.isFavorite)
+export function FavoriteButton({ locationId, isFavorite= false, onToggled }) {
+
+    const [favorite, setFavorite] = useState(isFavorite)
 
     const toggleFavorite = async () => {
         try {
-            await toggleFavoriteLocation(sessionStorage.token, location.id)
+            await toggleFavoriteLocation(sessionStorage.token, locationId)
             setFavorite(!favorite)
+            onToggled && onToggled()
 
         } catch (error) {
             alert(error.message)
@@ -19,7 +21,7 @@ export function FavoriteButton({ location }) {
 
     const onToggle = event => {
         event.preventDefault()
-        toggleFavorite()
+        toggleFavorite(event)
     }
 
     return <>

@@ -5,36 +5,35 @@ import { CreateIcon } from './icons'
 
 export function NavigationMenu({ onSearchLocationIcon, onAddLocationIcon, onFavoritesIcon, onProfileIcon }) {
 
-    const goToHome = event => {
-        //event.preventDefault()
-        onSearchLocationIcon && onSearchLocationIcon(event)
+    const goToSearchLocations = event => {
+        event.preventDefault()
+        onSearchLocationIcon(event)
     }
 
     const goToListFavorites = event => {
-        //event.preventDefault()
-        onFavoritesIcon && onFavoritesIcon(event)
+        event.preventDefault()
+        onFavoritesIcon(event)
     }
 
     const goToProfile = event => {
-        //event.preventDefault()
-        onProfileIcon && onProfileIcon(event)
+        event.preventDefault()
+        onProfileIcon(event)
     }
 
     const goToAddLocation = event => {
-        //event.preventDefault()
-        onAddLocationIcon && onAddLocationIcon(event)
+        event.preventDefault()
+        onAddLocationIcon(event)
     }
 
-    return <>
-        <nav>
-            <ul>
-                <li><Link onClick={goToHome}><SearchLocationIcon/>Buscador</Link></li>
-                <li><Link onClick={goToAddLocation}><CreateIcon/>Crear localizacion</Link></li>
+    return <nav className="navigation__container">
+            <ul className="navigation__menu">
+                <li><Link onClick={goToSearchLocations}><SearchLocationIcon/>Buscador</Link></li>
+                <li><Link onClick={goToAddLocation}><CreateIcon/>Crear</Link></li>
                 <li><Link onClick={goToListFavorites}><FavoriteIcon/>Favoritas</Link></li>
                 <li><Link onClick={goToProfile}><ProfileIcon/>Perfil</Link></li>
             </ul>
-        </nav>
+    </nav>
     
-    </>
+    
 
 }

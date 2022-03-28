@@ -27,7 +27,7 @@ export function AddComment({ onCreatedComment }) {
             const { target: { text: { value: text } } } = event
 
             await createComment(sessionStorage.token, locationId, text)
-            onCreatedComment && onCreatedComment()
+            onCreatedComment()
 
         } catch (error) {
             alert(error.message)
@@ -43,7 +43,7 @@ export function AddComment({ onCreatedComment }) {
 
     return <>
         <form onSubmit={onSubmit}>
-            <Input type="text" name="title" defaultValue={title} label disabled />
+            <Input type="text" name="title" defaultValue={title} />
             <Input type="text" name="text" placeholder="Escribe aquí..." required={true}/>
             <Button type="submit" innerText="Crear" />
         </form>

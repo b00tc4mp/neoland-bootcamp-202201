@@ -39,7 +39,7 @@ export function UpdateLocation({ onModify }) {
 
 
             await updateLocation(sessionStorage.token, locationId, type, title, image, address, city)
-            onModify && onModify()
+            onModify()
 
         } catch (error) {
             alert(error.message)
@@ -59,7 +59,7 @@ export function UpdateLocation({ onModify }) {
             <Select name="type" placeholder="type"options={locationTypes} required={true} selected={type} label="Tipo"/>
             <Select name="city" placeholder="city"options={locationCities} required={true} selected={city} label="Ciudad"/>
             <Input type="text" name="title" placeholder="Título" defaultValue={title} label="Título" />
-            <Input type="text" name="image" placeholder="url" defaultValue={image} label="Inserte url"/>
+            <Input type="text" name="image" placeholder="url(opcional)" defaultValue={image} label="Inserte url"/>
             <Input type="text" name="address" placeholder="Dirección" defaultValue={address} label="Dirección" />
             <Button type="submit" innerText="Modificar"/>
         </form>

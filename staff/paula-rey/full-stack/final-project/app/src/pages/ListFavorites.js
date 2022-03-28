@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { listFavoritesLocations } from '../logic'
 import { LocationCard } from '../components'
 
-export function ListFavorites({ goToLocationDetails: _goToLocationDetails}) {
+export function ListFavorites({ goToLocationDetails}) {
     const [favorites, setFavorites] = useState([])
 
 
@@ -20,15 +20,19 @@ export function ListFavorites({ goToLocationDetails: _goToLocationDetails}) {
         }
     }, [])
 
-    const goToLocationDetails = locationId => {
-        _goToLocationDetails && _goToLocationDetails(locationId)
+    const updateListFavorites = async () => {
+        const favorites = await listFavoritesLocations(sessionStorage.token)
+        favorites.forEach(favorite => favorite.isFavorites = true)
+
+        setFavorites(favorites)
     }
+
 
     return <div>
          {!!favorites.length && <ul>
             {favorites.map(favorite => 
-            <li key={favorite.id} /*onClick={() => goToLocation(location.id)}*/>
-                <LocationCard location={favorite} onLocationCard={goToLocationDetails} /> 
+            <li key={favorite.id}>
+                <LocationCard location={favorite} onLocationCard={goToLocationDetails} onToggled={updateListFavorites} /> 
             </li>)}
             </ul>}
     </div>

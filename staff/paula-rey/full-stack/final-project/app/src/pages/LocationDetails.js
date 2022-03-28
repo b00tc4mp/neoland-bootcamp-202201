@@ -4,10 +4,11 @@ import { retrieveLocation, listFavoritesLocations } from '../logic'
 import { FavoriteButton, CommentIcon, Link, ListComments } from '../components'
 import { useParams } from 'react-router-dom'
 
-export function LocationDetails({ onAddComment }) {
+export function LocationDetails({ onAddComment, onToggled }) {
     const { locationId } = useParams()
 
     const [location, setLocation] = useState({})
+    const [favorites, setFavorites] = useState([])
 
     useEffect(async () => {
         try {
@@ -22,14 +23,15 @@ export function LocationDetails({ onAddComment }) {
         }
     }, [])
 
+
     const goToAddComment = locationId => {
-        onAddComment && onAddComment(locationId)
+        onAddComment(locationId)
     }
 
 
     return <>
         <div className='details'>
-            <FavoriteButton location={location} />
+            <FavoriteButton locationId={location.id} isFavorite={location.isFavorite} onToggled={onToggled} />
             <h1>{location.title}</h1>
             <p>{new Date(location.date).toLocaleDateString()}</p>
             <img src={location.image} />

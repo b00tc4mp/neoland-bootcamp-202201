@@ -2,15 +2,10 @@ import './LocationCard.sass'
 import { FavoriteButton, Link, GoIcon } from '.'
 
 
-export function LocationCard({ location = {}, onLocationCard: _onLocationCard }) {
-
-    const onLocationCard = locationId => {
-        _onLocationCard && _onLocationCard(locationId)
-    }
-
+export function LocationCard({ location = {}, onLocationCard, onToggled}) {
     return <>
-        <div className='location-card'>
-            <FavoriteButton location={location} />
+        <div className="card">
+            <FavoriteButton className="card__toggle-favorite" locationId={location.id} isFavorite={location.isFavorite} onToggled={onToggled}/>
             <h1>{location.title}</h1>
             <h2>{location.type}</h2>
             <img src={location.image} />
