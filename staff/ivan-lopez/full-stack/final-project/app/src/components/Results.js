@@ -35,6 +35,7 @@ function Results () {
             }}>
                 <p>{product.name}</p>
                 <p>{product.price}</p>
+                <img className='image' src={product.image}/>
             </ul>)}
         </div>}
     </div>

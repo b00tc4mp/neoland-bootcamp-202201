@@ -5,23 +5,35 @@ import Button from '../Button'
 import { Input } from '../form-elements'
 import Modal from './Modal'
 import { useParams } from 'react-router-dom'
+import { useDropzone } from 'react-dropzone'
+import { convertToBase64 } from '../utils/utils'
 
 
 function ModalUpdateProduct({ onClose, onProductUpdated }) {
   const [name, setName] = useState()
+  const [image, setImage] = useState()
+  
   const [size, setSize] = useState()
   const [color, setColor] = useState()
   const [price, setPrice] = useState()
   const [description, setDescription] = useState()
+
   const [product, setProduct] = useState({})
   const { productId } = useParams()
+
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    accept: 'image/*',
+  });
+  const productImage = acceptedFiles[0];
+  const productImgSrc = productImage && URL.createObjectURL(productImage);
 
   useEffect(() => {
     try {
       retrieveProduct(productId)
         .then((product) => {
-          const { name, size, color, price, description } = product
+          const { name, image, size, color, price, description } = product
           setName(name)
+          setImage(image)
           setSize(size)
           setColor(color)
           setPrice(price)
@@ -40,29 +52,34 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
 
     const { target: {
       name: { value: name },
+      
       size: { value: size },
       color: { value: color },
       price: { value: price },
       description: { value: description } } } = event
 
     try {
-      updateProduct(sessionStorage.token, productId, name, size, color, price, description)
-        .then(() => {
-          setName(name)
-          setSize(size)
-          setColor(color)
-          setPrice(price)
-          setDescription(description)
+      if (productImage)
+        convertToBase64(productImage).then(productImage)
+        updateProduct(sessionStorage.token, productId, name, productImage, size, color, price, description)
+          .then(() => {
+            setName(name)
+            setImage(productImage)
+            setSize(size)
+            setColor(color)
+            setPrice(price)
+            setDescription(description)
 
-          onProductUpdated({
-            id: productId,
-            name: name,
-            size: size,
-            color: color,
-            price: price,
-            description: description
+            onProductUpdated({
+              id: productId,
+              name: name,
+              image: productImage,
+              size: size,
+              color: color,
+              price: price,
+              description: description
+            })
           })
-        })
         .catch(error => { throw error })
     } catch ({ message }) {
       alert(message)
@@ -80,20 +97,22 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
         <Input type='text' name='color' placeholder='Color' defaultValue={color} />
         <Input type='text' name='price' placeholder='Precio' defaultValue={price} />
         <Input type='text' name='description' placeholder='Descripción' defaultValue={description} />
-        <img src='https://cdn.7tv.app/emote/60bd749e4829db9d4dd99464/4x' />
-        {/* https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2016/09/28082346/CtY9h13WAAEsNfz.jpg' alt="pepo" */}
         <Button type='submit' >Actualizar</Button>
-
-
       </form>
+       
+       
+      <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        {productImage && <img
+          src={productImgSrc}
+          alt='photo'
+        />}
+         <Button>Elegir archivo</Button>
+      </div>
     </Modal>
+
+
   )
 }
 
 export default ModalUpdateProduct
-
-// Primero debemos cargar los datos
-
-// Tendréis que pillar el productId por params
-
-// luego tendréis que hacer la lista de products (compo) y esto es igual que con el busacdor

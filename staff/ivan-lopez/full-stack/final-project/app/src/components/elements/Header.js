@@ -1,7 +1,7 @@
 import './Header.sass'
-import { IconProfile, IconCheeseburger, IconLogo } from '../icons'
+import { IconProfile, IconLogo } from '../icons'
 
-function Header({ onLogo, onProfile, onCheeseburger}) {
+function Header({ onLogo, onProfile }) {
 
     const goToLogo = event => {
         event.preventDefault()
@@ -11,21 +11,17 @@ function Header({ onLogo, onProfile, onCheeseburger}) {
         event.preventDefault()
         if(onProfile) onProfile()
     }
-    const goToCheeseburger = event => {
-        event.preventDefault()
-        if(onCheeseburger) onCheeseburger()
-    }
 
-    return <>
+
+    return <div>
         <header className='header'>
 
             <h1 className='header-title'>Dreams Factory</h1>
-            <a href='' onClick={goToLogo}> <IconLogo /> </a>
-            <a href='' onClick={goToProfile}> <IconProfile /> </a>
-            <a href='' onClick={goToCheeseburger}> <IconCheeseburger /> </a>
+            <a className='header-iconLogo' href='' onClick={goToLogo} > <IconLogo /> </a>
+            <a className='header-iconProfile' href='' onClick={goToProfile}> <IconProfile /> </a>
 
         </header>
-    </>
+    </div>
 }
 
 export default Header

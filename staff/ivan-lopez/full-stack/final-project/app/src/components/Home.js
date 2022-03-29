@@ -1,23 +1,15 @@
 // import { retrieveUser } from '../logic'
 import './Home.sass'
-import { useEffect, useState } from 'react'
 import Search from './Search'
 import Results from './Results'
-import { Routes, Route, useNavigate, Navigate, useSearchParams } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import ProductDetails from './ProductDetails'
 import ModalCreateProduct from './elements/ModalCreateProduct'
 import ModalUpdateProduct from './elements/ModalUpdateProduct'
 
 
 function Home({onBack}) {
-
     const navigate = useNavigate()
-
-    useEffect(() => {
-    }, [])
-
-    const [searchParams, setSearchParams] = useSearchParams()
-
     const search = (query) => {
         navigate(`search?q=${query}`)
     }

@@ -3,9 +3,18 @@ import React from 'react'
 import Button from '../Button'
 import { Input } from '../form-elements'
 import Modal from './Modal'
+import { useDropzone } from 'react-dropzone'
+import {convertToBase64} from '../utils/utils'
 
 
   const ModalCreateProduct = ({ onClose }) => {
+
+    const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+      accept: 'image/*',
+    });
+    const productImage = acceptedFiles[0];
+    const productImgSrc = productImage && URL.createObjectURL(productImage);
+    
     
     const createProduct = event => {
       event.preventDefault()
@@ -18,11 +27,14 @@ import Modal from './Modal'
         description: { value: description } } } = event
 
       try {
-        addProduct(sessionStorage.token, name, size, color, price, description)
-          .then(() => {
-              alert('¡Producto creado correctamente!')
+        if (productImage)
+          convertToBase64(productImage).then((productImage) => {
+            addProduct(sessionStorage.token, name, productImage, size, color, price, description)
+              .then(() => {
+                  alert('¡Producto creado correctamente!')
+              })
+              .catch((error) => alert(error.message))
           })
-          .catch(error => { throw error })
       } catch ({ message }) {
         alert(message)
       }
@@ -39,12 +51,23 @@ import Modal from './Modal'
             <Input type='text' name='color'placeholder='Color' />
             <Input type='text' name='price'placeholder='Precio' />
             <Input type='text' name='description'placeholder='Descripción' />
-            <img src='https://png.pngitem.com/pimgs/s/14-148789_transparent-homer-d-poe-clipart-apu-apustaja-png.png' />
-            {/* https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2016/09/28082346/CtY9h13WAAEsNfz.jpg' alt="pepo" */}
-            <Button type='submit' >Añadir</Button>
-
-
+            <Button type="submit">Añadir</Button>
         </form>
+            <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            {productImage && <img
+              src={productImgSrc}
+              alt='photo'
+            />}
+
+            {/* <div {...getRootProps({ className: "dropzone" })}>
+              <input {...getInputProps()} />
+              <ButtonFile>Choose File</ButtonFile>
+          </div>
+           {productImage && <p>{productImage.path}</p>}
+            /> */}
+            <Button>Elegir archivo</Button>
+          </div>
       </Modal>
     )
   }

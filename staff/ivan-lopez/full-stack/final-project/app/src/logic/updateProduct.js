@@ -1,10 +1,11 @@
 import { validators } from 'commons'
 const { validateToken, validateId, validateString } = validators
 
-function updateProduct(token, productId, name, size, color, price, description) {
+function updateProduct(token, productId, name, image, size, color, price, description) {
     validateToken(token)
     validateId(productId, 'productId')
     validateString(name, 'name')
+    validateString(image, 'image')
     validateString(size, 'size')
     validateString(color, 'color')
     validateString(price, 'price')
@@ -17,7 +18,7 @@ function updateProduct(token, productId, name, size, color, price, description) 
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ name, size, color, price, description })
+        body: JSON.stringify({ name, image, size, color, price, description })
     })
         .then(res => {
 

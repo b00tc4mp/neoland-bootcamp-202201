@@ -3,9 +3,7 @@ import { Home, Results, Login, Register, Profile, UpdatePassword, DeleteAccount,
 import { Header } from './components/elements'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import { validators} from 'commons'
-import { useEffect } from 'react';
-// import { IconLogo, IconProfile, IconCheeseburger } from './components/icons'
-// import { Input } from './components/form-elements'
+// import { useEffect } from 'react';
 
 const { validateToken } = validators
 
@@ -30,17 +28,8 @@ function App() {
   const showUpdatePassword = () => navigate('/cuenta/actualizar-contrasena')
   const showDeleteAccount = () => navigate('/cuenta/eliminar-cuenta')
 
+
   return <div>
-
-    {/* <Login /> */}
-    {/* <IconLogo /> */}
-    {/* <IconProfile/> */}
-    {/* <IconCheeseburger /> */}
-    {/* <Input type='password' name='password' placeholder='password' /> */}
-    {/* <ProductDetails productId='6230bf4238c46a26fbfb31ad'/> */}
-    {/* <Results /> */}
-
-
 
     <Header onLogo={showHome} onProfile={showProfile}/>
     <Routes>

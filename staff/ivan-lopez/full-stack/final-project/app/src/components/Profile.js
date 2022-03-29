@@ -3,10 +3,9 @@ import { retrieveUser, updateUser } from '../logic'
 import { Button } from '../components'
 import { Input } from '../components/form-elements'
 import ModalCreateProduct from './elements/ModalCreateProduct'
-import ProductList from './ProductList'
 
 
-function Profile({ onUpdatePassword, onDeleteAccount, onLogout}) {
+function Profile({ onUpdatePassword, onDeleteAccount, onLogout }) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [isShowModal, setIsShowModal] = useState()
@@ -73,28 +72,21 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout}) {
         setIsShowModal(false)
     }
 
-    const goToProductList = event => {
-        event.preventDefault()
-        setShowProductList(!showProductList)
-    }
 
+    return <div className='profile'>
+        {isShowModal && <ModalCreateProduct onClose={closeModal} />}
 
-    return <div className='profile'> 
-        {isShowModal && <ModalCreateProduct onClose={closeModal}/> }
-       
-
-        {showProductList ? <ProductList /> : null }
         <div>
             <h1>PERFIL</h1>
             <h2>Bienvenid@ a tu perfil, {name} !</h2>
 
             <form className='profile__form' onSubmit={onSubmit} method='post'>
 
-                <div className="profile__field">
+                <div className='profile__field'>
                     <Input className='profile__name-input' type='text' name='name' placeholder='Nombre' defaultValue={name} />
                 </div>
 
-                <div className="profile__field">
+                <div className='profile__field'>
                     <Input className='profile__email-input' type='email' name='email' placeholder='E-mail' defaultValue={email} />
                 </div>
 
@@ -104,13 +96,11 @@ function Profile({ onUpdatePassword, onDeleteAccount, onLogout}) {
                 <a href='' className='profile__delete-account-link' onClick={goToDeleteAccount}>Eliminar mi cuenta</a>
                 <Button type='submit' onClick={logOut}>Cerrar sesión</Button>
             </form>
-                <div>
-                <Button onClick={goToProductList}>Listar Productos</Button>    
+            <div>
                 <Button onClick={toggleModal}>Añadir Producto</Button>
-                
-                </div> 
+            </div>
         </div>
-        </div>
+    </div>
 }
 
 export default Profile

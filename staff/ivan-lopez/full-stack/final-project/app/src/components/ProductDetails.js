@@ -62,6 +62,7 @@ function ProductDetails ({onBack}) {
             <p>{product.color}</p>
             <p>{product.price}</p>
             <p>{product.description}</p>
+            <img src={product.image}/>
         </ul>}
         <Button className="update-product__button" onClick={toggleModal}>Actualizar Producto</Button>
         <Button className="delete-product__button" onClick={onDeleteProduct}>Eliminar</Button>
