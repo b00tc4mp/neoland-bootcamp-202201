@@ -2,8 +2,9 @@ import './CommentCard.sass'
 import { Button, CancelIcon } from '.'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../logic'
+import { DeleteCommentButton } from './elements/buttons/DeleteCommentButton'
 
-export function CommentCard({ comment }) {
+export function CommentCard({ comment, onDeleted }) {
     const [owned, setOwned] = useState(false)
 
     useEffect(async () => {
@@ -22,7 +23,7 @@ export function CommentCard({ comment }) {
             <p>{new Date(comment.date).toLocaleDateString()}</p>
         </div>
         <div className='comment-card__delete'>
-            {owned && <Button><CancelIcon /> </Button>}
+            {owned && <DeleteCommentButton commentId={comment.id} onDeleted={onDeleted} />}
         </div>
 
     </div>

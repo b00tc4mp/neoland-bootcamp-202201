@@ -15,7 +15,7 @@ export function Search({ onSearch }) {
         <form onSubmit={search}>
             <Input className="search__query-input" type="text" name="query" placeholder="Busca..." />
             <Button className="search__button" type='submit'><SearchIcon />Enviar</Button>
-            <Button className="search__button" type='reset' ><CancelIcon />Limpiar</Button>
+            <Button onClick={onSearch} className="search__button" type='reset' ><CancelIcon />Limpiar</Button>
             
         </form>
 

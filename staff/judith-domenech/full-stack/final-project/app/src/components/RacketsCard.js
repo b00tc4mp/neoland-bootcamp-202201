@@ -2,7 +2,7 @@ import './RacketsCard.sass'
 import { useState } from 'react'
 import { ToggleFavoriteRackets } from '.'
 
-export function RacketsCard({ racket, onRacket, onToggled }) {
+export function RacketsCard({ racket, onRacket, onToggled, validateToken }) {
 
     return <div className='racket-card'>
 
@@ -13,7 +13,7 @@ export function RacketsCard({ racket, onRacket, onToggled }) {
             <p className='racket-card__price'>{racket.price}€</p>
         </div>
         <div className='racket-card__toggle-favorite'>
-            {sessionStorage.token && <ToggleFavoriteRackets racketId={racket.id} isFavorite={racket.isFavorite} onToggled={onToggled}/>}
+            {validateToken() && <ToggleFavoriteRackets racketId={racket.id} isFavorite={racket.isFavorite} onToggled={onToggled}/>}
         </div>
     </div>
 }

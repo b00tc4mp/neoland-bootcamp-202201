@@ -10,7 +10,9 @@ export function LoginForm({ onLoggedIn, onRegister }) {
 
             const token = await authenticateUser(email, password)
             sessionStorage.token = token
-            onLoggedIn && onLoggedIn(event)
+            
+            onLoggedIn()
+            
         } catch (error) {
             alert(error.message)
         }
@@ -21,16 +23,11 @@ export function LoginForm({ onLoggedIn, onRegister }) {
         login(event)
     }
 
-    const goToRegister = event => {
-        event.preventDefault()
-        onRegister && onRegister(event)
-    }
-
     return <form className='login__wrapper' onSubmit={onSubmit}>
             <Input type='email' name='email' placeholder='Email' required={true} />
             <Input type='password' name='password' placeholder='Contraseña' required={true} />
             <Button className='login__button'type='submit'> Login </Button>
-            <Link href="" onClick={goToRegister}> Registrarse</Link>     
+            <Link href="" onClick={onRegister}> Registrarse</Link>     
     </form>
 }
 

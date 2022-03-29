@@ -1,9 +1,7 @@
 import './App.sass'
 import {
-  SearchUserRacket,
   HeaderBar,
   NavigateMenu,
-
 } from './components'
 
 import {
@@ -14,6 +12,7 @@ import {
   Favorites,
   UpdatePassword,
   RacketDetails,
+  SearchUserRacket
 } from './pages'
 
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
@@ -21,15 +20,16 @@ import { validators } from 'commons'
 
 const { validateToken } = validators
 
-function App() {
+export default function App() {
 
-  const isValidToken = () => {
+  const isTokenValid = () => {
     try {
-      validateToken(sessionStorage.token)
-      return true
+    return sessionStorage.token && validateToken(sessionStorage.token)
+
     }
     catch (error) {
-      alert(error.message)
+      alert('Sesión finalizada ')
+      delete sessionStorage.token
       return false
     }
   }
@@ -38,66 +38,39 @@ function App() {
   const goBack = () => navigate(-1)
   const showLogin = () => navigate('acceder')
   const showRegister = () => navigate('registrar')
-  const showSearch = query => { navigate(`search?query=${query}`) }
+  const showSearch = query => navigate(`search?query=${query}`)
   const showRacketDetails = racketId => navigate(`pala/${racketId}`)
+  const showUserRacket = () => navigate('tu-pala')
+  const showSearchUserRacket = ({ type, weight, player, level }) => navigate(`tu-pala/search?type=${type}&weight=${weight}&player=${player}&level=${level}`)
   const showProfile = () => navigate('perfil')
   const showFavorites = () => navigate('favoritos')
-  const showSearchUserRacket = () => navigate('busca-tu-pala')
   const showUpdatePassword = () => navigate('cambiar-contrasena')
   const showHome = () => navigate('/')
-
-  const goToProfile = event => {
-    event.preventDefault()
-    showProfile()
-  }
-
-  const goToFavorites = event => {
-    event.preventDefault()
-    showFavorites()
-  }
-
-  const goToHome = event => {
-    event.preventDefault()
-    showHome()
-  }
-
-  const goToLogin = event => {
-    event.preventDefault()
-    showLogin()
-  }
-
-  const goUpdatePassword = event => {
-    showUpdatePassword()
-  }
 
 
   return <div>
 
-    <div className='home__header-bar'>
-      {sessionStorage.token && <HeaderBar onHome={goToHome} onLogin={goToLogin} />}
-    </div>
+  
+      <HeaderBar className='home__header-bar' onHome={showHome} onLogin={showLogin} validateToken={isTokenValid} />
+    
     <Routes>
-      <Route path="/*" element={<Home onRegistered={showLogin} onLogin={showLogin} onProfile={showProfile} goToDetails={showRacketDetails} onSearch={showSearch}/> } />
-      <Route path="registrar" element={!sessionStorage.token ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
-      <Route path="acceder" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
-      <Route path="perfil" element={sessionStorage.token && <Profile onUpdatePassword={goUpdatePassword} onLogout={showLogin}/>} />
-      <Route path="cambiar-contrasena" element={sessionStorage.token && <UpdatePassword onBack={goBack} />} />
-      <Route path="pala/:racketId" element={sessionStorage.token && <RacketDetails />} />
-      <Route path="favoritos" element={sessionStorage.token && <Favorites goToDetails={showRacketDetails} />} />
-      <Route path="busca-tu-pala" element={sessionStorage.token && <SearchUserRacket />} />
-     
-      <Route path="page-not-found" element={!sessionStorage.token ? <h1>Sorry, esta página no existe :P</h1> : <Navigate replace to="/" />} />
+      <Route path="/*" element={<Home goToDetails={showRacketDetails} onSearch={showSearch} validateToken={isTokenValid}/>} />
+      <Route path="acceder" element={!isTokenValid() ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
+      <Route path="registrar" element={!isTokenValid() ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
+      <Route path="perfil" element={isTokenValid() && <Profile onUpdatePassword={showUpdatePassword} onLogout={showLogin} />} />
+      <Route path="cambiar-contrasena" element={isTokenValid() && <UpdatePassword onBack={goBack} />} />
+      <Route path="pala/:racketId" element={isTokenValid() && <RacketDetails />} />
+      <Route path="favoritos" element={isTokenValid() && <Favorites goToDetails={showRacketDetails} validateToken={isTokenValid} />} />
+      <Route path="tu-pala/*" element={isTokenValid() && <SearchUserRacket onRacket={showRacketDetails} onSearchUserRacket={showSearchUserRacket} validateToken={isTokenValid}/>} />
+
+      <Route path="page-not-found" element={!isTokenValid() ? <h1>Sorry, esta página no existe :P</h1> : <Navigate replace to="/" />} />
       <Route path="/*" element={<Navigate replace to='page-not-found' />} />
 
     </Routes>
 
-
-    <div className='home__navigate-menu'>
-      {sessionStorage.token && <NavigateMenu onProfile={goToProfile} onFavorites={goToFavorites} onSearchUserRacket={showSearchUserRacket} onHome={goToHome} />}
-    </div>
+      {isTokenValid() && <NavigateMenu className='home__navigate-menu' onProfile={showProfile} onFavorites={showFavorites} onSearchUserRacket={showUserRacket} onHome={showHome} />}
+ 
 
   </div>
 
 }
-
-export default App

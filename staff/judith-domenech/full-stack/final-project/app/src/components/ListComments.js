@@ -1,6 +1,6 @@
 import './ListComments.sass'
 import { useEffect, useState } from 'react'
-import { CommentCard } from '.'
+import { CommentCard, CreateComment } from '.'
 import { listComments } from '../logic'
 
 export function ListComments({ racketId }) {
@@ -9,18 +9,28 @@ export function ListComments({ racketId }) {
     useEffect(async () => {
         try {
           const comments = await listComments(racketId)
-            setComments(comments)
+            setComments(comments.reverse())
         } catch (error) {
             alert(error.message)
         }
     }, [])
 
+    const updateCommentList = async () => {
+        try {
+          const comments = await listComments(racketId)
+            setComments(comments.reverse())
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
     return <>
+       <CreateComment racketId={racketId} onCreated={updateCommentList}/>
         {!!comments.length &&
             <ul>
                 {comments.map(comment =>
                     <li key={comment.id}>
-                        <CommentCard comment={comment} />
+                        <CommentCard comment={comment} onDeleted={updateCommentList}/>
                     </li>)}
             </ul>
         }

@@ -1,22 +1,13 @@
 import { Logo, Link } from '.'
 import './HeaderBar.sass'
 
-export function HeaderBar({ onLogin, onHome }) {
+export function HeaderBar({ onLogin, onHome, validateToken }) {
 
-    const goToLogin = event => {
-        event.preventDefault()
-        onLogin && onLogin(event)
-    }
-
-    const goToHome= event => {
-        event.preventDefault()
-        onHome && onHome(event)
-    }
 
     return <div>
         <nav className='header-bar'>
-            <Link onClick={goToHome}><Logo /></Link>
-            {!sessionStorage.token && <Link onClick={goToLogin}>Iniciar Sesión</Link>}
+            <Link onClick={onHome}><Logo /></Link>
+            {!validateToken() && <Link onClick={onLogin}>Iniciar Sesión</Link>}
         </nav>
     </div>
 }

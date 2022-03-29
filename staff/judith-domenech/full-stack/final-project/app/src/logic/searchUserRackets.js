@@ -4,10 +4,10 @@ const { validateToken, validateString } = validators
 
 function searchUserRackets(token, type, weight, player, level) {
 validateToken(token, 'token')
-validateString(type, 'type')
-validateString(weight, 'weight')
-validateString(player, 'player')
-validateString(level, 'level')
+type && validateString(type, 'type')
+weight && validateString(weight, 'weight')
+player && validateString(player, 'player')
+level && validateString(level, 'level')
 
     return fetch(`http://localhost:8080/api/rackets/search?type=${type}&weight=${weight}&player=${player}&level=${level}`, {
         headers: {

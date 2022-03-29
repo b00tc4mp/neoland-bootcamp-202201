@@ -1,6 +1,6 @@
 import './RacketCardDetails.sass'
 import { retrieveRacket } from '../logic'
-import { ToggleFavoriteRackets, CommentIcon, Link } from '.'
+import { ToggleFavoriteRackets } from '.'
 import { useEffect, useState } from 'react'
 import { listFavoritesRackets } from '../logic'
 
@@ -31,9 +31,6 @@ export function RacketCardDetails({ racketId }) {
         <p>Tipo: {racket.type}</p>
         <p>Tipo de Jugador: {racket.player}</p>
         <p>Peso: {racket.weight}</p>
-        <div className='racket-details' >
-            {sessionStorage.token && <Link><CommentIcon /></Link>}
-        </div>
 
     </div>
 }

@@ -4,7 +4,7 @@ import { RacketsCard } from '.'
 import { searchRackets, listFavoritesRackets } from '../logic'
 import { useSearchParams } from 'react-router-dom'
 
-export function ListSearchRackets({ goToDetails }) {
+export function ListSearchRackets({ goToDetails, validateToken }) {
     const [rackets, setRackets] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -12,13 +12,19 @@ export function ListSearchRackets({ goToDetails }) {
 
     useEffect(async () => {
         try {
-            
+
             const rackets = await searchRackets(query)
-            const favorites = await listFavoritesRackets(sessionStorage.token)
+            let favorites = []
+            
+
+            if (validateToken()) {
+                favorites = await listFavoritesRackets(sessionStorage.token)
+            }
+
             rackets.forEach(racket => {
                 racket.isFavorite = favorites.some(favorite => favorite.id === racket.id)
             })
-          
+
             setRackets(rackets)
 
         } catch (error) {
@@ -31,7 +37,7 @@ export function ListSearchRackets({ goToDetails }) {
             <ul>
                 {rackets.map(racket =>
                     <li key={racket.id} className="results__item" >
-                        <RacketsCard racketId={racket.id} isFavorite={racket.isFavorite} racket={racket} onRacket={goToDetails}/>
+                        <RacketsCard racketId={racket.id} isFavorite={racket.isFavorite} racket={racket} onRacket={goToDetails} validateToken={validateToken} />
                     </li>)}
             </ul>
         }
