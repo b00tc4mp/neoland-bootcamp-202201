@@ -12,7 +12,7 @@ import { convertToBase64 } from '../utils/utils'
 function ModalUpdateProduct({ onClose, onProductUpdated }) {
   const [name, setName] = useState()
   const [image, setImage] = useState()
-  
+
   const [size, setSize] = useState()
   const [color, setColor] = useState()
   const [price, setPrice] = useState()
@@ -39,6 +39,7 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
           setPrice(price)
           setDescription(description)
           setProduct(product)
+
         })
         .catch(error => alert(error.message))
     } catch (error) {
@@ -52,7 +53,6 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
 
     const { target: {
       name: { value: name },
-      
       size: { value: size },
       color: { value: color },
       price: { value: price },
@@ -60,8 +60,16 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
 
     try {
       if (productImage)
-        convertToBase64(productImage).then(productImage)
-        updateProduct(sessionStorage.token, productId, name, productImage, size, color, price, description)
+        convertToBase64(productImage).then(productImage => updateProduct(
+          sessionStorage.token,
+          productId,
+          name,
+          productImage,
+          size,
+          color,
+          price,
+          description
+        ))
           .then(() => {
             setName(name)
             setImage(productImage)
@@ -80,13 +88,12 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
               description: description
             })
           })
-        .catch(error => { throw error })
+          .catch(error => { throw error })
     } catch ({ message }) {
       alert(message)
     }
 
   }
-
 
   return (
     <Modal onClose={onClose}>
@@ -99,15 +106,14 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
         <Input type='text' name='description' placeholder='Descripción' defaultValue={description} />
         <Button type='submit' >Actualizar</Button>
       </form>
-       
-       
+
       <div {...getRootProps()}>
         <input {...getInputProps()} />
         {productImage && <img
           src={productImgSrc}
           alt='photo'
         />}
-         <Button>Elegir archivo</Button>
+        <Button>Elegir archivo</Button>
       </div>
     </Modal>
 

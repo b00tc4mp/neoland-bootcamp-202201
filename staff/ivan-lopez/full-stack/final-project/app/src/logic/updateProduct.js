@@ -2,6 +2,7 @@ import { validators } from 'commons'
 const { validateToken, validateId, validateString } = validators
 
 function updateProduct(token, productId, name, image, size, color, price, description) {
+
     validateToken(token)
     validateId(productId, 'productId')
     validateString(name, 'name')

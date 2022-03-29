@@ -13,5 +13,3 @@ return <>
 }
 
 export default Button
-
-// feature/web demo-app container compo
