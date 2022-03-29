@@ -1,66 +1,94 @@
- import './RecipeDetails.sass'
- import { useEffect, useState } from 'react'
- import { findRecipesByDistilled, findRecipesByType, findRecipesByTitle } from '../logic'
+import './RecipeDetails.sass'
+import { useEffect, useState } from 'react'
+import { retrieveRecipe, saveNote, retrieveNote } from '../logic'
+import { useParams } from 'react-router-dom'
+import { Button } from "../components"
 
-
-// function findRecipesByDistilled ({recipeId}) {
-
-//     const [recipe, setRecipe] = useState()
-
-//     useEffect(() => {
-//         try {
-//             retrieveRecipe(sessionStorage.token, recipeId)
-//             .then(recipe => {
-//                 setRecipe(recipe)
-//             })
-//             .catch(error => alert(error.message))
-//         } catch (error) {
-//             alert(error.message)
-//         }
-//     }, [])
-
-//     function findRecipesByTitle ({recipeId}) {
-
-//         const [recipe, setRecipe] = useState()
+function RecipeDetails() {
+    const [recipe, setRecipe] = useState({})
+    const [note, setNote] = useState({})
+    const { recipeId } = useParams()
     
-//         useEffect(() => {
-//             try {
-//                 retrieveRecipe(sessionStorage.token, recipeId)
-//                 .then(recipe => {
-//                     setRecipe(recipe)
-//                 })
-//                 .catch(error => alert(error.message))
-//             } catch (error) {
-//                 alert(error.message)
-//             }
-//         }, [])
-
-//         function findRecipesByType ({recipeId}) {
-
-//             const [recipe, setRecipe] = useState()
+    
+    /*  useEffect(() => {
+        try {
+            Promise.all([retrieveRecipe(sessionStorage.token, recipeId), retrieveNote(sessionStorage.token, recipeId)])
+            .then(([recipe, note]) => {
+                setRecipe(recipe)
+                setNote(note)
+            })
+            .catch(error => alert(error.message))
+        } catch (error) {
+            alert(error.message)
+        }
         
-//             useEffect(() => {
-//                 try {
-//                     retrieveRecipe(sessionStorage.token, recipeId)
-//                     .then(recipe => {
-//                         setRecipe(recipe)
-//                     })
-//                     .catch(error => alert(error.message))
-//                 } catch (error) {
-//                     alert(error.message)
-//                 }
-//             }, [])
+    }, [recipeId]) */
+    
+    useEffect(() => {
+        if (note) {
+            try {
+                retrieveRecipe(sessionStorage.token, recipeId)
+                .then((recipe) => {
+                    setRecipe(recipe)
+                }).then(retrieveNote(sessionStorage.token, recipeId)
+                    .then((note) => setNote(note)))
+            } catch(error){
+                alert(error.message)
+            }
+        }
+        else { 
+            try {
+            retrieveRecipe(sessionStorage.token, recipeId).then((recipe) =>
+            setRecipe(recipe))
+            } catch(error){
+            alert(error.message)
+            }
+        }
+    }, [recipeId])
+    
+    // const goBack = event => {
+        //     event.preventDefault()
+        
+    //     onBack()
+    // }
+
+    const handleSubmit = event => {
+        event.preventDefault()
+     
+        
+        const text = event.target.text.value
 
 
-//     return <>
-//         {recipe && <ul>
-//             <li>{recipe.title}</li>
-//             <li>{recipe.description}</li>
-//             <li>{recipe.image}</li>
-//             <li>{recipe.type}</li>
-//             <li>{recipe.distilled}</li>
-//         </ul>}
-//     </>
-// }
+        try {
+            saveNote(sessionStorage.token, recipeId, text)
+            .then(() => {
+                alert("note create")
+            })
+            .catch(error => alert(error.message))
+        } catch(error){
+           alert(error.message)
+        }
 
- export default findRecipesByDistilled
+
+
+    }
+
+    return <>
+        {!!recipe && <div>
+            <h1>{recipe.title}</h1>
+            <h3>{recipe.description}</h3>
+            <h3>{recipe.distilled}</h3>
+            <img className='img' alt="coctel" src={recipe.image}/> {/* Pasar a BEM */}
+            <h3>{recipe.note}</h3>
+
+            <form onSubmit={handleSubmit}>
+                <textarea name="text" placeholder="note" defaultValue={note && note.text}></textarea>
+                <Button type="submit">Save</Button>
+            </form>
+        </div>}
+         {/* <a href="" onClick={goBack}>back</a>   */}
+    </>
+
+}
+export default RecipeDetails
+

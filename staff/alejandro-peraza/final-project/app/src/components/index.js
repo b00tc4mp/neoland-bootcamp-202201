@@ -5,11 +5,12 @@ import Register from './Register'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
-import Header from './Header'
+
 import Search from './Search'
 import RecipeDetails from './RecipeDetails'
 import Button from './Button'
 import Results from './Results'
+
 
 
 export {
@@ -20,10 +21,12 @@ export {
     Profile,
     UpdatePassword,
     DeleteAccount,
-    Header,
+
     Search,
     RecipeDetails,
     Button,
-    Results
+    Results,
+
+    
     
 }

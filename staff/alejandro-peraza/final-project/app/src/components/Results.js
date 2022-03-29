@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { findRecipesByDistilled, findRecipesByTitle, findRecipesByType } from '../logic'
 
@@ -8,6 +8,8 @@ function Results() {
     const [results, setResults] = useState([])
     const type = searchParams.get('type')
     const query = searchParams.get('query')
+
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -32,13 +34,14 @@ function Results() {
     }, [type, query])
 
 
-
     return <div className='results'>
         {results.length > 0 && <ul>
-            {results.map(result => <ul key={result.id}>
+            {results.map(result => <ul key={result.id} onClick={() => {
+                navigate(`/recipes/${result.id}`)
+            }}>          
 
                 <h1>{result.title}</h1>
-                {/* <img src={aaa} /> */}
+                {/* <img src={aaa} />  */}
 
             </ul>)}
         </ul>}

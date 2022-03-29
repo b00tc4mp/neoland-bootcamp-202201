@@ -1,27 +1,26 @@
 import { validators } from 'commons'
 
+const { validateString, validateToken, validateId } = validators
 
-const { validateId, validateToken } = validators
-
-function retrieveNote(token, recipeId) {
+function saveNote(token, recipeId, text) {
     validateToken(token)
     validateId(recipeId)
-    
+    validateString(text)
 
-    return fetch(`http://localhost:8080/api/recipes/${recipeId}/note`, {
+    return fetch(`http://localhost:8080/api/recipes/${recipeId}/notes`, {
     
-        method: 'GET',
+        method: 'POST', //patch
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-    
+        body: JSON.stringify({ text })
     })
         .then(res => {
             const { status } = res
 
-            if (status === 200) {
-                return res.json()
+            if (status === 201) {
+                return
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {
@@ -37,4 +36,4 @@ function retrieveNote(token, recipeId) {
         })
 }
 
-export default retrieveNote
+export default saveNote

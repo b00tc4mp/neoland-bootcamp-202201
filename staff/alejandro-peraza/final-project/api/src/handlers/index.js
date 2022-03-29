@@ -4,8 +4,7 @@ const retrieveUser = require('./retrieveUser')
 const updateUser = require('./updateUser')
 const updateUserPassword = require('./updateUserPassword')
 const deleteUser = require('./deleteUser')
-const createNote = require('./createNote')
-const updateNote = require('./updateNote')
+const saveNote = require('./saveNote')
 const deleteNote = require('./deleteNote')
 const retrieveNote = require('./retrieveNote')
 const createRecipe = require('./createRecipe')
@@ -15,6 +14,7 @@ const retrieveRecipe = require('./retrieveRecipe')
 const retrieveFavRecipes = require('./retrieveFavRecipes')
 const findRecipes = require('./findRecipes')
 
+
 module.exports = {
     registerUser,
     authenticateUser,
@@ -22,8 +22,7 @@ module.exports = {
     updateUser,
     updateUserPassword,
     deleteUser,
-    createNote,
-    updateNote,
+    saveNote,
     deleteNote,
     retrieveNote,
     createRecipe,
@@ -31,5 +30,6 @@ module.exports = {
     retrieveFavRecipes,
     deleteRecipe,
     updateRecipe,
-    retrieveRecipe
+    retrieveRecipe,
+    
 }

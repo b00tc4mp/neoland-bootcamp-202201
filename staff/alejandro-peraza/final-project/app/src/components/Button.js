@@ -1,10 +1,14 @@
 import React from 'react'
 import "./Button.sass"
 
-const Button = ({type='button', className='', children}) => {
+const Button = ({type='button', className='', children, onClick}) => {
+
+const click = event => {
+  onClick && onClick(event)
+}
 
 return <>
-    <button type={type} className={`button ${className}`}>{children}</button>
+    <button onClick={click} type={type} className={`button ${className}`}>{children}</button>
   </>
 }
 

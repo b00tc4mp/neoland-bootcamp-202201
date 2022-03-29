@@ -1,5 +1,7 @@
 import './Register.css'
 import { registerUser } from '../logic'
+import { Button } from "../components"
+import { Input } from './form-elements'
 
 function Register({ onRegistered, onLogin }) {
 
@@ -22,14 +24,19 @@ function Register({ onRegistered, onLogin }) {
         onLogin()
     }
 
+    const onSubmit = event => {
+        event.preventDefault()
+        register(event)
+    }
+
     return <div className='register'>
-        <form onSubmit={register}>
-            <input type='text' name='name' placeholder='name' />
-            <input type='email' name='email' placeholder='email' />
-            <input type='password' name='password' placeholder='password' />
-            <button>Register</button>
-            <a href="" onClick={goToLogin}>Login</a>
-        </form>
+        { <form onSubmit={register}>
+            <Input type='text' name='name' placeholder='name' />
+            <Input type='email' name='email' placeholder='email' />
+            <Input type='password' name='password' placeholder='password' />
+            <Button href="" onClick={goToLogin}>Login</Button>
+            <Button type="submit" onSubmit={onSubmit}>Register</Button>
+        </form> }
     </div>
 
 }

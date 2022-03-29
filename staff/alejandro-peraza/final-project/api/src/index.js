@@ -10,14 +10,16 @@ const {
     updateUser,
     updateUserPassword,
     deleteUser,
-    createNote,
-    updateNote,
+    saveNote,
     deleteNote,
     retrieveNote,
-    findRecipes
+    findRecipes,
+    retrieveRecipe,
+    logicaVentu
 } = require('./handlers')
 
 const cors = require('cors')
+
 const { env: { PORT, MONGODB_URL } } = process
 
 connect(MONGODB_URL)
@@ -43,18 +45,17 @@ connect(MONGODB_URL)
         /*
         TODO later
         api.post('/recipes', jsonBodyParser, createRecipe)
-        api.get('/recipes/:recipeId', retrieveRecipe)
-        api.patch('/recipes/:recipeId', jsonBodyParser, updateRecipe)
         api.delete('/recipes/:recipeId', jsonBodyParser, deleteRecipe)
+        api.patch('/recipes/:recipeId', jsonBodyParser, updateRecipe)
         */
-        // TODO later api.get('/recipes/favs', retrieveFavRecipes)
-        api.get('/recipes', findRecipes)
+       // TODO later api.get('/recipes/favs', retrieveFavRecipes)
+       api.get('/recipes', findRecipes)
+       api.get('/recipes/:recipeId', retrieveRecipe)
+       
+      
 
-
-
-        api.post('/recipes/:recipeId/notes', jsonBodyParser, createNote)
-        api.get('/recipes/:recipeId/notes/:noteId', retrieveNote)
-        api.patch('/recipes/:recipeId/notes/:noteId', jsonBodyParser, updateNote)
+        api.post('/recipes/:recipeId/notes', jsonBodyParser, saveNote)
+        api.get('/recipes/:recipeId/note', retrieveNote)
         api.delete('/recipes/:recipeId/notes/:noteId',jsonBodyParser, deleteNote)
         
         server.use('/api', api)

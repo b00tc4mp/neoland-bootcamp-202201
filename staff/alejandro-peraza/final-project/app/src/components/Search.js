@@ -1,22 +1,21 @@
 import './Search.sass'
 import { useState } from 'react'
 import RecipeDetails from './RecipeDetails'
+import { Button } from "../components"
+import { Input } from './form-elements'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 
 function Search({ onSearch, query }) {
-    const [view, setView] = useState(query && 'RecipeDetails')
+
+    const navigate = useNavigate()
 
     const search = event => {
         event.preventDefault()
 
         const { target: { query: { value: query }, type: { value: type } } } = event
-
-        onSearch(type, query)
-
-        showResults()
+        
+        navigate(`/search?type=${type}&query=${query}`)
     }
-
-    const showResults = () => setView('RecipeDetails')
-
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
@@ -32,7 +31,7 @@ function Search({ onSearch, query }) {
             <button className="search__button">Search</button>
         </form>
 
-        
+
     </div>
 }
 

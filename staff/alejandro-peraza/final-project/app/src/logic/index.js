@@ -7,6 +7,9 @@ import updateUserPassword from './updateUserPassword'
 import findRecipesByTitle from './findRecipesByTitle'
 import findRecipesByType from './findRecipesByType'
 import findRecipesByDistilled from './findRecipesByDistilled'
+import retrieveRecipe from './retrieveRecipe'
+import saveNote from './saveNote'
+import retrieveNote from "./retrieveNote"
 
 export {
     registerUser,
@@ -17,5 +20,8 @@ export {
     updateUserPassword,
     findRecipesByTitle,
     findRecipesByType,
-    findRecipesByDistilled
+    findRecipesByDistilled,
+    retrieveRecipe,
+    saveNote,
+    retrieveNote
 }

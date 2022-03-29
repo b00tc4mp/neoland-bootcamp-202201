@@ -5,12 +5,14 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Search from './Search'
 import Results from './Results'
 import { useSearchParams } from 'react-router-dom'
+import RecipeDetails from './RecipeDetails'
+import { Button } from "../components"
 
 function Home({ onLogOut }) {
     const [name, setName] = useState()
 
     const navigate = useNavigate()
-    
+
     const [searchParams, setSearchParams] = useSearchParams()
 
     useEffect(() => {
@@ -29,16 +31,16 @@ function Home({ onLogOut }) {
 
     return <div className="home">
         <nav className="home__header">
-            <button href="" onClick={onLogOut}>Log out</button>
         </nav>
         <h1>welcome home, {name}!</h1>
         <Search onSearch={search} />
+            <Button href="" onClick={onLogOut}>Log out</Button>
 
         <Routes>
-            <Route path="search" element={<Results />} />
-            
+            <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+            <Route path="/search" element={<Results />} />
         </Routes>
     </div>
-    }
+}
 
-    export default Home
+export default Home

@@ -1,31 +1,25 @@
 const { validators: { validateId } } = require('commons')
 const { models: { User, Recipe, Note } } = require('data')
 
-function retrieveNote(userId, recipeId, noteId) {
+function retrieveNote(userId, recipeId) {
     validateId(userId, 'user id')
     validateId(recipeId, 'recipe id')
-    validateId(noteId, 'note id')
 
-    return User.findById(userId)
-        .then(user => {
+    return Promise.all([User.findById(userId), Recipe.findById(recipeId)])
+        .then(([user, recipe]) => {
             if (!user) throw new Error(`user with id ${userId} not found`)
-
-            return Recipe.findById(recipeId)
-        })
-        .then(recipe => {
             if (!recipe) throw new Error(`recipe with id ${recipeId} not found`)
 
-            return Note.findById(noteId)
+            return Note.findOne({ user: userId, recipe: recipeId }).lean()
         })
         .then(note => {
-            if (!note) throw new Error(`note with id ${noteId} does not exist`)
+           /*  if (!note) throw new Error(`note with id ${noteId} does not exist`) */
 
-            const doc = note._doc
+           /*  note.id = note._id.toString()
+            delete note._id
+            delete note.__v */
 
-            delete doc._id
-            delete doc.__v
-
-            return doc
+            return note
         })
 }
 
