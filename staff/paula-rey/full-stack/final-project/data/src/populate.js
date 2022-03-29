@@ -23,11 +23,6 @@ connect('mongodb://localhost:27017/dogether-db')
         const pepi = new User({ name: 'Pepi Gri', email: 'pepigri@mail.com', password: '123123123' })
         const sirius = new User({ name: 'Sirius Black', email: 'siriusblack@mail.com', password: '123123123' })
 
-        ora.follows.push(agua.id, wendy.id)
-        sirius.follows.push(wendy.id)
-        pepi.follows.push(sirius.id, ora.id)
-        wendy.follows.push(agua.id,pepi.id,sirius.id)
-
         return Promise.all([anonymous.save(), agua.save(), ora.save(), wendy.save(), pepi.save(), sirius.save()])
     })
 

@@ -1,7 +1,7 @@
 import './ListComments.sass'
 import { useState, useEffect } from 'react'
 import { listLocationComments } from '../logic'
-import { CommentCard } from '.'
+import { CommentCard, AddComment } from '.'
 import { useParams } from 'react-router-dom'
 
 export function ListComments() {
@@ -13,18 +13,30 @@ export function ListComments() {
     useEffect(async() => {
         try {
             const comments = await listLocationComments(sessionStorage.token, locationId)
-            setComments (comments)
+            setComments (comments.reverse())
 
         } catch (error) {
             alert(error.message)
         }
     }, [])
 
+    const updateListComment = async() => {
+        try {
+            const comments = await listLocationComments(sessionStorage.token, locationId)
+            setComments (comments.reverse())
+
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
     return <div>
+            <p>Añadir nuevo comentario:</p>
+             <AddComment onCreatedComment={updateListComment}/>
          {!!comments.length && <ul>
             {comments.map(comment => 
             <li key={comment.id}>
-                <CommentCard comment={comment} /> 
+                <CommentCard comment={comment} onDeletedComment={updateListComment} /> 
             </li>)}
             </ul>}
     </div>

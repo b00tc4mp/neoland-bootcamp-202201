@@ -8,7 +8,6 @@ export function LocationDetails({ onAddComment, onToggled }) {
     const { locationId } = useParams()
 
     const [location, setLocation] = useState({})
-    const [favorites, setFavorites] = useState([])
 
     useEffect(async () => {
         try {
@@ -38,7 +37,6 @@ export function LocationDetails({ onAddComment, onToggled }) {
             <h2>{location.type}</h2>
             <p>{location.address}</p>
             <p>{location.city}</p>
-            <Link onClick={goToAddComment}><CommentIcon /></Link>
             <ListComments locationId={locationId} />
         </div>
     </>

@@ -22,11 +22,6 @@ const user = new Schema({
     favorites: [{
         type: ObjectId,
         ref: 'Location'
-    }],
-
-    follows: [{
-        type: ObjectId,
-        ref: 'User'
     }]
 
 })

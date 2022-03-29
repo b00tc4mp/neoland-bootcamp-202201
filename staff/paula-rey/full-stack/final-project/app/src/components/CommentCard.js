@@ -1,11 +1,11 @@
 import './CommentCard.sass'
-import { Button, DeleteIcon } from './'
+import { DeleteCommentButton, DeleteIcon } from './'
 import { useState, useEffect } from 'react'
 import { retrieveUser } from '../logic'
 
 
-export function CommentCard({ comment: _comment }) {
-    const [comment, setComment] = useState(_comment || {})
+export function CommentCard({ comment = {}, onDeletedComment }) {
+
     const [owned, setOwned] = useState(false)
 
     useEffect(async () => {
@@ -23,7 +23,7 @@ export function CommentCard({ comment: _comment }) {
             <h1>{comment.userName}</h1>
             <h2>{new Date(comment.date).toLocaleDateString()}</h2>
             <p>{comment.text}</p>
-            {owned && <Button><DeleteIcon /></Button>}
+            {owned && <DeleteCommentButton commentId={comment.id} onDeletedComment={onDeletedComment} />}
 
         </div>
     </>

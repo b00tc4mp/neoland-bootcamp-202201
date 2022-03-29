@@ -62,7 +62,7 @@ connect(MONGODB_URL)
 
         api.post('/locations/:locationId/comments', jsonBodyParser, createComment)
         api.get('/locations/:locationId/comments', listLocationComments)
-        api.delete('/locations/:locationId/comments/:commentId', deleteComment)
+        api.delete('/locations/comments/:commentId', deleteComment)
 
 
 

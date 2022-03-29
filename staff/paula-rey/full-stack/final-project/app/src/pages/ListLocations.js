@@ -17,12 +17,22 @@ export function ListLocations({ goToLocationDetails, goToUpdateLocation }) {
         }
     }, [])
 
+    const updateListLocations = async() => {
+        try {
+            const locations = await listLocations(sessionStorage.token)
+            setLocations(locations)
 
-    return <div>
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+
+    return <div className="locations">
         {!!locations.length && <ul>
             {locations.map(location =>
                 <li key={location.id}>
-                    <OwnerLocationCard location={location} onOwnerLocationCard={goToLocationDetails} onUpdateLocation={goToUpdateLocation} />
+                    <OwnerLocationCard location={location} onUpdateLocation={goToUpdateLocation} onDeletedLocation={updateListLocations} onLocationDetails={goToLocationDetails} />
                 </li>)}
         </ul>}
     </div>

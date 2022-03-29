@@ -2,36 +2,24 @@ import './Profile.sass'
 import { Link } from '../components'
 
 
-export function Profile({ onUserData, onListLocations, onListFollows, onDeleteAccount }) {
+export function Profile({ onUserData, onListLocations, onAddLocation, onDeleteAccount, onLogOut }) {
 
-    const goToUserData = event => {
+    const logOut = event => {
         event.preventDefault()
-        onUserData(event)
-    }
-
-    const goToListLocations = event => {
-        event.preventDefault()
-        onListLocations(event)
-    }
-    const goToListFollows = event => {
-        event.preventDefault()
-        onListFollows(event)
-    }
-
-    const goToDeleteAccount = event => {
-        event.preventDefault()
-        onDeleteAccount(event)
+        delete sessionStorage.token
+        onLogOut()
     }
 
     return <>
-        <nav>
-            <ul>
-                <li><Link onClick={goToUserData}>Mis datos</Link></li>
-                <li><Link onClick={goToListLocations}>Mis localizaciones</Link></li>    
-                <li><Link onClick={goToListFollows}>Usuarios seguidos</Link></li>    
-                <li><Link onClick={goToDeleteAccount}>Eliminar cuenta</Link></li>
+        <div className="profile" >
+            <ul className="profile__list">
+                <li><Link onClick={onUserData}>Mis datos</Link></li>
+                <li><Link onClick={onAddLocation}>Crear localización</Link></li>
+                <li><Link onClick={onListLocations}>Mis localizaciones</Link></li> 
+                <li><Link onClick={onDeleteAccount}>Eliminar cuenta</Link></li>
+                <li><Link onClick={logOut}>Cerrar sesión</Link></li>
             </ul>
-        </nav>
+        </div>
     </>
 }
 

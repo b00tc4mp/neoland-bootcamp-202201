@@ -20,6 +20,7 @@ function listLocationComments(userId, locationId) {
                         //comment.id = comment._id.toString()
                         comment.userId = comment.user._id.toString()
                         comment.userName = comment.user.name
+                        comment.id = comment._id.toString()
 
                         delete comment.user
                         delete comment.location

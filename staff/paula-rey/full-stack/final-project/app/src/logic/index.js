@@ -7,15 +7,14 @@ import updateUserPassword from './updateUserPassword'
 import searchLocations from './searchLocations'
 import retrieveLocation from './retrieveLocation'
 import toggleFavoriteLocation from './toggleFavoriteLocation'
-import toggleFollowUser from './toggleFollowUser'
 import createLocation from './createLocation'
 import updateLocation from './updateLocation'
 import createComment from './createComment'
 import listFavoritesLocations from './listFavoritesLocations'
 import listLocations from './listLocations'
 import listLocationComments from './listLocationComments'
-import listFollowsUsers from './listFollowsUsers'
 import deleteLocation from './deleteLocation'
+import deleteComment from './deleteComment'
 
 export {
     registerUser,
@@ -27,13 +26,12 @@ export {
     searchLocations,
     retrieveLocation,
     toggleFavoriteLocation,
-    toggleFollowUser,
     createLocation,
     updateLocation,
     createComment,
     listFavoritesLocations,
     listLocations,
     listLocationComments,
-    listFollowsUsers,
-    deleteLocation
+    deleteLocation,
+    deleteComment
 }

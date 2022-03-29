@@ -1,4 +1,3 @@
-import './Logo.sass'
 import logo from '../../assets/logo.png'
 
 export function Logo({className=''}) {
@@ -11,3 +10,7 @@ export function Logo({className=''}) {
 
 }
 
+// .logo
+//     display: flex
+//     flex-direction: row
+//     width: 10px

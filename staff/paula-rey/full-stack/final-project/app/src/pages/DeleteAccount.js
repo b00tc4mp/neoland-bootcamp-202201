@@ -1,25 +1,20 @@
-//import './DeleteAccount.css'
+import './DeleteAccount.sass'
 import { deleteUser } from '../logic'
+import { Button, Link, Input } from '../components'
 
 export function DeleteAccount ({onBack, onDeletedAccount}) {
 
-    const goBack = event => {
-        event.preventDefault()
-        onBack()
-    }
-
-    const deleteAccount = event => {
+    const deleteAccount = async event => {
         event.preventDefault()
         
         //const { target: { password: { value: password } } } = event
         const password = event.target.password.value
 
         try{
-            deleteUser(sessionStorage.token, password)
-                .then(() => onDeletedAccount())
-                .catch(error => {
-                    alert(error.message)
-                })
+           await deleteUser(sessionStorage.token, password)
+                delete sessionStorage.token
+                onDeletedAccount()
+                alert("Perfil eliminado") 
         } catch (error) {
             alert(error.message)
         }
@@ -27,9 +22,9 @@ export function DeleteAccount ({onBack, onDeletedAccount}) {
 
     return <div className="delete-account">
         <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
-            <input className="delete-account__password-input" type="password" name="password" placeholder="Password" />
-            <button className="delete-acount__submit">Delete Account</button>
-            <a className="delete-account__back-link" href="" onClick={goBack}>back</a>
+            <Input className="delete-account__password-input" type="password" name="password" placeholder="Password"></Input> 
+            <Button type="submit" className="delete-acount__submit">Delete Account</Button>
+            <Link className="delete-account__back-link" href="" onClick={onBack}>back</Link>
         </form>
     </div>
 

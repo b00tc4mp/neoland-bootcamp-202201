@@ -29,7 +29,7 @@ export function AddLocation({ onCreated }) {
 
 
 
-    return <>
+    return <div className="create-location">
         <h2>¡Añade tu localización!</h2>
         <form onSubmit={onSubmit}>
             <Select name="type" placeholder="type" options={locationTypes} required={true}/>
@@ -41,7 +41,7 @@ export function AddLocation({ onCreated }) {
         </form>
         
 
-    </>
+    </div>
 
 }
 

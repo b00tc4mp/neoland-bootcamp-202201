@@ -1,3 +1,4 @@
 export { Button } from './Button'
-export { FollowButton } from './FollowButton'
 export { FavoriteButton } from './FavoriteButton'
+export { DeleteLocationButton } from './DeleteLocationButton'
+export { DeleteCommentButton } from './DeleteCommentButton'

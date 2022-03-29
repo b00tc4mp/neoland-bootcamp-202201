@@ -1,19 +1,13 @@
 const { validators: { validateId } } = require('commons')
 const { models: { User, Location, Comment } } = require('data')
 
-function deleteComment(userId, locationId, commentId) {
+function deleteComment(userId, commentId) {
     validateId(userId, 'user id')
-    validateId(locationId, 'location id')
     validateId(commentId, 'comment id')
 
     return User.findById(userId)
         .then(user => {
             if(!user) throw new Error(`user with id ${userId} not found`)
-            
-            return Location.findById(locationId)
-        })
-        .then(location => {
-            if (!location) throw new Error(`location with id ${locationId} not found`)
 
             return Comment.findById(commentId)
         })

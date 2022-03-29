@@ -3,7 +3,7 @@ import { Link, ProfileIcon, FavoriteIcon, SearchLocationIcon } from '.'
 import { CreateIcon } from './icons'
 
 
-export function NavigationMenu({ onSearchLocationIcon, onAddLocationIcon, onFavoritesIcon, onProfileIcon }) {
+export function NavigationMenu({ onSearchLocationIcon, onFavoritesIcon, onProfileIcon }) {
 
     const goToSearchLocations = event => {
         event.preventDefault()
@@ -20,15 +20,10 @@ export function NavigationMenu({ onSearchLocationIcon, onAddLocationIcon, onFavo
         onProfileIcon(event)
     }
 
-    const goToAddLocation = event => {
-        event.preventDefault()
-        onAddLocationIcon(event)
-    }
 
     return <nav className="navigation__container">
             <ul className="navigation__menu">
                 <li><Link onClick={goToSearchLocations}><SearchLocationIcon/>Buscador</Link></li>
-                <li><Link onClick={goToAddLocation}><CreateIcon/>Crear</Link></li>
                 <li><Link onClick={goToListFavorites}><FavoriteIcon/>Favoritas</Link></li>
                 <li><Link onClick={goToProfile}><ProfileIcon/>Perfil</Link></li>
             </ul>

@@ -6,8 +6,6 @@ const updateUserPassword = require('./user/updateUserPassword')
 const deleteUser = require ('./user/deleteUser')
 const toggleFavoriteLocation = require ('./user/toggleFavoriteLocation')
 const listFavoritesLocations = require ('./user/listFavoritesLocations')
-const toggleFollowUser = require ('./user/toggleFollowUser')
-const listFollowsUsers = require ('./user/listFollowsUsers')
 const createComment = require ('./comment/createComment')
 const listLocationComments = require ('./comment/listLocationComments')
 const deleteComment = require ('./comment/deleteComment')
@@ -29,8 +27,6 @@ module.exports = {
     deleteUser,
     toggleFavoriteLocation,
     listFavoritesLocations,
-    toggleFollowUser,
-    listFollowsUsers,
     createComment,
     listLocationComments,
     deleteComment,

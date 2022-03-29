@@ -60,10 +60,10 @@ function App() {
 
   return <div>
          
-    {sessionStorage.token && isValidToken() && <Header onLogo={showHome} />}
+    {sessionStorage.token && isValidToken() && <Header onLogo={showHome}  />}
 
     <Routes>
-      <Route path="/*" element={sessionStorage.token && isValidToken() ? <Home onSearchLocations={showSearchLocations} goToLocationDetails={showLocationDetails} /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/*" element={sessionStorage.token && isValidToken() ? <Home onSearchLocations={showSearchLocations} goToLocationDetails={showLocationDetails} goToHome={showHome} /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/search?" element={sessionStorage.token && isValidToken() ? <SearchLocations  goToLocationDetails={showLocationDetails} /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/iniciar-sesion" element={!sessionStorage.token ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to='/' /> }/>
       <Route path="/registro" element={!sessionStorage.token ? <Register onLogin={showLogin} onRegistered={showLogin} /> : <Navigate replace to='/' /> }/>
@@ -72,21 +72,18 @@ function App() {
       <Route path="/anadir-localizacion" element={sessionStorage.token && isValidToken() ? <AddLocation /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/localizaciones-favoritas" element={sessionStorage.token && isValidToken() ? <ListFavorites goToLocationDetails={showLocationDetails}/> : <Navigate replace to='/iniciar-sesion' /> }/>
  
-      <Route path="/perfil" element={sessionStorage.token && isValidToken() ? <Profile onUserData={showUserData} onListLocations={showListLocations} onListFollows={showListFollows} onDeleteAccount={showDeleteAccount} /> : <Navigate replace to='/iniciar-sesion' /> }/>
+      <Route path="/perfil" element={sessionStorage.token && isValidToken() ? <Profile onUserData={showUserData} onListLocations={showListLocations} onAddLocation={showAddLocation} onDeleteAccount={showDeleteAccount} onLogOut={showLogin} /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/datos-usuario" element={sessionStorage.token && isValidToken() ? <UserData onUpdatePassword={showUpdatePassword}  /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/cambiar-contrasena" element={sessionStorage.token && isValidToken() ? <UpdatePassword onBack={goBack}  /> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/localizaciones-propias" element={sessionStorage.token && isValidToken() ? <ListLocations goToLocationDetails={showLocationDetails} goToUpdateLocation={showUpdateLocation} onAddComment={showAddComment}/> : <Navigate replace to='/iniciar-sesion' /> }/>
       <Route path="/editar-localizacion/:locationId" element={sessionStorage.token && isValidToken() ? <UpdateLocation onModify={showListLocations}/> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/anadir-comentario/:locationId" element={sessionStorage.token && isValidToken() ? <AddComment onCreatedComment={showAddComment} /> : <Navigate replace to='/iniciar-sesion' /> }/>
-
-      <Route path="/lista-seguidos" element={sessionStorage.token && isValidToken() ? <ListFollows /> : <Navigate replace to='/iniciar-sesion' /> }/>
-      <Route path="/borrar-cuenta" element={sessionStorage.token && isValidToken() ? <DeleteAccount /> : <Navigate replace to='/iniciar-sesion' /> }/> 
+      <Route path="/borrar-cuenta" element={sessionStorage.token && isValidToken() ? <DeleteAccount onBack={goBack} onDeletedAccount={showRegister}/> : <Navigate replace to='/iniciar-sesion' /> }/> 
       
       <Route path="/404" element={<h1>Page not found</h1>} />
       <Route path="/*" element={<Navigate replace to='/404' />} />
     </Routes>
     
-    {sessionStorage.token && isValidToken() && <NavigationMenu onSearchLocationIcon={showSearchLocations} onAddLocationIcon={showAddLocation}  onFavoritesIcon={showListFavorites} onProfileIcon={showProfile}/>}  
+    {sessionStorage.token && isValidToken() && <NavigationMenu onSearchLocationIcon={showSearchLocations} onFavoritesIcon={showListFavorites} onProfileIcon={showProfile}/>}  
 
   </div>
 

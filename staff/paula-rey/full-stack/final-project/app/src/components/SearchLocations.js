@@ -4,7 +4,7 @@ import { ListSearchResults } from '../components'
 import { data } from 'commons'
 const { locationTypes, locationCities } = data
 
-export function SearchLocations({onSearchLocations, goToLocationDetails}) {
+export function SearchLocations({onSearchLocations, onReset}) {
 
     const search = event => {
         event.preventDefault()
@@ -24,8 +24,7 @@ export function SearchLocations({onSearchLocations, goToLocationDetails}) {
             <Select className="search__type-input" options={locationTypes} name="type" placeholder="Todos" label= "Tipo" />
             <Select className="search__city-input" options={locationCities} name="city" placeholder="Todas" label= "Ciudad" />
             <Button type="submit"><SearchIcon/></Button>
-            <Button type="reset"><CleanSearchIcon/></Button>
-            <ListSearchResults goToLocationDetails={goToLocationDetails}/> 
+            <Button type="reset" onClick={onReset}><CleanSearchIcon/></Button>
         </form>
     </div>
 

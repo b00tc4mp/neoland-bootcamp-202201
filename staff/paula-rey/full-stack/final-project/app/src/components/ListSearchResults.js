@@ -5,7 +5,7 @@ import { LocationCard } from './'
 import { useSearchParams } from 'react-router-dom'
 
 
-export function ListSearchResults({ goToLocationDetails: _goToLocationDetails }) {
+export function ListSearchResults({ goToLocationDetails }) {
 
     const [locations, setLocations] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
@@ -24,12 +24,12 @@ export function ListSearchResults({ goToLocationDetails: _goToLocationDetails })
             const favorites = await listFavoritesLocations(sessionStorage.token)
 
             locations.forEach(location => {
-                location.isFavorite = favorites.some(({ id }) => id === location.id)
-                //location.isFavorite = favorites.some(favorite => favorite.id === location.id)
+                location.isFavorite = favorites.some(({ id }) => id === location.id) 
             })
 
-            setLocations(locations)
+            let finishLocations = locations.slice(locations.length-5)
 
+            setLocations(finishLocations.reverse())
 
         } catch (error) {
             alert(error.message)
@@ -37,20 +37,13 @@ export function ListSearchResults({ goToLocationDetails: _goToLocationDetails })
     }, [query, _type, _city])
 
 
-    const goToLocationDetails = locationId => {
-        _goToLocationDetails(locationId)
-    }
-
-
     return <>
-        <div>
             {!!locations.length && <ul className="search-results">
                 {locations.map(location =>
                     <li key={location.id} >
                         <LocationCard location={location} onLocationCard={goToLocationDetails} />
                     </li>)}
             </ul>}
-        </div>
     </>
 
 }

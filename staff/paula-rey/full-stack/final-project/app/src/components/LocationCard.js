@@ -1,5 +1,5 @@
 import './LocationCard.sass'
-import { FavoriteButton, Link, GoIcon } from '.'
+import { FavoriteButton } from '.'
 
 
 export function LocationCard({ location = {}, onLocationCard, onToggled}) {
@@ -8,9 +8,8 @@ export function LocationCard({ location = {}, onLocationCard, onToggled}) {
             <FavoriteButton className="card__toggle-favorite" locationId={location.id} isFavorite={location.isFavorite} onToggled={onToggled}/>
             <h1>{location.title}</h1>
             <h2>{location.type}</h2>
-            <img src={location.image} />
+            <img src={location.image} onClick={() => onLocationCard(location.id)}/>
             <p>{location.city}</p>
-            <Link onClick={() => onLocationCard(location.id)} ><GoIcon /></Link>
         </div>
     </>
 }

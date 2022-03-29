@@ -1,29 +1,19 @@
 import './OwnerLocationCard.sass'
-import { EditIcon, GoIcon, DeleteIcon, Link, Button } from '.'
+import { EditIcon, GoIcon, Link, DeleteLocationButton } from '.'
 
 
-export function OwnerLocationCard({ location = {}, onUpdateLocation: _onUpdateLocation, onOwnerLocationCard: _onOwnerLocationCard }) {
+export function OwnerLocationCard({ location = {}, onUpdateLocation, onDeletedLocation, onLocationDetails }) {
 
-    const onUpdateLocation = locationId => {
-        _onUpdateLocation(locationId)
-    }
-
-    const onOwnerLocationCard = locationId => {
-        _onOwnerLocationCard(locationId)
-    }
-    
 
     return <>
-        <div className='user-location-card'>
+        <div className='user-card'>
             <h1>{location.title}</h1>
             <h2>{location.type}</h2>
-            <img src={location.image} />
+            <img src={location.image} onClick={() => onLocationDetails(location.id) } />
             <h2>{location.city}</h2>
-            <Link onClick={() => onOwnerLocationCard(location.id)} ><GoIcon/></Link>
             <Link onClick={() => onUpdateLocation(location.id)}><EditIcon/></Link>
-            <Button>
-                <DeleteIcon />
-            </Button>
+            <DeleteLocationButton locationId={location.id} onDeletedLocation={onDeletedLocation}/>
+    
         </div>
     </>
 }

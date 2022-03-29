@@ -17,7 +17,7 @@ function deleteUser(userId, password) {
             return Location.updateMany({ user: userId }, { user: anonymousId })
         })
 
-        .then((result) => { // Aquí podrías manejar si las localizaciones se han pasado a anonymous o no
+        .then((result) => { 
             return Comment.deleteMany({user: userId})
         })  
 
@@ -30,9 +30,7 @@ function deleteUser(userId, password) {
 
 module.exports = deleteUser
 
-//primero buscar en los usuarios 
-//ir borrando de cada array (de cada usuario que te sigue) tu id
-//luego ir salvando uno a uno 
+
 
 
 

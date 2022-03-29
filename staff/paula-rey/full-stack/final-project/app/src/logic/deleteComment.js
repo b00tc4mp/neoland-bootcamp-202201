@@ -2,12 +2,11 @@ import { validators } from 'commons'
 
 const { validateToken, validateId } = validators
 
-function deleteComment(token, locationId, commentId) {
+function deleteComment(token, commentId) {
     validateToken(token, 'token')
-    validateId(locationId, 'location id')
     validateId(commentId, 'comment id')
     
-    return fetch(`http://localhost:8080/api/locations/${locationId}/comments/${commentId}`, {
+    return fetch(`http://localhost:8080/api/locations/comments/${commentId}`, {
 
         method: 'DELETE',
         headers: {

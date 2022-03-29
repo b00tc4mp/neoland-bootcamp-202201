@@ -44,7 +44,6 @@ user
 - email: (String, required, unique)
 - password: (String, required)
 - favorites: ( [ObjectId, Location] )  
-- follows: ( [ObjectId, User] )
 
 location
 - user: (ObjectId, User, required, unique)

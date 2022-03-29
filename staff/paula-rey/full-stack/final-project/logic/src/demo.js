@@ -9,8 +9,6 @@ const {
     deleteUser,
     toggleFavoriteLocation,
     listFavoritesLocations,
-    toggleFollowUser,
-    listFollowsUsers,
     createComment,
     listLocationComments,
     deleteComment,
@@ -37,12 +35,13 @@ connect('mongodb://localhost:27017/dogether-db')
     //     //User.deleteMany()
     // ]))
 
-    
+
     .then(() => Promise.all([
-        User.deleteOne({ email: 'pirulin@mail.com' }),
-        User.deleteOne({ email: 'pepito@grillo.com' }),
-        User.deleteOne({ email: 'agua@grillo.com' }),
-        User.deleteOne({ email: 'fire@grillo.com' }),
+        // User.deleteOne({ email: 'pirulin@mail.com' }),
+        // User.deleteOne({ email: 'pepito@grillo.com' }),
+        // User.deleteOne({ email: 'agua@grillo.com' }),
+        // User.deleteOne({ email: 'fire@grillo.com' }),
+        User.deleteMany(),
         Location.deleteMany(),
         Comment.deleteMany()
     ]))
@@ -81,10 +80,10 @@ connect('mongodb://localhost:27017/dogether-db')
             })
 
         const location2 = createLocation(userId, 'Playa', 'Playa de la Concha', 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', 'Calle la conchita, 67', 'Tarragona')
-        .then(locationId => {
-            locationId2 = locationId
-            console.log('location created', locationId)
-        })
+            .then(locationId => {
+                locationId2 = locationId
+                console.log('location created', locationId)
+            })
 
         return Promise.all([location1, location2])
     })
@@ -141,41 +140,25 @@ connect('mongodb://localhost:27017/dogether-db')
     .then(() => console.log('user2 registered'))
 
     .then(() => authenticateUser('agua@grillo.com', '123123123'))
-    .then(userId => { aguaGrilloId = userId})
+    .then(userId => { aguaGrilloId = userId })
 
     .then(() => registerUser('Fire Grillo', 'fire@grillo.com', '123123123'))
     .then(() => console.log('user2 registered'))
 
     .then(() => authenticateUser('fire@grillo.com', '123123123'))
-    .then(userId => { fireGrilloId = userId})
+    .then(userId => { fireGrilloId = userId })
 
-    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
-    .then(userId => {
-        return toggleFollowUser(userId, aguaGrilloId)
-            .then(() => console.log('follow toggled'))
-    })
 
-    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
-    .then(userId => {
-        return toggleFollowUser(userId, fireGrilloId)
-            .then(() => console.log('follow toggled'))
-    })
-
-    .then(() => authenticateUser('pepito@grillo.com', '123123123'))
-    .then(userId => {
-        return listFollowsUsers(userId)
-            .then(follows => console.log(follows))
-    })
 
     .then(() => authenticateUser('agua@grillo.com', '123123123'))
-    .then(userId => deleteUser (userId, '123123123'))
+    .then(userId => deleteUser(userId, '123123123'))
     .then(() => console.log('user deleted'))
 
     .then(() => authenticateUser('fire@grillo.com', '123123123'))
-    .then(userId => deleteUser (userId, '123123123'))
+    .then(userId => deleteUser(userId, '123123123'))
     .then(() => console.log('user deleted'))
-    
-    
+
+
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then(userId => {
         const comment1 = createComment(userId, locationId1, 'Playa muy sucia llena de cacas')
@@ -188,7 +171,7 @@ connect('mongodb://localhost:27017/dogether-db')
                 commentId2 = commentId
                 console.log('comment created', commentId)
             })
-            return Promise.all([comment1, comment2])
+        return Promise.all([comment1, comment2])
     })
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
@@ -209,9 +192,9 @@ connect('mongodb://localhost:27017/dogether-db')
             .then(() => console.log('location deleted'))
     })
 
-   
-//   .then(() => searchLocations('6231feb0c2d80f1fc73a8d35', '', 'Playa', null))
-//   .then((results) => console.log(results))
+
+    //   .then(() => searchLocations('6231feb0c2d80f1fc73a8d35', '', 'Playa', null))
+    //   .then((results) => console.log(results))
 
 
     .catch(error => console.error(error.message))
