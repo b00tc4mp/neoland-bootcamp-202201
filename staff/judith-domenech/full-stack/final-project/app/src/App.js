@@ -12,7 +12,8 @@ import {
   Favorites,
   UpdatePassword,
   RacketDetails,
-  SearchUserRacket
+  SearchUserRacket,
+  DeleteAccount
 } from './pages'
 
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
@@ -45,6 +46,7 @@ export default function App() {
   const showProfile = () => navigate('perfil')
   const showFavorites = () => navigate('favoritos')
   const showUpdatePassword = () => navigate('cambiar-contrasena')
+  const showDeleteAccount = () => navigate('eliminar-cuenta')
   const showHome = () => navigate('/')
 
 
@@ -57,8 +59,9 @@ export default function App() {
       <Route path="/*" element={<Home goToDetails={showRacketDetails} onSearch={showSearch} validateToken={isTokenValid}/>} />
       <Route path="acceder" element={!isTokenValid() ? <Login onLoggedIn={showHome} onRegister={showRegister} /> : <Navigate replace to="/" />} />
       <Route path="registrar" element={!isTokenValid() ? <Register onRegistered={showLogin} onLogin={showLogin} /> : <Navigate replace to="/" />} />
-      <Route path="perfil" element={isTokenValid() && <Profile onUpdatePassword={showUpdatePassword} onLogout={showLogin} />} />
+      <Route path="perfil" element={isTokenValid() && <Profile onUpdatePassword={showUpdatePassword} onLogout={showLogin} onDeleteAccount={showDeleteAccount} />} />
       <Route path="cambiar-contrasena" element={isTokenValid() && <UpdatePassword onBack={goBack} />} />
+      <Route path="eliminar-cuenta" element={isTokenValid() ? <DeleteAccount  goToLogin={showLogin} /> : <Navigate replace to='/' />} />
       <Route path="pala/:racketId" element={isTokenValid() && <RacketDetails />} />
       <Route path="favoritos" element={isTokenValid() && <Favorites goToDetails={showRacketDetails} validateToken={isTokenValid} />} />
       <Route path="tu-pala/*" element={isTokenValid() && <SearchUserRacket onRacket={showRacketDetails} onSearchUserRacket={showSearchUserRacket} validateToken={isTokenValid}/>} />

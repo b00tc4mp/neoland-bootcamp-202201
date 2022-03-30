@@ -24,9 +24,9 @@ export function RegisterForm({ onLogin, onRegister, onRegistered }) {
     }
 
     return <form className='register__wrapper' onSubmit={onSubmit}>
-        <Input type='text' name='name' placeholder='Name' required={true} />
-        <Input type='email' name='email' placeholder='Email' required={true} />
-        <Input type='password' name='password' placeholder='Password' required={true} />
+        <Input className='register__input' type='text' name='name' placeholder='Name' required={true} />
+        <Input  className='register__input' type='email' name='email' placeholder='Email' required={true} />
+        <Input className='register__input' type='password' name='password' placeholder='Password' required={true} />
         <Button className='register__button' type='submit'> Register</Button>
         <Link href="" onClick={onLogin}> Login </Link>
 

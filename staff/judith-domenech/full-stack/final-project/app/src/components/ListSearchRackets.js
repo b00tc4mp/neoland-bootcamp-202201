@@ -24,8 +24,9 @@ export function ListSearchRackets({ goToDetails, validateToken }) {
             rackets.forEach(racket => {
                 racket.isFavorite = favorites.some(favorite => favorite.id === racket.id)
             })
+            let lastRackets= rackets.slice(rackets.length-5)
 
-            setRackets(rackets)
+            setRackets(lastRackets.reverse())
 
         } catch (error) {
             alert(error.message)

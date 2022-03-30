@@ -1,7 +1,7 @@
 export { RegisterForm } from './RegisterForm'
 export { LoginForm } from './LoginForm'
 export { ProfileForm } from './ProfileForm'
-export { DeleteAccount } from './DeleteAccount'
+export { DeleteAccountForm } from './DeleteAccountForm'
 export { UpdatePasswordForm } from './UpdatePasswordForm'
 export { Search } from './Search'
 export { RacketCardDetails } from './RacketCardDetails'

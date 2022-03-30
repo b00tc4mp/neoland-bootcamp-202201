@@ -24,7 +24,7 @@ export function ListComments({ racketId }) {
         }
     }
 
-    return <>
+    return <div className='list-comments__container'>
        <CreateComment racketId={racketId} onCreated={updateCommentList}/>
         {!!comments.length &&
             <ul>
@@ -34,5 +34,5 @@ export function ListComments({ racketId }) {
                     </li>)}
             </ul>
         }
-    </>
+    </div>
 }

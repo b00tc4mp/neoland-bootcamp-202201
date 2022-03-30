@@ -22,12 +22,11 @@ export function CreateComment({ onCreated, racketId }) {
         event.preventDefault()
 
         try {
-            const { target: { text: { value: text } } } = event
-
+            const { target, target: { text: { value: text } } } = event
             await createComment(sessionStorage.token, racketId, text)
 
             setText(null)
-
+            target.reset()
             onCreated()
         } catch (error) {
             alert(error.message)
@@ -36,8 +35,7 @@ export function CreateComment({ onCreated, racketId }) {
 
     return <>
         <form className='create-comment__form' onSubmit={addComment}>
-            <Input type='text' name="model" defaultValue={model} label disabled />
-            <Input className='create-comment__input' type='text' name='text' placeholder='Comentario' defaultValue={text} />
+            <Input className='create-comment__input' type='text' name='text' placeholder='Comentario' defaultValue={text} label={model}/>
             <Button  className='create-comment__button' type='submit'> Crear </ Button>
         </form>
     </>
