@@ -1,13 +1,10 @@
 import './Input.sass'
-import { useState, useEffect } from 'react'
-
-
 export function Input({ className= '', type = 'text', name, placeholder = '', required = false, defaultValue = null, label, disabled}) {
     
     return <>
         {label && <label htmlFor={name}>{label}</label>}
         <input  className={className} type={type} name={name} placeholder={placeholder}
-        required={required} value={defaultValue} disabled={disabled} 
+        required={required} defaultValue={defaultValue} disabled={disabled} 
         />
     </>
 }

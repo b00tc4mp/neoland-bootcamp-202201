@@ -62,7 +62,7 @@ export default function App() {
       <Route path="perfil" element={isTokenValid() && <Profile onUpdatePassword={showUpdatePassword} onLogout={showLogin} onDeleteAccount={showDeleteAccount} />} />
       <Route path="cambiar-contrasena" element={isTokenValid() && <UpdatePassword onBack={goBack} />} />
       <Route path="eliminar-cuenta" element={isTokenValid() ? <DeleteAccount  goToLogin={showLogin} /> : <Navigate replace to='/' />} />
-      <Route path="pala/:racketId" element={isTokenValid() && <RacketDetails />} />
+      <Route path="/pala/:racketId" element={<RacketDetails validateToken={isTokenValid}/>} />
       <Route path="favoritos" element={isTokenValid() && <Favorites goToDetails={showRacketDetails} validateToken={isTokenValid} />} />
       <Route path="tu-pala/*" element={isTokenValid() && <SearchUserRacket onRacket={showRacketDetails} onSearchUserRacket={showSearchUserRacket} validateToken={isTokenValid}/>} />
 

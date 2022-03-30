@@ -8,13 +8,19 @@ import { Button } from '.'
 export function ToggleFavoriteRackets({ racketId, isFavorite = false, onToggled }) {
     const [favorite, setFavorite] = useState(isFavorite)
 
+    useEffect(() => {
+
+        setFavorite(isFavorite)
+
+    }, [isFavorite])
+
     const toggleFavorite = async () => {
       
         try {
 
             await toggleFavoriteRacket(sessionStorage.token, racketId)
             setFavorite(!favorite)
-            onToggled && onToggled()
+            onToggled()
         } catch (error) {
             alert(error.message)
         }
@@ -31,14 +37,3 @@ export function ToggleFavoriteRackets({ racketId, isFavorite = false, onToggled 
         </Button>
     </>
 }
-
-
-
-
-/* const foo = async () => {
-    try {
-        // do something
-    } catch (error) {
-        console.error(error)
-    }
-} */

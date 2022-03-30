@@ -1,9 +1,9 @@
 import './RacketDetails.sass'
-import { RacketCardDetails, ListComments, CreateComment } from '../components'
+import { RacketCardDetails, ListComments } from '../components'
 import { useParams } from 'react-router-dom'
 
 
-export function RacketDetails() {
+export function RacketDetails({ validateToken }) {
 
     const { racketId } = useParams()
 
@@ -14,7 +14,7 @@ export function RacketDetails() {
         </div>
 
         <div className='racket-details__racket-comment'>
-            <ListComments racketId={racketId} />
+            {validateToken() && <ListComments racketId={racketId} />}
         </div>
 
     </div>

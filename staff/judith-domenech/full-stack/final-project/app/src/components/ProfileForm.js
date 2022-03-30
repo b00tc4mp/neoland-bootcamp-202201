@@ -34,17 +34,6 @@ export function ProfileForm({onUpdatePassword, onDeleteAccount, onLogOut}) {
         }
     }
 
-  /*   const goToUpdatePassword = event => {
-        event.preventDefault()
-
-        onUpdatePassword()
-    }
-
-    const goToDeleteAccount = event => {
-        event.preventDefault()
-
-        onDeleteAccount()
-    } */
 
     return <form className='profile__form' onSubmit={updateProfile} method='post'>
             <Input className="profile__input" type="text" name="name" placeholder="name" defaultValue={name} label="Nombre"/>

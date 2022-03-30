@@ -11,17 +11,20 @@ export function RacketCardDetails({ racketId }) {
     useEffect(async () => {
         try {
             const racket = await retrieveRacket(racketId)
-            const favorites = await listFavoritesRackets(sessionStorage.token)
-            racket.isFavorite = favorites.some(favorite => favorite.id === racket.id)
-
+            
+            if (sessionStorage.token) {
+                const favorites = await listFavoritesRackets(sessionStorage.token)
+                racket.isFavorite = favorites.some(favorite => favorite.id === racket.id)
+            }
             setRacket(racket)
+
         } catch (error) {
             alert(error.message)
         }
     }, [])
 
     return <div>
-        {sessionStorage.token && <ToggleFavoriteRackets racketId={racket.id} isFavorite={racket.isFavorite} />}
+        {sessionStorage.token && <ToggleFavoriteRackets racketId={racket.id} isFavorite={racket.isFavorite} onToggled={()=>{}} />}
 
         <ul>
             <li> <h1>{racket.brand}</h1> </li>
