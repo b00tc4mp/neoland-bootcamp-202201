@@ -34,7 +34,7 @@ function Login({ onLoggedIn, onRegister }) {
     }
 
     return <div className='login'>
-        <form onSubmit={onSubmit}>
+        <form className='login__form' onSubmit={onSubmit}>
             <h1 className='login_text'>LOGIN</h1>
 
             <Input type='email' name='email' placeholder='email' />

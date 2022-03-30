@@ -25,7 +25,7 @@ function Search({ onSearch, query }) {
                 <option value="type">type</option>
                 <option value="distilled">distilled</option>
             </select>
-            <input className="search__query-input" type="text" name="query" placeholder="Query" defaultValue={query} />
+            <Input className="search__query-input" type="text" name="query" placeholder="Query" defaultValue={query} />
             <Button className="search__button" type='submit'>Search</Button>
         </form>
 

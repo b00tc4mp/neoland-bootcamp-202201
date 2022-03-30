@@ -30,8 +30,8 @@ function Register({ onRegistered, onLogin }) {
     }
 
     return <div className='register'>
-        {<form onSubmit={register}>
-            <h1 className='login_text'>REGISTER</h1>
+        {<form className='register__form' onSubmit={register}>
+            <h1 className='register_text'>REGISTER</h1>
 
             <Input type='text' name='name' placeholder='name' />
             <Input type='email' name='email' placeholder='email' />
