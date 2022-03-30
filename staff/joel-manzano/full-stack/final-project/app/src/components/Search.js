@@ -17,7 +17,7 @@ function Search ({ className, onSearch, query }) {
         <div className={`search ${className}`}>
             <form className='search__form' onSubmit={search}>
                 <input className='search__input' name="query" />
-                <Button type="submit">Buscar</Button>
+                <Button type="submit">Search</Button>
             </form>
         </div>
 

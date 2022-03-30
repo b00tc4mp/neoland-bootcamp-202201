@@ -1,5 +1,5 @@
 import './Header.sass'
-import { IconProfile, IconHamburger, IconLogo} from '../icons'
+import { IconProfile, IconLogo} from '../icons'
 
 function Header({onLogo, onProfile, onHamburger}) {
 
@@ -25,9 +25,6 @@ function Header({onLogo, onProfile, onHamburger}) {
                 <div className='header__user-hamburguer-wrapper'>
                     <a href='' onClick={goToProfile}>
                         <IconProfile />
-                    </a>
-                    <a  href='' onClick={goToHamburger}>
-                        <IconHamburger />
                     </a>
                 </div>
             </div>

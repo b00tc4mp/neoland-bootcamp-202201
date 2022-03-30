@@ -50,7 +50,7 @@ const graffiti = new Schema({
         default: 'unknown'
     },
 
-    status: {
+    condition: {
         type: String,
         required: true,
         enum: ['exists', 'trampled', 'cleaned up'],

@@ -1,4 +1,4 @@
-import './UpdatePassword.css'
+import './UpdatePassword.sass'
 import { updateUserPassword } from '../logic'
 
 function UpdatePassword({ onBack }) {

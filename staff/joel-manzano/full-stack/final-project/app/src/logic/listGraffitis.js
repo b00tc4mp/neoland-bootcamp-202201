@@ -2,10 +2,10 @@ import { validators } from 'commons'
 
 const { validateToken } = validators
 
-function listNotes(token) {
+function listGraffitis(token) {
     validateToken(token)
 
-    return fetch('http://localhost:8080/api/notes', {
+    return fetch('http://localhost:8080/api/graffitis/all', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -29,4 +29,4 @@ function listNotes(token) {
         })
 }
 
-export default listNotes
+export default listGraffitis

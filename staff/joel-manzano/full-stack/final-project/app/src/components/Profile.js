@@ -62,7 +62,7 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
                 <input className="profile__email-input" id="profile__email-input" type="email" name="email" placeholder="E-mail" defaultValue={email} />
             </div>
             <button className="profile__submit">Update Profile</button>
-             <button onClick={logOut}> logOut</button>
+             <button onClick={logOut}> Log out</button>
             <a href="" onClick={goToUpdatePassword}>Update Password</a>
             <a href="" onClick={goToDeleteAccount}>Delete Account</a>
         </form>

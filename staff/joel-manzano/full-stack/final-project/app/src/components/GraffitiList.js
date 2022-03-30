@@ -1,35 +1,31 @@
-import './Results.sass'
+import './GraffitiList.sass'
 import { useEffect, useState } from 'react'
-import { searchGraffitis } from '../logic'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { listGraffitis, searchGraffitis } from '../logic'
+import { useNavigate } from 'react-router-dom'
 import noImage from '../../src/assets/images/unkown-image.png'
 
 
+function GraffitiList() {
 
-function Results () {
-
-    const [searchParams, setSearchParams] = useSearchParams()
     const [graffitis, setGraffitis] = useState([])
-    const query = searchParams.get('q')
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
+
         try {
-            searchGraffitis(query)
-            
-            .then(graffitis => {
-                setGraffitis(graffitis)
-            })
-            .catch(error => alert(error.message))
+            listGraffitis(sessionStorage.token)
+                .then(graffitis => {
+                    setGraffitis(graffitis)
+                })
+                .catch(error => alert(error.message))
         } catch (error) {
             alert(error.message)
         }
-    }, [query])
+    }, [])
 
     
-    return <>
-        return <div className='cards-wrapper'>
+    return <div className='cards-wrapper'>
         {graffitis.length > 0 && <div className='cards-wrapper'>
             {graffitis.map(graffiti => <div className='cards-wrapper__small-cards-wrapper' key={graffiti.id} onClick={() => {
                 navigate(`/search/${graffiti.id}`)
@@ -54,8 +50,6 @@ function Results () {
             </div>)}
         </div>}
     </div>
-    </>
 }
 
-
-export default Results
+export default GraffitiList

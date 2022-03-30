@@ -1,9 +1,10 @@
 import { validators } from 'commons'
 
-const { validateId, validateString } = validators
+const {validateToken, validateString } = validators
 
-function createGraffiti(userId, artist, description, image, city, address, postalCode, location, style, status, spray, color) {
-    validateId(userId, 'userId')
+function createGraffiti(token, artist, description, image, city, address, postalCode, location, style, condition, spray, color) {
+    debugger
+    validateToken(token)
     validateString(artist, 'artist')
     validateString(description, 'description')
     validateString(image, 'image')
@@ -12,17 +13,17 @@ function createGraffiti(userId, artist, description, image, city, address, posta
     validateString(postalCode, 'postal code') 
     validateString(location, 'location')
     validateString(style, 'style')
-    validateString(status, 'status')
+    validateString(condition, 'condition')
     validateString(spray, 'spray')
     validateString(color, 'color')
 
-    return fetch('http://localhost:8080/api/graffiti', {
+    return fetch('http://localhost:8080/api/graffitis', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ artist, description, image, city, address, postalCode, location, style, status, spray, color })
+        body: JSON.stringify({ artist, description, image, city, address, postalCode, location, style, condition, spray, color })
     })
         .then(res => {
             const { status } = res

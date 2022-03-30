@@ -4,10 +4,12 @@ import Register from './Register'
 import Profile from './Profile'
 import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
-import GraffitiDetails from './GraffitiDetails'
 import Search from './Search'
-import Button from './Button'
+import Button from './buttons/Button'
 import Results from './Results'
+import CreateGraffiti from './CreateGraffiti'
+import ModifyGraffiti from './ModifyGraffiti'
+import GraffitiDetails from './GraffitiDetails'
 
 
 export {
@@ -17,8 +19,10 @@ export {
     Profile,
     UpdatePassword,
     DeleteAccount,
-    GraffitiDetails,
     Search,
     Button,
-    Results
+    Results,
+    CreateGraffiti,
+    ModifyGraffiti,
+    GraffitiDetails,
 }

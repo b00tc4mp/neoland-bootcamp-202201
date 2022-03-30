@@ -1,4 +1,4 @@
-import './Register.css'
+import './Register.sass'
 import { registerUser } from '../logic'
 import { Input} from './form-elements'
 import { Button } from '../components'

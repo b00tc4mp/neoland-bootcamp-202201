@@ -1,4 +1,4 @@
-import './DeleteAccount.css'
+import './DeleteAccount.sass'
 import { deleteUser } from '../logic'
 
 function DeleteAccount ({onBack, onDeletedAccount}){

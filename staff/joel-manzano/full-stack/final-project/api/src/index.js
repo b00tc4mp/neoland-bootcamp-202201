@@ -21,6 +21,7 @@ const {
 } = require('./handlers')
 
 const cors = require('cors')
+const { appendFile } = require('fs')
 
 const { env: { PORT, MONGODB_URL } } = process
 
@@ -29,24 +30,25 @@ connect(MONGODB_URL)
     .then(() => {
         const server = express()
         server.use(cors())
-        const jsonBodyParser = express.json()
+        //server.use(jsonBodyParser.json())
+        const jsonBodyParser = express.json({limit:'50mb'})
         const api = express.Router()
 
-        api.post('/users', jsonBodyParser, registerUser) 
-        api.post('/users/auth', jsonBodyParser, authenticateUser)
-        api.get('/users', retrieveUser)
-        api.patch('/users', jsonBodyParser, updateUser)
         api.patch('/users/change-password', jsonBodyParser, updateUserPassword)
+        api.post('/users/auth', jsonBodyParser, authenticateUser)
+        api.patch('/users', jsonBodyParser, updateUser)
+        api.get('/users', retrieveUser)
+        api.post('/users', jsonBodyParser, registerUser) 
         api.delete('/users', jsonBodyParser, deleteUser)
 
-        api.post('/graffitis', jsonBodyParser, createGraffiti)
-        api.patch('/graffitis/:graffitiId', jsonBodyParser, modifyGraffiti)
-        api.delete('/graffitis/:graffitiId', deleteGraffiti)
+        api.patch('/graffitis/:graffitiId/favs', toggleFavorite)
         api.get('/graffitis/all', listGraffitis)
         api.get('/graffitis/favs', listFavorites)
         api.get('/graffitis/:graffitiId', retrieveGraffiti)
+        api.patch('/graffitis/:graffitiId', jsonBodyParser, modifyGraffiti)
+        api.delete('/graffitis/:graffitiId', deleteGraffiti)
+        api.post('/graffitis', jsonBodyParser, createGraffiti)
         api.get('/graffitis', searchGraffiti)
-        api.patch('/graffitis/:graffitiId/favs', toggleFavorite)
 
         server.use('/api', api)
 

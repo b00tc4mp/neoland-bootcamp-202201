@@ -1,11 +1,8 @@
 const { models: { User, Graffiti } } = require('data')
 const { validators: { validateId, validateString } } = require('commons')
 
-
-
-
-function modifyGraffiti(userId, graffitiId, artist, description, image, city, address, postalCode, location, style, status, spray, color ) {
-  validateId(userId, 'user id')
+function modifyGraffiti(userId, graffitiId, artist, description, image, city, address, postalCode, location, style, condition, spray, color ) {
+    validateId(userId, 'user id')
     validateId(graffitiId, 'graffiti id')
     validateString(artist, 'artist')
     validateString(description, 'description')
@@ -15,7 +12,7 @@ function modifyGraffiti(userId, graffitiId, artist, description, image, city, ad
     validateString(postalCode, 'postal code')
     validateString(location, 'location')
     validateString(style, 'style')
-    validateString(status, 'status')
+    validateString(condition, 'condition')
     validateString(spray, 'spray')
     validateString(color, 'color')
 
@@ -38,7 +35,7 @@ function modifyGraffiti(userId, graffitiId, artist, description, image, city, ad
       graffiti.postalCode = postalCode
       graffiti.location = location
       graffiti.style = style
-      graffiti.status = status
+      graffiti.condition = condition
       graffiti.spray = spray
       graffiti.color = color
 

@@ -2,7 +2,7 @@ const { validators: { validateId, validateString } } = require('commons')
 const { models: { User, Graffiti } } = require('data')
 
 
-function createGraffiti(userId, artist, description, image, city, address, postalCode, location, style, status, spray, color  ) {
+function createGraffiti(userId, artist, description, image, city, address, postalCode, location, style, condition, spray, color  ) {
     validateId(userId, 'userId')
     validateString(artist, 'artist')
     validateString(description, 'description')
@@ -12,7 +12,7 @@ function createGraffiti(userId, artist, description, image, city, address, posta
     validateString(postalCode, 'postal code') 
     validateString(location, 'location')
     validateString(style, 'style')
-    validateString(status, 'status')
+    validateString(condition, 'condition')
     validateString(spray, 'spray')
     validateString(color, 'color')
 
@@ -20,7 +20,7 @@ function createGraffiti(userId, artist, description, image, city, address, posta
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)
 
-            return Graffiti.create({ user: userId, artist, description, image, city, address, postalCode, location, style, status, spray, color })
+            return Graffiti.create({ user: userId, artist, description, image, city, address, postalCode, location, style, condition, spray, color })
         })
         .then(graffiti => { })
 }
