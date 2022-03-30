@@ -1,8 +1,11 @@
 const { models: { Racket } } = require('data')
 const { validators: { validateString } } = require('commons')
 
-function searchRackets(query) {
-    if( query) validateString(query, 'query')
+function searchRackets(query=null) {
+ 
+    if(query) validateString(query, 'query')
+
+    if (query === null) return new Promise(resolve => resolve([]))
 
     const QUERY_REGEX = new RegExp(query, 'i')
 

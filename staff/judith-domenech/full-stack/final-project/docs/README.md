@@ -43,7 +43,7 @@
 ### Tecnologies
 
 - JavaScript
-- CSS
+- Sass
 - HTML
 - React
 - Node.JS
@@ -112,13 +112,18 @@ comment
 ### Data 
 - ~~TODO create mongoose schemas and models (2h)~~
 - ~~TODO create populate.js to test my models (1h)~~
-- TODO validaciones schemasmas + reales
+- ~~TODO validaciones schemasmas + reales~~
 
 ### API (weekend)
 - ~~TODO handlers ~~
 - ~~ TODO test Insomnia~~
 
 ### App 
-- ~~ TODO logic ~~
-- DOING create main views (components) (1h)
-- TODO mechanize navigations (.5h)
+- ~~TODO logic~~
+- ~~TODO create main views (components) (1h)~~
+- ~~TODO mechanize navigations (.5h) ~~
+
+## Versión 2.0
+- Password 
+- FeedBack
+- Scrap news 
