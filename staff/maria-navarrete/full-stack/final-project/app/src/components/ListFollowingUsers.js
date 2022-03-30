@@ -27,8 +27,8 @@ export const ListFollowingUsers = ({ goToUserProfile }) => {
 
 
     return <>
-        <div>
-            <h2>Comunidad Hoomans </h2>
+        <div className='followingUsers'>
+            <h2 className='followingUsers__title'>Comunidad Hoomans </h2>
             {!!following.length &&
                 <ul> {following.map(follow =>
                     <li key={follow.id}><UserCard user={follow} onUserProfile={goToUserProfile} onToggled={updateFollowingUsers} /></li>)}

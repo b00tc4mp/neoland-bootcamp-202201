@@ -17,8 +17,12 @@ export const ListActions = ({ goToCreateSchedule, goToEditAction }) => {
     }, [])
 
     const updateActionsList = async () => {
-        const actions = await listActions(sessionStorage.token)
-        setActions(actions)
+        try {
+            const actions = await listActions(sessionStorage.token)
+            setActions(actions)
+        } catch (error) {
+            alert(error.message)
+        }
     }
 
 

@@ -23,13 +23,12 @@ export const ListUserPublicActions = ({ userId = '', goToCreateSchedule, goToUse
     }, [])
 
 
-    return <>
-        <div>
-            {!!actions.length &&
-                <ul> {actions.map(action =>
-                    <li key={action.id}><ActionCard action={action} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} /></li>)}
-                </ul>}
-        </div>
-    </>
+    return <div>
+        {!!actions.length &&
+            <ul> {actions.map(action =>
+                <li key={action.id}><ActionCard action={action} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} /></li>)}
+            </ul>}
+        {!actions.length && <p className='userActions__info'>No hay acciones propias aun</p>}
+    </div>
 
 }

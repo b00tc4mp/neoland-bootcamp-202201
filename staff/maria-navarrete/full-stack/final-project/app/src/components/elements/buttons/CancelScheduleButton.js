@@ -3,12 +3,13 @@ import { Modal, Button, XMarkIcon } from '../../'
 import { cancelSchedule } from '../../../logic'
 
 
-export const CancelScheduleButton = ({ scheduleId }) => {
+export const CancelScheduleButton = ({ scheduleId, onCanceled }) => {
     const [showModal, setShowModal] = useState(false)
 
     const cancelSched = async () => {
         await cancelSchedule(sessionStorage.token, scheduleId)
         setShowModal(false)
+        onCanceled && onCanceled()
     }
 
     const showCancelModal = event => {

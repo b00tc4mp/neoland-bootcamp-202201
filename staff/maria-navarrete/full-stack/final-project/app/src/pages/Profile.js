@@ -17,14 +17,20 @@ export const Profile = ({ onUpdateProfile, onActivity, onLogout }) => {
     }, [])
 
 
+    const handleLogout = event => {
+        event.preventDefault()
+        delete sessionStorage.token
+        onLogout(event)
+    }
+
     return <>
         <div >
             <UserIcon />
             <span>{user.username}</span>
             <span>{user.doneActs} Acts cumplidas</span>
             <Link onClick={onUpdateProfile}>Modificar Perfil <RightArrowIcon /></Link>
-            <Link onClick={onActivity}>Actividad <RightArrowIcon /></Link>
-            <Button type='button' onClick={onLogout}>Cerrar sesión</Button>
+            {/* <Link onClick={onActivity}>Actividad <RightArrowIcon /></Link> */}
+            <Button type='button' onClick={handleLogout}>Cerrar sesión</Button>
         </div>
     </>
 }

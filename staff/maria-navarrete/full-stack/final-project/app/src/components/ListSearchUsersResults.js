@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 export const ListSearchUsersResults = ({ goToUserProfile }) => {
-
     const [users, setUsers] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -29,8 +28,8 @@ export const ListSearchUsersResults = ({ goToUserProfile }) => {
 
 
     return <>
-        <div>
-            <h2>Resultados</h2>
+        <div className='searchUsersResults'>
+            <h2 className='searchUsersResults__title'>Hoomans encontrados</h2>
             {!!users.length &&
                 <ul> {users.map(user =>
                     <li key={user.id}><UserCard user={user} onUserProfile={goToUserProfile} /></li>)}

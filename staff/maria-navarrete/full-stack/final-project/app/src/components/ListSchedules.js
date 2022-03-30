@@ -16,12 +16,21 @@ export const ListSchedules = () => {
         }
     }, [])
 
+    const updateSchedulesList = async () => {
+        try {
+            const schedules = await listSchedules(sessionStorage.token)
+            setSchedules(schedules)
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
 
     return <>
         <div>
             {!!schedules.length &&
                 <ul> {schedules.map(schedule =>
-                    <li key={schedule.id}><ScheduleCard schedule={schedule} /></li>)}
+                    <li key={schedule.id}><ScheduleCard schedule={schedule} onUpdated={updateSchedulesList} /></li>)}
                 </ul>}
         </div>
     </>

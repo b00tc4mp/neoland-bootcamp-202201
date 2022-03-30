@@ -4,9 +4,9 @@ const { validateToken, validateString, validateNumber } = validators
 
 function findActions(token, query, requiredTime, requiredBudget) {
     validateToken(token)
-    if (query) validateString(query, 'query')
-    if (requiredTime) validateNumber(requiredTime, 'required time')
-    if (requiredBudget) validateNumber(requiredBudget, 'required budget')
+    if (!(query === null)) validateString(query, 'query')
+    if (!(requiredTime === null)) validateNumber(requiredTime, 'required time')
+    if (!(requiredBudget === null)) validateNumber(requiredBudget, 'required budget')
 
     return fetch(`http://localhost:8080/api/actions/search/?${query !== null ? `query=${query}` : ''}&${requiredTime !== null ? `requiredTime=${requiredTime}` : ''}&${requiredBudget !== null ? `requiredBudget=${requiredBudget}` : ''}`, {
         headers: {

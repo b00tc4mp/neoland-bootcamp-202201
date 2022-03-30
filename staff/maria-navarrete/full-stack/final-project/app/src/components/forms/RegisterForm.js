@@ -3,7 +3,7 @@ import { Input, Button, GoIcon } from '../../components'
 import { registerUser } from '../../logic'
 
 
-export const RegisterForm = ({ className = '', onRegistered }) => {
+export const RegisterForm = ({ onRegistered }) => {
 
     const register = async event => {
         try {
@@ -22,14 +22,14 @@ export const RegisterForm = ({ className = '', onRegistered }) => {
     }
 
     return <>
-        <form className={className} onSubmit={onSubmit}>
-            <fieldset>
-                <legend>Registrarse</legend>
-                <Input type='text' name='username' placeholder='Usuario' required />
-                <Input type='email' name='email' placeholder='Email' required />
-                <Input type='password' name='password' placeholder='Contraseña' required />
+        <form className='register__form' onSubmit={onSubmit}>
+            <fieldset className='register__fieldset'>
+                <legend className='register__legend'>Registrarse</legend>
+                <Input className='input-bordered' type='text' name='username' placeholder='Usuario' required />
+                <Input className='input-bordered' type='email' name='email' placeholder='Email' required />
+                <Input className='input-bordered' type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button type='submit'><GoIcon /></Button>
+            <Button className='register__button' type='submit'><GoIcon className='register__button' /></Button>
         </form>
     </>
 }

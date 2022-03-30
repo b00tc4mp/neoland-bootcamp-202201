@@ -1,7 +1,7 @@
 import './Icon.sass'
 
-export const Icon = ({ className = '', children = '' }) => {
+export const Icon = ({ style = {}, className = '', children = '' }) => {
     return <>
-        <figure className={`icon ${className}`}>{children}</figure>
+        <figure style={style} className={`icon ${className}`}>{children}</figure>
     </>
 }

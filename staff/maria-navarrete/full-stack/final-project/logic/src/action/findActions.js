@@ -2,12 +2,15 @@ const { models: { Action, User } } = require('data')
 const { helpers: { sanitizeAction }, validators: { validateString, validateNumber, validateId } } = require('commons')
 
 
-function findActions(userId, query, requiredTime, requiredBudget) {
+function findActions(userId, query = null, requiredTime = null, requiredBudget = null) {
     validateId(userId, 'user id')
 
-    if (query) validateString(query, 'query')
-    if (requiredTime) validateNumber(requiredTime, 'required time')
-    if (requiredBudget) validateNumber(requiredBudget, 'required budget')
+    if (query === null && requiredBudget === null && requiredTime === null)
+        return new Promise(resolve => resolve([]))
+
+    if (!(query === null)) validateString(query, 'query')
+    if (!(requiredTime === null)) validateNumber(requiredTime, 'required time')
+    if (!(requiredBudget === null)) validateNumber(requiredBudget, 'required budget')
 
     return User.findById(userId).lean()
         .then(user => {

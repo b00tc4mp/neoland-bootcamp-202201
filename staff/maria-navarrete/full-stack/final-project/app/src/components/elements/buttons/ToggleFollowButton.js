@@ -5,7 +5,7 @@ import { HeartIcon } from '../../icons'
 import { Button } from '.'
 
 
-export const ToggleFollowButton = ({ userId, isFollow, onToggled }) => {
+export const ToggleFollowButton = ({ className = '', userId, isFollow, onToggled }) => {
 
     const [following, setFollowing] = useState(isFollow)
 
@@ -26,7 +26,7 @@ export const ToggleFollowButton = ({ userId, isFollow, onToggled }) => {
 
     return <>
         <Button type="button" onClick={onToggle}>
-            <HeartIcon className={`follow-icon ${following ? 'follow-on' : 'follow-off'}`} />
+            <HeartIcon className={`${className} follow-icon ${following ? 'follow-on' : 'follow-off'}`} />
         </Button></>
 }
 

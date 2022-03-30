@@ -1,5 +1,6 @@
-/*Resets*/
-* 
+@use 'index' as *
+
+*
     font-weight: 300
     text-decoration: none
     color: black
@@ -14,9 +15,15 @@
     box-sizing: border-box
     background-color: transparent
 
-
-html, body 
+html, body
     width: 100%
-    height: auto
-    font-family: 'Helvetica', sans-serif
-    font-size: 12px 
+    max-width: 100%
+    min-height: 100%
+    font-family: "Montserrat", sans-serif
+    font-size: 14px
+    font-weight: 400
+    background-color: $background-color
+
+body
+    padding-top: 72px
+    padding-bottom: 64px

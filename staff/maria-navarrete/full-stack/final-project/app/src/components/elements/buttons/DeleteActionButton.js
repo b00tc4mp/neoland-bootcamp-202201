@@ -1,4 +1,4 @@
-import './DeleteActionButton.js'
+import './DeleteActionButton.sass'
 import { useState } from 'react'
 import { Modal, Button, DeleteIcon } from '../../'
 import { deleteAction } from '../../../logic'
@@ -22,7 +22,7 @@ export const DeleteActionButton = ({ actionId, onDeleted }) => {
     }
 
     return <>
-        <Button onClick={showDeleteModal}><DeleteIcon /></Button>
+        <Button onClick={showDeleteModal}><DeleteIcon className='deleteIcon' /></Button>
         {showModal && <Modal text='¿Estás seguro que quieres eliminar esta acción?' success={deleteAct} closeModal={closeDeleteModal} />}
     </>
 }

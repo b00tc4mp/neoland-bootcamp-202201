@@ -1,15 +1,16 @@
 import './SearchActions.sass'
-import { Input, Select, Button, MoneyIcon, StopwatchIcon, FilterIcon, RemoveFilterIcon, ListSearchActionsResults } from '.'
+import { Input, Select, Button, MoneyIcon, StopwatchIcon, SearchIcon, RemoveFilterIcon, ListSearchActionsResults } from '.'
 import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
-export const SearchActions = ({ onSearchActions }) => {
+export const SearchActions = ({ onSearchActions, onReset }) => {
 
     const search = event => {
-        const { target: { query: { value: query }, requiredBudget: { value: _requiredBudget }, requiredTime: { value: _requiredTime } } } = event
+        const { target: { query: { value: _query }, requiredBudget: { value: _requiredBudget }, requiredTime: { value: _requiredTime } } } = event
 
-        const requiredTime = _requiredTime ? Number(_requiredTime) : ''
-        const requiredBudget = _requiredBudget ? Number(_requiredBudget) : ''
+        const query = _query ? _query : null
+        const requiredTime = _requiredTime ? Number(_requiredTime) : null
+        const requiredBudget = _requiredBudget ? Number(_requiredBudget) : null
 
         onSearchActions && onSearchActions({ query, requiredTime, requiredBudget })
     }
@@ -20,17 +21,15 @@ export const SearchActions = ({ onSearchActions }) => {
     }
 
     return <>
-        <div>
-            <form onSubmit={onSubmit} >
-                <fieldset>
-                    <Input type='text' name='query' placeholder='Busca acciones' />
-                    <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} placeholder='Todos' label={<StopwatchIcon />} />
-                    <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
-                </fieldset>
-                <Button type='submit'><FilterIcon /></Button>
-                <Button type='reset'><RemoveFilterIcon /></Button>
-            </form>
-        </div>
+        <form className='searchActions__form' onSubmit={onSubmit}  >
+            <fieldset className='searchActions__fieldset'>
+                <Input className='input-underlined searchActions__input' type='text' name='query' placeholder='Busca acciones' />
+                <Select className='searchActions__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} placeholder='Todos' label={<StopwatchIcon />} />
+                <Select className='searchActions__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
+            </fieldset>
+            <Button className='searchActions__button' type='submit'><SearchIcon className='searchActions__icon' /></Button>
+            <Button className='searchActions__button' type='reset' onClick={onReset}><RemoveFilterIcon className='searchActions__icon' /></Button>
+        </form>
     </>
 
 

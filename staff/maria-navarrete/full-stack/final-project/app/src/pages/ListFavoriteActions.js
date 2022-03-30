@@ -19,17 +19,21 @@ export const ListFavoriteActions = ({ onSchedules, onCreatedActions, onFavorites
     }, [])
 
     const updateFavoritesList = async () => {
-        const favorites = await listFavoriteActions(sessionStorage.token)
-        favorites.forEach(favorite => favorite.isFav = true)
+        try {
+            const favorites = await listFavoriteActions(sessionStorage.token)
+            favorites.forEach(favorite => favorite.isFav = true)
 
-        setFavorites(favorites)
+            setFavorites(favorites)
+        } catch (error) {
+            alert(error.message)
+        }
     }
 
 
     return <>
         <ActionsNavigationBar onSchedules={onSchedules} onCreatedActions={onCreatedActions} onFavorites={onFavorites} />
-        <div>
-            <h2>Mis Favoritas</h2>
+        <div className='favorites'>
+            <h2 className='favorites__title'>Mis Favoritas</h2>
             {!!favorites.length &&
                 <ul> {favorites.map(favorite =>
                     <li key={favorite.id}><ActionCard action={favorite} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} onToggled={updateFavoritesList} /></li>)}

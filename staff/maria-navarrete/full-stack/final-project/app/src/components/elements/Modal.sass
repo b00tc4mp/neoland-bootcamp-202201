@@ -1,12 +1,28 @@
+@use '../../index' as *
+
 .modal-outside
-    width: 100vw
-    height: 100vh
-    background-color: #6e6a6a
+    position: fixed
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    background-color: #dad8d8c4
     display: flex
     justify-content: center
     align-items: center
 
 .modal-card
-    border: 1px solid black
+    border: 1px solid $secondary-color
     padding: 2rem
-    background-color: white
+    background-color: $milk
+    border-radius: 1rem
+    margin: 0 1.5rem
+
+.modal__buttons
+    display: flex
+    justify-content: center
+    gap: 0.5rem
+
+.modal__icon
+    width: 2rem
+    fill: $primary-color

@@ -4,11 +4,12 @@ import { updateSchedule } from '../../../logic'
 import { CalendarCheckIcon } from '../../icons'
 import { Button } from '.'
 
-export const CompleteScheduleButton = ({ schedule = {} }) => {
+export const CompleteScheduleButton = ({ className = '', schedule = {}, onCompleted }) => {
 
     const complete = async () => {
         try {
             await updateSchedule(sessionStorage.token, schedule.id)
+            onCompleted && onCompleted()
         } catch (error) {
             alert(error.message)
         }
@@ -20,7 +21,7 @@ export const CompleteScheduleButton = ({ schedule = {} }) => {
     }
 
     return <>
-        <Button type="button" onClick={onComplete}>
+        <Button className={className} type="button" onClick={onComplete}>
             <CalendarCheckIcon />
         </Button>
     </>

@@ -1,16 +1,16 @@
 import './NavigationBar.sass'
 import { Link, HappyIcon, HeartIcon, CommunityIcon, ProfileIcon } from '.'
 
+
 export const NavigationBar = ({ onHome, onSchedules, onCommunity, onProfile }) => {
 
-
     return <>
-        <nav>
-            <ul>
-                <li><Link onClick={onHome}><HappyIcon /></Link>Inicio</li>
-                <li><Link onClick={onSchedules}><HeartIcon /></Link>Acts</li>
-                <li><Link onClick={onCommunity}><CommunityIcon /></Link>Comunidad</li>
-                <li><Link onClick={onProfile}><ProfileIcon /></Link>Perfil</li>
+        <nav className='navigationMenu'>
+            <ul className='navigationMenu__list'>
+                <li className='navigationMenu__listItem'><Link className='navigationMenu__link' onClick={onHome}><HappyIcon className='navigationMenu__icon' />Inicio</Link></li>
+                <li className='navigationMenu__listItem'><Link className='navigationMenu__link' onClick={onSchedules}><HeartIcon className='navigationMenu__icon' />Acts</Link></li>
+                <li className='navigationMenu__listItem'><Link className='navigationMenu__link' onClick={onCommunity}><CommunityIcon className='navigationMenu__icon' />Comunidad</Link></li>
+                <li className='navigationMenu__listItem'><Link className='navigationMenu__link' onClick={onProfile}><ProfileIcon className='navigationMenu__icon' />Perfil</Link></li>
             </ul>
         </nav>
     </>

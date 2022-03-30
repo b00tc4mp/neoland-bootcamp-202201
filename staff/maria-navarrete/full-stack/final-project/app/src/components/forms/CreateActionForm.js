@@ -5,7 +5,7 @@ import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
 
-export const CreateActionForm = ({ className = '', onCreated, onCancel }) => {
+export const CreateActionForm = ({ onCreated, onCancel }) => {
 
     const createNewAction = async event => {
         try {
@@ -29,16 +29,16 @@ export const CreateActionForm = ({ className = '', onCreated, onCancel }) => {
 
 
     return <>
-        <form className={className} onSubmit={onSubmit}>
-            <fieldset>
-                <Input type='text' name='description' placeholder='Descripción' required />
-                <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} placeholder='Tiempo Requerido' required appendText={'min'} label={<StopwatchIcon />} />
-                <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Dinero Requerido' required appendText={'€'} label={<MoneyIcon />} />
-                <Checkbox id='isPublic' name='isPublic' label='Hacer Pública' />
+        <form className='createActionForm__form' onSubmit={onSubmit}>
+            <fieldset className='createActionForm__fieldset'>
+                <Input className='input-bordered createActionForm__input' type='text' name='description' placeholder='Descripción' required />
+                <Select className='createActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} placeholder='Tiempo Requerido' required appendText={'min'} label={<StopwatchIcon className='createActionForm__icon' />} />
+                <Select className='createActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Dinero Requerido' required appendText={'€'} label={<MoneyIcon className='createActionForm__icon' />} />
+                <Checkbox className='createActionForm__checkbox' id='isPublic' name='isPublic' label='Hacer Pública' />
             </fieldset>
-            <div>
-                <Button type='submit'> <CheckIcon /> </Button>
-                <Link onClick={onCancel}><XIcon /></Link>
+            <div className='createActionForm__buttons'>
+                <Button className='createActionForm__button' type='submit'> <CheckIcon className='createActionForm__buttonIcon' /> </Button>
+                <Link className='createActionForm__button' onClick={onCancel}><XIcon className='createActionForm__buttonIcon' /></Link>
             </div>
         </form>
     </>

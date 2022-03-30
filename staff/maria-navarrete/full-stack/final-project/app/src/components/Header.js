@@ -5,9 +5,9 @@ export const Header = ({ onLogo }) => {
 
 
     return <>
-        <header>
-            <h1>bHooman</h1>
-            <Link onClick={onLogo}><Logo alt='logo bHooman' type='small' /></Link>
+        <header className='header'>
+            <h1 className='header__title'>bHooman</h1>
+            <Link onClick={onLogo}><Logo className='header__logo' alt='logo bHooman' type='small' /></Link>
         </header>
     </>
 }

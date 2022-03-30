@@ -16,8 +16,8 @@ export const ListSearchActionsResults = ({ goToCreateSchedule, goToUserProfile }
     useEffect(async () => {
         try {
 
-            const requiredTime = _requiredTime ? Number(_requiredTime) : ''
-            const requiredBudget = _requiredBudget ? Number(_requiredBudget) : ''
+            const requiredTime = _requiredTime ? Number(_requiredTime) : null
+            const requiredBudget = _requiredBudget ? Number(_requiredBudget) : null
 
             const actions = await findActions(sessionStorage.token, query, requiredTime, requiredBudget)
             const favorites = await listFavoriteActions(sessionStorage.token)

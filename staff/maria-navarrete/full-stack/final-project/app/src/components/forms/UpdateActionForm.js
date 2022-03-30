@@ -49,16 +49,16 @@ export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel
 
 
     return <>
-        <form className={className} onSubmit={onSubmit}>
-            <fieldset>
-                <Input type='text' name='description' defaultValue={description} placeholder='Descripción' required />
-                <Select name='requiredTime' id='requiredTime' options={requiredTimeOptions} required={true} appendText={'min'} selected={requiredTime} placeholder='Tiempo requerido' label={<StopwatchIcon />} required />
-                <Select name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} required={true} appendText={'€'} selected={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
-                <Checkbox id='isPublic' name='isPublic' label='Hacer Pública' checked={isPublic} />
+        <form className='updateActionForm__form' onSubmit={onSubmit}>
+            <fieldset className='updateActionForm__fieldset'>
+                <Input className='input-bordered updateActionForm__input' type='text' name='description' defaultValue={description} placeholder='Descripción' required />
+                <Select className='updateActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} required={true} appendText={'min'} selected={requiredTime} placeholder='Tiempo requerido' label={<StopwatchIcon />} required />
+                <Select className='updateActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} required={true} appendText={'€'} selected={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
+                <Checkbox className='updateActionForm__checkbox' id='isPublic' name='isPublic' label='Hacer Pública' checked={isPublic} />
             </fieldset>
-            <div>
-                <Button type='submit'> <CheckIcon /> </Button>
-                <Link onClick={onCancel}><XIcon /></Link>
+            <div className='updateActionForm__buttons'>
+                <Button className='updateActionForm__button' type='submit'> <CheckIcon className='updateActionForm__buttonIcon' /> </Button>
+                <Link className='updateActionForm__button' onClick={onCancel}><XIcon className='updateActionForm__buttonIcon' /></Link>
             </div>
         </form>
     </>

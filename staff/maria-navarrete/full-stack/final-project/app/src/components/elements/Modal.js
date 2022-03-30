@@ -20,9 +20,9 @@ export const Modal = ({ text, success, closeModal }) => {
     return <div className='modal-outside' onClick={onOutsideClick}>
         <div className='modal-card' onClick={event => event.stopPropagation()}>
             <p>{text}</p>
-            <div>
-                <Button onClick={onSuccess}> <CheckIcon /> </Button>
-                <Button onClick={onClose}><XIcon /></Button>
+            <div className='modal__buttons'>
+                <Button className='modal__button' onClick={onSuccess}> <CheckIcon className='modal__icon' /> </Button>
+                <Button className='modal__button' onClick={onClose}><XIcon className='modal__icon' /></Button>
             </div>
         </div>
     </div>

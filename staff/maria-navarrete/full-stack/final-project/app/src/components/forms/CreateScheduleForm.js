@@ -1,11 +1,11 @@
-import './CreateActionForm.sass'
+import './CreateScheduleForm.sass'
 import { Input, Select, Button, Link, CheckIcon, XIcon, MoneyIcon, StopwatchIcon, CalendarIcon, RepeatIcon } from '../../components'
 import { retrieveAction, createSchedule } from '../../logic'
 import { useState, useEffect } from 'react'
 import { data } from 'commons'
 const { repeatOptions } = data
 
-export const CreateScheduleForm = ({ actionId, className = '', onCreated, onCancel }) => {
+export const CreateScheduleForm = ({ actionId, onCreated, onCancel }) => {
     const [description, setDescription] = useState('')
     const [requiredTime, setRequiredTime] = useState('')
     const [requiredBudget, setRequiredBudget] = useState('')
@@ -40,17 +40,17 @@ export const CreateScheduleForm = ({ actionId, className = '', onCreated, onCanc
 
 
     return <>
-        <form className={className} onSubmit={onSubmit}>
-            <fieldset>
-                <Input type='text' name='description' defaultValue={description} disabled placeholder='Descripción' />
-                <Input type='text' name='requiredTime' defaultValue={requiredTime} disabled label={<StopwatchIcon />} />
-                <Input type='text' name='requiredBudget' defaultValue={requiredBudget} disabled label={<MoneyIcon />} />
-                <Input type='date' name='date' placeholder='Fecha' label={<CalendarIcon />} required />
-                <Select name='repeat' id='repeat' options={repeatOptions} required placeholder='Repetición' label={<RepeatIcon />} />
+        <form className='createSchedule__form' onSubmit={onSubmit}>
+            <h3 className='createSchedule__description'>{description}</h3>
+            <fieldset className='createSchedule__fieldset'>
+                <div className='createSchedule__info'><StopwatchIcon className='createSchedule__icon' />{requiredTime} minutos</div>
+                <div className='createSchedule__info'><MoneyIcon className='createSchedule__icon' />{requiredBudget} €</div>
+                <Input className='input-underlined createSchedule__dateInput' type='date' name='date' placeholder='Fecha' label={<CalendarIcon className='createSchedule__icon' />} required />
+                <Select className='createSchedule__select' name='repeat' id='repeat' options={repeatOptions} required placeholder='Repetición' label={<RepeatIcon className='createSchedule__icon' />} />
             </fieldset>
-            <div>
-                <Button type='submit'> <CheckIcon /> </Button>
-                <Link onClick={onCancel}><XIcon /></Link>
+            <div className='createSchedule__buttons'>
+                <Button className='createSchedule__button' type='submit'> <CheckIcon className='createSchedule__buttonIcon' /> </Button>
+                <Link className='createSchedule__button' onClick={onCancel}><XIcon className='createSchedule__buttonIcon' /></Link>
             </div>
         </form>
     </>

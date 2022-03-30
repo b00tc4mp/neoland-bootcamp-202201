@@ -2,7 +2,7 @@ import './SearchUsers.sass'
 import { Input, Button, XMarkIcon, SearchIcon } from '.'
 
 
-export const SearchUsers = ({ onSearchUsers }) => {
+export const SearchUsers = ({ onSearchUsers, onReset }) => {
 
     const search = event => {
         const { target: { query: { value: query } } } = event
@@ -16,10 +16,10 @@ export const SearchUsers = ({ onSearchUsers }) => {
 
     return <>
         <div>
-            <form onSubmit={onSubmit} >
-                <Input type='text' name='query' placeholder='Busca Hoomans' />
-                <Button type='submit'><SearchIcon /></Button>
-                <Button type='reset'> <XMarkIcon /></Button>
+            <form className='searchUsers__form' onSubmit={onSubmit} >
+                <Input className='input-underlined searchUsers__input' type='text' name='query' placeholder='Busca Hoomans' />
+                <Button className='searchUsers__button' type='submit'><SearchIcon className='searchUsers__icon' /></Button>
+                <Button className='searchUsers__button' type='reset' onClick={onReset}> <XMarkIcon className='searchUsers__icon' /></Button>
             </form>
         </div>
     </>

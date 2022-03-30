@@ -3,7 +3,7 @@ import { Input, Button, GoIcon } from '../../components'
 import { authenticateUser } from '../../logic'
 
 
-export const LoginForm = ({ className = '', onLogged }) => {
+export const LoginForm = ({ onLogged }) => {
 
     const login = async event => {
         try {
@@ -24,13 +24,13 @@ export const LoginForm = ({ className = '', onLogged }) => {
     }
 
     return <>
-        <form className={className} onSubmit={onSubmit}>
-            <fieldset>
-                <legend>Ingresar</legend>
-                <Input type='email' name='email' placeholder='Email' required />
-                <Input type='password' name='password' placeholder='Contraseña' required />
+        <form className='login__form' onSubmit={onSubmit}>
+            <fieldset className='login__fieldset'>
+                <legend className='login__legend'>Ingresar</legend>
+                <Input className='input-bordered' type='email' name='email' placeholder='Email' required />
+                <Input className='input-bordered' type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button type='submit'><GoIcon /></Button>
+            <Button className='login__button' type='submit'><GoIcon className='login__button' /></Button>
         </form>
     </>
 }

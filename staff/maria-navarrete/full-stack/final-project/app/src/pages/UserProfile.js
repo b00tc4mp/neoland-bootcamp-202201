@@ -23,12 +23,14 @@ export const UserProfile = ({ goToCreateSchedule, goToUserProfile }) => {
 
     return <>
         {!!user.id &&
-            <div >
-                <UserIcon />
-                <span>{user.username}</span>
-                <ToggleFollowButton userId={user.id} isFollow={user.isFollow} />
-                <span>{user.doneActs} Acts cumplidas</span>
-                <h3>Acciones creadas</h3>
+            <div className='userProfile' >
+                <UserIcon className='userProfile__icon' />
+                <div className='userProfile__title'>
+                    <span className='userProfile__username'>{user.username}</span>
+                    <ToggleFollowButton className='userProfile__toggle' userId={user.id} isFollow={user.isFollow} />
+                </div>
+                <span className='userProfile__completed'>{user.doneActs} Acts cumplidas</span>
+                <h3 className='userProfile__createdTitle'>Acciones creadas</h3>
                 <ListUserPublicActions userId={user.id} goToCreateSchedule={goToCreateSchedule} goToUserProfile={goToUserProfile} />
             </div>}
     </>

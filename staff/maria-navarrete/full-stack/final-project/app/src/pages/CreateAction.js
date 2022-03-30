@@ -6,8 +6,8 @@ export const CreateAction = ({ onSchedules, onCreatedActions, onFavorites, goBac
 
     return <>
         <ActionsNavigationBar onSchedules={onSchedules} onCreatedActions={onCreatedActions} onFavorites={onFavorites} />
-        <div>
-            <h2>Crear Acción</h2>
+        <div className='createAction'>
+            <h2 className='createAction__title'>Crear Acción</h2>
             <CreateActionForm onCreated={goBack} onCancel={goBack} />
         </div>
     </>
