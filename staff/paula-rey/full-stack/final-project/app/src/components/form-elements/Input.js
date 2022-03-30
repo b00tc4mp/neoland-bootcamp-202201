@@ -1,12 +1,13 @@
 import './Input.sass'
 
 
-export function Input({type='text', name= '', placeholder = 'Escribe aquí', required = false, defaultValue= null, label, disabled }) {
+export function Input({ className='', type='text', name= '', placeholder = 'Escribe aquí', required = false, defaultValue = null, label, disabled }) {
 
-    return <>
+    return <div >
         {label && <label htmlFor={name}>{label}</label>}
-        <input className='input' type={type} name={name} placeholder={placeholder} required={required} defaultValue={defaultValue} disabled={disabled}/>
-    </>
+        <input className={className} type={type} name={name} placeholder={placeholder} required={required} value={defaultValue} disabled={disabled}/>
+    </div>
 
 }
+
 

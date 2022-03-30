@@ -19,12 +19,14 @@ export function CommentCard({ comment = {}, onDeletedComment }) {
     }, [])
 
     return <>
-        <div className='comment-card'>
-            <h1>{comment.userName}</h1>
-            <h2>{new Date(comment.date).toLocaleDateString()}</h2>
-            <p>{comment.text}</p>
+        <div className="comment-card">
+            <div className="comment-card__inside">
+                <h1>{comment.userName}</h1>
+                <h2>{new Date(comment.date).toLocaleDateString()}</h2>
+                <p>{comment.text}</p>
             {owned && <DeleteCommentButton commentId={comment.id} onDeletedComment={onDeletedComment} />}
-
+            </div>
+        
         </div>
     </>
 }

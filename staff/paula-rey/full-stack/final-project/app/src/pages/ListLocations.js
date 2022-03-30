@@ -29,7 +29,7 @@ export function ListLocations({ goToLocationDetails, goToUpdateLocation }) {
 
 
     return <div className="locations">
-        {!!locations.length && <ul>
+        {!!locations.length && <ul className="locations__list">
             {locations.map(location =>
                 <li key={location.id}>
                     <OwnerLocationCard location={location} onUpdateLocation={goToUpdateLocation} onDeletedLocation={updateListLocations} onLocationDetails={goToLocationDetails} />

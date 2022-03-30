@@ -31,10 +31,10 @@ export function LoginForm({ onLoggedIn, onRegister }) {
 
     return <div>
         <form className="login__form" onSubmit={onSubmit}>
-            <Input type="email" name="email" placeholder="email" required={true}/>
-            <Input type="password" name="password" placeholder="contraseña" required={true}/>
+            <Input className="input" type="email" name="email" placeholder="email" required={true}/>
+            <Input className="input" type="password" name="password" placeholder="contraseña" required={true}/>
             <Button className="button" type="submit">Iniciar sesión</Button>
-            <Link className="login__register-link" href="" onClick={goToRegister}>Registrarse</Link>
+            <Link className="link" href="" onClick={goToRegister}>Registrarse</Link>
         </form>
     </div>
     

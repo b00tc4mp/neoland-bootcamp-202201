@@ -1,6 +1,5 @@
 import './NavigationMenu.sass'
 import { Link, ProfileIcon, FavoriteIcon, SearchLocationIcon } from '.'
-import { CreateIcon } from './icons'
 
 
 export function NavigationMenu({ onSearchLocationIcon, onFavoritesIcon, onProfileIcon }) {

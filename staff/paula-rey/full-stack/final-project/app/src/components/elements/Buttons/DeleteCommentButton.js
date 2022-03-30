@@ -21,7 +21,7 @@ export function DeleteCommentButton({commentId, onDeletedComment}) {
   
 
     return <>
-            <Button onClick={handleDeleteComment}><DeleteIcon/></Button>
+            <Button onClick={handleDeleteComment}><DeleteIcon className="delete-icon"/></Button>
     </>
 }
 

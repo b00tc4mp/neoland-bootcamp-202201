@@ -27,9 +27,7 @@ export function ListSearchResults({ goToLocationDetails }) {
                 location.isFavorite = favorites.some(({ id }) => id === location.id) 
             })
 
-            let finishLocations = locations.slice(locations.length-5)
-
-            setLocations(finishLocations.reverse())
+            setLocations(locations.reverse())
 
         } catch (error) {
             alert(error.message)

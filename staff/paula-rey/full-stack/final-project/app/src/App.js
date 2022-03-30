@@ -53,7 +53,6 @@ function App() {
   const showUserData = () => navigate('/datos-usuario')
   const showUpdatePassword = () => navigate('/cambiar-contrasena')
   const showListLocations = () => navigate('/localizaciones-propias')
-  const showListFollows = () => navigate('/lista-seguidos')
   const showDeleteAccount = () => navigate('/borrar-cuenta')
 
 

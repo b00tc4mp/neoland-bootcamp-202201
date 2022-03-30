@@ -1,6 +1,5 @@
 import './SearchLocations.sass'
 import { SearchIcon, CleanSearchIcon, Input, Select, Button } from '.'
-import { ListSearchResults } from '../components'
 import { data } from 'commons'
 const { locationTypes, locationCities } = data
 
@@ -20,11 +19,15 @@ export function SearchLocations({onSearchLocations, onReset}) {
 
     return <div className="search">
         <form className="search__form" onSubmit={search}>
-            <Input className="search__query-input" type="text" name="query" placeholder="Busca" />
-            <Select className="search__type-input" options={locationTypes} name="type" placeholder="Todos" label= "Tipo" />
-            <Select className="search__city-input" options={locationCities} name="city" placeholder="Todas" label= "Ciudad" />
-            <Button type="submit"><SearchIcon/></Button>
-            <Button type="reset" onClick={onReset}><CleanSearchIcon/></Button>
+            <div className="search__form-input">
+                <Input className="input-search" type="text" name="query" placeholder="Busca" />
+                <Button type="submit"><SearchIcon className="icon-search"/></Button>
+                <Button type="reset" onClick={onReset}><CleanSearchIcon className="icon-clean"/></Button>
+            </div>
+            <div className="search__form-select">
+                <Select className="select-type" options={locationTypes} name="type" placeholder="Todos" label= "Tipo" />
+                <Select className="select-city" options={locationCities} name="city" placeholder="Todas" label= "Ciudad" />
+            </div>
         </form>
     </div>
 

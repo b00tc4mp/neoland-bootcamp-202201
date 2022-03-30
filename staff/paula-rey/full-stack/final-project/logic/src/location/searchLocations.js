@@ -2,9 +2,12 @@ const { models: { Location, User } } = require('data')
 const { validators: { validateString, validateId } } = require('commons')
 
 
-function searchLocations(userId, query, type, city) {
+function searchLocations(userId, query=null, type=null, city=null) {
     validateId(userId, 'user id')
     
+    if (query === null && type === null && city === null)
+        return new Promise(resolve => resolve([]))
+
     if (query) validateString(query, 'query')
     if (type) validateString(type, 'type') 
     if (city) validateString(city, 'city')

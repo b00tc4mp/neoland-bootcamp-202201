@@ -10,34 +10,36 @@ export function ListComments() {
     const [comments, setComments] = useState([])
 
 
-    useEffect(async() => {
+    useEffect(async () => {
         try {
             const comments = await listLocationComments(sessionStorage.token, locationId)
-            setComments (comments.reverse())
+            setComments(comments.reverse())
 
         } catch (error) {
             alert(error.message)
         }
     }, [])
 
-    const updateListComment = async() => {
+    const updateListComment = async () => {
         try {
             const comments = await listLocationComments(sessionStorage.token, locationId)
-            setComments (comments.reverse())
+            setComments(comments.reverse())
 
         } catch (error) {
             alert(error.message)
         }
     }
 
-    return <div>
-            <p>Añadir nuevo comentario:</p>
-             <AddComment onCreatedComment={updateListComment}/>
-         {!!comments.length && <ul>
-            {comments.map(comment => 
-            <li key={comment.id}>
-                <CommentCard comment={comment} onDeletedComment={updateListComment} /> 
-            </li>)}
+    return <>
+        <div className="comments">
+            <p className="comments__opening" >Añadir nuevo comentario:</p>
+            <AddComment onCreatedComment={updateListComment} />
+            {!!comments.length && <ul className="comments__list">
+                {comments.map(comment =>
+                    <li key={comment.id}>
+                        <CommentCard comment={comment} onDeletedComment={updateListComment} />
+                    </li>)}
             </ul>}
-    </div>
+        </div>
+    </>
 }

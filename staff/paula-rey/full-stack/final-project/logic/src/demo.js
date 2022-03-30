@@ -182,7 +182,7 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => authenticateUser('pepito@grillo.com', '123123123'))
     .then((userId) => {
-        return deleteComment(userId, locationId1, commentId1)
+        return deleteComment(userId, commentId1)
             .then(() => console.log('comment deleted'))
     })
 

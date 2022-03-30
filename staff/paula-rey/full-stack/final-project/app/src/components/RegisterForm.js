@@ -28,11 +28,11 @@ export function RegisterForm({ onLogin, onRegistered }) {
     }
 
     return <form className="register__form" onSubmit={onSubmit}>
-            <Input type="text" name="name" placeholder="Nombre" required={true} />
-            <Input type="email" name="email" placeholder="email" required={true}/>
-            <Input type="password" name="password" placeholder="contraseña" required={true} />
+            <Input className="input" type="text" name="name" placeholder="Nombre" required={true} />
+            <Input className="input" type="email" name="email" placeholder="email" required={true}/>
+            <Input className="input" type="password" name="password" placeholder="contraseña" required={true} />
             <Button className="button" type="submit">Registrarse</Button>
-            <Link className="register__login-link" href="" onClick={goToLogin}>Iniciar sesión</Link>
+            <Link className="link" href="" onClick={goToLogin}>Iniciar sesión</Link>
         </form>
 }
 

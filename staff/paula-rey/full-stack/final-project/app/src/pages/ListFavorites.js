@@ -29,7 +29,7 @@ export function ListFavorites({ goToLocationDetails}) {
 
 
     return <div className="favorites">
-         {!!favorites.length && <ul className="list-favorites">
+         {!!favorites.length && <ul className="favorites__list">
             {favorites.map(favorite => 
             <li key={favorite.id}>
                 <LocationCard location={favorite} onLocationCard={goToLocationDetails} onToggled={updateListFavorites} /> 

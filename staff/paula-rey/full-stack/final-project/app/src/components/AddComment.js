@@ -31,9 +31,9 @@ export function AddComment({ onCreatedComment }) {
 
 
     return <>
-        <form onSubmit={onSubmit}>
-            <Input type="text" name="text" placeholder="Escribe aquí..." required={true} />
-            <Button type="submit" innerText="Crear" />
+        <form className="form-comment" onSubmit={onSubmit}>
+            <Input className="form-comment__input" type="text" name="text" placeholder="Escribe aquí..." required={true} />
+            <Button className="form-comment__button" type="submit">Crear</Button>
         </form>
     </>
 

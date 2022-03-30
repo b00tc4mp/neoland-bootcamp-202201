@@ -1,3 +1,4 @@
+import './Link.sass'
 
 export function Link({ children, className = '', onClick }) {
 

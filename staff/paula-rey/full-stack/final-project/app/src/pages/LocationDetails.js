@@ -1,7 +1,7 @@
 import './LocationDetails.sass'
 import { useState, useEffect } from 'react'
 import { retrieveLocation, listFavoritesLocations } from '../logic'
-import { FavoriteButton, CommentIcon, Link, ListComments } from '../components'
+import { FavoriteButton, ListComments } from '../components'
 import { useParams } from 'react-router-dom'
 
 export function LocationDetails({ onAddComment, onToggled }) {
@@ -23,20 +23,20 @@ export function LocationDetails({ onAddComment, onToggled }) {
     }, [])
 
 
-    const goToAddComment = locationId => {
-        onAddComment(locationId)
-    }
+    // const goToAddComment = locationId => {
+    //     onAddComment(locationId)
+    // }
 
 
     return <>
-        <div className='details'>
-            <FavoriteButton locationId={location.id} isFavorite={location.isFavorite} onToggled={onToggled} />
-            <h1>{location.title}</h1>
-            <p>{new Date(location.date).toLocaleDateString()}</p>
-            <img src={location.image} />
-            <h2>{location.type}</h2>
-            <p>{location.address}</p>
-            <p>{location.city}</p>
+        <div className="details">
+            <FavoriteButton locationId={location.id} isFavorite={location.isFavorite} onToggled={()=>{}} />
+            <h1 className="details__title">{location.title}</h1>
+            <p className="details__date">{new Date(location.date).toLocaleDateString()}</p>
+            <img className="details__image" src={location.image} />
+            <h2 className="details__type">{`Tipo: ${location.type}`}</h2>
+            <p className="details__address">{location.address}</p>
+            <p className="details__city">{location.city}</p>
             <ListComments locationId={locationId} />
         </div>
     </>
