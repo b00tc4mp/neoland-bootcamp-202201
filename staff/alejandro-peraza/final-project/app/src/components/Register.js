@@ -1,4 +1,4 @@
-import './Register.css'
+import './Register.sass'
 import { registerUser } from '../logic'
 import { Button } from "../components"
 import { Input } from './form-elements'
@@ -30,14 +30,19 @@ function Register({ onRegistered, onLogin }) {
     }
 
     return <div className='register'>
-        { <form onSubmit={register}>
+        {<form onSubmit={register}>
+            <h1 className='login_text'>REGISTER</h1>
+
             <Input type='text' name='name' placeholder='name' />
             <Input type='email' name='email' placeholder='email' />
             <Input type='password' name='password' placeholder='password' />
-            <Button href="" onClick={goToLogin}>Login</Button>
-            <Button type="submit" onSubmit={onSubmit}>Register</Button>
-        </form> }
-    </div>
+            <div className='botones'>
+                <Button href="" onClick={goToLogin}>Login</Button>
+                <Button type="submit" onSubmit={onSubmit}>Register</Button>
+            </div>
+        </form>
+        }
+    </div >
 
 }
 

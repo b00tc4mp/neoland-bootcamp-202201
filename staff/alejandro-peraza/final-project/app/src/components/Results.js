@@ -1,7 +1,7 @@
+import './Results.sass'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { findRecipesByDistilled, findRecipesByTitle, findRecipesByType } from '../logic'
-
 
 function Results() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -10,7 +10,6 @@ function Results() {
     const query = searchParams.get('query')
 
     const navigate = useNavigate()
-
 
     useEffect(() => {
         try {
@@ -33,16 +32,14 @@ function Results() {
         }
     }, [type, query])
 
-
     return <div className='results'>
         {results.length > 0 && <ul>
             {results.map(result => <ul key={result.id} onClick={() => {
                 navigate(`/recipes/${result.id}`)
-            }}>          
-
-                <h1>{result.title}</h1>
-                {/* <img src={aaa} />  */}
-
+            }}>
+                <div className='results__container'>
+                    <h1>{result.title}</h1>
+                </div>
             </ul>)}
         </ul>}
     </div >

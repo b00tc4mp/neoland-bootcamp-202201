@@ -1,5 +1,7 @@
-import './UpdatePassword.css'
+import './UpdatePassword.sass'
 import { updateUserPassword } from '../logic'
+import { Button } from "../components"
+import { Input } from './form-elements'
 
 function UpdatePassword({ onBack }) {
 
@@ -7,34 +9,39 @@ function UpdatePassword({ onBack }) {
         event.preventDefault()
         const { target: { currPassword: { value: currPassword }, newPassword: { value: newPassword }, confirmPassword: { value: confirmPassword } } } = event
 
-        try{
+        try {
             updateUserPassword(sessionStorage.token, currPassword, newPassword, confirmPassword)
-                .then(()=> alert('password updated'))
-                .catch(error =>{throw error})
-        } catch ({message}){
+                .then(() => alert('password updated'))
+                .catch(error => { throw error })
+        } catch ({ message }) {
             alert(message)
         }
-    }   
+    }
 
     const goBack = event => {
         event.preventDefault()
         onBack()
     }
 
-    return <div className="update-password">
+    return <div className="update-password__container">
         <form className="update-password__form" onSubmit={updatePassword} method="post">
-            <label htmlFor="currPassword">Current Password</label>
-            <input id="currPassword" className="update-password__curr-password-input" type="password" name="currPassword" />
+            <div className='currPassword__label'>
+                <label htmlFor="currPassword">Current Password</label>
+                <Input id="currPassword" className="update-password__curr-password-input" type="password" name="currPassword" />
+            </div>
 
-            <label htmlFor="password">New password</label>
-            <input id="password" className="update-password__password-input" type="password" name="newPassword" />
+            <div className='newPassword__label'>
+                <label htmlFor="password">New password</label>
+                <Input id="password" className="update-password__password-input" type="password" name="newPassword" />
+            </div>
 
-            <label htmlFor="confirmPassword">Confirm new password</label>
-            <input id="confirmPassword" className="update-password__re-password-input" type="password" name="confirmPassword" />
+            <div className='confirmPassword'>
+                <label htmlFor="confirmPassword">Confirm new password</label>
+                <Input id="confirmPassword" className="update-password__re-password-input" type="password" name="confirmPassword" />
+            </div>
+            <Button className="update-password__submit">Update Password</Button>
 
-            <button className="update-password__submit">Update Password</button>
-
-            <a className="update-password__back-link" href="" onClick={goBack}>Go Back</a>
+            <Button className="update-password__back-link" href="" onClick={goBack}>Go Back</Button>
         </form>
     </div>
 }

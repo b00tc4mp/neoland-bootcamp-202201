@@ -32,10 +32,7 @@ function Home({ onLogOut }) {
     return <div className="home">
         <nav className="home__header">
         </nav>
-        <h1>welcome home, {name}!</h1>
-        <Search onSearch={search} />
-            <Button href="" onClick={onLogOut}>Log out</Button>
-
+        <Search className="buscador" onSearch={search} />
         <Routes>
             <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
             <Route path="/search" element={<Results />} />

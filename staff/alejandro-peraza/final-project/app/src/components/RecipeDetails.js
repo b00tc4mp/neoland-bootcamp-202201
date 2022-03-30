@@ -10,19 +10,6 @@ function RecipeDetails() {
     const { recipeId } = useParams()
     
     
-    /*  useEffect(() => {
-        try {
-            Promise.all([retrieveRecipe(sessionStorage.token, recipeId), retrieveNote(sessionStorage.token, recipeId)])
-            .then(([recipe, note]) => {
-                setRecipe(recipe)
-                setNote(note)
-            })
-            .catch(error => alert(error.message))
-        } catch (error) {
-            alert(error.message)
-        }
-        
-    }, [recipeId]) */
     
     useEffect(() => {
         if (note) {
@@ -46,12 +33,6 @@ function RecipeDetails() {
         }
     }, [recipeId])
     
-    // const goBack = event => {
-        //     event.preventDefault()
-        
-    //     onBack()
-    // }
-
     const handleSubmit = event => {
         event.preventDefault()
      
@@ -74,19 +55,19 @@ function RecipeDetails() {
     }
 
     return <>
-        {!!recipe && <div>
+        {!!recipe && <div className="recipe-detail">
             <h1>{recipe.title}</h1>
             <h3>{recipe.description}</h3>
             <h3>{recipe.distilled}</h3>
-            <img className='img' alt="coctel" src={recipe.image}/> {/* Pasar a BEM */}
+            <img className='recipe-detail__img' alt="coctel" src={recipe.image}/> 
             <h3>{recipe.note}</h3>
 
-            <form onSubmit={handleSubmit}>
-                <textarea name="text" placeholder="note" defaultValue={note && note.text}></textarea>
+            <form className="recipe-detail__form" onSubmit={handleSubmit}>
+                <textarea className="recipe-detail__textarea" name="text" placeholder="note" defaultValue={note && note.text}></textarea>
                 <Button type="submit">Save</Button>
             </form>
         </div>}
-         {/* <a href="" onClick={goBack}>back</a>   */}
+        
     </>
 
 }

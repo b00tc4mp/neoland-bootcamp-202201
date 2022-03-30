@@ -1,8 +1,10 @@
-import './Profile.css'
+import './Profile.sass'
 import { retrieveUser, updateUser } from '../logic'
 import { useState, useEffect } from 'react'
+import { Button } from "../components"
+import { Input } from './form-elements'
 
-function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
+function Profile({ onUpdatePassword, onDeleteAccount, onLogOut }) {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
 
@@ -22,7 +24,7 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
     const updateProfile = event => {
         event.preventDefault()
 
-        const { target:{ name: {value: name}, email: {value: email} } }  = event
+        const { target: { name: { value: name }, email: { value: email } } } = event
 
         try {
             updateUser(sessionStorage.token, name, email)
@@ -31,7 +33,7 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
                     setEmail(email)
                 })
                 .catch(error => { throw error })
-        } catch ({message}) {
+        } catch ({ message }) {
             alert(message)
         }
     }
@@ -52,20 +54,21 @@ function Profile({onUpdatePassword, onDeleteAccount, onLogOut}) {
         delete sessionStorage.token
         onLogOut()
     }
-    return <div className="profile">
+    return <div className="profile__container">
         <form className="profile__form" onSubmit={updateProfile} method="post">
             <div className="profile__field">
                 <label className="profile__name-label" htmlFor="profile__name-input">Name</label>
-                <input className="profile__name-input" id="profile__name-input" type="text" name="name" placeholder="Name" defaultValue={name} />
+                <Input className="profile__name-input" id="profile__name-input" type="text" name="name" placeholder="Name" defaultValue={name} />
             </div>
             <div className="profile__field">
                 <label className="profile__email-label" htmlFor="profile__email-input">Email</label>
-                <input className="profile__email-input" id="profile__email-input" type="email" name="email" placeholder="E-mail" defaultValue={email} />
+                <Input className="profile__email-input" id="profile__email-input" type="email" name="email" placeholder="E-mail" defaultValue={email} />
+           
+            <Button  type="submit" className="profile__submit">Update Profile</Button>
+            <Button href="" onClick={goToUpdatePassword}>Update Password</Button>
+            <Button href="" onClick={goToDeleteAccount}>Delete Account</Button>
+            <Button onClick={logOut}> logOut</Button>
             </div>
-            <button className="profile__submit">Update Profile</button>
-             <button onClick={logOut}> logOut</button>
-            <a href="" onClick={goToUpdatePassword}>Update Password</a>
-            <a href="" type="submit" onClick={goToDeleteAccount}>Delete Account</a>
         </form>
     </div>
 

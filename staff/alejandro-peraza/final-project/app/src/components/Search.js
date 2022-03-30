@@ -13,7 +13,7 @@ function Search({ onSearch, query }) {
         event.preventDefault()
 
         const { target: { query: { value: query }, type: { value: type } } } = event
-        
+
         navigate(`/search?type=${type}&query=${query}`)
     }
 
@@ -26,9 +26,7 @@ function Search({ onSearch, query }) {
                 <option value="distilled">distilled</option>
             </select>
             <input className="search__query-input" type="text" name="query" placeholder="Query" defaultValue={query} />
-            <span className="search__icon">🔍</span>
-
-            <button className="search__button">Search</button>
+            <Button className="search__button" type='submit'>Search</Button>
         </form>
 
 
