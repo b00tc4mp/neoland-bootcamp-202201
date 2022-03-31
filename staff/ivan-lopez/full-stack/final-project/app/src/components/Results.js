@@ -2,10 +2,7 @@ import './Results.sass'
 import { useEffect, useState } from 'react'
 import { findProducts } from '../logic'
 import { useSearchParams, useNavigate } from 'react-router-dom'
-//import noImage from '../../src/assets/images/unkown-image.png'
 
-
-// http://localhost:3000/?query=pulsera&description=cuero
 
 function Results () {
     
@@ -35,7 +32,7 @@ function Results () {
                         navigate(`/search/${product.id}`)
                     }}>
                     <div className='cards-wrapper__image-wrapper'>
-                    <img className='image' src={`${product.image}`} />
+                    <img alt='Imagen del producto' className='image' src={`${product.image}`} />
                     </div>
                     <div className='card-wrapper__attributes-wrapper'>
                         <div className='card-wrapper__attribute-wrapper'>

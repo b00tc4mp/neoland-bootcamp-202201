@@ -3,7 +3,7 @@ import { registerUser } from '../logic'
 import { Button } from "../components"
 import { Input } from './form-elements'
 
-function Register({ onLogin, onRegistered }) { // Si es un aprop pueden no pasarla
+function Register({ onLogin, onRegistered }) { 
 
     const goToLogin = event => {
         event.preventDefault()

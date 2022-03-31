@@ -12,13 +12,14 @@ const DeleteAccount = ({onBack, onDeletedAccount}) => {
 
     const deleteAccount = event => {
         event.preventDefault()
-        
-        //const { target: { password: { value: password } } } = event
         const password = event.target.password.value
 
         try{
             deleteUser(sessionStorage.token, password)
-                .then(() => onDeletedAccount())
+                .then(() => {
+                    alert('Usuario eliminado')
+                    onDeletedAccount()
+                })
                 .catch(error => {
                     alert(error.message)
                 })

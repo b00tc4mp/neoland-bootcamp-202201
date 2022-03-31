@@ -1,22 +1,13 @@
 import './App.sass';
-import { Home, Results, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
+import { Home, Login, Register, Profile, UpdatePassword, DeleteAccount, ProductDetails } from './components'
 import { Header } from './components/elements'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import { validators} from 'commons'
-// import { useEffect } from 'react';
+// import { validators} from 'commons'
 
-const { validateToken } = validators
+
+// const { validateToken } = validators
 
 function App() {
-
-  // useEffect(() => {
-  //   try {
-  //     if(sessionStorage.token) validateToken(sessionStorage.token)
-  //   } catch (error) {
-  //     delete sessionStorage.token
-  //     alert('La sesión ha caducado')
-  //   }
-  // }, [])
 
   const navigate = useNavigate()
 
@@ -39,7 +30,6 @@ function App() {
       <Route path='/cuenta' element={sessionStorage.token ? <Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogout={showLogin}/> : <Navigate replace to='/iniciar-sesion'/>} />
       <Route path='/cuenta/actualizar-contrasena' element={<UpdatePassword  onBack={goToBack} />} />
       <Route path='/cuenta/eliminar-cuenta' element={<DeleteAccount onDeletedAccount={showLogin}  onBack={goToBack} />} />
-      {/* <Route path='/*' element={<Navigate replace to='/'/>} /> */}
     </Routes>
   </div>
 

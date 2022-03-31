@@ -4,11 +4,11 @@
 ![alt Dreams Factory](https://media.giphy.com/media/mCydWp2Slwt8KugwmX/giphy.gif)
 
 
+
 Dreams Factory is the first version of an e-commerce project, 
 For who wanna buy an artisan product, original and hand made :)
 Mainly there are artisan products like leather bags, necklaces, bracelets and lot of different
 hand made products.
-
 
 ## Functional Description
 
@@ -124,6 +124,12 @@ Use cases as User:
 
 Use cases as Admin:
 - view order list
+
+- Testing
+- Feedback
+- Cart, buy product (full process)
+- Hamburger menu
+- Categories
 
 
 

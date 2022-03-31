@@ -12,29 +12,21 @@ function deleteProduct(token, productId) {
     
             Authorization: `Bearer ${token}`
         },
-        
     })
         .then(res => {
 
             const { status } = res
 
-            // // happy path
-            if (status === 204) return // undefined
-
+            if (status === 204) return
             else if (status >= 400 && status < 500) {
 
                 return res.json()
-                    .then(({ error }) => { // payload*, body, error
-
-                        throw new Error(error) // Error tiene una propiedad message
-
+                    .then(({ error }) => { 
+                        throw new Error(error)
                     })
             }
             else if (status >= 500) throw new Error('server error')
-
             else throw new Error('unknown error')
-
-
         })
 }
 

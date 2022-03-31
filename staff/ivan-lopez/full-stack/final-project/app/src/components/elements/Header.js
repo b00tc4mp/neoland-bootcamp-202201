@@ -15,11 +15,8 @@ function Header({ onLogo, onProfile }) {
 
     return <div className='header-wrapper'>
         <header className='header'>
-
-            <p className='header__title'>Dreams Factory</p>
             <a className='header__icon-logo' href='' onClick={goToLogo} > <IconLogo /> </a>
             <a className='header__icon-profile' href='' onClick={goToProfile}> <IconProfile /> </a>
-
         </header>
     </div>
 }

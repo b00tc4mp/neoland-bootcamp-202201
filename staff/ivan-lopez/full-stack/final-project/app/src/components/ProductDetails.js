@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import { Button } from '../components'
 import ModalUpdateProduct from './elements/ModalUpdateProduct'
 
-
 function ProductDetails ({onBack}) {
     const [product, setProduct] = useState({})
     const { productId } = useParams()
@@ -49,7 +48,10 @@ function ProductDetails ({onBack}) {
 
         try {
             deleteProduct(sessionStorage.token, productId)
-                .then(() => onBack())
+                .then(() => {
+                    alert('¡Producto eliminado!')   
+                    onBack()
+                })
                 
                 .catch(error => {
                     alert(error.message)

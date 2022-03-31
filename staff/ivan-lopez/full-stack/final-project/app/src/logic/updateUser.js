@@ -15,16 +15,11 @@ function updateUser(token, name, email) {
         body: JSON.stringify({ name, email })
     })
         .then(res => {
-            // const status = res.status
             const { status } = res
-
             if (status === 200) {
-
                 return
-
             } else if (status >= 400 && status < 500) {
                 
-                // return res.json().then(({ error }) => {
                 return res.json()
                     .then(payload => {
                         const { error } = payload

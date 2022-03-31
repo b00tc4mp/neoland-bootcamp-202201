@@ -18,16 +18,12 @@ function Home({onBack}) {
 
         <Search onSearch={search} />
 
-        {/* <Modal /> */}
-
         <Routes>
             <Route path='/search' element={<Results />} />
             <Route path='/search/:productId' element={<ProductDetails onBack={onBack} />} />
             <Route path='/cuenta' element={<ModalCreateProduct />} />
             <Route path='/cuenta/update-product' element={<ModalUpdateProduct />} />
         </Routes>
-
-
     </div>
 }
 

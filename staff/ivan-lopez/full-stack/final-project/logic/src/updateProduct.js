@@ -8,7 +8,7 @@ function updateProduct(userId, productId, name, image, size, color, price, descr
     validateString(image, 'image')
     validateString(size, 'size')
     validateString(color, 'color')
-    validateString(price, 'price')//REVIEW VALIDATENUMBER REQUIRED
+    validateString(price, 'price')
     validateString(description, 'description')
 
     return User.findById(userId)

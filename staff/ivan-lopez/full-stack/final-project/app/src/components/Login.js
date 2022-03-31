@@ -7,8 +7,8 @@ import { Input } from './form-elements'
 function Login({ onLogged, onRegister }) {
 
     const goToRegister = event => {
-        event.preventDefault() // Lógica propia del compo
-        onRegister && onRegister() // esto es una prop que deja la responsabilidad sobre esta accion al componente padre
+        event.preventDefault() 
+        onRegister && onRegister()
     }
 
     const login = event => {

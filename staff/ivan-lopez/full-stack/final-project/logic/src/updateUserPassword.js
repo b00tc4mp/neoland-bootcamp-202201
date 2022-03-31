@@ -13,7 +13,7 @@ function updateUserPassword({ userId, currPassword, newPassword }) {
             if(user.password === currPassword ) 
 
                 return User.updateOne({_id: userId}, {password: newPassword})
-                .then(() => {}) // return undefined
+                .then(() => {})
             else throw new Error ('wrong credentials')})    
 }
 

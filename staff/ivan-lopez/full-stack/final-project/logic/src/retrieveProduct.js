@@ -7,9 +7,7 @@ function retrieveProduct(productId) {
     return Product.findById(productId).lean()
         .then(product => {
             if (!product) throw new Error(`product with id ${productId} does not exist`)
-            
-    
-                //sanitize
+        
                 delete product.user
                 delete product.__v
 
