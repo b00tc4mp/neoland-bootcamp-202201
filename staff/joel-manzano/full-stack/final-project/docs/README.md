@@ -67,7 +67,7 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 - email (string, required, unique)
 - password (string, required, min length 8)
 
-<!-- graffiti
+graffiti
 - user (object id)
 - artist (string, not required)
 - description (string, required, min/max_length 2/200)
@@ -79,7 +79,7 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 - style (string, required, enum:['unkown', 'tags', '3d', 'bombing',   'bubbles',    'blockbuster', 'realism', 'icons', 'trash', 'abstract'],default:'unknown')
 - condition (string, required, enum:['exists', 'trampled', 'cleaned up'], default:'exists') 
 - spray (string, not required)
-- colors ([string], not required) -->
+- colors ([string], not required)
 
 #### E/R Diagram
 
