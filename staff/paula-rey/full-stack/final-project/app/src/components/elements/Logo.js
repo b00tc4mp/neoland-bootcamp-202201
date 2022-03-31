@@ -10,7 +10,3 @@ export function Logo({className=''}) {
 
 }
 
-// .logo
-//     display: flex
-//     flex-direction: row
-//     width: 10px

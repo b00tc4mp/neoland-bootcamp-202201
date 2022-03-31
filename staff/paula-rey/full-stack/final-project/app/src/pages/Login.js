@@ -1,4 +1,4 @@
-import { LoginForm } from '../components'
+import { LoginForm, Logo } from '../components'
 
 
 export const Login = ({ onRegister, onLoggedIn }) => {

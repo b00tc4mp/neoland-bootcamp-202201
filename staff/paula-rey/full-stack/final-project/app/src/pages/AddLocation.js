@@ -15,6 +15,7 @@ export function AddLocation({ onCreated }) {
 
             await createLocation(sessionStorage.token, type, title, urlImage, address, city)
             onCreated && onCreated()
+            alert("Localización creada")
 
         } catch (error) {
             alert(error.message)
@@ -30,17 +31,15 @@ export function AddLocation({ onCreated }) {
 
 
     return <div className="create-location">
-        <h2>¡Añade tu localización!</h2>
-        <form onSubmit={onSubmit}>
-            <Select name="type" placeholder="type" options={locationTypes} required={true}/>
-            <Select name="city" placeholder="city" options={locationCities} required={true}/>
-            <Input type="text" name="title" placeholder="Título" />
-            <Input type="text" name="image" placeholder="url(opcional)"/>
-            <Input type="text" name="address" placeholder="Dirección" />
-            <Button type="submit" innerText="Crear"/>
+        <h2 className="create-location__welcome">¡Añade tu localización!</h2>
+        <form className="create-location__form" onSubmit={onSubmit}>
+            <Select className="create-location__type" name="type" placeholder="Selecciona" options={locationTypes} required={true} label="Tipo"/>
+            <Select className="create-location__city" name="city" placeholder="Selecciona" options={locationCities} required={true} label="Ciudad"/>
+            <Input className="create-location__title" type="text" name="title" placeholder="Título" />
+            <Input className="create-location__image" type="text" name="image" placeholder="url de imagen (opcional)"/>
+            <Input className="create-location__address" type="text" name="address" placeholder="Dirección" />
+            <Button className="button" type="submit" children="Crear"/>
         </form>
-        
-
     </div>
 
 }

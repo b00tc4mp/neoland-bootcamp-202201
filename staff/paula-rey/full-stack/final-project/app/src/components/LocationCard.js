@@ -15,3 +15,4 @@ export function LocationCard({ location = {}, onLocationCard, onToggled}) {
         </div>
     </>
 }
+

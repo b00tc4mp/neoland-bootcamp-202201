@@ -13,7 +13,7 @@ export function Header({onLogo}) {
     return <>
        <header className="header">
             <Link className="logo" onClick={goToHome} ><Logo/></Link>
-            <h1>Dogether</h1>
+            <h1 className="name">Dogether</h1>
        </header>
     
     </>

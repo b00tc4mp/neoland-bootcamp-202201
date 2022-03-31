@@ -35,13 +35,13 @@ export function ListSearchResults({ goToLocationDetails }) {
     }, [query, _type, _city])
 
 
-    return <>
-            {!!locations.length && <ul className="search-results">
+    return <div>
+            {!!locations.length && <ul >
                 {locations.map(location =>
                     <li key={location.id} >
                         <LocationCard location={location} onLocationCard={goToLocationDetails} />
                     </li>)}
             </ul>}
-    </>
+    </div>
 
 }

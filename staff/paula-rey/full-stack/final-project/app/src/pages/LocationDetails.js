@@ -4,7 +4,7 @@ import { retrieveLocation, listFavoritesLocations } from '../logic'
 import { FavoriteButton, ListComments } from '../components'
 import { useParams } from 'react-router-dom'
 
-export function LocationDetails({ onAddComment, onToggled }) {
+export function LocationDetails() {
     const { locationId } = useParams()
 
     const [location, setLocation] = useState({})
@@ -23,14 +23,10 @@ export function LocationDetails({ onAddComment, onToggled }) {
     }, [])
 
 
-    // const goToAddComment = locationId => {
-    //     onAddComment(locationId)
-    // }
-
 
     return <>
         <div className="details">
-            <FavoriteButton locationId={location.id} isFavorite={location.isFavorite} onToggled={()=>{}} />
+            <FavoriteButton locationId={location.id} isFavorite={location.isFavorite} onToggled={()=>{}} /> 
             <h1 className="details__title">{location.title}</h1>
             <p className="details__date">{new Date(location.date).toLocaleDateString()}</p>
             <img className="details__image" src={location.image} />
@@ -42,3 +38,4 @@ export function LocationDetails({ onAddComment, onToggled }) {
     </>
 }
 
+//onToggled={()=>{}}

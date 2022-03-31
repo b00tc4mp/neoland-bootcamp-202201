@@ -30,6 +30,7 @@ export function UserData({onUpdatePassword}) {
                 .then(() => {
                     setName(name)
                     setEmail(email)
+                    alert('datos actualizados')
                 })
                 .catch(error => { throw error })
         } catch ({message}) {
@@ -46,10 +47,10 @@ export function UserData({onUpdatePassword}) {
 
     return <div className="data">
         <form className="data__form" onSubmit={updateData} method="post">  
-            <Input className="data__name-input" type="text" name="name" placeholder="Nombre" required={true} defaultValue={name}/>
-            <Input className="data__email-input" type="email" name="email" placeholder="e-mail" required={true} defaultValue={email}/>
-            <Button type="submit">Guardar cambios</Button>
-            <Link className="data__update-password-link" href="" onClick={goToUpdatePassword}>Editar contraseña</Link>
+            <Input className="data__name-input" type="text" name="name" placeholder="Nombre" required={true} defaultValue={name} label="Nombre: "/>
+            <Input className="data__email-input" type="email" name="email" placeholder="e-mail" required={true} defaultValue={email} label="e-mail: "/>
+            <Button className="button" type="submit">Guardar cambios</Button>
+            <Link className="link" href="" onClick={goToUpdatePassword}>Editar contraseña</Link>
         </form>
 
     </div>

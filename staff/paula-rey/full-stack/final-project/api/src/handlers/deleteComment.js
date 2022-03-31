@@ -5,9 +5,9 @@ module.exports = (req, res) => {
     try {
         const userId = verifyTokenAndGetUserId(req)
 
-        const { params: { commentId } } = req  //2 params?
+        const { params: { commentId } } = req  
 
-        deleteComment(userId, commentId) //if only 1 param, remove here
+        deleteComment(userId, commentId) 
             .then(() => res.status(204).send())
             .catch(error => res.status(400).json({ error: error.message }))
     } catch (error) {

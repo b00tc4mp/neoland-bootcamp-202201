@@ -37,10 +37,7 @@ connect('mongodb://localhost:27017/dogether-db')
 
 
     .then(() => Promise.all([
-        // User.deleteOne({ email: 'pirulin@mail.com' }),
-        // User.deleteOne({ email: 'pepito@grillo.com' }),
-        // User.deleteOne({ email: 'agua@grillo.com' }),
-        // User.deleteOne({ email: 'fire@grillo.com' }),
+       
         User.deleteMany(),
         Location.deleteMany(),
         Comment.deleteMany()

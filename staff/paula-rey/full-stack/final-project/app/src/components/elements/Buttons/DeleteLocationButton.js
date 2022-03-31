@@ -21,7 +21,7 @@ export function DeleteLocationButton({locationId, onDeletedLocation}) {
   
 
     return <>
-            <Button onClick={handleDeleteLocation}><DeleteIcon/></Button>
+            <Button onClick={handleDeleteLocation}><DeleteIcon className="delete-icon"/></Button>
     </>
 }
 

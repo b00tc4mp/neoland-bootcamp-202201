@@ -1,6 +1,6 @@
 import './LoginForm.sass'
 import { authenticateUser } from '../logic'
-import { Input, Button, Link } from '.'
+import { Input, Button, Link, Logo } from '.'
 
 
 export function LoginForm({ onLoggedIn, onRegister }) {
@@ -30,7 +30,8 @@ export function LoginForm({ onLoggedIn, onRegister }) {
     }
 
     return <div>
-        <form className="login__form" onSubmit={onSubmit}>
+        <form className="login-form" onSubmit={onSubmit}>
+            <h1 className="login-form__name">DOGETHER</h1> 
             <Input className="input" type="email" name="email" placeholder="email" required={true}/>
             <Input className="input" type="password" name="password" placeholder="contraseña" required={true}/>
             <Button className="button" type="submit">Iniciar sesión</Button>

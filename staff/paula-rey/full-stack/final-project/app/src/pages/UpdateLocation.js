@@ -1,7 +1,6 @@
 import './UpdateLocation.sass'
 import { updateLocation, retrieveLocation } from '../logic'
-import { Input, Select } from '../components'
-import { Button } from '../components'
+import { Input, Select, Button } from '../components'
 import { data } from 'commons'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -27,7 +26,7 @@ export function UpdateLocation({ onModify }) {
                 setImage(image)
                 setAddress(address)
                 setCity(city)
-
+                
         } catch (error) {
             alert(error.message)
         }
@@ -40,6 +39,7 @@ export function UpdateLocation({ onModify }) {
 
             await updateLocation(sessionStorage.token, locationId, type, title, image, address, city)
             onModify()
+            alert("localización modificada")
 
         } catch (error) {
             alert(error.message)
@@ -54,18 +54,16 @@ export function UpdateLocation({ onModify }) {
 
 
 
-    return <>
-        <form onSubmit={onSubmit}>
-            <Select name="type" placeholder="type"options={locationTypes} required={true} selected={type} label="Tipo"/>
-            <Select name="city" placeholder="city"options={locationCities} required={true} selected={city} label="Ciudad"/>
-            <Input type="text" name="title" placeholder="Título" defaultValue={title} label="Título" />
-            <Input type="text" name="image" placeholder="url(opcional)" defaultValue={image} label="Inserte url"/>
-            <Input type="text" name="address" placeholder="Dirección" defaultValue={address} label="Dirección" />
-            <Button type="submit" innerText="Modificar"/>
+    return <div>
+        <form className="update-location__form" onSubmit={onSubmit}>
+            <Select className="update-location__type" name="type" placeholder="type"options={locationTypes} required={true} selected={type} label="Tipo"/>
+            <Select className="update-location__city" name="city" placeholder="city"options={locationCities} required={true} selected={city} label="Ciudad"/>
+            <Input className="update-location__title" type="text" name="title" placeholder="Título" defaultValue={title} label="Título" />
+            <Input className="update-location__image" type="text" name="image" placeholder="url(opcional)" defaultValue={image} label="Inserte url de imagen"/>
+            <Input className="update-location__address" type="text" name="address" placeholder="Dirección" defaultValue={address} label="Dirección" />
+            <Button className="button" type="submit" children="Modificar"/>
         </form>
-        
-
-    </>
+    </div>
 
 }
 

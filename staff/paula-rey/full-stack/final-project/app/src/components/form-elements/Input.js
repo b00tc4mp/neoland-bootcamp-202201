@@ -5,7 +5,7 @@ export function Input({ className='', type='text', name= '', placeholder = 'Escr
 
     return <div >
         {label && <label htmlFor={name}>{label}</label>}
-        <input className={className} type={type} name={name} placeholder={placeholder} required={required} value={defaultValue} disabled={disabled}/>
+        <input className={className} type={type} name={name} placeholder={placeholder} required={required} defaultValue={defaultValue} disabled={disabled}/>
     </div>
 
 }

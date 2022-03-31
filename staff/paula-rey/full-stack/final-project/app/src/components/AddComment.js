@@ -39,4 +39,3 @@ export function AddComment({ onCreatedComment }) {
 
 }
 
-// key={`${Math.floor((Math.random() * 1000))}`}

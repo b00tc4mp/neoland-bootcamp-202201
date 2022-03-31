@@ -14,7 +14,6 @@ Gracias a la creación de una preciosa comunidad, entre todos podremos descubir 
 - Crear nuevas localizaciones encontradas.
 - Comentar localizaciones de otros usuarios.
 - Guardar localizaciones favoritas.
-- Seguir a otros usuarios.
 
 ### Use Cases
 
@@ -75,38 +74,9 @@ comment
 
 
 
-## Tasks history
-
-##### Data
-
-- ~~DONE populate.js to test my models in populate.js~~
-
-##### Logic
-
-- ~~DONE create package logic (2 days)~~
-
-##### API
-
-- ~~DONE handlers (one day)~~
-
-#### Client
-
-##### App
-
-- ~~DONE create main views (components) (3d)~~
-- DOING mechanize navigations (3d)
-
-##### Logic
-
-- ~~DONE logics of app(2 days)~~
 
 
 
-<!-- TODO validaciones reales (minLength..., @, etc) en schemas -->
-
-<!-- Mensajes crearlos en la imsma view con setView -->
-
-<!-- delete con un alert guarro -->
 
 
 

@@ -19,7 +19,7 @@ export function FavoriteButton({ locationId, isFavorite= false, onToggled }) {
         try {
             await toggleFavoriteLocation(sessionStorage.token, locationId)
             setFavorite(!favorite)
-            onToggled()
+            onToggled && onToggled()
 
         } catch (error) {
             alert(error.message)

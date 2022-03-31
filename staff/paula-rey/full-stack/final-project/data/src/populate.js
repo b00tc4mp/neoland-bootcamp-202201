@@ -17,20 +17,23 @@ connect('mongodb://localhost:27017/dogether-db')
 
     .then(() => {
         const anonymous = new User({ name: 'anonymous', email: 'anonymous@mail.com', password: '123123123' })
-        const agua = new User({ name: 'Agua Cate', email: 'aguacate@mail.com', password: '123123123' })
-        const ora = new User({ name: 'Ora Culo', email: 'oraculo@mail.com', password: '123123123' })
-        const wendy = new User({ name: 'Wendy Pan', email: 'wendypan@mail.com', password: '123123123' })
-        const pepi = new User({ name: 'Pepi Gri', email: 'pepigri@mail.com', password: '123123123' })
-        const sirius = new User({ name: 'Sirius Black', email: 'siriusblack@mail.com', password: '123123123' })
+        const agua = new User({ name: 'Agua', email: 'agua@mail.com', password: '123123123' })
+        const isabel = new User({ name: 'Isabel', email: 'isabel@mail.com', password: '123123123' })
+        const wendy = new User({ name: 'Wendy', email: 'wendy@mail.com', password: '123123123' })
+        const pepe = new User({ name: 'Pepe', email: 'pepe@mail.com', password: '123123123' })
+        const sirius = new User({ name: 'Sirius', email: 'sirius@mail.com', password: '123123123' })
+        const carmen = new User({ name: 'Carmen', email: 'carmen@mail.com', password: '123123123' })
+        const jorge = new User({ name: 'Jorge', email: 'jorge@mail.com', password: '123123123' })
+        const carlos = new User({ name: 'Carlos', email: 'carlos@mail.com', password: '123123123' })
 
-        return Promise.all([anonymous.save(), agua.save(), ora.save(), wendy.save(), pepi.save(), sirius.save()])
+        return Promise.all([anonymous.save(), agua.save(), isabel.save(), wendy.save(), pepe.save(), sirius.save(), carmen.save(), jorge.save(), carlos.save()])
     })
 
 
     .then(_users => {
         users = _users
 
-        const [anonymous, agua, ora, wendy, pepi, sirius] = users
+        const [anonymous, agua, wendy, sirius] = users
 
         const location1 = new Location({ user: agua.id, type: 'Restaurante', title: 'Restaurante Rosita', image: 'https://media-cdn.tripadvisor.com/media/photo-s/0d/26/ee/4e/su-entrada-principal.jpg', address: 'Calle Maria Cristina, 34', city: 'Barcelona' })
         const location2 = new Location({ user: agua.id, type: 'Playa', title: 'Playa del Morro', image: 'https://photo620x400.mnstatic.com/69668718400a76b234407987c597487d/playa-del-morro.jpg', address: 'Avenida plunchimplera, 8', city: 'Tarragona' })
@@ -46,19 +49,19 @@ connect('mongodb://localhost:27017/dogether-db')
     .then(locations => {
 
         const [location1, location2, location4, location5, location6, location7] = locations
-        const [anonymous, agua, ora, wendy, pepi, sirius] = users
+        const [anonymous, agua, isabel, wendy, pepe, sirius] = users
 
-        const pepiComment = new Comment({ user: pepi.id, location: location1.id, text: 'super atentos con mis peludos gran sitio!' })
+        const pepeComment = new Comment({ user: pepe.id, location: location1.id, text: 'super atentos con mis peludos gran sitio!' })
         const aguaComment1 = new Comment({ user: agua.id, location: location5.id, text: 'playa muy sucia' })
         const aguaComment2 = new Comment({ user: agua.id, location: location4.id, text: 'muy buen lugar para ir con tu amigo peludo'})
         const siriusComment = new Comment({ user: sirius.id, location: location5.id, text: 'me encantan los atardeceres alli, no hay mucha gente por lo que no resulta agobiante'})
         const wendyComment = new Comment({ user: wendy.id, location: location7.id, text: 'imposible estar traqnuilo dentro del aforo que tiene siempre'})
 
-        pepi.favorites.push(location2)
+        pepe.favorites.push(location2)
         sirius.favorites.push(location1, location2, location5)
         wendy.favorites.push(location2, location6, location7)
 
-        return Promise.all([pepiComment.save(), aguaComment1.save(), aguaComment2.save(), siriusComment.save(), wendyComment.save(), pepi.save(), sirius.save(), agua.save(), ora.save(), wendy.save()])
+        return Promise.all([pepeComment.save(), aguaComment1.save(), aguaComment2.save(), siriusComment.save(), wendyComment.save(), pepe.save(), sirius.save(), agua.save(), isabel.save(), wendy.save()])
 
     })
 

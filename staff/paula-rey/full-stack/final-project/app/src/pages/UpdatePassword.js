@@ -2,7 +2,7 @@ import './UpdatePassword.sass'
 import { updateUserPassword } from '../logic'
 import { Input, Link, Button } from '../components'
 
-export function UpdatePassword() {
+export function UpdatePassword({onBack}) {
 
     const updatePassword = event => {
         event.preventDefault()
@@ -11,18 +11,18 @@ export function UpdatePassword() {
 
         try {
             updateUserPassword(sessionStorage.token, currPassword, newPassword, confirmPassword)
-                .then(() => alert('password updated'))
+                .then(() => alert('contraseña modificada'))
                 .catch(error => {throw error})
         } catch ({message}) {
             alert(message)
         }
     }
 
-    // const goBack = event => {
-    //     event.preventDefault()
+    const goBack = event => {
+        event.preventDefault()
 
-    //     onBack()
-    // }
+        onBack()
+    }
 
 
     return <div className="update-password">
@@ -30,10 +30,8 @@ export function UpdatePassword() {
             <Input id="currPassword" className="update-password__curr-password-input" type="password" name="currPassword" label="Contraseña actual" />
             <Input id="password" className="update-password__password-input" type="password" name="newPassword" label="Nueva contraseña"/>
             <Input id="confirmPassword" className="update-password__re-password-input" type="password" name="confirmPassword" label="Confirmar contraseña" />
-
-            <Button type="submit">Cambiar contraseña</Button>
-
-            {/* <Link className="update-password__back-link" href="" onClick={goBack}>Atrás</Link> */}
+            <Button className="button" type="submit">Cambiar contraseña</Button>
+            <Link className="link" href="" onClick={goBack}>Atrás</Link>
         </form>
     </div>
 }

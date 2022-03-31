@@ -27,12 +27,15 @@ export function RegisterForm({ onLogin, onRegistered }) {
         onLogin(event)
     }
 
-    return <form className="register__form" onSubmit={onSubmit}>
+    return <div>
+        <form className="register-form" onSubmit={onSubmit}>
+            <h1 className="register-form__name">DOGETHER</h1> 
             <Input className="input" type="text" name="name" placeholder="Nombre" required={true} />
             <Input className="input" type="email" name="email" placeholder="email" required={true}/>
             <Input className="input" type="password" name="password" placeholder="contraseña" required={true} />
             <Button className="button" type="submit">Registrarse</Button>
             <Link className="link" href="" onClick={goToLogin}>Iniciar sesión</Link>
         </form>
+    </div>
 }
 

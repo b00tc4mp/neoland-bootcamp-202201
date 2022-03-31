@@ -15,7 +15,6 @@ export function ListSearchResults({ query = '', type = '', city = '', onLocation
 
             locations.forEach(location => {
                 location.isFavorite = favorites.some(({ id }) => id === location.id)
-                //location.isFavorite = favorites.some(favorite => favorite.id === location.id)
             })
 
             setLocations(locations)
