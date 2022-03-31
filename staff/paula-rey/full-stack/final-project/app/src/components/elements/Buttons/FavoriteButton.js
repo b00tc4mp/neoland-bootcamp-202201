@@ -8,11 +8,11 @@ export function FavoriteButton({ locationId, isFavorite= false, onToggled }) {
 
     const [favorite, setFavorite] = useState(isFavorite)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        setFavorite(isFavorite)
+    //     setFavorite(isFavorite)
 
-    }, [isFavorite])
+    // }, [isFavorite])
 
 
     const toggleFavorite = async () => {

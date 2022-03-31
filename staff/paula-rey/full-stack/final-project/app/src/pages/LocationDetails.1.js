@@ -1,10 +1,10 @@
 import './LocationDetails.sass'
 import { useState, useEffect } from 'react'
-import { retrieveLocation } from '../logic'
-import { ListComments } from '../components'
+import { retrieveLocation, listFavoritesLocations } from '../logic'
+import { FavoriteButton, ListComments } from '../components'
 import { useParams } from 'react-router-dom'
 
-export function LocationDetails() {
+export function LocationDetails({onToggled}) {
     const { locationId } = useParams()
 
     const [location, setLocation] = useState({})
@@ -12,7 +12,9 @@ export function LocationDetails() {
     useEffect(async () => {
         try {
             const location = await retrieveLocation(sessionStorage.token, locationId)
+            const favorites = await listFavoritesLocations(sessionStorage.token)
 
+            location.isFavorite = favorites.some(({ id }) => id === location.id)
             setLocation(location)
 
         } catch (error) {
@@ -24,6 +26,7 @@ export function LocationDetails() {
 
     return <>
         <div className="details">
+            <FavoriteButton locationId={location.id} isFavorite={location.isFavorite} onToggled={onToggled} /> 
             <h1 className="details__title">{location.title}</h1>
             <p className="details__date">{new Date(location.date).toLocaleDateString()}</p>
             <img className="details__image" src={location.image} />
@@ -35,3 +38,4 @@ export function LocationDetails() {
     </>
 }
 
+//onToggled={()=>{}}

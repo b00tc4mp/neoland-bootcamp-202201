@@ -72,7 +72,13 @@ comment
 - MongoDB
 - Sass
 
+### Data Model
 
+- Añadir lista de seguidores
+- Mejorar los alerts a realistas
+- Mejorar SASS
+- Hacer testing
+- Poner feedback
 
 
 
