@@ -1,14 +1,14 @@
 const { models: { User, Tournament } } = require('data')
 const { validators: { validateId, validateString, validateDate } } = require('commons')
 
-function createTournament(userId, title, description, location, image, date) {
+function createTournament(userId, title, description, location, date) {
     validateId(userId, 'user')
-    validateString(title, 'title')
+    /* validateString(title, 'title')
     validateString(description, 'description')
-    validateString(location, 'location')
-    validateString(image, 'image')
+    validateString(location, 'location') */
     validateDate(date, 'date')
 
+    const image = "https://www.valseriana.eu/wp-content/uploads/2021/07/padel.jpg"
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw new Error(`user with id ${userId} not found`)

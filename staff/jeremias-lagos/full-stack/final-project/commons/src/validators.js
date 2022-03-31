@@ -67,7 +67,7 @@ function validateString(string, explain = 'string') {
     throw new Error(`${explain} has spaces around`);
 }
 
-function validateId(id, explain = 'string') {
+function validateId(id, explain = 'id') {
   validateString(id, explain);
 
   if (id.length !== 24) throw new Error(`wrong ${explain} length`);

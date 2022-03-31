@@ -1,10 +1,9 @@
 import './Register.sass'
 import { registerUser } from '../logic'
-import { Button } from '../components'
-import { Input } from './form-elements'
+
 
 function Register({ onLogin, onRegistered }) { 
-    // si es una prop pueden NO pasarla
+   
     const register = event => {
         event.preventDefault()
         const { target: { name: { value: name }, email: { value: email }, password: { value: password } } } = event
@@ -31,12 +30,13 @@ function Register({ onLogin, onRegistered }) {
     }
 
     return <div className='register'>
-        <form onSubmit={onSubmit}>
-            <Input type="text" name="name" placeholder="name" />
-            <Input type="email" name="email" placeholder="email" />
-            <Input type="password" name="password" placeholder="password" />
-            <Button type='submit'>Register</Button>
-            <a href='' onClick={goToLogin}>Login</a>
+        <form className='register__form' onSubmit={onSubmit}>
+        <h1 className='register__title'>REGISTER</h1>
+            <input className='register__input-name' type='text' name='name' placeholder='name' />
+            <input className='register__input-email' type='email' name="email" placeholder='email' />
+            <input className='register__input-password' type='password' name='password' placeholder='password' />
+            <button className='register__button' type='submit'>Register</button>
+            <a className='login__link' href='' onClick={goToLogin}>Login</a>
         </form>
     </div>
 

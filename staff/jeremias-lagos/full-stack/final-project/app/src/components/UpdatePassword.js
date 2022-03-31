@@ -21,20 +21,20 @@ function UpdatePassword({ onBack }) {
         onBack()
     }
 
-    return <div className="update-password">
-        <form className="update-password__form" onSubmit={updatePassword} method="post">
-            <label htmlFor="currPassword">Current Password</label>
-            <input id="currPassword" className="update-password__curr-password-input" type="password" name="currPassword" />
+    return <div className='update-password'>
+        <form className='update-password__form' onSubmit={updatePassword} method='post'>
+            <label className='current-password__label' htmlFor="currPassword">Current Password:</label>
+            <input id='currPassword' className='current-password__input' type='password' name='currPassword' />
 
-            <label htmlFor="password">New password</label>
-            <input id="password" className="update-password__password-input" type="password" name="newPassword" />
+            <label className='new-password__label' htmlFor="password">New password:</label>
+            <input id='password' className='new-password__password-input' type='password' name='newPassword' />
 
-            <label htmlFor="confirmPassword">Confirm new password</label>
-            <input id="confirmPassword" className="update-password__re-password-input" type="password" name="confirmPassword" />
+            <label className='confirm-password__label' htmlFor="confirmPassword">Confirm new password:</label>
+            <input id='confirmPassword' className='confirm-password__input' type='password' name='confirmPassword' />
 
-            <button className="update-password__submit">Update Password</button>
+            <button type='submit' className='update-password__button'>Update Password</button>
 
-            <a className="update-password__back-link" href="" onClick={goBack}>back</a>
+            <a className='update-password__back-link' href='' onClick={goBack}>back</a>
         </form>
     </div>
 }

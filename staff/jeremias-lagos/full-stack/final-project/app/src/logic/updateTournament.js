@@ -1,14 +1,14 @@
 import { validators } from 'commons'
 const { validateToken, validateId, validateString, validateDate } = validators
 
-function updateTournament(token, tournamentId, title, description, location, image, date) {
-    validateToken(token)
+function updateTournament(token, tournamentId, title, description, location, date) {
+    /* validateToken(token)
     validateId(tournamentId)
     validateString(title)
     validateString(description)
     validateString(location)
-    validateString(image)
-    validateDate(date)
+    validateString(image) 
+    validateDate(date) */
 
     return fetch(`http://localhost:8080/api/tournaments/${tournamentId}`, {
         method: 'PATCH',
@@ -16,7 +16,7 @@ function updateTournament(token, tournamentId, title, description, location, ima
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ title, description, location, image, date })
+        body: JSON.stringify({ title, description, location, date })
 
     })
         .then(res => {

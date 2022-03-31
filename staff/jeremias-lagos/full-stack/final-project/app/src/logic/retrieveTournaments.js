@@ -2,7 +2,7 @@ import { validators } from 'commons'
 const { validateToken, validateId } = validators
 
 function retrieveTournaments(token, tournamentId) {
-    debugger
+    
     validateToken(token)
     validateId(tournamentId)
 
@@ -30,4 +30,5 @@ function retrieveTournaments(token, tournamentId) {
         })
 }
 
-export default retrieveTournaments
+export default retrieveTournaments 
+

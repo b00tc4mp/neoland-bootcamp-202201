@@ -1,7 +1,6 @@
 import './Search.sass'
-import { Button } from '../components'
 import { useNavigate } from 'react-router-dom'
-import { Input } from './form-elements'
+
 
 
 function Search({ className }) {
@@ -10,23 +9,25 @@ function Search({ className }) {
     const search = event => {
         event.preventDefault()
 
-        const { target: { query: { value: query }, location: { value: location }, date: { value: date} } } = event
+        const { target: { query: { value: query }, location: { value: location }, date: { value: date } } } = event
 
-        navigate(`search?query=${query}&location=${location}&date=${date}`)   
+        navigate(`search?query=${query}&location=${location}&date=${date}`)
     }
 
     return <>
         <div className={`search ${className}`}>
+            <h1 className='search__title'>FIND TOURNAMENTS 🏆</h1>
             <form className='search__form' onSubmit={search}>
-                <div>
-                <Input type="text" className='search__input' name="query" placeholder='Title' /></div>
-                
-                <Input type="text" className='search__input' name="location" placeholder='City' />
-                <Input type="date" className='search__input' name="date" />
 
-                <Button type="submit">Search</Button>            
+                <input type='text' className='search__input-title' name='query' placeholder=' Title' />
+
+                <input type='text' className='search__input-city' name='location' placeholder=' City' />
+                <input type='date' className='search__input-date' name='date' />
+
+                <button className='search__button' type='submit'>Search</button>
             </form>
         </div>
+
     </>
 
 }

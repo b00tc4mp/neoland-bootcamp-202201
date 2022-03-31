@@ -1,7 +1,5 @@
 import './Login.sass'
 import { authenticateUser } from '../logic'
-import { Button } from "../components"
-import { Input } from './form-elements'
 
 
 function Login({ onLogged, onRegister }) {
@@ -34,12 +32,12 @@ function Login({ onLogged, onRegister }) {
     }
 
     return <div className='login'>
-        <form onSubmit={onSubmit}>
-            <h1>LOGIN</h1>
-            <Input type='email' name='email' placeholder='email' />
-            <Input type='password' name='password' placeholder='password' />
-            <Button type='submit'>Login</Button>
-            <a href='' onClick={goToRegister}>Register</a>
+        <form className='login__wrapper' onSubmit={onSubmit}>
+            <h1 className='login__title'>LOGIN</h1>
+            <input className='login__input-email' type='email' name='email' placeholder='email' />
+            <input className='login__input-password' type='password' name='password' placeholder='password' />
+            <button className='login__button' type='submit'>Login</button>
+            <a className='register__link' href='' onClick={goToRegister}>Register</a>
         </form>
     </div>
 }

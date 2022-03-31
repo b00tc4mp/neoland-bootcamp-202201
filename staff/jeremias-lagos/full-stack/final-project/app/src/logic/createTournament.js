@@ -1,12 +1,11 @@
 import { validators } from 'commons'
 const { validateString, validateDate, validateToken} = validators
 
-function createTournament(token, title, description, location, image, date) {
+function createTournament(token, title, description, location, date) {
     validateToken(token)
-    validateString(title)
+   /*  validateString(title)
     validateString(description)
-    validateString(location)
-    validateString(image)
+    validateString(location) */
     validateDate(date)
 
     return fetch('http://localhost:8080/api/tournaments', {
@@ -15,7 +14,7 @@ function createTournament(token, title, description, location, image, date) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ title, description, location, image, date })
+        body: JSON.stringify({ title, description, location, date })
     })
         .then(res => {
             const { status } = res

@@ -2,41 +2,33 @@
 
 ## Intro
 <!-- TODO rebuild description -->
-TOPÁDEL  is a padel tournament website. you can participate in tournaments created by the admin, and see your results.
+TOPÁDEL es una aplicación que decidí crear para mis amigos y yo. Como buenos aficionados al pádel, quedamos 2 o 3 veces por semana para jugar. Que mejor que crear los torneos en esta app y organizarnos mejor? :)
 
 ![alt](https://media.giphy.com/media/vCGuFRLfue4H8LUEqa/giphy.gif)
 
 
 ## Funcional descripcion
 
+
+
 ### Activities
 
-<!-- De primeras solo habrá un admin -->
-<b>Admin:<b>
-- Añadir torneo
-- Ver sus torneos pendientes
-- Ver torneos pasados
-- Ver los torneos por celebrar de forma global
-- Actualizar resultados de un toreno activo y creado por él mismo
 
-<!-- los usuarios son apuntados por el admin en los torneos, ellos por sí mismo no pueden apuntarse ni pedir a través de la app que se les apunten -->
+- Crear Torneos 
+- Modificar la información de los torneos creados(descripción, cuidad, fecha...)
+- Buscar Torneos por Título, cuidad y día
+- Ver los detalles de un torneo
+- Borrar Torneos
 
-<b>User:<b>
-- Ver lista de torneos en las que participa
-- Buscar tus torneos antiguos
-- Ver los resultados de torneos antiguos
-- Ver el torneo actual activo
 
 
 ### Use Cases
 
-![alt](./images/use-cases.png)
-
-
+![alt](./images/use-cases-topadel.png)
 
 
 ### Flows
-![alt](./images/flows-topadel.png)
+![alt](./images/flow-diagram.png)
 
 
 ## technical Descripcion
@@ -46,6 +38,8 @@ TOPÁDEL  is a padel tournament website. you can participate in tournaments crea
 ![alt](./images/blocks.jpg)
 
 ### Data Model
+
+![alt](./images/main-views-topadel.png)
 
 #### Schemas
 
@@ -67,14 +61,9 @@ tournament
 
 ![alt](./images/database-er-topadel.png)
 
-<!-- Lista de prioridades
 
-- ER diagram
-- uses cases
-- flows(vistas)
-- data package 
-_______________ Para mañana -------------------
-- wireframes 
-- review flows with ux/ui students
-
--->
+### TODO LIST
+- Hacer Testing de Lógicas de server.
+- Implementar un mejor feedback.
+- Poder actualizar las fotos de los torneos.
+- Añadir más funcionalidades para los usuarios: Inscribirse a Torneos y añadir favoritos.

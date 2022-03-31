@@ -1,37 +1,18 @@
 import './Header.sass'
-import { IconLogo, IconProfile, IconHamburger } from '../icons'
+import { IconLogo } from '../icons'
+import {FaUser} from "react-icons/fa"
 
-function Header( {onLogo, onProfile, onBurger}) {
+function Header({ onLogo, onProfile }) {
 
     const goToLogo = event => {
         event.preventDefault()
-        if(onLogo) onLogo()
-    }
-
-    const goToProfile = event => {
-        event.preventDefault()
-        if(onProfile) onProfile()
-    }
-
-    const goToBurger = event => {
-        event.preventDefault()
-        if(onBurger) onBurger()
+        if (onLogo) onLogo()
     }
 
     return <>
         <header className='header'>
-            <a href='' onClick={goToLogo}>
-                <IconLogo />
-            </a>
-
-            <a href='' onClick={goToProfile}>
-                <IconProfile />
-            </a>
-
-            <a  href='' onClick={goToBurger}>
-                <IconHamburger />
-            </a>
-
+            <a href='' onClick={goToLogo}> <IconLogo/></a>
+            <FaUser onClick={onProfile} className='header__icon-profile'/>
         </header>
     </>
 }

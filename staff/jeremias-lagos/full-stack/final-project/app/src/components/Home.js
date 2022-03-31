@@ -1,17 +1,19 @@
-// import { retrieveUser } from '../logic'
 import { useEffect, useState } from 'react'
 import Search  from './Search'
 import './Home.sass'
-import { Button } from "../components"
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import Results from './Results'
 import { useSearchParams } from 'react-router-dom'
 import TournamentDetails from './TournamentDetails'
 import { Modal } from './elements'
+import ModalCreateTournament from './elements/ModalCreateTournament'
+import ModalUpdateTournament from './elements/ModalUpdateTournament'
+import TournamentList from './TournamentList'
 
 
 
-function Home() {
+
+function Home({onBack}) {
    
 
     const navigate = useNavigate()
@@ -27,27 +29,18 @@ function Home() {
         navigate(`search?query=${query}&location=${location}&date=${date}`)
     }
 
-
-
     return <>
     <div className='home'>
        
-       <nav className='home__header'>
-           <h1>TOPADDLE</h1>
-       </nav>
-
-       
-
+       <div className='home__header'>
+       </div>
        <Search className='home__search' onSearch={search} />
-
+   </div>
        <Routes>
            <Route path='search' element={<Results  />} />
-           <Route path='/results/:tournamentId' element={<TournamentDetails />} />
+           <Route path='/results/:tournamentId' element={<TournamentDetails onBack={onBack} />} />
+          
        </Routes>
-       
-
-
-   </div>
     </>
 }
 

@@ -11,6 +11,7 @@ import retrieveTournaments from './retrieveTournaments'
 import updateTournament from './updateTournament'
 import searchTournament from './searchTournament'
 import deleteTournament from './deleteTournament'
+import listTournaments from './listTournaments'
 
 
 export {
@@ -26,5 +27,6 @@ export {
     retrieveTournaments,
     updateTournament,
     searchTournament,
-    deleteTournament
+    deleteTournament,
+    listTournaments
 }

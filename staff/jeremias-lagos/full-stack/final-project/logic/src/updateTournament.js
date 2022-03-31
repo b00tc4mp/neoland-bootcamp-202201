@@ -3,14 +3,13 @@ const { validators: { validateId, validateString, validateDate } } = require('co
 
 
 
-function updateTournament(userId, tournamentId, title, description, location, image, date) {
+function updateTournament(userId, tournamentId, title, description, location, date) {
     validateId(userId, 'userId')
     validateId(tournamentId, 'tournament id')
     validateString(title, 'title')
     validateString(description, 'description')
-    validateString(location, 'location')
-    validateString(image, 'image')
-    validateDate(date, 'date')
+    validateString(location, 'location')  
+    validateDate(date, 'date') 
 
     return User.findById(userId).lean()
         .then(user => {
@@ -25,7 +24,6 @@ function updateTournament(userId, tournamentId, title, description, location, im
             tournament.title = title
             tournament.description = description
             tournament.location = location
-            tournament.image = image
             tournament.date = date
 
             return tournament.save()

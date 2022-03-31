@@ -8,6 +8,7 @@ import TournamentDetails from './TournamentDetails'
 import Results from './Results'
 import Search from './Search'
 import Button from './Button'
+import TournamentList from './TournamentList'
 
 
 
@@ -19,6 +20,7 @@ export {
      UpdatePassword,
      DeleteAccount,
      TournamentDetails,
+     TournamentList,
      Results,
      Search,
      Button
