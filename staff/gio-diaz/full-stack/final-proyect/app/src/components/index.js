@@ -6,11 +6,7 @@ import UpdatePassword from './UpdatePassword'
 import DeleteAccount from './DeleteAccount'
 import Help from './Help'
 import Landing from './Landing'
-import Notes from './Notes'
 import Progress from './Progress'
-
-
-
 
 export {
     Home,
@@ -20,7 +16,6 @@ export {
     DeleteAccount,
     Help,
     Landing,
-    Notes,
     Profile,
     Progress
   

@@ -15,15 +15,13 @@ Esta aplicacion esta enfocada en darle una visión realista al usuario acerca de
 
  - Recibir una frase motivadora todos los dias.
 
- - Elegir la hora exacta en la que quieres recibir tu frase diaria.
-
  - Verificar tu progreso en un periodo de tiempo determinado.
-
- - Elegir el marco de tiempo para la comparativa de tus notas, entre 2, 4 o 6 meses.
 
  - Encontrar ideas acerca de ejercicios que ayudaran a que tu proceso sea mas optimo.
 
  - Encontrar ayuda con enlaces a centros especializados.
+
+ - Tener acceso a notas guardadas despues de un tiempo determinado.
 
 ### Use Cases
 
@@ -62,9 +60,12 @@ note
 - mood (String, required)
 - date (Date, required)
 
+quotes
+- text (String, required)
+
 #### ER Diagram
 
-![alt Main Views](dataModel.png)
+![alt Main Views](SchemasDiagram.png)
 
 ## Tasks history
 
@@ -91,9 +92,9 @@ note
 ### Data
 
 - ~~TODO create mongoose schemas and models (2h)~~
-- TODO create populate.js to test my models (1h)
+- ~~TODO create populate.js to test my models (1h)~~
 
 ### App
 
-- TODO create main views (components) (1h)
-- TODO mechanize navigations (.5h) -->
+- ~~TODO create main views (components) (1h)~~
+- ~~TODO mechanize navigations (.5h) -->~~

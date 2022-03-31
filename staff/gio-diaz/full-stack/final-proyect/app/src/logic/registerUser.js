@@ -6,7 +6,7 @@ function registerUser(name, email, password) {
     validateEmail(email)
     validatePassword(password)
 
-    return fetch('http://localhost:8080/api/user', {
+    return fetch('http://localhost:8080/api/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ function registerUser(name, email, password) {
             const { status } = res
 
             if (status === 201) {
-                return
+                return alert('The user has been registered')
             } else if (status >= 400 && status < 500) {
                 return res.json()
                     .then(payload => {

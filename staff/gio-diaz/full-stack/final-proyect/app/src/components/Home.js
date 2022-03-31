@@ -1,16 +1,22 @@
 import './Home.sass'
 import { useEffect, useState } from 'react'
 import { retrieveUser, retrieveRandomQuote, retrieveNote } from '../logic'
-import { Header, Modal, RandomQuote } from './elements'
+import { Header, RandomQuote, ModalCreateNote, Button } from './elements'
 import moment from "moment"
-
-
 
 function Home({ onLogo, onProfile, onProgress, onHelp }) {
     const [name, setName] = useState()
     const [quote, setQuote] = useState({})
     const [note, setNote] = useState()
-    console.log(note)
+    const [isShowModal, setIsShowModal] = useState()
+
+    const toggleModal = () => {
+        setIsShowModal(true)
+    }
+
+    const closeModal = () => {
+        setIsShowModal(false)
+    }
 
     useEffect(() => {
         try {
@@ -49,16 +55,28 @@ function Home({ onLogo, onProfile, onProgress, onHelp }) {
             alert(error.message)
         }
     }
+
     return <>
-        <Header onLogo={onLogo} onProfile={onProfile} onProgress={onProgress} onHelp={onHelp} />
-        <p>Happy day, {name}</p>
-        <h1><RandomQuote quote={quote} /></h1>
-        <button onClick={onSubmit}>Retrieve Note</button>
-        {!!note && <div>
-            <p>{note.text}</p>
-            <p>{moment(note.createdAt).format("L")}</p>
-            </div>}
-        <Modal />
+        <div className='home'>
+            <Header onLogo={onLogo} onProfile={onProfile} onProgress={onProgress} onHelp={onHelp} />
+            <div className='home__content'>
+                <div className='wrapper__text'>
+                    <h1 className='title'>Happy day, {name}</h1>
+                    <h2 className='subheading'>Enjoy the next random phrase</h2>
+                    <h2 className='subheading'>every time you update</h2>
+                </div>
+                <div className='card__quote'><RandomQuote quote={quote} /></div>
+            </div>
+            <div className='container'>
+                <Button onClick={toggleModal}>Create Note</Button>
+                <Button onClick={onSubmit}>Retrieve Note</Button>
+                {!!note && <div className='retrieve__note'>
+                    <p>{note.text}</p>
+                    <p>{moment(note.createdAt).format("L")}</p>
+                </div>}
+            </div>
+            {!!isShowModal && <ModalCreateNote onClose={closeModal} />}
+        </div>
     </>
 }
 

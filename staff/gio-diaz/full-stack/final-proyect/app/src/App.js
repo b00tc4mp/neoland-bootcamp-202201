@@ -16,26 +16,19 @@ function App() {
   const showProgress = () => navigate('/progress')
   const showHelp = () => navigate('/help')
 
-  // const keepTokenNShowHome = token => {
-  //   sessionStorage.token = token
-  //   navigate('/home')
-  // } 
-
-
-  // onLoggedIn={keepTokenNShowHome}
   return <div>
 
     <Routes>
-
       <Route path="/*" element={<Landing onLogin={showLogin} onRegister={showRegister} />} />
       <Route path="/login" element={<Login onHome={showHome} onRegister={showRegister} />} />
       <Route path="/register" element={<Register onLogin={showLogin} onRegistered={showLogin} />} />
-      <Route path="/home" element={<Home onLogo={showHome} onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} />} />
+      <Route path="/home" element={sessionStorage.token ? <Home onLogo={showHome} onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} />: <Navigate to="landing"/> } />
       <Route path="/profile" element={sessionStorage.token ? <Profile onLogo={showHome} onProfile={showProfile} onUpdatePassword={showUpdatePassword} onLogOut={showLanding} onDeleteAccount={showDeleteAccount} onProgress={showProgress} onHelp={showHelp}/> : <Navigate replace to='/login' />} />
       <Route path="/profile/update-password" element={<UpdatePassword onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} onLogo={showHome} onBack={showProfile} />} />
-      <Route path="/profile/delete-account" element={<DeleteAccount onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} onLogo={showHome} />} />
+      <Route path="/profile/delete-account" element={<DeleteAccount onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} onLogo={showHome} onBack={showProfile} />} />
       <Route path="/progress" element={<Progress onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} onLogo={showHome}/>} />
       <Route path="/help" element={<Help onProgress={showProgress} onProfile={showProfile} onHelp={showHelp} onLogo={showHome} />} />
+     
     </Routes>
   </div>
 }

@@ -1,7 +1,8 @@
-import {Input} from './elements'
+import { Input, Button } from './elements'
 import registerUser from "../logic/registerUser"
-function Register({ onLogin, onRegistered}) {
-   
+import './Register.sass'
+
+function Register({ onLogin, onRegistered }) {
 
     const goToLogin = event => {
         event.preventDefault()
@@ -23,15 +24,15 @@ function Register({ onLogin, onRegistered}) {
             alert(error.message)
         }
     }
-    return <div>
+    return <div className='register'>
         <h1>REGISTER</h1>
         <form onSubmit={register} className="register__form" >
             <Input type="name" name="name" placeholder="Name" />
             <Input type="email" name="email" placeholder="E-mail" />
-            <Input type="password" name="password"placeholder="Password" />
-        <button className="register__button">Register</button>
+            <Input type="password" name="password" placeholder="Password" />
+            <Button className="register__button">Register</Button>
         </form>
-        <a className="register__login-link" onClick={goToLogin}>Login</a>
+        <a className="login__link" onClick={goToLogin}>Login</a>
     </div>
 }
 export default Register

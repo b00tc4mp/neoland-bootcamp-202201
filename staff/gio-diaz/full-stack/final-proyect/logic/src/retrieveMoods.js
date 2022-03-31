@@ -13,8 +13,10 @@ function retrieveMoods(userId) {
             const daysNow = millisToDays(Date.now())
 
             const moods = user.notes.filter(note => {
-                if (daysNow - millisToDays(note.createdAt.getTime()) <= 90)  {
+                if (daysNow - millisToDays(note.createdAt.getTime()) > 90)  {
                     const doc = note._doc
+
+                    doc.id = doc._id.toString()
 
                     delete doc._id
                     delete doc.__v

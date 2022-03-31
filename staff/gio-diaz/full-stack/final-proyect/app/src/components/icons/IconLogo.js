@@ -1,5 +1,4 @@
 import './IconLogo.sass'
-import { HiOutlineEmojiHappy } from 'react-icons/hi';
 
 function IconLogo({onClick}) {
 
@@ -9,7 +8,7 @@ function IconLogo({onClick}) {
 
     }
     return<>
-    <HiOutlineEmojiHappy className='profile__icon' onClick={onLogo}/>
+    <img className='icon__logo' src='https://mind.plus/wp-content/uploads/2021/11/Mind-Plus_224x92-03.png' alt='' onClick={onLogo}/>
 </>
 }
 

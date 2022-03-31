@@ -2,10 +2,13 @@ import './Header.sass'
 import { IconHamburguer, IconLogo } from '../icons'
 import DropDown from './DropDown'
 import {useState} from "react"
+import {useNavigate} from "react-router-dom"
 
 
 function Header({ onLogo, onProfile, onProgress, onHelp }) {
     const [isShowDropdown, setShowDropdown] = useState(false)
+
+    const navigate = useNavigate()
     
 
     const toggleDropdown = () => {
@@ -17,8 +20,9 @@ function Header({ onLogo, onProfile, onProgress, onHelp }) {
         if(onLogo) onLogo()
     }
 
+
     return <>
-        {!!isShowDropdown && <DropDown onClose={toggleDropdown} onProfile={onProfile} onProgress={onProgress} onHelp={onHelp}>
+        {!!isShowDropdown && <DropDown className="dropdown" onClose={toggleDropdown}>
         <div>
               <a href='' className='profile__menu' onClick={(event) => {
                     event.preventDefault()
@@ -26,26 +30,32 @@ function Header({ onLogo, onProfile, onProgress, onHelp }) {
             }}>Profile</a>
             </div>
             <div>
-                <a href='' className='profile__menu' onClick={(event) => {
+                <a href='' className='progress__menu' onClick={(event) => {
                     event.preventDefault()
                     onProgress()
             }}>My Progress</a>
             </div>
             <div>
-                <a href='' className='profile__menu' onClick={(event) => {
+                <a href='' className='advices__menu' onClick={(event) => {
                     event.preventDefault()
                     onHelp()
             }}>Advices and Help</a>
             </div>
             <div>
-                <a>Cerrar sesion</a>
+                <a className='logout__menu  ' onClick={() => {
+                    delete sessionStorage.token
+                    navigate("landing")
+                }}>Cerrar sesion</a>
             </div>
             </DropDown>}
+
         <div className='Header'>
+            <div className='container__icons'>
             <a href='' onClick={goToLogo}>
                 <IconLogo />
             </a>
-            <IconHamburguer onClick={toggleDropdown} />
+            <IconHamburguer className="icon__menu" onClick={toggleDropdown} />
+            </div>
         </div>
     </>
 }
