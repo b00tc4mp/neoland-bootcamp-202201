@@ -50,6 +50,7 @@ function ProductDetails ({onBack}) {
         try {
             deleteProduct(sessionStorage.token, productId)
                 .then(() => onBack())
+                
                 .catch(error => {
                     alert(error.message)
                 })
@@ -63,7 +64,7 @@ function ProductDetails ({onBack}) {
         {product && <div className='cards-wrapper-detail'>
                 <div className='cards-wrapper__big-cards-wrapper-detail'>
                     <div className='cards-wrapper__image-wrapper-detail'>
-                    <img className='image-detail' src={`${product.image}`} />
+                    <img alt='Imagen del producto' className='image-detail' src={`${product.image}`} />
                     </div>
                     <div className='card-wrapper__attributes-wrapper-detail'>
                         <div className='card-wrapper__attributes-wrapper-detail-flex'>

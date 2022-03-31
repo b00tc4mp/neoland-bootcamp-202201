@@ -71,6 +71,7 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
           description
         ))
           .then(() => {
+            alert('¡Producto actualizado correctamente!')
             setName(name)
             setImage(productImage)
             setSize(size)

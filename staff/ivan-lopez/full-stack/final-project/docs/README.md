@@ -17,17 +17,16 @@ As User you can:
 
 - Search products
 - See product details (construction material, measures, etc...)
-- Add products to cart (TODO)
-- Buy products (TODO)
+
 
 And as Admin you can:
 
 - Register product
-- edit product
-- delete product
-- search products
-- see product details
-- view order list (TODO)
+- Update product
+- Delete product
+- Search products
+- See product details
+
 
 ### Use cases
 
@@ -41,9 +40,6 @@ And as Admin you can:
 
 ![alt main views](./images/main-views.png)
 
-#### Admin views
-
-TODO
 
 ## Technical Description
 
@@ -56,48 +52,90 @@ TODO
 #### Schemas
 
 user
-- name (String, required, min length 2)
-- email (String, required, unique)
-- password (String, required)
-- role (
-    String,
-    required,
-    enum: ['user','admin']
-    default: 'user'
-    )
-- cart (cart)
-- orders ([order])
+- name {
+    type: String,
+    required: true,
+    minlength: 2
+},
+
+- email{
+    type: String,
+        required: true,
+        unique: true
+    },
+
+- password: {
+        type: String,
+        required: true,
+        minlength: 8
+    },
+
+- role: {
+        type: String,
+        required: true,
+        enum : ['user','admin']
+    }
+
+
 
 product
-- name (String)
-- size (String)
-- color (String)
-- price (Number)
-- qty (Number)
-- description (String)
+- name: {
+        type: String,
+        required: true
+    },
 
-cart
-- items ([item])
+- image: {
+        type: String,
+        required: true
+    },
 
-item
-- product (ObjectId)
-- qty (Number)
+- size: {
+        type: String,
+        required: true
+    },
 
-order
-- date (Date)
-- cart (cart)
+- color: {
+        type: String,
+        required: true
+    },
+
+- price: {
+        type: Number,
+        required: true
+    },
+
+ - description: {
+        type: String,
+        required: true
+    }
+
 
 
 #### ER Diagram
 
 ![alt data-model ER diagram](./images/databaseERdiagram.png)
 
+### Dreams Factory 0.1 (Future version incoming....)
+
+#### TODO's
+Use cases as User:
+- Add products to cart 
+- Buy products
+
+Use cases as Admin:
+- view order list
+
+
+
+
 ### Technologies
 
-- JavaScript
-- CSS
-- HTML
-- React
-- Node.JS
-- Express
-- MongoDB
+![alt Javascript logo](./images/logosVarios.png)
+
+![alt React logo](./images/react-logo.png)
+
+![alt Node Js logo](./images/nodejs-logo.png)
+
+![alt Express logo](./images/express-logo.png)
+
+![alt Mongo DB logo](./images/mongodb-logo.jpg)
