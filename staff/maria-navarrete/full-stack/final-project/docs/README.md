@@ -9,19 +9,22 @@ bHooman es una aplicación que busca crear una comunidad para compartir, crear e
 
 ## Functional Description
 ---
-- Ver la lista completa de Acts (buenas acciones)
-- Filtrar buenas acciones, según tiempo requerido, dinero requerido, oficiales beHooman y publicadas por otros usuarios
+- Ver la lista completa de acciones
+- Filtrar buenas acciones, según descripción, tiempo requerido, dinero requerido.
 - Añadir buenas acciones a su lista de favoritas
 - Elminar buenas acciones de su lista de favoritas
 - Crear buenas acciones propias, configurarlas para que sean privadas o públicas para incluirlas en la lista pública disponible
 - Modificar las buenas acciones que ha creado
 - Eliminar las buenas acciones que ha creado
 - Agendar las buenas acciones de cada día
+- Modificar las agendas que ha programado
+- Eliminar las agendas que ha programado
 - Configurar las notificaciones a recibir
-- Agregar otros usuarios a sus lista de amigos
-- Ver el perfil de sus amigos
-- Eliminar amigos
-- Compartir buenas acciones con sus amigos
+- Agregar otros usuarios a su lista de seguidos
+- Buscar usuarios por nombre de perfil
+- Ver la lista de usuarios seguidos
+- Ver el perfil otros usuarios
+- Eliminar usuarios de su lista de seguidos
 
 ### Use Cases
 ![alt Use Cases](./images/useCases.png)
@@ -166,7 +169,7 @@ ___
 
 ### Data
 - ~~DONE create mongoose schemas and models (2h)~~
-- ~~DONE create populate.js to test my models (1h) ~~
+- ~~DONE create populate.js to test my models (1h)~~
 - ~~DONE populate database with actions~~
 
 ### Logic
@@ -193,6 +196,8 @@ ___
 
 # TASK LIST
 - Testing
+- Feedback
+- Manejo de errores
 - Calendario
 - Notificaciones Push
 - Vista Actividad Usuario (gráficos)

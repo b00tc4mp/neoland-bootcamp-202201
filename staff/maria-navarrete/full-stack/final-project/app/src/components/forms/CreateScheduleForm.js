@@ -2,8 +2,8 @@ import './CreateScheduleForm.sass'
 import { Input, Select, Button, Link, CheckIcon, XIcon, MoneyIcon, StopwatchIcon, CalendarIcon, RepeatIcon } from '../../components'
 import { retrieveAction, createSchedule } from '../../logic'
 import { useState, useEffect } from 'react'
-import { data } from 'commons'
-const { repeatOptions } = data
+import { constants } from 'commons'
+const { repeatOptions } = constants
 
 export const CreateScheduleForm = ({ actionId, onCreated, onCancel }) => {
     const [description, setDescription] = useState('')

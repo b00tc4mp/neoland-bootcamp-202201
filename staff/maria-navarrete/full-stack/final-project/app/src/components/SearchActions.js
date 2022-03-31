@@ -1,7 +1,7 @@
 import './SearchActions.sass'
 import { Input, Select, Button, MoneyIcon, StopwatchIcon, SearchIcon, RemoveFilterIcon } from '.'
-import { data } from 'commons'
-const { requiredTimeOptions, requiredBudgetOptions } = data
+import { constants } from 'commons'
+const { requiredTimeOptions, requiredBudgetOptions } = constants
 
 export const SearchActions = ({ onSearchActions, onReset }) => {
 

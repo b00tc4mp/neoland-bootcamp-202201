@@ -2,8 +2,8 @@ import './UpdateActionForm.sass'
 import { useState, useEffect } from 'react'
 import { Input, Select, Checkbox, Button, Link, StopwatchIcon, MoneyIcon, CheckIcon, XIcon } from '..'
 import { retrieveAction, updateAction } from '../../logic'
-import { data } from 'commons'
-const { requiredTimeOptions, requiredBudgetOptions } = data
+import { constants } from 'commons'
+const { requiredTimeOptions, requiredBudgetOptions } = constants
 
 
 export const UpdateActionForm = ({ actionId, onUpdated, onCancel }) => {

@@ -1,8 +1,8 @@
 import './CreateActionForm.sass'
 import { Input, Select, Checkbox, Button, Link, CheckIcon, XIcon, StopwatchIcon, MoneyIcon } from '../../components'
 import { createAction } from '../../logic'
-import { data } from 'commons'
-const { requiredTimeOptions, requiredBudgetOptions } = data
+import { constants } from 'commons'
+const { requiredTimeOptions, requiredBudgetOptions } = constants
 
 
 export const CreateActionForm = ({ onCreated, onCancel }) => {
