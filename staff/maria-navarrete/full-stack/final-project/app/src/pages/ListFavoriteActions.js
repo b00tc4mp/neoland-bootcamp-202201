@@ -1,21 +1,23 @@
 import './ListFavoriteActions.sass'
 import { useState, useEffect } from 'react'
 import { listFavoriteActions } from '../logic'
-import { ActionCard, ActionsNavigationBar } from '../components'
+import { ActionCard } from '../components'
 
-export const ListFavoriteActions = ({ onSchedules, onCreatedActions, onFavorites, goToCreateSchedule, goToUserProfile }) => {
+export const ListFavoriteActions = ({ goToCreateSchedule, goToUserProfile }) => {
 
     const [favorites, setFavorites] = useState([])
 
-    useEffect(async () => {
-        try {
-            const favorites = await listFavoriteActions(sessionStorage.token)
-            favorites.forEach(favorite => favorite.isFav = true)
+    useEffect(() => {
+        (async () => {
+            try {
+                const favorites = await listFavoriteActions(sessionStorage.token)
+                favorites.forEach(favorite => favorite.isFav = true)
 
-            setFavorites(favorites)
-        } catch (error) {
-            alert(error.message)
-        }
+                setFavorites(favorites.reverse())
+            } catch (error) {
+                alert(error.message)
+            }
+        })()
     }, [])
 
     const updateFavoritesList = async () => {
@@ -23,7 +25,7 @@ export const ListFavoriteActions = ({ onSchedules, onCreatedActions, onFavorites
             const favorites = await listFavoriteActions(sessionStorage.token)
             favorites.forEach(favorite => favorite.isFav = true)
 
-            setFavorites(favorites)
+            setFavorites(favorites.reverse())
         } catch (error) {
             alert(error.message)
         }
@@ -31,13 +33,16 @@ export const ListFavoriteActions = ({ onSchedules, onCreatedActions, onFavorites
 
 
     return <>
-        <ActionsNavigationBar onSchedules={onSchedules} onCreatedActions={onCreatedActions} onFavorites={onFavorites} />
         <div className='favorites'>
             <h2 className='favorites__title'>Mis Favoritas</h2>
-            {!!favorites.length &&
-                <ul> {favorites.map(favorite =>
-                    <li key={favorite.id}><ActionCard action={favorite} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} onToggled={updateFavoritesList} /></li>)}
-                </ul>}
+            <div className='favorites__listFavorites'>
+                {!!favorites.length ?
+                    <ul className='favorites__listFavoritesList'> {favorites.map(favorite =>
+                        <li key={favorite.id}>
+                            <ActionCard action={favorite} onCreateSchedule={goToCreateSchedule} onUserProfile={goToUserProfile} onToggled={updateFavoritesList} />
+                        </li>)}
+                    </ul> : <p className='favorites__listFavoritesText'> Todavía no tienes acciones favoritas</p>}
+            </div>
         </div>
     </>
 }

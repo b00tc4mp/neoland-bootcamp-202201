@@ -1,5 +1,5 @@
 import './SearchActions.sass'
-import { Input, Select, Button, MoneyIcon, StopwatchIcon, SearchIcon, RemoveFilterIcon, ListSearchActionsResults } from '.'
+import { Input, Select, Button, MoneyIcon, StopwatchIcon, SearchIcon, RemoveFilterIcon } from '.'
 import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
@@ -27,8 +27,12 @@ export const SearchActions = ({ onSearchActions, onReset }) => {
                 <Select className='searchActions__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} placeholder='Todos' label={<StopwatchIcon />} />
                 <Select className='searchActions__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Todos' appendText={'€'} label={<MoneyIcon />} />
             </fieldset>
-            <Button className='searchActions__button' type='submit'><SearchIcon className='searchActions__icon' /></Button>
-            <Button className='searchActions__button' type='reset' onClick={onReset}><RemoveFilterIcon className='searchActions__icon' /></Button>
+            <Button className='searchActions__button' type='submit'>
+                <SearchIcon className='searchActions__icon' />
+            </Button>
+            <Button className='searchActions__button' type='reset' onClick={onReset}>
+                <RemoveFilterIcon className='searchActions__icon' />
+            </Button>
         </form>
     </>
 

@@ -2,7 +2,7 @@ import './DeleteAccountForm.sass'
 import { Input, Button } from '../../components'
 import { deleteUser } from '../../logic'
 
-export const DeleteAccountForm = ({ className = '', onDeleted }) => {
+export const DeleteAccountForm = ({ onDeleted }) => {
 
     const deleteAccount = async event => {
         try {
@@ -24,9 +24,9 @@ export const DeleteAccountForm = ({ className = '', onDeleted }) => {
     }
 
     return <>
-        <form className={className} onSubmit={onSubmit}>
-            <Input type='password' name='password' placeholder='Contraseña' required />
-            <Button type='submit'> Eliminar </Button>
+        <form className='deleteAccountForm__form' onSubmit={onSubmit}>
+            <Input className='input-underlined deleteAccountForm__input' type='password' name='password' placeholder='Contraseña' required />
+            <Button className='deleteAccountForm__button' type='submit'> Eliminar </Button>
         </form>
     </>
 }

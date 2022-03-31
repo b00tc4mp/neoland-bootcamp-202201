@@ -21,8 +21,8 @@ export const CompleteScheduleButton = ({ className = '', schedule = {}, onComple
     }
 
     return <>
-        <Button className={className} type="button" onClick={onComplete}>
-            <CalendarCheckIcon />
+        <Button type="button" onClick={onComplete}>
+            <CalendarCheckIcon className={className} />
         </Button>
     </>
 }

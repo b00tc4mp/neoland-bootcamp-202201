@@ -4,7 +4,8 @@ import { UserProfile } from '.'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 
 
-export const Users = ({ goToCreateSchedule, goToUsers }) => {
+export const Users = ({ goToCreateSchedule, goToUsers, goToCommunity }) => {
+
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -13,7 +14,7 @@ export const Users = ({ goToCreateSchedule, goToUsers }) => {
 
 
     return <div className='users'>
-        {(location.pathname === '/hoomans' || location.pathname.includes('search')) && < SearchUsers onSearchUsers={showSearchUsers} onReset={goToUsers} />}
+        {(location.pathname === '/hoomans' || location.pathname.includes('search')) && < SearchUsers onSearchUsers={showSearchUsers} onReset={goToUsers} onBack={goToCommunity} />}
 
         <Routes>
             <Route path='search' element={<ListSearchUsersResults goToUserProfile={showUserProfile} />} />

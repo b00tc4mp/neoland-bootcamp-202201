@@ -6,34 +6,40 @@ import { useSearchParams } from 'react-router-dom'
 
 export const ListSearchUsersResults = ({ goToUserProfile }) => {
     const [users, setUsers] = useState([])
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
 
     const query = searchParams.get('query')
 
-    useEffect(async () => {
-        try {
-            const users = await findUsers(sessionStorage.token, query)
-            const following = await listFollowingUsers(sessionStorage.token)
+    useEffect(() => {
+        (async () => {
+            try {
+                const users = await findUsers(sessionStorage.token, query)
+                const following = await listFollowingUsers(sessionStorage.token)
 
-            users.forEach(user => {
-                user.isFollow = following.some(follow => follow.id === user.id)
-            })
+                users.forEach(user => {
+                    user.isFollow = following.some(follow => follow.id === user.id)
+                })
 
-            setUsers(users)
+                setUsers(users)
 
-        } catch (error) {
-            alert(error.message)
-        }
+            } catch (error) {
+                alert(error.message)
+            }
+        })()
     }, [query])
 
 
     return <>
         <div className='searchUsersResults'>
             <h2 className='searchUsersResults__title'>Hoomans encontrados</h2>
-            {!!users.length &&
-                <ul> {users.map(user =>
-                    <li key={user.id}><UserCard user={user} onUserProfile={goToUserProfile} /></li>)}
-                </ul>}
+            <div className='searchUsersResults__listUsers'>
+                {!!users.length ?
+                    <ul className='searchUsersResults__listUsersList'> {users.map(user =>
+                        <li key={user.id}>
+                            <UserCard user={user} onUserProfile={goToUserProfile} />
+                        </li>)}
+                    </ul> : <p className='searchUsersResults__listUsersText'> No hay resultados para tu búsqueda</p>}
+            </div>
         </div>
     </>
 }

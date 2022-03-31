@@ -187,27 +187,12 @@ ___
 - ~~DONE test with snippets(2h)~~
 
 ### App
-- TODO create main views (components) (1h)
-- TODO mechanize navigations (.5h)
+- ~~DONE  create main views (components) (1h)~~
+- ~~DONE mechanize navigations (.5h)~~
 
 
-
-SELECT REQUIRED NO SIRVE
-CHECKED STATUS INICIAL NO SIRVE
-
-
-probar eliminar y modificar actions que alguien tenga agendadas
-
-** TENER EN CUENTA
-revisar web push notifications 
-push api
-
-guardar el object id de anonymus en env
-
-no puedo editar ni eliminar una nota si algun otro usuario la ha agendado. 
-
-- todo fase 2 reglas de validación de repeticiones
-- revisar cuadno elimino un usuario y otro lo tiene en amigos
-- configurar zona horaria para que sea igual en base datos y api
-- validaciones de datos en los esquemas
-- guardar descripcion de actions como un hash o con servidor externo de archivos
+# TASK LIST
+- Calendario
+- Notificaciones Push
+- Vista Actividad Usuario (gráficos)
+- Validación repeticiones al crear acciones públicas

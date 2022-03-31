@@ -30,7 +30,9 @@ export const LoginForm = ({ onLogged }) => {
                 <Input className='input-bordered' type='email' name='email' placeholder='Email' required />
                 <Input className='input-bordered' type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button className='login__button' type='submit'><GoIcon className='login__button' /></Button>
+            <Button className='login__button' type='submit'>
+                <GoIcon className='login__button' />
+            </Button>
         </form>
     </>
 }

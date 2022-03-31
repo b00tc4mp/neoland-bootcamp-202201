@@ -7,19 +7,21 @@ export const ListSchedules = () => {
 
     const [schedules, setSchedules] = useState([])
 
-    useEffect(async () => {
-        try {
-            const schedules = await listSchedules(sessionStorage.token)
-            setSchedules(schedules)
-        } catch (error) {
-            alert(error.message)
-        }
+    useEffect(() => {
+        (async () => {
+            try {
+                const schedules = await listSchedules(sessionStorage.token)
+                setSchedules(schedules.reverse())
+            } catch (error) {
+                alert(error.message)
+            }
+        })()
     }, [])
 
     const updateSchedulesList = async () => {
         try {
             const schedules = await listSchedules(sessionStorage.token)
-            setSchedules(schedules)
+            setSchedules(schedules.reverse())
         } catch (error) {
             alert(error.message)
         }
@@ -27,11 +29,13 @@ export const ListSchedules = () => {
 
 
     return <>
-        <div>
-            {!!schedules.length &&
-                <ul> {schedules.map(schedule =>
-                    <li key={schedule.id}><ScheduleCard schedule={schedule} onUpdated={updateSchedulesList} /></li>)}
-                </ul>}
+        <div className='listSchedules'>
+            {!!schedules.length ?
+                <ul className='listSchedules__list'> {schedules.map(schedule =>
+                    <li key={schedule.id}>
+                        <ScheduleCard schedule={schedule} onUpdated={updateSchedulesList} />
+                    </li>)}
+                </ul> : <p className='listSchedules__text'> Todavía no tienes acciones agendadas</p>}
         </div>
     </>
 

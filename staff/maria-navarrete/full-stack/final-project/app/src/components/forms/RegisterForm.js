@@ -29,7 +29,9 @@ export const RegisterForm = ({ onRegistered }) => {
                 <Input className='input-bordered' type='email' name='email' placeholder='Email' required />
                 <Input className='input-bordered' type='password' name='password' placeholder='Contraseña' required />
             </fieldset>
-            <Button className='register__button' type='submit'><GoIcon className='register__button' /></Button>
+            <Button className='register__button' type='submit'>
+                <GoIcon className='register__button' />
+            </Button>
         </form>
     </>
 }

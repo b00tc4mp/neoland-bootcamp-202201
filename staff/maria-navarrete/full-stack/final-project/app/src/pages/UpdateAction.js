@@ -8,7 +8,6 @@ export const UpdateAction = ({ onSchedules, onCreatedActions, onFavorites, goBac
 
 
     return <>
-        <ActionsNavigationBar onSchedules={onSchedules} onCreatedActions={onCreatedActions} onFavorites={onFavorites} />
         <div className='updateAction'>
             <h2 className='updateAction__title'>Editar Acción</h2>
             <UpdateActionForm actionId={actionId} onUpdated={goBack} onCancel={goBack} />

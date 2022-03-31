@@ -6,25 +6,27 @@ import { data } from 'commons'
 const { requiredTimeOptions, requiredBudgetOptions } = data
 
 
-export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel }) => {
+export const UpdateActionForm = ({ actionId, onUpdated, onCancel }) => {
 
     const [description, setDescription] = useState('')
     const [isPublic, setIsPublic] = useState(false)
     const [requiredTime, setRequiredTime] = useState('')
     const [requiredBudget, setRequiredBudget] = useState('')
 
-    useEffect(async () => {
-        try {
-            const action = await retrieveAction(sessionStorage.token, actionId)
-            const { description, public: isPublic, requiredTime, requiredBudget } = action
-            setDescription(description)
-            setIsPublic(isPublic)
-            setRequiredTime(requiredTime)
-            setRequiredBudget(requiredBudget)
-        } catch (error) {
-            alert(error.message)
-        }
-    }, [])
+    useEffect(() => {
+        (async () => {
+            try {
+                const action = await retrieveAction(sessionStorage.token, actionId)
+                const { description, public: isPublic, requiredTime, requiredBudget } = action
+                setDescription(description)
+                setIsPublic(isPublic)
+                setRequiredTime(requiredTime)
+                setRequiredBudget(requiredBudget)
+            } catch (error) {
+                alert(error.message)
+            }
+        })()
+    }, [actionId])
 
     const updateUserAction = async event => {
         try {
@@ -39,7 +41,6 @@ export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel
         } catch (error) {
             alert(error.message)
         }
-
     }
 
     const onSubmit = event => {
@@ -52,13 +53,17 @@ export const UpdateActionForm = ({ actionId, className = '', onUpdated, onCancel
         <form className='updateActionForm__form' onSubmit={onSubmit}>
             <fieldset className='updateActionForm__fieldset'>
                 <Input className='input-bordered updateActionForm__input' type='text' name='description' defaultValue={description} placeholder='Descripción' required />
-                <Select className='updateActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} required={true} appendText={'min'} selected={requiredTime} placeholder='Tiempo requerido' label={<StopwatchIcon />} required />
-                <Select className='updateActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} required={true} appendText={'€'} selected={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
+                <Select className='updateActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} value={requiredTime} placeholder='Tiempo requerido' label={<StopwatchIcon />} required />
+                <Select className='updateActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} appendText={'€'} value={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
                 <Checkbox className='updateActionForm__checkbox' id='isPublic' name='isPublic' label='Hacer Pública' checked={isPublic} />
             </fieldset>
             <div className='updateActionForm__buttons'>
-                <Button className='updateActionForm__button' type='submit'> <CheckIcon className='updateActionForm__buttonIcon' /> </Button>
-                <Link className='updateActionForm__button' onClick={onCancel}><XIcon className='updateActionForm__buttonIcon' /></Link>
+                <Button className='updateActionForm__button' type='submit'>
+                    <CheckIcon className='updateActionForm__buttonIcon' />
+                </Button>
+                <Link className='updateActionForm__button' onClick={onCancel}>
+                    <XIcon className='updateActionForm__buttonIcon' />
+                </Link>
             </div>
         </form>
     </>

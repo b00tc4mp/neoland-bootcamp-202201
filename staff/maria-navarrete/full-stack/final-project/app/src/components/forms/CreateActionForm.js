@@ -37,8 +37,12 @@ export const CreateActionForm = ({ onCreated, onCancel }) => {
                 <Checkbox className='createActionForm__checkbox' id='isPublic' name='isPublic' label='Hacer Pública' />
             </fieldset>
             <div className='createActionForm__buttons'>
-                <Button className='createActionForm__button' type='submit'> <CheckIcon className='createActionForm__buttonIcon' /> </Button>
-                <Link className='createActionForm__button' onClick={onCancel}><XIcon className='createActionForm__buttonIcon' /></Link>
+                <Button className='createActionForm__button' type='submit'>
+                    <CheckIcon className='createActionForm__buttonIcon' />
+                </Button>
+                <Link className='createActionForm__button' onClick={onCancel}>
+                    <XIcon className='createActionForm__buttonIcon' />
+                </Link>
             </div>
         </form>
     </>

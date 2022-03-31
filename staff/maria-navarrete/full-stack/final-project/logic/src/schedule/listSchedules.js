@@ -8,7 +8,7 @@ function listSchedules(userId) {
     return User.findById(userId).lean()
         .then(user => {
             if (!user) throw Error(`user with id ${userId} not found`)
-            return Schedule.find({ user: userId }).lean().populate('action')
+            return Schedule.find({ user: userId, repeat: { $ne: 'none' } }).lean().populate('action')
         })
         .then(schedules => {
             if (!schedules) throw new Error(`no schedules found for user with id ${userId}`)

@@ -22,7 +22,9 @@ export const DeleteActionButton = ({ actionId, onDeleted }) => {
     }
 
     return <>
-        <Button onClick={showDeleteModal}><DeleteIcon className='deleteIcon' /></Button>
+        <Button onClick={showDeleteModal}>
+            <DeleteIcon className='deleteIcon' />
+        </Button>
         {showModal && <Modal text='¿Estás seguro que quieres eliminar esta acción?' success={deleteAct} closeModal={closeDeleteModal} />}
     </>
 }
