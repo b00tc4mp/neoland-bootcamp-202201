@@ -51,7 +51,7 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 
 ##### Main Views
 
-![alt Main Views](./images/  .png) <=// añadir imagen;
+![alt Main Views](./images/diagrama-vistas.png) 
  
 
  ## Technical Description
@@ -83,7 +83,7 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 
 #### E/R Diagram
 
-![alt Database](./images/diagrama-vistas.png)
+![alt Database](./images/er-diagram.png)
 
  TODO LIST:
 
@@ -95,3 +95,5 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 
 - Galería de arte urbano: Los artistas pueden añadir info, precios u otros
 detalles a sus piezas (TODO future version)
+
+- Testing (TODO future version)
