@@ -29,7 +29,7 @@ export default function App() {
 
     }
     catch (error) {
-      alert('Sesión finalizada ')
+      alert('Sesión finalizada')
       delete sessionStorage.token
       return false
     }

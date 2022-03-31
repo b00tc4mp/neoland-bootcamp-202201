@@ -6,7 +6,7 @@
 
 <b>Racketmatch</b> es una aplicación web pensada para móviles que surgio de una necesidad muy común que hay en el mundo del padel; la busqueda de pala.
 
- Esta aplicación cumple dos funciones básicas: la primera es un buscador de palas genérico donde tu como usuario puedas buscar una pala segun su "marca"???. 
+ Esta aplicación cumple dos funciones básicas: la primera es un buscador de palas genérico donde el usuario pueda buscar una pala segun su marca, el tipo de pala, el nivel de jugador y el modelo de pala. 
  
  Y por otro lado tendrá la función de <b> busca tu pala </b>donde el usuario tendrá que rellenar una encuesta y segun las caracteristicas que tenga y proporcione a la aplicación le dará una pala. Asi el jugador podrá tener una idea de que tipo de pala tiene que probar.
 
