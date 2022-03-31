@@ -83,3 +83,21 @@ Comments
 
 ![alt](./images/ERD.png)
 
+### Technologies
+
+- JavaScript
+- CSS
+- HTML
+- React
+- Node.JS
+- Express
+- MongoDB
+
+
+##### Todo
+
+- Añadir Testing a la App
+- Añadir Favoritos
+- Mejorar el Feedback
+
+
