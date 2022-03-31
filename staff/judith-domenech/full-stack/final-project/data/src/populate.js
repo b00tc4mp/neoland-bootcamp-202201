@@ -13,10 +13,10 @@ connect('mongodb://localhost:27017/racketMatch-db')
     ]))
 
     .then(() => {
-        const agua = new User({ name: 'Agua Cate', email: 'agua@cate.com', password: '123123123' })
-        const ora = new User({ name: 'Ora Culo', email: 'ora@culo.com', password: '123123123' })
+        const maria = new User({ name: 'Maria Cristina', email: 'mariacristina@gmail.com', password: '123123123' })
+        const gio = new User({ name: 'Gio', email: 'gio@gmail.com', password: '123123123' })
 
-        return Promise.all([agua.save(), ora.save()])
+        return Promise.all([maria.save(), gio.save()])
 
             .then(_users => {
                 users = _users
@@ -54,10 +54,36 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     level: 'Avanzado',
                     description: 'Es una pala con un diseñado para jugadores de nivel avanzado con mucha experiencia que busca más comodidad en la defensa y mucha potencia en los ataques, ya que por su formato el jugador consigue mayor pegada sin que se pierda el control en la técnica ni en la bola.',
                     image: 'https://www.ofertasdepadel.com/23051-large_default/pala-head-graphene-360-bela-x.jpg'
-                
+
                 })
 
-                const heads = [alpha, belaX]
+                const delta = new Racket({
+                    brand: head.id,
+                    model: 'Delta Pro',
+                    type: 'Hybrida',
+                    weight: '345-350g',
+                    player: 'Ofensivo',
+                    price: 216,
+                    level: 'Intermedio',
+                    description: 'Un modelo diseñado para los jugadores ofensivos más exigentes, que buscan conseguir la máxima potencia y precisión en sus golpeos. Confeccionada con un molde en forma de diamante, un balance situado en la zona media alta de la pala, consiguiendo gran potencia.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-26433-a259091d-27252-NORMAL.jpg'
+
+                })
+
+                const graphene = new Racket({
+                    brand: head.id,
+                    model: 'Graphene',
+                    type: 'Hybrida',
+                    weight: '350-360g',
+                    player: 'Ofensivo',
+                    price: 143,
+                    level: 'Principiante',
+                    description: 'Al fabricarse en formato diamante se le confiere un balance medio que junto a su amplia zona de golpeo y gran composición, la hacen una pala polivalente y de muy rápida optación. Este modelo es ideal para los jugadores que buscan una pala ligera con peso entre 355gr y 365gr, siendo este modelo uno de los más ligeros de la marca.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-19617-3a22ea20-20223-NORMAL.jpg'
+
+                })
+
+                const heads = [alpha, belaX, delta, graphene]
 
                 const astrumEris = new Racket({
                     brand: starvie.id,
@@ -107,9 +133,34 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     image: 'https://www.starvie.com/pub/media/catalog/product/cache/6393814e440866be23189027a939d0e2/p/a/pala_de_padel_metheora_warrior_2021_starvie.main.jpg'
                 })
 
-                const starvies = [astrumEris, raptor, triton, metheora]
+                const dronosGalaxy = new Racket({
+                    brand: starvie.id,
+                    model: 'Dronos Galaxy',
+                    type: 'Hybrida',
+                    weight: '350-360g',
+                    player: 'Defensivo',
+                    price: 233,
+                    level: 'Intermedio',
+                    description: 'Construida en un molde de lágrima, Es perfecta para los jugadores con un nivel de juego intermedio hasta avanzado que desean evolucionar su nivel de juego. Ofrece más control y una estupenda potencia sin perder las increíbles sensaciones durante el juego.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21824-cfe48bb1-23429-NORMAL.jpg'
+                })
 
-                const adipower = new Racket({
+                const kraken = new Racket({
+                    brand: starvie.id,
+                    model: 'Kraken',
+                    type: 'Potencia',
+                    weight: '345-350g',
+                    player: 'Defensivo',
+                    price: 199,
+                    level: 'Avanzado',
+                    description: 'Con un molde de lagrima, es una pala que está dirigida a los jugadores con alto nivel técnico hasta profesionales. Ligera, cómoda y manejable, esta pala ayuda a conseguir movimientos rápidos y mejora las sensaciones de defensa en cada golpeo. Además, gracias a su amplio punto dulce en la parte superior ofrece una óptima potencia para desplegar el juego más agresivo.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21825-016a8e1e-23430-NORMAL.jpg'
+                })
+
+
+                const starvies = [astrumEris, raptor, triton, metheora, dronosGalaxy, kraken]
+
+                const adipowerlight3 = new Racket({
                     brand: adidas.id,
                     model: 'Adipower light 3.0',
                     type: 'Control',
@@ -124,7 +175,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
                 const metalbone = new Racket({
                     brand: adidas.id,
                     model: 'Metalbone 3.1',
-                    type: 'Potencia',
+                    type: 'Control',
                     weight: '360-370g',
                     player: 'Ofensivo',
                     price: 318,
@@ -141,11 +192,48 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     player: 'Defensivo',
                     price: 154,
                     level: 'Principiante',
-                    description: 'Con forma redonda, esta pala crea una sensación de control y confort muy buena en la pista. Perfecta para personas que estan empezando a jugar a padel con un nivel de iniciación. Gracias al peso ligero que tiene la pala se hace muy manejable y sencilla de llevar.',
-                    image: 'https://www.ofertasdepadel.com/11343-large_default/pala-de-padel-adidas-drive-woman-evo-2017.jpg'
+                    description: 'Una pala de control, con forma redonda, balance bajo, amplísimo punto dulce y salida de bola que te permitirá conectar a la perfección todos tus golpeos.desde el fondo de la pista brinda un control total en cada golpeo y permite defender igual de fácil las voleas de los rivales gracias a su punto dulce y balance bajo que faculta realizar bloques con mucha precisión. En las transiciones también es una pala de excelente rendimiento, ya que, su salida de bola ayuda enormemente a conseguir esa precisión milimétrica necesaria para realizar globos que nos permitan salir de la zona defensiva y contraatacar.',
+                    image: 'https://www.padelnuestro.com/images/products/DRIVE-WOMAN-EVO-500X600.jpg'
                 })
 
-                const adidass = [adipower, metalbone, driveEvo]
+                const adipower3 = new Racket({
+                    brand: adidas.id,
+                    model: 'Adipower 3.0',
+                    type: 'Potencia',
+                    weight: '345-350g',
+                    player: 'Ofensivo',
+                    price: 199,
+                    level: 'Avanzado',
+                    description: 'La nueva adidas Adipower 3.0 está diseñada en forma de diamante oversize y tiene un balance alto, se considera una pala hybrida por lo que es perfecta para practicar un juego de potencia y ofensivo. Además, la geometría de la pala y sus materiales proporcionan gran confort y manejabilidad durante el juego.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21765-2c1ffab3-23352-NORMAL.jpg'
+                })
+
+                const adipowerControl3 = new Racket({
+                    brand: adidas.id,
+                    model: 'Adipower control 3.0',
+                    type: 'Control',
+                    weight: '360-370g',
+                    player: 'Defensivo',
+                    price: 299,
+                    level: 'Intermedio',
+                    description: 'Está diseñada en un formato redondo con un balance medio y un punto dulce muy amplio por lo que proporciona un juego equilibrado en la pista, facilitando la jugabilidad y su manejo. Está pensada para los jugadores que se sienten cómodos en el juego defensivo. Ideal para jugar desde el fondo de la pista, marcar los tiempos y esperar el momento adecuado para hacer una buena transición al ataque y acabar el juego. ',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25659-c2d7642c-27066-NORMAL.jpg'
+                })
+
+
+                const adidass = [adipowerlight3, metalbone, driveEvo, adipower3, adipowerControl3]
+
+                const hack03Control = new Racket({
+                    brand: bullpadel.id,
+                    model: 'Hack 03 control',
+                    type: 'Control',
+                    weight: '345-350g',
+                    player: 'Defensivo',
+                    price: 355,
+                    level: 'Avanzado',
+                    description: 'Una pala concebida en forma de lagrima, destaca su ligereza con un peso que oscila de los 345 y 360 gramos. Sus materiales y tecnologías ofrecen un cómodo y más sencillo manejo de la pala, permitiendo una buena adaptación a jugadoras intermedias que quieren subir de nivel. Es una pala hybrida con potencia, ligera, cómoda y sin perdida de control.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-26107-68c36722-27097-NORMAL.jpg'
+                })
 
                 const vertex3Woman = new Racket({
                     brand: bullpadel.id,
@@ -197,7 +285,7 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     image: 'https://padeli.es/68-thickbox_default/bullpadel-vertex-03-ctrl-21.jpg'
                 })
 
-                const bullpadels = [vertex3Woman, vertex3Comfort, flow, vertex3Control]
+                const bullpadels = [vertex3Woman, vertex3Comfort, flow, vertex3Control, hack03Control]
 
                 const asicsHybrid = new Racket({
                     brand: asics.id,
@@ -268,12 +356,35 @@ connect('mongodb://localhost:27017/racketMatch-db')
                     weight: '350-360g',
                     player: 'Defensivo',
                     price: 114,
-                    level: 'Intermedio',
-                    description: 'Esta pala ha sido creada para aguantar los golpes adversarios. Posee el mejor equilibrio entre control, gracias a su molde en forma de lágrima destinada a jugadores de nivel principiante hasta intermedio. Es una pala dedicada al control y al jugador más táctico, te ayudara a tener un juego muy equilibrado y polivalente. Además es una pala indicada a los jugadores que tengan problemas de codo.',
+                    level: 'Avanzado',
+                    description: 'Esta pala ha sido creada para aguantar los golpes adversarios. Posee el mejor equilibrio entre control, gracias a su molde en forma de lágrima destinada a jugadores de nivel avanzado. Es una pala dedicada al control y al jugador más táctico, te ayudara a tener un juego muy equilibrado y polivalente. Además es una pala indicada a los jugadores que tengan problemas de codo.',
                     image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21198-fd158bd2-22634-NORMAL.jpg'
                 })
 
-                const babolats = [babolatTechnicalViper, babolatRevenge, babolatCounterVertuo]
+                const babolatCounterVeron = new Racket({
+                    brand: babolat.id,
+                    model: 'Babolat Counter Veron',
+                    type: 'Hybrida',
+                    weight: '350-360g',
+                    player: 'Ofensivo',
+                    price: 166,
+                    level: 'Intermedio',
+                    description: 'Esta pala ha sido creada para aguantar los golpes adversarios. Posee el mejor equilibrio entre control, gracias a su molde en forma de lágrima destinada a jugadores de nivel avanzado. Es una pala dedicada al control y al jugador más táctico, te ayudara a tener un juego muy equilibrado y polivalente. Además es una pala indicada a los jugadores que tengan problemas de codo.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-21198-fd158bd2-22634-NORMAL.jpg'
+                })
+
+                const babolatVeron = new Racket({
+                    brand: babolat.id,
+                    model: 'Babolat Veron',
+                    type: 'Hybrida',
+                    weight: '350-360g',
+                    player: 'Ofensivo',
+                    price: 189,
+                    level: 'Avanzado',
+                    description: 'Este modelo presenta un formato híbrido, balance medio y un punto dulce bastante correcto. Es una pala polivalente que gracias a su diseño más aerodinámico permite moverse con mayor velocidad y generar más energía en los remates para incrementar la potencia en el golpeo.  Desde el fondo de la pista o cerca de la red, la nueva Air Veron te ofrece esa superioridad que necesitas para ganar cada punto.',
+                    image: 'https://www.padelnuestro.com/images/cargador/productos/imagen-1-25923-84910ad9-26916-NORMAL.jpg'
+                })
+                const babolats = [babolatTechnicalViper, babolatRevenge, babolatCounterVertuo, babolatVeron, babolatCounterVeron]
 
                 return Promise.all([
                     Promise.all(heads.map(head => head.save())),

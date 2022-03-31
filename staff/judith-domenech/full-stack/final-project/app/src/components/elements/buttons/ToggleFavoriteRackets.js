@@ -7,12 +7,12 @@ import { Button } from '.'
 
 export function ToggleFavoriteRackets({ racketId, isFavorite = false, onToggled }) {
     const [favorite, setFavorite] = useState(isFavorite)
-
+/* 
     useEffect(() => {
 
         setFavorite(isFavorite)
 
-    }, [isFavorite])
+    }, [isFavorite]) */
 
     const toggleFavorite = async () => {
       
@@ -20,7 +20,7 @@ export function ToggleFavoriteRackets({ racketId, isFavorite = false, onToggled 
 
             await toggleFavoriteRacket(sessionStorage.token, racketId)
             setFavorite(!favorite)
-            onToggled()
+            onToggled && onToggled()
         } catch (error) {
             alert(error.message)
         }

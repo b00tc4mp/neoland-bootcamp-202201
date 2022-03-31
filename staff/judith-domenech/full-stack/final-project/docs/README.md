@@ -124,6 +124,8 @@ comment
 - ~~TODO mechanize navigations (.5h) ~~
 
 ## Versión 2.0
-- Password 
+- Testing
 - FeedBack
+- Password 
+- Apliar base de datos
 - Scrap news 

@@ -24,7 +24,7 @@ export function RacketCardDetails({ racketId }) {
     }, [])
 
     return <div>
-        {sessionStorage.token && <ToggleFavoriteRackets racketId={racket.id} isFavorite={racket.isFavorite} onToggled={()=>{}} />}
+        {sessionStorage.token && <ToggleFavoriteRackets racketId={racket.id} isFavorite={racket.isFavorite} />}
 
         <ul>
             <li> <h1>{racket.brand}</h1> </li>
