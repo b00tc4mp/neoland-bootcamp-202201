@@ -1,4 +1,4 @@
-//import './DeleteAccount.css'
+import './DeleteAccount.sass'
 import { deleteUser } from '../logic'
 import { Button } from "../components"
 import { Input } from '../components/form-elements'
@@ -27,15 +27,16 @@ const DeleteAccount = ({onBack, onDeletedAccount}) => {
         }
     } 
 
-    return <div className="delete-account">
-        <h1>ELIMINAR MI CUENTA</h1>
-        <form className="delete-account__form" method="post" onSubmit={deleteAccount}>
-            <Input className="delete-account__password-input" type="password" name="password" placeholder="Contraseña" />
-            <Button type='submit' className="delete-acount__submit">Eliminar</Button>
+    return (
+    <div className="container">
+        <form className="delete-account" method="post" onSubmit={deleteAccount}>
+            <h1 className='delete-account__title'>Eliminar mi cuenta</h1>
+            <Input className='delete-account__input' type="password" name="password" placeholder="Contraseña" />
+            <Button className='delete-account__button' type='submit' >Eliminar</Button>
             <a className="delete-account__back-link" href="" onClick={goBack}>Atrás</a>
         </form>
     </div>
-
+    )
 }
 
 export default DeleteAccount

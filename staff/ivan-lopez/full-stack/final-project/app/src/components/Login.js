@@ -1,4 +1,3 @@
-//import './Login.css'
 import './Login.sass'
 import { authenticateUser } from '../logic'
 import { Button } from "../components"
@@ -33,15 +32,17 @@ function Login({ onLogged, onRegister }) {
         login(event)
     }
 
-    return <div className='login'>
-        <form onSubmit={onSubmit}>
-            <h1>LOGIN</h1>
-            <Input type='email' name='email' placeholder='email' />
-            <Input type='password' name='password' placeholder='password' />
-            <Button type="submit">Login</Button>
-            <a href='' onClick={goToRegister}>Register</a>
+    return(
+    <div className='container'>
+        <form className='login' onSubmit={onSubmit}>
+            <h1 className='login__title'>LOGIN</h1>
+            <Input className="login__input" type='email' name='email' placeholder='email' />
+            <Input className="login__input" type='password' name='password' placeholder='password' />
+            <Button className='login__button' type="submit">Login</Button>
+            <Button className='login__register-button' href='' onClick={goToRegister}>Register</Button>
         </form>
     </div>
+    )
 }
 
 export default Login

@@ -33,7 +33,7 @@ function App() {
 
     <Header onLogo={showHome} onProfile={showProfile}/>
     <Routes>
-      <Route path='/*' element={<Home  onBack={goToBack} />} />
+      <Route path='/*' element={<Home onBack={goToBack} />} />
       <Route path='/iniciar-sesion' element={<Login onLogged={showHome} onRegister={showRegister} />} />
       <Route path='/registro' element={<Register onRegistered={showLogin} onLogin={showLogin} />} />
       <Route path='/cuenta' element={sessionStorage.token ? <Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogout={showLogin}/> : <Navigate replace to='/iniciar-sesion'/>} />

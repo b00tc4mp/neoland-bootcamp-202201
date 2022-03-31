@@ -1,4 +1,4 @@
-// import './Register.css'
+import './Register.sass'
 import { registerUser } from '../logic'
 import { Button } from "../components"
 import { Input } from './form-elements'
@@ -15,7 +15,7 @@ function Register({ onLogin, onRegistered }) { // Si es un aprop pueden no pasar
         try {
             registerUser(name, email, password)
                 .then(() => {
-                    alert('Usuario registrado correctamente')
+                    alert('¡Usuario registrado correctamente!')
                     onRegistered && onRegistered()
                 })
                 .catch(error => alert(error.message))
@@ -29,17 +29,18 @@ function Register({ onLogin, onRegistered }) { // Si es un aprop pueden no pasar
         register(event)
     }
 
-    return <div className='register'>
-        <form onSubmit={onSubmit}>
-            <h1>REGISTER</h1>
-            <Input type='text' name='name' placeholder='name' />
-            <Input type='email' name='email' placeholder='email' />
-            <Input type='password' name='password' placeholder='password' />
-            <Button type='submit'>Register</Button>
-            <a href='' onClick={goToLogin}>Login</a>
+    return( 
+    <div className='container'>
+        <form className='register' onSubmit={onSubmit}>
+            <h1 className='register__title'>REGISTER</h1>
+            <Input className='register__input' type='text' name='name' placeholder='name' />
+            <Input className='register__input' type='email' name='email' placeholder='email' />
+            <Input className='register__input' type='password' name='password' placeholder='password' />
+            <Button className='register__button' type='submit'>Register</Button>
+            <Button className='register__login-button' href='' onClick={goToLogin}>Login</Button>
         </form>
     </div>
-
+    )
 }
 
 export default Register

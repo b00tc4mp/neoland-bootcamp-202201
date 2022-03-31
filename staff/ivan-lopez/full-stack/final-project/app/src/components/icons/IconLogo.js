@@ -1,5 +1,5 @@
 import './IconLogo.sass'
-import logo from '../../assets/images/logopb.png'
+import logo from '../../assets/images/logoDreamsFactory.png'
 
 function IconLogo ({ onClick }) {
 

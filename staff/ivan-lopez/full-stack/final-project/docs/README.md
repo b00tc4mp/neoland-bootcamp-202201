@@ -4,7 +4,10 @@
 ![alt Dreams Factory](https://media.giphy.com/media/mCydWp2Slwt8KugwmX/giphy.gif)
 
 
-Dreams Factory is the web site for who wanna buy an artisan product, original and hand made :)
+Dreams Factory is the first version of an e-commerce project, 
+For who wanna buy an artisan product, original and hand made :)
+Mainly there are artisan products like leather bags, necklaces, bracelets and lot of different
+hand made products.
 
 
 ## Functional Description
@@ -12,18 +15,19 @@ Dreams Factory is the web site for who wanna buy an artisan product, original an
 ### Activities 
 As User you can:
 
-- Search a product
+- Search products
 - See product details (construction material, measures, etc...)
-- Add products to cart
-- Buy products
+- Add products to cart (TODO)
+- Buy products (TODO)
 
 And as Admin you can:
 
 - Register product
 - edit product
 - delete product
-- view order list
 - search products
+- see product details
+- view order list (TODO)
 
 ### Use cases
 

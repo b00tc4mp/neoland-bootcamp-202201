@@ -13,12 +13,12 @@ function Header({ onLogo, onProfile }) {
     }
 
 
-    return <div>
+    return <div className='header-wrapper'>
         <header className='header'>
 
-            <h1 className='header-title'>Dreams Factory</h1>
-            <a className='header-iconLogo' href='' onClick={goToLogo} > <IconLogo /> </a>
-            <a className='header-iconProfile' href='' onClick={goToProfile}> <IconProfile /> </a>
+            <p className='header__title'>Dreams Factory</p>
+            <a className='header__icon-logo' href='' onClick={goToLogo} > <IconLogo /> </a>
+            <a className='header__icon-profile' href='' onClick={goToProfile}> <IconProfile /> </a>
 
         </header>
     </div>

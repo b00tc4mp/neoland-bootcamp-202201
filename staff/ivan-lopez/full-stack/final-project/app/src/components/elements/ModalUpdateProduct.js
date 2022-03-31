@@ -96,25 +96,30 @@ function ModalUpdateProduct({ onClose, onProductUpdated }) {
   }
 
   return (
-    <Modal onClose={onClose}>
-      <form onSubmit={modifyProduct}>
-        <h1>Actualizar producto</h1>
-        <Input type='text' name='name' placeholder='Nombre del producto' defaultValue={name} />
-        <Input type='text' name='size' placeholder='Talla' defaultValue={size} />
-        <Input type='text' name='color' placeholder='Color' defaultValue={color} />
-        <Input type='text' name='price' placeholder='Precio' defaultValue={price} />
-        <Input type='text' name='description' placeholder='Descripción' defaultValue={description} />
+    <Modal className='modal__create-product' onClose={onClose}>
+      <form className='create-product' onSubmit={modifyProduct}>
+        <h1 className='title' >Actualizar producto</h1>
+        <div className='input-container' >
+          <Input className='input' type='text' name='name' placeholder='Nombre del producto' defaultValue={name} />
+          <Input className='input' type='text' name='size' placeholder='Talla' defaultValue={size} />
+          <Input className='input' type='text' name='color' placeholder='Color' defaultValue={color} />
+          <Input className='input' type='text' name='price' placeholder='Precio' defaultValue={price} />
+          <textarea className='input' type='text' name='description' placeholder='Descripción' defaultValue={description} />
+        </div>
+        <div className='buttons' >
         <Button type='submit' >Actualizar</Button>
-      </form>
-
-      <div {...getRootProps()}>
-        <input {...getInputProps()} />
-        {productImage && <img
-          src={productImgSrc}
-          alt='photo'
-        />}
-        <Button>Elegir archivo</Button>
-      </div>
+            <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            {productImage && <img
+              width='200'
+              height='200'
+              src={productImgSrc}
+              alt='photo'
+              />}
+              <Button className='button__choose-file'>Elegir archivo</Button>
+            </div>
+            </div>
+          </form>
     </Modal>
 
 

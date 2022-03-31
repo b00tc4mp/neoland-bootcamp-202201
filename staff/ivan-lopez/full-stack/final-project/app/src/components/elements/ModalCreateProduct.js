@@ -1,3 +1,4 @@
+import './ModalCreateProduct.sass'
 import { addProduct } from '../../logic'
 import React from 'react'
 import Button from '../Button'
@@ -32,6 +33,7 @@ import {convertToBase64} from '../utils/utils'
             addProduct(sessionStorage.token, name, productImage, size, color, price, description)
               .then(() => {
                   alert('¡Producto creado correctamente!')
+                  onClose()
               })
               .catch((error) => alert(error.message))
           })
@@ -43,32 +45,36 @@ import {convertToBase64} from '../utils/utils'
   
 
     return (
-      <Modal onClose={onClose}>
-        <form onSubmit={createProduct}>
-            <h1>Añadir producto</h1>
-            <Input type='text' name='name' placeholder='Nombre del producto' />
-            <Input type='text' name='size'placeholder='Talla' />
-            <Input type='text' name='color'placeholder='Color' />
-            <Input type='text' name='price'placeholder='Precio' />
-            <Input type='text' name='description'placeholder='Descripción' />
-            <Button type="submit">Añadir</Button>
-        </form>
+      <Modal className='modal__create-product' onClose={onClose}>
+        <form className='create-product' onSubmit={createProduct}>
+            <h1 className='title' >Añadir producto</h1>
+            <div className='input-container' >
+              <Input className='input' type='text' name='name' placeholder='Nombre del producto' />
+              <Input className='input' type='text' name='size'placeholder='Talla' />
+              <Input className='input' type='text' name='color'placeholder='Color' />
+              <Input className='input' type='text' name='price'placeholder='Precio' />
+              <Input className='input' type='text' name='description'placeholder='Descripción' />
+            </div>
+            <div className='buttons' >
+              <Button type="submit">Añadir</Button>
             <div {...getRootProps()}>
             <input {...getInputProps()} />
             {productImage && <img
+              width='200'
+              height='200'
               src={productImgSrc}
               alt='photo'
-            />}
+              />}
+              <Button className='button__choose-file' >Elegir archivo</Button>
+            </div>
+            </div>
 
-            {/* <div {...getRootProps({ className: "dropzone" })}>
-              <input {...getInputProps()} />
-              <ButtonFile>Choose File</ButtonFile>
-          </div>
-           {productImage && <p>{productImage.path}</p>}
-            /> */}
-            <Button>Elegir archivo</Button>
-          </div>
+        </form>
       </Modal>
+
+
+
+
     )
   }
 

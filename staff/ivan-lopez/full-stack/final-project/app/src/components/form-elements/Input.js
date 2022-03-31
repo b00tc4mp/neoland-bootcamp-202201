@@ -1,11 +1,9 @@
 import './Input.sass'
 
-function Input({ type='text', name='', placeholder='', defaultValue }) {
+function Input({className, type='text', name='', placeholder='', defaultValue }) {
 
-    return <div className='input'>
-        <input type={type} name={name} placeholder={placeholder} defaultValue={defaultValue} />
-    
-    </div>
+    return <input className={`input ${className}`} type={type} name={name} placeholder={placeholder} defaultValue={defaultValue} />
+
 
 }
 

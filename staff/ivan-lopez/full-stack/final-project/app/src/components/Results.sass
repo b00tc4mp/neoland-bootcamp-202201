@@ -1,0 +1,74 @@
+$layout-breakpoint-small: 760px
+$layout-breakpoint-medium: 1110px
+
+.cards-wrapper
+    width: 100%
+    height: 100%
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    max-width: 1200px
+    margin-left: auto
+    margin-right: auto
+
+.cards-wrapper__small-cards-wrapper
+    width: 30%
+    max-width: 1200px
+    margin-left: 6px
+    padding: 15px
+    border-radius: 12px
+    background-color: #E9E3E3
+    margin-top: 20px
+    margin-bottom: 20px
+    box-shadow: 0 0 15px #E9E3E3
+    cursor: pointer
+    &:hover
+        opacity: 0.6
+
+.cards-wrapper__image-wrapper
+    display: flex
+    justify-content: center
+
+.unkown-image
+    width: 90%
+    max-height: 500px
+    object-fit: cover
+    border-radius: 9px
+    height: 150px
+
+.image
+    width: 90%
+    max-height: 500px
+    object-fit: cover
+    border-radius: 9px
+    height: 200px
+
+.card-wrapper__attributes-wrapper
+    padding: 15px
+
+.card-wrapper__attribute-wrapper
+    display: flex
+    align-items: center
+
+.card-wrapper__attribute-wrapper__title
+    font-size: 25px
+
+.card-wrapper__attribute-wrapper__attribute
+    font-size: 18px
+
+@media (max-width: $layout-breakpoint-medium)
+    .cards-wrapper__small-cards-wrapper
+        width: 45%
+        
+
+@media (max-width: $layout-breakpoint-small)
+    .cards-wrapper__small-cards-wrapper
+        width: 90%
+        margin-left: auto
+        margin-right: auto
+    
+    .card-wrapper__attribute-wrapper__title
+        font-size: 18px
+
+    .card-wrapper__attribute-wrapper__attribute
+        font-size: 13px
