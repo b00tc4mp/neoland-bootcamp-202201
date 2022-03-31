@@ -38,28 +38,3 @@ module.exports = updateLocation
 
 
 
-
-
-/*
-const { validators: { validateId, validateString } } = require('commons')
-const { models: { Location } } = require('data')
-
-
-function updateLocation(userId, locationId, type, title, image, address, city) {
-  validateId(userId, 'user id')
-  validateId(locationId, 'location id')
-  validateString(type, 'type')
-  validateString(title, 'title')
-  validateString(image, 'image')
-  validateString(address, 'address')
-  validateString(city, 'city')
-  
-  return Location.updateOne({ user: userId, _id: locationId}, {type, title, image, address, city })
-  .then(location => {
-    if (!location) throw new Error(`location with id ${locationId} does not exist`)
-  })
-  .then(location => {})
-}
-
-module.exports = updateLocation
-*/

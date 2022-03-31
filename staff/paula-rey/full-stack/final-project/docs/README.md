@@ -1,6 +1,6 @@
 # Dogether Project
 
-![alt Dog-gether Project](https://i.giphy.com/media/5pYo6sWTaoHs7pnXaK/giphy.webp)
+![alt Dog-gether Project](https://media4.giphy.com/media/5pYo6sWTaoHs7pnXaK/giphy.gif?cid=790b7611af2899b4b693a01e1ba2b64ca9f7e9d7f9e5d0ab&rid=giphy.gif&ct=g)
 
 ## Intro
 
@@ -72,13 +72,15 @@ comment
 - MongoDB
 - Sass
 
-### Data Model
+### Task list
 
 - Añadir lista de seguidores
 - Mejorar los alerts a realistas
 - Mejorar SASS
 - Hacer testing
 - Poner feedback
+- Poner bonito el home
+
 
 
 
