@@ -1,0 +1,105 @@
+$layout-breakpoint-small: 760px
+$layout-breakpoint-medium: 1110px
+
+.cards-wrapper-detail
+    width: 100%
+    height: 100%
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    max-width: 1120px
+    padding-left: 15px
+    padding-right: 15px
+
+.cards-wrapper__big-cards-wrapper-detail
+    width: 90%
+    max-width: 1200px
+    margin-left: 6px
+    padding: 15px
+    border-radius: 12px
+    background-color: #34bcd2
+    margin-top: 20px
+    margin-bottom: 20px
+    box-shadow: 0 0 15px lightgrey
+
+.cards-wrapper__image-wrapper-detail
+    display: flex
+    justify-content: center
+
+.unkown-image-detail
+    width: 80%
+    max-height: 300px
+    object-fit: cover
+    border-radius: 9px
+
+.image-detail
+    width: 85%
+    max-height: 500px
+    object-fit: cover
+    border-radius: 9px
+
+.card-wrapper__attributes-wrapper-detail
+    padding: 15px
+    width: 85%
+    height: 100%
+    margin-left: auto
+    margin-right: auto
+
+.card-wrapper__attributes-wrapper-detail-flex
+    display: flex
+    justify-content: space-between
+
+.card-wrapper__attribute-wrapper-detail
+    display: flex
+    flex-direction: column
+    width: 350px
+
+.card-wrapper__attribute-wrapper__title-detail
+    font-size: 20px
+    line-height: 23px
+
+.card-wrapper__attribute-wrapper__attribute-detail
+    font-size: 20px
+    line-height: 23px
+
+.card-wrapper__buttons-wrapper
+    display: flex
+    justify-content: space-between
+    width: 100%
+    margin-top: 30px
+
+.card-wrapper__button-wrapper
+    width: 30%
+    padding-left: 15px
+    justify-content: space-between
+    height: 36px
+    font-size: 30px
+
+
+@media (max-width: $layout-breakpoint-medium)
+    .cards-wrapper__small-cards-wrapper-detail
+        width: 45%
+        
+
+@media (max-width: $layout-breakpoint-small)
+    .cards-wrapper__small-cards-wrapper-detail
+        width: 90%
+        margin-left: auto
+        margin-right: auto
+    
+    .card-wrapper__attribute-wrapper__title-detail
+        font-size: 15px
+        min-height: 50px
+
+    .card-wrapper__attribute-wrapper__attribute-detail
+        font-size: 15px
+        min-height: 50px
+        margin-left: 20px
+    
+    .image-detail 
+        width: 100%
+
+    .cards-wrapper-detail
+        padding-right: 24px
+
+
