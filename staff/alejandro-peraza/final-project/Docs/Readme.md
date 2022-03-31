@@ -25,7 +25,6 @@ Como usuario podrás:
 - Buscar cócteles en la app
 - Listar cócteles
 - Ver detalles de cócteles y su receta
-- Guardar cócteles favoritos
 - Añadir comentarios a los cócteles
 
 
@@ -33,29 +32,22 @@ Como usuario podrás:
 
 ![alt](./images/use-cases.png)
 
-<!-- rebuild use cases with handlers actions -->
-<!-- example (https://github.com/nsauram/neoland-bootcamp-202109/tree/feature/fullstack/staff/noelia-saura/fullstack/project/inmymind-doc) -->
-<!-- ![alt](./images/use-cases.png) -->
 
 #### Flows
 
 ![alt](./images/Flow.png)
 
-<!-- TODO
-Ver vídeo (https://www.youtube.com/watch?v=cvYhuowazh0)
-link example (https://github.com/manuelbarzi/neoland-bootcamp-202201/blob/36c46f5cb15fe4209a8f6101813bf6c7d6941e4f/staff/maria-navarrete/full-stack/final-project/docs/images/createDiagram.jpg)
-Flow de ver un cóctel
-Flow de añadir un comentario -->
+
 
 #### User Interface (UI)
 
 
 ##### Main Views
-<!-- wireframes -->
 
-![alt](./images/user-view.png)
 
 ![alt](./images/profile-view.png)
+
+![alt](./images/users-view.png)
 
 ## Technical Description
 
@@ -65,8 +57,6 @@ Flow de añadir un comentario -->
 
 ### Data Model
 
-<!-- TODO link er diagram -->
-<!-- example (https://github.com/manuelbarzi/neoland-bootcamp-202201/blob/36c46f5cb15fe4209a8f6101813bf6c7d6941e4f/staff/maria-navarrete/full-stack/final-project/docs/images/ERDiagram.jpg) -->
 
 
 User
@@ -93,8 +83,3 @@ Comments
 
 ![alt](./images/ERD.png)
 
-<!-- TODO
-change ER diagram
-finish wireframes
-review flow with a ux/ui student
--->
