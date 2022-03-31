@@ -27,20 +27,26 @@ function Home({onBack}) {
         <nav className='home__header'>
            
             <h1>🥷🏻GRAFFITI MAPS🥷🏼</h1>
-            <Button onClick={() => {
-                navigate("create-graffiti")
-            }}>Create graffiti</Button>
+            <div className='home__buttons-wrapper'>
+                <div className='home__button-wrapper left'>
+                    <Button onClick={() => {
+                        navigate("create-graffiti")
+                    }}>Create graffiti</Button>
+                </div>
+                <div className='home__button-wrapper right'>
+                    <Button className='list-button' onClick={() => {
+                            navigate(`my-graffitis`)
+                        }}>List Graffitis</Button>
+                </div>
+            </div>
         </nav>
 
-        <Button onClick={() => {
-                navigate(`my-graffitis`)
-            }}>List Graffitis</Button>
         <Search className='home__search' onSearch={search} />
         <Routes>
             <Route path='my-graffitis' element={<GraffitiList/>} />
             <Route path='search' element={<Results />} />
-            <Route path='/update-graffiti/:graffitiId' element={<ModifyGraffiti/>} />
-            <Route path='create-graffiti' element={<CreateGraffiti/>} />
+            <Route path='/update-graffiti/:graffitiId' element={<ModifyGraffiti onBack={onBack}/>} />
+            <Route path='create-graffiti' element={<CreateGraffiti  onBack={onBack}/>} />
             <Route path='/search/:graffitiId' element={< GraffitiDetails onBack={onBack} />} />
         </Routes>
     </div>

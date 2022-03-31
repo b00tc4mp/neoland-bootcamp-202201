@@ -33,11 +33,12 @@ function Register({ onRegistered, onLogin }) {
 
     return <div className='register'>
         <form onSubmit={onSubmit}>
-            <Input type='text' name='name' placeholder='name' />
-            <Input type='email' name='email' placeholder='email' />
-            <Input type='password' name='password' placeholder='password' />
-            <Button type='submit'>Register</Button>
-            <a href="" onClick={goToLogin}>Login</a>
+            <h1>REGISTER</h1>
+            <Input className='profile__input login-input' type='text' name='name' placeholder='name' />
+            <Input className='profile__input login-input' type='email' name='email' placeholder='email' />
+            <Input className='profile__input login-input' type='password' name='password' placeholder='password' />
+            <Button className='button login-buttons' type='submit'>Register</Button>
+            <Button className='button logout-button login-buttons' href="" onClick={goToLogin}>Login</Button>
         </form>
     </div>
 

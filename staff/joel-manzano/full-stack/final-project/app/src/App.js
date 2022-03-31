@@ -14,12 +14,6 @@ const {validateToken } = validators
 function App() {
   
   useEffect(() => {
-    // // try {
-    // //   if(sessionStorage.token) validateToken(sessionStorage.token)
-    // // } catch (error) {
-    // //   delete sessionStorage.token
-    // //   alert('session has expired')
-    // }
   }, [])
   
   const goToBack = () => navigate(-1)
@@ -40,7 +34,7 @@ function App() {
 
   <Routes>
 
-      <Route path='/*' element={<Home onProfile={showProfile} onLogin={showLogin}/>} />
+      <Route path='/*' element={<Home onProfile={showProfile} onLogin={showLogin} onBack={goToBack}/>} />
       <Route path='/register' element={< Register onRegistered={showLogin} onLogin={showLogin}/>} />
       <Route path='/login' element={<Login onLogged={showHome} onRegister={showRegister}/>} />
       <Route path='profile' element={sessionStorage.token ? < Profile onUpdatePassword={showUpdatePassword} onDeleteAccount={showDeleteAccount} onLogOut={showLogin} /> : <Navigate replace to='/login' />} />

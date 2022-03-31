@@ -47,26 +47,29 @@ $layout-breakpoint-medium: 1110px
 
 .card-wrapper__attributes-wrapper-detail-flex
     display: flex
-    justify-content: space-evenly
+    justify-content: space-between
 
 .card-wrapper__attribute-wrapper-detail
     display: flex
-    align-items: center
+    flex-direction: column
     width: 350px
 
 .card-wrapper__attribute-wrapper__title-detail
     font-size: 20px
+    line-height: 23px
 
 .card-wrapper__attribute-wrapper__attribute-detail
-    font-size: 15px
+    font-size: 20px
+    line-height: 23px
 
 .card-wrapper__buttons-wrapper
     display: flex
     justify-content: space-between
     width: 100%
+    margin-top: 30px
 
 .card-wrapper__button-wrapper
-    width: 40%
+    width: 30%
     padding-left: 15px
     justify-content: space-between
     height: 36px
@@ -86,7 +89,17 @@ $layout-breakpoint-medium: 1110px
     
     .card-wrapper__attribute-wrapper__title-detail
         font-size: 15px
+        min-height: 50px
 
     .card-wrapper__attribute-wrapper__attribute-detail
-        font-size: 13px
+        font-size: 15px
+        min-height: 50px
+        margin-left: 20px
+    
+    .image-detail 
+        width: 100%
+
+    .cards-wrapper-detail
+        padding-right: 24px
+
 

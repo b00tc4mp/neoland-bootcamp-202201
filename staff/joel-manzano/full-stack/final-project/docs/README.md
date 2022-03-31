@@ -20,10 +20,10 @@ Realism, Blockbuster, Icons, Abstract, Trash)
 - Los fans pueden escribir info de sus artistas, 
 piezas encontradas y otros datos de interés.
 
-- Añadir ubicaciones a través de "leaftlet maps" (future versión).
+<!-- - Añadir ubicaciones a través de "leaftlet maps" (TODO future version).
 
 - Galería de arte urbano: Los artistas pueden añadir info, precios u otros
-detalles a sus piezas (future versión).
+detalles a sus piezas (TODO future version). -->
 
 
 ## Functional Description
@@ -31,11 +31,11 @@ detalles a sus piezas (future versión).
 ### Activities
 
 - Añadir graffitis
-- Editar graffitis
-- Eliminar graffitis
-- Listar graffitis según filtros
 - Ver detalles de un graffiti
-- Añadir a favoritos un graffiti
+- Editar graffitis
+- Listar graffitis según filtros
+- Eliminar graffitis
+<!-- - Añadir a favoritos un graffiti (TODO future version) -->
 
 <!-- Encuentra, visita y comparte los graffitis de tu ciudad.
 Los usuarios podrán compartir los graffitis que mas les gusten así como los suyos propios. Podrán compartir imagenes, descripciones, ubicaciones y otro tipo de información. Actualizar la información modificando sus publicaciones. -->
@@ -46,16 +46,15 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 ### Flows
 
 ![alt flows](./images/flux-diagram.png)
-<!-- Revisar del tercero para abajo (no hacerlo mucho más complejo, solo más lógico) -->
 
 #### User Interface (UI)
 
 ##### Main Views
 
-![alt Main Views](./images/  .png) <=// añadir imagen; -->
-<!-- Para mañana
+![alt Main Views](./images/  .png) <=// añadir imagen;
+ 
 
-## Technical Description
+ ## Technical Description
 
 ### Blocks
 ![alt blocks](./images/Blocks.png)
@@ -68,7 +67,7 @@ Los usuarios podrán compartir los graffitis que mas les gusten así como los su
 - email (string, required, unique)
 - password (string, required, min length 8)
 
-graffiti
+<!-- graffiti
 - user (object id)
 - artist (string, not required)
 - description (string, required, min/max_length 2/200)
@@ -77,17 +76,22 @@ graffiti
 - address (string, required)
 - postalCode (string, not required)
 - location (string, required)
-- style (string, required, enum:['unkown', 'tags', '3d', 'bombing',   'bubbles', 'blockbuster', 'realism', 'icons', 'trash', 'abstract'],default:'unknown')
-- status (string, required, enum:['exists', 'trampled', 'cleaned up'], default:'exists') 
+- style (string, required, enum:['unkown', 'tags', '3d', 'bombing',   'bubbles',    'blockbuster', 'realism', 'icons', 'trash', 'abstract'],default:'unknown')
+- condition (string, required, enum:['exists', 'trampled', 'cleaned up'], default:'exists') 
 - spray (string, not required)
-- colors ([string], not required)
+- colors ([string], not required) -->
 
 #### E/R Diagram
 
-![alt Database](./images/er-diagram.png)
+![alt Database](./images/diagrama-vistas.png)
 
-<!-- TODO:
-data
-wireframes
-Review flows with UX/UI student
---> 
+ TODO LIST:
+
+ - Añadir a favoritos un graffiti (TODO future version)
+
+ - Listar favoritos (TODO future version)
+ 
+ - Añadir ubicaciones a través de "leaftlet maps" (TODO future version).
+
+- Galería de arte urbano: Los artistas pueden añadir info, precios u otros
+detalles a sus piezas (TODO future version)

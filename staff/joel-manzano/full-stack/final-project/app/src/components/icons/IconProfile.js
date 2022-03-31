@@ -1,5 +1,4 @@
 import './IconProfile.sass'
-// rename IconProfile and Iconlogo
 
 function IconProfile ({ onClick }) {
 

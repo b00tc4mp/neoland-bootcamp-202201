@@ -9,7 +9,7 @@ import Select from 'react-select'
 import { useDropzone } from 'react-dropzone'
 import {convertToBase64} from '../components/utils/utils'
 
-function ModifyGraffiti() {
+function ModifyGraffiti({onBack}) {
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
       });
@@ -84,7 +84,6 @@ function ModifyGraffiti() {
         const { target: {
             artist: { value: artist },
             description: { value: description },
-            //image: { value: image },
             city: { value: city },
             address: { value: address },
             postalCode: { value: postalCode },
@@ -110,6 +109,7 @@ function ModifyGraffiti() {
                         setCondition(condition)
                         setSpray(spray)
                         setColor(color)
+                        alert('Graffifit updated ;)')
                     })
                     .catch(error => { throw error })
             })
@@ -124,9 +124,7 @@ function ModifyGraffiti() {
     }
 
     const handleChangeStyle=(event) => {
-        console.log(event.value)
         setStyle(event.value)
-        console.log(style)
     }
 
     return <>
@@ -143,16 +141,18 @@ function ModifyGraffiti() {
             <Input type='text' name='color' placeholder='Color' defaultValue={color} />
             <Select options={conditionOptions} name="condition" value={conditionOptions.find(item => item.value === condition)} onChange={(e) => handleChangeCondition(e)} />
             <Select options={styleOptions} name="style" value={styleOptions.find(item => item.value === style)} onChange={(e) => handleChangeStyle(e)} />
-            <Button type='submit' >Edit</Button>
+            <Button type='submit' className='button edit-button' >Edit</Button>
         </form>
-        <div {...getRootProps()}>
+        <div className='select-image-wrapper' {...getRootProps()}>
                     <input {...getInputProps()} />
                     {graffitiImage && <img
                     src={graffitiImgSrc}
                     alt='photo'
+                    className='selected-image'
                     />}
-                    <Button>Choose file</Button> 
+                        <Button className='logout-button margin-choosefile-button'>Choose file</Button> 
                 </div>
+            <Button className='button edit-button back-button' onClick={onBack}>Back</Button>
     </>
 }
 

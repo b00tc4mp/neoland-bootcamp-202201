@@ -3,7 +3,7 @@ import { validators } from 'commons'
 const {validateToken, validateString } = validators
 
 function createGraffiti(token, artist, description, image, city, address, postalCode, location, style, condition, spray, color) {
-    debugger
+    
     validateToken(token)
     validateString(artist, 'artist')
     validateString(description, 'description')

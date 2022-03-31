@@ -8,7 +8,7 @@ import Select from 'react-select'
 import { useDropzone } from 'react-dropzone'
 import {convertToBase64} from '../components/utils/utils'
 
-function CreateGraffiti() {
+function CreateGraffiti({onBack}) {
 
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
         accept: 'image/*',
@@ -78,20 +78,22 @@ function CreateGraffiti() {
                 <Input type='text' name='color' placeholder='Color' />
                 <Select options={conditionOptions} name="condition" />
                 <Select options={styleOptions} name="style" />
-                <Button type='submit' >Add</Button>
-            </form>
-                <div {...getRootProps()}>
+                <Button type='submit' className='button edit-button' >Add</Button>
+            </form >
+            <div className='flex-modify-buttons'>
+                <div className='select-image-wrapper' {...getRootProps()}>
                     <input {...getInputProps()} />
                     {graffitiImage && <img
                     src={graffitiImgSrc}
                     alt='photo'
+                    className='selected-image'
                     />}
-                    <Button>Choose file</Button> 
+                    <Button className='logout-button margin-choosefile-button'>Choose file</Button>
                 </div>
+                <Button className='button edit-button back-button' onClick={onBack}>Back</Button>
+            </div>
         </div>
 }
 
 
 export default CreateGraffiti
-
-//https://www.contornourbano.com/wp-content/uploads/2019/04/mll-5b234e2ce9d93-workFoto-1-1030x687.jpg

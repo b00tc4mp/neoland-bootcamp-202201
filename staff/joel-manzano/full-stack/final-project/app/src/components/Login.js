@@ -35,10 +35,10 @@ function Login({ onLogged, onRegister }) {
     return <div className='login'>
         <form onSubmit={onSubmit}>
             <h1>LOGIN</h1>
-            <Input type='email' name='email' placeholder='email' />
-            <Input type='password' name='password' placeholder='password' />
-            <Button type='submit'>Login</Button>
-            <a href='' onClick={goToRegister}>register</a>
+            <input className='profile__input login-input' type='email' name='email' placeholder='email' />
+            <input className='profile__input login-input' type='password' name='password' placeholder='password' />
+            <Button className='button login-buttons' type='submit'>Login</Button>
+            <button className='button logout-button login-buttons' href='' onClick={goToRegister}>Register</button>
         </form>
     </div>
 }

@@ -22,7 +22,7 @@ function Header({onLogo, onProfile, onHamburger}) {
                 <a href='' onClick={goToLogo}>
                     <IconLogo />
                 </a>
-                <div className='header__user-hamburguer-wrapper'>
+                <div className='header__user-logo'>
                     <a href='' onClick={goToProfile}>
                         <IconProfile />
                     </a>

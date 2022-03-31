@@ -5,8 +5,6 @@ function toggleFavorite(userId, graffitiId) {
     validateId(userId, 'user id')
     validateId(graffitiId, 'graffiti id')
 
-    //let graffiti
-
     return Graffiti.findById(graffitiId).lean()
         .then(graffiti => {
             if (!graffiti) throw new Error(`graffiti with id ${graffitiId} does not exist`)

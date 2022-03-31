@@ -7,7 +7,6 @@ import noImage from '../../src/assets/images/unkown-image.png'
 
 
 function GraffitiDetails({onBack}) {
-    //const [searchParams, setSearchParams]= useSearchParams()
     const navigate = useNavigate()
     const [graffiti, setGraffiti] = useState({})
     const [ isMyGraffiti, setIsMyGraffiti ] = useState(false)
@@ -64,52 +63,30 @@ function GraffitiDetails({onBack}) {
                     <div className='card-wrapper__attributes-wrapper-detail'>
                         <div className='card-wrapper__attributes-wrapper-detail-flex'>
                             <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Artist:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.artist}</p>
+                                {graffiti.artist && <p className='card-wrapper__attribute-wrapper__title-detail'>Artist:</p>}
+                                {graffiti.style && <p className='card-wrapper__attribute-wrapper__title-detail'>Style:</p>}
+                                {graffiti.address && <p className='card-wrapper__attribute-wrapper__title-detail'>Address:</p>}
+                                {graffiti.city && <p className='card-wrapper__attribute-wrapper__title-detail'>City:</p>}
+                                {graffiti.postalCode && <p className='card-wrapper__attribute-wrapper__title-detail'>Postal code:</p>}
+                                {graffiti.location && <p className='card-wrapper__attribute-wrapper__title-detail'>Location:</p>}
+                                {graffiti.status && <p className='card-wrapper__attribute-wrapper__title-detail'>Status:</p>}
+                                {graffiti.spray && <p className='card-wrapper__attribute-wrapper__title-detail'>Spray:</p>}
+                                {graffiti.color && <p className='card-wrapper__attribute-wrapper__title-detail'>Colors:</p>}
+                                {graffiti.condition && <p className='card-wrapper__attribute-wrapper__title-detail'>Condition:</p>}
+                                {graffiti.description && <p className='card-wrapper__attribute-wrapper__title-detail'>Description:</p>}
                             </div>
                             <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>City:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.city}</p>
-                            </div>
-                        </div>
-                        <div className='card-wrapper__attributes-wrapper-detail-flex'>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Style:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.style}</p>
-                            </div>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Address:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.address}</p>
-                            </div>
-                        </div>
-                        <div className='card-wrapper__attributes-wrapper-detail-flex'>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Postal code:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.postalCode}</p>
-                            </div>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Location:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.location}</p>
-                            </div>
-                        </div>
-                        <div className='card-wrapper__attributes-wrapper-detail-flex'>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Status:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.status}</p>
-                            </div>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Spray:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.spray}</p>
-                            </div>
-                        </div>
-                        <div className='card-wrapper__attributes-wrapper-detail-flex'>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Colors:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.colors}</p>
-                            </div>
-                            <div className='card-wrapper__attribute-wrapper-detail'>
-                                <p className='card-wrapper__attribute-wrapper__title-detail'>Description:</p>
-                                <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.description}</p>
+                                {graffiti.artist && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.artist}</p>}
+                                {graffiti.style && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.style}</p>}
+                                {graffiti.address && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.address}</p>}
+                                {graffiti.city && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.city}</p>}
+                                {graffiti.postalCode && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.postalCode}</p>}
+                                {graffiti.location && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.location}</p>}
+                                {graffiti.status && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.status}</p>}
+                                {graffiti.spray && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.spray}</p>}
+                                {graffiti.color && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.color}</p>}
+                                {graffiti.condition && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.condition}</p>}
+                                {graffiti.description && <p className='card-wrapper__attribute-wrapper__attribute-detail'>{graffiti.description}</p>}
                             </div>
                         </div>
                         {isMyGraffiti == true ? <div className='card-wrapper__buttons-wrapper'>
@@ -120,6 +97,9 @@ function GraffitiDetails({onBack}) {
                             </div>
                             <div className='card-wrapper__button-wrapper'>
                                 <Button className='delete-graffiti__button' onClick={onDeleteGraffiti}>Delete</Button>
+                            </div>
+                            <div className='card-wrapper__button-wrapper'>
+                                <Button className='delete-graffiti__button' onClick={onBack}>Back</Button>
                             </div>
                         </div> : null}
                     </div>

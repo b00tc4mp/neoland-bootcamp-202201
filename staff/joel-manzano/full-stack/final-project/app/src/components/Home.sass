@@ -1,3 +1,7 @@
+$layout-breakpoint-small: 760px
+$layout-breakpoint-medium: 1110px
+   
+   
 .home__search
    padding: 24px
 
@@ -5,3 +9,38 @@
    display: flex
    align-items: center
    flex-direction: column
+nav
+   width: 100%
+   max-width: 1150px
+   display: flex
+   flex-direction: column
+   align-items: center
+
+.home__buttons-wrapper
+   display: flex
+   justify-content: space-evenly
+   width: 100%
+   max-width: 1080px
+
+.home__button-wrapper
+    margin-top: 15px
+    width: 100%
+    max-width: 300px
+
+.left
+   padding-right: 10px
+
+.right
+   padding-left: 10px
+
+.list-button
+   background-color: white!important
+   border: 1px solid #00768b!important
+   color: #00768b!important
+
+@media (max-width: $layout-breakpoint-small)
+   .home__buttons-wrapper
+      display: flex
+      justify-content: space-evenly
+      width: 95%
+      max-width: 1080px
