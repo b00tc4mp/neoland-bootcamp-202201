@@ -32,8 +32,8 @@ export const CreateActionForm = ({ onCreated, onCancel }) => {
         <form className='createActionForm__form' onSubmit={onSubmit}>
             <fieldset className='createActionForm__fieldset'>
                 <Input className='input-bordered createActionForm__input' type='text' name='description' placeholder='Descripción' required />
-                <Select className='createActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} placeholder='Tiempo Requerido' required appendText={'min'} label={<StopwatchIcon className='createActionForm__icon' />} />
-                <Select className='createActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Dinero Requerido' required appendText={'€'} label={<MoneyIcon className='createActionForm__icon' />} />
+                <Select className='createActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} placeholder='Tiempo Requerido' required label={<StopwatchIcon className='createActionForm__icon' />} />
+                <Select className='createActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} placeholder='Dinero Requerido' required label={<MoneyIcon className='createActionForm__icon' />} />
                 <Checkbox className='createActionForm__checkbox' id='isPublic' name='isPublic' label='Hacer Pública' />
             </fieldset>
             <div className='createActionForm__buttons'>

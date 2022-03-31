@@ -53,8 +53,8 @@ export const UpdateActionForm = ({ actionId, onUpdated, onCancel }) => {
         <form className='updateActionForm__form' onSubmit={onSubmit}>
             <fieldset className='updateActionForm__fieldset'>
                 <Input className='input-bordered updateActionForm__input' type='text' name='description' defaultValue={description} placeholder='Descripción' required />
-                <Select className='updateActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} appendText={'min'} value={requiredTime} placeholder='Tiempo requerido' label={<StopwatchIcon />} required />
-                <Select className='updateActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} appendText={'€'} value={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
+                <Select className='updateActionForm__select' name='requiredTime' id='requiredTime' options={requiredTimeOptions} value={requiredTime} placeholder='Tiempo requerido' label={<StopwatchIcon />} required />
+                <Select className='updateActionForm__select' name='requiredBudget' id='requiredBudget' options={requiredBudgetOptions} value={requiredBudget} placeholder='Dinero requerido' label={<MoneyIcon />} required />
                 <Checkbox className='updateActionForm__checkbox' id='isPublic' name='isPublic' label='Hacer Pública' checked={isPublic} />
             </fieldset>
             <div className='updateActionForm__buttons'>

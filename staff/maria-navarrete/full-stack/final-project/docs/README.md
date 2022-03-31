@@ -192,6 +192,7 @@ ___
 
 
 # TASK LIST
+- Testing
 - Calendario
 - Notificaciones Push
 - Vista Actividad Usuario (gráficos)

@@ -1,6 +1,14 @@
 import './ScheduleCard.sass'
 import { CancelScheduleButton, CompleteScheduleButton, StopwatchIcon, MoneyIcon, RepeatIcon, CalendarIcon } from '.'
 
+const getRepeat = (repeat) => {
+    if (repeat === 'once') return 'Una vez'
+    if (repeat === 'daily') return 'Diario'
+    if (repeat === 'weekly') return 'Semanal'
+    if (repeat === 'biweekly') return 'Quincenal'
+    if (repeat === 'monthly') return 'Mensual'
+}
+
 export const ScheduleCard = ({ schedule = {}, onUpdated }) => {
 
 
@@ -20,7 +28,7 @@ export const ScheduleCard = ({ schedule = {}, onUpdated }) => {
         </div>
         <div className='scheduleCard__info'>
             <RepeatIcon className='scheduleCard__icon' />
-            Repetición: {schedule.repeat}
+            Repetición: {getRepeat(schedule.repeat)}
             <CancelScheduleButton className='scheduleCard__button' onCanceled={onUpdated} scheduleId={schedule.id} />
         </div>
         <div className='scheduleCard__info scheduleCard__completed'>
