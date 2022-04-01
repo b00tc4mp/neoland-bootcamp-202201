@@ -40,6 +40,64 @@ bHooman es una aplicación que busca crear una comunidad para compartir, crear e
 #### Add Favorite
 ![alt Add Favorite Diagram](./images/addFavDiagram.jpg)
 
+### User Interface (UI)
+___
+
+#### Landing
+![alt Landing Interface](./images/user-interface/landing.jpg)
+
+#### Register
+![alt Register Interface](./images/user-interface/register.jpg)
+
+#### Home
+![alt Home Interface](./images/user-interface/home.jpg)
+
+##### Home - Schedule
+![alt Schedule Interface](./images/user-interface/schedule.jpg)
+
+#### My Acts 
+##### My Acts - scheduled
+![alt My Scheduled Acts Interface](./images/user-interface/myActs-scheduled.jpg)
+
+##### My Acts - creations
+![alt My Created Acts Interface](./images/user-interface/myActs-creations.jpg)
+
+###### My Acts - creations - create
+![alt Create Act Interface](./images/user-interface/myActs-create.jpg)
+
+###### My Acts - creations - edit
+![alt Edit Act Interface](./images/user-interface/myActs-edit.jpg)
+
+###### My Acts - creations - delete
+![alt Delete Act Interface](./images/user-interface/myActs-delete.jpg)
+
+##### My Acts - favorites
+![alt My Favorites Acts Interface](./images/user-interface/myActs-favorites.jpg)
+
+#### Community
+![alt Community Interface](./images/user-interface/community.jpg)
+
+##### Community - Search
+![alt Search Community Interface](./images/user-interface/community-search.jpg)
+
+##### Community - Other User Profile
+![alt Community Profile Interface](./images/user-interface/community-userProfile.jpg)
+
+#### Profile
+![alt Profile Interface](./images/user-interface/profile.jpg)
+
+##### Profile- Update Profile
+![alt Update Profile Interface](./images/user-interface/profile-updateProfile.jpg)
+
+##### Profile- Update Password
+![alt Update Password Interface](./images/user-interface/profile-updatePassword.jpg)
+
+##### Profile- Delete Account
+![alt Delete Account Interface](./images/user-interface/profile-deleteAccount.jpg)
+
+##### Profile- Activity
+![alt Activity Interface](./images/user-interface/profile-activity.jpg)
+
 
 ## Technical Description
 ---
@@ -82,69 +140,11 @@ schedules
 - Javascript
 - React
 - CSS
+- Sass
 - HTML
 - Express
 - Mongo
 - Node
-
-## User Interface (UI)
-___
-
-### Landing
-![alt Landing Interface](./images/user-interface/landing.jpg)
-
-### Register
-![alt Register Interface](./images/user-interface/register.jpg)
-
-### Home
-![alt Home Interface](./images/user-interface/home.jpg)
-
-#### Home - Schedule
-![alt Schedule Interface](./images/user-interface/schedule.jpg)
-
-### My Acts 
-#### My Acts - scheduled
-![alt My Scheduled Acts Interface](./images/user-interface/myActs-scheduled.jpg)
-
-#### My Acts - creations
-![alt My Created Acts Interface](./images/user-interface/myActs-creations.jpg)
-
-##### My Acts - creations - create
-![alt Create Act Interface](./images/user-interface/myActs-create.jpg)
-
-##### My Acts - creations - edit
-![alt Edit Act Interface](./images/user-interface/myActs-edit.jpg)
-
-##### My Acts - creations - delete
-![alt Delete Act Interface](./images/user-interface/myActs-delete.jpg)
-
-#### My Acts - favorites
-![alt My Favorites Acts Interface](./images/user-interface/myActs-favorites.jpg)
-
-### Community
-![alt Community Interface](./images/user-interface/community.jpg)
-
-#### Community - Search
-![alt Search Community Interface](./images/user-interface/community-search.jpg)
-
-#### Community - Other User Profile
-![alt Community Profile Interface](./images/user-interface/community-userProfile.jpg)
-
-### Profile
-![alt Profile Interface](./images/user-interface/profile.jpg)
-
-#### Profile- Update Profile
-![alt Update Profile Interface](./images/user-interface/profile-updateProfile.jpg)
-
-#### Profile- Update Password
-![alt Update Password Interface](./images/user-interface/profile-updatePassword.jpg)
-
-#### Profile- Delete Account
-![alt Delete Account Interface](./images/user-interface/profile-deleteAccount.jpg)
-
-#### Profile- Activity
-![alt Activity Interface](./images/user-interface/profile-activity.jpg)
-
 
 
 ------------------------------------
