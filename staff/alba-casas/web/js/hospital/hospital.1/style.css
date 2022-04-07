@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container--column {
+  flex-direction: column;
+}
+
+.table {
+  background-color: gray;
+  border: 1px, solid black;
+}
+
+.table__head {
+  background-color: blanchedalmond;
+  height: 32px;
+}
+
+.table__row {
+  background-color: white;
+  height: 32px;
+}

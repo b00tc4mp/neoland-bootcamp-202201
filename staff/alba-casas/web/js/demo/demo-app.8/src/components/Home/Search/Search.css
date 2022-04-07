@@ -1,0 +1,21 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.search__form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 40px;
+}
+
+.search__results-list {
+  list-style-type: none;
+}
+
+.search__list-item {
+  cursor: pointer;
+}

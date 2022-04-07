@@ -1,0 +1,17 @@
+.substract {
+  background-color: green;
+  padding: 1rem;
+}
+
+.substract__title {
+  margin: 0;
+}
+
+.substract__form {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.substract__input {
+  width: 4rem;
+}

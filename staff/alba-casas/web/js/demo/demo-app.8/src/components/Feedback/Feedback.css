@@ -1,0 +1,46 @@
+.feedback {
+  font-weight: bold;
+  color: var(--color-white);
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.feedback--info {
+  background-color: black;
+}
+
+.feedback--success {
+  background-color: var(--success);
+}
+
+.feedback--warn {
+  background-color: var(--warning);
+}
+
+.feedback--error {
+  background-color: var(--danger);
+}
+
+.feedback--mini {
+  font-size: 0.8rem;
+  text-align: right;
+  background-color: transparent;
+  padding: 0 0.1rem 0.5rem 0.1rem;
+}
+
+.feedback--info.feedback--mini {
+  color: var(--text-color);
+}
+
+.feedback--success.feedback--mini {
+  color: var(--success);
+}
+
+.feedback--warn.feedback--mini {
+  color: var(--warning);
+}
+
+.feedback--error.feedback--mini {
+  color: var(--danger);
+}

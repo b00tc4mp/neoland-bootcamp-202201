@@ -1,0 +1,20 @@
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register__login-link {
+  text-align: center;
+}
+
+.register__input--error {
+  border: 1px solid tomato;
+}

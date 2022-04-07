@@ -1,0 +1,98 @@
+* {
+  font-size: 1.2rem;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.off {
+  display: none !important;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register__login-link {
+  text-align: center;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login__register-link {
+  text-align: center;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+.home__nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: lightcoral;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: right;
+}
+
+.nav__profile {
+  margin-right: 16px;
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.delete-form__submit {
+  width: 100%;
+  margin-top: 8px;
+  background-color: rgb(255, 92, 92);
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.delete-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}

@@ -1,0 +1,25 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 1rem;
+  align-items: center;
+  background-color: blanchedalmond;
+  border-radius: 10px;
+  width: 800px;
+  margin-top: 40px;
+  padding: 24px 48px;
+}
+
+.details__image {
+  width: 70vw;
+  max-width: 600px;
+  align-self: center;
+  margin-top: 40px;
+}
+
+.details__header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

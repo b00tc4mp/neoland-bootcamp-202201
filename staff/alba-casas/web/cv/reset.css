@@ -1,0 +1,20 @@
+* {
+  text-decoration: none;
+  color: black;
+  font-weight: 400px;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  outline: 0;
+  font-style: normal;
+  list-style: none;
+  tab-size: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: auto;
+}

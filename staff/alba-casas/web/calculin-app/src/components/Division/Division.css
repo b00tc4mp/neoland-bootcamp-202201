@@ -1,0 +1,17 @@
+.division {
+  background-color: tomato;
+  padding: 1rem;
+}
+
+.division__title {
+  margin: 0;
+}
+
+.division__form {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.division__input {
+  width: 4rem;
+}

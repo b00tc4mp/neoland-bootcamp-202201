@@ -1,0 +1,12 @@
+.details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 1rem;
+  width: 100px;
+}
+
+.detail__image {
+  width: 70vw;
+  align-self: center;
+}
