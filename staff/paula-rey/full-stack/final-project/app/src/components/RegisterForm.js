@@ -29,7 +29,7 @@ export function RegisterForm({ onLogin, onRegistered }) {
 
     return <div>
         <form className="register-form" onSubmit={onSubmit}>
-            <h1 className="register-form__name">DOGETHER</h1> 
+            <h1 className="register-form__name">dogether</h1> 
             <Input className="input" type="text" name="name" placeholder="Nombre" required={true} />
             <Input className="input" type="email" name="email" placeholder="email" required={true}/>
             <Input className="input" type="password" name="password" placeholder="contraseña" required={true} />

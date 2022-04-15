@@ -72,13 +72,7 @@ function searchLocations(userId, {query, type, city}={}) {
 
 module.exports = searchLocations
 
-//query
-//query city type
-//query city
-//query type
-//city type
-//city
-//type
+
 
 
 
