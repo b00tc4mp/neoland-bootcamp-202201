@@ -1,4 +1,4 @@
-# Dogether Project
+# DOGether Project
 
 ![alt Dog-gether Project](https://media.giphy.com/media/5pYo6sWTaoHs7pnXaK/giphy-downsized-large.gif)
 

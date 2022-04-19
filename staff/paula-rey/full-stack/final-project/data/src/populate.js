@@ -68,7 +68,5 @@ connect('mongodb://localhost:27017/dogether-db')
 
     })
 
-
-
     .then(() => disconnect())
     .then(() => console.log('disconnected'))
