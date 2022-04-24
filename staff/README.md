@@ -9,7 +9,3 @@ Here's where we setup our personal folders with the following syntax
 example:
 
 `staff/manuel-barzi`
-
-## Here we are!
-
-![alt we!](image.png)
